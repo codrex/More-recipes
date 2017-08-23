@@ -29,8 +29,8 @@ a, a:focus, a:hover, a:active {
 .no-b-r {
   border-radius: 0; }
 
-.bg-color-primary {
-  background-color: #E91E63; }
+.bg-primary {
+  background-color: #E91E63 !important; }
 
 .top-margin {
   margin: 50px !important; }
@@ -228,6 +228,28 @@ small, .font_small {
       -webkit-filter: grayscale(1);
       filter: grayscale(1); }
 
+.topbar {
+  height: 150px;
+  width: 100%;
+  background-color: #E91E63;
+  color: #fff;
+  padding: 0 1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.main-content {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 1.5em 0;
+  min-height: 400px; }
+
 .footer {
   height: 25vh;
   background-color: #b3b3b3; }
@@ -411,5 +433,36 @@ small, .font_small {
 .reset-password {
   color: #E91E63;
   text-decoration: underline; }
+
+.avatar {
+  border-radius: 50%;
+  max-width: 100%;
+  border: 1px solid rgba(233, 30, 99, 0.3);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -o-object-fit: cover;
+  object-fit: cover; }
+  .avatar-sm {
+    height: 70px;
+    width: 70px;
+    font-size: 50px; }
+  .avatar-md {
+    height: 100px;
+    width: 100px;
+    font-size: 80px; }
+  .avatar-lg {
+    height: 150px;
+    width: 150px;
+    font-size: 130px; }
 
 /*# sourceMappingURL=main.css.map */
