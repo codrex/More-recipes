@@ -49,7 +49,7 @@
   > a{
     color: $primary-color !important;
   }
-  &:hover, &.active{
+  &:hover, &.active, .nav-link-active{
     border-bottom: $primary-color 2px solid;
   }
 }

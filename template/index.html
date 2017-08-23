@@ -49,22 +49,66 @@
               <div class="cta ">
                 <h1 class=" text-uppercase display-4"> ​share​ and view ​awesome​ ​and​ ​exciting​ ​​recipes !!!​ </h1>
                 <div class="cta-btn-wrapper">
-                  <div class="btn btn-primary btn-lg login">Login</div>
-                  <div class="btn btn-primary btn-lg reg">Create an account</div>
+                  <a class="btn btn-primary btn-lg login" href="#loginPage">Login</a>
+                  <a class="btn btn-primary btn-lg reg" href="#regPage">Create an account</a>
                 </div>
               </div>
           </div>
-          <footer class="footer row">
+          <div class="login-reg row ">
+            <ul class="nav nav-pills" role="tablist">
+              <li class="nav-item active" id="login-nav">
+                <a class="nav-link " data-toggle="tab" href="#home" role="tab">Login</a>
+              </li>
+              <li class="nav-item" id="reg-nav">
+                <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Register</a>
+              </li>
+            </ul>
+            <div class="login-reg-content">
+              <!-- REGISTER ***********************-->
+              <div  id="reg-pane" class="row tab d-flex flex-column justify-content-center align-items-center col-12" >
 
+                <form class="col-xs-12 col-sm-10 col-md-8 col-lg-6 no-margin" action="index.html" method="">
+
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="fullname" aria-describedby="fullname" placeholder="Fullname">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="password-1" placeholder="Password">
+                  </div>
+                  <input type="submit" name="login" value="Send" class="btn bg-color-primary text-white col-12 no-b-r">
+                </form>
+              </div>
+              <!-- LOGIN *********************** -->
+              <div  id="login-pane" class="row tab active-tab d-flex flex-column justify-content-center align-items-center col-12"  >
+                <form class="col-xs-12 col-sm-10 col-md-8 col-lg-6 no-margin" action="index.html" method="">
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="password-1" placeholder="Password">
+                  </div>
+                  <input type="submit" name="login" value="Send" class="btn bg-color-primary text-white col-12 no-b-r">
+
+                </form>
+                <a href="" class="reset-password">Reset password</a>
+              </div>
+            </div> 
+          </div>  
+          <footer class="footer row" id="footer">
           </footer>
         </div>
+        
 
 
 
 
 
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+        
+        <script src="js/vendor/jquery-3.2.1.min.js"></script>
+
         <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -75,6 +119,13 @@
             e.src='https://www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+        <script>
+          var log = console.log;
+          $('.login').on('click',function(){
+            log('click login');
+          });
+
         </script>
     </body>
 </html>
