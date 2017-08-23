@@ -1,0 +1,33 @@
+.cta{
+  width: 80%;
+  max-width: 700px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  > h1{
+    text-align: center;
+    color: $light-text;
+  }
+  &-btn-wrapper{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    > .btn{
+      border: 0 !important;
+      border-radius: 0 !important;
+      text-transform: capitalize;
+    }
+    & .login{
+      margin-right: .5em;
+      background-color: $accent-color;
+
+    }
+    & .reg{
+      background-color: $secondary-color;
+    }
+
+  }
+}

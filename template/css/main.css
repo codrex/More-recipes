@@ -193,7 +193,19 @@ small, .font_small {
   background-color: pink;
   max-height: 700px;
   background-color: #E91E63;
-  position: relative; }
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
   .hero-img-wrapper {
     position: absolute;
     top: 0;
@@ -201,7 +213,7 @@ small, .font_small {
     right: 0;
     bottom: 0;
     z-index: 1;
-    mix-blend-mode: hard-light; }
+    mix-blend-mode: darken; }
     .hero-img-wrapper img {
       width: 100%;
       height: 100%;
@@ -277,5 +289,54 @@ small, .font_small {
     color: #E91E63 !important; }
   .nav-item:hover, .nav-item.active {
     border-bottom: #E91E63 2px solid; }
+
+.cta {
+  width: 80%;
+  max-width: 700px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  z-index: 2; }
+  .cta > h1 {
+    text-align: center;
+    color: #fff; }
+  .cta-btn-wrapper {
+    width: 80%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    .cta-btn-wrapper > .btn {
+      border: 0 !important;
+      border-radius: 0 !important;
+      text-transform: capitalize; }
+    .cta-btn-wrapper .login {
+      margin-right: .5em;
+      background-color: #8BC34A; }
+    .cta-btn-wrapper .reg {
+      background-color: #4e1e4e; }
 
 /*# sourceMappingURL=main.css.map */
