@@ -383,7 +383,7 @@ small, .font_small {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     max-width: 600px;
     position: relative;
     margin-bottom: 25px; }

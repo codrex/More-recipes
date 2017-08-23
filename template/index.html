@@ -49,21 +49,21 @@
               <div class="cta ">
                 <h1 class=" text-uppercase display-4"> ​share​ and view ​awesome​ ​and​ ​exciting​ ​​recipes !!!​ </h1>
                 <div class="cta-btn-wrapper">
-                  <a class="btn btn-primary btn-lg login" href="#loginPage">Login</a>
-                  <a class="btn btn-primary btn-lg reg" href="#regPage">Create an account</a>
+                  <a class="btn btn-primary btn-lg login login-js" href="#loginReg">Login</a>
+                  <a class="btn btn-primary btn-lg reg reg-js" href="#loginReg">Create an account</a>
                 </div>
               </div>
           </div>
           <div class="login-reg row ">
             <ul class="nav nav-pills" role="tablist">
-              <li class="nav-item active" id="login-nav">
-                <a class="nav-link " data-toggle="tab" href="#home" role="tab">Login</a>
+              <li class="nav-item active login-js">
+                <a class="nav-link " >Login</a>
               </li>
-              <li class="nav-item" id="reg-nav">
-                <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Register</a>
+              <li class="nav-item reg-js" >
+                <a class="nav-link " >Register</a>
               </li>
             </ul>
-            <div class="login-reg-content">
+            <div class="login-reg-content" id="loginReg">
               <!-- REGISTER ***********************-->
               <div  id="reg-pane" class="row tab d-flex flex-column justify-content-center align-items-center col-12" >
 
@@ -122,9 +122,22 @@
         </script>
         <script>
           var log = console.log;
-          $('.login').on('click',function(){
+          $('.login-js').on('click',function(){
             log('click login');
-          });
+            $('.reg-js').removeClass('active')
+            $('.login-js').addClass('active')
+            $('#reg-pane').removeClass('active-tab')
+            $('#login-pane').addClass('active-tab')
+
+
+          })
+          $('.reg-js').on('click',function(){
+            log('click login');
+            $('.login-js').removeClass('active')
+            $('.reg-js').addClass('active')
+            $('#login-pane').removeClass('active-tab')
+            $('#reg-pane').addClass('active-tab')
+          })
 
         </script>
     </body>
