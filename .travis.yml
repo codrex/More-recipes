@@ -1,0 +1,28 @@
+language: node_js
+
+node_js: "7"
+
+install:
+- npm install
+
+script:
+- npm test
+
+env:
+- NODE_ENV=test
+
+cache:
+  directories:
+  - "node_modules"
+
+services:
+- postgresql
+
+
+before_script:
+- createuser more-recipe -s -U postgres
+- createdb more-recipe_test --username=more-recipe
+- sequelize db:migrate
+
+notifications:
+  webhooks: https://coveralls.io/webhook repo_token=cq7oj7Dgn0xi31dzGY1GpqenGmkC2Y8Ud

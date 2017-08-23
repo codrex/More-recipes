@@ -1,0 +1,34 @@
+{
+    "development": {
+    "username": "postgres",
+    "password": "12345",
+    "database": "postitDev",
+    "host": "127.0.0.1",
+    "port":5432,
+    "dialect": "postgres"
+  },
+  "test-l": {
+    "username": "postgres",
+    "password": "12345",
+    "database": "postitTest",
+    "host": "127.0.0.1",
+    "port":5432,
+    "dialect": "postgres",
+    "logging":false
+  },
+  "test": {
+    "username": "postit",
+    "password": 12345,
+    "database": "postit_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "secret":"andelabootcamprexogbemudiaosazuwa"
+}
