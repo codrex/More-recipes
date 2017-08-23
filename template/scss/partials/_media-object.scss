@@ -1,0 +1,28 @@
+.media-object{
+  width: 100%;
+  min-width: 250px;
+  min-height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  &__img{
+    height: 6em;
+    width: 6em;
+    background: gray;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 1em;
+  }
+  &__body{
+    padding: .1em;
+    flex: 2;
+    margin-top: .5em;
+  }
+  &__header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+}

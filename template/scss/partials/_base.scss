@@ -1,0 +1,23 @@
+html{
+  width: 100%;
+  height: 100%;
+}
+body{
+  width: inherit;
+  height: inherit;
+}
+.row{
+  height: inherit;
+}
+a,a:focus,a:hover,a:active{
+    color: white;
+}
+
+.custom-control-input:active ~ .custom-control-indicator {
+    color: #fff;
+    background-color: $primary-color;
+}
+.custom-control-input:checked ~ .custom-control-indicator {
+    color: #fff;
+    background-color: lighten($primary-color,10%);
+}
