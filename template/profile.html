@@ -43,12 +43,56 @@
             </div>
           </header> 
           <div class="topbar lead">
-            <h1 class="text-capitalize no-margin">User profile</h1>
-            <img src="./img/photo-sm.jpeg" alt="" class="avatar avatar-md">
+            <div class="hero-img-wrapper">
+                  <img class="d-block img-fluid" src="./img/userpix.jpg" alt="First slide">
+              </div>
+            <h1 class="text-capitalize no-margin" style="z-index:2">User profile</h1>
           </div>
-          <div class="main-content">
+          <div class="main-content d-flex flex-column ">
             
-            
+            <div class="info-wrapper display-4">
+              <div class=" d-flex justify-content-around flex-column align-items-center"style="z-index:2">
+                <img src="./img/userpix.jpg" class="avatar avatar-sm" alt="">
+              <h3 class=" text-capitalize s-padding no-margin ">ogbemudia rex</h3>
+            </div>
+            <div class="d-flex no-margin flex-column align-items-center justify-content-center info">
+                <li class="info-item">johdoe@example.com</li>
+                <li class="info-item">093940394</li>
+                <li class="info-item">johnnydoe</li>
+            </div>
+              <i class="fa fa-edit edit-icon"></i>
+              <!--profile editor  -->
+              <div  class="row tab d-flex flex-column justify-content-center align-items-center col-12  profile-js"style="max-width:600px;margin:0 auto" >
+
+                <form class="col-12 no-margin" action="index.html" method="">
+
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="fullname" aria-describedby="fullname" value="Fullname">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="username" aria-describedby="username" value="username">
+                  </div>
+                  <div class="form-group">
+                    <input type="phone" class="form-control" id="phone-no" aria-describedby="phone-no" value="phone number">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" aria-describedby="email" value="email">
+                  </div>
+                  
+                  <button type="button" class="btn bg-primary text-white col-12 no-b-r">update</button>
+                </form>
+              </div>
+            </div>
+           <div class="user-recipes">
+             <h4 class=" lead text-uppercase">user recipes</h4>
+             <!-- <ul class="recipe-list">
+               <li class="recipe"></li>
+               <li class="recipe"></li>
+               <li class="recipe"></li>
+             </ul> -->
+                
+           </div>
+             
           </div>
           <footer class="footer row" id="footer">
           </footer>
@@ -75,22 +119,11 @@
         </script>
         <script>
           var log = console.log;
-          $('.login-js').on('click',function(){
-            log('click login');
-            $('.reg-js').removeClass('active')
-            $('.login-js').addClass('active')
-            $('#reg-pane').removeClass('active-tab')
-            $('#login-pane').addClass('active-tab')
-            $('.login-reg').addClass('animated slideInDown');
+          $('.edit-icon').on('click',function(){
+            $(this).toggleClass('fa-edit edit-icon-active')
+            $(this).toggleClass('fa-close')
+            $('.profile-js').toggleClass('active-tab')
 
-
-          })
-          $('.reg-js').on('click',function(){
-            log('click login');
-            $('.login-js').removeClass('active')
-            $('.reg-js').addClass('active')
-            $('#login-pane').removeClass('active-tab')
-            $('#reg-pane').addClass('active-tab')
           })
 
         </script>

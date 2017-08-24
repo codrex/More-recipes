@@ -237,7 +237,6 @@ small, .font_small {
 
 .topbar {
   height: 150px;
-  max-height: 250px;
   width: 100%;
   background-color: #E91E63;
   color: #fff;
@@ -265,7 +264,7 @@ small, .font_small {
 
 .footer {
   height: 25vh;
-  background-color: #fff; }
+  background-color: #b3b3b3; }
 
 .logo {
   max-width: 100%;
@@ -483,25 +482,10 @@ small, .font_small {
   font-size: 2em;
   background: white;
   width: 80%;
-  border-color: transparent;
-  border-left: 5px solid #4e1e4e;
-  position: relative;
-  margin: 0 auto;
-  max-width: 700px; }
-  .info-wrapper > div > h3 {
-    font-size: 1.2em; }
-  .info-wrapper::after {
-    content: '';
-    border: 10px solid;
-    position: absolute;
-    top: -1px;
-    right: -2px;
-    border-top-color: #E91E63;
-    border-right-color: #E91E63; }
+  border-left: 5px solid #4e1e4e; }
 
 .info {
-  font-size: 1em;
-  padding: .5em; }
+  font-size: 1em; }
   .info-item {
     list-style: none;
     line-height: 1.5em;
@@ -509,46 +493,6 @@ small, .font_small {
     font-size: .8em;
     color: #4e1e4e; }
 
-.edit-icon {
-  position: absolute;
-  right: 10px;
-  bottom: 5px;
-  color: rgba(78, 30, 78, 0.7);
-  font-size: .9em;
-  cursor: pointer; }
-  .edit-icon:hover {
-    color: rgba(78, 30, 78, 0.8); }
-  .edit-icon-active {
-    color: #E91E63 !important; }
-
 .main-content {
   position: relative;
-  background-color: #E91E63;
-  padding: 50px 0; }
-
-.user-recipes {
-  width: 80%;
-  min-height: 200px;
-  background-color: white;
-  margin: 25px auto;
-  border-right: 5px solid #4e1e4e;
-  display: none; }
-
-.left-container {
-  min-height: 400px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center; }
-
-.right-container {
-  min-height: 400px;
-  background: #e91e63;
-  border: 30px white solid; }
+  background-color: #E91E63; }

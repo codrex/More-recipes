@@ -1,15 +1,22 @@
 .no-margin{
-  margin:0;
+  margin:0!important;
 }
 .no-padding{
-  padding:0;
+  padding:0!important;
 }
 .no-b-r{
-  border-radius: 0;
+  border-radius: 0!important;
 }
 .bg-primary{
   background-color: $primary-color!important;
 }
 .top-margin{
   margin: 50px !important;
+}
+.bold{
+  font-weight: bold!important;
+}
+.s-padding{
+  padding-left: .5em!important;
+  padding-right: .5em!important;
 }
