@@ -57,10 +57,10 @@
           <div class="login-reg row ">
             <ul class="nav nav-pills" role="tablist">
               <li class="nav-item active login-js">
-                <a class="nav-link " >Login</a>
+                <a class="nav-link " href="#">Login</a>
               </li>
               <li class="nav-item reg-js" >
-                <a class="nav-link " >Register</a>
+                <a class="nav-link " href="#" >Register</a>
               </li>
             </ul>
             <div class="login-reg-content" id="loginReg">
@@ -81,7 +81,7 @@
                   <div class="form-group">
                     <input type="password" class="form-control" id="password-1" placeholder="Re-Enter Password">
                   </div>
-                  <input type="submit" name="login" value="Send" class="btn bg-color-primary text-white col-12 no-b-r">
+                  <input type="submit" name="login" value="create account" class="btn bg-primary text-white col-12 no-b-r text-capitalize">
                 </form>
               </div>
               <!-- LOGIN *********************** -->
@@ -93,7 +93,7 @@
                   <div class="form-group">
                     <input type="password" class="form-control" id="password-1" placeholder="Password">
                   </div>
-                  <input type="submit" name="login" value="Send" class="btn bg-color-primary text-white col-12 no-b-r">
+                  <input type="submit" name="login" value="login" class="btn bg-primary text-white col-12 no-b-r text-capitalize">
 
                 </form>
                 <a href="" class="reset-password">Reset password</a>
@@ -131,8 +131,6 @@
             $('.login-js').addClass('active')
             $('#reg-pane').removeClass('active-tab')
             $('#login-pane').addClass('active-tab')
-            $('.login-reg').addClass('animated slideInDown');
-
 
           })
           $('.reg-js').on('click',function(){

@@ -38,4 +38,8 @@
   .reset-password{
     color: $primary-color;
     text-decoration: underline;
+    &:hover,&:focus{
+      color: lighten($primary-color,5%);
+
+    }
   }

@@ -9,6 +9,28 @@
 }
 .bg-primary{
   background-color: $primary-color!important;
+  &:hover,&:focus{
+      background-color: darken($primary-color,5%)!important;
+      outline: 0;
+      box-shadow: none;
+  }
+}
+.bg-secondary{
+  background-color: $secondary-color!important;
+  &:hover,&:focus{
+      background-color: darken($secondary-color,5%)!important;
+      outline: 0;
+      box-shadow: none;
+  }
+}
+.border-primary{
+  border-color: $primary-color!important;
+}
+.border-white{
+  border-color: $bg-color!important;
+}
+.curve{
+  border-radius: 20px !important;
 }
 .top-margin{
   margin: 50px !important;

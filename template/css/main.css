@@ -31,6 +31,28 @@ a, a:focus, a:hover, a:active {
 
 .bg-primary {
   background-color: #E91E63 !important; }
+  .bg-primary:hover, .bg-primary:focus {
+    background-color: #d81558 !important;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+
+.bg-secondary {
+  background-color: rgba(78, 30, 78, 0.8) !important; }
+  .bg-secondary:hover, .bg-secondary:focus {
+    background-color: rgba(60, 23, 60, 0.8) !important;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+
+.border-primary {
+  border-color: #E91E63 !important; }
+
+.border-white {
+  border-color: #fff !important; }
+
+.curve {
+  border-radius: 20px !important; }
 
 .top-margin {
   margin: 50px !important; }
@@ -375,7 +397,7 @@ small, .font_small {
       margin-right: .5em;
       background-color: #8BC34A; }
     .cta-btn-wrapper .reg {
-      background-color: #4e1e4e; }
+      background-color: rgba(78, 30, 78, 0.8); }
 
 .login-reg {
   display: -webkit-box;
@@ -446,6 +468,8 @@ small, .font_small {
 .reset-password {
   color: #E91E63;
   text-decoration: underline; }
+  .reset-password:hover, .reset-password:focus {
+    color: #eb3573; }
 
 .avatar {
   border-radius: 50%;
@@ -484,7 +508,7 @@ small, .font_small {
   background: white;
   width: 80%;
   border-color: transparent;
-  border-left: 5px solid #4e1e4e;
+  border-left: 5px solid rgba(78, 30, 78, 0.8);
   position: relative;
   margin: 0 auto;
   max-width: 700px; }
@@ -507,7 +531,7 @@ small, .font_small {
     line-height: 1.5em;
     text-transform: capitalize;
     font-size: .8em;
-    color: #4e1e4e; }
+    color: rgba(78, 30, 78, 0.8); }
 
 .edit-icon {
   position: absolute;
@@ -531,11 +555,11 @@ small, .font_small {
   min-height: 200px;
   background-color: white;
   margin: 25px auto;
-  border-right: 5px solid #4e1e4e;
+  border-right: 5px solid rgba(78, 30, 78, 0.8);
   display: none; }
 
 .left-container {
-  min-height: 400px;
+  min-height: 250px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -544,11 +568,108 @@ small, .font_small {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-align-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center; }
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
 
 .right-container {
-  min-height: 400px;
+  min-height: 200px;
   background: #e91e63;
-  border: 30px white solid; }
+  border-left: 10px white solid; }
+
+.add-recipe-label {
+  text-transform: capitalize;
+  font-size: 2.5em;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #fff; }
+
+.add-recipe-input {
+  font-size: 1.5em; }
+
+.add-recipe-btn {
+  font-size: 1.5em;
+  text-transform: capitalize;
+  width: 60%;
+  color: #fff; }
+
+.ingredients-form {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline; }
+  .ingredients-form div {
+    margin-bottom: 1em; }
+  .ingredients-form button {
+    margin: 0;
+    background-color: rgba(78, 30, 78, 0.8) !important; }
+
+.directions-form {
+  margin-bottom: 1em; }
+
+.directions-form > button {
+  margin-top: .5em; }
+
+.name-form, .ingredients-form, .directions-form, .category-form {
+  display: none;
+  padding: 1em 0; }
+
+.active-form .ingredients-form {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.active-form {
+  display: block; }
+
+.progress-list {
+  padding: 0 1em; }
+
+.progress-item {
+  font-size: 2em;
+  list-style-type: none;
+  padding: .5em 0;
+  text-transform: lowercase;
+  color: aliceblue;
+  -webkit-transition: all .4s ease-in;
+  -o-transition: all .4s ease-in;
+  transition: all .4s ease-in;
+  cursor: pointer; }
+  .progress-item::first-letter {
+    text-transform: uppercase; }
+  .progress-item i {
+    visibility: hidden;
+    opacity: 0;
+    display: none;
+    color: #8BC34A; }
+  .progress-item-active i {
+    visibility: visible;
+    opacity: 1;
+    display: inline-block; }
+
+@media (max-width: 767px) {
+  .right-container {
+    -webkit-box-ordinal-group: 0;
+    -webkit-order: -1;
+    -ms-flex-order: -1;
+    order: -1; } }
+
+.sidebar {
+  background: yellow; }
+
+.main-board {
+  background: greenyellow; }
