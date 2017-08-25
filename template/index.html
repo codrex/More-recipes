@@ -124,21 +124,26 @@
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
         <script>
-          var log = console.log;
           $('.login-js').on('click',function(){
-            log('click login');
             $('.reg-js').removeClass('active')
             $('.login-js').addClass('active')
             $('#reg-pane').removeClass('active-tab')
             $('#login-pane').addClass('active-tab')
+              .addClass('animated fadeIn')
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated fadeIn')
+              });
 
           })
           $('.reg-js').on('click',function(){
-            log('click login');
             $('.login-js').removeClass('active')
             $('.reg-js').addClass('active')
             $('#login-pane').removeClass('active-tab')
             $('#reg-pane').addClass('active-tab')
+              .addClass('animated fadeIn')
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated fadeIn')
+              });
           })
 
         </script>

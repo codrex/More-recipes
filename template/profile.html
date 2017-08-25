@@ -25,8 +25,8 @@
                   <h1 class="display-4">More-Recipes</h1>
                 </a>
                   <ul class="navbar-nav mr-auto col-xs-12 col-sm-10 col-md-8 col-lg-8">
-                    <li class="nav-item active">
-                      <a class="nav-link text-uppercase" href="#">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                      <a class="nav-link text-uppercase" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link text-uppercase" href="#">Recipes</a>
@@ -48,9 +48,9 @@
               </div>
             <h1 class="text-capitalize no-margin" style="z-index:2">User profile</h1>
           </div>
-          <div class="main-content d-flex flex-column ">
+          <div class="main-content d-flex flex-column bg-white">
             
-            <div class="info-wrapper display-4">
+            <div class="info-wrapper mr-auto">
               <div class=" d-flex justify-content-around flex-column align-items-center"style="z-index:2">
                 <img src="./img/userpix.jpg" class="avatar avatar-md" alt="">
               <h3 class=" text-capitalize s-padding no-margin ">ogbemudia rex</h3>
@@ -60,11 +60,12 @@
                 <li class="info-item">093940394</li>
                 <li class="info-item">johnnydoe</li>
             </div>
-              <i class="fa fa-edit edit-icon"></i>
+              <a href="#edit"><i class="fa fa-edit edit-icon"></i></a>
+              
               <!--profile editor  -->
               <div  class="row tab d-flex flex-column justify-content-center align-items-center col-12  profile-js"style="max-width:600px;margin:0 auto" >
 
-                <form class="col-12 no-margin" action="index.html" method="">
+                <form class="col-12 no-margin" id="edit" method="">
 
                   <div class="form-group">
                     <input type="text" class="form-control" id="fullname" aria-describedby="fullname" value="Fullname">
@@ -79,7 +80,7 @@
                     <input type="email" class="form-control" id="email" aria-describedby="email" value="email">
                   </div>
                   
-                  <button type="button" class="btn bg-primary text-white col-12 no-b-r">update</button>
+                  <button type="button" class="btn bg-primary text-white col-12 no-b-r text-capitalize" style="font-size:.6em">update</button>
                 </form>
               </div>
             </div>
@@ -123,6 +124,10 @@
             $(this).toggleClass('fa-edit edit-icon-active')
             $(this).toggleClass('fa-close')
             $('.profile-js').toggleClass('active-tab')
+              .addClass('animated fadeIn')
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated fadeIn')
+              });
 
           })
 
