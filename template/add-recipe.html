@@ -25,14 +25,14 @@
                   <h1 class="display-4">More-Recipes</h1>
                 </a>
                   <ul class="navbar-nav mr-auto col-xs-12 col-sm-10 col-md-8 col-lg-8">
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                       <a class="nav-link text-uppercase" href="#">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="#">Recipes</a>
+                    <li class="nav-item ">
+                      <a class="nav-link text-uppercase " href="#">Recipes</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="#">Add a recipe</a>
+                    <li class="nav-item active">
+                      <a class="nav-link text-uppercase" href="#">Add recipe</a>
                     </li>
                   </ul>
               </nav>
@@ -46,23 +46,23 @@
             <div class="hero-img-wrapper">
                   <img class="d-block img-fluid" src="./img/img-3.jpg" alt="First slide">
               </div>
-            <h1 class="text-capitalize no-margin" style="z-index:2">Add a recipe</h1>
+            <h1 class="text-capitalize no-margin" style="z-index:2">Add recipe</h1>
           </div>
-          <div class="main-content row d-flex ">
-             <div class="left-container col-xs-12 col-sm-10 col-md-6 col-lg-6">
-               <form class="col-11 no-margin recipe-form" action="index.html" method="">
+          <div class="main-content row d-flex bg-white col-lg-8" style="margin:0 auto">
+             <div class="left-container col-xs-12 col-sm-10 col-md-6 col-lg-7">
+               <form class="col-11 col-lg-9 no-margin recipe-form" action="index.html" method="">
                   <label for="" class="add-recipe-label" style="margin-bottom:.5em">recipe name</label>
                   <div class="form-group name-form active-form" id="0">
-                    <input type="recipe-name" class="form-control add-recipe-input curve" id="recipe-name">
+                    <input type="recipe-name" class="form-control add-recipe-input " id="recipe-name">
                   </div>
                   <div class="form-group category-form" id="1">
-                    <input type="recipe-name" class="form-control add-recipe-input curve" id="recipe-name">
+                    <input type="recipe-name" class="form-control add-recipe-input " id="recipe-name">
                   </div>
                   <div class="form-group ingredients-form" id="2">
                     <div class="d-flex">
-                      <input type="recipe-description" class="form-control add-recipe-input curve" id="recipe-name"
+                      <input type="recipe-description" class="form-control add-recipe-input " id="recipe-name"
                        placeholder="Name">
-                      <input type="recipe-description" class="form-control add-recipe-input curve" id="recipe-name"
+                      <input type="recipe-description" class="form-control add-recipe-input " id="recipe-name"
                        placeholder="Quantity">
                     </div>
                     <button type="button" 
@@ -71,7 +71,7 @@
                    </button>
                   </div>
                   <div class="form-group directions-form" id="3">
-                      <input type="recipe-description" class="form-control add-recipe-input curve" id="recipe-direction"
+                      <input type="recipe-description" class="form-control add-recipe-input " id="recipe-direction"
                        placeholder="Cooking steps">
                     <button type="button"
                       class="btn bg-secondary border-white add-recipe-btn" id="ingredient-btn">
@@ -81,24 +81,24 @@
                   
                   <div class="d-flex">
                      <button type="button" name="previous"
-                      class="btn bg-primary border-white curve add-recipe-btn " id="previous-btn">
+                      class="btn bg-primary border-white  add-recipe-btn " id="previous-btn">
                      <i class="fa fa-angle-double-left"></i>
                      Previous
                     </button>
                     <button type="button" name="next" 
-                      class="btn bg-primary  border-white curve add-recipe-btn " id="next-btn">
+                      class="btn bg-primary  border-white  add-recipe-btn " id="next-btn">
                       next
                       <i class="fa fa-angle-double-right"></i>
                     </button>
                   </div>
                 </form> 
              </div>
-             <div class="right-container col-xs-0 col-sm-10 col-md-6 col-lg-6">
+             <div class="right-container col-xs-0 col-sm-10 col-md-6 col-lg-5">
                <div class="progress-list">
-                 <li class="progress-item 0"> name your recipe <i class="fa fa-check"></i></li>
-                 <li class="progress-item 1"> recipe belongs to what category <i class="fa fa-check"></i></li>
-                 <li class="progress-item 2"> List of recipe ingredients <i class="fa fa-check"></i></li>
-                 <li class="progress-item 3"> cooking or preparation steps <i class="fa fa-check"></i></li>
+                 <li class="progress-item 0"><i class="fa fa-check"></i> name your recipe </li>
+                 <li class="progress-item 1"><i class="fa fa-check"></i> recipe belongs to what category</li>
+                 <li class="progress-item 2"><i class="fa fa-check"></i> List of recipe ingredients </li>
+                 <li class="progress-item 3"><i class="fa fa-check"></i> cooking or preparation steps </li>
                </ul>
              </div>
           </div>
@@ -134,23 +134,37 @@
 
             currentLabel = currentLabel===labelList.length-1?labelList.length-1:currentLabel+1;
             
-            $('.add-recipe-label').text(labelList[currentLabel]);
+            $('.add-recipe-label').text(labelList[currentLabel])
+              .addClass('animated fadeIn')
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated fadeIn')
+              });
 
-            $('#'+currentLabel.toString()).addClass('active-form');
+            $('#'+currentLabel.toString()).addClass('active-form')
+              .addClass('animated fadeIn')
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated fadeIn')
+              });
            
 
           })
           $('#previous-btn').on('click',function(){
 
-            $('.progress-item.'+currentLabel.toString()).removeClass('progress-item-active');
-
             $('#'+currentLabel.toString()).removeClass('active-form');
 
             currentLabel = currentLabel===0?0:currentLabel-1;
 
-            $('.add-recipe-label').text(labelList[currentLabel]);
+            $('.add-recipe-label').text(labelList[currentLabel])
+            .addClass('animated fadeIn')
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated fadeIn')
+              });
 
-            $('#'+currentLabel.toString()).addClass('active-form');
+            $('#'+currentLabel.toString()).addClass('active-form')
+              .addClass('animated fadeIn')
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated fadeIn')
+              });
             
 
           })
