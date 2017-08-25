@@ -7,15 +7,15 @@
   }
 .right-container{
   min-height: 200px;
-  background: #e91e63;
-  border-left: 10px white solid;
+  background: #fff;
+  border-left: 10px $primary-color solid;
 }
 .add-recipe-label{
   text-transform: capitalize;
   font-size: 2.5em;
   font-weight: 300;
   line-height: 1.4;
-  color: $light-text;
+  color: $primary-color;
 }
 .add-recipe-input{
   font-size: 1.5em;
@@ -63,13 +63,10 @@
     font-size: 2em;
     list-style-type: none;
     padding: .5em 0;
-    text-transform: lowercase;
-    color: aliceblue;
+    text-transform: uppercase;
+    color: $primary-color!important;
     transition: all .4s ease-in;
     cursor: pointer;
-    &::first-letter{
-      text-transform: uppercase;
-    }
     & i{
       visibility: hidden;
       opacity: 0;
