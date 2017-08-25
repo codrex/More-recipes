@@ -3,8 +3,6 @@
     color: $primary-color !important;
 }
 .navbar-brand{
-  width: 100px;
-  height: 100px;
   margin: 0;
   color: $primary-color !important;
 
@@ -21,7 +19,7 @@
     margin: 0 !important;
     border-radius: 0;
     border-color: $primary-color !important;
-    color: $primary-color !important;
+    color: $primary-color ;
 
 
   }
@@ -52,4 +50,12 @@
   &:hover, &.active, .nav-link-active{
     border-bottom: $primary-color 2px solid;
   }
+}
+
+@media (min-width:877px){
+  .nav-v2{
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 0;
+    }
 }

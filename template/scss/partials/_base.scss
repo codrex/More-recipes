@@ -10,7 +10,7 @@ body{
   height: inherit;
 }
 a,a:focus,a:hover,a:active{
-    color: white;
+    color: $dark-text !important;
 }
 
 .custom-control-input:active ~ .custom-control-indicator {

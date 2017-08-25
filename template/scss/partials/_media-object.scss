@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  &__img{
+  &-img{
     height: 6em;
     width: 6em;
     background: gray;
@@ -13,12 +13,12 @@
     flex-shrink: 0;
     margin: 1em;
   }
-  &__body{
+  &-body{
     padding: .1em;
     flex: 2;
     margin-top: .5em;
   }
-  &__header{
+  &-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,3 +26,14 @@
   }
 
 }
+    // height: 50px;
+    // background: #631e63;
+    // /* margin: 0 -8px; */
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // color: white;

@@ -15,6 +15,9 @@
       box-shadow: none;
   }
 }
+.m-2em-b {
+    margin-bottom: .3rem!important; 
+}
 .bg-secondary{
   background-color: $secondary-color!important;
   &:hover,&:focus{
@@ -41,4 +44,23 @@
 .s-padding{
   padding-left: .5em!important;
   padding-right: .5em!important;
+}
+.f-wrap{
+  flex-wrap: wrap !important;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom:0;
+  z-index: $overlay-z;
+  background: rgba(0,0,0,0.6);
+  overflow: hidden;
+  display: none;
+  visibility: hidden;
+  &-active{
+    display: block;
+    visibility: visible;
+  }
 }
