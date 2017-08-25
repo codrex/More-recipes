@@ -1,0 +1,56 @@
+.recipe-ingredients{
+ background: white;
+}
+.display-4{
+  margin: .5em 0;
+  
+}
+.recipe-reviews{
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+ 
+}
+.recipe-ingredients-list-item{
+  font-size: 1.5em;
+  text-transform: lowercase;
+  &::first-letter{
+    text-transform: uppercase
+  }
+}
+.collapse-trigger{
+  display: block;
+  width: 100%;
+  height: inherit;
+  text-decoration: none !important;
+  padding: .5em;
+}
+.media-body h1{
+    font-size: 1.5em;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+.media-object{
+  padding: .5em;
+  margin-block-end: .5em;
+  max-width: 600px;
+  border-left: 5px $primary-color solid;
+  align-items: center;
+  & .avatar{
+    background: rgba($secondary-color,0.5);
+    text-align: center;
+  }
+}
+.media-body{
+  margin-left: .5em;
+}
+.topbar-icon{
+  z-index: 2;
+  font-size: 1.2em;
+  cursor: pointer;
+  &:hover, &:focus{
+    background-color: darken($primary-color,5%);
+  }
+}
+
