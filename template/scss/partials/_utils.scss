@@ -28,6 +28,9 @@
 }
 .border-primary{
   border-color: $primary-color!important;
+  &:hover,&:focus{
+    background: $bg-color !important;
+  }
 }
 .border-white{
   border-color: $bg-color!important;

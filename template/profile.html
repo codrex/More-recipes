@@ -60,7 +60,7 @@
                 <li class="info-item">093940394</li>
                 <li class="info-item">johnnydoe</li>
             </div>
-              <a href="#edit"><i class="fa fa-edit edit-icon"></i></a>
+              <button type="button" class="btn btn-outline-primary edit border-primary"  data-toggle="modal" data-target="#editProfile">edit profile</button>
               
               <!--profile editor  -->
               <div  class="row tab d-flex flex-column justify-content-center align-items-center col-12  profile-js"style="max-width:600px;margin:0 auto" >
@@ -98,6 +98,40 @@
           <footer class="footer row" id="footer">
           </footer>
         </div>
+        <div class="modal fade" id="editProfile" tabindex="-1"
+           role="dialog"      aria-labelledby="editProfileLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-capitalize" id="editProfileLabel">profile edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="col-12 no-margin" id="edit" method="">
+
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="fullname" aria-describedby="fullname" value="Fullname">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="username" aria-describedby="username" value="username">
+                  </div>
+                  <div class="form-group">
+                    <input type="phone" class="form-control" id="phone-no" aria-describedby="phone-no" value="phone number">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" aria-describedby="email" value="email">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-secondary text-white text-capitalize" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn bg-primary text-white text-capitalize">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
         
 
 
@@ -106,6 +140,9 @@
 
         
         <script src="js/vendor/jquery-3.2.1.min.js"></script>
+        <script src="js/vendor/popper.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+
 
         <script src="js/main.js"></script>
 

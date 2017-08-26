@@ -55,6 +55,8 @@ a, a:focus, a:hover, a:active {
 
 .border-primary {
   border-color: #8a1e63 !important; }
+  .border-primary:hover, .border-primary:focus {
+    background: #fff !important; }
 
 .border-white {
   border-color: #fff !important; }
@@ -586,16 +588,17 @@ small, .font_small {
     font-size: .8em;
     color: #8a1e63; }
 
-.edit-icon {
+.edit {
   position: absolute;
   right: 10px;
   bottom: 5px;
+  font-size: .7em !important;
+  text-transform: capitalize;
   color: rgba(138, 30, 99, 0.7);
-  font-size: .9em;
   cursor: pointer; }
-  .edit-icon:hover {
+  .edit:hover {
     color: rgba(138, 30, 99, 0.8); }
-  .edit-icon-active {
+  .edit-active {
     color: #8a1e63 !important; }
 
 .main-content {
