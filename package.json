@@ -7,7 +7,7 @@
     "wp": "webpack-dev-server --hot --history-api-fallback --open",
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "test:db": "set NODE_ENV=test-l&&sequelize db:migrate:undo:all&&sequelize db:migrate  && mocha server/test/test.js",
-    "test-l": "set NODE_ENV=test-l&& mocha server/test/test.js",
+    "s:test": "set NODE_ENV=test-l&& mocha --compilers js:babel-core/register --timeout 10000 server/test/test.js",
     "migrate": "sequelize db:migrate:undo:all&&sequelize db:migrate",
     "start": "nodemon --exec babel-node server/bin/www",
     "coverage": "set NODE_ENV=test-l&&sequelize db:migrate:undo:all&&sequelize db:migrate&& istanbul cover node_modules/mocha/bin/_mocha server/test/test.js",
