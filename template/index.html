@@ -17,7 +17,7 @@
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div class="page container">
+        <div class="page">
           <header class="header row">
             <div class="col-12 d-flex justify-content-center align-items ">
               <nav class="navbar navbar-toggleable-md navbar-light justify-content-center align-items-center flex-column">
@@ -32,7 +32,7 @@
                       <a class="nav-link text-uppercase" href="#">Recipes</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="#">login</a>
+                      <a class="nav-link text-uppercase" href="#">Add a recipe</a>
                     </li>
                   </ul>
               </nav>
@@ -43,19 +43,75 @@
             </div>
           </header>
           <div class="hero row">
-
+              <div class="hero-img-wrapper">
+                  <img class="d-block img-fluid" src="./img/photo-md.jpeg" alt="First slide">
+              </div>
+              <div class="cta ">
+                <h1 class=" text-uppercase display-4"> ​share​ and view ​awesome​ ​and​ ​exciting​ ​​recipes !!!​ </h1>
+                <div class="cta-btn-wrapper">
+                  <a class="btn btn-primary btn-lg login login-js text-white" href="#loginReg">Login</a>
+                  <a class="btn btn-primary btn-lg reg reg-js text-white" href="#loginReg">Create an account</a>
+                </div>
+              </div>
           </div>
-          <footer class="footer row">
+          <div class="login-reg row ">
+            <ul class="nav nav-pills" role="tablist">
+              <li class="nav-item active login-js">
+                <a class="nav-link " href="#">Login</a>
+              </li>
+              <li class="nav-item reg-js" >
+                <a class="nav-link " href="#" >Register</a>
+              </li>
+            </ul>
+            <div class="login-reg-content" id="loginReg">
+              <!-- REGISTER ***********************-->
+              <div  id="reg-pane" class="row tab d-flex flex-column justify-content-center align-items-center col-12" >
 
+                <form class="col-12 no-margin" action="index.html" method="">
+
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="fullname" aria-describedby="fullname" placeholder="Fullname">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="password-1" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="password-1" placeholder="Re-Enter Password">
+                  </div>
+                  <input type="submit" name="login" value="create account" class="btn bg-primary text-white col-12 no-b-r text-capitalize">
+                </form>
+              </div>
+              <!-- LOGIN *********************** -->
+              <div  id="login-pane" class="row tab active-tab d-flex flex-column justify-content-center align-items-center col-12"  >
+                <form class="col-12 no-margin" action="index.html" method="">
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <input type="password" class="form-control" id="password-1" placeholder="Password">
+                  </div>
+                  <input type="submit" name="login" value="login" class="btn bg-primary text-white col-12 no-b-r text-capitalize">
+
+                </form>
+                <a href="" class="reset-password">Reset password</a>
+              </div>
+            </div> 
+          </div>  
+          <footer class="footer row" id="footer">
           </footer>
         </div>
+        
 
 
 
 
 
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+        
+        <script src="js/vendor/jquery-3.2.1.min.js"></script>
+
         <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -66,6 +122,30 @@
             e.src='https://www.google-analytics.com/analytics.js';
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+        <script>
+          $('.login-js').on('click',function(){
+            $('.reg-js').removeClass('active')
+            $('.login-js').addClass('active')
+            $('#reg-pane').removeClass('active-tab')
+            $('#login-pane').addClass('active-tab')
+              .addClass('animated fadeIn')
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated fadeIn')
+              });
+
+          })
+          $('.reg-js').on('click',function(){
+            $('.login-js').removeClass('active')
+            $('.reg-js').addClass('active')
+            $('#login-pane').removeClass('active-tab')
+            $('#reg-pane').addClass('active-tab')
+              .addClass('animated fadeIn')
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated fadeIn')
+              });
+          })
+
         </script>
     </body>
 </html>

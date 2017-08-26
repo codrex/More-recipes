@@ -1,0 +1,88 @@
+.left-container{
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  }
+.right-container{
+  min-height: 200px;
+  background: #fff;
+  border-left: 10px $primary-color solid;
+}
+.add-recipe-label{
+  text-transform: capitalize;
+  font-size: 2.5em;
+  font-weight: 300;
+  line-height: 1.4;
+  color: $primary-color;
+}
+.add-recipe-input{
+  font-size: 1.5em;
+}
+.add-recipe-btn{
+  font-size: 1.5em;
+  text-transform: capitalize;
+  width: 60%;
+  color: $light-text;
+}
+.ingredients-form{
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  & div{
+    margin-bottom: 1em;
+  }
+  & button{
+    margin: 0 ;
+    background-color: $secondary-color!important;
+  }
+}
+.directions-form{
+  margin-bottom: 1em ;
+}
+.directions-form>button{
+  margin-top: .5em ;
+}
+.name-form, .ingredients-form, .directions-form, .category-form{
+  display: none;
+  padding: 1em 0;
+
+}
+.active-form .ingredients-form{
+  display: flex;
+}
+.active-form{
+  display: block;
+}
+.progress-list{
+  padding: 0 1em;
+}
+.progress-item{
+    font-size: 2em;
+    list-style-type: none;
+    padding: .5em 0;
+    text-transform: uppercase;
+    color: $primary-color!important;
+    transition: all .4s ease-in;
+    cursor: pointer;
+    & i{
+      visibility: hidden;
+      opacity: 0;
+      display: none;   
+      color: $accent-color;
+
+    }
+    &-active i{
+      visibility: visible;
+      opacity: 1;
+      display: inline-block;
+    }
+    
+}
+@media(max-width:767px){
+  .right-container{
+    order: -1;
+  }
+}

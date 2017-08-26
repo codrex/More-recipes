@@ -1,0 +1,46 @@
+.login-reg{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    margin-top: 50px;
+    height: fit-content;
+    &-content{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+      width: 90%;
+      max-width: 600px;
+      position: relative;
+      margin-bottom: 25px;
+    }
+}
+  .tab{
+    // position: absolute;
+    top:0;
+    visibility: hidden;
+    display: none !important;
+  }
+  .active-tab{
+    visibility: visible;
+    display: flex !important;
+  }
+  .form-control{
+    border-radius: 0;
+    border-color:$primary-color;
+  }
+  .nav-pills{
+    margin-bottom: 25px;
+    text-transform: uppercase;
+  }
+  .reset-password{
+    color: $primary-color;
+    text-decoration: underline;
+    margin-top: 1em;
+    &:hover,&:focus{
+      color: lighten($primary-color,5%);
+
+    }
+  }

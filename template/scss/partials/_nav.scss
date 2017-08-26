@@ -1,29 +1,16 @@
 .logo{
     max-width: 100%;
+    color: $primary-color !important;
 }
 .navbar-brand{
-  width: 100px;
-  height: 100px;
   margin: 0;
+  color: $primary-color !important;
+
 }
-.search{
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  padding: 0 .7em;
-  max-width: 500px;
-  margin: 0 auto;
-  &>.btn{
-    margin: 0 !important;
-    border-radius: 0;
-  }
-  &>.form-control{
-    border-radius: 0;
-  }
-}
-.navbar{
-  padding-bottom: 0;
-}
+
+// .navbar{
+//   padding-bottom: 0;
+// }
 .navbar-nav{
   display: flex;
     margin: 0 !important;
@@ -34,7 +21,18 @@
 .nav-item{
   padding: 0 .2em;
   margin: 0 .5em;
-  &:hover, &.active{
-    border-bottom: black 2px solid;
+  > a{
+    color: $primary-color !important;
   }
+  &:hover, &.active, .nav-link-active{
+    border-bottom: $primary-color 2px solid;
+  }
+}
+
+@media (min-width:877px){
+  .nav-v2{
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 0;
+    }
 }
