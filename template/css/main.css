@@ -590,8 +590,8 @@ small, .font_small {
 
 .edit {
   position: absolute;
-  right: 10px;
-  bottom: 5px;
+  right: -5px;
+  bottom: -1%;
   font-size: .7em !important;
   text-transform: capitalize;
   color: rgba(138, 30, 99, 0.7);
