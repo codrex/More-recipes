@@ -2,15 +2,15 @@
     "development": {
     "username": "postgres",
     "password": "12345",
-    "database": "postitDev",
+    "database": "moreRecipeDev",
     "host": "127.0.0.1",
     "port":5432,
     "dialect": "postgres"
   },
-  "test-l": {
+  "test:s": {
     "username": "postgres",
     "password": "12345",
-    "database": "postitTest",
+    "database": "moreRecipesTest",
     "host": "127.0.0.1",
     "port":5432,
     "dialect": "postgres",

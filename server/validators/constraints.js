@@ -69,7 +69,6 @@
    signupConstraint: {
      username: objects.username,
      password: objects.password,
-     fullname: objects.fullname,
      email: objects.email,
    },
    createGroupConstraint: {
