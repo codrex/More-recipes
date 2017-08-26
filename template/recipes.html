@@ -18,6 +18,28 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div class="page">
+          <!--delete recipe modal  -->
+          <div class="modal fade" id="deleteRecipe" tabindex="-1"
+            role="dialog"      aria-labelledby="deleteRecipeLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-capitalize" id="deleteRecipeLabel">Delete recipe</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" style="margin:0 .5em">
+                  <h1>Are u sure u want to delete this recipe ?</h1>
+                  <p class="lead">To delete this recipe click on continue</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn bg-secondary text-white text-capitalize" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn bg-primary text-white text-capitalize">continue</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <header class="header row"style="max-height:15vh; min-height:unset">
             <div class="col-12 d-flex justify-content-center align-items ">
               <nav class="navbar navbar-toggleable-md navbar-light justify-content-center align-items-center flex-row flex-wrap">
@@ -38,7 +60,7 @@
               </nav>
             </div>
           </header> 
-          <div class="topbar lead" style="height:7vh">
+          <div class="topbar lead" style="min-height:10vh ;height:fit-content">
             <div class="hero-img-wrapper">
                   <img class="d-block img-fluid" src="./img/img-4.jpg" alt="First slide">
               </div>
@@ -51,59 +73,133 @@
               <button class="btn bg-primary my-2 my-sm-0 text-white" type="submit" style="z-index:2">Search</button>
             </form> 
           </div>
-          <div class="container-fluid no-padding "style="height:83vh;padding:0 50px">
-            <div class="row" style="height:78vh;padding:0 15px;position:relative">
+          <div class="container-fluid no-padding "style="min-height:83vh; height:fit-content ;padding:0 50px">
+            <div class="row" style="height:inherit;padding:0 15px;position:relative">
               <div class="overlay"></div>
 
               <div class="sidebar col-md-4 col-lg-3 no-padding animated slideOutLeft">
-                <div class="topbar" style="height:10vh">
+                <div class="topbar transparent" style="height:10vh">
                   <h4 class="text-capitalize no-margin">ogbemudia rex</h4>
                   <div class="avatar avatar-sm bg-secondary"></div>
                 </div>
-              <h1 class="sidebar-header text-capitalize">my recipes</h1>
-              <div class="col-12 my-recipes ">                
-                <ul class="recipes-list">
-                  <li class="recipes-list-item">pounded yam
-                    <i class="fa fa-trash-o"></i>
-                  </li>
-                  <li class="recipes-list-item">beans soup
-                    <i class="fa fa-trash-o"></i>
-                  </li>
-                  <li class="recipes-list-item">jollof rice
-                    <i class="fa fa-trash-o"></i>
-                  </li>
-                  <li class="recipes-list-item">coconut rice
-                    <i class="fa fa-trash-o"></i>
-                  </li>
-                </ul>
-              </div>
-              <h1 class="sidebar-header  text-capitalize">favorite recipes</h1>
-              <div class="col-12 favorite-recipes">
-                <ul class="recipes-list">
-                  
-                  <li class="recipes-list-item">pounded yam 
-                    <i class="fa fa-trash-o"></i></li>
-                  <li class="recipes-list-item">beans soup
-                    <i class="fa fa-trash-o"></i>
-                  </li>
-                  <li class="recipes-list-item">jollof rice
-                    <i class="fa fa-trash-o"></i>
-                  </li>
-                  <li class="recipes-list-item">coconut rice
-                    <i class="fa fa-trash-o"></i>
-                  </li>
-                </ul>
-              </div>
-
+                <div id="accordion" role="tablist">
+                  <div class="card bg-primary no-b-r">
+                    <div class="card-header no-padding" role="tab" id="StepOne">
+                      <h5 class="mb-0 lead ">
+                        <a class="collapsed sidebar-header text-capitalize collapse-trigger" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                          my recipes
+                        </a>
+                      </h5>
+                    </div>
+                    <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="StepOne" data-parent="#accordion">
+                      <div class="card-body">
+                        <div class="col-12 my-recipes ">                
+                          <ul class="recipes-list">
+                            <li class="recipes-list-item">pounded yam
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item" data-toggle="modal" data-target="#deleteRecipe">beans soup
+                              <i class="fa fa-trash-o"></i>
+                            </li>
+                            <li class="recipes-list-item">jollof rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item">coconut rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item">pounded yam
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item" data-toggle="modal" data-target="#deleteRecipe">beans soup
+                              <i class="fa fa-trash-o"></i>
+                            </li>
+                            <li class="recipes-list-item">jollof rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item">coconut rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item">pounded yam
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item" data-toggle="modal" data-target="#deleteRecipe">beans soup
+                              <i class="fa fa-trash-o"></i>
+                            </li>
+                            <li class="recipes-list-item">jollof rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item">coconut rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card bg-primary no-b-r">
+                    <div class="card-header no-padding" role="tab" id="StepTwo">
+                      <h5 class="mb-0 lead ">
+                        <a class="collapsed sidebar-header text-capitalize collapse-trigger" data-toggle="collapse" href="#collapsTwo" aria-expanded="false" aria-controls="collapseOne">
+                          favorite recipes
+                        </a>
+                      </h5>
+                    </div>
+                    <div id="collapsTwo" class="collapse" role="tabpanel" aria-labelledby="StepTwo" data-parent="#accordion">
+                      <div class="card-body">
+                        <div class="col-12 my-recipes ">                
+                          <ul class="recipes-list">
+                            <li class="recipes-list-item">pounded yam
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item" data-toggle="modal" data-target="#deleteRecipe">beans soup
+                              <i class="fa fa-trash-o"></i>
+                            </li>
+                            <li class="recipes-list-item">jollof rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item">coconut rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item">pounded yam
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item" data-toggle="modal" data-target="#deleteRecipe">beans soup
+                              <i class="fa fa-trash-o"></i>
+                            </li>
+                            <li class="recipes-list-item">jollof rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item">coconut rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item">pounded yam
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item" data-toggle="modal" data-target="#deleteRecipe">beans soup
+                              <i class="fa fa-trash-o"></i>
+                            </li>
+                            <li class="recipes-list-item">jollof rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                            <li class="recipes-list-item">coconut rice
+                              <i class="fa fa-trash-o" data-toggle="modal" data-target="#deleteRecipe"></i>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
             </div>
             <div class="recipe-grid-wrapper col col-xs-12 col-sm-12 col-md-8 col-lg-9">
                <nav class="nav justify-content-center" style="margin-top:.9em">
-                  <a class="nav-link active nav-item text-capitalize" href="#">Top recipes</a>
-                  <a class="nav-link nav-item text-capitalize" href="#">breakfast</a>
-                  <a class="nav-link nav-item text-capitalize" href="#">lunch</a>
-                  <a class="nav-link nav-item text-capitalize " href="#">dinner</a>
-                  <a class="nav-link  nav-item text-capitalize" href="#">snacks</a>
-                  <a class="nav-link  nav-item text-capitalize" href="#">cakes</a>
+                  <a class="cat-link nav-link active nav-item text-capitalize" href="#">Top recipes</a>
+                  <a class="cat-link nav-link nav-item text-capitalize" href="#">breakfast</a>
+                  <a class="cat-link nav-link nav-item text-capitalize" href="#">lunch</a>
+                  <a class="cat-link nav-link nav-item text-capitalize " href="#">dinner</a>
+                  <a class="cat-link nav-link  nav-item text-capitalize" href="#">snacks</a>
+                  <a class="cat-link nav-link  nav-item text-capitalize" href="#">cakes</a>
 
                 </nav>
               <div class="recipe-grid col-xs-12 col-sm-10 col-md-10 col-lg-10">
@@ -212,6 +308,8 @@
         
         
         <script src="js/vendor/jquery-3.2.1.min.js"></script>
+        <script src="js/vendor/popper.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
 
         <script src="js/main.js"></script>
 
@@ -242,12 +340,15 @@
               .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
               $(this).removeClass('animated fadeIn')
             });
+            $('.page').toggleClass('no-scroll')
           });
           $('.overlay').on('click',function(){
             $('.sidebar').removeClass('sidebar-active')  
               .toggleClass('animated slideInLeft')
               .toggleClass('animated slideOutLeft')
             $('.overlay').removeClass('overlay-active')
+            $('.page').removeClass('no-scroll')
+
           });
 
         </script>

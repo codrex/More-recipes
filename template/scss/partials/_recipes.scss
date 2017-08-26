@@ -1,25 +1,29 @@
 .sidebar{
   height: fit-content;
   min-height: inherit;
+  background: #631e63;
   &-header{
     margin: 0;
     background: #ffffff;
     color: $primary-color;
     font-size: 1.3em;
     padding: .3em;
-    font-weight: 200;
+    font-weight: 400;
+    width: 100%;
   }
   &-active{
     transform: translateX(0) !important;
   }
+
 }
 .recipe-grid-wrapper{
   overflow-y: scroll;
 }
 .my-recipes, .favorite-recipes{
   overflow-y: scroll;
-  height: 30vh;
+  height: 60vh;
   padding: 0;
+  max-height: 400px;
   & i{
     background: white;
     float: right;
@@ -41,7 +45,8 @@
 
 }
 .favorite-recipes{
-  bottom: 0;
+  // bottom: 0;
+  margin-bottom: 20px;
 }
 .recipe-grid{
   height: fit-content;
@@ -157,17 +162,34 @@
   .animated {
     animation-fill-mode: unset;
 }
-
+.cat-link{
+  padding: .5em 1em;
+}
+@media(min-height:350px){
+      .my-recipes,.favorite-recipes{
+        max-height: 350px;
+      }
+}
   @media(max-width:767px){
       .animated {
           animation-fill-mode: both;
       }
     .sidebar{
       transform: translateX(-100%);
-      position: absolute;
+      position: fixed;
+      top:0;
+      font-size: 1.5em;
+      height: 100vh;
       z-index: $sidebar-z;
       background: #631e63;
-      width: 70%;
+      
+      width: 80%;
+      &-header{
+        font-size: 1em;
+      }
+      &>.topbar{
+        font-size: .8em
+      }
     }
     .mobile{
       display: inline;

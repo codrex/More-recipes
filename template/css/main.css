@@ -86,7 +86,7 @@ a, a:focus, a:hover, a:active {
   flex-wrap: wrap !important; }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -99,6 +99,12 @@ a, a:focus, a:hover, a:active {
   .overlay-active {
     display: block;
     visibility: visible; }
+
+.transparent {
+  background-color: transparent !important; }
+
+.no-scroll {
+  overflow: hidden !important; }
 
 .search {
   display: -webkit-box;
@@ -724,14 +730,16 @@ small, .font_small {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  min-height: inherit; }
+  min-height: inherit;
+  background: #631e63; }
   .sidebar-header {
     margin: 0;
     background: #ffffff;
     color: #8a1e63;
     font-size: 1.3em;
     padding: .3em;
-    font-weight: 200; }
+    font-weight: 400;
+    width: 100%; }
   .sidebar-active {
     -webkit-transform: translateX(0) !important;
     -ms-transform: translateX(0) !important;
@@ -742,8 +750,9 @@ small, .font_small {
 
 .my-recipes, .favorite-recipes {
   overflow-y: scroll;
-  height: 30vh;
-  padding: 0; }
+  height: 60vh;
+  padding: 0;
+  max-height: 400px; }
   .my-recipes i, .favorite-recipes i {
     background: white;
     float: right;
@@ -770,7 +779,7 @@ small, .font_small {
   top: 0; }
 
 .favorite-recipes {
-  bottom: 0; }
+  margin-bottom: 20px; }
 
 .recipe-grid {
   height: -webkit-fit-content;
@@ -929,6 +938,13 @@ small, .font_small {
   -webkit-animation-fill-mode: unset;
   animation-fill-mode: unset; }
 
+.cat-link {
+  padding: .5em 1em; }
+
+@media (min-height: 350px) {
+  .my-recipes, .favorite-recipes {
+    max-height: 350px; } }
+
 @media (max-width: 767px) {
   .animated {
     -webkit-animation-fill-mode: both;
@@ -937,10 +953,17 @@ small, .font_small {
     -webkit-transform: translateX(-100%);
     -ms-transform: translateX(-100%);
     transform: translateX(-100%);
-    position: absolute;
+    position: fixed;
+    top: 0;
+    font-size: 1.5em;
+    height: 100vh;
     z-index: 15;
     background: #631e63;
-    width: 70%; }
+    width: 80%; }
+    .sidebar-header {
+      font-size: 1em; }
+    .sidebar > .topbar {
+      font-size: .8em; }
   .mobile {
     display: inline;
     padding: .5em;
