@@ -37,6 +37,15 @@ h4 {font-size: 1.25em;}
 
 small, .font_small {font-size: 0.8em;}
 
+ @media(max-width:767px){
+      .animated {
+          animation-fill-mode: both;
+      }
+    .topbar{
+      padding: 0 !important;
+    }
+ }
+
 /* Smartphones (landscape) ----------- */
 @media only screen and (min-width : 321px) {
   html{

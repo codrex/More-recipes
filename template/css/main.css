@@ -222,6 +222,13 @@ h4 {
 small, .font_small {
   font-size: 0.8em; }
 
+@media (max-width: 767px) {
+  .animated {
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both; }
+  .topbar {
+    padding: 0 !important; } }
+
 /* Smartphones (landscape) ----------- */
 @media only screen and (min-width: 321px) {
   html {
@@ -946,9 +953,6 @@ small, .font_small {
     max-height: 350px; } }
 
 @media (max-width: 767px) {
-  .animated {
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both; }
   .sidebar {
     -webkit-transform: translateX(-100%);
     -ms-transform: translateX(-100%);

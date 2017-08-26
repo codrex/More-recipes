@@ -171,9 +171,6 @@
       }
 }
   @media(max-width:767px){
-      .animated {
-          animation-fill-mode: both;
-      }
     .sidebar{
       transform: translateX(-100%);
       position: fixed;
