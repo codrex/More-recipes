@@ -1,8 +1,10 @@
 import db from '../models/index';
-import { validateSignup } from '../validators/validator.js';
+import { validateSignup, validateLogin, comparePwd } from '../validators/validator.js';
 import { sendValidationError, serverError, sendSuccess, sendFail } from '../reply/reply';
+import { generateToken } from '../auth/auth';
 const Users = db.Users;
 const log = console.log;
+
 
 export const validateSignupData = (req, res, next) => {
   const signupData = {
@@ -18,6 +20,50 @@ export const validateSignupData = (req, res, next) => {
     log(validate.error);
     sendValidationError(res, validate);
   }
+};
+export const validateLoginData = (req, res, next) => {
+  const loginData = {
+    username: req.body.username,
+    password: req.body.password,
+  };
+  const validate = validateLogin(loginData);
+  if (validate.valid) {
+    req.loginData = loginData;
+    next();
+  } else {
+    log(validate.error);
+    sendValidationError(res, validate);
+  }
+};
+export const authUser = (req, res, next) => {
+  Users.findOne({
+    where: {
+      username: req.loginData.username,
+    },
+  }).then(user => {
+    if (!user) {
+      sendFail(res, 400, 'invalid username or password');
+      return;
+    }
+    const hash = user.dataValues.password;
+    if (user && comparePwd(hash, req.loginData.password)) {
+      req.loggedInUser = user.dataValues;
+      next();
+    } else {
+      sendFail(res, 400, 'invalid username or password');
+    }
+  }).catch(error => {
+    log(error);
+    serverError(res);
+  });
+};
+
+export const sendDataWithToken = (req, res) => {
+  const token = generateToken({ id: req.loggedInUser.id });
+  delete req.loggedInUser.id;
+  delete req.loggedInUser.password;
+  req.loggedInUser.token = token;
+  sendSuccess(res, 200, 'User', req.loggedInUser);
 };
 
 export const emailExist = (req, res, next) => {
@@ -42,7 +88,6 @@ export const usernameExist = (req, res, next) => {
     }
   });
 };
-
 export const create = (req, res, next) => {
   Users.create(req.signupData)
     .then((user) => {

@@ -1,5 +1,9 @@
 import express from 'express';
-import { validateSignupData, create, fetchUser, usernameExist, emailExist } from '../controller/user';
+import { validateSignupData,
+        create, fetchUser,
+        usernameExist, emailExist,
+         validateLoginData, authUser,
+         sendDataWithToken } from '../controller/user';
 
 const usersRoute = express.Router();
 
@@ -15,5 +19,8 @@ usersRoute.route('/signup')
           emailExist,
             create,
             fetchUser);
+
+usersRoute.route('/signin')
+  .post(validateLoginData, authUser, sendDataWithToken);
 
 export default usersRoute;

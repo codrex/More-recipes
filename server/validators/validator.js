@@ -1,6 +1,6 @@
-const validate = require('validate.js');
-const constraint = require('./constraints.js');
-const bcrypt = require('bcrypt-nodejs');
+import validate from 'validate.js';
+import constraint from './constraints.js';
+import bcrypt from 'bcrypt-nodejs';
 
 
 const processValidationResult = (result) => {
@@ -62,7 +62,7 @@ validate.validators.atLeastTwoWord = (value) => {
   return undefined;
 };
 
-module.exports = {
+export {
   validateGroupCreation,
   validateLogin,
   validateMessage,

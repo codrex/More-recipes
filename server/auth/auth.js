@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 const secret = require('../config/config').secret;
 
 
@@ -31,7 +31,7 @@ const verifyToken = (req, res, next) => {
   }
 };
 
-module.exports = {
+export {
   generateToken,
   verifyToken,
 };
