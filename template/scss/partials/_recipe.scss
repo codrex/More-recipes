@@ -1,15 +1,19 @@
 .recipe-ingredients{
- background: white;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
-.display-4{
-  margin: .5em 0;
-  
-}
+
 .recipe-reviews{
   text-align: left;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 50px auto;
+  justify-content: center;
+  align-items: center;
+
  
 }
 .recipe-ingredients-list-item{
@@ -32,25 +36,32 @@
     font-weight: 700;
 }
 .media-object{
-  padding: .5em;
-  margin-block-end: .5em;
+  // padding: .8em .4em;
+  margin-bottom: 2em;
   max-width: 600px;
-  border-left: 5px $primary-color solid;
-  align-items: center;
+  border: 1px solid rgba($primary-color,0.2);
+  max-width: 600px;
+  border-right: 5px $primary-color solid;
+  align-items: flex-start;
+  justify-content: flex-start;
   & .avatar{
-    background: rgba($secondary-color,0.5);
+    background: rgba($dark-text,0.5);
     text-align: center;
+    border-radius: 0 !important;
+    width: 70px;
+    height: 70px;
+
   }
 }
 .media-body{
   margin-left: .5em;
-}
-.topbar-icon{
-  z-index: 2;
-  font-size: 1.2em;
-  cursor: pointer;
-  &:hover, &:focus{
-    background-color: darken($primary-color,5%);
-  }
+  padding: .5em
+
 }
 
+
+@media(max-width:991px){
+    .recipe-ingredients{
+      align-items: flex-start;
+    }
+}

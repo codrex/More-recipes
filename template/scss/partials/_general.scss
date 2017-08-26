@@ -42,9 +42,20 @@ small, .font_small {font-size: 0.8em;}
           animation-fill-mode: both;
       }
     .topbar{
-      padding: 0 !important;
+      padding: 0 .5em !important;
+      flex-wrap: wrap;
+      justify-content: space-around !important;
+      align-items: center !important;
     }
  }
+  .topbar-icon{
+  z-index: 2;
+  font-size: 1em;
+  cursor: pointer;
+  &:hover, &:focus{
+    background-color: darken($primary-color,5%);
+  }
+}
 
 /* Smartphones (landscape) ----------- */
 @media only screen and (min-width : 321px) {
