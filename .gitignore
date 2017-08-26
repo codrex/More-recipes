@@ -2,3 +2,4 @@ node_modules
 prepros-6.config
 coverage
 .vscode/*
+debug.log
