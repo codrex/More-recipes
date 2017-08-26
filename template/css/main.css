@@ -222,7 +222,7 @@ small, .font_small {
 /* Smartphones (portrait) ----------- */
 @media only screen and (max-width: 320px) {
   html {
-    font-size: 10px; } }
+    font-size: 12px; } }
 
 /* iPads (landscape) ----------- */
 @media only screen and (min-device-width: 760px) and (max-device-width: 1024px) and (orientation: landscape) {
@@ -358,32 +358,6 @@ small, .font_small {
 .navbar-brand {
   margin: 0;
   color: #8a1e63 !important; }
-
-.search {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: stretch;
-  -webkit-align-items: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding: 0 .7em;
-  max-width: 500px;
-  margin: 0 auto; }
-  .search > .btn {
-    margin: 0 !important;
-    border-radius: 0;
-    border-color: #8a1e63 !important;
-    color: #8a1e63; }
-  .search > .form-control {
-    border-radius: 0;
-    border-color: #8a1e63 !important;
-    color: #8a1e63 !important; }
 
 .navbar-nav {
   display: -webkit-box;
@@ -539,7 +513,8 @@ small, .font_small {
 
 .reset-password {
   color: #8a1e63;
-  text-decoration: underline; }
+  text-decoration: underline;
+  margin-top: 1em; }
   .reset-password:hover, .reset-password:focus {
     color: #9f2372; }
 

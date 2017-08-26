@@ -38,6 +38,7 @@
   .reset-password{
     color: $primary-color;
     text-decoration: underline;
+    margin-top: 1em;
     &:hover,&:focus{
       color: lighten($primary-color,5%);
 

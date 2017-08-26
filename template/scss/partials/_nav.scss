@@ -7,30 +7,7 @@
   color: $primary-color !important;
 
 }
-.search{
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  padding: 0 .7em;
-  max-width: 500px;
-  margin: 0 auto;
 
-  &>.btn{
-    margin: 0 !important;
-    border-radius: 0;
-    border-color: $primary-color !important;
-    color: $primary-color ;
-
-
-  }
-  &>.form-control{
-    border-radius: 0;
-    border-color: $primary-color !important;
-    color: $primary-color !important;
-
-
-  }
-}
 // .navbar{
 //   padding-bottom: 0;
 // }
