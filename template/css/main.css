@@ -589,9 +589,7 @@ small, .font_small {
     color: #8a1e63; }
 
 .edit {
-  position: absolute;
-  right: -5px;
-  bottom: -1%;
+  margin: 0 auto;
   font-size: .7em !important;
   text-transform: capitalize;
   color: rgba(138, 30, 99, 0.7);
