@@ -7,7 +7,8 @@
   display: flex;
   flex-direction: column;
   min-height: fit-content;
-  max-height: 300px;
+  max-height: 150px;
+  margin: 0 0 25px  0;
   justify-content: center;
   align-items: center;
 }
@@ -48,13 +49,26 @@
   text-transform: capitalize;
   color:$primary-color;
 }
-.add-recipe{
+.add-ingredient ,.add-step{
   z-index: 2;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  & >.btn{
-    margin-top: .5em;
+  &>button{
+    margin-top: 1em!important;
+  }
+}
+.remove-icon{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  font-size: 1.5em;
+  justify-content: center;
+  align-items: center;
+  transition: background-color .4s ease-in;
+  &:hover, &:hover{
+    background-color: rgba($secondary-color,0.6)
   }
 }

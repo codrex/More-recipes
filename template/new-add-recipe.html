@@ -19,23 +19,72 @@
         <![endif]-->
         <div class="page">
           <!--delete recipe modal  -->
-          <div class="modal fade" id="deleteRecipe" tabindex="-1"
-            role="dialog"      aria-labelledby="deleteRecipeLabel" aria-hidden="true">
+          <div class="modal fade" id="editRecipe" tabindex="-1"
+            role="dialog"      aria-labelledby="editRecipeLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title text-capitalize" id="deleteRecipeLabel">Delete recipe</h5>
+                  <h5 class="modal-title text-uppercase" id="editRecipeLabel">Select recipe</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
                 <div class="modal-body">
-                  <h1>Are u sure u want to delete this recipe ?</h1>
-                  <p class="lead">To delete this recipe click on continue</p>
+                  <div id="accordion" role="tablist">
+                    <div class="card bg-primary no-b-r">
+                      <div class="card-header no-padding" role="tab" id="StepOne">
+                        <h5 class="mb-0 lead ">
+                          <a class="collapsed sidebar-header text-capitalize collapse-trigger" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            my recipes
+                          </a>
+                        </h5>
+                      </div>
+                      <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="StepOne" data-parent="#accordion">
+                        <div class="card-body">
+                          <div class="col-12 my-recipes ">                
+                            <ul class="recipes-list">
+                              <li class="recipes-list-item">pounded yam
+                                <i class="fa fa-trash-o" data-toggle="modal" data-target="#editRecipe"></i>
+                              </li>
+                              <li class="recipes-list-item" data-toggle="modal" data-target="#editRecipe">beans soup
+                                <i class="fa fa-trash-o"></i>
+                              </li>
+                              <li class="recipes-list-item">jollof rice
+                                <i class="fa fa-trash-o" data-toggle="modal" data-target="#editRecipe"></i>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card bg-primary no-b-r">
+                      <div class="card-header no-padding" role="tab" id="StepTwo">
+                        <h5 class="mb-0 lead ">
+                          <a class="collapsed sidebar-header text-capitalize collapse-trigger" data-toggle="collapse" href="#collapsTwo" aria-expanded="false" aria-controls="collapseOne">
+                            favorite recipes
+                          </a>
+                        </h5>
+                      </div>
+                      <div id="collapsTwo" class="collapse" role="tabpanel" aria-labelledby="StepTwo" data-parent="#accordion">
+                        <div class="card-body">
+                          <div class="col-12 my-recipes ">                
+                            <ul class="recipes-list">
+                              <li class="recipes-list-item">pounded yam
+                                <i class="fa fa-trash-o" data-toggle="modal" data-target="#editRecipe"></i>
+                              </li>
+                              <li class="recipes-list-item" data-toggle="modal" data-target="#editRecipe">beans soup
+                                <i class="fa fa-trash-o"></i>
+                              </li>
+                              
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn bg-secondary text-white text-capitalize" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn bg-primary text-white text-capitalize">continue</button>
                 </div>
               </div>
             </div>
@@ -65,7 +114,7 @@
                   <img class="d-block img-fluid" src="./img/img-4.jpg" alt="First slide">
               </div>
             <h3 class="text-capitalize no-margin m-2em-b d-flex align-items-center" style="z-index:2">
-            Recipes</h3>
+            Add a recipe</h3>
             <form class="my-lg-0 search no-margin" style="z-index:2">
               <input class="form-control mr-sm-2" type="text" placeholder="Search">
               <button class="btn bg-primary my-2 my-sm-0 text-white" type="submit" style="z-index:2">Search</button>
@@ -74,7 +123,17 @@
            <div class="container-fluid no-padding "style="min-height:fit-content; height:fit-content ;padding:0 50px">
             <div class="row" style="height:inherit;padding:0 15px;position:relative">
               <div class="overlay"></div>
+              <!--RECIPE FORM  -->
             <form class="col col-xs-12 col-sm-12 col-md-12 col-lg-12 no-margin add-recipe-form" action="index.html"  method="">
+              <!-- ADD AND EDIT RECIPE NAV  -->
+              <ul class="nav nav-pills col-12 d-flex align-items-center justify-content-center " role="tablist" style="max-height:50px">
+              <li class="nav-item active ">
+                <a class="nav-link " href="#">Add a recipe</a>
+              </li>
+              <li class="nav-item " >
+                <a class="nav-link " href="#" data-toggle="modal" data-target="#editRecipe">Edit existing recipe</a>
+              </li>
+            </ul>
               <div class="col-12 name-category">
                   <div class="form-group col-7 " id="0">
                     <label for="" class="recipe-label lead" >recipe name</label>
@@ -92,19 +151,19 @@
                   </div>
                   <div class="ingredients-list">
                     <div class="card bg-primary no-b-r">
-                      <div class="card-header d-flex align-items-center" >
+                      <div class="card-header d-flex align-items-center " >
                         <h5 class="mb-0 lead flex-auto">
-                          <a class="collapsed text-capitalize text-white collapse-trigger" data-toggle="collapse" href="#directions-item" aria-expanded="false" aria-controls="directions-item">
+                          <a class=" text-capitalize text-white" data-toggle="collapse"  aria-expanded="false" aria-controls="ingredient-item">
                             bread
                           </a>
                         </h5>
-                        <i class="fa fa-remove text-white"></i>
+                        <i class="fa fa-remove text-white remove-icon"></i>
                       </div>
                     </div>
                   </div>
-                  <div class="my-lg-0 no-margin d-flex add-recipe">
-                    <input class="form-control mr-sm-2" type="text" placeholder="ingredient">
-                    <button class="btn bg-primary my-2 my-sm-0 text-white" type="submit" style="z-index:2">Add ingredient</button>
+                  <div class="my-lg-0 no-margin d-flex add-ingredient">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Ingredient">
+                    <button class="btn bg-primary my-2 my-sm-0 text-white" type="button" style="z-index:2">Add ingredient</button>
                   </div>
                 </div>
                 <div class="col-xs-10 col-sm-6 col-md-8 col-lg-5 directions">
@@ -119,7 +178,7 @@
                             step One
                           </a>
                         </h5>
-                        <i class="fa fa-remove text-white"></i>
+                        <i class="fa fa-remove text-white remove-icon"></i>
                     </div>
                       <div id="directions-item" class="collapse" role="tabpanel" aria-labelledby="item1" data-parent="#directions-list">
                         <div class="card-body">
@@ -128,9 +187,9 @@
                       </div>
                   </div>
                   </div>
-                  <div class="my-lg-0 no-margin d-flex add-recipe" style="z-index:2">
-                    <input class="form-control mr-sm-2" type="text" placeholder="ingredient">
-                    <button class="btn bg-primary my-2 my-sm-0 text-white" type="submit" style="z-index:2">Add step</button>
+                  <div class="my-lg-0 no-margin d-flex add-step" style="z-index:2">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Direction">
+                    <button class="btn bg-primary my-2 my-sm-0 text-white" type="button" style="z-index:2">Add step</button>
                   </div>
                 </div>
               </div>
