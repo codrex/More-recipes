@@ -7,6 +7,15 @@
     "port":5432,
     "dialect": "postgres"
   },
+  "test": {
+    "username": "postgres",
+    "password": "12345",
+    "database": "moreRecipesTest",
+    "host": "127.0.0.1",
+    "port":5432,
+    "dialect": "postgres",
+    "logging":false
+  },
   "test:s": {
     "username": "postgres",
     "password": "12345",
@@ -16,13 +25,7 @@
     "dialect": "postgres",
     "logging":false
   },
-  "test": {
-    "username": "postit",
-    "password": 12345,
-    "database": "postit_test",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
-  },
+  
   "production": {
     "username": "root",
     "password": null,
