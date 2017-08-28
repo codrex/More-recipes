@@ -192,7 +192,12 @@
       display: inline;
       padding: .5em;
       margin-right: .2em; 
-    }
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      margin-right: 10px;
+      top: 0;
+      }
   }
    @media(max-width:1528px) and (max-width:991px){
     

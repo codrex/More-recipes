@@ -106,6 +106,12 @@ a, a:focus, a:hover, a:active {
 .no-scroll {
   overflow: hidden !important; }
 
+.flex-auto {
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto; }
+
 .search {
   display: -webkit-box;
   display: -webkit-flex;
@@ -222,6 +228,11 @@ h4 {
 
 small, .font_small {
   font-size: 0.8em; }
+
+.form-group {
+  max-height: -webkit-fit-content;
+  max-height: -moz-fit-content;
+  max-height: fit-content; }
 
 @media (max-width: 767px) {
   .animated {
@@ -751,6 +762,124 @@ small, .font_small {
     -ms-flex-order: -1;
     order: -1; } }
 
+.add-recipe-form {
+  min-height: 83vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.name-category {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: -webkit-fit-content;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
+  max-height: 300px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.ingredients-directions {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 10;
+  -webkit-flex: 10;
+  -ms-flex: 10;
+  flex: 10;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch; }
+  .ingredients-directions-header {
+    height: 50px;
+    margin: -15px -15px 0 -15px;
+    background: #8a1e63;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: .5em;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid; }
+
+.directions, .ingredients {
+  margin-bottom: 50px;
+  padding: 1em;
+  background: white;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: 1px solid #8a1e63; }
+  .directions-list, .ingredients-list {
+    -webkit-box-flex: 1;
+    -webkit-flex: auto;
+    -ms-flex: auto;
+    flex: auto;
+    padding: 1em 0; }
+
+.recipe-label {
+  font-size: 1.5em;
+  text-transform: capitalize;
+  color: #8a1e63; }
+
+.add-recipe {
+  z-index: 2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .add-recipe > .btn {
+    margin-top: .5em; }
+
 .sidebar {
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -989,7 +1118,12 @@ small, .font_small {
   .mobile {
     display: inline;
     padding: .5em;
-    margin-right: .2em; } }
+    margin-right: .2em;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    margin-right: 10px;
+    top: 0; } }
 
 @media (max-width: 1528px) and (max-width: 991px) {
   .recipe-card {
