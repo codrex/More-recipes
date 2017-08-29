@@ -60,8 +60,10 @@ export const authUser = (req, res, next) => {
 
 export const sendDataWithToken = (req, res) => {
   const token = generateToken({ id: req.loggedInUser.id });
+
   delete req.loggedInUser.id;
   delete req.loggedInUser.password;
+
   req.loggedInUser.token = token;
   sendSuccess(res, 200, 'User', req.loggedInUser);
 };
