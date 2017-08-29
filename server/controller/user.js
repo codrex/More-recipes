@@ -14,7 +14,7 @@ export const validateSignupData = (req, res, next) => {
   };
   const validate = validateSignup(signupData);
   if (validate.valid) {
-    req.signupData = signupData;
+    req.body = signupData;
     next();
   } else {
     log(validate.error);
@@ -63,6 +63,7 @@ export const sendDataWithToken = (req, res) => {
   delete req.loggedInUser.id;
   delete req.loggedInUser.password;
   req.loggedInUser.token = token;
+  log(token, req.loggedInUser);
   sendSuccess(res, 200, 'User', req.loggedInUser);
 };
 
@@ -89,7 +90,7 @@ export const usernameExist = (req, res, next) => {
   });
 };
 export const create = (req, res, next) => {
-  Users.create(req.signupData)
+  Users.create(req.body)
     .then((user) => {
       req.idToFetchUser = user.dataValues.id;
       next();

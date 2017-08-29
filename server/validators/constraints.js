@@ -1,4 +1,17 @@
  const objects = {
+   name: {
+     presence: true,
+     atLeastTwoWord: true,
+     format: {
+       pattern: '[a-zA-Z ]+',
+       flags: 'i',
+       message: 'can only contain alphabet',
+     },
+     length: {
+       minimum: 2,
+       message: 'must be at least 2 character',
+     },
+   },
    password: {
      presence: true,
      length: {
@@ -56,6 +69,9 @@
        message: 'Message can not be empty',
      },
    },
+   array: {
+     stringArray: true,
+   },
  };
  const constraint = {
    loginWithUsernameConstraint: {
@@ -71,39 +87,13 @@
      password: objects.password,
      email: objects.email,
    },
-   createGroupConstraint: {
-     name: {
-       presence: true,
-       length: {
-         minimum: 2,
-         message: 'group name must be at least 2 character',
-       },
-     },
-     about: {},
+   createRecipeConstraint: {
+     recipeName: objects.name,
+     category: objects.name,
+     ingredients: objects.array,
+     directions: objects.array,
    },
 
-   messageConstraint: {
-     content: objects.content,
-     senderId: objects.id,
-     groupId: objects.id,
-     priority: {
-       numericality: {
-         onlyInteger: true,
-         greaterThan: 0,
-         lessThanOrEqualTo: 3,
-       } },
-   },
-   addMemberConstraint: {
-     MemberId: objects.id,
-     GroupId: objects.id,
-   },
-   idConstraint: {
-     id: objects.id,
-   },
-   editMsg: {
-     content: objects.content,
-     messageId: objects.id,
-   },
  };
 
  module.exports = constraint;

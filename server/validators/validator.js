@@ -24,11 +24,8 @@ const validator = (obj, constraints) => {
   return processValidationResult(result);
 };
 const validateSignup = (obj) => validator(obj, constraint.signupConstraint);
-const validateGroupCreation = (obj) => validator(obj, constraint.createGroupConstraint);
-const validateMessage = (obj) => validator(obj, constraint.messageConstraint);
+const validateRecipes = (obj) => validator(obj, constraint.createRecipeConstraint);
 const validateAll = (obj, objConstraint) => validator(obj, objConstraint);
-
-
 const validateLogin = (obj) => {
   let result;
   if (obj.username === undefined) {
@@ -40,7 +37,6 @@ const validateLogin = (obj) => {
   }
   return processValidationResult(result, obj);
 };
-
 const cleanUp = (whitelist, attrs) => validate.cleanAttributes(attrs, whitelist);
 const comparePwd = (hash, password) => bcrypt.compareSync(password, hash);
 
@@ -61,12 +57,21 @@ validate.validators.atLeastTwoWord = (value) => {
   }
   return undefined;
 };
+validate.validators.stringArray = (value) => {
+  if (value.isArray()) {
+    // check if value is an array
+    value.forEach((elem) => {
+      // check if array element is a string
+      if (typeof elem !== 'string') return 'array can only contain type string';
+    });
+  }
+  return undefined;
+};
 
 export {
-  validateGroupCreation,
   validateLogin,
-  validateMessage,
   validateSignup,
+  validateRecipes,
   cleanUp,
   comparePwd,
   validateAll,

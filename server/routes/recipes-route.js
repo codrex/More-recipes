@@ -1,17 +1,17 @@
 import express from 'express';
 import { verifyToken } from '../auth/auth';
+import { validateRecipe, create, fetchRecipe } from '../controller/recipe';
 
 const recipesRoute = express.Router();
 
-console.log('in user router');
+console.log('in recipe router');
 
 recipesRoute.use(verifyToken, (req, res, next) => {
   next();
 });
 
-
 recipesRoute.route('/recipe')
-  .post();
+  .post(validateRecipe, create, fetchRecipe);
 
 // recipesRoute.route('/recipes')
 //   .get();
