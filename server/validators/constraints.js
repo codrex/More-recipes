@@ -93,7 +93,10 @@
      directions: objects.array,
      UserId: objects.id,
    },
+   idConstraint: {
+     id: objects.id,
+   },
 
  };
 
- module.exports = constraint;
+ export default constraint;
