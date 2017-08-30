@@ -59,11 +59,4 @@ export const fetchRecipe = (req, res) => {
     serverError(res);
   });
 };
-export const setSender = (req, res, next) => {
-  req.recipe.addSenderId(req.requestId)
-    .then(() => {
-      next();
-    }).catch(error => {
-      log(error);
-    });
-};
+
