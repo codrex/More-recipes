@@ -11,6 +11,18 @@
        message: 'must be at least 2 character',
      },
    },
+   nameUpdate: {
+     presence: false,
+     format: {
+       pattern: '[a-zA-Z ]+',
+       flags: 'i',
+       message: 'can only contain alphabet',
+     },
+     length: {
+       minimum: 2,
+       message: 'must be at least 2 character',
+     },
+   },
    password: {
      presence: true,
      length: {
@@ -96,6 +108,13 @@
    idConstraint: {
      id: objects.id,
    },
+   recipeUpdateConstraint: {
+     recipeName: objects.nameUpdate,
+     category: objects.nameUpdate,
+     ingredients: objects.array,
+     directions: objects.array,
+   },
+
 
  };
 

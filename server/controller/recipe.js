@@ -22,6 +22,22 @@ export const validateRecipe = (req, res, next) => {
     sendValidationError(res, validate);
   }
 };
+// export const validateRecipe = (req, res, next) => {
+//   const recipes = {
+//     recipeName: req.body.recipeName || req.recipe.recipeName,
+//     category: req.body.category || req.recipe.category,
+//     ingredients: req.body.ingredients || req.recipe.ingredients,
+//     directions: req.body.directions || req.recipe.directions,
+//   };
+//   const validate = validateRecipes(recipes);
+//   if (validate.valid) {
+//     req.body = recipes;
+//     next();
+//   } else {
+//     console.log(validate.error);
+//     sendValidationError(res, validate);
+//   }
+// };
 export const idValidation = (req, res, next) => {
   log('invalidate id');
   const validate = validateId({ id: req.params.id });
@@ -32,7 +48,6 @@ export const idValidation = (req, res, next) => {
     sendValidationError(res, validate);
   }
 };
-
 export const create = (req, res, next) => {
   Recipes.create(req.body)
     .then((recipe) => {
@@ -60,7 +75,26 @@ export const fetchRecipe = (req, res) => {
     ],
   }).then(recipe => {
     if (recipe) {
+      log(recipe);
       sendSuccess(res, 200, 'Recipes', recipe.dataValues);
+    } else {
+      sendFail(res, 404, 'recipe not found');
+    }
+  }).catch(error => {
+    log(error);
+    serverError(res);
+  });
+};
+export const fetchForUpdate = (req, res, next) => {
+  Recipes.findOne({
+    where: { id: req.params.id },
+    attributes: ['id', 'recipeName',
+               'category', 'ingredients',
+               'directions'],
+
+  }).then(recipe => {
+    if (recipe) {
+      req.recipe = recipe;
     } else {
       sendFail(res, 404, 'recipe not found');
     }

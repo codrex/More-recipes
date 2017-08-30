@@ -337,6 +337,104 @@ describe('add recipe', () => {
   });
 });
 
+// modify recipe request
+describe('delete recipe', () => {
+  const updateOne = {
+    recipeName: 'beans cake',
+  };
+  const updateTwo = {
+    recipeName: 'beans cake',
+    category: 'breakfast',
+  };
+  const updateThree = {
+    recipeName: 'beans cake',
+    category: 'breakfast',
+    ingredients: ['beans', 'water', 'oil'],
+  };
+  const updateFour = {
+    recipeName: 'beans cake',
+    category: 'breakfast',
+    ingredients: ['beans', 'water', 'oil'],
+    directions: ['step 1', 'step 2', 'step 3'],
+  };
+  it('return 404 as status code when user did not create the recipe', done => {
+    request.put('/api/recipes/1')
+      .set('Authorization', token2)
+      .send(updateFour)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 404 as status code when recipeId is not in db ', done => {
+    request.put('/api/recipes/10')
+      .set('Authorization', token2)
+      .send(updateFour)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 400 as status code for invalid recipe id parameter', done => {
+    request.put('/api/recipes/10ufjdc')
+      .set('Authorization', token2)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 200 as status code when everything is fine 1-input', done => {
+    request.put('/api/recipes/1')
+      .set('Authorization', token)
+      .send(updateOne)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+  it('return 200 as status code when everything is fine 2-inputs', done => {
+    request.put('/api/recipes/1')
+      .set('Authorization', token)
+      .send(updateTwo)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+  it('return 200 as status code when everything is fine 3-inputs', done => {
+    request.put('/api/recipes/1')
+      .set('Authorization', token)
+      .send(updateThree)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+  it('return 200 as status code when everything is fine 4-inputs', done => {
+    request.put('/api/recipes/1')
+      .set('Authorization', token)
+      .send(updateFour)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+});
+
 // delete recipe request
 describe('delete recipe', () => {
   it('return 404 as status code when user did not create the recipe', done => {
