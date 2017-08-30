@@ -19,7 +19,7 @@ recipesRoute.route('/recipe')
 //   .get();
 
 
-recipesRoute.route('/:id/recipe')
+recipesRoute.route('/recipe/:id')
   .delete(idValidation, checkOwnship, deleteRecipe);
 
 
