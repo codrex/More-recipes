@@ -25,14 +25,14 @@ module.exports = {
     upVotes: {
       type: Sequelize.INTEGER,
       defaultValue: 0,
-      allowNull: false,
+      allowNull: true,
     },
     downVotes: {
       type: Sequelize.INTEGER,
       defaultValue: 0,
-      allowNull: false,
+      allowNull: true,
     },
-    postedBy: {
+    UserId: {
       allowNull: true,
       type: Sequelize.INTEGER,
     },

@@ -11,6 +11,7 @@ export const validateRecipe = (req, res, next) => {
     category: req.body.category,
     ingredients: req.body.ingredients,
     directions: req.body.directions,
+    UserId: req.requestId,
   };
   const validate = validateRecipes(recipes);
   if (validate.valid) {
@@ -25,6 +26,7 @@ export const create = (req, res, next) => {
   Recipes.create(req.body)
     .then((recipe) => {
       req.idToFetchRecipe = recipe.dataValues.id;
+      req.recipe = recipe;
       next();
     }).catch((error) => {
       log(error);
@@ -36,10 +38,18 @@ export const fetchRecipe = (req, res) => {
     where: { id: req.idToFetchRecipe || req.body.id },
     attributes: ['id', 'recipeName',
                'category', 'ingredients',
-               'directions', 'upVote',
-                'downVote'],
+               'directions', 'upVotes',
+                'downVotes'],
+    include: [
+          { model: db.Users,
+            attributes: {
+              exclude: ['createdAt', 'updatedAt', 'password'],
+            },
+            },
+    ],
   }).then(recipe => {
     if (recipe) {
+      log(recipe);
       sendSuccess(res, 200, 'Recipes', recipe.dataValues);
     } else {
       sendFail(res, 404, 'recipe not found');
@@ -49,4 +59,11 @@ export const fetchRecipe = (req, res) => {
     serverError(res);
   });
 };
-
+export const setSender = (req, res, next) => {
+  req.recipe.addSenderId(req.requestId)
+    .then(() => {
+      next();
+    }).catch(error => {
+      log(error);
+    });
+};

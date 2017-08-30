@@ -1,7 +1,6 @@
  const objects = {
    name: {
      presence: true,
-     atLeastTwoWord: true,
      format: {
        pattern: '[a-zA-Z ]+',
        flags: 'i',
@@ -92,6 +91,7 @@
      category: objects.name,
      ingredients: objects.array,
      directions: objects.array,
+     UserId: objects.id,
    },
 
  };

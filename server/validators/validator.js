@@ -58,14 +58,15 @@ validate.validators.atLeastTwoWord = (value) => {
   return undefined;
 };
 validate.validators.stringArray = (value) => {
-  if (value.isArray()) {
+  console.log('in arr validator', value);
+  if (Array.isArray(value)) {
+    if (value.length < 1) return 'array can only contain type string';
     // check if value is an array
-    value.forEach((elem) => {
-      // check if array element is a string
-      if (typeof elem !== 'string') return 'array can only contain type string';
-    });
+    const result = value.every(elem => typeof elem === 'string');
+    return !result && 'array can only contain type string' || result && undefined;
   }
-  return undefined;
+
+  return 'element is not an array';
 };
 
 export {

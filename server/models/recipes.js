@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
       allowNull: true,
     },
-    postedBy: {
-      allowNull: false,
+    UserId: {
+      allowNull: true,
       type: DataTypes.INTEGER,
     },
   });
