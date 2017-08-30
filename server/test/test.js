@@ -5,11 +5,21 @@ import app from '../bin/www.js';
 
 const request = supertest(app);
 let token = '';
+let token2 = '';
+
 // Create account test
 let testData = {};
+let regData = {};
+
 
 describe('User registration', () => {
   beforeEach(() => {
+    regData = {
+      fullname: 'example user two',
+      username: 'example_user_2',
+      password: '123456',
+      email: 'exampleTwo@user.com',
+    };
     testData = {
       fullname: 'example user',
       username: 'example_user',
@@ -20,6 +30,16 @@ describe('User registration', () => {
   it('return 200 as status code', done => {
     request.post('/api/users/signup')
       .send(testData)
+      .end((err, res) => {
+        console.log(res.body);
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+  it('return 200 as status code', done => {
+    request.post('/api/users/signup')
+      .send(regData)
       .end((err, res) => {
         console.log(res.body);
         expect(res.status).to.equal(200);
@@ -91,9 +111,15 @@ describe('User registration', () => {
 // user login
 describe('User Login', () => {
   let testDataLogin = {};
+  let loginData = {};
+
   beforeEach(() => {
     testDataLogin = {
       username: 'example_user',
+      password: '123456',
+    };
+    loginData = {
+      username: 'example_user_2',
       password: '123456',
     };
   });
@@ -104,6 +130,20 @@ describe('User Login', () => {
       .end((err, res) => {
         console.log(res.status, res.body.token);
         token = res.body.User.token;
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        expect(res.body.User.token).to.not.be.undefined;
+
+        done();
+      });
+  });
+  it('return 200 as status code', done => {
+    console.log(testDataLogin);
+    request.post('/api/users/signin')
+      .send(loginData)
+      .end((err, res) => {
+        console.log(res.status, res.body.token);
+        token2 = res.body.User.token;
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         expect(res.body.User.token).to.not.be.undefined;
@@ -296,3 +336,48 @@ describe('add recipe', () => {
       });
   });
 });
+
+// delete recipe request
+describe('delete recipe', () => {
+  it('return 404 as status code when user did not create the recipe', done => {
+    request.delete('/api/recipes/1/recipe')
+      .set('Authorization', token2)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 404 as status code when recipeId is not in db ', done => {
+    request.delete('/api/recipes/10/recipe')
+      .set('Authorization', token2)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 400 as status code for invalid recipe id', done => {
+    request.delete('/api/recipes/11kdjf/recipe')
+      .set('Authorization', token2)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 200 as status code when everything is fine', done => {
+    request.delete('/api/recipes/1/recipe')
+      .set('Authorization', token)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+});
+

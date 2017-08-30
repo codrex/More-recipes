@@ -1,5 +1,5 @@
 import db from '../models/index';
-import { validateRecipes } from '../validators/validator.js';
+import { validateRecipes, validateId } from '../validators/validator.js';
 import { sendValidationError, serverError, sendSuccess, sendFail } from '../reply/reply';
 
 const Recipes = db.Recipes;
@@ -22,6 +22,17 @@ export const validateRecipe = (req, res, next) => {
     sendValidationError(res, validate);
   }
 };
+export const idValidation = (req, res, next) => {
+  log('invalidate id');
+  const validate = validateId({ id: req.params.id });
+  if (validate.valid) {
+    next();
+  } else {
+    console.log(validate.error);
+    sendValidationError(res, validate);
+  }
+};
+
 export const create = (req, res, next) => {
   Recipes.create(req.body)
     .then((recipe) => {
@@ -49,7 +60,6 @@ export const fetchRecipe = (req, res) => {
     ],
   }).then(recipe => {
     if (recipe) {
-      log(recipe);
       sendSuccess(res, 200, 'Recipes', recipe.dataValues);
     } else {
       sendFail(res, 404, 'recipe not found');
@@ -58,5 +68,37 @@ export const fetchRecipe = (req, res) => {
     log(error);
     serverError(res);
   });
+};
+export const deleteRecipe = (req, res) => {
+  Recipes.destroy({ where: { id: req.params.id } })
+  .then((recipes) => {
+    log(recipes);
+    sendSuccess(res, 200, 'success', {});
+  }).catch(error => {
+    log(error);
+    sendFail(res, 400, 'Delete was unsuccessful');
+  });
+};
+
+// checking if a requesting id is the id that created the post
+export const checkOwnship = (req, res, next) => {
+  Recipes.findById(parseInt(req.params.id, 10))
+    .then(recipe => {
+      if (!recipe) {
+        sendFail(res, 404, 'Recipe not found');
+        return;
+      }
+      recipe.getUser()
+        .then(user => {
+          if (user && user.id === req.requestId) {
+            next();
+          } else {
+            sendFail(res, 404, 'Recipe not found for User');
+          }
+        });
+    }).catch(error => {
+      log(error);
+      serverError(res);
+    });
 };
 

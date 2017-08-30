@@ -1,6 +1,8 @@
 import express from 'express';
 import { verifyToken } from '../auth/auth';
-import { validateRecipe, create, fetchRecipe } from '../controller/recipe';
+import { validateRecipe, create,
+        fetchRecipe, idValidation,
+        deleteRecipe, checkOwnship } from '../controller/recipe';
 
 const recipesRoute = express.Router();
 
@@ -17,10 +19,8 @@ recipesRoute.route('/recipe')
 //   .get();
 
 
-// recipesRoute.route(':id/recipe')
-//   .get()
-//   .put()
-//   .delete();
+recipesRoute.route('/:id/recipe')
+  .delete(idValidation, checkOwnship, deleteRecipe);
 
 
 export default recipesRoute;
