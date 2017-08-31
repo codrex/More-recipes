@@ -5,25 +5,14 @@ import bcrypt from 'bcrypt-nodejs';
 // this function will process the report gotten from the validator
 const processValidationResult = (result) => {
   const valid = result === undefined;
-  let obj;
-  if (valid) {
-    obj = {
-      valid,
-    };
-  } else {
-    console.log(JSON.stringify(result));
-    const firstObject = Object.keys(result)[0];
-    obj = {
-      valid,
-      error: result, //result[firstObject][0],
-    };
-  }
-  return obj;
+  return valid && { valid } || !valid && { valid, error: result };
 };
+
 const validator = (obj, constraints) => {
   const result = validate(obj, constraints);
   return processValidationResult(result);
 };
+
 const validateSignup = (obj) => validator(obj, constraint.signupConstraint);
 const validateRecipes = (obj) => validator(obj, constraint.createRecipeConstraint);
 const validateId = (obj) => validator(obj, constraint.idConstraint);
