@@ -7,7 +7,7 @@ const PostedRecipes = db.PostedRecipes;
 const associate = () => {
   Users.belongsToMany(Recipes, { through: PostedRecipes });
   Users.sync();
-  Recipes.belongsTo(Users, { as: 'userRecipe' });
+  Recipes.belongsTo(Users);
   Recipes.sync();
 };
 export default associate;
