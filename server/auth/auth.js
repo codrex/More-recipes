@@ -1,8 +1,7 @@
 import jwt from 'jsonwebtoken';
 const secret = require('../config/config').secret;
 
-
-const generateToken = (dataToencode) => jwt.sign(dataToencode, secret, { expiresIn: '30m' });
+const generateToken = (dataToencode) => jwt.sign(dataToencode, secret, { expiresIn: '2d' });
 
 const getToken = (req) => req.body.Authorization || req.query.Authorization ||
 req.headers.authorization;
