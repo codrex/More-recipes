@@ -3,3 +3,4 @@ prepros-6.config
 coverage
 .vscode/*
 debug.log
+.nyc_output
