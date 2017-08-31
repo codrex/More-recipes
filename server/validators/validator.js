@@ -25,22 +25,9 @@ const validator = (obj, constraints) => {
 };
 const validateSignup = (obj) => validator(obj, constraint.signupConstraint);
 const validateRecipes = (obj) => validator(obj, constraint.createRecipeConstraint);
-
 const validateId = (obj) => validator(obj, constraint.idConstraint);
-
+const validateLogin = (obj) => validator(obj, constraint.loginWithUsernameConstraint);
 const validateAll = (obj, objConstraint) => validator(obj, objConstraint);
-const validateLogin = (obj) => {
-  let result;
-  if (obj.username === undefined) {
-    result = validate(obj, constraint.loginWithEmailConstraint);
-  } else if (obj.email === undefined) {
-    result = validate(obj, constraint.loginWithUsernameConstraint);
-  } else {
-    result = validate(obj, constraint.loginWithUsernameConstraint);
-  }
-  return processValidationResult(result, obj);
-};
-const cleanUp = (whitelist, attrs) => validate.cleanAttributes(attrs, whitelist);
 const comparePwd = (hash, password) => bcrypt.compareSync(password, hash);
 
 // custom validator that check for space separated string
@@ -52,6 +39,7 @@ validate.validators.noSpace = (value) => {
   }
   return undefined;
 };
+// custom validator that check if a string has more than one word
 validate.validators.atLeastTwoWord = (value) => {
   if (typeof value === 'string') {
     if (value.split(' ').length < 2) {
@@ -60,15 +48,14 @@ validate.validators.atLeastTwoWord = (value) => {
   }
   return undefined;
 };
+// custom validator to check if an array is an array of string
 validate.validators.stringArray = (value) => {
-  console.log('in arr validator', value);
   if (Array.isArray(value)) {
     if (value.length < 1) return 'array can only contain type string';
     // check if value is an array
     const result = value.every(elem => typeof elem === 'string');
     return !result && 'array can only contain type string' || result && undefined;
   }
-
   return 'element is not an array';
 };
 
@@ -76,7 +63,6 @@ export {
   validateLogin,
   validateSignup,
   validateRecipes,
-  cleanUp,
   comparePwd,
   validateAll,
   validate,

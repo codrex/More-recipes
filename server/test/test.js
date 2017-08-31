@@ -338,7 +338,7 @@ describe('add recipe', () => {
 });
 
 // modify recipe request
-describe('delete recipe', () => {
+describe('modify recipe', () => {
   const updateOne = {
     recipeName: 'beans cake',
   };
@@ -352,10 +352,10 @@ describe('delete recipe', () => {
     ingredients: ['beans', 'water', 'oil'],
   };
   const updateFour = {
-    recipeName: 'beans cake',
-    category: 'breakfast',
-    ingredients: ['beans', 'water', 'oil'],
-    directions: ['step 1', 'step 2', 'step 3'],
+    recipeName: 'beans and rice',
+    category: 'dinner',
+    ingredients: ['beans', 'rice', 'oil'],
+    directions: ['step 1', 'step 2', 'step 3', 'step 4'],
   };
   it('return 404 as status code when user did not create the recipe', done => {
     request.put('/api/recipes/1')
@@ -427,7 +427,7 @@ describe('delete recipe', () => {
       .set('Authorization', token)
       .send(updateFour)
       .end((err, res) => {
-        console.log(res.status);
+        console.log(res.body);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
@@ -438,7 +438,7 @@ describe('delete recipe', () => {
 // delete recipe request
 describe('delete recipe', () => {
   it('return 404 as status code when user did not create the recipe', done => {
-    request.delete('/api/recipes/1/recipe')
+    request.delete('/api/recipes/1')
       .set('Authorization', token2)
       .end((err, res) => {
         console.log(res.status);
@@ -448,7 +448,7 @@ describe('delete recipe', () => {
       });
   });
   it('return 404 as status code when recipeId is not in db ', done => {
-    request.delete('/api/recipes/10/recipe')
+    request.delete('/api/recipes/10')
       .set('Authorization', token2)
       .end((err, res) => {
         console.log(res.status);
@@ -458,7 +458,7 @@ describe('delete recipe', () => {
       });
   });
   it('return 400 as status code for invalid recipe id', done => {
-    request.delete('/api/recipes/11kdjf/recipe')
+    request.delete('/api/recipes/11kdjf')
       .set('Authorization', token2)
       .end((err, res) => {
         console.log(res.status);
@@ -468,7 +468,7 @@ describe('delete recipe', () => {
       });
   });
   it('return 200 as status code when everything is fine', done => {
-    request.delete('/api/recipes/1/recipe')
+    request.delete('/api/recipes/1')
       .set('Authorization', token)
       .end((err, res) => {
         console.log(res.status);
