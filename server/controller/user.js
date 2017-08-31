@@ -5,7 +5,7 @@ import { generateToken } from '../auth/auth';
 const Users = db.Users;
 const log = console.log;
 
-
+// This function validates signup inputs before calling next()
 export const validateSignupData = (req, res, next) => {
   const signupData = {
     username: req.body.username,
@@ -21,6 +21,8 @@ export const validateSignupData = (req, res, next) => {
     sendValidationError(res, validate);
   }
 };
+
+// This function validates signin inputs before calling next()
 export const validateLoginData = (req, res, next) => {
   const loginData = {
     username: req.body.username,
@@ -35,6 +37,8 @@ export const validateLoginData = (req, res, next) => {
     sendValidationError(res, validate);
   }
 };
+
+// This function handle user authentication
 export const authUser = (req, res, next) => {
   Users.findOne({
     where: {
@@ -46,6 +50,7 @@ export const authUser = (req, res, next) => {
       return;
     }
     const hash = user.dataValues.password;
+//compare proved password
     if (user && comparePwd(hash, req.loginData.password)) {
       req.loggedInUser = user.dataValues;
       next();
