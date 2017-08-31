@@ -21,7 +21,7 @@ services:
 
 before_script:
 - createuser more-recipe -s -U postgres
-- createdb more-recipe_test --username=more-recipe
+- createdb moreRecipesTest --username=postgres
 - sequelize db:migrate
 
 notifications:
