@@ -7,7 +7,6 @@ const Recipes = db.Recipes;
 // This function validates data gotten from the user
 // before creating a recipe.
 export const validateRecipe = (req, res, next) => {
-  log(req.body);
   const recipes = {
     recipeName: req.body.recipeName,
     category: req.body.category,
@@ -20,7 +19,6 @@ export const validateRecipe = (req, res, next) => {
     req.body = recipes;
     next();
   } else {
-    log(validate.error);
     sendValidationError(res, validate);
   }
 };
@@ -40,18 +38,15 @@ export const validateUpdate = (req, res, next) => {
     req.body = recipes;
     next();
   } else {
-    log(validate.error);
     sendValidationError(res, validate);
   }
 };
 // This function validate recipe id.
 export const idValidation = (req, res, next) => {
-  log('invalidate id');
   const validate = validateId({ id: req.params.id });
   if (validate.valid) {
     next();
   } else {
-    log(validate.error);
     sendValidationError(res, validate);
   }
 };
@@ -62,8 +57,7 @@ export const create = (req, res, next) => {
       req.idToFetchRecipe = recipe.dataValues.id;
       req.recipe = recipe;
       next();
-    }).catch((error) => {
-      log(error);
+    }).catch(() => {
       serverError(res);
     });
 };
@@ -84,13 +78,11 @@ export const fetchRecipe = (req, res) => {
     ],
   }).then(recipe => {
     if (recipe) {
-      log(recipe);
       sendSuccess(res, 200, 'Recipes', recipe.dataValues);
     } else {
       sendFail(res, 404, 'recipe not found');
     }
-  }).catch(error => {
-    log(error);
+  }).catch(() => {
     serverError(res);
   });
 };
@@ -109,8 +101,7 @@ export const fetchForUpdate = (req, res, next) => {
     } else {
       sendFail(res, 404, 'recipe not found');
     }
-  }).catch(error => {
-    log(error);
+  }).catch(() => {
     serverError(res);
   });
 };
@@ -118,11 +109,9 @@ export const fetchForUpdate = (req, res, next) => {
 // This function delete a recipe from the recipe table
 export const deleteRecipe = (req, res) => {
   Recipes.destroy({ where: { id: req.params.id } })
-  .then((recipes) => {
-    log(recipes);
+  .then(() => {
     sendSuccess(res, 200, 'success', {});
-  }).catch(error => {
-    log(error);
+  }).catch(() => {
     sendFail(res, 400, 'Delete was unsuccessful');
   });
 };
@@ -131,8 +120,7 @@ export const updateRecipe = (req, res, next) => {
   Recipes.update(req.body, { where: { id: req.params.id } })
   .then(() => {
     next();
-  }).catch(error => {
-    log(error);
+  }).catch(() => {
     sendFail(res, 400, 'Delete was unsuccessful');
   });
 };
@@ -153,8 +141,7 @@ export const checkOwnship = (req, res, next) => {
             sendFail(res, 404, 'Recipe not found for User');
           }
         });
-    }).catch(error => {
-      log(error);
+    }).catch(() => {
       serverError(res);
     });
 };
