@@ -3,11 +3,11 @@ import { validateRecipes, validateId } from '../validators/validator.js';
 import { sendValidationError, serverError, sendSuccess, sendFail } from '../reply/reply';
 
 const Recipes = db.Recipes;
-const log = console.log;
 
 // This function validates data gotten from the user
 // before creating a recipe.
 export const validateRecipe = (req, res, next) => {
+  log(req.body);
   const recipes = {
     recipeName: req.body.recipeName,
     category: req.body.category,
