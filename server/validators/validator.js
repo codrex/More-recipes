@@ -2,7 +2,7 @@ import validate from 'validate.js';
 import constraint from './constraints.js';
 import bcrypt from 'bcrypt-nodejs';
 
-
+// this function will process the report gotten from the validator
 const processValidationResult = (result) => {
   const valid = result === undefined;
   let obj;
@@ -11,10 +11,11 @@ const processValidationResult = (result) => {
       valid,
     };
   } else {
+    console.log(JSON.stringify(result));
     const firstObject = Object.keys(result)[0];
     obj = {
       valid,
-      error: result[firstObject][0],
+      error: result, //result[firstObject][0],
     };
   }
   return obj;
