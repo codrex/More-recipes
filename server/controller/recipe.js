@@ -90,7 +90,7 @@ export const fetchRecipe = (req, res) => {
 export const fetchForUpdate = (req, res, next) => {
   Recipes.findOne({
     where: { id: req.params.id },
-    attributes: ['id', 'recipeName',
+    attributes: ['recipeName',
                'category', 'ingredients',
                'directions'],
 

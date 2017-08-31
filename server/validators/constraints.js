@@ -27,7 +27,7 @@
      presence: true,
      length: {
        minimum: 6,
-       message: 'password must be at least 6 character',
+       message: 'must be at least 6 character',
      },
    },
    username: {
@@ -39,8 +39,8 @@
        message: 'can only contain alphabet, number and underscore',
      },
      length: {
-       minimum: 2,
-       message: 'username must be at least 2 character',
+       minimum: 3,
+       message: 'username must be at least 3 character',
      },
    },
    fullname: {
@@ -52,17 +52,13 @@
        message: 'can only contain alphabet',
      },
      length: {
-       minimum: 2,
-       message: 'fullname must be at least 2 character',
+       minimum: 3,
+       message: 'must be at least 3 character',
      },
    },
    email: {
      presence: true,
      email: true,
-     length: {
-       minimum: 2,
-       message: 'username must be at least 2 character',
-     },
    },
    id: {
      presence: true,
@@ -71,19 +67,11 @@
        greaterThan: 0,
      },
    },
-   content: {
-     presence: {
-       message: 'can not be empty',
-     },
-     length: {
-       minimum: 1,
-       message: 'Message can not be empty',
-     },
-   },
    array: {
      stringArray: true,
    },
  };
+
  const constraint = {
    loginWithUsernameConstraint: {
      username: objects.username,
@@ -114,8 +102,6 @@
      ingredients: objects.array,
      directions: objects.array,
    },
-
-
  };
 
  export default constraint;
