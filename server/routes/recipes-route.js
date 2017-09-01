@@ -4,7 +4,7 @@ import { validateRecipe, create,
         fetchRecipe, idValidation,
         deleteRecipe, checkOwnship,
         validateUpdate, fetchForUpdate,
-         updateRecipe, fetchAllRecipe } from '../controller/recipe';
+         updateRecipe, fetchAllRecipe, fetchRecipeByQuery } from '../controller/recipe';
 
 const recipesRoute = express.Router();
 
@@ -16,7 +16,7 @@ recipesRoute.route('/recipe')
   .post(validateRecipe, create, fetchRecipe);
 
 recipesRoute.route('/')
-  .get(fetchAllRecipe);
+  .get(fetchRecipeByQuery, fetchAllRecipe);
 
 recipesRoute.route('/:id')
   .put(idValidation, checkOwnship,
