@@ -50,7 +50,7 @@ export const authUser = (req, res, next) => {
       return;
     }
     const hash = user.dataValues.password;
-//compare proved password
+  // compare proved password
     if (user && comparePwd(hash, req.loginData.password)) {
       req.loggedInUser = user.dataValues;
       next();
@@ -63,6 +63,7 @@ export const authUser = (req, res, next) => {
   });
 };
 
+// sends User's info along with an auth token back to the user
 export const sendDataWithToken = (req, res) => {
   const token = generateToken({ id: req.loggedInUser.id });
   delete req.loggedInUser.id;
@@ -117,5 +118,46 @@ export const fetchUser = (req, res) => {
   }).catch(error => {
     log(error);
     serverError(res);
+  });
+};
+export const setFavRecipe = (req, res, next) => {
+  Users.findById(req.requestId)
+    .then(user => {
+      user.addFavRecipes(req.body.recipeId)
+      .then(() => {
+        next();
+      }).catch(error => {
+        serverError(res, error);
+      });
+    });
+};
+export const fetchFavRecipes = (req, res) => {
+  Users.findOne({
+    where: { id: req.requestId },
+    attributes: {
+      exclude: ['createdAt', 'updatedAt', 'password'],
+    },
+    include: [{
+      model: db.Recipes,
+      as: 'favRecipes',
+      attributes: {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+      through: {
+        attributes: [],
+      },
+      include: [{
+        model: db.Users,
+        attributes: {
+          exclude: ['createdAt', 'updatedAt', 'password'],
+        },
+      }],
+    }],
+  })
+  .then(userFavRecipes => {
+    log(userFavRecipes);
+    sendSuccess(res, 200, 'User', userFavRecipes);
+  }).catch(error => {
+    serverError(res, error);
   });
 };
