@@ -86,6 +86,30 @@ export const fetchRecipe = (req, res) => {
     serverError(res);
   });
 };
+// fetch all recipes from dbase and send back to the user
+export const fetchAllRecipe = (req, res) => {
+  Recipes.findAll({
+    attributes: ['id', 'recipeName',
+               'category', 'ingredients',
+               'directions', 'upVotes',
+                'downVotes'],
+    include: [
+          { model: db.Users,
+            attributes: {
+              exclude: ['createdAt', 'updatedAt', 'password'],
+            },
+            },
+    ],
+  }).then(recipe => {
+    if (recipe) {
+      sendSuccess(res, 200, 'Recipes', recipe);
+    } else {
+      sendFail(res, 404, 'no recipe found');
+    }
+  }).catch(() => {
+    serverError(res);
+  });
+};
 // fetch recipe from db before recipe update
 export const fetchForUpdate = (req, res, next) => {
   Recipes.findOne({

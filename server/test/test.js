@@ -435,6 +435,19 @@ describe('modify recipe', () => {
   });
 });
 
+// get all recipe request
+describe('get all recipe', () => {
+  it('return 200 as status code', done => {
+    request.get('/api/recipes')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+});
+
 // delete recipe request
 describe('delete recipe', () => {
   it('return 404 as status code when user did not create the recipe', done => {
