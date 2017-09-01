@@ -43,7 +43,7 @@ export const validateUpdate = (req, res, next) => {
 };
 // This function validate recipe id.
 export const idValidation = (req, res, next) => {
-  const validate = validateId({ id: req.params.id });
+  const validate = validateId({ id: req.params.id || req.body.recipeId });
   if (validate.valid) {
     next();
   } else {
@@ -200,6 +200,20 @@ export const checkOwnship = (req, res, next) => {
         });
     }).catch(() => {
       serverError(res);
+    });
+};
+
+// checking if recipe exist in dbase
+export const checkRecipe = (req, res, next) => {
+  Recipes.findById(req.params.id || req.body.recipeId)
+    .then(recips => {
+      if (recips) {
+        next();
+      } else {
+        sendFail(res, 404, 'Recipe not found');
+      }
+    }).catch(error => {
+      serverError(res, error);
     });
 };
 

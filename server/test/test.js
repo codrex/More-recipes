@@ -199,7 +199,6 @@ describe('add recipe', () => {
     };
   });
   it('return 200 as status code', done => {
-    console.log(recipe, token);
     request.post('/api/recipes/recipe')
       .set('Authorization', token)
       .send(recipe)
@@ -328,6 +327,43 @@ describe('add recipe', () => {
     request.post('/api/recipes/recipe')
       .set('Authorization', token)
       .send(invalidRecipe)
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+});
+
+// add fav recipe
+describe('add fav recipe', () => {
+  it('return 200 as status code', done => {
+    request.post('/api/users/recipes')
+      .set('Authorization', token)
+      .send({ recipeId: 1 })
+      .end((err, res) => {
+        console.log(res.status, res.body);
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+  it('return 404 as status code when recipe dose not exist', done => {
+    request.post('/api/users/recipes')
+      .set('Authorization', token)
+      .send({ recipeId: 100 })
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 400 as status code for invalid recipe id', done => {
+    request.post('/api/users/recipes')
+      .set('Authorization', token)
+      .send({ recipeId: '<script>alert("hello you")</script>' })
       .end((err, res) => {
         console.log(res.status);
         expect(res.status).to.equal(400);
