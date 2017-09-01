@@ -3,7 +3,8 @@ import { verifyToken } from '../auth/auth';
 import { validateRecipe, create,
         fetchRecipe, idValidation,
         deleteRecipe, checkOwnship,
-        validateUpdate, fetchForUpdate, updateRecipe } from '../controller/recipe';
+        validateUpdate, fetchForUpdate,
+         updateRecipe, fetchAllRecipe } from '../controller/recipe';
 
 const recipesRoute = express.Router();
 
@@ -14,8 +15,8 @@ recipesRoute.use(verifyToken, (req, res, next) => {
 recipesRoute.route('/recipe')
   .post(validateRecipe, create, fetchRecipe);
 
-// recipesRoute.route('/recipes')
-//   .get();
+recipesRoute.route('/')
+  .get(fetchAllRecipe);
 
 recipesRoute.route('/:id')
   .put(idValidation, checkOwnship,
