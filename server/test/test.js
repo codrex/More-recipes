@@ -369,7 +369,7 @@ describe('modify recipe', () => {
       });
   });
   it('return 404 as status code when recipeId is not in db ', done => {
-    request.put('/api/recipes/10')
+    request.put('/api/recipes/109')
       .set('Authorization', token2)
       .send(updateFour)
       .end((err, res) => {
@@ -380,10 +380,9 @@ describe('modify recipe', () => {
       });
   });
   it('return 400 as status code for invalid recipe id parameter', done => {
-    request.put('/api/recipes/10ufjdc')
+    request.put('/api/recipes/++10ufjdc')
       .set('Authorization', token2)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -394,7 +393,6 @@ describe('modify recipe', () => {
       .set('Authorization', token)
       .send(updateOne)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
@@ -439,6 +437,47 @@ describe('modify recipe', () => {
 describe('get all recipe', () => {
   it('return 200 as status code', done => {
     request.get('/api/recipes')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+});
+
+// search for recipe by recipe name request
+describe('search for recipe by recipe name ', () => {
+  it('return 200 as status code', done => {
+    request.get('/api/recipes?search=beans+cake')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+
+  it('return 200 as status code', done => {
+    request.get('/api/recipes?search=breakfast')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+  it('return 200 as status code', done => {
+    request.get('/api/recipes?search=[]')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+  it('return 200 as status code', done => {
+    request.get('/api/recipes?search=j2\'/[765]')
       .set('Authorization', token)
       .end((err, res) => {
         expect(res.status).to.equal(200);
