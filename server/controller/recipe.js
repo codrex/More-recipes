@@ -41,6 +41,7 @@ export const validateUpdate = (req, res, next) => {
     sendValidationError(res, validate);
   }
 };
+
 // This function validate recipe id.
 export const idValidation = (req, res, next) => {
   const validate = validateId({ id: req.params.id || req.body.recipeId });
@@ -50,6 +51,7 @@ export const idValidation = (req, res, next) => {
     sendValidationError(res, validate);
   }
 };
+
 // Create recipe
 export const create = (req, res, next) => {
   Recipes.create(req.body)
@@ -61,6 +63,7 @@ export const create = (req, res, next) => {
       serverError(res);
     });
 };
+
 // fetch recipe from dbase and send back to the user
 export const fetchRecipe = (req, res) => {
   Recipes.findOne({
@@ -95,11 +98,23 @@ export const fetchAllRecipe = (req, res) => {
                'directions', 'upVotes',
                 'downVotes'],
     include: [
-          { model: db.Users,
-            attributes: {
-              exclude: ['createdAt', 'updatedAt', 'password'],
-            },
-            },
+      { model: db.Users,
+        attributes: {
+          exclude: ['createdAt', 'updatedAt', 'password'],
+        },
+      },
+      {
+        model: db.RecipeReviews,
+        attributes: {
+          exclude: ['createdAt', 'updatedAt'],
+        },
+        include: [{
+          model: db.Users, as: 'Reviewer',
+          attributes: {
+            exclude: ['createdAt', 'updatedAt', 'password'],
+          },
+        }],
+      },
     ],
   }).then(recipe => {
     if (recipe) {
@@ -143,6 +158,7 @@ export const fetchRecipeByQuery = (req, res, next) => {
     serverError(res, error);
   });
 };
+
 // fetch recipe from db before recipe update
 export const fetchForUpdate = (req, res, next) => {
   Recipes.findOne({
@@ -172,6 +188,7 @@ export const deleteRecipe = (req, res) => {
     sendFail(res, 400, 'Delete was unsuccessful');
   });
 };
+
 // Update a recipe
 export const updateRecipe = (req, res, next) => {
   Recipes.update(req.body, { where: { id: req.params.id } })
@@ -215,5 +232,47 @@ export const checkRecipe = (req, res, next) => {
     }).catch(error => {
       serverError(res, error);
     });
+};
+
+// set association between recipe and review
+export const setReview = (req, res, next) => {
+  Recipes.findById(req.params.id)
+    .then(recipe => {
+      if (!recipe) {
+        return sendFail(res, 404, 'Recipe not found');
+      }
+      recipe.addRecipeReviews(req.reviewId)
+        .then(() => {
+          next();
+        });
+    }).catch(error => {
+      serverError(res, error);
+    });
+};
+
+export const fetchReview = (req, res) => {
+  Recipes.findOne({
+    where: { id: req.params.id },
+    attributes: {
+      exclude: ['createdAt', 'updatedAt'],
+    },
+    include: [{
+      model: db.RecipeReviews,
+      attributes: {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+      include: [{
+        model: db.Users, as: 'Reviewer',
+        attributes: {
+          exclude: ['createdAt', 'updatedAt', 'password'],
+        },
+      }],
+    }],
+  })
+  .then(recipeReviews => {
+    sendSuccess(res, 200, 'Recipe', recipeReviews);
+  }).catch(error => {
+    serverError(res, error);
+  });
 };
 

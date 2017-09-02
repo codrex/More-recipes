@@ -17,7 +17,11 @@ const validateSignup = (obj) => validator(obj, constraint.signupConstraint);
 const validateRecipes = (obj) => validator(obj, constraint.createRecipeConstraint);
 const validateId = (obj) => validator(obj, constraint.idConstraint);
 const validateLogin = (obj) => validator(obj, constraint.loginWithUsernameConstraint);
+const validateReview = (obj) => validator(obj, constraint.reviewConstraint);
+
+
 const validateAll = (obj, objConstraint) => validator(obj, objConstraint);
+
 const comparePwd = (hash, password) => bcrypt.compareSync(password, hash);
 
 // custom validator that check for space separated string
@@ -58,5 +62,6 @@ export {
   validate,
   constraint,
   validateId,
+  validateReview,
 };
 

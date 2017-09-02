@@ -102,6 +102,15 @@
      ingredients: objects.array,
      directions: objects.array,
    },
+   reviewConstraint: {
+     review: {
+       presence: true,
+       length: {
+         minimum: 2,
+         message: 'must be at least 2 character',
+       },
+     },
+   },
  };
 
  export default constraint;

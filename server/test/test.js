@@ -373,6 +373,55 @@ describe('add fav recipe', () => {
   });
 });
 
+// post a review
+describe('post a review', () => {
+  const review = {
+    review: 'i love this recipe',
+  };
+  it('return 200 as status code', done => {
+    request.post('/api/recipes/1/reviews')
+      .set('Authorization', token)
+      .send(review)
+      .end((err, res) => {
+        console.log(res.status, res.body);
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+  it('return 404 as status code when recipe dose not exist', done => {
+    request.post('/api/recipes/10/reviews')
+      .set('Authorization', token)
+      .send(review)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 400 as status code for empty review', done => {
+    request.post('/api/recipes/1/reviews')
+      .set('Authorization', token)
+      .send({ review: '' })
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 400 as status code for empty review', done => {
+    request.post('/api/recipes/1/reviews')
+      .set('Authorization', token)
+      .send({ review: 12345 })
+      .end((err, res) => {
+        console.log(res.status);
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+});
+
 // modify recipe request
 describe('modify recipe', () => {
   const updateOne = {
