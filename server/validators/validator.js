@@ -18,8 +18,7 @@ const validateRecipes = (obj) => validator(obj, constraint.createRecipeConstrain
 const validateId = (obj) => validator(obj, constraint.idConstraint);
 const validateLogin = (obj) => validator(obj, constraint.loginWithUsernameConstraint);
 const validateReview = (obj) => validator(obj, constraint.reviewConstraint);
-
-
+const validateVote = (obj) => validator(obj, constraint.voteConstraint);
 const validateAll = (obj, objConstraint) => validator(obj, objConstraint);
 
 const comparePwd = (hash, password) => bcrypt.compareSync(password, hash);
@@ -53,6 +52,14 @@ validate.validators.stringArray = (value) => {
   return 'element is not an array';
 };
 
+// custom validator to check for type boolean
+validate.validators.boolean = (value) => {
+  if (typeof value === 'boolean') {
+    return undefined;
+  }
+  return 'must be a boolean (true or false) value';
+};
+
 export {
   validateLogin,
   validateSignup,
@@ -63,5 +70,6 @@ export {
   constraint,
   validateId,
   validateReview,
+  validateVote,
 };
 

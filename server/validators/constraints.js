@@ -111,6 +111,12 @@
        },
      },
    },
+   voteConstraint: {
+     vote: {
+       presence: true,
+       boolean: true,
+     },
+   },
  };
 
  export default constraint;

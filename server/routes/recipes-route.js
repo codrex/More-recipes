@@ -28,4 +28,10 @@ recipesRoute.route('/:id')
 recipesRoute.route('/:id/reviews')
   .post(idValidation, reviewValidation, createReview, setReview, fetchReview);
 
+recipesRoute.route('/:id/upvotes')
+  .post();
+
+recipesRoute.route('/:id/downvotes')
+  .post();
+
 export default recipesRoute;
