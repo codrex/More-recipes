@@ -15,7 +15,8 @@ body{
   font-size:2em
 }
 a,a:focus,a:hover,a:active{
-    color: $dark-text !important;
+    color: $dark-text ;
+    text-decoration: none;
 }
 
 .custom-control-input:active ~ .custom-control-indicator {
