@@ -10,10 +10,11 @@ import { validateRecipe, create,
          fetchReview, updateVotes,
          fetchVotes, fetchRecipeByUpVote } from '../controller/recipe';
 import { createDownVote, createUpVote, countVote } from '../controller/vote';
+import { isIdValidUser } from '../controller/user';
 
 const recipesRoute = express.Router();
 
-recipesRoute.use(verifyToken, (req, res, next) => {
+recipesRoute.use(verifyToken, isIdValidUser, (req, res, next) => {
   next();
 });
 

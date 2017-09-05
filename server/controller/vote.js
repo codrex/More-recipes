@@ -29,7 +29,9 @@ export const createUpVote = (req, res, next) => {
           next();
         });
       } else {
-        next();
+        vote.destroy({ force: true }).then(() => {
+          next();
+        });
       }
     }
   }).catch(error => {
@@ -63,7 +65,9 @@ export const createDownVote = (req, res, next) => {
           next();
         });
       } else {
-        next();
+        vote.destroy({ force: true }).then(() => {
+          next();
+        });
       }
     }
   }).catch(error => {
@@ -80,5 +84,7 @@ export const countVote = (req, res, next) => {
       req.body.downVotes = downvote;
       next();
     });
+  }).catch(error => {
+    serverError(res, error);
   });
 };

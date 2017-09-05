@@ -1,11 +1,13 @@
 
 import { expect } from 'chai';
 import supertest from 'supertest';
+import { generateToken } from '../auth/auth';
 import app from '../bin/www.js';
 
 const request = supertest(app);
 let token = '';
 let token2 = '';
+const deletedUser = generateToken({ id: 100 });
 
 // Create account test
 let testData = {};
@@ -69,7 +71,7 @@ describe('User registration', () => {
       });
   });
 
-  it('return 400 for invalid eamil', done => {
+  it('return 400 for invalid email', done => {
     const invalidData = testData;
     invalidData.email = 'example2user.com';
     request.post('/api/users/signup')
@@ -401,6 +403,15 @@ describe('post a review', () => {
 });
 // vote a recipe
 describe('vote a recipe', () => {
+  it('return 404 as status code when user is deleted ', done => {
+    request.put('/api/recipes/1/upvote')
+      .set('Authorization', deletedUser)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
   it('return 200 as status code when user upvote a recipe for the first time', done => {
     request.put('/api/recipes/1/upvote')
       .set('Authorization', token)
@@ -411,7 +422,17 @@ describe('vote a recipe', () => {
         done();
       });
   });
-  it('return 200 as status code when user attempts to re-upvote a recipe', done => {
+  it('return 200 as status code when user hits upvote route for the second time', done => {
+    request.put('/api/recipes/1/upvote')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.Recipe.upVotes).to.equal(0);
+        expect(res.body.Recipe.downVotes).to.equal(0);
+        done();
+      });
+  });
+  it('return 200 as status code when user hits upvote route for the third time', done => {
     request.put('/api/recipes/1/upvote')
       .set('Authorization', token)
       .end((err, res) => {
@@ -422,6 +443,28 @@ describe('vote a recipe', () => {
       });
   });
   it('return 200 as status code when another user downvote a recipe', done => {
+    request.put('/api/recipes/1/downvote')
+      .set('Authorization', token2)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.Recipe.upVotes).to.equal(1);
+        expect(res.body.Recipe.downVotes).to.equal(1);
+        done();
+      });
+  });
+  it(`return 200 as status code when another user hits
+  the downvote recipe route for the second time`, done => {
+    request.put('/api/recipes/1/downvote')
+      .set('Authorization', token2)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.Recipe.upVotes).to.equal(1);
+        expect(res.body.Recipe.downVotes).to.equal(0);
+        done();
+      });
+  });
+  it(`return 200 as status code when another user hits
+  the downvote recipe route for the third time`, done => {
     request.put('/api/recipes/1/downvote')
       .set('Authorization', token2)
       .end((err, res) => {

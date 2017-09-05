@@ -168,3 +168,15 @@ export const fetchFavRecipes = (req, res) => {
     serverError(res, error);
   });
 };
+export const isIdValidUser = (req, res, next) => {
+  Users.findById(req.requestId)
+    .then(user => {
+      if (user) {
+        next();
+      } else {
+        sendFail(res, 404, 'User not found');
+      }
+    }).catch(error => {
+      serverError(res, error);
+    });
+};

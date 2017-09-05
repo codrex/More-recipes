@@ -97,8 +97,8 @@ export const fetchVotes = (req, res) => {
     attributes: ['id', 'upVotes', 'downVotes'],
   }).then(recipe => {
     sendSuccess(res, 200, 'Recipe', recipe.dataValues);
-  }).catch(() => {
-    serverError(res);
+  }).catch((error) => {
+    serverError(res, error);
   });
 };
 
