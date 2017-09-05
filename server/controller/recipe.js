@@ -81,10 +81,22 @@ export const fetchRecipe = (req, res) => {
     ],
   }).then(recipe => {
     if (recipe) {
-      sendSuccess(res, 200, 'Recipes', recipe.dataValues);
+      sendSuccess(res, 200, 'Recipe', recipe.dataValues);
     } else {
       sendFail(res, 404, 'recipe not found');
     }
+  }).catch(() => {
+    serverError(res);
+  });
+};
+
+// fetch recipe votes
+export const fetchVotes = (req, res) => {
+  Recipes.findOne({
+    where: { id: req.idToFetchRecipe || req.params.id },
+    attributes: ['id', 'upVotes', 'downVotes'],
+  }).then(recipe => {
+    sendSuccess(res, 200, 'Recipe', recipe.dataValues);
   }).catch(() => {
     serverError(res);
   });
@@ -131,6 +143,7 @@ export const fetchAllRecipe = (req, res) => {
 export const fetchRecipeByQuery = (req, res, next) => {
   if (req.query.search === undefined) return next();
   Recipes.findAll({
+    limit: 10,
     where: {
       $or: [
         { recipeName: req.query.search },
@@ -151,6 +164,33 @@ export const fetchRecipeByQuery = (req, res, next) => {
   }).then(recipe => {
     if (recipe) {
       sendSuccess(res, 200, 'Recipes', recipe);
+    } else {
+      sendFail(res, 404, 'no recipe found');
+    }
+  }).catch((error) => {
+    serverError(res, error);
+  });
+};
+// fetch recipes by upVotes in desending order and send it back to the user
+export const fetchRecipeByUpVote = (req, res, next) => {
+  if (req.query.sort === undefined) return next();
+  Recipes.findAll({
+    limit: 10,
+    order: [['upVotes', 'DESC']],
+    attributes: ['id', 'recipeName',
+               'category', 'ingredients',
+               'directions', 'upVotes',
+                'downVotes'],
+    include: [
+          { model: db.Users,
+            attributes: {
+              exclude: ['createdAt', 'updatedAt', 'password'],
+            },
+            },
+    ],
+  }).then(recipes => {
+    if (recipes) {
+      sendSuccess(res, 200, 'Recipes', recipes);
     } else {
       sendFail(res, 404, 'no recipe found');
     }
@@ -271,6 +311,16 @@ export const fetchReview = (req, res) => {
   })
   .then(recipeReviews => {
     sendSuccess(res, 200, 'Recipe', recipeReviews);
+  }).catch(error => {
+    serverError(res, error);
+  });
+};
+
+export const updateVotes = (req, res, next) => {
+  Recipes.update(req.body, { where: { id: req.params.id } })
+  .then(recipe => {
+    console.log(recipe);
+    next();
   }).catch(error => {
     serverError(res, error);
   });

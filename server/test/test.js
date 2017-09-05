@@ -11,7 +11,6 @@ let token2 = '';
 let testData = {};
 let regData = {};
 
-
 describe('User registration', () => {
   beforeEach(() => {
     regData = {
@@ -31,7 +30,6 @@ describe('User registration', () => {
     request.post('/api/users/signup')
       .send(testData)
       .end((err, res) => {
-        console.log(res.body);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
@@ -41,7 +39,6 @@ describe('User registration', () => {
     request.post('/api/users/signup')
       .send(regData)
       .end((err, res) => {
-        console.log(res.body);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
@@ -62,7 +59,6 @@ describe('User registration', () => {
 
   it('return 400 for an already existing username', done => {
     const invalidData = testData;
-    console.log(invalidData);
     invalidData.email = 'example2@user.com';
     request.post('/api/users/signup')
       .send(invalidData)
@@ -124,11 +120,9 @@ describe('User Login', () => {
     };
   });
   it('return 200 as status code', done => {
-    console.log(testDataLogin);
     request.post('/api/users/signin')
       .send(testDataLogin)
       .end((err, res) => {
-        console.log(res.status, res.body.token);
         token = res.body.User.token;
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
@@ -138,11 +132,9 @@ describe('User Login', () => {
       });
   });
   it('return 200 as status code', done => {
-    console.log(testDataLogin);
     request.post('/api/users/signin')
       .send(loginData)
       .end((err, res) => {
-        console.log(res.status, res.body.token);
         token2 = res.body.User.token;
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
@@ -203,7 +195,6 @@ describe('add recipe', () => {
       .set('Authorization', token)
       .send(recipe)
       .end((err, res) => {
-        console.log(res.status, res.body);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
@@ -237,7 +228,6 @@ describe('add recipe', () => {
       .set('Authorization', token)
       .send(invalidRecipe)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -250,7 +240,6 @@ describe('add recipe', () => {
       .set('Authorization', token)
       .send(invalidRecipe)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -263,7 +252,6 @@ describe('add recipe', () => {
       .set('Authorization', token)
       .send(invalidRecipe)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -276,7 +264,6 @@ describe('add recipe', () => {
       .set('Authorization', token)
       .send(invalidRecipe)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -289,7 +276,6 @@ describe('add recipe', () => {
       .set('Authorization', token)
       .send(invalidRecipe)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -302,7 +288,6 @@ describe('add recipe', () => {
       .set('Authorization', token)
       .send(invalidRecipe)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -315,7 +300,6 @@ describe('add recipe', () => {
       .set('Authorization', token)
       .send(invalidRecipe)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -328,7 +312,6 @@ describe('add recipe', () => {
       .set('Authorization', token)
       .send(invalidRecipe)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -343,7 +326,6 @@ describe('add fav recipe', () => {
       .set('Authorization', token)
       .send({ recipeId: 1 })
       .end((err, res) => {
-        console.log(res.status, res.body);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
@@ -354,7 +336,6 @@ describe('add fav recipe', () => {
       .set('Authorization', token)
       .send({ recipeId: 100 })
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(404);
         expect(res.body.status).to.equal('fail');
         done();
@@ -365,7 +346,6 @@ describe('add fav recipe', () => {
       .set('Authorization', token)
       .send({ recipeId: '<script>alert("hello you")</script>' })
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -383,7 +363,6 @@ describe('post a review', () => {
       .set('Authorization', token)
       .send(review)
       .end((err, res) => {
-        console.log(res.status, res.body);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
@@ -414,14 +393,78 @@ describe('post a review', () => {
       .set('Authorization', token)
       .send({ review: 12345 })
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
       });
   });
 });
-
+// vote a recipe
+describe('vote a recipe', () => {
+  it('return 200 as status code when user upvote a recipe for the first time', done => {
+    request.put('/api/recipes/1/upvote')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.Recipe.upVotes).to.equal(1);
+        expect(res.body.Recipe.downVotes).to.equal(0);
+        done();
+      });
+  });
+  it('return 200 as status code when user attempts to re-upvote a recipe', done => {
+    request.put('/api/recipes/1/upvote')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.Recipe.upVotes).to.equal(1);
+        expect(res.body.Recipe.downVotes).to.equal(0);
+        done();
+      });
+  });
+  it('return 200 as status code when another user downvote a recipe', done => {
+    request.put('/api/recipes/1/downvote')
+      .set('Authorization', token2)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.Recipe.upVotes).to.equal(1);
+        expect(res.body.Recipe.downVotes).to.equal(1);
+        done();
+      });
+  });
+  it('return 200 as status code when a user changes from downvote to upvote', done => {
+    request.put('/api/recipes/1/upvote')
+      .set('Authorization', token2)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.Recipe.upVotes).to.equal(2);
+        expect(res.body.Recipe.downVotes).to.equal(0);
+        done();
+      });
+  });
+    // get recipe by most upvotes
+  describe('get recipe by most upvote', () => {
+    it('return 200 as status code', done => {
+      request.get('/api/recipes?sort=upvotes&order=ascending')
+        .set('Authorization', token)
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body.status).to.equal('success');
+          expect(res.body.Recipes[0].id).to.equal(1);
+          done();
+        });
+    });
+  });
+  it('return 200 as status code when a user changes from upvote to downvote', done => {
+    request.put('/api/recipes/1/downvote')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.Recipe.upVotes).to.equal(1);
+        expect(res.body.Recipe.downVotes).to.equal(1);
+        done();
+      });
+  });
+});
 // modify recipe request
 describe('modify recipe', () => {
   const updateOne = {
@@ -447,7 +490,6 @@ describe('modify recipe', () => {
       .set('Authorization', token2)
       .send(updateFour)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(404);
         expect(res.body.status).to.equal('fail');
         done();
@@ -458,7 +500,6 @@ describe('modify recipe', () => {
       .set('Authorization', token2)
       .send(updateFour)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(404);
         expect(res.body.status).to.equal('fail');
         done();
@@ -488,7 +529,6 @@ describe('modify recipe', () => {
       .set('Authorization', token)
       .send(updateTwo)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
@@ -499,7 +539,6 @@ describe('modify recipe', () => {
       .set('Authorization', token)
       .send(updateThree)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
@@ -510,7 +549,6 @@ describe('modify recipe', () => {
       .set('Authorization', token)
       .send(updateFour)
       .end((err, res) => {
-        console.log(res.body);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
@@ -578,7 +616,6 @@ describe('delete recipe', () => {
     request.delete('/api/recipes/1')
       .set('Authorization', token2)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(404);
         expect(res.body.status).to.equal('fail');
         done();
@@ -588,7 +625,6 @@ describe('delete recipe', () => {
     request.delete('/api/recipes/10')
       .set('Authorization', token2)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(404);
         expect(res.body.status).to.equal('fail');
         done();
@@ -598,7 +634,6 @@ describe('delete recipe', () => {
     request.delete('/api/recipes/11kdjf')
       .set('Authorization', token2)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(400);
         expect(res.body.status).to.equal('fail');
         done();
@@ -608,7 +643,6 @@ describe('delete recipe', () => {
     request.delete('/api/recipes/1')
       .set('Authorization', token)
       .end((err, res) => {
-        console.log(res.status);
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         done();
