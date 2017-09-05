@@ -95,15 +95,15 @@
                 <a class="navbar-brand d-flex justify-content-center align-items-center" href="#">
                   <h1 class="display-4 no-margin">More-Recipes</h1>
                 </a>
-                  <ul class="navbar-nav mr-auto nav-v2 col-xs-12 col-sm-10 col-md-8 col-lg-8">
-                    <li class="nav-item ">
-                      <a class="nav-link text-uppercase" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                      <a class="nav-link text-uppercase" href="#">Recipes</a>
+                  <ul class="navbar-nav mr-auto nav-v2 col-xs-12 col-sm-10 col-md-8 col-lg-8 justify-content-md-end">
+                   <li class="nav-item">
+                      <a class="nav-link text-uppercase" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link text-uppercase" href="#">Add a recipe</a>
+                      <a class="nav-link text-uppercase" href="./recipes.html">Recipes</a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link text-uppercase" href="./new-add-recipe.html">Add a recipe</a>
                     </li>
                   </ul>
               </nav>
@@ -117,7 +117,7 @@
             Add a recipe</h3>
             <form class="my-lg-0 search no-margin" style="z-index:2">
               <input class="form-control mr-sm-2" type="text" placeholder="Search">
-              <button class="btn bg-primary my-2 my-sm-0 text-white" type="submit" style="z-index:2">Search</button>
+              <button class="btn bg-primary my-2 my-sm-0 text-white border-white" type="submit" style="z-index:2">Search</button>
             </form> 
           </div>
            <div class="container-fluid no-padding "style="min-height:fit-content; height:fit-content ;padding:0 50px">
@@ -135,11 +135,11 @@
                 </li>
             </ul>
               <div class="col-12 name-category">
-                  <div class="form-group col-7 " id="0">
+                  <div class="form-group col-xs-12 col-sm-10 col-md-7 col-lg-7 " id="0">
                     <label for="" class="recipe-label lead" >recipe name</label>
                     <input type="recipe-name" class="form-control add-recipe-input " id="recipe-name">
                   </div>
-                  <div class="form-group col-7" id="1">
+                  <div class="form-group col-xs-12 col-sm-10 col-md-7 col-lg-7" id="1">
                     <label for="" class="recipe-label lead" >recipe category</label>
                     <input type="recipe-name" class="form-control add-recipe-input " id="recipe-name">
                   </div>
@@ -152,8 +152,8 @@
                   </div>
                   <div class="ingredients-list">
                     <div class="card bg-primary no-b-r">
-                      <div class="card-header d-flex align-items-center " >
-                        <h5 class="mb-0 lead flex-auto">
+                      <div class="card-header d-flex align-items-center no-padding" >
+                        <h5 class="mb-0 lead flex-auto " style="padding:0 .5em">
                           <a class=" text-capitalize text-white" data-toggle="collapse"  aria-expanded="false" aria-controls="ingredient-item">
                             bread
                           </a>
@@ -173,8 +173,8 @@
                   </div>
                   <div class="directions-list" id="directions-list" role="tablist">
                     <div class="card bg-primary no-b-r">
-                      <div class="card-header d-flex align-items-center" role="tab" id="item1">
-                        <h5 class="mb-0 lead flex-auto">
+                      <div class="card-header d-flex align-items-center no-padding" role="tab" id="item1">
+                        <h5 class="mb-0 lead flex-auto" style="padding:0 .5em">
                           <a class="collapsed text-capitalize text-white collapse-trigger" data-toggle="collapse" href="#directions-item" aria-expanded="false" aria-controls="directions-item">
                             step One
                           </a>
