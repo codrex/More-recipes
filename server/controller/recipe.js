@@ -289,7 +289,7 @@ export const setReview = (req, res, next) => {
       serverError(res, error);
     });
 };
-
+// get reviews on a recipe
 export const fetchReview = (req, res) => {
   Recipes.findOne({
     where: { id: req.params.id },
@@ -315,11 +315,10 @@ export const fetchReview = (req, res) => {
     serverError(res, error);
   });
 };
-
+// updates upvote and downvote in the recipe table
 export const updateVotes = (req, res, next) => {
   Recipes.update(req.body, { where: { id: req.params.id } })
-  .then(recipe => {
-    console.log(recipe);
+  .then(() => {
     next();
   }).catch(error => {
     serverError(res, error);
