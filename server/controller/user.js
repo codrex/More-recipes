@@ -3,9 +3,8 @@ import { validateSignup, validateLogin, comparePwd } from '../validators/validat
 import { sendValidationError, serverError, sendSuccess, sendFail } from '../reply/reply';
 import { generateToken } from '../auth/auth';
 const Users = db.Users;
-const log = console.log;
 
-
+// This function validates signup inputs
 export const validateSignupData = (req, res, next) => {
   const signupData = {
     username: req.body.username,
@@ -17,10 +16,11 @@ export const validateSignupData = (req, res, next) => {
     req.body = signupData;
     next();
   } else {
-    log(validate.error);
     sendValidationError(res, validate);
   }
 };
+
+// This function validates signin inputs
 export const validateLoginData = (req, res, next) => {
   const loginData = {
     username: req.body.username,
@@ -31,21 +31,25 @@ export const validateLoginData = (req, res, next) => {
     req.loginData = loginData;
     next();
   } else {
-    log(validate.error);
     sendValidationError(res, validate);
   }
 };
+
+// This function handle user authentication
 export const authUser = (req, res, next) => {
   Users.findOne({
     where: {
       username: req.loginData.username,
     },
+    attributes: ['id', 'email', 'username', 'fullname', 'password'],
+
   }).then(user => {
     if (!user) {
       sendFail(res, 400, 'invalid username or password');
       return;
     }
     const hash = user.dataValues.password;
+  // compare proved password
     if (user && comparePwd(hash, req.loginData.password)) {
       req.loggedInUser = user.dataValues;
       next();
@@ -53,11 +57,11 @@ export const authUser = (req, res, next) => {
       sendFail(res, 400, 'invalid username or password');
     }
   }).catch(error => {
-    log(error);
-    serverError(res);
+    serverError(res, error);
   });
 };
 
+// sends User's info along with an auth token back to the user
 export const sendDataWithToken = (req, res) => {
   const token = generateToken({ id: req.loggedInUser.id });
 
@@ -65,10 +69,10 @@ export const sendDataWithToken = (req, res) => {
   delete req.loggedInUser.password;
 
   req.loggedInUser.token = token;
-  log(token, req.loggedInUser);
   sendSuccess(res, 200, 'User', req.loggedInUser);
 };
 
+// check if email provided by the user already exist in the database
 export const emailExist = (req, res, next) => {
   Users.findOne({
     where: { email: req.body.email },
@@ -80,6 +84,8 @@ export const emailExist = (req, res, next) => {
     }
   });
 };
+
+// check if username provided by the user already exist in the database
 export const usernameExist = (req, res, next) => {
   Users.findOne({
     where: { username: req.body.username },
@@ -91,16 +97,19 @@ export const usernameExist = (req, res, next) => {
     }
   });
 };
+
+// create user record
 export const create = (req, res, next) => {
   Users.create(req.body)
     .then((user) => {
       req.idToFetchUser = user.dataValues.id;
       next();
     }).catch((error) => {
-      log(error);
-      serverError(res);
+      serverError(res, error);
     });
 };
+
+// get user record
 export const fetchUser = (req, res) => {
   Users.findOne({
     where: { id: req.idToFetchUser },
@@ -112,7 +121,62 @@ export const fetchUser = (req, res) => {
       sendFail(res, 404, 'user not found');
     }
   }).catch(error => {
-    log(error);
-    serverError(res);
+    serverError(res, error);
   });
+};
+
+// add recipe as a user's favorite recipe
+export const setFavRecipe = (req, res, next) => {
+  Users.findById(req.requestId)
+    .then(user => {
+      user.addFavRecipes(req.body.recipeId)
+      .then(() => {
+        next();
+      }).catch(error => {
+        serverError(res, error);
+      });
+    });
+};
+
+// get a user's favorite recipe from the dbase
+export const fetchFavRecipes = (req, res) => {
+  Users.findOne({
+    where: { id: req.requestId },
+    attributes: {
+      exclude: ['createdAt', 'updatedAt', 'password'],
+    },
+    include: [{
+      model: db.Recipes,
+      as: 'favRecipes',
+      attributes: {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+      through: {
+        attributes: [],
+      },
+      include: [{
+        model: db.Users,
+        attributes: {
+          exclude: ['createdAt', 'updatedAt', 'password'],
+        },
+      }],
+    }],
+  })
+  .then(userFavRecipes => {
+    sendSuccess(res, 200, 'User', userFavRecipes);
+  }).catch(error => {
+    serverError(res, error);
+  });
+};
+export const isIdValidUser = (req, res, next) => {
+  Users.findById(req.requestId)
+    .then(user => {
+      if (user) {
+        next();
+      } else {
+        sendFail(res, 404, 'User not found');
+      }
+    }).catch(error => {
+      serverError(res, error);
+    });
 };

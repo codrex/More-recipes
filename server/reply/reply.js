@@ -1,9 +1,10 @@
-const serverError = res => {
+const serverError = (res, error) => {
   res.status(500).send({
     status: 'fail',
     error: 'Server encountered an error',
   });
   res.end();
+  console.log(error);
 };
 const sendSuccess = (res, code, key = 'message', value) => {
   res.status(code).send({

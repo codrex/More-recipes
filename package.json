@@ -5,14 +5,14 @@
   "main": "app.js",
   "scripts": {
     "wp": "webpack-dev-server --hot --history-api-fallback --open",
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test": "cross-env NODE_ENV=test nyc mocha server/test/test.js ",
     "test:db": "set NODE_ENV=test:s&&sequelize db:migrate:undo:all&&sequelize db:migrate  && mocha --compilers js:babel-core/register --timeout 10000 server/test/test.js",
     "s:test": "set NODE_ENV=test:s&& mocha --compilers js:babel-core/register --timeout 10000 server/test/test.js",
     "migrate": "sequelize db:migrate:undo:all&&sequelize db:migrate",
     "start": "nodemon --exec babel-node server/bin/www",
     "coverage": "set NODE_ENV=test&&sequelize db:migrate:undo:all&&sequelize db:migrate&& cross-env NODE_ENV=test nyc mocha server/test/test.js",
     "shc": "start coverage/lcov-report/index.html",
-    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --compilers js:babel-core/register --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "nyc": {
     "require": [
@@ -41,7 +41,7 @@
     "react-redux": "^5.0.6",
     "react-transition-group": "^2.2.0",
     "redux": "^3.7.2",
-    "sequelize": "^3.30.2",
+    "sequelize": "^4.8.0",
     "sequelize-cli": "^2.7.0",
     "validate": "^3.0.1",
     "validate.js": "^0.11.1",
