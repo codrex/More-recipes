@@ -25,3 +25,5 @@ before_script:
 
 notifications:
   webhooks: https://coveralls.io/webhook repo_token=D1KMLZwoX449H7ufQwSs30jYLOTuvC6em
+
+after_success: npm run coverage
