@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-const secret = require('../config/config').secret;
+const secret = process.env.secret || 'andelabootcamprexogbemudiaosazuwa';
 
 const generateToken = (dataToencode) => jwt.sign(dataToencode, secret, { expiresIn: '2d' });
 
