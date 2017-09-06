@@ -1,11 +1,3 @@
-// {
-//     "extends": "airbnb",
-//     "installedESLint": true,
-//     "plugins": [
-//         "react"
-//     ]
-// }
-
 {
  "root": true,
  "extends": "airbnb-base",
