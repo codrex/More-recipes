@@ -10,8 +10,6 @@ import { verifyToken } from '../auth/auth';
 
 const usersRoute = express.Router();
 
-console.log('in user router');
-
 usersRoute.use((req, res, next) => {
   next();
 });
