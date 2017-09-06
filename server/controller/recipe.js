@@ -129,11 +129,7 @@ export const fetchAllRecipe = (req, res) => {
       },
     ],
   }).then(recipe => {
-    if (recipe) {
-      sendSuccess(res, 200, 'Recipes', recipe);
-    } else {
-      sendFail(res, 404, 'no recipe found');
-    }
+    sendSuccess(res, 200, 'Recipes', recipe);
   }).catch(() => {
     serverError(res);
   });
@@ -162,11 +158,7 @@ export const fetchRecipeByQuery = (req, res, next) => {
             },
     ],
   }).then(recipe => {
-    if (recipe) {
-      sendSuccess(res, 200, 'Recipes', recipe);
-    } else {
-      sendFail(res, 404, 'no recipe found');
-    }
+    sendSuccess(res, 200, 'Recipes', recipe);
   }).catch((error) => {
     serverError(res, error);
   });
@@ -189,11 +181,7 @@ export const fetchRecipeByUpVote = (req, res, next) => {
             },
     ],
   }).then(recipes => {
-    if (recipes) {
-      sendSuccess(res, 200, 'Recipes', recipes);
-    } else {
-      sendFail(res, 404, 'no recipe found');
-    }
+    sendSuccess(res, 200, 'Recipes', recipes);
   }).catch((error) => {
     serverError(res, error);
   });

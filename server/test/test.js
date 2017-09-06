@@ -528,6 +528,31 @@ describe('modify recipe', () => {
     ingredients: ['beans', 'rice', 'oil'],
     directions: ['step 1', 'step 2', 'step 3', 'step 4'],
   };
+  it('return 400 as status code when user send invalid data', done => {
+    request.put('/api/recipes/1')
+      .set('Authorization', token)
+      .send({
+        recipeName: 9845,
+        category: 'breakfast',
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 400 as status code when user send invalid data', done => {
+    request.put('/api/recipes/1')
+      .set('Authorization', token)
+      .send({
+        directions: [1, 2, 3],
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
   it('return 404 as status code when user did not create the recipe', done => {
     request.put('/api/recipes/1')
       .set('Authorization', token2)
@@ -616,6 +641,15 @@ describe('get all recipe', () => {
 describe('search for recipe by recipe name ', () => {
   it('return 200 as status code', done => {
     request.get('/api/recipes?search=beans+cake')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+  it('return 200 as status code', done => {
+    request.get('/api/recipes?search=bannana+drink')
       .set('Authorization', token)
       .end((err, res) => {
         expect(res.status).to.equal(200);

@@ -18,9 +18,6 @@ const validateRecipes = (obj) => validator(obj, constraint.createRecipeConstrain
 const validateId = (obj) => validator(obj, constraint.idConstraint);
 const validateLogin = (obj) => validator(obj, constraint.loginWithUsernameConstraint);
 const validateReview = (obj) => validator(obj, constraint.reviewConstraint);
-const validateVote = (obj) => validator(obj, constraint.voteConstraint);
-const validateAll = (obj, objConstraint) => validator(obj, objConstraint);
-
 const comparePwd = (hash, password) => bcrypt.compareSync(password, hash);
 
 // custom validator that check for space separated string
@@ -32,6 +29,7 @@ validate.validators.noSpace = (value) => {
   }
   return undefined;
 };
+
 // custom validator that check if a string has more than one word
 validate.validators.atLeastTwoWord = (value) => {
   if (typeof value === 'string') {
@@ -41,6 +39,7 @@ validate.validators.atLeastTwoWord = (value) => {
   }
   return undefined;
 };
+
 // custom validator to check if an array is an array of string
 validate.validators.stringArray = (value) => {
   if (Array.isArray(value)) {
@@ -52,24 +51,13 @@ validate.validators.stringArray = (value) => {
   return 'element is not an array';
 };
 
-// custom validator to check for type boolean
-validate.validators.boolean = (value) => {
-  if (typeof value === 'boolean') {
-    return undefined;
-  }
-  return 'must be a boolean (true or false) value';
-};
-
 export {
   validateLogin,
   validateSignup,
   validateRecipes,
   comparePwd,
-  validateAll,
   validate,
   constraint,
   validateId,
   validateReview,
-  validateVote,
 };
-
