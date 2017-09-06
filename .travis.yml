@@ -24,6 +24,6 @@ before_script:
 - sequelize db:migrate
 
 notifications:
-  webhooks: https://coveralls.io/webhook repo_token=D1KMLZwoX449H7ufQwSs30jYLOTuvC6em
+  webhooks: https://coveralls.io/webhook repo_token=IE0ObAuB2eSIWueuvaem8oevz4yYtTc59
 
 after_success: npm run coverage
