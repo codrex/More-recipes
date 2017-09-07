@@ -1,4 +1,4 @@
-import validate from 'validate';
+import validate from 'validate.js';
 import constraint from './constraints';
 import bcrypt from 'bcrypt-nodejs';
 
