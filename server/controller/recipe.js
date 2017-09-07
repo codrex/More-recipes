@@ -4,13 +4,31 @@ import { sendValidationError, serverError, sendSuccess, sendFail } from '../repl
 
 const Recipes = db.Recipes;
 
+export const parse = (req, res, next) => {
+  try {
+    if (typeof req.body.ingredients === 'string') {
+      req.body.ingredients = JSON.parse(req.body.ingredients);
+    }
+    try {
+      if (typeof req.body.directions === 'string') {
+        req.body.directions = JSON.parse(req.body.directions);
+      }
+    } catch (e) {
+      sendFail(res, 400, 'directions must be an array of string');
+    }
+    next();
+  } catch (e) {
+    sendFail(res, 400, 'ingredients must be an array of string');
+  }
+};
+
 // This function validates data gotten from the user
 // before creating a recipe.
 export const validateRecipe = (req, res, next) => {
   const recipes = {
     recipeName: req.body.recipeName,
     category: req.body.category,
-    ingredients: req.body.ingredients,
+    ingredients: (req.body.ingredients),
     directions: req.body.directions,
     UserId: req.requestId,
   };

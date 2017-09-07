@@ -8,7 +8,8 @@ import { validateRecipe, create,
          updateRecipe, fetchAllRecipe,
          fetchRecipeByQuery, setReview,
          fetchReview, updateVotes,
-         fetchVotes, fetchRecipeByUpVote, isRecipe } from '../controller/recipe';
+         fetchVotes, fetchRecipeByUpVote,
+         isRecipe, parse } from '../controller/recipe';
 import { createVote, countVote, voteValidation } from '../controller/vote';
 import { isIdValidUser } from '../controller/user';
 
@@ -19,13 +20,13 @@ recipesRoute.use(verifyToken, isIdValidUser, (req, res, next) => {
 });
 
 recipesRoute.route('/recipe')
-  .post(validateRecipe, create, fetchRecipe);
+  .post(parse, validateRecipe, create, fetchRecipe);
 
 recipesRoute.route('/')
   .get(fetchRecipeByQuery, fetchRecipeByUpVote, fetchAllRecipe);
 
 recipesRoute.route('/:id')
-  .put(idValidation, checkOwnship,
+  .put(parse, idValidation, checkOwnship,
        fetchForUpdate, validateUpdate, updateRecipe, fetchRecipe)
   .delete(idValidation, checkOwnship, deleteRecipe);
 
