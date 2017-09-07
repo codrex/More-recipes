@@ -1,5 +1,5 @@
 import db from '../models/index';
-import { validateRecipes, validateId } from '../validators/validator.js';
+import { validateRecipes, validateId } from '../validators/validator';
 import { sendValidationError, serverError, sendSuccess, sendFail } from '../reply/reply';
 
 const Recipes = db.Recipes;
@@ -69,17 +69,18 @@ export const fetchRecipe = (req, res) => {
   Recipes.findOne({
     where: { id: req.idToFetchRecipe || req.params.id },
     attributes: ['id', 'recipeName',
-               'category', 'ingredients',
-               'directions', 'upVotes',
-                'downVotes'],
+      'category', 'ingredients',
+      'directions', 'upVotes',
+      'downVotes'],
     include: [
-          { model: db.Users,
-            attributes: {
-              exclude: ['createdAt', 'updatedAt', 'password'],
-            },
-            },
+      {
+        model: db.Users,
+        attributes: {
+          exclude: ['createdAt', 'updatedAt', 'password'],
+        },
+      },
     ],
-  }).then(recipe => {
+  }).then((recipe) => {
     if (recipe) {
       sendSuccess(res, 200, 'Recipe', recipe.dataValues);
     } else {
@@ -95,10 +96,10 @@ export const fetchVotes = (req, res) => {
   Recipes.findOne({
     where: { id: req.idToFetchRecipe || req.params.id },
     attributes: ['id', 'upVotes', 'downVotes'],
-  }).then(recipe => {
+  }).then((recipe) => {
     sendSuccess(res, 200, 'Recipe', recipe.dataValues);
-  }).catch((error) => {
-    serverError(res, error);
+  }).catch(() => {
+    serverError(res);
   });
 };
 
@@ -106,9 +107,10 @@ export const fetchVotes = (req, res) => {
 export const fetchAllRecipe = (req, res) => {
   Recipes.findAll({
     attributes: ['id', 'recipeName',
-               'category', 'ingredients',
-               'directions', 'upVotes',
-                'downVotes'],
+      'category', 'ingredients',
+      'directions', 'upVotes',
+      'downVotes'
+    ],
     include: [
       { model: db.Users,
         attributes: {
@@ -128,7 +130,7 @@ export const fetchAllRecipe = (req, res) => {
         }],
       },
     ],
-  }).then(recipe => {
+  }).then((recipe) => {
     sendSuccess(res, 200, 'Recipes', recipe);
   }).catch(() => {
     serverError(res);
@@ -147,20 +149,22 @@ export const fetchRecipeByQuery = (req, res, next) => {
       ],
     },
     attributes: ['id', 'recipeName',
-               'category', 'ingredients',
-               'directions', 'upVotes',
-                'downVotes'],
-    include: [
-          { model: db.Users,
-            attributes: {
-              exclude: ['createdAt', 'updatedAt', 'password'],
-            },
-            },
+      'category', 'ingredients',
+      'directions', 'upVotes',
+      'downVotes'
     ],
-  }).then(recipe => {
+    include: [
+      {
+        model: db.Users,
+        attributes: {
+          exclude: ['createdAt', 'updatedAt', 'password'],
+        },
+      },
+    ],
+  }).then((recipe) => {
     sendSuccess(res, 200, 'Recipes', recipe);
-  }).catch((error) => {
-    serverError(res, error);
+  }).catch(() => {
+    serverError(res);
   });
 };
 // fetch recipes by upVotes in desending order and send it back to the user
@@ -174,16 +178,17 @@ export const fetchRecipeByUpVote = (req, res, next) => {
                'directions', 'upVotes',
                 'downVotes'],
     include: [
-          { model: db.Users,
-            attributes: {
-              exclude: ['createdAt', 'updatedAt', 'password'],
-            },
-            },
+      {
+        model: db.Users,
+        attributes: {
+          exclude: ['createdAt', 'updatedAt', 'password'],
+        },
+      },
     ],
-  }).then(recipes => {
+  }).then((recipes) => {
     sendSuccess(res, 200, 'Recipes', recipes);
-  }).catch((error) => {
-    serverError(res, error);
+  }).catch(() => {
+    serverError(res);
   });
 };
 
@@ -192,10 +197,10 @@ export const fetchForUpdate = (req, res, next) => {
   Recipes.findOne({
     where: { id: req.params.id },
     attributes: ['recipeName',
-               'category', 'ingredients',
-               'directions'],
+      'category', 'ingredients',
+      'directions'],
 
-  }).then(recipe => {
+  }).then((recipe) => {
     if (recipe) {
       req.recipe = recipe;
       next();
@@ -212,8 +217,6 @@ export const deleteRecipe = (req, res) => {
   Recipes.destroy({ where: { id: req.params.id } })
   .then(() => {
     sendSuccess(res, 200, 'success', {});
-  }).catch(() => {
-    sendFail(res, 400, 'Delete was unsuccessful');
   });
 };
 
@@ -222,21 +225,19 @@ export const updateRecipe = (req, res, next) => {
   Recipes.update(req.body, { where: { id: req.params.id } })
   .then(() => {
     next();
-  }).catch(() => {
-    sendFail(res, 400, 'Delete was unsuccessful');
   });
 };
 
 // checking if a requesting id is the id that created the post
 export const checkOwnship = (req, res, next) => {
   Recipes.findById(parseInt(req.params.id, 10))
-    .then(recipe => {
+    .then((recipe) => {
       if (!recipe) {
         sendFail(res, 404, 'Recipe not found');
         return;
       }
       recipe.getUser()
-        .then(user => {
+        .then((user) => {
           if (user && user.id === req.requestId) {
             next();
           } else {
@@ -251,21 +252,21 @@ export const checkOwnship = (req, res, next) => {
 // checking if recipe exist in dbase
 export const checkRecipe = (req, res, next) => {
   Recipes.findById(req.params.id || req.body.recipeId)
-    .then(recips => {
+    .then((recips) => {
       if (recips) {
         next();
       } else {
         sendFail(res, 404, 'Recipe not found');
       }
-    }).catch(error => {
-      serverError(res, error);
+    }).catch(() => {
+      serverError(res);
     });
 };
 
 // set association between recipe and review
 export const setReview = (req, res, next) => {
   Recipes.findById(req.params.id)
-    .then(recipe => {
+    .then((recipe) => {
       if (!recipe) {
         return sendFail(res, 404, 'Recipe not found');
       }
@@ -273,8 +274,8 @@ export const setReview = (req, res, next) => {
         .then(() => {
           next();
         });
-    }).catch(error => {
-      serverError(res, error);
+    }).catch(() => {
+      serverError(res);
     });
 };
 // get reviews on a recipe
@@ -290,17 +291,18 @@ export const fetchReview = (req, res) => {
         exclude: ['createdAt', 'updatedAt'],
       },
       include: [{
-        model: db.Users, as: 'Reviewer',
+        model: db.Users,
+        as: 'Reviewer',
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'password'],
         },
       }],
     }],
   })
-  .then(recipeReviews => {
+  .then((recipeReviews) => {
     sendSuccess(res, 200, 'Recipe', recipeReviews);
-  }).catch(error => {
-    serverError(res, error);
+  }).catch(() => {
+    serverError(res);
   });
 };
 // updates upvote and downvote in the recipe table
@@ -308,8 +310,20 @@ export const updateVotes = (req, res, next) => {
   Recipes.update(req.body, { where: { id: req.params.id } })
   .then(() => {
     next();
-  }).catch(error => {
-    serverError(res, error);
+  }).catch(() => {
+    serverError(res);
+  });
+};
+export const isRecipe = (req, res, next) => {
+  Recipes.findById(req.params.id)
+  .then((recipe) => {
+    if (recipe) {
+      next();
+    } else {
+      sendFail(res, 404, 'Recipe not found');
+    }
+  }).catch(() => {
+    serverError(res);
   });
 };
 

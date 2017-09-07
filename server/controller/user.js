@@ -1,7 +1,8 @@
 import db from '../models/index';
-import { validateSignup, validateLogin, comparePwd } from '../validators/validator.js';
+import { validateSignup, validateLogin, comparePwd } from '../validators/validator';
 import { sendValidationError, serverError, sendSuccess, sendFail } from '../reply/reply';
 import { generateToken } from '../auth/auth';
+
 const Users = db.Users;
 
 // This function validates signup inputs
@@ -43,7 +44,7 @@ export const authUser = (req, res, next) => {
     },
     attributes: ['id', 'email', 'username', 'fullname', 'password'],
 
-  }).then(user => {
+  }).then((user) => {
     if (!user) {
       sendFail(res, 400, 'invalid username or password');
       return;
@@ -56,8 +57,8 @@ export const authUser = (req, res, next) => {
     } else {
       sendFail(res, 400, 'invalid username or password');
     }
-  }).catch(error => {
-    serverError(res, error);
+  }).catch(() => {
+    serverError(res);
   });
 };
 
@@ -76,7 +77,7 @@ export const sendDataWithToken = (req, res) => {
 export const emailExist = (req, res, next) => {
   Users.findOne({
     where: { email: req.body.email },
-  }).then(user => {
+  }).then((user) => {
     if (user) {
       sendFail(res, 400, 'This email already exist in our system');
     } else {
@@ -89,7 +90,7 @@ export const emailExist = (req, res, next) => {
 export const usernameExist = (req, res, next) => {
   Users.findOne({
     where: { username: req.body.username },
-  }).then(user => {
+  }).then((user) => {
     if (user) {
       sendFail(res, 400, 'This username already exist in our system');
     } else {
@@ -104,8 +105,8 @@ export const create = (req, res, next) => {
     .then((user) => {
       req.idToFetchUser = user.dataValues.id;
       next();
-    }).catch((error) => {
-      serverError(res, error);
+    }).catch(() => {
+      serverError(res);
     });
 };
 
@@ -114,26 +115,26 @@ export const fetchUser = (req, res) => {
   Users.findOne({
     where: { id: req.idToFetchUser },
     attributes: ['id', 'email', 'username'],
-  }).then(user => {
+  }).then((user) => {
     if (user) {
       sendSuccess(res, 200, 'User', user.dataValues);
     } else {
       sendFail(res, 404, 'user not found');
     }
-  }).catch(error => {
-    serverError(res, error);
+  }).catch(() => {
+    serverError(res);
   });
 };
 
 // add recipe as a user's favorite recipe
 export const setFavRecipe = (req, res, next) => {
   Users.findById(req.requestId)
-    .then(user => {
+    .then((user) => {
       user.addFavRecipes(req.body.recipeId)
       .then(() => {
         next();
-      }).catch(error => {
-        serverError(res, error);
+      }).catch(() => {
+        serverError(res);
       });
     });
 };
@@ -163,20 +164,20 @@ export const fetchFavRecipes = (req, res) => {
     }],
   })
   .then(userFavRecipes => {
-    sendSuccess(res, 200, 'User', userFavRecipes);
-  }).catch(error => {
-    serverError(res, error);
+    sendSuccess((res), 200, 'User', userFavRecipes);
+  }).catch(() => {
+    serverError(res);
   });
 };
 export const isIdValidUser = (req, res, next) => {
   Users.findById(req.requestId)
-    .then(user => {
+    .then((user) => {
       if (user) {
         next();
       } else {
         sendFail(res, 404, 'User not found');
       }
-    }).catch(error => {
-      serverError(res, error);
+    }).catch(() => {
+      serverError(res);
     });
 };

@@ -1,5 +1,5 @@
 import db from '../models/index';
-import { validateReview } from '../validators/validator.js';
+import { validateReview } from '../validators/validator';
 import { sendValidationError, serverError } from '../reply/reply';
 
 const RecipeReviews = db.RecipeReviews;

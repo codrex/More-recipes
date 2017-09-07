@@ -1,9 +1,10 @@
 import jwt from 'jsonwebtoken';
+
 const secret = process.env.secret || 'andelabootcamprexogbemudiaosazuwa';
 
-const generateToken = (dataToencode) => jwt.sign(dataToencode, secret, { expiresIn: '2d' });
+const generateToken = dataToencode => jwt.sign(dataToencode, secret, { expiresIn: '2d' });
 
-const getToken = (req) => req.body.Authorization || req.query.Authorization ||
+const getToken = req => req.body.Authorization || req.query.Authorization ||
 req.headers.authorization;
 
 const verifyToken = (req, res, next) => {
