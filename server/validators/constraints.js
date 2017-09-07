@@ -77,10 +77,6 @@
      username: objects.username,
      password: objects.password,
    },
-   loginWithEmailConstraint: {
-     email: objects.email,
-     password: objects.password,
-   },
    signupConstraint: {
      username: objects.username,
      password: objects.password,
@@ -91,7 +87,7 @@
      category: objects.name,
      ingredients: objects.array,
      directions: objects.array,
-     UserId: objects.id,
+     OwnerId: objects.id,
    },
    idConstraint: {
      id: objects.id,

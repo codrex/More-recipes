@@ -157,6 +157,7 @@ export const fetchFavRecipes = (req, res) => {
       },
       include: [{
         model: db.Users,
+        as: 'Owner',
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'password'],
         },

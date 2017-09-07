@@ -18,21 +18,25 @@ const recipesRoute = express.Router();
 recipesRoute.use(verifyToken, isIdValidUser, (req, res, next) => {
   next();
 });
-
+// add recipe route
 recipesRoute.route('/recipe')
   .post(parse, validateRecipe, create, fetchRecipe);
 
+// get recipe route
 recipesRoute.route('/')
   .get(fetchRecipeByQuery, fetchRecipeByUpVote, fetchAllRecipe);
 
+// Update and delete recipe route
 recipesRoute.route('/:id')
   .put(parse, idValidation, checkOwnship,
        fetchForUpdate, validateUpdate, updateRecipe, fetchRecipe)
   .delete(idValidation, checkOwnship, deleteRecipe);
 
+// route to post reviews on a recipe
 recipesRoute.route('/:id/reviews')
   .post(idValidation, reviewValidation, createReview, setReview, fetchReview);
 
+//  route to upvote or down vote a recipe
 recipesRoute.route('/:id/vote')
   .put(voteValidation, isRecipe, createVote, countVote, updateVotes, fetchVotes);
 

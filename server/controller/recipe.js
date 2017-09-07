@@ -30,7 +30,7 @@ export const validateRecipe = (req, res, next) => {
     category: req.body.category,
     ingredients: (req.body.ingredients),
     directions: req.body.directions,
-    UserId: req.requestId,
+    OwnerId: req.requestId,
   };
   const validate = validateRecipes(recipes);
   if (validate.valid) {
@@ -49,7 +49,7 @@ export const validateUpdate = (req, res, next) => {
     category: req.body.category || req.recipe.category,
     ingredients: req.body.ingredients || req.recipe.ingredients,
     directions: req.body.directions || req.recipe.directions,
-    UserId: req.requestId,
+    OwnerId: req.requestId,
   };
   const validate = validateRecipes(recipes);
   if (validate.valid) {
@@ -93,6 +93,7 @@ export const fetchRecipe = (req, res) => {
     include: [
       {
         model: db.Users,
+        as: 'Owner',
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'password'],
         },
@@ -103,6 +104,7 @@ export const fetchRecipe = (req, res) => {
       sendSuccess(res, 200, 'Recipe', recipe.dataValues);
     } else {
       sendFail(res, 404, 'recipe not found');
+      console.log('error');
     }
   }).catch(() => {
     serverError(res);
@@ -131,6 +133,7 @@ export const fetchAllRecipe = (req, res) => {
     ],
     include: [
       { model: db.Users,
+        as: 'Owner',
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'password'],
         },
@@ -174,6 +177,7 @@ export const fetchRecipeByQuery = (req, res, next) => {
     include: [
       {
         model: db.Users,
+        as: 'Owner',
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'password'],
         },
@@ -198,6 +202,7 @@ export const fetchRecipeByUpVote = (req, res, next) => {
     include: [
       {
         model: db.Users,
+        as: 'Owner',
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'password'],
         },
@@ -254,7 +259,7 @@ export const checkOwnship = (req, res, next) => {
         sendFail(res, 404, 'Recipe not found');
         return;
       }
-      recipe.getUser()
+      recipe.getOwner()
         .then((user) => {
           if (user && user.id === req.requestId) {
             next();
@@ -339,6 +344,7 @@ export const isRecipe = (req, res, next) => {
       next();
     } else {
       sendFail(res, 404, 'Recipe not found');
+      console.log('error', recipe);
     }
   }).catch(() => {
     serverError(res);
