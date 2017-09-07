@@ -112,10 +112,15 @@
      },
    },
    voteConstraint: {
+     id: objects.id,
      vote: {
        presence: true,
-       boolean: true,
-     },
+       format: {
+         pattern: '[a-zA-Z ]+',
+         flags: 'i',
+         message: 'can only contain alphabet',
+       },
+     }
    },
  };
 

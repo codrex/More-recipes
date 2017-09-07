@@ -2,7 +2,7 @@
 import { expect } from 'chai';
 import supertest from 'supertest';
 import { generateToken } from '../auth/auth';
-import app from '../bin/www.js';
+import app from '../bin/www';
 
 const request = supertest(app);
 let token = '';
@@ -412,8 +412,35 @@ describe('vote a recipe', () => {
         done();
       });
   });
+  it('return 400 as status code when for invalid recipe id', done => {
+    request.put('/api/v1/recipes/1lk/vote?vote=upvote')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 400 as status code when for vote type', done => {
+    request.put('/api/v1/recipes/1/vote?vote=1')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 404 as status code when recipe not found', done => {
+    request.put('/api/v1/recipes/100/vote?vote=upvote')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
   it('return 200 as status code when user upvote a recipe for the first time', done => {
-    request.put('/api/v1/recipes/1/upvote')
+    request.put('/api/v1/recipes/1/vote?vote=upvote')
       .set('Authorization', token)
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -423,7 +450,7 @@ describe('vote a recipe', () => {
       });
   });
   it('return 200 as status code when user hits upvote route for the second time', done => {
-    request.put('/api/v1/recipes/1/upvote')
+    request.put('/api/v1/recipes/1/vote?vote=upvote')
       .set('Authorization', token)
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -433,7 +460,7 @@ describe('vote a recipe', () => {
       });
   });
   it('return 200 as status code when user hits upvote route for the third time', done => {
-    request.put('/api/v1/recipes/1/upvote')
+    request.put('/api/v1/recipes/1/vote?vote=upvote')
       .set('Authorization', token)
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -443,7 +470,7 @@ describe('vote a recipe', () => {
       });
   });
   it('return 200 as status code when another user downvote a recipe', done => {
-    request.put('/api/v1/recipes/1/downvote')
+    request.put('/api/v1/recipes/1/vote?vote=downvote')
       .set('Authorization', token2)
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -454,7 +481,7 @@ describe('vote a recipe', () => {
   });
   it(`return 200 as status code when another user hits
   the downvote recipe route for the second time`, done => {
-    request.put('/api/v1/recipes/1/downvote')
+    request.put('/api/v1/recipes/1/vote?vote=downvote')
       .set('Authorization', token2)
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -465,7 +492,7 @@ describe('vote a recipe', () => {
   });
   it(`return 200 as status code when another user hits
   the downvote recipe route for the third time`, done => {
-    request.put('/api/v1/recipes/1/downvote')
+    request.put('/api/v1/recipes/1/vote?vote=downvote')
       .set('Authorization', token2)
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -475,7 +502,7 @@ describe('vote a recipe', () => {
       });
   });
   it('return 200 as status code when a user changes from downvote to upvote', done => {
-    request.put('/api/v1/recipes/1/upvote')
+    request.put('/api/v1/recipes/1/vote?vote=upvote')
       .set('Authorization', token2)
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -498,7 +525,7 @@ describe('vote a recipe', () => {
     });
   });
   it('return 200 as status code when a user changes from upvote to downvote', done => {
-    request.put('/api/v1/recipes/1/downvote')
+    request.put('/api/v1/recipes/1/vote?vote=downvote')
       .set('Authorization', token)
       .end((err, res) => {
         expect(res.status).to.equal(200);

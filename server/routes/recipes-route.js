@@ -8,8 +8,8 @@ import { validateRecipe, create,
          updateRecipe, fetchAllRecipe,
          fetchRecipeByQuery, setReview,
          fetchReview, updateVotes,
-         fetchVotes, fetchRecipeByUpVote } from '../controller/recipe';
-import { createDownVote, createUpVote, countVote } from '../controller/vote';
+         fetchVotes, fetchRecipeByUpVote, isRecipe } from '../controller/recipe';
+import { createVote, countVote, voteValidation } from '../controller/vote';
 import { isIdValidUser } from '../controller/user';
 
 const recipesRoute = express.Router();
@@ -32,11 +32,8 @@ recipesRoute.route('/:id')
 recipesRoute.route('/:id/reviews')
   .post(idValidation, reviewValidation, createReview, setReview, fetchReview);
 
-recipesRoute.route('/:id/upvote')
-  .put(idValidation, createUpVote, countVote, updateVotes, fetchVotes);
-
-recipesRoute.route('/:id/downvote')
-  .put(idValidation, createDownVote, countVote, updateVotes, fetchVotes);
+recipesRoute.route('/:id/vote')
+  .put(voteValidation, isRecipe, createVote, countVote, updateVotes, fetchVotes);
 
 
 export default recipesRoute;
