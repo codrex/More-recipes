@@ -10,5 +10,12 @@ route.use((req, res, next) => {
 
 route.use('/users/', usersRouter);
 route.use('/recipes/', recipesRouter);
+route.use('/', (req, res) => {
+  res.status(404).send({
+    status: 'fail',
+    message: 'Route was not found'
+  });
+});
+
 
 export default route;

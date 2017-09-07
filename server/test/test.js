@@ -9,9 +9,48 @@ let token = '';
 let token2 = '';
 const deletedUser = generateToken({ id: 100 });
 
-// Create account test
+// root path test
 let testData = {};
 let regData = {};
+
+describe('Root route', () => {
+  it('return 200 as status code', done => {
+    request.post('/')
+      .send(testData)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+  });
+  it('return 404 as status code', done => {
+    request.post('/api/v1/register')
+      .send(testData)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 403 as status code', done => {
+    request.post('/api/v1/recipes/')
+      .send(testData)
+      .end((err, res) => {
+        expect(res.status).to.equal(403);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+  it('return 404 as status code', done => {
+    request.post('/api/v1/users/')
+      .send(testData)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+  });
+});
 
 describe('User registration', () => {
   beforeEach(() => {
