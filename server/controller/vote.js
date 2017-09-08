@@ -17,8 +17,14 @@ export const voteValidation = (req, res, next) => {
     sendFail(res, 400, validate.error);
   }
 };
-
-export const createVote = (req, res, next) => {
+const updateVote = (voteInstance, voteData, next) => {
+  voteData.id = voteInstance.dataValues.id;
+  voteInstance.update(voteData, { fields: ['id', 'upVote', 'downVote'] })
+    .then(() => {
+      next();
+    });
+};
+export const VoteHandler = (req, res, next) => {
   const voteType = req.query.vote;
   const voteData = { upVote: voteType === 'upvote', downVote: voteType === 'downvote' };
   Votes.findOne(
@@ -27,7 +33,7 @@ export const createVote = (req, res, next) => {
         voterId: req.requestId,
         RecipeId: req.params.id,
       }
-    }).then(vote => {
+    }).then((vote) => {
       voteData.voterId = req.requestId;
       voteData.RecipeId = req.params.id;
       if (!vote) {
@@ -37,17 +43,9 @@ export const createVote = (req, res, next) => {
       });
       } else {
         if (vote.dataValues.downVote && voteType === 'upvote') {
-          voteData.id = vote.dataValues.id;
-          vote.update(voteData, { fields: ['id', 'upVote', 'downVote'] })
-            .then(() => {
-              next();
-            });
+          updateVote(vote, voteData, next);
         } else if (vote.dataValues.upVote && voteType === 'downvote') {
-          voteData.id = vote.dataValues.id;
-          vote.update(voteData, { fields: ['id', 'upVote', 'downVote'] })
-            .then(() => {
-              next();
-            });
+          updateVote(vote, voteData, next);
         } else {
           vote.destroy({ force: true }).then(() => {
             next();
@@ -61,14 +59,14 @@ export const createVote = (req, res, next) => {
 
 export const countVote = (req, res, next) => {
   Votes.count({ where: { upVote: true, RecipeId: req.params.id } })
-  .then(upvote => {
+  .then((upvote) => {
     req.body.upVotes = upvote;
     Votes.count({ where: { downVote: true, RecipeId: req.params.id } })
-    .then(downvote => {
+    .then((downvote) => {
       req.body.downVotes = downvote;
       next();
     });
-  }).catch(error => {
+  }).catch((error) => {
     serverError(res, error);
   });
 };

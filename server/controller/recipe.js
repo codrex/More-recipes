@@ -4,23 +4,27 @@ import { sendValidationError, serverError, sendSuccess, sendFail } from '../repl
 
 const Recipes = db.Recipes;
 
+const validationHandler = (obj, validator, req, res, next) => {
+  const validate = validator(obj);
+  if (validate.valid) {
+    req.body = obj;
+    next();
+  } else {
+    sendValidationError(res, validate);
+  }
+};
+
 // This function validates data gotten from the user
 // before creating a recipe.
 export const validateRecipe = (req, res, next) => {
   const recipes = {
     recipeName: req.body.recipeName,
     category: req.body.category,
-    ingredients: req.body.ingredients,
+    ingredients: (req.body.ingredients),
     directions: req.body.directions,
-    UserId: req.requestId,
+    OwnerId: req.requestId,
   };
-  const validate = validateRecipes(recipes);
-  if (validate.valid) {
-    req.body = recipes;
-    next();
-  } else {
-    sendValidationError(res, validate);
-  }
+  validationHandler(recipes, validateRecipes, req, res, next);
 };
 
 // This function validates data gotten from the user
@@ -31,15 +35,9 @@ export const validateUpdate = (req, res, next) => {
     category: req.body.category || req.recipe.category,
     ingredients: req.body.ingredients || req.recipe.ingredients,
     directions: req.body.directions || req.recipe.directions,
-    UserId: req.requestId,
+    OwnerId: req.requestId,
   };
-  const validate = validateRecipes(recipes);
-  if (validate.valid) {
-    req.body = recipes;
-    next();
-  } else {
-    sendValidationError(res, validate);
-  }
+  validationHandler(recipes, validateRecipes, req, res, next);
 };
 
 // This function validate recipe id.
@@ -73,11 +71,23 @@ export const fetchRecipe = (req, res) => {
       'directions', 'upVotes',
       'downVotes'],
     include: [
-      {
-        model: db.Users,
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'password'],
+        { model: db.Users,
+          as: 'Owner',
+          attributes: {
+            exclude: ['createdAt', 'updatedAt', 'password'],
+          },
         },
+      {
+        model: db.RecipeReviews,
+        attributes: {
+          exclude: ['createdAt', 'updatedAt'],
+        },
+        include: [{
+          model: db.Users, as: 'Reviewer',
+          attributes: {
+            exclude: ['createdAt', 'updatedAt', 'password'],
+          },
+        }],
       },
     ],
   }).then((recipe) => {
@@ -111,25 +121,6 @@ export const fetchAllRecipe = (req, res) => {
       'directions', 'upVotes',
       'downVotes'
     ],
-    include: [
-      { model: db.Users,
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'password'],
-        },
-      },
-      {
-        model: db.RecipeReviews,
-        attributes: {
-          exclude: ['createdAt', 'updatedAt'],
-        },
-        include: [{
-          model: db.Users, as: 'Reviewer',
-          attributes: {
-            exclude: ['createdAt', 'updatedAt', 'password'],
-          },
-        }],
-      },
-    ],
   }).then((recipe) => {
     sendSuccess(res, 200, 'Recipes', recipe);
   }).catch(() => {
@@ -138,7 +129,7 @@ export const fetchAllRecipe = (req, res) => {
 };
 
 // fetch recipes by search query from dbase and send it back to the user
-export const fetchRecipeByQuery = (req, res, next) => {
+export const fetchAllBySearch = (req, res, next) => {
   if (req.query.search === undefined) return next();
   Recipes.findAll({
     limit: 10,
@@ -153,14 +144,7 @@ export const fetchRecipeByQuery = (req, res, next) => {
       'directions', 'upVotes',
       'downVotes'
     ],
-    include: [
-      {
-        model: db.Users,
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'password'],
-        },
-      },
-    ],
+
   }).then((recipe) => {
     sendSuccess(res, 200, 'Recipes', recipe);
   }).catch(() => {
@@ -174,17 +158,9 @@ export const fetchRecipeByUpVote = (req, res, next) => {
     limit: 10,
     order: [['upVotes', 'DESC']],
     attributes: ['id', 'recipeName',
-               'category', 'ingredients',
-               'directions', 'upVotes',
-                'downVotes'],
-    include: [
-      {
-        model: db.Users,
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'password'],
-        },
-      },
-    ],
+      'category', 'ingredients',
+      'directions', 'upVotes',
+      'downVotes'],
   }).then((recipes) => {
     sendSuccess(res, 200, 'Recipes', recipes);
   }).catch(() => {
@@ -220,14 +196,6 @@ export const deleteRecipe = (req, res) => {
   });
 };
 
-// Update a recipe
-export const updateRecipe = (req, res, next) => {
-  Recipes.update(req.body, { where: { id: req.params.id } })
-  .then(() => {
-    next();
-  });
-};
-
 // checking if a requesting id is the id that created the post
 export const checkOwnship = (req, res, next) => {
   Recipes.findById(parseInt(req.params.id, 10))
@@ -236,7 +204,7 @@ export const checkOwnship = (req, res, next) => {
         sendFail(res, 404, 'Recipe not found');
         return;
       }
-      recipe.getUser()
+      recipe.getOwner()
         .then((user) => {
           if (user && user.id === req.requestId) {
             next();
@@ -305,15 +273,7 @@ export const fetchReview = (req, res) => {
     serverError(res);
   });
 };
-// updates upvote and downvote in the recipe table
-export const updateVotes = (req, res, next) => {
-  Recipes.update(req.body, { where: { id: req.params.id } })
-  .then(() => {
-    next();
-  }).catch(() => {
-    serverError(res);
-  });
-};
+
 export const isRecipe = (req, res, next) => {
   Recipes.findById(req.params.id)
   .then((recipe) => {
@@ -327,3 +287,29 @@ export const isRecipe = (req, res, next) => {
   });
 };
 
+export const parse = (req, res, next) => {
+  try {
+    if (typeof req.body.ingredients === 'string') {
+      req.body.ingredients = JSON.parse(req.body.ingredients);
+    }
+    try {
+      if (typeof req.body.directions === 'string') {
+        req.body.directions = JSON.parse(req.body.directions);
+      }
+    } catch (e) {
+      sendFail(res, 400, 'directions must be an array of string');
+    }
+    next();
+  } catch (e) {
+    sendFail(res, 400, 'ingredients must be an array of string');
+  }
+};
+
+export const update = (req, res, next) => {
+  Recipes.update(req.body, { where: { id: req.params.id } })
+  .then(() => {
+    next();
+  }).catch(() => {
+    serverError(res);
+  });
+};

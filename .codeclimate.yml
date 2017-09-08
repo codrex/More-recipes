@@ -18,4 +18,6 @@ exclude_paths:
   - "node_modules/"
   - "template/*"
   - "server/test"
-  - "migrations/"
+  - "server/migrations/"
+  - "server/validators/constraints"
+  - "server/reply/"

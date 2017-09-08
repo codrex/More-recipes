@@ -14,10 +14,10 @@ export const reviewValidation = (req, res, next) => {
 };
 export const createReview = (req, res, next) => {
   RecipeReviews.create({ review: req.body.review, ReviewerId: req.requestId })
-    .then(review => {
+    .then((review) => {
       req.reviewId = review.dataValues.id;
       next();
-    }).catch((error) => {
-      serverError(res, error);
+    }).catch(() => {
+      serverError(res);
     });
 };

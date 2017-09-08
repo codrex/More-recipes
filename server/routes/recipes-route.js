@@ -5,11 +5,11 @@ import { validateRecipe, create,
         fetchRecipe, idValidation,
         deleteRecipe, checkOwnship,
         validateUpdate, fetchForUpdate,
-         updateRecipe, fetchAllRecipe,
-         fetchRecipeByQuery, setReview,
-         fetchReview, updateVotes,
-         fetchVotes, fetchRecipeByUpVote, isRecipe } from '../controller/recipe';
-import { createVote, countVote, voteValidation } from '../controller/vote';
+         fetchAllRecipe, fetchAllBySearch,
+         setReview, fetchReview,
+         fetchVotes, fetchRecipeByUpVote,
+         isRecipe, parse, update } from '../controller/recipe';
+import { VoteHandler, countVote, voteValidation } from '../controller/vote';
 import { isIdValidUser } from '../controller/user';
 
 const recipesRoute = express.Router();
@@ -17,23 +17,28 @@ const recipesRoute = express.Router();
 recipesRoute.use(verifyToken, isIdValidUser, (req, res, next) => {
   next();
 });
-
+// add recipe route
 recipesRoute.route('/recipe')
-  .post(validateRecipe, create, fetchRecipe);
+  .post(parse, validateRecipe, create, fetchRecipe);
 
+// get recipes route
 recipesRoute.route('/')
-  .get(fetchRecipeByQuery, fetchRecipeByUpVote, fetchAllRecipe);
+  .get(fetchAllBySearch, fetchRecipeByUpVote, fetchAllRecipe);
 
+// Update and delete recipe route
 recipesRoute.route('/:id')
-  .put(idValidation, checkOwnship,
-       fetchForUpdate, validateUpdate, updateRecipe, fetchRecipe)
-  .delete(idValidation, checkOwnship, deleteRecipe);
+  .put(parse, idValidation, checkOwnship,
+       fetchForUpdate, validateUpdate, update, fetchRecipe)
+  .delete(idValidation, checkOwnship, deleteRecipe)
+  .get(idValidation, fetchRecipe);
 
+// route to post reviews on a recipe
 recipesRoute.route('/:id/reviews')
   .post(idValidation, reviewValidation, createReview, setReview, fetchReview);
 
+//  route to upvote or down vote a recipe
 recipesRoute.route('/:id/vote')
-  .put(voteValidation, isRecipe, createVote, countVote, updateVotes, fetchVotes);
+  .put(voteValidation, isRecipe, VoteHandler, countVote, update, fetchVotes);
 
 
 export default recipesRoute;

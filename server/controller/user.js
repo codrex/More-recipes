@@ -73,30 +73,27 @@ export const sendDataWithToken = (req, res) => {
   sendSuccess(res, 200, 'User', req.loggedInUser);
 };
 
-// check if email provided by the user already exist in the database
-export const emailExist = (req, res, next) => {
-  Users.findOne({
-    where: { email: req.body.email },
-  }).then((user) => {
+const exist = (where, req, res, next, errorMsg) => {
+  Users.findOne({ where }).then((user) => {
     if (user) {
-      sendFail(res, 400, 'This email already exist in our system');
+      sendFail(res, 400, errorMsg);
     } else {
       next();
     }
   });
 };
+// check if email provided by the user already exist in the database
+export const emailExist = (req, res, next) => {
+  const where = { email: req.body.email };
+  const errorMsg = 'This email already exist in our system';
+  exist(where, req, res, next, errorMsg);
+};
 
 // check if username provided by the user already exist in the database
 export const usernameExist = (req, res, next) => {
-  Users.findOne({
-    where: { username: req.body.username },
-  }).then((user) => {
-    if (user) {
-      sendFail(res, 400, 'This username already exist in our system');
-    } else {
-      next();
-    }
-  });
+  const where = { username: req.body.username };
+  const errorMsg = 'This username already exist in our system';
+  exist(where, req, res, next, errorMsg);
 };
 
 // create user record
@@ -157,6 +154,7 @@ export const fetchFavRecipes = (req, res) => {
       },
       include: [{
         model: db.Users,
+        as: 'Owner',
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'password'],
         },

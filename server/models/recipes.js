@@ -19,14 +19,19 @@ module.exports = (sequelize, DataTypes) => {
     upVotes: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
-      allowNull: true,
+      allowNull: false,
     },
     downVotes: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
-      allowNull: true,
+      allowNull: false,
     },
-    UserId: {
+    views: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+      allowNull: false,
+    },
+    OwnerId: {
       allowNull: true,
       type: DataTypes.INTEGER,
     },
