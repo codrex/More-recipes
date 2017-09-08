@@ -19,5 +19,5 @@ exclude_paths:
   - "template/*"
   - "server/test"
   - "server/migrations/"
-  - "server/validators/constraints"
+  - "server/validators"
   - "server/reply/"
