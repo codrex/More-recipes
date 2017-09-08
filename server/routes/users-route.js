@@ -1,7 +1,6 @@
 import express from 'express';
 import { validateSignupData,
         create, fetchUser,
-        usernameExist, emailExist,
          validateLoginData, authUser,
          sendDataWithToken, setFavRecipe,
         fetchFavRecipes } from '../controller/user';

@@ -192,7 +192,7 @@ export const fetchForUpdate = (req, res, next) => {
 export const deleteRecipe = (req, res) => {
   Recipes.destroy({ where: { id: req.params.id } })
   .then(() => {
-    sendSuccess(res, 200, 'success', {});
+    sendSuccess(res, 200, 'success', 'Recipe deleted');
   });
 };
 
@@ -285,23 +285,6 @@ export const isRecipe = (req, res, next) => {
   }).catch(() => {
     serverError(res);
   });
-};
-
-export const parse = (req, res, next) => {
-  const func = (string) => {
-    if (typeof string === 'string') return JSON.parse(req.body.ingredients);
-  };
-  try {
-    func(req.body.ingredients);
-    try {
-      func(req.body.directions);
-    } catch (e) {
-      sendFail(res, 400, 'directions must be an array of string');
-    }
-    next();
-  } catch (e) {
-    sendFail(res, 400, 'ingredients must be an array of string');
-  }
 };
 
 export const update = (req, res, next) => {
