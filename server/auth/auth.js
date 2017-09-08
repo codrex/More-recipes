@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-
+import { sendFail } from '../reply/reply';
 const secret = process.env.secret || 'andelabootcamprexogbemudiaosazuwa';
 
 const generateToken = dataToencode => jwt.sign(dataToencode, secret, { expiresIn: '2d' });
@@ -12,22 +12,14 @@ const verifyToken = (req, res, next) => {
   if (token) {
     jwt.verify(token, secret, (err, decoded) => {
       if (err) {
-        res.status(401).send({
-          status: 'fail',
-          error: err.message,
-        });
-        res.end();
+        sendFail(res, 401, err.message);
         return;
       }
       req.requestId = decoded.id;
       next();
     });
   } else {
-    res.status(403).send({
-      status: 'fail',
-      error: 'not allowed to access path without authorization',
-    });
-    res.end();
+    sendFail(res, 403, 'not allowed to access path without authorization');
   }
 };
 

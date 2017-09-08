@@ -5,12 +5,11 @@ import { validateRecipe, create,
         fetchRecipe, idValidation,
         deleteRecipe, checkOwnship,
         validateUpdate, fetchForUpdate,
-         updateRecipe, fetchAllRecipe,
-         fetchRecipeByQuery, setReview,
-         fetchReview, updateVotes,
+         fetchAllRecipe, fetchAllBySearch,
+         setReview, fetchReview,
          fetchVotes, fetchRecipeByUpVote,
-         isRecipe, parse } from '../controller/recipe';
-import { createVote, countVote, voteValidation } from '../controller/vote';
+         isRecipe, parse, update } from '../controller/recipe';
+import { VoteHandler, countVote, voteValidation } from '../controller/vote';
 import { isIdValidUser } from '../controller/user';
 
 const recipesRoute = express.Router();
@@ -22,15 +21,16 @@ recipesRoute.use(verifyToken, isIdValidUser, (req, res, next) => {
 recipesRoute.route('/recipe')
   .post(parse, validateRecipe, create, fetchRecipe);
 
-// get recipe route
+// get recipes route
 recipesRoute.route('/')
-  .get(fetchRecipeByQuery, fetchRecipeByUpVote, fetchAllRecipe);
+  .get(fetchAllBySearch, fetchRecipeByUpVote, fetchAllRecipe);
 
 // Update and delete recipe route
 recipesRoute.route('/:id')
   .put(parse, idValidation, checkOwnship,
-       fetchForUpdate, validateUpdate, updateRecipe, fetchRecipe)
-  .delete(idValidation, checkOwnship, deleteRecipe);
+       fetchForUpdate, validateUpdate, update, fetchRecipe)
+  .delete(idValidation, checkOwnship, deleteRecipe)
+  .get(idValidation, fetchRecipe);
 
 // route to post reviews on a recipe
 recipesRoute.route('/:id/reviews')
@@ -38,7 +38,7 @@ recipesRoute.route('/:id/reviews')
 
 //  route to upvote or down vote a recipe
 recipesRoute.route('/:id/vote')
-  .put(voteValidation, isRecipe, createVote, countVote, updateVotes, fetchVotes);
+  .put(voteValidation, isRecipe, VoteHandler, countVote, update, fetchVotes);
 
 
 export default recipesRoute;
