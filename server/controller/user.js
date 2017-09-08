@@ -73,37 +73,14 @@ export const sendDataWithToken = (req, res) => {
   sendSuccess(res, 200, 'User', req.loggedInUser);
 };
 
-const exist = (where, req, res, next, errorMsg) => {
-  Users.findOne({ where }).then((user) => {
-    if (user) {
-      sendFail(res, 400, errorMsg);
-    } else {
-      next();
-    }
-  });
-};
-// check if email provided by the user already exist in the database
-export const emailExist = (req, res, next) => {
-  const where = { email: req.body.email };
-  const errorMsg = 'This email already exist in our system';
-  exist(where, req, res, next, errorMsg);
-};
-
-// check if username provided by the user already exist in the database
-export const usernameExist = (req, res, next) => {
-  const where = { username: req.body.username };
-  const errorMsg = 'This username already exist in our system';
-  exist(where, req, res, next, errorMsg);
-};
-
 // create user record
 export const create = (req, res, next) => {
   Users.create(req.body)
     .then((user) => {
       req.idToFetchUser = user.dataValues.id;
       next();
-    }).catch(() => {
-      serverError(res);
+    }).catch((error) => {
+      sendFail(res, 400, error.errors[0].message);
     });
 };
 
@@ -118,8 +95,6 @@ export const fetchUser = (req, res) => {
     } else {
       sendFail(res, 404, 'user not found');
     }
-  }).catch(() => {
-    serverError(res);
   });
 };
 

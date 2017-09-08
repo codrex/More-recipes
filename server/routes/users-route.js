@@ -16,8 +16,6 @@ usersRoute.use((req, res, next) => {
 
 usersRoute.route('/signup')
   .post(validateSignupData,
-          usernameExist,
-          emailExist,
             create,
             fetchUser);
 

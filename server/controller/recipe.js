@@ -288,14 +288,13 @@ export const isRecipe = (req, res, next) => {
 };
 
 export const parse = (req, res, next) => {
+  const func = (string) => {
+    if (typeof string === 'string') return JSON.parse(req.body.ingredients);
+  };
   try {
-    if (typeof req.body.ingredients === 'string') {
-      req.body.ingredients = JSON.parse(req.body.ingredients);
-    }
+    func(req.body.ingredients);
     try {
-      if (typeof req.body.directions === 'string') {
-        req.body.directions = JSON.parse(req.body.directions);
-      }
+      func(req.body.directions);
     } catch (e) {
       sendFail(res, 400, 'directions must be an array of string');
     }
