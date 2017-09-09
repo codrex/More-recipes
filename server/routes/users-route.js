@@ -16,10 +16,13 @@ usersRoute.use((req, res, next) => {
 usersRoute.route('/signup')
   .post(validateSignupData,
             create,
-            fetchUser);
+            sendDataWithToken);
 
 usersRoute.route('/signin')
   .post(validateLoginData, authUser, sendDataWithToken);
+
+usersRoute.route('/user')
+  .get(verifyToken, fetchUser);
 
 usersRoute.route('/recipes')
   .post(verifyToken, idValidation, checkRecipe, setFavRecipe, fetchFavRecipes)

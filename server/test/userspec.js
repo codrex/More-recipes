@@ -145,6 +145,23 @@ export const userSpec = (repiceSpec) => {
         done();
       });
     });
+    it('return 200 as status code for get user profile', done => {
+      request.get('/api/v1/users/user')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+    });
+    it('return 403 as status code for get user profile request with no token', done => {
+      request.get('/api/v1/users/user')
+      .end((err, res) => {
+        expect(res.status).to.equal(403);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
     it('return 400 for invalid username', done => {
       const invalidData = testDataLogin;
       invalidData.username = 'kester';

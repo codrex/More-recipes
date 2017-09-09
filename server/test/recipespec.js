@@ -9,25 +9,6 @@ export const recipeSpec = (user1, user2) => {
   const token = user1;
   const token2 = user2;
 
-  // const testDataLogin = {
-  //   username: 'example_user',
-  //   password: '123456',
-  // };
-  // const loginData = {
-  //   username: 'example_user_2',
-  //   password: '123456',
-  // };
-  // request.post('/api/v1/users/signin')
-  //   .send(testDataLogin)
-  //   .end((err, res) => {
-  //     token = res.body.User.token;
-  //   });
-  // request.post('/api/v1/users/signin')
-  //       .send(loginData)
-  //       .end((err, res) => {
-  //         token2 = res.body.User.token;
-  //       });
-
   describe('Integration test for recipe controller', () => {
     const deletedUser = generateToken({ id: 100 });
 
