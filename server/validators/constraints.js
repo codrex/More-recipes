@@ -40,7 +40,7 @@
      },
      length: {
        minimum: 3,
-       message: 'username must be at least 3 character',
+       message: ' must be at least 3 character',
      },
    },
    fullname: {

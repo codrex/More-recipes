@@ -1,7 +1,6 @@
 import express from 'express';
 import { validateSignupData,
         create, fetchUser,
-        usernameExist, emailExist,
          validateLoginData, authUser,
          sendDataWithToken, setFavRecipe,
         fetchFavRecipes } from '../controller/user';
@@ -16,13 +15,14 @@ usersRoute.use((req, res, next) => {
 
 usersRoute.route('/signup')
   .post(validateSignupData,
-          usernameExist,
-          emailExist,
             create,
-            fetchUser);
+            sendDataWithToken);
 
 usersRoute.route('/signin')
   .post(validateLoginData, authUser, sendDataWithToken);
+
+usersRoute.route('/user')
+  .get(verifyToken, fetchUser);
 
 usersRoute.route('/recipes')
   .post(verifyToken, idValidation, checkRecipe, setFavRecipe, fetchFavRecipes)

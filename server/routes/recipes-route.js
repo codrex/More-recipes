@@ -8,7 +8,7 @@ import { validateRecipe, create,
          fetchAllRecipe, fetchAllBySearch,
          setReview, fetchReview,
          fetchVotes, fetchRecipeByUpVote,
-         isRecipe, parse, update } from '../controller/recipe';
+         isRecipe, update } from '../controller/recipe';
 import { VoteHandler, countVote, voteValidation } from '../controller/vote';
 import { isIdValidUser } from '../controller/user';
 
@@ -19,7 +19,7 @@ recipesRoute.use(verifyToken, isIdValidUser, (req, res, next) => {
 });
 // add recipe route
 recipesRoute.route('/recipe')
-  .post(parse, validateRecipe, create, fetchRecipe);
+  .post(validateRecipe, create, fetchRecipe);
 
 // get recipes route
 recipesRoute.route('/')
@@ -27,7 +27,7 @@ recipesRoute.route('/')
 
 // Update and delete recipe route
 recipesRoute.route('/:id')
-  .put(parse, idValidation, checkOwnship,
+  .put(idValidation, checkOwnship,
        fetchForUpdate, validateUpdate, update, fetchRecipe)
   .delete(idValidation, checkOwnship, deleteRecipe)
   .get(idValidation, fetchRecipe);

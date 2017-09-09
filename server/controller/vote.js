@@ -52,8 +52,8 @@ export const VoteHandler = (req, res, next) => {
           });
         }
       }
-    }).catch(error => {
-      serverError(res, error);
+    }).catch(() => {
+      serverError(res);
     });
 };
 
@@ -66,7 +66,7 @@ export const countVote = (req, res, next) => {
       req.body.downVotes = downvote;
       next();
     });
-  }).catch((error) => {
-    serverError(res, error);
+  }).catch(() => {
+    serverError(res);
   });
 };

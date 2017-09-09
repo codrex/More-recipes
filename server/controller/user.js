@@ -46,16 +46,16 @@ export const authUser = (req, res, next) => {
 
   }).then((user) => {
     if (!user) {
-      sendFail(res, 400, 'invalid username or password');
+      sendFail(res, 400, 'invalid username');
       return;
     }
     const hash = user.dataValues.password;
   // compare proved password
     if (user && comparePwd(hash, req.loginData.password)) {
-      req.loggedInUser = user.dataValues;
+      req.user = user.dataValues;
       next();
     } else {
-      sendFail(res, 400, 'invalid username or password');
+      sendFail(res, 400, 'invalid password');
     }
   }).catch(() => {
     serverError(res);
@@ -64,62 +64,36 @@ export const authUser = (req, res, next) => {
 
 // sends User's info along with an auth token back to the user
 export const sendDataWithToken = (req, res) => {
-  const token = generateToken({ id: req.loggedInUser.id });
+  const token = generateToken({ id: req.user.id });
 
-  delete req.loggedInUser.id;
-  delete req.loggedInUser.password;
+  delete req.user.id;
+  delete req.user.password;
 
-  req.loggedInUser.token = token;
-  sendSuccess(res, 200, 'User', req.loggedInUser);
-};
-
-const exist = (where, req, res, next, errorMsg) => {
-  Users.findOne({ where }).then((user) => {
-    if (user) {
-      sendFail(res, 400, errorMsg);
-    } else {
-      next();
-    }
-  });
-};
-// check if email provided by the user already exist in the database
-export const emailExist = (req, res, next) => {
-  const where = { email: req.body.email };
-  const errorMsg = 'This email already exist in our system';
-  exist(where, req, res, next, errorMsg);
-};
-
-// check if username provided by the user already exist in the database
-export const usernameExist = (req, res, next) => {
-  const where = { username: req.body.username };
-  const errorMsg = 'This username already exist in our system';
-  exist(where, req, res, next, errorMsg);
+  req.user.token = token;
+  sendSuccess(res, 200, 'User', req.user);
 };
 
 // create user record
 export const create = (req, res, next) => {
   Users.create(req.body)
     .then((user) => {
-      req.idToFetchUser = user.dataValues.id;
+      req.user = user.dataValues;
       next();
-    }).catch(() => {
-      serverError(res);
+    }).catch((error) => {
+      sendFail(res, 400, error.errors[0].message);
     });
 };
 
 // get user record
 export const fetchUser = (req, res) => {
   Users.findOne({
-    where: { id: req.idToFetchUser },
+    where: { id: req.requestId },
     attributes: ['id', 'email', 'username'],
+    include: [{ all: true }]
   }).then((user) => {
     if (user) {
       sendSuccess(res, 200, 'User', user.dataValues);
-    } else {
-      sendFail(res, 404, 'user not found');
     }
-  }).catch(() => {
-    serverError(res);
   });
 };
 
