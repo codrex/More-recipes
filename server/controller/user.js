@@ -1,7 +1,8 @@
 import db from '../models/index';
 import { validateSignup, validateLogin,
-         comparePwd, validateProfileUpdate, validationHandler } from '../validators/validator';
-import { sendValidationError, serverError, sendSuccess, sendFail } from '../reply/reply';
+         comparePwd, validateProfileUpdate,
+         validationHandler } from '../validators/validator';
+import { serverError, sendSuccess, sendFail } from '../reply/reply';
 import { generateToken } from '../auth/auth';
 
 const Users = db.Users;
