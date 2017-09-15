@@ -194,14 +194,16 @@ export const userSpec = (repiceSpec) => {
 
    // edit user profile
   describe('Profile update', () => {
-    const updateOne = {
-      fullname: 'example user two',
-      username: 'example_user_2',
-      password: '123456',
-      email: 'exampleTwo@user.com',
-    };
+    let updateOne;
+    beforeEach(() => {
+      updateOne = {
+        fullname: 'example user two',
+        username: 'example_user_2',
+        email: 'exampleTwo@user.com',
+      };
+    });
     const updateTwo = {
-      fullname: 'example user two',
+      fullname: 'example user',
     };
     after(() => repiceSpec(token, token2));
 
@@ -223,7 +225,7 @@ export const userSpec = (repiceSpec) => {
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
-        expect(res.body.User.fullname).to.equal('example user two');
+        expect(res.body.User.fullname).to.equal('example user');
         done();
       });
     });
@@ -235,62 +237,66 @@ export const userSpec = (repiceSpec) => {
         done();
       });
     });
-    // it('return 400 for an already existing email ', done => {
-    //   const invalidData = updateOne;
-    //   invalidData.username = 'exampleuser2';
-    //   request.put('/api/v1/users/user')
-    //   .set('Authorization', token)
-    //   .send(invalidData)
-    //   .end((err, res) => {
-    //     expect(res.status).to.equal(400);
-    //     expect(res.body.status).to.equal('fail');
-    //     done();
-    //   });
-    // });
-    // it('return 400 for an already existing username', done => {
-    //   const invalidData = updateOne;
-    //   invalidData.email = 'example2@user.com';
-    //   request.post('/api/v1/users/user')
-    //   .send(invalidData)
-    //   .end((err, res) => {
-    //     expect(res.status).to.equal(400);
-    //     expect(res.body.status).to.equal('fail');
-    //     done();
-    //   });
-    // });
-    // it('return 400 for invalid email', done => {
-    //   const invalidData = userTwo;
-    //   invalidData.email = 'example2user.com';
-    //   request.post('/api/v1/users/signup')
-    //   .send(invalidData)
-    //   .end((err, res) => {
-    //     expect(res.status).to.equal(400);
-    //     expect(res.body.status).to.equal('fail');
-    //     done();
-    //   });
-    // });
-    // it('return 400 for invalid username', done => {
-    //   const invalidData = userTwo;
-    //   invalidData.username = 'e.com';
-    //   request.post('/api/v1/users/signup')
-    //   .send(invalidData)
-    //   .end((err, res) => {
-    //     expect(res.status).to.equal(400);
-    //     expect(res.body.status).to.equal('fail');
-    //     done();
-    //   });
-    // });
-    // it('return 400 for invalid password', done => {
-    //   const invalidData = userTwo;
-    //   invalidData.password = 'ecom';
-    //   request.post('/api/v1/users/signup')
-    //   .send(invalidData)
-    //   .end((err, res) => {
-    //     expect(res.status).to.equal(400);
-    //     expect(res.body.status).to.equal('fail');
-    //     done();
-    //   });
-    // });
+    it('return 400 for an already existing email ', done => {
+      const invalidData = updateOne;
+      invalidData.username = 'exampleuser2';
+      request.put('/api/v1/users/user')
+      .set('Authorization', token)
+      .send(invalidData)
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
+    it('return 400 for an already existing username', done => {
+      const invalidData = updateOne;
+      invalidData.email = 'example2@user.com';
+      request.put('/api/v1/users/user')
+      .set('Authorization', token)
+      .send(invalidData)
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
+    it('return 400 for invalid email', done => {
+      const invalidData = userTwo;
+      invalidData.email = 'example2user.com';
+      request.put('/api/v1/users/user')
+      .set('Authorization', token)
+      .send(invalidData)
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
+    it('return 400 for invalid username', done => {
+      const invalidData = userTwo;
+      invalidData.username = 'e.com';
+      request.put('/api/v1/users/user')
+      .set('Authorization', token)
+      .send(invalidData)
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
+    it('return 400 for invalid fullname', done => {
+      const invalidData = userTwo;
+      invalidData.fullname = 'pe';
+      request.put('/api/v1/users/user')
+      .set('Authorization', token)
+      .send(invalidData)
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
   });
 };
 

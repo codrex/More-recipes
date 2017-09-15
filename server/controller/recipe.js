@@ -1,18 +1,8 @@
 import db from '../models/index';
-import { validateRecipes, validateId } from '../validators/validator';
+import { validateRecipes, validateId, validationHandler } from '../validators/validator';
 import { sendValidationError, serverError, sendSuccess, sendFail } from '../reply/reply';
 
 const Recipes = db.Recipes;
-
-const validationHandler = (obj, validator, req, res, next) => {
-  const validate = validator(obj);
-  if (validate.valid) {
-    req.body = obj;
-    next();
-  } else {
-    sendValidationError(res, validate);
-  }
-};
 
 // This function validates data gotten from the user
 // before creating a recipe.

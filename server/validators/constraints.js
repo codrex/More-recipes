@@ -11,18 +11,6 @@
        message: 'must be at least 2 character',
      },
    },
-   nameUpdate: {
-     presence: false,
-     format: {
-       pattern: '[a-zA-Z ]+',
-       flags: 'i',
-       message: 'can only contain alphabet',
-     },
-     length: {
-       minimum: 2,
-       message: 'must be at least 2 character',
-     },
-   },
    password: {
      presence: true,
      length: {
@@ -82,6 +70,11 @@
      password: objects.password,
      email: objects.email,
    },
+   profileUpdateConstraint: {
+     username: objects.username,
+     email: objects.email,
+     fullname: objects.fullname,
+   },
    createRecipeConstraint: {
      recipeName: objects.name,
      category: objects.name,
@@ -91,12 +84,6 @@
    },
    idConstraint: {
      id: objects.id,
-   },
-   recipeUpdateConstraint: {
-     recipeName: objects.nameUpdate,
-     category: objects.nameUpdate,
-     ingredients: objects.array,
-     directions: objects.array,
    },
    reviewConstraint: {
      review: {
