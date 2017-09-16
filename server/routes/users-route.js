@@ -3,7 +3,8 @@ import { validateSignupData,
         create, fetchUser,
          validateLoginData, authUser,
          sendDataWithToken, setFavRecipe,
-        fetchFavRecipes } from '../controller/user';
+        fetchFavRecipes, validateUpdate,
+        fetchForUpdate, update } from '../controller/user';
 import { idValidation, checkRecipe } from '../controller/recipe';
 import { verifyToken } from '../auth/auth';
 
@@ -22,7 +23,8 @@ usersRoute.route('/signin')
   .post(validateLoginData, authUser, sendDataWithToken);
 
 usersRoute.route('/user')
-  .get(verifyToken, fetchUser);
+  .get(verifyToken, fetchUser)
+  .put(verifyToken, fetchForUpdate, validateUpdate, update, fetchUser);
 
 usersRoute.route('/recipes')
   .post(verifyToken, idValidation, checkRecipe, setFavRecipe, fetchFavRecipes)

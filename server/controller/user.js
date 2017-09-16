@@ -1,6 +1,8 @@
 import db from '../models/index';
-import { validateSignup, validateLogin, comparePwd } from '../validators/validator';
-import { sendValidationError, serverError, sendSuccess, sendFail } from '../reply/reply';
+import { validateSignup, validateLogin,
+         comparePwd, validateProfileUpdate,
+         validationHandler } from '../validators/validator';
+import { serverError, sendSuccess, sendFail } from '../reply/reply';
 import { generateToken } from '../auth/auth';
 
 const Users = db.Users;
@@ -12,13 +14,17 @@ export const validateSignupData = (req, res, next) => {
     password: req.body.password,
     email: req.body.email,
   };
-  const validate = validateSignup(signupData);
-  if (validate.valid) {
-    req.body = signupData;
-    next();
-  } else {
-    sendValidationError(res, validate);
-  }
+  validationHandler(signupData, validateSignup, req, res, next);
+};
+
+// This function validates profile update data
+export const validateUpdate = (req, res, next) => {
+  const updateData = {
+    username: req.body.username || req.user.username,
+    fullname: req.body.fullname || req.user.fullname,
+    email: req.body.email || req.user.email,
+  };
+  validationHandler(updateData, validateProfileUpdate, req, res, next);
 };
 
 // This function validates signin inputs
@@ -27,20 +33,14 @@ export const validateLoginData = (req, res, next) => {
     username: req.body.username,
     password: req.body.password,
   };
-  const validate = validateLogin(loginData);
-  if (validate.valid) {
-    req.loginData = loginData;
-    next();
-  } else {
-    sendValidationError(res, validate);
-  }
+  validationHandler(loginData, validateLogin, req, res, next);
 };
 
 // This function handle user authentication
 export const authUser = (req, res, next) => {
   Users.findOne({
     where: {
-      username: req.loginData.username,
+      username: req.body.username,
     },
     attributes: ['id', 'email', 'username', 'fullname', 'password'],
 
@@ -51,7 +51,7 @@ export const authUser = (req, res, next) => {
     }
     const hash = user.dataValues.password;
   // compare proved password
-    if (user && comparePwd(hash, req.loginData.password)) {
+    if (user && comparePwd(hash, req.body.password)) {
       req.user = user.dataValues;
       next();
     } else {
@@ -84,16 +84,38 @@ export const create = (req, res, next) => {
     });
 };
 
+// update user record
+export const update = (req, res, next) => {
+  Users.update(req.body, { where: { id: req.requestId } })
+  .then(() => {
+    next();
+  }).catch((error) => {
+    sendFail(res, 400, error.errors[0].message);
+  });
+};
+
 // get user record
 export const fetchUser = (req, res) => {
   Users.findOne({
     where: { id: req.requestId },
-    attributes: ['id', 'email', 'username'],
+    attributes: ['id', 'email', 'username', 'fullname'],
     include: [{ all: true }]
   }).then((user) => {
     if (user) {
       sendSuccess(res, 200, 'User', user.dataValues);
     }
+  });
+};
+
+export const fetchForUpdate = (req, res, next) => {
+  Users.findOne({
+    where: { id: req.requestId },
+    attributes: ['email', 'username', 'fullname'],
+  }).then((user) => {
+    if (user) {
+      req.user = user.dataValues;
+    }
+    next();
   });
 };
 
@@ -141,6 +163,7 @@ export const fetchFavRecipes = (req, res) => {
     serverError(res);
   });
 };
+
 export const isIdValidUser = (req, res, next) => {
   Users.findById(req.requestId)
     .then((user) => {

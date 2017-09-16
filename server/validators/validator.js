@@ -1,6 +1,8 @@
 import validate from 'validate.js';
 import constraint from './constraints';
 import bcrypt from 'bcrypt-nodejs';
+import { sendValidationError } from '../reply/reply';
+
 
 // this function will process the report gotten from the validator
 const processValidationResult = (result) => {
@@ -14,12 +16,23 @@ const validator = (obj, constraints) => {
 };
 
 const validateSignup = obj => validator(obj, constraint.signupConstraint);
+const validateProfileUpdate = obj => validator(obj, constraint.profileUpdateConstraint);
 const validateRecipes = obj => validator(obj, constraint.createRecipeConstraint);
 const validateId = obj => validator(obj, constraint.idConstraint);
 const validateLogin = obj => validator(obj, constraint.loginWithUsernameConstraint);
 const validateReview = obj => validator(obj, constraint.reviewConstraint);
 const comparePwd = (hash, password) => bcrypt.compareSync(password, hash);
 const validateVote = obj => validator(obj, constraint.voteConstraint);
+
+const validationHandler = (obj, validationFunc, req, res, next) => {
+  const isValidate = validationFunc(obj);
+  if (isValidate.valid) {
+    req.body = obj;
+    next();
+  } else {
+    sendValidationError(res, isValidate);
+  }
+};
 
 // custom validator that check for space separated string
 validate.validators.noSpace = (value) => {
@@ -56,10 +69,12 @@ export {
   validateLogin,
   validateSignup,
   validateRecipes,
+  validateProfileUpdate,
   comparePwd,
   validate,
   constraint,
   validateId,
   validateReview,
   validateVote,
+  validationHandler,
 };
