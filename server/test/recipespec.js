@@ -545,6 +545,84 @@ export const recipeSpec = (user1, user2) => {
       });
     });
 
+    // get recipe request
+    describe('view recipe', () => {
+      it('return 404 as status code when recipe is not found', done => {
+        request.get('/api/v1/recipes/10')
+          .set('Authorization', token2)
+          .end((err, res) => {
+            expect(res.status).to.equal(404);
+            expect(res.body.status).to.equal('fail');
+            done();
+          });
+      });
+      it('return 200 as status code when user views a recipe for the first time', done => {
+        request.get('/api/v1/recipes/1')
+          .set('Authorization', token)
+          .end((err, res) => {
+            expect(res.status).to.equal(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.Recipe.views).to.equal(0);
+            done();
+          });
+        after(() => {
+          it('return 200 as status code when user views a recipe for the second time', () => {
+            request.get('/api/v1/recipes/1')
+              .set('Authorization', token)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                expect(res.body.Recipe.views).to.equal(1);
+                done();
+              });
+          });
+          it('return 200 as status code when user views a recipe for the third time', () => {
+            request.get('/api/v1/recipes/1')
+              .set('Authorization', token)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                expect(res.body.Recipe.views).to.equal(1);
+                done();
+              });
+          });
+        });
+      });
+
+      it('return 200 as status code when another user views a recipe for the first time', done => {
+        request.get('/api/v1/recipes/1')
+          .set('Authorization', token)
+          .end((err, res) => {
+            expect(res.status).to.equal(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.Recipe.views).to.equal(1);
+            done();
+          });
+        after(() => {
+          it('return 200 as status code when another user views a recipe for the second time', () => {
+            request.get('/api/v1/recipes/1')
+              .set('Authorization', token2)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                expect(res.body.Recipe.views).to.equal(2);
+                done();
+              });
+          });
+          it('return 200 as status code when another user views a recipe for the third time', () => {
+            request.get('/api/v1/recipes/1')
+              .set('Authorization', token2)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                expect(res.body.Recipe.views).to.equal(2);
+                done();
+              });
+          });
+        });
+      });
+    });
+
       // delete recipe request
     describe('delete recipe', () => {
       it('return 404 as status code when user did not create the recipe', done => {

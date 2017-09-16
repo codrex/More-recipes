@@ -11,6 +11,7 @@ import { validateRecipe, create,
          isRecipe, update } from '../controller/recipe';
 import { VoteHandler, countVote, voteValidation } from '../controller/vote';
 import { isIdValidUser } from '../controller/user';
+import addAsViewer from '../controller/viewer';
 
 const recipesRoute = express.Router();
 
@@ -30,7 +31,7 @@ recipesRoute.route('/:id')
   .put(idValidation, checkOwnship,
        fetchForUpdate, validateUpdate, update, fetchRecipe)
   .delete(idValidation, checkOwnship, deleteRecipe)
-  .get(idValidation, fetchRecipe);
+  .get(idValidation, addAsViewer, fetchRecipe);
 
 // route to post reviews on a recipe
 recipesRoute.route('/:id/reviews')
