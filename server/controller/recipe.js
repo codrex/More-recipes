@@ -82,7 +82,7 @@ export const fetchRecipe = (req, res) => {
     ],
   }).then((recipe) => {
     if (recipe) {
-      req.hasNewViewer && recipe.increment('views', { by: 1 });
+      if (req.hasNewViewer) recipe.increment('views', { by: 1 });
       sendSuccess(res, 200, 'Recipe', recipe.dataValues);
     } else {
       sendFail(res, 404, 'recipe not found');

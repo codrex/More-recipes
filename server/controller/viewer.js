@@ -1,9 +1,8 @@
 import db from '../models/index';
-import { serverError } from '../reply/reply';
 
 const Viewers = db.Viewers;
 
-export const addAsViewer = (req, res, next) => {
+const addAsViewer = (req, res, next) => {
   Viewers.findOne(
     {
       where: {
@@ -28,3 +27,5 @@ export const addAsViewer = (req, res, next) => {
     }
   });
 };
+
+export default addAsViewer;

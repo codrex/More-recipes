@@ -11,7 +11,7 @@ import { validateRecipe, create,
          isRecipe, update } from '../controller/recipe';
 import { VoteHandler, countVote, voteValidation } from '../controller/vote';
 import { isIdValidUser } from '../controller/user';
-import { addAsViewer } from '../controller/viewer';
+import addAsViewer from '../controller/viewer';
 
 const recipesRoute = express.Router();
 
