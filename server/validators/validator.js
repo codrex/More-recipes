@@ -25,12 +25,12 @@ const comparePwd = (hash, password) => bcrypt.compareSync(password, hash);
 const validateVote = obj => validator(obj, constraint.voteConstraint);
 
 const validationHandler = (obj, validationFunc, req, res, next) => {
-  const isValidate = validationFunc(obj);
-  if (isValidate.valid) {
+  const isValid = validationFunc(obj);
+  if (isValid.valid) {
     req.body = obj;
     next();
   } else {
-    sendValidationError(res, isValidate);
+    sendValidationError(res, isValid);
   }
 };
 
@@ -39,16 +39,6 @@ validate.validators.noSpace = (value) => {
   if (typeof value === 'string') {
     if (value.split(' ').length > 1) {
       return 'can not be space separated';
-    }
-  }
-  return undefined;
-};
-
-// custom validator that check if a string has more than one word
-validate.validators.atLeastTwoWord = (value) => {
-  if (typeof value === 'string') {
-    if (value.split(' ').length < 2) {
-      return 'must be aleast two words';
     }
   }
   return undefined;

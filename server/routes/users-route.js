@@ -4,7 +4,8 @@ import { validateSignupData,
          validateLoginData, authUser,
          sendDataWithToken, setFavRecipe,
         fetchFavRecipes, validateUpdate,
-        fetchForUpdate, update } from '../controller/user';
+        fetchForUpdate, update,
+        validateUserId, compareIds } from '../controller/user';
 import { idValidation, checkRecipe } from '../controller/recipe';
 import { verifyToken } from '../auth/auth';
 
@@ -22,13 +23,14 @@ usersRoute.route('/signup')
 usersRoute.route('/signin')
   .post(validateLoginData, authUser, sendDataWithToken);
 
-usersRoute.route('/user')
-  .get(verifyToken, fetchUser)
-  .put(verifyToken, fetchForUpdate, validateUpdate, update, fetchUser);
+usersRoute.route('/:id')
+  .get(verifyToken, validateUserId, fetchUser)
+  .put(verifyToken, idValidation, compareIds, fetchForUpdate, validateUpdate, update, fetchUser);
 
-usersRoute.route('/recipes')
-  .post(verifyToken, idValidation, checkRecipe, setFavRecipe, fetchFavRecipes)
-  .get(verifyToken, fetchFavRecipes);
+usersRoute.route('/:id/recipes')
+  .get(verifyToken, idValidation, compareIds, fetchFavRecipes);
 
+usersRoute.route('/:id/recipe')
+.post(verifyToken, idValidation, checkRecipe, setFavRecipe, fetchFavRecipes);
 
 export default usersRoute;

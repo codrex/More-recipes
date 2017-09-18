@@ -32,7 +32,7 @@ export const validateUpdate = (req, res, next) => {
 
 // This function validate recipe id.
 export const idValidation = (req, res, next) => {
-  const validate = validateId({ id: req.params.id || req.body.recipeId });
+  const validate = validateId({ id: req.body.recipeId || req.params.id });
   if (validate.valid) {
     next();
   } else {
@@ -110,7 +110,7 @@ export const fetchAllRecipe = (req, res) => {
     attributes: ['id', 'recipeName',
       'category', 'ingredients',
       'directions', 'upVotes',
-      'downVotes'
+      'downVotes', 'views'
     ],
   }).then((recipe) => {
     sendSuccess(res, 200, 'Recipes', recipe);
@@ -210,9 +210,9 @@ export const checkOwnship = (req, res, next) => {
 
 // checking if recipe exist in dbase
 export const checkRecipe = (req, res, next) => {
-  Recipes.findById(req.params.id || req.body.recipeId)
-    .then((recips) => {
-      if (recips) {
+  Recipes.findById(req.body.recipeId)
+    .then((recipe) => {
+      if (recipe) {
         next();
       } else {
         sendFail(res, 404, 'Recipe not found');

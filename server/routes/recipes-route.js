@@ -18,13 +18,11 @@ const recipesRoute = express.Router();
 recipesRoute.use(verifyToken, isIdValidUser, (req, res, next) => {
   next();
 });
-// add recipe route
-recipesRoute.route('/recipe')
-  .post(validateRecipe, create, fetchRecipe);
 
 // get recipes route
 recipesRoute.route('/')
-  .get(fetchAllBySearch, fetchRecipeByUpVote, fetchAllRecipe);
+  .get(fetchAllBySearch, fetchRecipeByUpVote, fetchAllRecipe)
+  .post(validateRecipe, create, fetchRecipe);
 
 // Update and delete recipe route
 recipesRoute.route('/:id')
