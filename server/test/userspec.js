@@ -140,23 +140,6 @@ export const userSpec = (repiceSpec) => {
         done();
       });
     });
-    it('return 200 as status code for get user profile', done => {
-      request.get('/api/v1/users/user')
-      .set('Authorization', token)
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal('success');
-        done();
-      });
-    });
-    it('return 403 as status code for get user profile request with no token', done => {
-      request.get('/api/v1/users/user')
-      .end((err, res) => {
-        expect(res.status).to.equal(403);
-        expect(res.body.status).to.equal('fail');
-        done();
-      });
-    });
     it('return 400 for invalid username', done => {
       const invalidData = userOne;
       invalidData.username = 'kester';
@@ -191,11 +174,40 @@ export const userSpec = (repiceSpec) => {
       });
     });
   });
+  describe('view profile', ()=>{
+    it('return 200 as status code for get user profile', done => {
+      request.get('/api/v1/users/1')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        done();
+      });
+    });
+    it('return 403 as status code for get user profile request with no token', done => {
+      request.get('/api/v1/users/1')
+      .end((err, res) => {
+        expect(res.status).to.equal(403);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
+    it('return 404 as status code when user is not found', done => {
+      request.get('/api/v1/users/100')
+      .set('Authorization', token)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
+  })
 
    // edit user profile
   describe('Profile update', () => {
-    let updateOne;
+    let updateOne = {};
     beforeEach(() => {
+      console.log('b4')
       updateOne = {
         fullname: 'example user two',
         username: 'example_user_2',
@@ -208,7 +220,7 @@ export const userSpec = (repiceSpec) => {
     after(() => repiceSpec(token, token2));
 
     it('return 200 as status code when everything is fine', done => {
-      request.put('/api/v1/users/user')
+      request.put('/api/v1/users/2')
       .set('Authorization', token2)
       .send(updateOne)
       .end((err, res) => {
@@ -219,7 +231,7 @@ export const userSpec = (repiceSpec) => {
       });
     });
     it('return 200 as status code when updating a single field', done => {
-      request.put('/api/v1/users/user')
+      request.put('/api/v1/users/2')
       .set('Authorization', token2)
       .send(updateTwo)
       .end((err, res) => {
@@ -229,8 +241,28 @@ export const userSpec = (repiceSpec) => {
         done();
       });
     });
+    it('return 400 as status code for invalid parameter', done => {
+      request.put('/api/v1/users/kfmfg2')
+      .set('Authorization', token2)
+      .send(updateTwo)
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
+    it('return 400 as status code when attempting to modify another user\'s profile', done => {
+      request.put('/api/v1/users/1')
+      .set('Authorization', token2)
+      .send(updateTwo)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
     it('return 403 as status code for update user profile request with no token', done => {
-      request.put('/api/v1/users/user')
+      request.put('/api/v1/users/2')
       .end((err, res) => {
         expect(res.status).to.equal(403);
         expect(res.body.status).to.equal('fail');
@@ -240,7 +272,7 @@ export const userSpec = (repiceSpec) => {
     it('return 400 for an already existing email ', done => {
       const invalidData = updateOne;
       invalidData.username = 'exampleuser2';
-      request.put('/api/v1/users/user')
+      request.put('/api/v1/users/1')
       .set('Authorization', token)
       .send(invalidData)
       .end((err, res) => {
@@ -252,7 +284,7 @@ export const userSpec = (repiceSpec) => {
     it('return 400 for an already existing username', done => {
       const invalidData = updateOne;
       invalidData.email = 'example2@user.com';
-      request.put('/api/v1/users/user')
+      request.put('/api/v1/users/1')
       .set('Authorization', token)
       .send(invalidData)
       .end((err, res) => {
@@ -264,7 +296,7 @@ export const userSpec = (repiceSpec) => {
     it('return 400 for invalid email', done => {
       const invalidData = userTwo;
       invalidData.email = 'example2user.com';
-      request.put('/api/v1/users/user')
+      request.put('/api/v1/users/1')
       .set('Authorization', token)
       .send(invalidData)
       .end((err, res) => {
@@ -276,7 +308,7 @@ export const userSpec = (repiceSpec) => {
     it('return 400 for invalid username', done => {
       const invalidData = userTwo;
       invalidData.username = 'e.com';
-      request.put('/api/v1/users/user')
+      request.put('/api/v1/users/1')
       .set('Authorization', token)
       .send(invalidData)
       .end((err, res) => {
@@ -288,7 +320,7 @@ export const userSpec = (repiceSpec) => {
     it('return 400 for invalid fullname', done => {
       const invalidData = userTwo;
       invalidData.fullname = 'pe';
-      request.put('/api/v1/users/user')
+      request.put('/api/v1/users/1')
       .set('Authorization', token)
       .send(invalidData)
       .end((err, res) => {

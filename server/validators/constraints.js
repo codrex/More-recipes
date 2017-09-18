@@ -33,7 +33,6 @@
    },
    fullname: {
      presence: true,
-     atLeastTwoWord: true,
      format: {
        pattern: '[a-zA-Z ]+',
        flags: 'i',

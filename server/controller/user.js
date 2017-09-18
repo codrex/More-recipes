@@ -1,7 +1,7 @@
 import db from '../models/index';
 import { validateSignup, validateLogin,
          comparePwd, validateProfileUpdate,
-         validationHandler } from '../validators/validator';
+         validationHandler, validateId } from '../validators/validator';
 import { serverError, sendSuccess, sendFail } from '../reply/reply';
 import { generateToken } from '../auth/auth';
 
@@ -34,6 +34,14 @@ export const validateLoginData = (req, res, next) => {
     password: req.body.password,
   };
   validationHandler(loginData, validateLogin, req, res, next);
+};
+
+// This function validates  user id gotten from req.params
+export const validateUserId = (req, res, next) => {
+  const id = {
+    id: req.params.id,
+  };
+  validationHandler(id, validateId, req, res, next);
 };
 
 // This function handle user authentication
@@ -86,7 +94,7 @@ export const create = (req, res, next) => {
 
 // update user record
 export const update = (req, res, next) => {
-  Users.update(req.body, { where: { id: req.requestId } })
+  Users.update(req.body, { where: { id: req.params.id } })
   .then(() => {
     next();
   }).catch((error) => {
@@ -97,19 +105,21 @@ export const update = (req, res, next) => {
 // get user record
 export const fetchUser = (req, res) => {
   Users.findOne({
-    where: { id: req.requestId },
-    attributes: ['id', 'email', 'username', 'fullname'],
+    where: { id: req.params.id },
+    attributes: ['id', 'email', 'username', 'fullname', 'profilePix'],
     include: [{ all: true }]
   }).then((user) => {
     if (user) {
       sendSuccess(res, 200, 'User', user.dataValues);
+    } else {
+      sendFail(res, 404, 'User not found');
     }
   });
 };
 
 export const fetchForUpdate = (req, res, next) => {
   Users.findOne({
-    where: { id: req.requestId },
+    where: { id: req.params.id },
     attributes: ['email', 'username', 'fullname'],
   }).then((user) => {
     if (user) {
@@ -136,25 +146,16 @@ export const setFavRecipe = (req, res, next) => {
 export const fetchFavRecipes = (req, res) => {
   Users.findOne({
     where: { id: req.requestId },
-    attributes: {
-      exclude: ['createdAt', 'updatedAt', 'password'],
-    },
+    attributes: ['id'],
     include: [{
       model: db.Recipes,
       as: 'favRecipes',
       attributes: {
-        exclude: ['createdAt', 'updatedAt'],
+        exclude: ['createdAt', 'updatedAt', 'ingredients', 'directions'],
       },
       through: {
         attributes: [],
       },
-      include: [{
-        model: db.Users,
-        as: 'Owner',
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'password'],
-        },
-      }],
     }],
   })
   .then(userFavRecipes => {
@@ -175,4 +176,12 @@ export const isIdValidUser = (req, res, next) => {
     }).catch(() => {
       serverError(res);
     });
+};
+
+export const compareIds = (req, res, next) => {
+  if (parseInt(req.params.id, 10) === req.requestId) {
+    next();
+  } else {
+    sendFail(res, 404, 'Record not found');
+  }
 };

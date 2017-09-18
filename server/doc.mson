@@ -1,0 +1,681 @@
+FORMAT: 1A
+
+# More-Recipes
+
+More-Recipes​​ ​provides​ ​a​ ​platform​ ​for​ ​users​ ​to​ ​share​ ​awesome​ ​and​ ​exciting​ ​​ ​recipe​ ​ideas​ ​they  have​ ​invented​ ​or​ ​learnt.​ ​​ ​Suppose​ ​a​ ​user​ ​comes ​up​ ​with​ ​a​ ​recipe,​ ​​ ​he/she​ ​can​ ​post​ ​it​ ​on  More-Recipes​​ ​and​ ​​ ​get​ ​feedback​ ​in​ ​form​ ​of​ ​reviews​ ​and​ ​votes​ ​from​ ​other​ ​users​ ​who​ ​explored​ ​recipe. You can view this documentation over at [Apiary](http://docs.morerecipes.apiary.io).
+
+## Create an account [/ap1/v1/users/signup]
+
+### Signup [POST]
+
+Un-registered users can register using this action. It takes a JSON object containing a username, email and password.
+
++ username (required, string) - username
++ email (required, string) - email address
++ password (required, string) - password
+
++ Request (application/json)
+
+        {
+            "username": "vicki",
+            "email": "vicki@gmail.com",
+            "password": "1234567",
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "User": {
+                    "fullname": "UNKNOWN",
+                    "profilePix": "UNKNOWN",
+                    "username": "vicki",
+                    "email": "vicki@gmail.com",
+                    "updatedAt": "2017-09-17T04:45:44.084Z",
+                    "createdAt": "2017-09-17T04:45:44.084Z",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjIzNTQ0LCJleHAiOjE1MDU3OTYzNDR9.ya4vLYqHQ3zgkgPZo6_9aePh6OhvB2BLlQ9IC-5sNaM"
+                }
+            }
+
+## User Signin [/api/v1/users/signin]
+
+### Sign [POST]
+
+Registered users may login using this action. It takes a JSON object containing a username and password.
+
++ username (required, string) - username
++ password (required, string) - password
+
++ Request (application/json)
+
+        {
+            "username": "vicki",
+            "password": "1234567",
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "User": {
+                    "fullname": "UNKNOWN",
+                    "profilePix": "UNKNOWN",
+                    "username": "vicki",
+                    "email": "vicki@gmail.com",
+                    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjIzNTQ0LCJleHAiOjE1MDU3OTYzNDR9.ya4vLYqHQ3zgkgPZo6_9aePh6OhvB2BLlQ9IC-5sNaM"
+                }
+            }
+
+## User Profile [/api/v1/users/user]
+
+### View user profile [GET]
+
+Registered users may view his/her profile info after registration.
+
++ Request (application/json)
+
+    + Headers
+
+
+                    Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "User": {
+                    "id": 1,
+                    "email": "vicki@gmail.com",
+                    "username": "vicki",
+                    "fullname": "UNKNOWN",
+                    "profilePix": "UNKNOWN",
+                    "favRecipes": []
+                }
+            }
+
+### Modify user profile [PUT]
+
+Registered users may modify his/her profile info after registration using this action. User can modify any part of profile the user wish to make changes.
+
++ username (string) - username
++ email (string) - email address
++ password (string) - password
++ fullname (string) - fullname
+
++ Request (application/json)
+
+    {
+        "username": "vicki_sandy",
+    }
+
+    + Headers
+
+
+                    Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "User": {
+                    "id": 1,
+                    "email": "vicki@gmail.com",
+                    "username": "vicki_sandy",
+                    "fullname": "UNKNOWN",
+                    "profilePix": "UNKNOWN",
+                    "favRecipes": []
+                }
+            }
+
+## Favorite Recipe [/api/v1/users/{id}/recipe]
+Registered users may add a recipe to his/her favorite recipes list.
+### Add Favorite Recipe [POST]
+Registered user may add a recipe to favorite recipes using this action. It takes a JSON object containing a recipe ID.
++ recipeId (required, number) - ID of the recipe a user want to add to favorites.
++ parameter id (required,number) - ID of the user perform the request action.
++ Request (application/json)
+
+        {
+            "recipeId": 1,
+        }
+        + Headers
+
+
+                    Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                    "status": "success",
+                    "User": {
+                        "id": 1,
+                        "favRecipes": [
+                            {
+                                "id": 1,
+                                "recipeName": " Chicken and Pasta",
+                                "category": "Dinner",
+                                "upVotes": 1,
+                                "downVotes": 0,
+                                "views": 0,
+                                "OwnerId": 1
+                            }
+                        ]
+                    }
+                }
+## User's Favorite Recipes [/api/v1/users/1/recipes]
+Registered users may view their favorite recipes.
+### View Favorite Recipes [GET]
+Registered user may view his/her favorite recipes using this action.
++ parameter id (required,number) - ID of the user perform the request action.
++ Request (application/json)
+
+    + Headers
+
+
+                Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "User": {
+                    "id": 1,
+                    "favRecipes": [
+                        {
+                            "id": 2,
+                            "recipeName": " Chicken and Chips",
+                            "category": "Launch",
+                            "upVotes": 0,
+                            "downVotes": 0,
+                            "views": 0,
+                            "OwnerId": 1
+                        },
+                        {
+                            "id": 1,
+                            "recipeName": " Chicken and Pasta",
+                            "category": "Dinner",
+                            "upVotes": 1,
+                            "downVotes": 0,
+                            "views": 0,
+                            "OwnerId": 1
+                        }
+                    ]
+                }
+            }
+
+
+
+## Group Recipes
+
+Recipes related actions
+
+## Add recipe and view recipes actions [/api/v1/recipes]
+
+### Create a Recipe [POST]
+
+Registered users may create a recipe using this action. It takes a JSON object containing a recipe name, recipe category and an array of ingredients and directions.
+
++ recipeName (required, string) - The name of the recipe
++ category (required, string) - The category that the recipe belongs to
++ ingredients (required, array[string]) - A collection of ingriedients.
++ directions (required, array[string]) - A collection of directions.
+
++ Request (application/json)
+
+    + Headers
+
+
+                    Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+
+    + Body
+
+              {
+                  "recipeName": " Chicken and Pasta",
+                  "category":"Dinner",
+                  "ingredients":["chicken","pasta","vegetable oil"],
+                  "directions":["wash the chicken", "boil the chicken", "cook the pasta"]
+              }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "Recipe": {
+                    "id": 1,
+                    "recipeName": " Chicken and Pasta",
+                    "category": "Dinner",
+                    "ingredients": [
+                        "chicken",
+                        "pasta",
+                        "vegetable oil"
+                    ],
+                    "directions": [
+                        "wash the chicken",
+                        "boil the chicken",
+                        "cook the pasta"
+                    ],
+                    "upVotes": 0,
+                    "downVotes": 0,
+                    "views": 0,
+                    "Owner": {
+                        "id": 1,
+                        "username": "vicki",
+                        "fullname": "UNKNOWN",
+                        "profilePix": "UNKNOWN",
+                        "email": "vicki@gmail.com"
+                    },
+                    "RecipeReviews": []
+                }
+            }
+
+
+### View all Recipes [GET]
+Registered users may view all recipes using this action.
++ Request (application/json)
+    + Headers
+
+                Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
++ Response 200 (application/json)
+
+    + Body
+
+                   {
+                        "status": "success",
+                        "Recipes": [
+                            {
+                                "id": 1,
+                                "recipeName": " Chicken and Pasta",
+                                "category": "Dinner",
+                                "ingredients": [
+                                    "chicken",
+                                    "pasta",
+                                    "vegetable oil"
+                                ],
+                                "directions": [
+                                    "wash the chicken",
+                                    "boil the chicken",
+                                    "cook the pasta"
+                                ],
+                                "upVotes": 0,
+                                "downVotes": 0,
+                                "views": 0
+                            },
+                            {
+                                "id": 2,
+                                "recipeName": " Chicken and Chips",
+                                "category": "Launch",
+                                "ingredients": [
+                                    "chicken",
+                                    "yam",
+                                    "vegetable oil"
+                                ],
+                                "directions": [
+                                    "wash the chicken",
+                                    "boil the chicken",
+                                    "cook the yam"
+                                ],
+                                "upVotes": 0,
+                                "downVotes": 0,
+                                "views": 0
+                            }
+                        ]
+                    }
+
+
+## To view, modify and delete a particular Recipe [/api/v1/recipes/{id}]
+
+### View details of a Recipe [GET]
+
+Registered users may view a particular using this action.
+
++ Parameters
+    + id: 1 (required, number) - ID of the recipe an integer
+
++ Request (application/json)
+
+    + Headers
+
+                Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "Recipe": {
+                    "id": 1,
+                    "recipeName": " Chicken and Pasta",
+                    "category": "Dinner",
+                    "ingredients": [
+                        "chicken",
+                        "pasta",
+                        "vegetable oil"
+                    ],
+                    "directions": [
+                        "wash the chicken",
+                        "boil the chicken",
+                        "cook the pasta"
+                    ],
+                    "upVotes": 0,
+                    "downVotes": 0,
+                    "views": 0,
+                    "Owner": {
+                        "id": 1,
+                        "username": "vicki",
+                        "fullname": "UNKNOWN",
+                        "profilePix": "UNKNOWN",
+                        "email": "vicki@gmail.com"
+                    },
+                    "RecipeReviews": []
+                }
+            }
+
+
+### Modify a Recipe [PUT]
+
+Registered users may modify recipe they created using this action.
+It takes a JSON object containing either the recipe name,
+recipe category, an array of ingredients, an array of directions or all of the above.
+
++ recipeName (string) - The name of the recipe
++ category (string) - The category that the recipe belongs to
++ ingredients (array[string]) - A collection of ingriedients.
++ directions (array[string]) - A collection of directions.
++ Parameters
+    + id: 1 (required, number) - ID of the recipe an integer
+
++ Request (application/json)
+
+    + Headers
+
+                Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+    + Body
+
+                {
+                    "category":"Launch",
+                }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "Recipe": {
+                    "id": 1,
+                    "recipeName": " Chicken and Pasta",
+                    "category": "Launch",
+                    "ingredients": [
+                        "chicken",
+                        "pasta",
+                        "vegetable oil"
+                    ],
+                    "directions": [
+                        "wash the chicken",
+                        "boil the chicken",
+                        "cook the pasta"
+                    ],
+                    "upVotes": 0,
+                    "downVotes": 0,
+                    "views": 0,
+                    "Owner": {
+                        "id": 1,
+                        "username": "vicki",
+                        "fullname": "UNKNOWN",
+                        "profilePix": "UNKNOWN",
+                        "email": "vicki@gmail.com"
+                    },
+                    "RecipeReviews": []
+                }
+            }
+
+### Delete a Recipe [DELETE]
+
+Registered users may delete recipe they created using this action.
+
++ Parameters
+    + id: 1 (required, number) - ID of the recipe an integer
+
++ Request (application/json)
+
+    + Headers
+
+                Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "message": "Recipe deleted",
+            }
+
+
+## Recipe search actions [/api/v1/recipes?search={search}]
+User may want to get recipes by recpe name or by recipe category
+
+### search [GET]
+Registered users may search for a particular recipe using this action.
+
++ Parameters
+    + search: 'Chicken and Pasta' (required, string) - search parameter can either be the recipe name or it's category
+
++ Request (application/json)
+
+    + Headers
+
+                Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "Recipe": {
+                    "id": 1,
+                    "recipeName": " Chicken and Pasta",
+                    "category": "Dinner",
+                    "ingredients": [
+                        "chicken",
+                        "pasta",
+                        "vegetable oil"
+                    ],
+                    "directions": [
+                        "wash the chicken",
+                        "boil the chicken",
+                        "cook the pasta"
+                    ],
+                    "upVotes": 0,
+                    "downVotes": 0,
+                    "views": 0,
+                    "Owner": {
+                        "id": 1,
+                        "username": "vicki",
+                        "fullname": "UNKNOWN",
+                        "profilePix": "UNKNOWN",
+                        "email": "vicki@gmail.com"
+                    },
+                    "RecipeReviews": []
+                }
+            }
+
+## Recipe Upvote or Downvote action [/api/v1/recipes/1/vote?vote={vote}]
+User may want to upvote or downvote a recipe.
+### Vote a recipe [PUT]
+Registered users may upvote or downvote a recipe using this action.
+
++ Parameters
+    + vote: 'upvote' (required, string) - vote can either an upvote or downvote as the case maybe.
+
+
++ Request (application/json)
+
+    + Headers
+
+                Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "Recipe": {
+                    "id": 1,
+                    "upVotes": 1,
+                    "downVotes": 0
+                }
+            }
+
+
+
+## Get recipes with the most upVote actions [/api/v1/recipes?sort={sort}&order={order}]
+User may want to get recipes by the number of upvotes a recipe have in descending order.
+
+### Get by upvote [GET]
+Registered users may search for a particular recipe using this action.
+
++ Parameters
+    + sort: 'upvote' (required, string)
+    + order: 'descending' (required, string)
+
+
++ Request (application/json)
+
+    + Headers
+
+                Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+
++ Response 200 (application/json)
+
+    + Body
+
+                {
+                    "status": "success",
+                    "Recipes": [
+                        {
+                            "id": 1,
+                            "recipeName": " Chicken and Pasta",
+                            "category": "Dinner",
+                            "ingredients": [
+                                "chicken",
+                                "pasta",
+                                "vegetable oil"
+                            ],
+                            "directions": [
+                                "wash the chicken",
+                                "boil the chicken",
+                                "cook the pasta"
+                            ],
+                            "upVotes": 1,
+                            "downVotes": 0
+                        },
+                        {
+                            "id": 2,
+                            "recipeName": " Chicken and Chips",
+                            "category": "Launch",
+                            "ingredients": [
+                                "chicken",
+                                "yam",
+                                "vegetable oil"
+                            ],
+                            "directions": [
+                                "wash the chicken",
+                                "boil the chicken",
+                                "cook the yam"
+                            ],
+                            "upVotes": 0,
+                            "downVotes": 0
+                        }
+                    ]
+                }
+## Post Review on Recipe [/api/v1/recipes/{id}/reviews]
+User may post review about a recipe after they meant have tried it out.
+### Post recipe review [POST]
+Registered users may post review on a paticular recipe using this action.
+
++ Parameters
+    + id: 1 (required, number) - ID of the the recipe being reviewed.
+
++ Request (application/json)
+
+    + Headers
+
+                Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjU2MjQ4LCJleHAiOjE1MDU4MjkwNDh9.-jyosivwuz2YYvwMMrAACLMpk5jyoKe0WFy9HqEbUy4
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "status": "success",
+                "Recipe": {
+                    "id": 1,
+                    "recipeName": " Chicken and Pasta",
+                    "category": "Dinner",
+                    "ingredients": [
+                        "chicken",
+                        "pasta",
+                        "vegetable oil"
+                    ],
+                    "directions": [
+                        "wash the chicken",
+                        "boil the chicken",
+                        "cook the pasta"
+                    ],
+                    "upVotes": 0,
+                    "downVotes": 0,
+                    "views": 0,
+                    "OwnerId": 1,
+                    "RecipeReviews": [
+                        {
+                            "id": 1,
+                            "review": "cool recipe.. you guys should try it out",
+                            "ReviewerId": 1,
+                            "RecipeId": 1,
+                            "Reviewer": {
+                                "id": 1,
+                                "username": "vicki",
+                                "fullname": "UNKNOWN",
+                                "profilePix": "UNKNOWN",
+                                "email": "vicki@gmail.com"
+                            }
+                        }
+                    ]
+                }
+            }
+
+
+

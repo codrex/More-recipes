@@ -4,7 +4,7 @@
 [![Issue Count](https://codeclimate.com/github/codrex/More-recipes/badges/issue_count.svg)](https://codeclimate.com/github/codrex/More-recipes)
 
 # MORE-RECIPES
- More-Recipes​​ ​provides​ ​a​ ​platform​ ​for​ ​users​ ​to​ ​share​ ​awesome​ ​and​ ​exciting​ ​​ ​recipe​ ​ideas​ ​they  have​ ​invented​ ​or​ ​learnt.​ ​​ ​Suppose​ ​a​ ​user​ ​comes ​up​ ​with​ ​a​ ​recipe,​ ​​ ​he/she​ ​can​ ​post​ ​it​ ​on  More-Recipes​​ ​and​ ​​ ​get​ ​feedback​ ​in​ ​form​ ​of​ ​reviews​ ​and​ ​votes​ ​from​ ​other​ ​users​ ​who​ ​explored​ ​recipe.​
+ More-Recipes​​ ​provides​ ​a​ ​platform​ ​for​ ​users​ ​to​ ​share​ ​awesome​ ​and​ ​exciting​ ​​ ​recipe​ ​ideas​ ​they  have​ ​invented​ ​or​ ​learnt.​ ​​ ​Suppose​ ​a​ ​user​ ​comes ​up​ ​with​ ​a​ ​recipe,​ ​​ ​he/she​ ​can​ ​post​ ​it​ ​on  More-Recipes​​ ​and​ ​​ ​get​ ​feedback​ ​in​ ​form​ ​of​ ​reviews​ ​and​ ​votes​ ​from​ ​other​ ​users​ ​who​ ​explored​ the ​recipe.​
 
 ## Endpoints
 
@@ -32,6 +32,8 @@
   - Registered users can get recipes with the most upvotes
 - **<code>GET</code>:/api/v1/recipes?search={search}**
   - Registered users can search for recipes either by recipe name or by recipe category
+
+### For more info [read our API documentation](http://docs.morerecipes.apiary.io)
 
 ### Technologies
 
