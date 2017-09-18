@@ -7,6 +7,11 @@ engines:
     config:
       languages:
       - javascript
+      config:
+      extensions:
+      - .es6
+      - .js
+      - .jsx
   eslint:
     enabled: true
   fixme:

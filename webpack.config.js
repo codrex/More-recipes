@@ -1,13 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HappyPack = require('happypack');
 
 module.exports = {
   entry: {
     app: [
-      'babel-polyfill',
-      'react-hot-loader/patch',
       './client/src/index',
     ],
   },
@@ -25,7 +22,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        loader: ['happypack/loader?id=css'],
+        loaders: ['style-loader', 'css-loader']
       },
       {
         test: /\.scss$/,
@@ -40,7 +37,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: ['happypack/loader?id=RHMR'],
+        loaders: ['babel-loader'],
       },
       {
         test: /\.(ttf|eot|png|svg|jpg|gif)$/,
@@ -64,19 +61,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'testing',
+      title: 'MoreRecipes',
       template: './client/src/index.html',
     }),
     new CleanWebpackPlugin(['dist']),
-    new HappyPack({
-      id: 'RHMR',
-      threads: 4,
-      loaders: ['react-hot-loader/webpack', 'babel-loader'],
-    }),
-    new HappyPack({
-      id: 'css',
-      threads: 2,
-      loaders: ['style-loader', 'css-loader'],
-    }),
   ],
 };
