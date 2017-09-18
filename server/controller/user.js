@@ -19,7 +19,6 @@ export const validateSignupData = (req, res, next) => {
 
 // This function validates profile update data
 export const validateUpdate = (req, res, next) => {
-  console.log(req.body);
   const updateData = {
     username: req.body.username || req.user.username,
     fullname: req.body.fullname || req.user.fullname,

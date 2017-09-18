@@ -210,7 +210,7 @@ export const checkOwnship = (req, res, next) => {
 
 // checking if recipe exist in dbase
 export const checkRecipe = (req, res, next) => {
-  Recipes.findById(req.body.recipeId)
+  Recipes.findById(req.body.recipeId || req.params.id)
     .then((recipe) => {
       if (recipe) {
         next();
@@ -260,19 +260,6 @@ export const fetchReview = (req, res) => {
   })
   .then((recipeReviews) => {
     sendSuccess(res, 200, 'Recipe', recipeReviews);
-  }).catch(() => {
-    serverError(res);
-  });
-};
-
-export const isRecipe = (req, res, next) => {
-  Recipes.findById(req.params.id)
-  .then((recipe) => {
-    if (recipe) {
-      next();
-    } else {
-      sendFail(res, 404, 'Recipe not found');
-    }
   }).catch(() => {
     serverError(res);
   });

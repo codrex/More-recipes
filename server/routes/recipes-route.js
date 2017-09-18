@@ -7,8 +7,7 @@ import { validateRecipe, create,
         validateUpdate, fetchForUpdate,
          fetchAllRecipe, fetchAllBySearch,
          setReview, fetchReview,
-         fetchVotes, fetchRecipeByUpVote,
-         isRecipe, update } from '../controller/recipe';
+         fetchVotes, fetchRecipeByUpVote, update, checkRecipe } from '../controller/recipe';
 import { VoteHandler, countVote, voteValidation } from '../controller/vote';
 import { isIdValidUser } from '../controller/user';
 import addAsViewer from '../controller/viewer';
@@ -37,7 +36,7 @@ recipesRoute.route('/:id/reviews')
 
 //  route to upvote or down vote a recipe
 recipesRoute.route('/:id/vote')
-  .put(voteValidation, isRecipe, VoteHandler, countVote, update, fetchVotes);
+  .put(voteValidation, checkRecipe, VoteHandler, countVote, update, fetchVotes);
 
 
 export default recipesRoute;
