@@ -1,0 +1,92 @@
+.no-margin{
+  margin:0!important;
+}
+.no-padding{
+  padding:0!important;
+}
+.no-b-r{
+  border-radius: 0!important;
+}
+.bg-primary{
+  background-color: $primary-color!important;
+  &:hover,&:focus,a.bg-primary:hover{
+      background-color: darken($primary-color,5%)!important;
+      outline: 0;
+      box-shadow: none;
+  }
+}
+a.bg-primary:hover{
+  background-color: darken($primary-color,5%)!important;
+  outline: 0;
+  box-shadow: none;
+}
+.m-2em-b {
+    margin-bottom: .3rem!important; 
+}
+.bg-secondary{
+  background-color: $secondary-color!important;
+  &:hover,&:focus{
+      background-color: darken($secondary-color,5%)!important;
+      outline: 0;
+      box-shadow: none;
+  }
+}
+.border-primary{
+  border-color: $primary-color!important;
+  &:hover,&:focus{
+    background: $bg-color !important;
+  }
+}
+.border-white{
+  border-color: $bg-color!important;
+}
+.bg-white{
+  background: #fff !important;
+}
+.text-white:hover,.text-white:focus,.text-white:active,.text-white:visited{
+  color: white !important;
+}
+.curve{
+  border-radius: 20px !important;
+}
+.top-margin{
+  margin: 50px !important;
+}
+.bold{
+  font-weight: bold!important;
+}
+.s-padding{
+  padding-left: .5em!important;
+  padding-right: .5em!important;
+}
+.l-margin{
+  margin-left: 1em!important;
+}
+.f-wrap{
+  flex-wrap: wrap !important;
+}
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom:0;
+  z-index: $overlay-z;
+  background: rgba(0,0,0,0.6);
+  overflow: hidden;
+  display: none;
+  visibility: hidden;
+  &-active{
+    display: block;
+    visibility: visible;
+  }
+}
+.transparent{
+  background-color: rgba(0,0,0,0) !important;
+}
+.no-scroll{
+  overflow: hidden !important;
+}
+.flex-auto{
+  flex: auto;
+}
