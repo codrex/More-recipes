@@ -1,6 +1,10 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
+import webpack from 'webpack';
+import autoprefixer from 'autoprefixer';
+import precss from 'precss';
+
 
 module.exports = {
   entry: {
@@ -21,18 +25,24 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        loaders: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.scss$/,
+        test: /\.(scss)$/,
         use: [{
-          loader: 'style-loader',
+          loader: 'style-loader', // inject CSS to page
         }, {
-          loader: 'css-loader',
+          loader: 'css-loader', // translates CSS into CommonJS modules
         }, {
-          loader: 'sass-loader',
-        }],
+          loader: 'postcss-loader', // Run post css actions
+          options: {
+            plugins() { // post css plugins, can be exported to postcss.config.js
+              return [
+                precss,
+                autoprefixer
+              ];
+            }
+          }
+        }, {
+          loader: 'sass-loader' // compiles SASS to CSS
+        }]
       },
       {
         test: /\.js$/,
@@ -60,6 +70,12 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default'],
+    }),
     new HtmlWebpackPlugin({
       title: 'MoreRecipes',
       template: './client/src/index.html',
