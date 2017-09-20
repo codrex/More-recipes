@@ -1,0 +1,11 @@
+@import '../../../scss/_var.scss';
+
+.text-input{
+  min-height: 70px;
+  font-size: 1.5em;
+  transition: box-shadow .3s ease-in;
+  &:focus{
+    border-color:transparent;
+    box-shadow: 1px 1px 10px 6px rgba($primary-color,.2);
+  }
+}

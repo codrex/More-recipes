@@ -1,11 +1,8 @@
 import React from 'react';
-import Navbar from './common/navbar/navbar';
+import LandingPage from './pages/landingPage/index';
 
 const App = () => (
-  <div>
-    <Navbar />
-  </div>
+  <LandingPage />
 );
-
 
 export default App;
