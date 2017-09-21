@@ -39,7 +39,7 @@ class LoginForm extends React.Component {
    */
   render() {
     return (
-      <Form>
+      <Form submitBtnText="Login">
         <Input
           type="text"
           id="username"

@@ -29,15 +29,26 @@ const Modal = (props) => (
         <div className="modal-body">
           {props.children}
         </div>
-        <div
-          className={classnames('modal-footer',
+        {props.footer &&
+          <div
+            className={classnames('modal-footer',
                         props.center && 'modal-footer-center',
                         props.right && 'modal-footer-right',
                         props.left && ' modal-footer-left')}
-        >
-          <button type="button" className="btn btn-primary btn-lg text-white text-capitalize" data-dismiss="modal">{props.leftBtnText || 'Cancel'}</button>
-          <button type="button" className="btn btn-secondary btn-lg text-white text-capitalize">{props.rightBtnText || 'Continue'}</button>
-        </div>
+          >
+            <button
+              type="button"
+              className="btn btn-primary btn-lg text-white text-capitalize" data-dismiss="modal"
+            >{props.leftBtnText || 'Cancel'}
+            </button>
+            <button
+              type="button"
+              className="btn btn-secondary btn-lg text-white text-capitalize"
+            >
+              {props.rightBtnText || 'Continue'}
+            </button>
+          </div>
+      }
       </div>
     </div>
   </div>
@@ -51,8 +62,8 @@ Modal.propTypes = {
   center: PropTypes.bool,
   left: PropTypes.bool,
   right: PropTypes.bool,
-  title: PropTypes.string.isRequired
-
+  title: PropTypes.string.isRequired,
+  footer: PropTypes.bool
 };
 
 export default Modal;

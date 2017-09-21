@@ -31,14 +31,22 @@ export const Form = (props) => (
     className={classnames('col-12 no-margin', props.className)}
     action={props.action}
     method={props.method}
+    onSubmit={props.onSubmit}
   >
     {props.children}
+    <button
+      type="button"
+      className="btn btn-secondary btn-lg text-white text-uppercase w-100"
+    >{props.submitBtnText}
+    </button>
   </form>
 );
 
 Form.propTypes = {
-  children: PropTypes.oneOf(PropTypes.string, PropTypes.func, PropTypes.object),
+  children: PropTypes.oneOf(PropTypes.string, PropTypes.func, PropTypes.object).isRequired,
   action: PropTypes.string,
   method: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string.isRequired,
+  submitBtnText: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func,
 };

@@ -49,7 +49,7 @@ class EditProfileForm extends React.Component {
    */
   render() {
     return (
-      <Form>
+      <Form submitBtnText="Update">
         <Input
           type="text"
           id="fullname"

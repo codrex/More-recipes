@@ -69,7 +69,7 @@ class RegForm extends React.Component {
    */
   render() {
     return (
-      <Form>
+      <Form submitBtnText="Register">
         <Input
           type="text"
           id="fullname"
