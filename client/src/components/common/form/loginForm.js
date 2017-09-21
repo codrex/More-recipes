@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input } from './form';
 
 /**
@@ -16,6 +17,7 @@ class LoginForm extends React.Component {
     };
     this.handelPasswordChange = this.handelPasswordChange.bind(this);
     this.handelUsernameChange = this.handelUsernameChange.bind(this);
+    this.login = this.login.bind(this);
   }
 
   /** changes the state.password
@@ -33,13 +35,19 @@ class LoginForm extends React.Component {
   handelUsernameChange(e) {
     this.setState({ username: e.target.value });
   }
+   /**
+   * @return {undefined} undefined
+  */
+  login() {
+    this.props.login(this.state);
+  }
 
   /**
    * @returns {object} the form
    */
   render() {
     return (
-      <Form submitBtnText="Login">
+      <Form submitBtnText="Login" onSubmit={this.login}>
         <Input
           type="text"
           id="username"
@@ -58,5 +66,7 @@ class LoginForm extends React.Component {
     );
   }
 }
-
+LoginForm.propTypes = {
+  login: PropTypes.func,
+};
 export default LoginForm;

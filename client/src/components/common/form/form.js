@@ -31,11 +31,14 @@ export const Form = (props) => (
     className={classnames('col-12 no-margin', props.className)}
     action={props.action}
     method={props.method}
-    onSubmit={props.onSubmit}
+    onSubmit={e => {
+      e.preventDefault();
+      props.onSubmit();
+    }}
   >
     {props.children}
     <button
-      type="button"
+      type="submit"
       className="btn btn-secondary btn-lg text-white text-uppercase w-100"
     >{props.submitBtnText}
     </button>
@@ -43,10 +46,10 @@ export const Form = (props) => (
 );
 
 Form.propTypes = {
-  children: PropTypes.oneOf(PropTypes.string, PropTypes.func, PropTypes.object).isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
   action: PropTypes.string,
   method: PropTypes.string,
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   submitBtnText: PropTypes.string.isRequired,
   onSubmit: PropTypes.func,
 };

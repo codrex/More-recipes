@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Form, Input } from './form';
 
 /**
@@ -22,6 +23,7 @@ class RegForm extends React.Component {
     this.handelReEnterPasswordChange = this.handelReEnterPasswordChange.bind(this);
     this.handelUsernameChange = this.handelUsernameChange.bind(this);
     this.handleFullnameChange = this.handleFullnameChange.bind(this);
+    this.signup = this.signup.bind(this);
   }
 
    /** changes the state.fullname
@@ -65,11 +67,21 @@ class RegForm extends React.Component {
   }
 
   /**
+   *
+   * @return {undefined} undefined
+  */
+  signup() {
+    const state = Object.assign({}, this.state);
+    delete state.reEnterPassword;
+    this.props.signup(state);
+  }
+
+  /**
    * @returns {object} the form
    */
   render() {
     return (
-      <Form submitBtnText="Register">
+      <Form submitBtnText="Register" onSubmit={this.signup}>
         <Input
           type="text"
           id="fullname"
@@ -109,5 +121,9 @@ class RegForm extends React.Component {
     );
   }
 }
+
+RegForm.propTypes = {
+  signup: PropTypes.func
+};
 
 export default RegForm;

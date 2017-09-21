@@ -1,7 +1,7 @@
 @import '../../../scss/_var.scss';
 
 .text-input{
-  min-height: 70px;
+  min-height: 2.5em;
   font-size: 2em;
   transition: box-shadow .3s ease-in;
   &:focus{
