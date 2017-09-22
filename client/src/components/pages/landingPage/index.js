@@ -10,21 +10,48 @@ import RegForm from '../../common/form/regForm';
 import Carousel from './carousel/carousel';
 import Cta from './cta/cta';
 
+ /**
+   *  landing page
+   */
+class LandingPage extends React.Component {
+   /**
+   * @param {object} props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalActive: false,
+    };
+    this.modalActiveChanged = this.modalActiveChanged.bind(this);
+  }
 
-const LandingPage = (props) => (
-  <div>
-    <Navbar />
-    <Carousel >
-      <Cta />
-    </Carousel>
-    <Modal id="loginModal" center rightBtnText="Login" title="Login">
-      <LoginForm login={props.actions.loginAction} />
-    </Modal>
-    <Modal id="regModal" center rightBtnText="Create account" title="Create account">
-      <RegForm signup={props.actions.signupAction} />
-    </Modal>
-  </div>
-);
+  /**
+   * @return {undefined}
+   */
+  modalActiveChanged() {
+    this.setState({ modalActive: !this.modalActive });
+  }
+
+  /**
+   * @return {object} landing page
+   */
+  render() {
+    return (
+      <div>
+        <Navbar />
+        <Carousel >
+          <Cta />
+        </Carousel>
+        <Modal id="loginModal" center rightBtnText="Login" title="Login">
+          <LoginForm login={this.props.actions.loginAction} />
+        </Modal>
+        <Modal id="regModal" center rightBtnText="Create account" title="Create account">
+          <RegForm signup={this.props.actions.signupAction} />
+        </Modal>
+      </div>
+    );
+  }
+}
 
 LandingPage.propTypes = {
   actions: PropTypes.object,
