@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Field, reduxForm } from 'redux-form';
+import { validateSignup } from '../../../validator/validator';
 import { Form, Input } from './form';
 
 /**
@@ -11,111 +13,53 @@ class RegForm extends React.Component {
    */
   constructor(props) {
     super(props);
-    this.state = {
-      username: '',
-      email: '',
-      password: '',
-      reEnterPassword: '',
-      fullname: ''
-    };
-    this.handelEmailChange = this.handelEmailChange.bind(this);
-    this.handelPasswordChange = this.handelPasswordChange.bind(this);
-    this.handelReEnterPasswordChange = this.handelReEnterPasswordChange.bind(this);
-    this.handelUsernameChange = this.handelUsernameChange.bind(this);
-    this.handleFullnameChange = this.handleFullnameChange.bind(this);
     this.signup = this.signup.bind(this);
   }
 
-   /** changes the state.fullname
-   * @param {e} e  event object
-   * @return {undefined} undefined
-  */
-  handleFullnameChange(e) {
-    this.setState({ fullname: e.target.value });
-  }
-
-  /** changes the state.password
-   * @param {e} e  event object
-   * @return {undefined} undefined
-  */
-  handelPasswordChange(e) {
-    this.setState({ password: e.target.value });
-  }
-
-   /** changes the state.reEnterPassword
-   * @param {e} e  event object
-   * @return {undefined} undefined
-  */
-  handelReEnterPasswordChange(e) {
-    this.setState({ reEnterPassword: e.target.value });
-  }
-
-  /** changes the state.email
-   * @param {e} e  event object
-   * @return {undefined} undefined
-  */
-  handelEmailChange(e) {
-    this.setState({ email: e.target.value });
-  }
-
-  /** changes the state.username
-   * @param {e} e  event object
-   * @return {undefined} undefined
-  */
-  handelUsernameChange(e) {
-    this.setState({ username: e.target.value });
-  }
-
   /**
-   *
+   *  @param {object} value (signup form values)
    * @return {undefined} undefined
   */
-  signup() {
-    const state = Object.assign({}, this.state);
+  signup(value) {
+    const state = Object.assign({}, value);
     delete state.reEnterPassword;
     this.props.signup(state);
   }
 
   /**
-   * @returns {object} the form
+   * @returns {object} form
    */
   render() {
+    const { handleSubmit } = this.props;
     return (
-      <Form submitBtnText="Register" onSubmit={this.signup}>
-        <Input
-          type="text"
-          id="fullname"
-          placeholder="Fullname"
-          value={this.state.fullname}
-          handleChange={this.handleFullnameChange}
-        />
-        <Input
+      <Form submitBtnText="Register" onSubmit={handleSubmit(this.signup)}>
+        <Field
+          component={Input}
+          name="username"
           type="text"
           id="username"
-          placeholder="Username"
-          value={this.state.username}
-          handleChange={this.handelUsernameChange}
+          placeholder="Enter username"
         />
-        <Input
+        <Field
+          component={Input}
+          name="email"
           type="email"
           id="email"
-          placeholder="Email"
-          value={this.state.email}
-          handleChange={this.handelEmailChange}
+          placeholder="Enter email"
         />
-        <Input
+        <Field
+          component={Input}
+          name="password"
           type="password"
           id="password"
-          placeholder="Password"
-          value={this.state.password}
-          handleChange={this.handelPasswordChange}
+          placeholder="Enter password"
         />
-        <Input
+        <Field
+          component={Input}
           type="password"
-          id="password"
+          name="reEnterPassword"
+          id="reEnterPassword"
           placeholder="Re-enter password"
-          value={this.state.reEnterPassword}
-          handleChange={this.handelReEnterPasswordChange}
         />
       </Form>
     );
@@ -123,7 +67,12 @@ class RegForm extends React.Component {
 }
 
 RegForm.propTypes = {
-  signup: PropTypes.func
+  signup: PropTypes.func,
+  handleSubmit: PropTypes.func
+
 };
 
-export default RegForm;
+export default reduxForm({
+  validate: validateSignup,
+  form: 'RegForm',
+})(RegForm);
