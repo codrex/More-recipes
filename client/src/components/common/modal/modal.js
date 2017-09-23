@@ -6,7 +6,7 @@ import './modal.scss';
 const Modal = (props) => (
   <div
     className="modal fade"
-    id={props.id}
+    id="modal"
     tabIndex="-1"
     role="dialog"
     aria-labelledby={`${props.id}Label`}
@@ -19,7 +19,13 @@ const Modal = (props) => (
       >
         {props.title}
       </h5>
-      <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+      <button
+        type="button"
+        className="close"
+        data-dismiss="modal"
+        aria-label="Close"
+        onClick={props.closeBtnClicked}
+      >
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -55,7 +61,7 @@ const Modal = (props) => (
   );
 
 Modal.propTypes = {
-  children: PropTypes.object.isRequired,
+  children: PropTypes.any,
   id: PropTypes.string.isRequired,
   leftBtnText: PropTypes.string,
   rightBtnText: PropTypes.string,
@@ -63,7 +69,8 @@ Modal.propTypes = {
   left: PropTypes.bool,
   right: PropTypes.bool,
   title: PropTypes.string.isRequired,
-  footer: PropTypes.bool
+  footer: PropTypes.bool,
+  closeBtnClicked: PropTypes.func,
 };
 
 export default Modal;

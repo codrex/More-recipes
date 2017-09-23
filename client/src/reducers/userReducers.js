@@ -1,11 +1,9 @@
-import { CREATE_ACCOUNT, LOGIN } from '../actions/actions';
+import { USER } from '../actions/actions';
 
-export const createUserReducer = (state = {}, action) => {
+export const userReducer = (state = {}, action) => {
   switch (action.type) {
-    case CREATE_ACCOUNT:
-      return action.payload.response.data;
-    case LOGIN:
-      return action.payload.response.data;
+    case USER:
+      return action;
     default:
       return state;
   }

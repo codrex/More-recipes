@@ -1,8 +1,9 @@
 import React from 'react';
 import Button from '../../../common/button/button';
+import PropTypes from 'prop-types';
 import './cta.scss';
 
-const Cta = () => (
+const Cta = props => (
   <div className="cta ">
     <h1
       className=" text-uppercase display-4 col-xs-11 col-sm-10 col-md-8 col-lg-9"
@@ -14,7 +15,8 @@ const Cta = () => (
         className="btn-primary btn-lg login"
         text="Login"
         dataToggle="modal"
-        dataTarget="#loginModal"
+        dataTarget="#modal"
+        handleClick={props.signin}
       >
         Login
       </Button>
@@ -22,12 +24,18 @@ const Cta = () => (
         className=" btn-secondary btn-lg reg text-white"
         text="Create an account"
         dataToggle="modal"
-        dataTarget="#regModal"
+        dataTarget="#modal"
+        handleClick={props.signup}
       >
         Create an account
       </Button>
     </div>
   </div>
   );
+
+Cta.propTypes = {
+  signin: PropTypes.func,
+  signup: PropTypes.func,
+};
 
 export default Cta;

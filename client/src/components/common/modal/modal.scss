@@ -1,7 +1,7 @@
 @import '../../../scss/_var.scss';
 .modal{
   &-dialog{
-    min-height: 60%;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: flex-start;

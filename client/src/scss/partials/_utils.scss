@@ -21,7 +21,7 @@ a.bg-primary:hover{
   box-shadow: none;
 }
 .m-2em-b {
-    margin-bottom: .3rem!important; 
+    margin-bottom: .3rem!important;
 }
 .bg-secondary{
   background-color: $secondary-color!important;
@@ -90,3 +90,13 @@ a.bg-primary:hover{
 .flex-auto{
   flex: auto;
 }
+.hide{
+  visibility: hidden;
+  opacity: 0;
+}
+
+.visible{
+  visibility:visible;
+  opacity: 1;
+}
+

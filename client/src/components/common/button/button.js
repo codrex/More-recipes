@@ -10,6 +10,7 @@ const Button = (props) => (
     data-dismiss="modal"
     data-toggle={props.dataToggle}
     data-target={props.dataTarget}
+    onClick={props.handleClick}
   >
     {props.text}
   </button>

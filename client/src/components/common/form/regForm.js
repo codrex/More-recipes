@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { validateSignup } from '../../../validator/validator';
-import { Form, Input } from './form';
-
+import Form from './form';
+import Input from './input';
 /**
  * User registration form
  */
@@ -32,7 +32,11 @@ class RegForm extends React.Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <Form submitBtnText="Register" onSubmit={handleSubmit(this.signup)}>
+      <Form
+        submitBtnText="Register"
+        onSubmit={handleSubmit(this.signup)}
+        className={this.props.loading ? 'hide' : ''}
+      >
         <Field
           component={Input}
           name="username"
@@ -68,7 +72,8 @@ class RegForm extends React.Component {
 
 RegForm.propTypes = {
   signup: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  loading: PropTypes.bool
 
 };
 

@@ -1,2 +1,6 @@
-export const CREATE_ACCOUNT = 'CREATE_ACCOUNT';
-export const LOGIN = 'LOGIN';
+export const USER = 'USER';
+export const BEGIN_AJAX_REQUEST = 'BEGIN_AJAX_REQUEST';
+export const END_AJAX_REQUEST = 'END_AJAX_REQUEST';
+export const AJAX_REQUEST_ERROR = 'AJAX_REQUEST_ERROR';
+export const AJAX_REQUEST_SUCCESS = 'AJAX_REQUEST_SUCCESS';
+

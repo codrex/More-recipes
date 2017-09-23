@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form, Input } from './form';
+import Form from './form';
+import Input from './input';
 
 /**
  * Edit user profile form

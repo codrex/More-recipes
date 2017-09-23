@@ -1,9 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
-import ReduxPromise from 'redux-promise';
+import thunk from 'redux-thunk';
 import rootReducer from '../reducers/index';
 
-const configureStore = () => {
-  return applyMiddleware(ReduxPromise)(createStore)(rootReducer);
-};
-console.log(configureStore(), applyMiddleware(ReduxPromise));
+const configureStore = () => applyMiddleware(thunk)(createStore)(rootReducer);
+
 export default configureStore;
