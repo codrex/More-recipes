@@ -14,11 +14,11 @@ const Form = props => (
     }}
   >
     {props.children}
-    <button
+    {props.submitBtnText && <button
       type="submit"
       className="btn btn-secondary btn-lg text-white text-uppercase w-100"
     >{props.submitBtnText}
-    </button>
+    </button>}
   </form>
 );
 
