@@ -39,3 +39,14 @@ a,a:focus,a:hover,a:active{
     color: #fff;
     background-color: lighten($primary-color,10%);
 }
+.icon-wrapper{
+  height: 50px;
+  width: 50px;
+  background: aliceblue;
+  margin: 0;
+  display: inline-block;
+  margin: 0 .3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

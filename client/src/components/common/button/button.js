@@ -13,6 +13,7 @@ const Button = (props) => (
     onClick={props.handleClick}
   >
     {props.text}
+    {props.children}
   </button>
 );
 
@@ -22,6 +23,9 @@ Button.propTypes = {
   className: PropTypes.string,
   dataToggle: PropTypes.string,
   dataTarget: PropTypes.string,
+  handleClick: PropTypes.func,
+  children: PropTypes.element,
+
 };
 
 export default Button;

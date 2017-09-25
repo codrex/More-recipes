@@ -1,0 +1,79 @@
+@import '../../../../scss/_var.scss';
+
+.ingredients{
+  border: 1px solid #FFEB3B;
+  height: 80vh;
+  overflow: hidden;
+  padding: 0 .5em;
+  &-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 38%;
+    & form{
+      max-height: fit-content;
+      padding: 0;
+      margin-top: 1em;
+    }
+
+  }
+  &-header-text{
+    background-color: $primary-color;
+    color: white;
+    padding: 1em;
+    font-size: 1.6em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  &-list{
+    overflow: scroll;
+    height: 60vh;
+    margin: .5em 0;
+    padding: 0, .5em;
+    &-item{
+      height: 50px;
+      margin: 0;
+      margin-bottom: .5em;
+      text-transform: capitalize;
+      font-size: 1.8em;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba($primary-color, .8);
+      padding-left: .5em;
+      transition: background-color .4s ease-in;
+      &:hover, &:focus{
+        background-color: rgba($primary-color, .9);
+      }
+
+      &-icon{
+        float: right;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .2s ease-in .4s;
+      }
+      &:hover &-icon, &:focus &-icon{
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+.ingredient-edit-form{
+  display: flex;
+  margin-bottom: 1em;
+}
+.ingredient-edit-input{
+  min-height:1.5em;
+}
+.ingredient-edit-fg{
+  flex: 2;
+  margin: 0;
+}
+.ingredient-edit-btn{
+  align-self: flex-start;
+  box-shadow: none !important;
+
+}

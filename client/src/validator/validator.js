@@ -22,3 +22,11 @@ export const validateSignup = (data) => {
   if (email)error.email = email;
   return error;
 };
+
+export const validateIngredient = (value) => {
+  const error = {};
+  const ingredient = validate.single(value.ingredient,
+    constraint.recipe('Ingredient'));
+  if (ingredient)error.ingredient = ingredient;
+  return error;
+};

@@ -5,7 +5,7 @@ import './form.scss';
 
 const Form = props => (
   <form
-    className={classnames('col-12 no-margin', props.className)}
+    className={classnames('col-12', props.className)}
     action={props.action}
     method={props.method}
     onSubmit={e => {
@@ -23,11 +23,11 @@ const Form = props => (
 );
 
 Form.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.any,
   action: PropTypes.string,
   method: PropTypes.string,
   className: PropTypes.string,
-  submitBtnText: PropTypes.string.isRequired,
+  submitBtnText: PropTypes.string,
   onSubmit: PropTypes.func,
 };
 
