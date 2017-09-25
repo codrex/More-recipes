@@ -45,12 +45,18 @@ class IngredientListItem extends React.Component {
       <div className="d-flex flex-column ">
         <h4 className="ingredients-list-item ">
           {this.props.ingredientName}
-          <div className="d-flex" onClick={this.changeEditMode}>
+          <div className="d-flex">
             <div className="icon-wrapper" >
-              <i className="fa fa-pencil text-white ingredients-list-item-icon icon"></i>
+              <i
+                className="fa fa-pencil text-white ingredients-list-item-icon icon"
+                onClick={this.changeEditMode}
+              ></i>
             </div>
-            <div className="icon-wrapper" onClick={() => this.props.delete(this.props.index)}>
-              <i className="fa fa-trash text-white ingredients-list-item-icon icon"></i>
+            <div className="icon-wrapper">
+              <i
+                className="fa fa-trash text-white ingredients-list-item-icon icon"
+                onClick={() => this.props.delete(this.props.index)}
+              ></i>
             </div>
           </div>
         </h4>
@@ -71,12 +77,12 @@ class IngredientListItem extends React.Component {
             />
             <div className="d-flex">
               <Button
-                className=" btn-secondary btn-lg reg text-white ingredient-edit-btn"
+                className=" btn-secondary text-white ingredient-edit-btn"
                 text="Save"
                 type="submit"
               />
               <Button
-                className="btn-primary btn-lg  ingredient-edit-btn"
+                className="btn-primary ingredient-edit-btn"
                 handleClick={this.changeEditMode}
                 text="close"
               />

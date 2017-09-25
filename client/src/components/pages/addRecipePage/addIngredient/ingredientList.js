@@ -10,6 +10,7 @@ const ReduxFormItem = (props) => {
   const NewIngredientListItem = reduxForm({
     validate: validateIngredient,
     form: `editIngredient_${props.i}`,
+    initialValues: { ingredient: props.ingredientName },
   })(IngredientListItem);
   return (
     <NewIngredientListItem

@@ -9,7 +9,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 38%;
+    max-height: 45%;
+    height: fit-content;
     & form{
       max-height: fit-content;
       padding: 0;
@@ -28,7 +29,7 @@
   }
   &-list{
     overflow: scroll;
-    height: 60vh;
+    height: 55%;
     margin: .5em 0;
     padding: 0, .5em;
     &-item{
@@ -47,17 +48,6 @@
       &:hover, &:focus{
         background-color: rgba($primary-color, .9);
       }
-
-      &-icon{
-        float: right;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity .2s ease-in .4s;
-      }
-      &:hover &-icon, &:focus &-icon{
-        opacity: 1;
-        visibility: visible;
-      }
     }
   }
 }
@@ -67,6 +57,7 @@
 }
 .ingredient-edit-input{
   min-height:1.5em;
+  font-size: 1.2em;
 }
 .ingredient-edit-fg{
   flex: 2;
@@ -75,5 +66,7 @@
 .ingredient-edit-btn{
   align-self: flex-start;
   box-shadow: none !important;
+  font-size: 1.4em
 
 }
+

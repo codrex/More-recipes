@@ -36,6 +36,7 @@ class AddIngredient extends React.Component {
         ingredients: [value.ingredient].concat(this.state.ingredients)
       }
     );
+    this.props.reset();
   }
   /**
    *
@@ -80,6 +81,7 @@ class AddIngredient extends React.Component {
               type="text"
               id="ingredient"
               placeholder="Enter an ingredient name"
+              fgClassName="d-flex flex-column-reverse"
             />
           </Form>
         </div>
@@ -95,6 +97,8 @@ class AddIngredient extends React.Component {
 
 AddIngredient.propTypes = {
   handleSubmit: PropTypes.func,
+  reset: PropTypes.func,
+
 };
 
 export default reduxForm({
