@@ -1,9 +1,10 @@
 import React from 'react';
-import AddIngredient from './addIngredient/addIngredient';
+import AddDirections from './addDirections/addDirections';
+
 
 const AddRecipes = (props) => {
   return (
-    <AddIngredient />
+    <AddDirections />
   );
 };
 

@@ -23,10 +23,17 @@ export const validateSignup = (data) => {
   return error;
 };
 
-export const validateIngredient = (value) => {
+// this validation function validates ingredients or directions
+// depending on the value present.
+export const validateItems = (value) => {
   const error = {};
   const ingredient = validate.single(value.ingredient,
-    constraint.recipe('Ingredient'));
-  if (ingredient)error.ingredient = ingredient;
+    constraint.recipe('ingredient'));
+  const direction = validate.single(value.direction,
+    constraint.recipe('direction'));
+
+  if (ingredient)error.ingredient = ingredient[0];
+  if (direction)error.direction = direction[0];
+
   return error;
 };
