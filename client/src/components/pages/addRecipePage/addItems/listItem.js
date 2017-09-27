@@ -68,7 +68,7 @@ class ListItem extends React.Component {
       <div className="d-flex flex-column ">
         {
           this.props.ingredients &&
-            <h4 className="items-list-item ">
+            <h4 className="items-list-item lead">
               {this.props.content}
               <ListItemIcons
                 editIconClicked={this.changeEditMode}
@@ -86,7 +86,7 @@ class ListItem extends React.Component {
               <AccordionHeader
                 index={this.props.index}
                 id={this.props.name}
-                title={`STEP-${this.props.index + 1} : ${this.props.content.slice(0, 20)}`}
+                title={`Direction ${this.props.index + 1}`}
                 className="items-list-item d-flex no-margin"
               >
                 <ListItemIcons

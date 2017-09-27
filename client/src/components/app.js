@@ -4,6 +4,7 @@ import AddRecipePage from './pages/addRecipePage/index';
 
 const App = () => (
   <AddRecipePage />
+  // <LandingPage />
 );
 
 export default App;

@@ -5,7 +5,7 @@ import './accordion.scss';
 
 export const Accordion = (props) => {
   return (
-    <div className={classnames(props.className, 'card')}>
+    <div className={classnames(props.className, 'card accordion')}>
       {props.children}
     </div>
   );
@@ -49,7 +49,7 @@ export const AccordionBody = (props) => {
       role="tabpanel"
       data-parent={`#${props.id}`}
     >
-      <div className={classnames(props.className, 'card-body')}>
+      <div className={classnames(props.className, 'card-body accordion-text')}>
         {props.children}
       </div>
     </div>

@@ -15,9 +15,16 @@ const Input = (props) => {
         id={props.id}
         aria-describedby={props.id}
         placeholder={props.placeholder}
+        autoComplete={false}
         {...props.input}
       />
-      <span className={props.meta && props.meta.touched && props.meta.error ? 'help-text' : ''}>
+      <span
+        className={
+          classnames(props.meta &&
+          props.meta.touched &&
+          props.meta.error ? 'help-text' : '', props.helpTextClassName)
+        }
+      >
       {props.meta && props.meta.touched && props.meta.error}
       </span>
     </div>
@@ -30,6 +37,7 @@ Input.propTypes = {
   placeholder: PropTypes.string,
   className: PropTypes.string,
   fgClassName: PropTypes.string,
+  helpTextClassName: PropTypes.string,
   input: PropTypes.object,
   meta: PropTypes.object,
 };

@@ -1,20 +1,19 @@
 @import '../../../../scss/_var.scss';
 
 .items{
-  border: 1px solid #FFEB3B;
-  height: 80vh;
+  height: 100%;
   overflow: hidden;
-  padding: 0 .5em;
+  padding: 0 ;
   &-header{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-height: 45%;
+    max-height: 35%;
     height: fit-content;
     & form{
       max-height: fit-content;
       padding: 0;
-      margin-top: 1em;
+      // margin-top: 1em;
     }
 
   }
@@ -29,41 +28,48 @@
   }
   &-list{
     overflow: scroll;
-    height: 55%;
-    margin: .5em 0;
+    height: 65%;
+    // margin: .5em 0;
     padding: 0, .5em;
     &-item {
-      height: 50px;
+      height: 70px;
       margin: 0;
-      margin-bottom: .5em;
+      padding: 1em .5em;
+      // margin-bottom: .5em;
       // text-transform: lowercase;
       font-size: 1.8em;
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: rgba($primary-color, .8);
+      background-color: rgba($primary-color, .899);
       padding-left: .5em;
       transition: background-color .4s ease-in;
+      border-radius: 0 !important;
       &:hover, &:focus{
-        background-color: rgba($primary-color, .9);
+        background-color: darken($primary-color,5%);
       }
     }
   }
 }
 .item-edit-form{
   display: flex;
-  margin-bottom: 1em;
+  height: fit-content;
+  align-items: flex-start;
+  padding: .3em;
+  // margin-bottom: 1em;
 }
 .item-edit-form-textarea{
   flex-direction: column;
   padding-top: .5em;
+  width: 100%;
 }
 .item-edit-input{
   min-height:1.5em;
-  font-size: 1.2em;
+  font-size: 1.6em;
+  height: 50px;
 }
-.item-edit-textarea{
+.item-edit-textarea, textarea{
     height: 150px;
     border-radius: 0;
     margin-bottom: .5em;
@@ -71,11 +77,13 @@
 .item-edit-fg{
   flex: 2;
   margin: 0;
+  width: 100%;
 }
 .item-edit-btn{
-  align-self: flex-start;
+  align-self: flex-end;
   box-shadow: none !important;
-  font-size: 1.4em
+  font-size: 1.4em;
+  height: 50px;
 
 }
 

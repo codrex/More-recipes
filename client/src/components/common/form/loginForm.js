@@ -34,6 +34,7 @@ class LoginForm extends React.Component {
         submitBtnText="Login"
         onSubmit={handleSubmit(this.login)}
         className={this.props.loading ? 'hide' : ''}
+        secondary
       >
         <Field
           component={Input}

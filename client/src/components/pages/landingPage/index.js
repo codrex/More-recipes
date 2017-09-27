@@ -11,12 +11,9 @@ import RegForm from '../../common/form/regForm';
 import Carousel from './carousel/carousel';
 import Cta from './cta/cta';
 import Loader from '../../common/preloader/loader';
+import toastrConfig from '../../.././toastr/config';
 
-const toastConfig = {
-  timeOut: 5000,
-  positionClass: 'toast-top-full-width',
-  preventDuplicates: true,
-};
+
 /**
  * Landing page with signin and signup forms
  */
@@ -77,8 +74,8 @@ class LandingPage extends React.Component {
     const { error } = this.props.reqError;
     const { success } = this.props.reqSuccess;
 
-    error && !this.props.loading && toastr.error(error, 'Error', toastConfig);
-    success && !this.props.loading && toastr.success(success, '', toastConfig);
+    error && !this.props.loading && toastr.error(error, 'Error', toastrConfig);
+    success && !this.props.loading && toastr.success(success, '', toastrConfig);
     return (
       <div>
         <Navbar />

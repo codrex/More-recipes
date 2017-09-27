@@ -13,6 +13,7 @@ export const ajaxReducer = (state = initialState.ajaxRequestRunning, action) => 
   }
 };
 export const ajaxErrorReducer = (state = {}, action) => {
+  console.log(action.error, 'ajax rrrrr');
   switch (action.type) {
     case AJAX_REQUEST_ERROR:
       return { error: action.error };

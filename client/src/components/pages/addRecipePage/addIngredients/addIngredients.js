@@ -3,26 +3,26 @@ import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { validateItems } from '../../../../validator/validator';
-import { updateDirections } from '../../../../actions/recipeActions';
+import { updateIngredients } from '../../../../actions/recipeActions';
 import AddItems from '../addItems/addItems';
 
 const mapDispatchToProps = (dispatch) => (
   {
-    sendItemsToStore: bindActionCreators(updateDirections, dispatch)
+    sendItemsToStore: bindActionCreators(updateIngredients, dispatch)
   }
 );
-const AddDirections = () => {
-  const Directions = reduxForm({
+const AddIngredients = () => {
+  const Ingredients = reduxForm({
     validate: validateItems,
-    form: 'directionForm',
+    form: 'ingredientForm',
   })(connect(null, mapDispatchToProps)(AddItems));
   return (
-    <Directions
-      name="direction"
-      directions
-      placeholder="Enter direction"
+    <Ingredients
+      name="ingredient"
+      ingredients
+      placeholder="Enter ingredient"
     />
-    );
+  );
 };
 
-export default AddDirections;
+export default AddIngredients;
