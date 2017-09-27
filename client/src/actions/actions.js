@@ -1,4 +1,5 @@
 export const USER = 'USER';
+export const RECIPE = 'RECIPE';
 export const BEGIN_AJAX_REQUEST = 'BEGIN_AJAX_REQUEST';
 export const END_AJAX_REQUEST = 'END_AJAX_REQUEST';
 export const AJAX_REQUEST_ERROR = 'AJAX_REQUEST_ERROR';
