@@ -2,16 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import toastr from 'toastr';
 import { userSignup, userLogin } from '../../../actions/userActions';
-import Navbar from '../../common/navbar/navbar';
 import Modal from '../../common/modal/modal';
 import LoginForm from '../../common/form/loginForm';
 import RegForm from '../../common/form/regForm';
 import Carousel from './carousel/carousel';
 import Cta from './cta/cta';
 import Loader from '../../common/preloader/loader';
-import toastrConfig from '../../.././toastr/config';
 
 
 /**
@@ -71,14 +68,8 @@ class LandingPage extends React.Component {
    * @return {object} object
    */
   render() {
-    const { error } = this.props.reqError;
-    const { success } = this.props.reqSuccess;
-
-    error && !this.props.loading && toastr.error(error, 'Error', toastrConfig);
-    success && !this.props.loading && toastr.success(success, '', toastrConfig);
     return (
       <div>
-        <Navbar />
         <Carousel >
           <Cta signin={this.signin} signup={this.signup} />
         </Carousel>
@@ -114,8 +105,6 @@ class LandingPage extends React.Component {
 
 LandingPage.propTypes = {
   actions: PropTypes.object,
-  reqError: PropTypes.object,
-  reqSuccess: PropTypes.object,
   loading: PropTypes.bool,
 };
 
@@ -131,8 +120,6 @@ const mapDispatchToProps = (dispatch) => (
 const mapStateToProps = (state) => (
   {
     loading: state.ajaxCall > 0,
-    reqError: state.ajaxError,
-    reqSuccess: state.ajaxSuccess
   }
 
 );
