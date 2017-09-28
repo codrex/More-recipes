@@ -1,9 +1,9 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyPaser from 'body-parser';
+import cors from 'cors';
 import route from './routes/route';
 import { sendSuccess } from './reply/reply';
-
 
 import associate from './associations';
 
@@ -14,6 +14,8 @@ const app = express();
 app.use(logger('dev'));
 app.use(bodyPaser.json());
 app.use(bodyPaser.urlencoded({ extended: false }));
+app.use(cors());
+app.options('*', cors());
 
 app.use('/api/v1/', route);
 app.use('/', (req, res) => {

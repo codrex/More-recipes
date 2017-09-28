@@ -27,3 +27,4 @@ exclude_paths:
   - "server/models/"
   - "server/validators"
   - "server/reply/"
+  - "client/src/components"

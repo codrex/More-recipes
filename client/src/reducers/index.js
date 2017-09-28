@@ -1,0 +1,17 @@
+import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
+import { userReducer } from './userReducers';
+import { ajaxReducer, ajaxErrorReducer, ajaxSuccessReducer } from './ajaxReducer';
+import * as initialState from './initialState';
+
+
+const rootReducer = combineReducers({
+  User: userReducer,
+  form: formReducer,
+  ajaxCall: ajaxReducer,
+  ajaxError: ajaxErrorReducer,
+  ajaxSuccess: ajaxSuccessReducer,
+  initialState
+});
+
+export default rootReducer;

@@ -1,0 +1,53 @@
+@import '../../../scss/_var.scss';
+.modal{
+  &-dialog{
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 600px;
+    margin-top: 50px;
+    background:rgba(0,0,0, 0.6);
+    padding:.5em;
+
+  }
+  &-content{
+    width:100%;
+    border: 0;
+    background-color:transparent;
+  }
+  &-header{
+    background-color: $primary-color;
+    box-shadow: 1px 0px 5px 1px rgba(0,0,0,.2);
+    border: 0;
+    z-index: 99999;
+    & .close{
+      font-size: 4em;
+      opacity: .7;
+      color:white;
+      transition: opacity .7 ease-in;
+      &:hover{
+        opacity: .9;
+      }
+    }
+  }
+  &-footer{
+    border: 0;
+    padding-top: 0;
+    &-center{
+      justify-content: center;
+    }
+    &-left{
+      justify-content: flex-start;
+    }
+    &-right{
+      justify-content: flex-end;
+    }
+  }
+}
+.modal.fade .modal-dialog {
+  transform: translate(25%,0) scale(0)
+}
+.modal.show .modal-dialog {
+  transform: translate(0,0) scale(1)
+}
