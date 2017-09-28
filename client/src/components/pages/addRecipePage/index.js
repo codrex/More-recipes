@@ -2,17 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import toastr from 'toastr';
-import { Field, reduxForm } from 'redux-form';
-import Form from '../../common/form/form';
-// import  from '../../common/form/form';
-import Input from '../../common/form/input';
 import Icon from '../../common/icon/icon';
 import AddDirections from './addDirections/addDirections';
 import AddIngredients from './addIngredients/addIngredients';
-import { hasRecipeNameAndCategory } from '../../../validator/validator';
-import { createRecipe, updateNameCategory } from '../../../actions/recipeActions';
-import toastrConfig from '../../.././toastr/config';
+import RecipeNameAndCategory from './recipeNameAndCategory/recipeNameAndCategory';
+import { createRecipe } from '../../../actions/recipeActions';
+import { ajaxRedirect } from '../../../actions/ajaxActions';
 import './addRecipe.scss';
 
 /**
@@ -27,6 +22,19 @@ class AddRecipes extends React.Component {
     super(props);
     this.saveRecipe = this.saveRecipe.bind(this);
   }
+/**
+ *
+ * @param {object} nextProps
+ * @return {bool} true or false
+ */
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.redirectUrl === '/') {
+      this.props.redirect('/recipe/create');
+      this.props.history.push(nextProps.redirectUrl);
+      return false;
+    }
+    return true;
+  }
 
   /**
    * @return {undefined}
@@ -39,7 +47,6 @@ class AddRecipes extends React.Component {
    * @return {undefined}
    */
   render() {
-    const { handleSubmit } = this.props;
     return (
       <div className="container-fluid no-padding ">
         <div className="row d-flex">
@@ -54,28 +61,7 @@ class AddRecipes extends React.Component {
 
             </h4>
             <div className="col-12">
-              <Form
-                submitBtnText="Post Recipe"
-                primary
-                onSubmit={handleSubmit(this.saveRecipe)}
-              >
-                <Field
-                  component={Input}
-                  name="recipeName"
-                  type="text"
-                  id="recipeName"
-                  placeholder="Enter recipe name"
-                  helpTextClassName="text-white"
-                />
-                <Field
-                  component={Input}
-                  name="category"
-                  type="text"
-                  id="category"
-                  placeholder="Enter recipe category"
-                  helpTextClassName="text-white"
-                />
-              </Form>
+              <RecipeNameAndCategory createRecipe={createRecipe} />
             </div>
           </div>
           <div className="col-xs-9 col-sm-9 col-md-10 col-lg-4 d-flex ingredients no-padding">
@@ -91,30 +77,23 @@ class AddRecipes extends React.Component {
 }
 
 AddRecipes.propTypes = {
-  handleSubmit: PropTypes.func,
   actions: PropTypes.object,
-  reqError: PropTypes.object,
-  reqSuccess: PropTypes.object,
   loading: PropTypes.bool,
-  updateStore: PropTypes.func,
+  redirectUrl: PropTypes.string,
+  history: PropTypes.object,
+  redirect: PropTypes.func,
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  actions: {
-    postRecipe: bindActionCreators(createRecipe, dispatch),
-    updateStore: bindActionCreators(updateNameCategory, dispatch)
-  }
-});
 
 const mapStateToProps = (state) => (
   {
     loading: state.ajaxCall > 0,
-    reqError: state.ajaxError,
-    reqSuccess: state.ajaxSuccess
+    redirectUrl: state.redirectUrl,
+  }
+);
+const mapDispatchToProps = (dispatch) => (
+  {
+    redirect: bindActionCreators(ajaxRedirect, dispatch)
   }
 );
 
-export default reduxForm({
-  form: 'addRecipeForm',
-  validate: hasRecipeNameAndCategory,
-})(connect(mapStateToProps, mapDispatchToProps)(AddRecipes));
+export default connect(mapStateToProps, mapDispatchToProps)(AddRecipes);

@@ -1,4 +1,6 @@
-import { sendPostReq, dispatchOnSuccess, dispatchOnFail } from '../requestHandler/requestHandler';
+import { sendPostReq, dispatchOnSuccess,
+         dispatchOnFail, dispatchOnAuthError, setToken } from '../requestHandler/requestHandler';
+import { ajaxRedirect } from './ajaxActions';
 
 /**
  *  A thunk class that is responsible for dispatching actions after an ajax request has returned.
@@ -8,9 +10,12 @@ import { sendPostReq, dispatchOnSuccess, dispatchOnFail } from '../requestHandle
 export default class ActionDispatcher {
   /**
    * @param {function} dispatch: dispatch function
+   * @param {string} TOKEN: access token
    */
-  constructor(dispatch) {
+  constructor(dispatch, TOKEN = '') {
     this.dispatch = dispatch;
+    this.TOKEN = TOKEN;
+    setToken(TOKEN);
   }
   /**
    *
@@ -25,7 +30,16 @@ export default class ActionDispatcher {
       this.dispatch(action(payload.data));
       dispatchOnSuccess(this.dispatch);
     }).catch((error) => {
-      dispatchOnFail(this.dispatch, error.response.data.error);
+      if (error.response) {
+        if (error.response.status === (403 || 401)) {
+          // if user is not logged in redirect user to home page
+          dispatchOnAuthError(this.dispatch,
+          'Authentication failed. Please SIGN-UP or LOGIN to continue');
+          this.dispatch(ajaxRedirect('/'));
+        }
+      } else {
+        dispatchOnFail(this.dispatch, error.response.data.error);
+      }
     });
   }
 }

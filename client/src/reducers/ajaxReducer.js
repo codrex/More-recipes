@@ -1,5 +1,6 @@
 import { BEGIN_AJAX_REQUEST, END_AJAX_REQUEST,
-         AJAX_REQUEST_ERROR, AJAX_REQUEST_SUCCESS } from '../actions/actions';
+         AJAX_REQUEST_ERROR, AJAX_REQUEST_SUCCESS,
+        AJAX_REQUEST_AUTH_ERROR, REDIRECT } from '../actions/actions';
 import initialState from '../reducers/initialState';
 
 export const ajaxReducer = (state = initialState.ajaxRequestRunning, action) => {
@@ -13,9 +14,10 @@ export const ajaxReducer = (state = initialState.ajaxRequestRunning, action) => 
   }
 };
 export const ajaxErrorReducer = (state = {}, action) => {
-  console.log(action.error, 'ajax rrrrr');
   switch (action.type) {
     case AJAX_REQUEST_ERROR:
+      return { error: action.error };
+    case AJAX_REQUEST_AUTH_ERROR:
       return { error: action.error };
     default:
       return state;
@@ -26,6 +28,14 @@ export const ajaxSuccessReducer = (state = {}, action) => {
   switch (action.type) {
     case AJAX_REQUEST_SUCCESS:
       return { success: 'Operation was successful' };
+    default:
+      return state;
+  }
+};
+export const ajaxRedirectReducer = (state = '', action) => {
+  switch (action.type) {
+    case REDIRECT:
+      return action.url;
     default:
       return state;
   }
