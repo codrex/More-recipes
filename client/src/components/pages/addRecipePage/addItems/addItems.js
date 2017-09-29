@@ -19,13 +19,22 @@ class AddItems extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
+      items: props.items,
       addItem: false,
     };
     this.addItem = this.addItem.bind(this);
     this.editItems = this.editItems.bind(this);
     this.deleteFromList = this.deleteFromList.bind(this);
     this.newItem = this.newItem.bind(this);
+  }
+  /**
+   *
+   * @param {Object} nextProps
+   * @return {bool} true and false
+   */
+  componentWillReceiveProps(nextProps) {
+    this.setState({ items: nextProps.items });
+    return true;
   }
   /**
    *
@@ -52,11 +61,6 @@ class AddItems extends React.PureComponent {
   addItem(value) {
     const { items } = this.state;
     const itemsUpdate = items.concat(value[this.props.name]);
-    this.setState(
-      {
-        items: itemsUpdate
-      }
-    );
     this.props.reset();
     this.props.sendItemsToStore(itemsUpdate);
   }
@@ -68,7 +72,6 @@ class AddItems extends React.PureComponent {
   deleteFromList(index) {
     const items = [].concat(this.state.items);
     items.splice(index, 1);
-    this.setState({ items });
     this.props.sendItemsToStore(items);
   }
   /**
@@ -80,7 +83,6 @@ class AddItems extends React.PureComponent {
   editItems(value, index) {
     const items = [].concat(this.state.items);
     items[index] = value;
-    this.setState({ items });
     this.props.sendItemsToStore(items);
   }
 
@@ -89,14 +91,13 @@ class AddItems extends React.PureComponent {
    * @return {function} AddItem jsx
    */
   render() {
-    console.log('rendering add item', this.props.name);
     const { handleSubmit } = this.props;
     const Component = this.props.ingredients && Input || (this.props.directions && Textarea);
     return (
       <div className="col-12 items ">
         <div className="items-header">
           <h4 className="lead items-header-text">
-            {this.props.name}
+            {`${this.props.name}s ${' '}${this.state.items.length}`}
             <Icon
               iconClass="fa fa-plus"
               className="float-right"

@@ -15,6 +15,12 @@ export const sendPostReq = (payload, path, dispatch) => {
   return axios.post(url, payload);
 };
 
+export const sendPutReq = (payload, path, dispatch) => {
+  dispatch(beginAjaxRequest());
+  const url = rootUrl + path;
+  return axios.put(url, payload);
+};
+
 export const dispatchOnSuccess = (dispatch) => {
   dispatch(ajaxRequestSuccess());
   dispatch(endAjaxRequest());

@@ -11,11 +11,14 @@ const mapDispatchToProps = (dispatch) => (
     sendItemsToStore: bindActionCreators(updateDirections, dispatch)
   }
 );
+const mapStateToProps = (state) => (
+  { items: state.newRecipe.directions, }
+);
 const AddDirections = () => {
   const Directions = reduxForm({
     validate: validateItems,
     form: 'directionForm',
-  })(connect(null, mapDispatchToProps)(AddItems));
+  })(connect(mapStateToProps, mapDispatchToProps)(AddItems));
   return (
     <Directions
       name="direction"

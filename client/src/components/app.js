@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import LandingPage from './pages/landingPage/index';
 import AddRecipePage from './pages/addRecipePage/index';
 import Navbar from '../components/common/navbar/navbar';
+import Loader from '../components/common/preloader/loader';
 import toastr from 'toastr';
 import toastrConfig from '../toastr/config';
 import { loginOrRegSuccess } from '../actions/userActions';
@@ -16,15 +17,22 @@ import { loginOrRegSuccess } from '../actions/userActions';
 class App extends React.Component {
 
   /**
+   * @return {bool} true or false
+   * @param {Object} nextProps
+   */
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.reqError !== this.props.reqError && nextProps.reqError.error) {
+      toastr.error(nextProps.reqError, 'Error', toastrConfig);
+    } else if (nextProps.reqSuccess !== this.props.reqSuccess && nextProps.reqSuccess.success) {
+      toastr.success(nextProps.reqSuccess, 'Success', toastrConfig);
+    }
+    return true;
+  }
+
+  /**
    * @return{undefined}
    */
   render() {
-    const { error } = this.props.reqError;
-    const { success } = this.props.reqSuccess;
-
-    error && !this.props.loading && toastr.error(error, 'Error', toastrConfig);
-    success && !this.props.loading && toastr.success(success, '', toastrConfig);
-
     return (
       <BrowserRouter>
         <div className="container-fluid  no-padding">
@@ -33,6 +41,7 @@ class App extends React.Component {
             <Route path="/recipe/create" component={AddRecipePage} />
             <Route path="/" component={LandingPage} />
           </Switch>
+          <Loader loading={this.props.loading} />
         </div>
       </BrowserRouter>
     );

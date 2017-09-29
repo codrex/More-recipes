@@ -4,12 +4,15 @@
   justify-content: center;
   align-items: center;
   padding: 1.5em 0;
-  width: 300px;
   border-radius: 4px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
+  position: fixed;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: fill;
   &>h1{
     color: white;
   }

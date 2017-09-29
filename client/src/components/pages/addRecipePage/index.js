@@ -6,7 +6,7 @@ import Icon from '../../common/icon/icon';
 import AddDirections from './addDirections/addDirections';
 import AddIngredients from './addIngredients/addIngredients';
 import RecipeNameAndCategory from './recipeNameAndCategory/recipeNameAndCategory';
-import { createRecipe } from '../../../actions/recipeActions';
+import { createRecipe, updateAllRecipeField } from '../../../actions/recipeActions';
 import { ajaxRedirect } from '../../../actions/ajaxActions';
 import './addRecipe.scss';
 
@@ -29,9 +29,13 @@ class AddRecipes extends React.Component {
  */
   shouldComponentUpdate(nextProps) {
     if (nextProps.redirectUrl === '/') {
-      this.props.redirect('/recipe/create');
+      this.props.actions.redirect('/recipe/create');
       this.props.history.push(nextProps.redirectUrl);
       return false;
+    }
+    if (nextProps.recipe !== this.props.recipe) {
+      this.props.actions.updateLocalRecipe(nextProps.recipe);
+      return true;
     }
     return true;
   }
@@ -82,17 +86,23 @@ AddRecipes.propTypes = {
   redirectUrl: PropTypes.string,
   history: PropTypes.object,
   redirect: PropTypes.func,
+  recipe: PropTypes.object,
+
 };
 
 const mapStateToProps = (state) => (
   {
     loading: state.ajaxCall > 0,
     redirectUrl: state.redirectUrl,
+    recipe: state.recipe,
   }
 );
 const mapDispatchToProps = (dispatch) => (
   {
-    redirect: bindActionCreators(ajaxRedirect, dispatch)
+    actions: {
+      redirect: bindActionCreators(ajaxRedirect, dispatch),
+      updateLocalRecipe: bindActionCreators(updateAllRecipeField, dispatch)
+    }
   }
 );
 

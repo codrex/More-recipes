@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import Form from '../../../common/form/form';
 import Input from '../../../common/form/input';
 import { hasRecipeNameAndCategory } from '../../../../validator/validator';
-import { updateNameCategory, createRecipe } from '../../../../actions/recipeActions';
+import { updateNameCategory, createRecipe, modifyRecipe } from '../../../../actions/recipeActions';
 
 
 const RecipeNameAndCategory = (props) => {
@@ -15,7 +15,11 @@ const RecipeNameAndCategory = (props) => {
     const recipe = Object.assign({}, props.newRecipe);
     recipe.recipeName = value.recipeName;
     recipe.category = value.category;
-    props.actions.postRecipe(recipe);
+    if (props.newRecipe.id) {
+      props.actions.modifyRecipe(recipe);
+    } else {
+      props.actions.postRecipe(recipe);
+    }
     props.actions.updateStore(value);
   };
   return (
@@ -24,7 +28,7 @@ const RecipeNameAndCategory = (props) => {
         Name and category
       </h4>
       <Form
-        submitBtnText="Post Recipe"
+        submitBtnText={props.newRecipe.id ? 'modify recipe' : 'Post Recipe'}
         primary
         onSubmit={handleSubmit(onSubmitClick)}
       >
@@ -53,6 +57,7 @@ const mapDispatchToProps = (dispatch) => ({
   actions: {
     updateStore: bindActionCreators(updateNameCategory, dispatch),
     postRecipe: bindActionCreators(createRecipe, dispatch),
+    modifyRecipe: bindActionCreators(modifyRecipe, dispatch)
   }
 });
 const mapStateToProps = (state) => (

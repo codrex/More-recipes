@@ -1,6 +1,9 @@
 import { sendPostReq, dispatchOnSuccess,
-         dispatchOnFail, dispatchOnAuthError, setToken } from '../requestHandler/requestHandler';
+         dispatchOnFail, dispatchOnAuthError,
+         setToken, sendPutReq } from '../requestHandler/requestHandler';
 import { ajaxRedirect } from './ajaxActions';
+
+const TOKEN_KEY = 'MRAToken';
 
 /**
  *  A thunk class that is responsible for dispatching actions after an ajax request has returned.
@@ -12,11 +15,37 @@ export default class ActionDispatcher {
    * @param {function} dispatch: dispatch function
    * @param {string} TOKEN: access token
    */
-  constructor(dispatch, TOKEN = '') {
+  constructor(dispatch, TOKEN = localStorage.getItem(TOKEN_KEY) || '') {
     this.dispatch = dispatch;
     this.TOKEN = TOKEN;
     setToken(TOKEN);
   }
+  /**
+ * @returns {undefined}
+ * @param {object} error
+ */
+  onError(error) {
+    if (error.response) {
+      if (error.response.status === (403 || 401)) {
+      // if user is not logged in redirect user to home page
+        dispatchOnAuthError(this.dispatch,
+      'Authentication failed. Please SIGN-UP or LOGIN to continue');
+        this.dispatch(ajaxRedirect('/'));
+      } else {
+        dispatchOnFail(this.dispatch, error.response.data.error);
+      }
+    }
+  }
+   /**
+ * @returns {undefined}
+ * @param {function} action
+ * @param {object} payload
+ */
+  onSuccess(action, payload) {
+    this.dispatch(action(payload.data));
+    dispatchOnSuccess(this.dispatch);
+  }
+
   /**
    *
    * @param {string} url: destination url
@@ -27,19 +56,26 @@ export default class ActionDispatcher {
   postAndDispatch(url, reqData, action) {
     sendPostReq(reqData, url, this.dispatch)
     .then((payload) => {
-      this.dispatch(action(payload.data));
-      dispatchOnSuccess(this.dispatch);
+      this.onSuccess(action, payload);
     }).catch((error) => {
-      if (error.response) {
-        if (error.response.status === (403 || 401)) {
-          // if user is not logged in redirect user to home page
-          dispatchOnAuthError(this.dispatch,
-          'Authentication failed. Please SIGN-UP or LOGIN to continue');
-          this.dispatch(ajaxRedirect('/'));
-        } else {
-          dispatchOnFail(this.dispatch, error.response.data.error);
-        }
-      }
+      this.onError(error);
     });
   }
+
+   /**
+   *
+   * @param {string} url: destination url
+   * @param {object} reqData: object to sent to the server
+   * @param {function} action: action to be dispatch when post was successful
+   * @return {undefined}
+   */
+  putAndDispatch(url, reqData, action) {
+    sendPutReq(reqData, url, this.dispatch)
+    .then((payload) => {
+      this.onSuccess(action, payload);
+    }).catch((error) => {
+      this.onError(error);
+    });
+  }
+
 }

@@ -2,6 +2,7 @@ const initailState = {
   User: {},
   Recipes: [],
   newRecipe: {
+    id: undefined,
     recipeName: '',
     category: '',
     ingredients: [],

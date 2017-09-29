@@ -8,8 +8,6 @@ import LoginForm from '../../common/form/loginForm';
 import RegForm from '../../common/form/regForm';
 import Carousel from './carousel/carousel';
 import Cta from './cta/cta';
-import Loader from '../../common/preloader/loader';
-
 
 /**
  * Landing page with signin and signup forms
@@ -112,18 +110,14 @@ class LandingPage extends React.Component {
             this.state.signin &&
               <LoginForm
                 login={this.props.actions.loginAction}
-                loading={this.props.loading}
               />
           }
          {
            this.state.signup &&
              <RegForm
                signup={this.props.actions.signupAction}
-               loading={this.props.loading}
              />
           }
-
-          <Loader loading={this.props.loading} />
         </Modal>
       </div>
       );
@@ -133,7 +127,6 @@ class LandingPage extends React.Component {
 
 LandingPage.propTypes = {
   actions: PropTypes.object,
-  loading: PropTypes.bool,
   success: PropTypes.bool,
   history: PropTypes.object,
   redirectUrl: PropTypes.string,
@@ -153,7 +146,6 @@ const mapDispatchToProps = (dispatch) => (
 
 const mapStateToProps = (state) => (
   {
-    loading: state.ajaxCall > 0,
     success: state.ajaxSuccess.success ? true : false,
     redirectUrl: state.redirectUrl,
     token: state.user.token,

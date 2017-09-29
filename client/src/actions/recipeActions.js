@@ -1,8 +1,8 @@
 import { RECIPE, UPDATE_DIRECTIONS,
-          UPDATE_NAME_CATEGORY, UPDATE_INGREDIENTS } from './actions';
+          UPDATE_NAME_CATEGORY, UPDATE_INGREDIENTS,
+          UPDATE_ALL_RECIPE_FIELD } from './actions';
 import ActionDispatcher from './actionDispatcher';
 
-const TOKEN_KEY = 'MRAToken';
 
 export const createOrModifyRecipe = recipe => ({ type: RECIPE, recipe });
 
@@ -12,8 +12,13 @@ export const updateDirections = direction => ({ type: UPDATE_DIRECTIONS, directi
 
 export const updateNameCategory = (nameAndCat) => ({ type: UPDATE_NAME_CATEGORY, nameAndCat });
 
+export const updateAllRecipeField = (all) => ({ type: UPDATE_ALL_RECIPE_FIELD, all });
+
 export const createRecipe = recipe => (dispatch) => {
-  const TOKEN = localStorage.getItem(TOKEN_KEY) || '';
-  const dispatcher = new ActionDispatcher(dispatch, TOKEN);
+  const dispatcher = new ActionDispatcher(dispatch);
   dispatcher.postAndDispatch('/api/v1/recipes', recipe, createOrModifyRecipe);
+};
+export const modifyRecipe = recipe => (dispatch) => {
+  const dispatcher = new ActionDispatcher(dispatch);
+  dispatcher.putAndDispatch(`/api/v1/recipes/${recipe.id}`, recipe, createOrModifyRecipe);
 };
