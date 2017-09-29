@@ -1,0 +1,71 @@
+@import '../../../scss/_var.scss';
+
+.sidebar-wrapper{
+ background-color: $primary-color;
+ height: 100vh;
+ padding: 0;
+}
+.recipes-wrapper{
+  background-color: $bg-color;
+  flex-direction: column;
+  height: 100vh;
+}
+.category-filter-wrapper{
+  background-color: $secondary-color;
+  color: $primary-color;
+  min-height: 70px;
+  justify-content: center;
+}
+.grid-list-wrapper{
+  background-color: $bg-color;
+  flex-grow: 3;
+  justify-content: center;
+  align-items: stretch;
+  overflow-x:hidden;
+  overflow-y: auto;
+}
+.grid{
+  background-color:$bg-color;
+  min-height: 80%;
+  width: 100%;
+  margin: 50px auto;
+
+}
+.pagination-wrapper{
+  background-color: wheat;
+  min-height: 50px;
+}
+@media(max-width:767px){
+  .sidebar-wrapper{
+    transform: translateX(-100%);
+    position: fixed;
+    top:0;
+    font-size: 1.5em;
+    height: 100vh;
+    z-index: 9999;
+    background: #631e63;
+
+    width: 80%;
+    &-header{
+      font-size: 1em;
+    }
+    &>.topbar{
+      font-size: .8em
+    }
+  }
+  .mobile{
+    display: inline;
+    padding: .5em;
+    margin-right: .2em;
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      margin-right: 10px;
+      top: 0;
+      font-size: 2em;
+      color: $secondary-color;
+    }
+    .recipe-card{
+      margin: 1em auto;
+    }
+}

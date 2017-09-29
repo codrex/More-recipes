@@ -22,9 +22,9 @@ class App extends React.Component {
    */
   shouldComponentUpdate(nextProps) {
     if (nextProps.reqError !== this.props.reqError && nextProps.reqError.error) {
-      toastr.error(nextProps.reqError, 'Error', toastrConfig);
+      toastr.error(nextProps.reqError.error, 'Error', toastrConfig);
     } else if (nextProps.reqSuccess !== this.props.reqSuccess && nextProps.reqSuccess.success) {
-      toastr.success(nextProps.reqSuccess, 'Success', toastrConfig);
+      toastr.success(nextProps.reqSuccess.success, 'Success', toastrConfig);
     }
     return true;
   }
@@ -38,7 +38,7 @@ class App extends React.Component {
         <div className="container-fluid  no-padding">
           <Navbar />
           <Switch>
-            <Route path="/recipe/create" component={AddRecipePage} />
+            <Route exact path="/recipe/create" component={AddRecipePage} />
             <Route path="/" component={LandingPage} />
           </Switch>
           <Loader loading={this.props.loading} />
