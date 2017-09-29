@@ -36,9 +36,9 @@ export default class ActionDispatcher {
           dispatchOnAuthError(this.dispatch,
           'Authentication failed. Please SIGN-UP or LOGIN to continue');
           this.dispatch(ajaxRedirect('/'));
+        } else {
+          dispatchOnFail(this.dispatch, error.response.data.error);
         }
-      } else {
-        dispatchOnFail(this.dispatch, error.response.data.error);
       }
     });
   }

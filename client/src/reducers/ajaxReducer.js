@@ -1,6 +1,6 @@
 import { BEGIN_AJAX_REQUEST, END_AJAX_REQUEST,
          AJAX_REQUEST_ERROR, AJAX_REQUEST_SUCCESS,
-        AJAX_REQUEST_AUTH_ERROR, REDIRECT } from '../actions/actions';
+        AJAX_REQUEST_AUTH_ERROR, REDIRECT, LOGIN_OR_REG_SUCCESS } from '../actions/actions';
 import initialState from '../reducers/initialState';
 
 export const ajaxReducer = (state = initialState.ajaxRequestRunning, action) => {
@@ -28,6 +28,8 @@ export const ajaxSuccessReducer = (state = {}, action) => {
   switch (action.type) {
     case AJAX_REQUEST_SUCCESS:
       return { success: 'Operation was successful' };
+    case LOGIN_OR_REG_SUCCESS:
+      return { };
     default:
       return state;
   }

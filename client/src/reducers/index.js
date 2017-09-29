@@ -8,7 +8,7 @@ import * as initialState from './initialState';
 
 
 const rootReducer = combineReducers({
-  User: userReducer,
+  user: userReducer,
   form: formReducer,
   ajaxCall: ajaxReducer,
   ajaxError: ajaxErrorReducer,

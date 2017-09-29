@@ -2,7 +2,7 @@ import { RECIPE, UPDATE_DIRECTIONS,
           UPDATE_NAME_CATEGORY, UPDATE_INGREDIENTS } from './actions';
 import ActionDispatcher from './actionDispatcher';
 
-const TOKEN_KEY = 'MRATKEN';
+const TOKEN_KEY = 'MRAToken';
 
 export const createOrModifyRecipe = recipe => ({ type: RECIPE, recipe });
 

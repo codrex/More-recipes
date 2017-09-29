@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { userSignup, userLogin } from '../../../actions/userActions';
+import { userSignup, userLogin, loginOrRegSuccess } from '../../../actions/userActions';
 import Modal from '../../common/modal/modal';
 import LoginForm from '../../common/form/loginForm';
 import RegForm from '../../common/form/regForm';
@@ -30,6 +30,34 @@ class LandingPage extends React.Component {
     this.signup = this.signup.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
+
+  /**
+ *
+ * @param {object} nextProps
+ * @return {bool} true or false
+ */
+  shouldComponentUpdate(nextProps) {
+    if (this.props === nextProps) {
+      return true;
+    }
+    const { redirectUrl, success, actions } = nextProps;
+    if (success && !redirectUrl) {
+      localStorage.setItem('MRAToken', this.props.token);
+      this.props.history.push('/recipe/create');
+
+      document.getElementsByClassName('modal-backdrop')[0].remove();
+      document.getElementsByTagName('body')[0].className = ' ';
+      setTimeout(() => {
+        actions.endSuccess();
+      }, 1000);
+      return false;
+    } else if (success && redirectUrl) {
+      // this.props.redirect('');
+      // this.props.history.push(redirectUrl);
+      // return false;
+    } else return true;
+  }
+
   /**
    * @return {undfined} undefined
    */
@@ -106,6 +134,10 @@ class LandingPage extends React.Component {
 LandingPage.propTypes = {
   actions: PropTypes.object,
   loading: PropTypes.bool,
+  success: PropTypes.bool,
+  history: PropTypes.object,
+  redirectUrl: PropTypes.string,
+  token: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => (
@@ -113,6 +145,8 @@ const mapDispatchToProps = (dispatch) => (
     actions: {
       loginAction: bindActionCreators(userLogin, dispatch),
       signupAction: bindActionCreators(userSignup, dispatch),
+      endSuccess: bindActionCreators(loginOrRegSuccess, dispatch)
+
     },
   }
 );
@@ -120,6 +154,9 @@ const mapDispatchToProps = (dispatch) => (
 const mapStateToProps = (state) => (
   {
     loading: state.ajaxCall > 0,
+    success: state.ajaxSuccess.success ? true : false,
+    redirectUrl: state.redirectUrl,
+    token: state.user.token,
   }
 
 );

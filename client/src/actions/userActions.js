@@ -1,7 +1,8 @@
-import { USER } from './actions';
+import { USER, LOGIN_OR_REG_SUCCESS } from './actions';
 import ActionDispatcher from './actionDispatcher';
 
 export const userAction = user => ({ type: USER, user });
+export const loginOrRegSuccess = () => ({ type: LOGIN_OR_REG_SUCCESS });
 
 export const userLogin = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);

@@ -1,4 +1,5 @@
 export const USER = 'USER';
+export const LOGIN_OR_REG_SUCCESS = 'LOGIN_OR_REG_SUCCESS';
 export const RECIPE = 'RECIPE';
 export const BEGIN_AJAX_REQUEST = 'BEGIN_AJAX_REQUEST';
 export const END_AJAX_REQUEST = 'END_AJAX_REQUEST';
