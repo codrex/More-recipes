@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { ajaxRedirect } from '../../../actions/ajaxActions';
 import { userSignup, userLogin, loginOrRegSuccess } from '../../../actions/userActions';
 import Modal from '../../common/modal/modal';
 import LoginForm from '../../common/form/loginForm';
@@ -28,7 +29,6 @@ class LandingPage extends React.Component {
     this.signup = this.signup.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-
   /**
  *
  * @param {object} nextProps
@@ -40,20 +40,31 @@ class LandingPage extends React.Component {
     }
     const { redirectUrl, success, actions } = nextProps;
     if (success && !redirectUrl) {
-      localStorage.setItem('MRAToken', this.props.token);
-      this.props.history.push('/recipe/create');
-
-      document.getElementsByClassName('modal-backdrop')[0].remove();
-      document.getElementsByTagName('body')[0].className = ' ';
-      setTimeout(() => {
-        actions.endSuccess();
-      }, 1000);
+      this.props.history.push('/recipes');
+      this.afterLogin(actions);
       return false;
     } else if (success && redirectUrl) {
-      // this.props.redirect('');
-      // this.props.history.push(redirectUrl);
-      // return false;
-    } else return true;
+      this.props.history.push(redirectUrl);
+      this.afterLogin(actions);
+      return false;
+    }
+    return true;
+  }
+
+  /**
+ * operations carried after login
+ * @param {object} actions
+ * @return {undefined}
+ */
+  afterLogin(actions) {
+    this.props.actions.redirect('');
+    document.getElementsByClassName('modal-backdrop')[0].remove();
+    document.getElementsByTagName('body')[0].className = ' ';
+    setTimeout(() => {
+    // endSuccess is an action creator that
+    // ajaxSuccess value in the store to an empty array
+      actions.endSuccess();
+    }, 1000);
   }
 
   /**
@@ -131,11 +142,13 @@ LandingPage.propTypes = {
   history: PropTypes.object,
   redirectUrl: PropTypes.string,
   token: PropTypes.string,
+  redirect: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => (
   {
     actions: {
+      redirect: bindActionCreators(ajaxRedirect, dispatch),
       loginAction: bindActionCreators(userLogin, dispatch),
       signupAction: bindActionCreators(userSignup, dispatch),
       endSuccess: bindActionCreators(loginOrRegSuccess, dispatch)

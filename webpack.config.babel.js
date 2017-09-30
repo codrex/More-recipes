@@ -17,6 +17,11 @@ module.exports = {
     publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
   },
+  node: {
+    net: 'empty',
+    tls: 'empty',
+    dns: 'empty'
+  },
   devServer: {
     historyApiFallback: true,
     contentBase: './'

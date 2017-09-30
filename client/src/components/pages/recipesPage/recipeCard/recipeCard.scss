@@ -9,6 +9,8 @@
   flex-direction: column;
   width: 18.75em;
   margin: 1em;
+  padding: 0;
+  user-select: none;
   &-header{
     min-height: 50px;
     background: $secondary-color;
@@ -24,6 +26,10 @@
       color: inherit;
       font-size: 1.7em;
       font-weight: bold;
+      width: inherit;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
   &-body{
@@ -58,7 +64,9 @@
   &-icon{
     font-size: 1.8em;
     & span{
-      font-size: .9em
+      font-size: .9em;
+      margin-left: .2em;
+
     }
   }
   &-underlay{

@@ -1,6 +1,7 @@
 import { RECIPE, UPDATE_DIRECTIONS,
          UPDATE_INGREDIENTS, UPDATE_NAME_CATEGORY,
-         UPDATE_ALL_RECIPE_FIELD } from '../actions/actions';
+         UPDATE_ALL_RECIPE_FIELD, GET_ALL_RECIPES,
+        GET_FAV_RECIPES, GET_TOP_RECIPES } from '../actions/actions';
 import initialState from '../reducers/initialState';
 
 export const createOrModifyRecipeReducer = (state = {}, action) => {
@@ -17,7 +18,6 @@ export const newRecipeReducer = (state = initialState.newRecipe, action) => {
   switch (action.type) {
     case UPDATE_INGREDIENTS:
       copyOfState.ingredients = action.ingredient;
-      console.log(copyOfState, 'iiiiii');
       return copyOfState;
     case UPDATE_DIRECTIONS:
       copyOfState.directions = action.direction;
@@ -32,9 +32,22 @@ export const newRecipeReducer = (state = initialState.newRecipe, action) => {
       copyOfState.ingredients = action.all.ingredients;
       copyOfState.directions = action.all.directions;
       copyOfState.id = action.all.id;
-      console.log(copyOfState);
       return copyOfState;
     default:
       return state;
   }
 };
+
+export const recipesReducer = (state = [], action) => {
+  switch (action.type) {
+    case GET_ALL_RECIPES:
+      return action.recipes.Recipes;
+    case GET_FAV_RECIPES:
+      return action.recipes.User.favRecipes;
+    case GET_TOP_RECIPES:
+      return action.recipes.Recipes;
+    default:
+      return state;
+  }
+};
+
