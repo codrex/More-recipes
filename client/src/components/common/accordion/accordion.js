@@ -13,6 +13,7 @@ export const Accordion = (props) => {
 
 Accordion.propTypes = {
   children: PropTypes.any,
+  className: PropTypes.string
 };
 
 export const AccordionHeader = (props) => (
@@ -39,6 +40,7 @@ AccordionHeader.propTypes = {
   title: PropTypes.string,
   index: PropTypes.number,
   children: PropTypes.any,
+  className: PropTypes.string
 };
 
 export const AccordionBody = (props) => {
@@ -60,4 +62,5 @@ AccordionBody.propTypes = {
   id: PropTypes.string,
   children: PropTypes.any,
   index: PropTypes.number,
+  className: PropTypes.string
 };

@@ -46,3 +46,12 @@ export const validateItems = (value) => {
 
   return error;
 };
+
+export const validateReview = (value) => {
+  const error = {};
+  const review = validate.single(value.review,
+    constraint.review);
+  if (review)error.review = review;
+  return error;
+};
+

@@ -1,7 +1,8 @@
 import { RECIPE, UPDATE_DIRECTIONS,
          UPDATE_INGREDIENTS, UPDATE_NAME_CATEGORY,
          UPDATE_ALL_RECIPE_FIELD, GET_ALL_RECIPES,
-        GET_FAV_RECIPES, GET_TOP_RECIPES } from '../actions/actions';
+        GET_FAV_RECIPES, GET_TOP_RECIPES, GET_RECIPE,
+        AFTER_REVIEW, AFTER_VOTE } from '../actions/actions';
 import initialState from '../reducers/initialState';
 
 export const createOrModifyRecipeReducer = (state = {}, action) => {
@@ -51,3 +52,20 @@ export const recipesReducer = (state = [], action) => {
   }
 };
 
+export const viewRecipeReducer = (state = {}, action) => {
+  const copyOfState = Object.assign({}, state);
+  switch (action.type) {
+    case GET_RECIPE:
+      return action.recipe.Recipe;
+    case AFTER_REVIEW:
+      copyOfState.RecipeReviews = action.recipe.Recipe.RecipeReviews;
+      return copyOfState;
+    case AFTER_VOTE:
+      console.log(action.recipe.Recipe.downVotes);
+      copyOfState.upVotes = action.recipe.Recipe.upVotes;
+      copyOfState.downVotes = action.recipe.Recipe.downVotes;
+      return copyOfState;
+    default:
+      return state;
+  }
+};

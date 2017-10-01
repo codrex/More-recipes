@@ -1,5 +1,5 @@
 const toastConfig = {
-  timeOut: 5000,
+  timeOut: 3000,
   positionClass: 'toast-top-right',
   preventDuplicates: true,
 };
