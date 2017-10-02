@@ -11,6 +11,7 @@ import toastr from 'toastr';
 import toastrConfig from '../toastr/config';
 import { loginOrRegSuccess } from '../actions/userActions';
 import Recipes from '../components/pages/recipesPage/recipesPage';
+import Recipe from '../components/pages/viewRecipePage/recipe';
 
 /**
  * App component
@@ -44,10 +45,12 @@ class App extends React.Component {
           <Navbar />
           <Switch>
             <Route exact path="/recipe/create" component={AddRecipePage} />
+            <Route exact path="/recipe/:id" component={Recipe} />
             <Route exact path="/recipes" component={Recipes} />
             <Route exact path="/" component={LandingPage} />
           </Switch>
           <Loader loading={this.props.loading} />
+
         </div>
       </BrowserRouter>
     );

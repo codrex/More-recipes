@@ -1,0 +1,19 @@
+.direction-header{
+  height: 100px;
+  display: flex;
+  & a{
+    font-size: 2em;
+    margin-left: 50px;
+    min-width:90%;
+  }
+  & h5, & a{
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+  }
+  & .icon-wrapper{
+    position: absolute;
+    left: 20px;
+  }
+}
+

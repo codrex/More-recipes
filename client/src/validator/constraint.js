@@ -44,6 +44,11 @@ const constraints = {
       message: 'Email entered is not valid'
     },
   },
+  review: {
+    presence: {
+      message: 'review can\'t be blank'
+    },
+  },
   recipe(fieldName) {
     fieldName = {
       presence: {

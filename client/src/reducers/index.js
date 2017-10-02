@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import { userReducer, tokenReducer } from './userReducers';
-import { createOrModifyRecipeReducer, newRecipeReducer, recipesReducer } from './recipeReducers';
+import { createOrModifyRecipeReducer,
+        newRecipeReducer, recipesReducer, viewRecipeReducer } from './recipeReducers';
 import { ajaxReducer, ajaxErrorReducer, ajaxSuccessReducer,
          ajaxRedirectReducer } from './ajaxReducer';
 import * as initialState from './initialState';
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   redirectUrl: ajaxRedirectReducer,
   recipes: recipesReducer,
   token: tokenReducer,
+  selectedRecipe: viewRecipeReducer,
   initialState
 });
 

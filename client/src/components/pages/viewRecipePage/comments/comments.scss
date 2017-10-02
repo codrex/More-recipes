@@ -1,0 +1,46 @@
+@import '../../../../scss/_var.scss';
+
+.comment{
+  display: flex;
+  padding-left: 1em;
+  padding: 1em;
+  margin:  .3em auto;
+}
+
+.no-comment{
+  font-size: 2em;
+}
+
+.media-text{
+  font-size: 2em;
+}
+
+.media-body h1{
+  font-size: 1.5em;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+.media-object{
+  margin-bottom: 2em;
+  min-height: 100px;
+  border: 1px solid rgba($primary-color,0.2);
+  max-width: 800px;
+  border-right: 5px $primary-color solid;
+  align-items: flex-start;
+  justify-content: flex-start;
+  & .avatar{
+    text-align: center;
+    width: 80px;
+    height: 80px;
+    color: $secondary-color;
+    background-color: $primary-color;
+    border-color: $secondary-color;
+    border-radius: 0;
+
+  }
+}
+.media-body{
+margin-left: .5em;
+padding: .5em
+
+}

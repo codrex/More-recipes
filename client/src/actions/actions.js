@@ -6,7 +6,12 @@ export const GET_ALL_RECIPES = 'GET_ALL_RECIPES';
 export const GET_FAV_RECIPES = 'GET_FAV_RECIPES';
 export const GET_MY_RECIPES = 'GET_MY_RECIPES';
 export const GET_TOP_RECIPES = 'GET_TOP_RECIPES';
-export const GET_RECIPE = 'GET_MY_RECIPE';
+export const GET_RECIPE = 'GET_RECIPE';
+
+export const AFTER_REVIEW = 'AFTER_REVIEW';
+export const AFTER_VOTE = 'AFTER_VOTE';
+
+export const ADD_TO_FAV = 'ADD_TO_FAV';
 
 export const BEGIN_AJAX_REQUEST = 'BEGIN_AJAX_REQUEST';
 export const END_AJAX_REQUEST = 'END_AJAX_REQUEST';
