@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import jwt from 'jsonwebtoken';
-// import { Link } from 'react-router-dom';
+import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 import './sidebar.scss';
 
 
 const SidebarListItem = (props) => (
   <h4
-    className="lead sidebar-text sidebar-list-item"
+    className={classnames('lead sidebar-text sidebar-list-item', props.active && 'active')}
     onClick={() => {
-      props.onClick();
+      props.onClick(props.index);
+      console.log(props.active, 'jjj');
     }}
   >
     {props.name}
@@ -19,32 +20,83 @@ const SidebarListItem = (props) => (
 SidebarListItem.propTypes = {
   name: PropTypes.string,
   onClick: PropTypes.func,
-  id: PropTypes.number,
+  index: PropTypes.number,
 };
+/**
+ * sidebar
+ */
+class Sidebar extends React.Component {
+  /**
+   * @return {undefined}
+   * @param {object} props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      active: null,
+    };
+    this.setActive = this.setActive.bind(this);
+  }
 
-const Sidebar = (props) => {
-  const { actions } = props;
-  return (
-    <div className="sidebar col-12 ">
-      <div className="sidebar-header">
-        <h4 className="lead sidebar-text">
-          Recipes
-        </h4>
-        <div className="avatar avatar-sm" >
-          RO
+  /**
+   * @return {undefined}
+   * @param {number} current
+   */
+  setActive(current) {
+    this.setState({ active: current });
+    this.props.actions[current]();
+  }
+
+  /**
+   * @return {undefined}
+   */
+  render() {
+    return (
+      <div className="sidebar col-12 ">
+        <div className="sidebar-header">
+          <h4 className="lead sidebar-text">
+            Recipes
+          </h4>
+          <div className="avatar avatar-sm" >
+            RO
+          </div>
+        </div>
+        <div className="sidebar-body">
+          <SidebarListItem
+            name="All recipes"
+            onClick={this.setActive}
+            active={this.state.active === 0}
+            index={0}
+          />
+          <SidebarListItem
+            name="Top recipes"
+            onClick={this.setActive}
+            active={this.state.active === 1}
+            index={1}
+          />
+          <SidebarListItem
+            name="Favorite recipes"
+            onClick={this.setActive}
+            active={this.state.active === 2}
+            index={2}
+
+          />
+          <Link to="/recipe/create">
+            <SidebarListItem
+              name="add recipe"
+            />
+          </Link>
+          <Link to="/recipe/create">
+            <SidebarListItem
+              name="my profile"
+            />
+          </Link>
+
         </div>
       </div>
-      <div className="sidebar-body">
-        <SidebarListItem name="All recipes" onClick={actions[0]} />
-        <SidebarListItem name="Top recipes" onClick={actions[1]} />
-        <SidebarListItem
-          name="Favorite recipes"
-          onClick={actions[2]}
-        />
-      </div>
-    </div>
   );
-};
+  }
+}
 
 Sidebar.propTypes = {
   actions: PropTypes.array,

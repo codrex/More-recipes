@@ -4,6 +4,10 @@
  background-color: $primary-color;
  height: 100vh;
  padding: 0;
+ transition: transform .5s ease-in;
+  &.show{
+    transform: translateX(0) !important;
+  }
 }
 .recipes-wrapper{
   background-color: $bg-color;
@@ -11,8 +15,8 @@
   height: 100vh;
 }
 .category-filter-wrapper{
-  background-color: $secondary-color;
-  color: $primary-color;
+  background-color: $primary-color;
+  color: #fff;
   min-height: 70px;
   justify-content: center;
 }
@@ -31,22 +35,28 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
 
 }
 .pagination-wrapper{
   background-color: wheat;
   min-height: 50px;
 }
+
+.mobile{
+  display: none;
+}
+
 @media(max-width:767px){
   .sidebar-wrapper{
-    transform: translateX(-100%);
+    transform: translateX(-140%);
     position: fixed;
-    top:0;
+    top:10vh;
     font-size: 1.5em;
     height: 100vh;
     z-index: 9999;
-    background: #631e63;
-
+    background: $primary-color;
+    box-shadow: 20px 18px 17px 3px rgba(0, 0, 0, 0.11);
     width: 80%;
     &-header{
       font-size: 1em;
@@ -59,13 +69,12 @@
     display: inline;
     padding: .5em;
     margin-right: .2em;
-      position: absolute;
-      z-index: 2;
-      left: 0;
-      margin-right: 10px;
-      top: 0;
-      font-size: 2em;
-      color: $secondary-color;
+    position: absolute;
+    z-index: 2;
+    margin-right: 10px;
+    top: 0;
+    font-size: 2em;
+    color: #fff;
     }
     .recipe-card{
       margin: 1em auto;

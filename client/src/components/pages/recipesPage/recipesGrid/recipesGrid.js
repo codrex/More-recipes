@@ -15,6 +15,7 @@ const RecipesGrid = (props) => {
             views={recipe.views}
             upVotes={recipe.upVotes}
             downVotes={recipe.downVotes}
+            recipeId={recipe.id}
           />
           )
         )
