@@ -19,4 +19,10 @@
     background-color: $primary-color !important;
     color: $light-text;
   }
+  &.outline-btn{
+    background: transparent;
+    color: white;
+    border: 1px white solid;
+    transition: color .3s ease-in;
+  }
 }

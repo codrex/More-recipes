@@ -5,6 +5,7 @@ import { PulseLoader } from 'react-spinners';
 import './loader.scss';
 
 const Loader = (props) => {
+  console.log('jjjjfjfjf', props.loading);
   return (
     <div className={classnames('loader', !props.loading && 'hide')}>
       <PulseLoader

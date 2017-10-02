@@ -1,24 +1,21 @@
 import axios from 'axios';
 import { endAjaxRequest, ajaxRequestError,
-        ajaxRequestSuccess, beginAjaxRequest, ajaxRequestAuthError } from '../actions/ajaxActions';
-
+        ajaxRequestSuccess, beginAjaxRequest,
+        ajaxRequestAuthError } from '../actions/ajaxActions';
 
 const rootUrl = 'http://127.0.0.1:8000';
 
+export const request = (payload, path, dispatch, type) => {
+  dispatch(beginAjaxRequest());
+  const url = rootUrl + path;
+  if (type === ('get' || 'delete')) {
+    return axios[type](url);
+  }
+  return axios[type](url, payload);
+};
+
 export const setToken = (token) => {
   axios.defaults.headers.common.Authorization = token;
-};
-
-export const sendPostReq = (payload, path, dispatch) => {
-  dispatch(beginAjaxRequest());
-  const url = rootUrl + path;
-  return axios.post(url, payload);
-};
-
-export const sendPutReq = (payload, path, dispatch) => {
-  dispatch(beginAjaxRequest());
-  const url = rootUrl + path;
-  return axios.put(url, payload);
 };
 
 export const dispatchOnSuccess = (dispatch) => {

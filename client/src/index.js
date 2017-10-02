@@ -6,7 +6,6 @@ import 'font-awesome-sass-loader';
 import './scss/scss.scss';
 import 'bootstrap';
 import App from './components/app';
-
 const store = configureStore();
 render(
   <Provider store={store}>

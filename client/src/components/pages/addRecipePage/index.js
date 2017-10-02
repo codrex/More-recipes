@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Icon from '../../common/icon/icon';
+import Button from '../../common/button/button';
 import AddDirections from './addDirections/addDirections';
 import AddIngredients from './addIngredients/addIngredients';
 import RecipeNameAndCategory from './recipeNameAndCategory/recipeNameAndCategory';
@@ -57,12 +57,7 @@ class AddRecipes extends React.Component {
           <div className="col-xs-9 col-sm-9 col-md-10 col-lg-4 name-category no-padding">
             <h4 className="lead items-header-text">
               Add recipe
-              <Icon
-                iconClass="fa fa-plus"
-                className="float-right"
-                handleClick={this.newItem}
-              />
-
+              <Button text="Done" className="outline-btn float-right" />
             </h4>
             <div className="col-12">
               <RecipeNameAndCategory createRecipe={createRecipe} />

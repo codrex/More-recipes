@@ -6,10 +6,10 @@ export const loginOrRegSuccess = () => ({ type: LOGIN_OR_REG_SUCCESS });
 
 export const userLogin = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.postAndDispatch('/api/v1/users/signin', user, userAction);
+  dispatcher.requestAndDispatch('/api/v1/users/signin', user, userAction, 'post');
 };
 
 export const userSignup = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.postAndDispatch('/api/v1/users/signup', user, userAction);
+  dispatcher.requestAndDispatch('/api/v1/users/signup', user, userAction, 'post');
 };

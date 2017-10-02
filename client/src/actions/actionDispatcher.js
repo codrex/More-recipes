@@ -1,7 +1,8 @@
-import { sendPostReq, dispatchOnSuccess,
+import { dispatchOnSuccess,
          dispatchOnFail, dispatchOnAuthError,
-         setToken, sendPutReq } from '../requestHandler/requestHandler';
+         setToken, request } from '../requestHandler/requestHandler';
 import { ajaxRedirect } from './ajaxActions';
+import jwt from 'jsonwebtoken';
 
 const TOKEN_KEY = 'MRAToken';
 
@@ -20,13 +21,25 @@ export default class ActionDispatcher {
     this.TOKEN = TOKEN;
     setToken(TOKEN);
   }
+
+  /**
+ * @return {undefined}
+ */
+  getIdFromToken() {
+    const data = jwt.decode(localStorage.getItem('MRAToken'));
+    if (data) {
+      return data.id;
+    }
+    return undefined;
+  }
+
   /**
  * @returns {undefined}
  * @param {object} error
  */
   onError(error) {
     if (error.response) {
-      if (error.response.status === (403 || 401)) {
+      if (error.response.status === 401 || error.response.status === 403) {
       // if user is not logged in redirect user to home page
         dispatchOnAuthError(this.dispatch,
       'Authentication failed. Please SIGN-UP or LOGIN to continue');
@@ -36,43 +49,38 @@ export default class ActionDispatcher {
       }
     }
   }
-   /**
- * @returns {undefined}
+//    /**
+//  * @returns {undefined}
+//  * @param {function} action
+//  * @param {object} payload
+//  */
+/**
+ * @return {undefined}
  * @param {function} action
  * @param {object} payload
  */
-  onSuccess(action, payload) {
-    this.dispatch(action(payload.data));
+  saveToken(action, payload) {
+    if (payload.data.User) {
+      if (payload.data.User.token) {
+        localStorage.setItem(TOKEN_KEY, payload.data.User.token);
+      }
+    }
     dispatchOnSuccess(this.dispatch);
+    this.dispatch(action(payload.data));
   }
 
   /**
    *
    * @param {string} url: destination url
    * @param {object} reqData: object to sent to the server
-   * @param {function} action: action to be dispatch when post was successful
+   * @param {function} action: action to be dispatch when request was successful
+   * @param {string} reqType: type of request
    * @return {undefined}
    */
-  postAndDispatch(url, reqData, action) {
-    sendPostReq(reqData, url, this.dispatch)
+  requestAndDispatch(url, reqData, action, reqType) {
+    request(reqData, url, this.dispatch, reqType)
     .then((payload) => {
-      this.onSuccess(action, payload);
-    }).catch((error) => {
-      this.onError(error);
-    });
-  }
-
-   /**
-   *
-   * @param {string} url: destination url
-   * @param {object} reqData: object to sent to the server
-   * @param {function} action: action to be dispatch when post was successful
-   * @return {undefined}
-   */
-  putAndDispatch(url, reqData, action) {
-    sendPutReq(reqData, url, this.dispatch)
-    .then((payload) => {
-      this.onSuccess(action, payload);
+      this.saveToken(action, payload);
     }).catch((error) => {
       this.onError(error);
     });

@@ -1,0 +1,112 @@
+@import '../../../../scss/_var.scss';
+
+.recipe-card{
+  background: transparent;
+  box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.23);
+  height: inherit;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 18.75em;
+  margin: 1em;
+  padding: 0;
+  user-select: none;
+  &-header{
+    min-height: 50px;
+    background: $secondary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-color;
+    z-index: 1;
+    border-radius: 4px 4px 0 0;
+
+    & h4{
+      text-transform: capitalize;
+      color: inherit;
+      font-size: 1.7em;
+      font-weight: bold;
+      width: inherit;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-all;
+
+    }
+  }
+  &-body{
+    width: 100%;
+    height: 100%;
+    background: $primary-color;
+    bottom: 0;
+    padding: 55px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color:  $secondary-color;
+    position: relative;
+    cursor: pointer;
+    text-transform: capitalize;
+    word-break: break-word;
+    &:hover .recipe-card-underlay{
+      opacity: 1;
+      background: #0d0221;
+      visibility: visible;
+    }
+  }
+&-footer{
+  min-height: 50px;
+  background:  $secondary-color;
+  color:  $primary-color;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 0 0 4px 4px ;
+  }
+  &-icon{
+    font-size: 1.8em;
+    & span{
+      font-size: .9em;
+      margin-left: .2em;
+
+    }
+  }
+  &-underlay{
+    position: absolute;
+    background: transparent;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: .7s opacity ease-in-out,
+     .7s background-color ease-in-out,.7s visibility ease-in-out;
+    &-btn{
+      background: transparent;
+      color: $secondary-color;
+      border: 1px $secondary-color solid;
+      transition: color .3s ease-in;
+    }
+    &-heart{
+      font-size: 10rem;
+      transition: color .5s ease-in;
+      margin-bottom: .2em;
+    }
+    &-heart:hover{
+      color: $primary-color!important;
+
+    }
+     &-btn:hover{
+      color: $bg-color!important;
+      border: 1px $primary-color solid;
+
+    }
+
+  }
+}
