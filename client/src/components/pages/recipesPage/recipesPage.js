@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import jwt from 'jsonwebtoken';
+import Icon from '../../common/icon/icon';
 import { bindActionCreators } from 'redux';
 import { ajaxRedirect } from '../../../actions/ajaxActions';
 import { getAllRecipes, getFavRecipes, getTopRecipes } from '../../../actions/recipeActions';
@@ -23,7 +23,9 @@ class Recipes extends React.Component {
     // props.actions.getAllRecipes();
     this.state = {
       allRecipes: props.recipes,
+      showSidebar: false,
     };
+    this.setShowSidebar = this.setShowSidebar.bind(this);
   }
 
   /**
@@ -46,14 +48,22 @@ class Recipes extends React.Component {
   }
 
   /**
+   * @return{undefined}
+   */
+  setShowSidebar() {
+    this.setState({ showSidebar: !this.state.showSidebar });
+  }
+
+  /**
    * @return {undefined}
    */
   render() {
     const { actions } = this.props;
+    const show = this.state.showSidebar && 'show';
     return (
       <div className="container-fluid">
         <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-3 col-lg-3 sidebar-wrapper d-flex ">
+          <div className={`col-xs-12 col-sm-12 col-md-3 col-lg-3 sidebar-wrapper d-flex ${show}`}>
             <Sidebar
               actions={[actions.getAllRecipes,
                         actions.getTopRecipes,
@@ -65,6 +75,16 @@ class Recipes extends React.Component {
           <div className="col-xs-12 col-sm-12 col-md-9 col-lg-9 recipes-wrapper d-flex">
             <div className="row category-filter-wrapper d-flex">
               <CategoryFilter />
+              {!this.state.showSidebar && <Icon
+                iconClass="fa fa-bars"
+                parentClass="mobile left"
+                handleClick={this.setShowSidebar}
+              />}
+              {this.state.showSidebar && <Icon
+                iconClass="fa fa-arrow-left"
+                parentClass="mobile right"
+                handleClick={this.setShowSidebar}
+              />}
             </div>
             <div className="row grid-list-wrapper d-flex">
               <RecipeGrid recipes={this.props.recipes} loading={this.props.loading} />

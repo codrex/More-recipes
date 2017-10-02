@@ -24,8 +24,6 @@
     text-transform: uppercase;
     margin: 0;
     color: darken(white,2%);
-    padding-left:.5em;
-
   }
   &-list-item{
     padding:1em .5em;
@@ -38,14 +36,10 @@
     transition: .3s background-color ease-in-out,
     .4s border-left-color ease-in-out;
 
-    &:hover{
+     &:hover, &.active{
       background: darken($primary-color,5%);
       border-left:$secondary-color 5px solid;
     }
-  }
-
-  &-active{
-    transform: translateX(0) !important;
   }
 
 }

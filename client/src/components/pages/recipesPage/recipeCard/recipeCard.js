@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../../../common/icon/icon';
 import Button from '../../../common/button/button';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './recipeCard.scss';
 
 const RecipeCard = (props) => {
-  console.log(props.upVotes);
   return (
     <div className={"recipe-card col-xs-10 col-sm-10 col-md-5 col-lg-5"}>
       <div className="recipe-card-header">
@@ -17,12 +16,9 @@ const RecipeCard = (props) => {
           {props.recipeName}
         </h2>
         <div className="recipe-card-underlay">
-          <Icon
-            iconClass="fa fa-heart"
-            className="recipe-card-underlay-heart"
-            tab="1"
-          />
-          <Button text="view details" className="recipe-card-underlay-btn" />
+          <Link to={`/api/v1/recipes/${props.recipeId}`}>
+            <Button text="view details" className="recipe-card-underlay-btn" />
+          </Link>
         </div>
       </div>
 
@@ -43,6 +39,7 @@ RecipeCard.propTypes = {
   views: PropTypes.number,
   recipeName: PropTypes.string,
   category: PropTypes.string,
+  recipeId: PropTypes.number
 };
 
 export default RecipeCard;

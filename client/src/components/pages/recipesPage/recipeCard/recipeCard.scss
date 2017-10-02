@@ -30,6 +30,8 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      word-break: break-all;
+
     }
   }
   &-body{
@@ -46,6 +48,7 @@
     position: relative;
     cursor: pointer;
     text-transform: capitalize;
+    word-break: break-word;
     &:hover .recipe-card-underlay{
       opacity: 1;
       background: #0d0221;
