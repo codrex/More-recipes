@@ -22,3 +22,27 @@ export const validateSignup = (data) => {
   if (email)error.email = email;
   return error;
 };
+export const hasRecipeNameAndCategory = (data) => {
+  const error = {};
+  const recipeName = validate.single(data.recipeName, constraint.recipe('recipeName'));
+  const category = validate.single(data.category, constraint.recipe('category'));
+
+  if (recipeName)error.recipeName = recipeName[0].replace('recipeName', 'recipe name');
+  if (category)error.category = category;
+  return error;
+};
+
+// this validation function validates ingredients or directions
+// depending on the value present.
+export const validateItems = (value) => {
+  const error = {};
+  const ingredient = validate.single(value.ingredient,
+    constraint.recipe('ingredient'));
+  const direction = validate.single(value.direction,
+    constraint.recipe('direction'));
+
+  if (ingredient)error.ingredient = ingredient[0];
+  if (direction)error.direction = direction[0];
+
+  return error;
+};

@@ -6,11 +6,11 @@ const constraints = {
     format: {
       pattern: '[a-zA-Z ]+',
       flags: 'i',
-      message: 'can only contain alphabet',
+      message: 'Fullname can only contain alphabet',
     },
     length: {
       minimum: 2,
-      message: 'fullname must be at least 2 character',
+      message: 'Fullname must be at least 2 character',
     },
   },
   password: {
@@ -43,6 +43,18 @@ const constraints = {
     email: {
       message: 'Email entered is not valid'
     },
+  },
+  recipe(fieldName) {
+    fieldName = {
+      presence: {
+        message: `${fieldName} can\'t be blank`
+      },
+      length: {
+        minimum: 3,
+        message: `${fieldName}  must be at least 3 character`,
+      },
+    };
+    return fieldName;
   },
 };
 export default constraints;

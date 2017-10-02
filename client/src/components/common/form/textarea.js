@@ -3,43 +3,34 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import './form.scss';
 
-const Input = (props) => {
+const Textarea = (props) => {
   const valid = props.meta && props.meta.touched && !props.meta.error && 'valid';
   const invalid = props.meta && props.meta.touched && props.meta.error && 'invalid';
   return (
     <div className={classnames('form-group', props.fgClassName)}>
-      <input
-        type={props.type || 'text'}
+      <textarea
         className={classnames('form-control text-input',
         props.className, valid, invalid)}
-        id={props.id}
-        aria-describedby={props.id}
+        id={`${props.id}Textarea`}
+        aria-describedby={`${props.id}Textarea`}
         placeholder={props.placeholder}
-        autoComplete={false}
         {...props.input}
-      />
-      <span
-        className={
-          classnames(props.meta &&
-          props.meta.touched &&
-          props.meta.error ? 'help-text' : '', props.helpTextClassName)
-        }
       >
+      </textarea>
+      <span className={props.meta && props.meta.touched && props.meta.error ? 'help-text' : ''}>
       {props.meta && props.meta.touched && props.meta.error}
       </span>
     </div>
   );
 };
 
-Input.propTypes = {
-  type: PropTypes.string,
+Textarea.propTypes = {
   id: PropTypes.string,
   placeholder: PropTypes.string,
   className: PropTypes.string,
   fgClassName: PropTypes.string,
-  helpTextClassName: PropTypes.string,
   input: PropTypes.object,
   meta: PropTypes.object,
 };
 
-export default Input;
+export default Textarea;

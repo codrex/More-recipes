@@ -36,6 +36,7 @@ class RegForm extends React.Component {
         submitBtnText="Register"
         onSubmit={handleSubmit(this.signup)}
         className={this.props.loading ? 'hide' : ''}
+        secondary
       >
         <Field
           component={Input}

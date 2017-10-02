@@ -1,24 +1,15 @@
-import { USER } from './actions';
-import { sendPostReq, dispatchOnSuccess, dispatchOnFail } from '../requestHandler/requestHandler';
+import { USER, LOGIN_OR_REG_SUCCESS } from './actions';
+import ActionDispatcher from './actionDispatcher';
 
 export const userAction = user => ({ type: USER, user });
+export const loginOrRegSuccess = () => ({ type: LOGIN_OR_REG_SUCCESS });
 
 export const userLogin = user => (dispatch) => {
-  sendPostReq(user, '/api/v1/users/signin', dispatch)
-    .then((payload) => {
-      dispatch(userAction(payload.data.user));
-      dispatchOnSuccess(dispatch);
-    }).catch((error) => {
-      dispatchOnFail(dispatch, error.response.data.error);
-    });
+  const dispatcher = new ActionDispatcher(dispatch);
+  dispatcher.postAndDispatch('/api/v1/users/signin', user, userAction);
 };
 
 export const userSignup = user => (dispatch) => {
-  sendPostReq(user, '/api/v1/users/signup', dispatch)
-    .then((payload) => {
-      dispatch(userAction(payload.data.user));
-      dispatchOnSuccess(dispatch);
-    }).catch((error) => {
-      dispatchOnFail(dispatch, error.response.data.error);
-    });
+  const dispatcher = new ActionDispatcher(dispatch);
+  dispatcher.postAndDispatch('/api/v1/users/signup', user, userAction);
 };

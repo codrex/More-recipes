@@ -1,0 +1,89 @@
+@import '../../../../scss/_var.scss';
+
+.items{
+  height: 100%;
+  overflow: hidden;
+  padding: 0 ;
+  &-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 35%;
+    height: fit-content;
+    & form{
+      max-height: fit-content;
+      padding: 0;
+      // margin-top: 1em;
+    }
+
+  }
+  &-header-text{
+    background-color: $primary-color;
+    color: white;
+    padding: 1em;
+    font-size: 1.6em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  &-list{
+    overflow: scroll;
+    height: 65%;
+    // margin: .5em 0;
+    padding: 0, .5em;
+    &-item {
+      height: 70px;
+      margin: 0;
+      padding: 1em .5em;
+      // margin-bottom: .5em;
+      // text-transform: lowercase;
+      font-size: 1.8em;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba($primary-color, .899);
+      padding-left: .5em;
+      transition: background-color .4s ease-in;
+      border-radius: 0 !important;
+      &:hover, &:focus{
+        background-color: darken($primary-color,5%);
+      }
+    }
+  }
+}
+.item-edit-form{
+  display: flex;
+  height: fit-content;
+  align-items: flex-start;
+  padding: .3em;
+  // margin-bottom: 1em;
+}
+.item-edit-form-textarea{
+  flex-direction: column;
+  padding-top: .5em;
+  width: 100%;
+}
+.item-edit-input{
+  min-height:1.5em;
+  font-size: 1.6em;
+  height: 50px;
+}
+.item-edit-textarea, textarea{
+    height: 150px;
+    border-radius: 0;
+    margin-bottom: .5em;
+}
+.item-edit-fg{
+  flex: 2;
+  margin: 0;
+  width: 100%;
+}
+.item-edit-btn{
+  align-self: flex-end;
+  box-shadow: none !important;
+  font-size: 1.4em;
+  height: 50px;
+
+}
+

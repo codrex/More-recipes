@@ -2,21 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import toastr from 'toastr';
-import { userSignup, userLogin } from '../../../actions/userActions';
-import Navbar from '../../common/navbar/navbar';
+import { userSignup, userLogin, loginOrRegSuccess } from '../../../actions/userActions';
 import Modal from '../../common/modal/modal';
 import LoginForm from '../../common/form/loginForm';
 import RegForm from '../../common/form/regForm';
 import Carousel from './carousel/carousel';
 import Cta from './cta/cta';
-import Loader from '../../common/preloader/loader';
 
-const toastConfig = {
-  timeOut: 5000,
-  positionClass: 'toast-top-full-width',
-  preventDuplicates: true,
-};
 /**
  * Landing page with signin and signup forms
  */
@@ -36,6 +28,34 @@ class LandingPage extends React.Component {
     this.signup = this.signup.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
+
+  /**
+ *
+ * @param {object} nextProps
+ * @return {bool} true or false
+ */
+  shouldComponentUpdate(nextProps) {
+    if (this.props === nextProps) {
+      return true;
+    }
+    const { redirectUrl, success, actions } = nextProps;
+    if (success && !redirectUrl) {
+      localStorage.setItem('MRAToken', this.props.token);
+      this.props.history.push('/recipe/create');
+
+      document.getElementsByClassName('modal-backdrop')[0].remove();
+      document.getElementsByTagName('body')[0].className = ' ';
+      setTimeout(() => {
+        actions.endSuccess();
+      }, 1000);
+      return false;
+    } else if (success && redirectUrl) {
+      // this.props.redirect('');
+      // this.props.history.push(redirectUrl);
+      // return false;
+    } else return true;
+  }
+
   /**
    * @return {undfined} undefined
    */
@@ -74,14 +94,8 @@ class LandingPage extends React.Component {
    * @return {object} object
    */
   render() {
-    const { error } = this.props.reqError;
-    const { success } = this.props.reqSuccess;
-
-    error && !this.props.loading && toastr.error(error, 'Error', toastConfig);
-    success && !this.props.loading && toastr.success(success, '', toastConfig);
     return (
       <div>
-        <Navbar />
         <Carousel >
           <Cta signin={this.signin} signup={this.signup} />
         </Carousel>
@@ -96,18 +110,14 @@ class LandingPage extends React.Component {
             this.state.signin &&
               <LoginForm
                 login={this.props.actions.loginAction}
-                loading={this.props.loading}
               />
           }
          {
            this.state.signup &&
              <RegForm
                signup={this.props.actions.signupAction}
-               loading={this.props.loading}
              />
           }
-
-          <Loader loading={this.props.loading} />
         </Modal>
       </div>
       );
@@ -117,9 +127,10 @@ class LandingPage extends React.Component {
 
 LandingPage.propTypes = {
   actions: PropTypes.object,
-  reqError: PropTypes.object,
-  reqSuccess: PropTypes.object,
-  loading: PropTypes.bool,
+  success: PropTypes.bool,
+  history: PropTypes.object,
+  redirectUrl: PropTypes.string,
+  token: PropTypes.string,
 };
 
 const mapDispatchToProps = (dispatch) => (
@@ -127,15 +138,17 @@ const mapDispatchToProps = (dispatch) => (
     actions: {
       loginAction: bindActionCreators(userLogin, dispatch),
       signupAction: bindActionCreators(userSignup, dispatch),
+      endSuccess: bindActionCreators(loginOrRegSuccess, dispatch)
+
     },
   }
 );
 
 const mapStateToProps = (state) => (
   {
-    loading: state.ajaxCall > 0,
-    reqError: state.ajaxError,
-    reqSuccess: state.ajaxSuccess
+    success: state.ajaxSuccess.success ? true : false,
+    redirectUrl: state.redirectUrl,
+    token: state.user.token,
   }
 
 );

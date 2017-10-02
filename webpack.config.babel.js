@@ -14,10 +14,12 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
+    publicPath: '/',
     path: path.resolve(__dirname, 'dist'),
   },
   devServer: {
-    contentBase: './client/dist',
+    historyApiFallback: true,
+    contentBase: './'
   },
   stats: {
     colors: true,

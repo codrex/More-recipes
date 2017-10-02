@@ -17,18 +17,14 @@ const Cta = props => (
         dataToggle="modal"
         dataTarget="#modal"
         handleClick={props.signin}
-      >
-        Login
-      </Button>
+      />
       <Button
         className=" btn-secondary btn-lg reg text-white"
         text="Create an account"
         dataToggle="modal"
         dataTarget="#modal"
         handleClick={props.signup}
-      >
-        Create an account
-      </Button>
+      />
     </div>
   </div>
   );

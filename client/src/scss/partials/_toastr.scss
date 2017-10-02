@@ -4,17 +4,17 @@
   opacity: 1;
   top: 10vh;
   &> div {
-    box-shadow: 0 0 12px rgba(153, 153, 153, 0.64);
+    box-shadow: 0 0 12px 8px rgba($secondary-color, 0.44);
     opacity: 1;
   }
 
 }
 .toast-title {
   font-weight: bold;
-  font-size: 1.5em;
+  font-size: 2em;
 }
 .toast-message {
   -ms-word-wrap: break-word;
   word-wrap: break-word;
-  font-size: 1.4em;
+  font-size: 1.5em;
 }

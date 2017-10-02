@@ -5,7 +5,7 @@ import './form.scss';
 
 const Form = props => (
   <form
-    className={classnames('col-12 no-margin', props.className)}
+    className={classnames('col-12', props.className)}
     action={props.action}
     method={props.method}
     onSubmit={e => {
@@ -14,21 +14,24 @@ const Form = props => (
     }}
   >
     {props.children}
-    <button
+    {props.submitBtnText && <button
       type="submit"
-      className="btn btn-secondary btn-lg text-white text-uppercase w-100"
+      className={classnames('btn btn-lg text-white text-uppercase w-100',
+      props.secondary && 'btn-secondary', props.primary && 'btn-primary')}
     >{props.submitBtnText}
-    </button>
+    </button>}
   </form>
 );
 
 Form.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.any,
   action: PropTypes.string,
   method: PropTypes.string,
   className: PropTypes.string,
-  submitBtnText: PropTypes.string.isRequired,
+  submitBtnText: PropTypes.string,
   onSubmit: PropTypes.func,
+  primary: PropTypes.bool,
+  secondary: PropTypes.bool,
 };
 
 export default Form;
