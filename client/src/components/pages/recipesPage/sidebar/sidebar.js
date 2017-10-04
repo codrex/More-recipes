@@ -10,7 +10,6 @@ const SidebarListItem = (props) => (
     className={classnames('lead sidebar-text sidebar-list-item', props.active && 'active')}
     onClick={() => {
       props.onClick(props.index);
-      console.log(props.active, 'jjj');
     }}
   >
     {props.name}
@@ -86,7 +85,7 @@ class Sidebar extends React.Component {
               name="add recipe"
             />
           </Link>
-          <Link to="/recipe/create">
+          <Link to="/user">
             <SidebarListItem
               name="my profile"
             />

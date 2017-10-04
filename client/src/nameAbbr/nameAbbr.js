@@ -5,7 +5,7 @@ const nameAbbr = (fullname) => {
     }
     return fullname.slice(0, 2);
   }
-  return undefined;
+  return '';
 };
 
 export default nameAbbr;
