@@ -1,5 +1,4 @@
 const initailState = {
-  User: {},
   Recipes: [],
   newRecipe: {
     id: undefined,

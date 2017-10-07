@@ -47,7 +47,7 @@ class Recipe extends React.Component {
    */
   shouldComponentUpdate(nextProps) {
     if (nextProps.redirectUrl === '/') {
-      // redirect authenticated user to home page
+      // redirect unauthenticated user to home page
       // in other to login pr signup
       // the current page url is save via the redirect action creator
       // doing this will enable the user to be re-route back to this page
@@ -111,20 +111,18 @@ class Recipe extends React.Component {
           </div>
         </div>
         <div className="d-flex justify-content-around lead topbar flex-column icon-bar" >
-          <span className="vote">{this.props.recipe.upVotes}</span>
           <Icon
-            iconClass="fa fa-thumbs-up"
+            iconClass="fa fa-thumbs-o-up"
             active={this.state.vote === 'up' ? 'active' : ''}
             handleClick={() => this.vote('up')}
           />
-          <span className="vote">{this.props.recipe.downVotes}</span>
           <Icon
-            iconClass="fa fa-thumbs-down"
+            iconClass="fa fa-thumbs-o-down"
             active={this.state.vote === 'down' ? 'active' : ''}
             handleClick={() => this.vote('down')}
           />
           <Icon
-            iconClass="fa fa-heart"
+            iconClass="fa fa-heart-o"
             active={this.state.addToFav ? 'active' : ''}
             handleClick={this.addToFav}
           />

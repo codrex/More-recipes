@@ -32,9 +32,9 @@ class LoginForm extends React.Component {
     return (
       <Form
         submitBtnText="Login"
-        onSubmit={handleSubmit(this.login)}
+        onSubmit={handleSubmit(this.props.login)}
         className={this.props.loading ? 'hide' : ''}
-        secondary
+        primary
       >
         <Field
           component={Input}

@@ -30,7 +30,7 @@ const Modal = (props) => (
       </button>
     </div>
     <div className="modal-dialog" role="document">
-      <div className="modal-content">
+      <div className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
         <div className="modal-body">
           {props.children}

@@ -1,4 +1,6 @@
 export const USER = 'USER';
+export const GOT_USER_PROFILE = 'GOT_USER_PROFILE';
+export const UPDATE_USER_PROFILE = 'UPDATE_USER_PROFILE';
 export const LOGIN_OR_REG_SUCCESS = 'LOGIN_OR_REG_SUCCESS';
 export const RECIPE = 'RECIPE';
 

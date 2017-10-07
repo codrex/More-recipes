@@ -22,6 +22,17 @@ export const validateSignup = (data) => {
   if (email)error.email = email;
   return error;
 };
+export const validateProfileUpdate = (data) => {
+  const error = {};
+  const username = validate.single(data.username, constraint.username);
+  const fullname = validate.single(data.fullname, constraint.fullname);
+  const email = validate.single(data.email, constraint.email);
+
+  if (username)error.username = username;
+  if (fullname)error.fullname = fullname;
+  if (email)error.email = email;
+  return error;
+};
 export const hasRecipeNameAndCategory = (data) => {
   const error = {};
   const recipeName = validate.single(data.recipeName, constraint.recipe('recipeName'));

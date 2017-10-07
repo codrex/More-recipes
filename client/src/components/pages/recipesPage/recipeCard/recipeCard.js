@@ -16,7 +16,7 @@ const RecipeCard = (props) => {
           {props.recipeName}
         </h2>
         <div className="recipe-card-underlay">
-          <Link to={`/api/v1/recipes/${props.recipeId}`}>
+          <Link to={`recipe/${props.recipeId}`}>
             <Button text="view details" className="recipe-card-underlay-btn" />
           </Link>
         </div>

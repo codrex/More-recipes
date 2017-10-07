@@ -61,7 +61,6 @@ export const viewRecipeReducer = (state = {}, action) => {
       copyOfState.RecipeReviews = action.recipe.Recipe.RecipeReviews;
       return copyOfState;
     case AFTER_VOTE:
-      console.log(action.recipe.Recipe.downVotes);
       copyOfState.upVotes = action.recipe.Recipe.upVotes;
       copyOfState.downVotes = action.recipe.Recipe.downVotes;
       return copyOfState;

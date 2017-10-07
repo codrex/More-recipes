@@ -2,50 +2,31 @@
 
 .info-wrapper{
   padding: .7em;
+  padding-bottom: 0;
   font-size: 2em;
   background: white;
   width: 80%;
   border-color:transparent;
-  border-left: 5px solid $primary-color;
   position: relative;
   margin: 0 auto;
   max-width: 700px;
   > div>h3{
     font-size: 2.5rem;
     text-align: center;
-    color: rgba(8, 8, 8, 0.71);
-  }
-  &::after, &::before{
-    content: '';
-    position: absolute;
-    top: -1px;
-    right: -2px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-
-  }
-  &::after{
-    top: -1px;
-    background: $primary-color;
-
-  }
-  &::before{
-    top: 30px;
-    background: $secondary-color;
-
+    color: rgba(8, 8, 8, 0.61);
+    margin-top:.5em !important;
   }
 }
 .info{
   font-size: 1em;
   padding: .5em;
   text-align: center;
+  margin: 25px 0;
   &-item{
     list-style: none;
     line-height: 1.5em;
-    text-transform: capitalize;
     font-size: .8em;
-    color: $primary-color;
+    color: rgba($primary-color,0.5);
   }
 }
 .edit{
@@ -66,12 +47,17 @@
   background-color: $primary-color;
   padding: 50px 0;
 }
-.user-recipes{
+.user-details{
   width: 80%;
   min-height: 200px;
   background-color: white;
   margin: 25px auto;
   border-right: 5px solid $secondary-color;
   display: none;
+}
+.edit-btn{
+  max-height: 35px;
+  font-size: 1.3rem;
+  min-width: 150px;
 
 }

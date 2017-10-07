@@ -12,18 +12,19 @@
 }
 
 .media-text{
-  font-size: 2em;
+  font-size: 1.5rem;
+  color: $dark-text;
 }
 
 .media-body h1{
-  font-size: 1.5em;
+  font-size: 1.5rem;
   text-transform: capitalize;
-  font-weight: 700;
+  font-weight: 600;
 }
 .media-object{
   margin-bottom: 2em;
   min-height: 100px;
-  border: 1px solid rgba($primary-color,0.2);
+  border: 1px solid darken($dimmed-white,20%) ;
   max-width: 800px;
   border-right: 5px $primary-color solid;
   align-items: flex-start;
