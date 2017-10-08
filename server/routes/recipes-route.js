@@ -7,9 +7,10 @@ import { validateRecipe, create,
         validateUpdate, fetchForUpdate,
          fetchAllRecipe, fetchAllBySearch,
          setReview, fetchReview,
-         fetchVotes, fetchRecipeByUpVote, update, checkRecipe } from '../controller/recipe';
+         fetchVotes, fetchRecipeByUpVote,
+         update, checkRecipe } from '../controller/recipe';
 import { VoteHandler, countVote, voteValidation } from '../controller/vote';
-import { isIdValidUser } from '../controller/user';
+import { isIdValidUser, setRecipe } from '../controller/user';
 import addAsViewer from '../controller/viewer';
 
 const recipesRoute = express.Router();
@@ -18,10 +19,10 @@ recipesRoute.use(verifyToken, isIdValidUser, (req, res, next) => {
   next();
 });
 
-// get recipes route
+// create recipe and get recipes route
 recipesRoute.route('/')
   .get(fetchAllBySearch, fetchRecipeByUpVote, fetchAllRecipe)
-  .post(validateRecipe, create, fetchRecipe);
+  .post(validateRecipe, create, setRecipe, fetchRecipe);
 
 // Update and delete recipe route
 recipesRoute.route('/:id')

@@ -186,36 +186,36 @@ export const recipeSpec = (user1, user2) => {
       });
     });
 
-       // get fav recipes
-       describe('get fav recipes', () => {
-        it('return 200 as status code when everything is ok', done => {
-          request.get('/api/v1/users/1/recipes')
-            .set('Authorization', token)
-              .end((err, res) => {
-                expect(res.status).to.equal(200);
-                expect(res.body.status).to.equal('success');
-                done();
-              });
-        });
-        it('return 404 as status code when user dose not exist', done => {
-          request.get('/api/v1/users/100/recipes')
-            .set('Authorization', token)
-              .end((err, res) => {
-                expect(res.status).to.equal(404);
-                expect(res.body.status).to.equal('fail');
-                done();
-              });
-        });
-        it('return 400 as status code for invalid user id', done => {
-          request.get('/api/v1/users/1kgg/recipes')
-            .set('Authorization', token)
-              .end((err, res) => {
-                expect(res.status).to.equal(400);
-                expect(res.body.status).to.equal('fail');
-                done();
-              });
-        });
+    // get fav recipes
+    describe('get fav recipes', () => {
+      it('return 200 as status code when everything is ok', done => {
+        request.get('/api/v1/users/1/recipes')
+          .set('Authorization', token)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.status).to.equal('success');
+              done();
+            });
       });
+      it('return 404 as status code when user dose not exist', done => {
+        request.get('/api/v1/users/100/recipes')
+          .set('Authorization', token)
+            .end((err, res) => {
+              expect(res.status).to.equal(404);
+              expect(res.body.status).to.equal('fail');
+              done();
+            });
+      });
+      it('return 400 as status code for invalid user id', done => {
+        request.get('/api/v1/users/1kgg/recipes')
+          .set('Authorization', token)
+            .end((err, res) => {
+              expect(res.status).to.equal(400);
+              expect(res.body.status).to.equal('fail');
+              done();
+            });
+      });
+    });
 
       // post a review on a recipe
     describe('post a review', () => {

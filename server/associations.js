@@ -7,6 +7,7 @@ const RecipeReviews = db.RecipeReviews;
 
 const associate = () => {
   Users.belongsToMany(Recipes, { through: FavRecipe, as: 'favRecipes' });
+  Users.hasMany(Recipes, { as: 'createdRecipes' });
   Users.sync();
 
   Recipes.belongsTo(Users, { as: 'Owner' });
