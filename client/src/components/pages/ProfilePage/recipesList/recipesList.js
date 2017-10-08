@@ -5,7 +5,6 @@ import Icon from '../../../common/icon/icon';
 import './recipeList.scss';
 
 const Recipes = (props) => {
-  console.log(props.recipes)
   const recipes = props.recipes || [];
   return (
     <List style={{ padding: '2em' }}>
@@ -19,6 +18,7 @@ const Recipes = (props) => {
           <div>
             <Icon
               iconClass="fa fa-pencil"
+              handleClick={() => props.onEditIconCliked(recipes[i])}
             />
             <Icon
               iconClass="fa fa-trash"
@@ -33,6 +33,7 @@ const Recipes = (props) => {
 
 Recipes.propTypes = {
   recipes: PropTypes.array,
+  onEditIconCliked: PropTypes.func,
 };
 
 export default Recipes;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './navbar.scss';
 
 /**
@@ -10,14 +10,14 @@ import './navbar.scss';
 
 const ListItem = props => (
   <li className="nav-item">
-    <Link
+    <NavLink
       className="nav-link text-uppercase"
       activeClassName="nav-link-active"
       to={props.to}
-      replace
+      exact
     >
       {props.text}
-    </Link>
+    </NavLink>
   </li>
 );
 

@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Icon from '../../common/icon/icon';
 import EditProfileForm from '../../common/form/editProfileForm';
 import Modal from '../../common/modal/modal';
 import TopBar from '../../common/topbar/topbar';
 import { bindActionCreators } from 'redux';
 import { ajaxRedirect } from '../../../actions/ajaxActions';
 import { getUserProfile, updateProfile } from '../../../actions/userActions';
+import { toModifyRecipe } from '../../../actions/recipeActions';
 import UserInfo from './userInfo/userInfo';
 import Recipes from './recipesList/recipesList';
 import './profile.scss';
 
 
 /**
- * Profile pagr component
+ * Profile page component
  */
 class ProfilePage extends React.Component {
 
@@ -30,6 +30,7 @@ class ProfilePage extends React.Component {
       filteredRecipes: null,
 
     };
+    this.modifyRecipe = this.modifyRecipe.bind(this);
     this.toggleRecipes = this.toggleRecipes.bind(this);
     this.setRecipes = this.setRecipes.bind(this);
     this.searchValueChange = this.searchValueChange.bind(this);
@@ -40,6 +41,13 @@ class ProfilePage extends React.Component {
    */
   componentDidMount() {
     this.props.actions.getUserProfile();
+  }
+
+   /**
+   * @return{undefined}
+   */
+  componentWillReceiveProps() {
+    this.setRecipes();
   }
 
   /**
@@ -59,13 +67,6 @@ class ProfilePage extends React.Component {
       return false;
     }
     return true;
-  }
-
-  /**
-   * @return{undefined}
-   */
-  componentWillReceiveProps() {
-    this.setRecipes();
   }
 
   /**
@@ -98,6 +99,16 @@ class ProfilePage extends React.Component {
   }
 
   /**
+   * @returns{undefined}
+   * @param {Object} recipe
+   */
+  modifyRecipe(recipe) {
+    console.log(this.context);
+    this.props.actions.modifyRecipe(recipe);
+    this.props.history.push('/recipe/modify');
+  }
+
+  /**
    * @return {undefined}
    */
   render() {
@@ -127,7 +138,10 @@ class ProfilePage extends React.Component {
           >
             {!this.props.loading && <EditProfileForm update={this.props.actions.update} />}
           </Modal>
-          <Recipes recipes={this.state.filteredRecipes || this.state.recipes} />
+          <Recipes
+            recipes={this.state.filteredRecipes || this.state.recipes}
+            onEditIconCliked={this.modifyRecipe}
+          />
         </div>
       </div>
     );
@@ -155,6 +169,7 @@ const mapDispatchToProps = (dispatch) => (
       redirect: bindActionCreators(ajaxRedirect, dispatch),
       getUserProfile: bindActionCreators(getUserProfile, dispatch),
       update: bindActionCreators(updateProfile, dispatch),
+      modifyRecipe: bindActionCreators(toModifyRecipe, dispatch),
     }
   }
 );

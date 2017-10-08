@@ -1,7 +1,7 @@
 import { USER, LOGIN_OR_REG_SUCCESS, GOT_USER_PROFILE, UPDATE_USER_PROFILE } from './actions';
 import ActionDispatcher from './actionDispatcher';
 
-export const userAction = user => ({ type: USER, user });
+const userAction = user => ({ type: USER, user });
 const gotProfile = user => ({ type: GOT_USER_PROFILE, user });
 const updatedProfile = user => ({ type: UPDATE_USER_PROFILE, user });
 export const loginOrRegSuccess = () => ({ type: LOGIN_OR_REG_SUCCESS });

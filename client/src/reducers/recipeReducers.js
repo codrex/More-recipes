@@ -2,7 +2,7 @@ import { RECIPE, UPDATE_DIRECTIONS,
          UPDATE_INGREDIENTS, UPDATE_NAME_CATEGORY,
          UPDATE_ALL_RECIPE_FIELD, GET_ALL_RECIPES,
         GET_FAV_RECIPES, GET_TOP_RECIPES, GET_RECIPE,
-        AFTER_REVIEW, AFTER_VOTE } from '../actions/actions';
+        AFTER_REVIEW, AFTER_VOTE, TO_MODIFY_RECICPE } from '../actions/actions';
 import initialState from '../reducers/initialState';
 
 export const createOrModifyRecipeReducer = (state = {}, action) => {
@@ -34,6 +34,8 @@ export const newRecipeReducer = (state = initialState.newRecipe, action) => {
       copyOfState.directions = action.all.directions;
       copyOfState.id = action.all.id;
       return copyOfState;
+    case TO_MODIFY_RECICPE:
+      return action.recipe;
     default:
       return state;
   }

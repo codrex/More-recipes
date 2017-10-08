@@ -2,7 +2,8 @@ import { RECIPE, UPDATE_DIRECTIONS,
           UPDATE_NAME_CATEGORY, UPDATE_INGREDIENTS,
           UPDATE_ALL_RECIPE_FIELD, GET_ALL_RECIPES,
           GET_FAV_RECIPES, AFTER_REVIEW,
-          GET_RECIPE, GET_TOP_RECIPES, AFTER_VOTE, ADD_TO_FAV } from './actions';
+          GET_RECIPE, GET_TOP_RECIPES, AFTER_VOTE,
+          ADD_TO_FAV, TO_MODIFY_RECICPE } from './actions';
 import ActionDispatcher from './actionDispatcher';
 
 
@@ -22,6 +23,7 @@ export const gotAllRecipes = (recipes) => ({ type: GET_ALL_RECIPES, recipes });
 export const gotTopRecipes = (recipes) => ({ type: GET_TOP_RECIPES, recipes });
 export const gotFavRecipes = (recipes) => ({ type: GET_FAV_RECIPES, recipes });
 export const gotRecipe = (recipe) => ({ type: GET_RECIPE, recipe });
+export const toModifyRecipe = (recipe) => ({ type: TO_MODIFY_RECICPE, recipe });
 
 export const createRecipe = recipe => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
