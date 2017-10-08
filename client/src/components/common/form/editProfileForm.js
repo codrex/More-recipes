@@ -1,80 +1,63 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { validateProfileUpdate } from '../../../validator/validator';
 import Form from './form';
 import Input from './input';
 
-/**
- * Edit user profile form
- */
-class EditProfileForm extends React.Component {
-  /**
-   * @param {object} props
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      fullname: '',
-      username: '',
-      email: ''
-    };
-    this.handelEmailChange = this.handelEmailChange.bind(this);
-    this.handelFullnameChange = this.handelFullnameChange.bind(this);
-    this.handelUsernameChange = this.handelUsernameChange.bind(this);
-  }
 
-  /** changes the state.fullname
-   * @param {e} e  event object
-   * @return {undefined} undefined
-  */
-  handelFullnameChange(e) {
-    this.setState({ fullname: e.target.value });
-  }
+let EditProfileForm = (props) => {
+  const { handleSubmit } = props;
+  return (
+    <Form
+      submitBtnText="Update"
+      onSubmit={handleSubmit(props.update)}
+      className={props.loading ? 'hide' : ''}
+      primary
+    >
+      <Field
+        component={Input}
+        name="fullname"
+        type="text"
+        id="fullname"
+        placeholder="Enter fullname"
+      />
+      <Field
+        component={Input}
+        name="username"
+        type="text"
+        id="username"
+        placeholder="Enter username"
+      />
+      <Field
+        component={Input}
+        name="email"
+        type="email"
+        id="email"
+        placeholder="Enter email"
+      />
+    </Form>
+  );
+};
 
-  /** changes the state.email
-   * @param {e} e  event object
-   * @return {undefined} undefined
-  */
-  handelEmailChange(e) {
-    this.setState({ email: e.target.value });
-  }
+EditProfileForm.propTypes = {
+  update: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  loading: PropTypes.bool,
+};
 
-  /** changes the state.username
-   * @param {e} e  event object
-   * @return {undefined} undefined
-  */
-  handelUsernameChange(e) {
-    this.setState({ username: e.target.value });
-  }
+const mapStateToProps = (state) => {
+  return { initialValues: state.user };
+};
 
-  /**
-   * @returns {object} the form
-   */
-  render() {
-    return (
-      <Form submitBtnText="Update">
-        <Input
-          type="text"
-          id="fullname"
-          placeholder="Firstname"
-          value={this.state.fullname}
-          handleChange={this.handelFullnameChange}
-        />
-        <Input
-          type="text"
-          id="username"
-          placeholder="Username"
-          value={this.state.username}
-          handleChange={this.handelUsernameChange}
-        />
-        <Input
-          type="email"
-          id="email"
-          placeholder="Email"
-          value={this.state.username}
-          handleChange={this.handelEmailChange}
-        />
-      </Form>
-    );
-  }
-}
+
+EditProfileForm = reduxForm({
+  validate: validateProfileUpdate,
+  form: 'editProfileForm',
+})(EditProfileForm);
+
+EditProfileForm = connect(mapStateToProps)(EditProfileForm);
+
 
 export default EditProfileForm;

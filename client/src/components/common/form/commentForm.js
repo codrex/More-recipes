@@ -37,7 +37,7 @@ class CommentForm extends React.Component {
         submitBtnText="Post review"
         onSubmit={handleSubmit(this.review)}
         className={this.props.loading ? 'hide' : ''}
-        secondary
+        primary
       >
         <Field
           component={Textarea}

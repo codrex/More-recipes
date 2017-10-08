@@ -65,8 +65,8 @@ export default class ActionDispatcher {
         localStorage.setItem(TOKEN_KEY, payload.data.User.token);
       }
     }
-    dispatchOnSuccess(this.dispatch);
     this.dispatch(action(payload.data));
+    dispatchOnSuccess(this.dispatch);
   }
 
   /**

@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './comments.scss';
-import nameAbbr from '../../../../nameAbbr/nameAbbr';
 
 const Comment = (props) => {
-  const abbrivation = nameAbbr(props.fullname);
   return (
     <div className="media-object comment">
-      <div className="avatar avatar-sm">{abbrivation.toUpperCase()}</div>
       <div className="media-body">
         <h1>{props.fullname}</h1>
         <p className="media-text no-margin">
@@ -26,7 +23,7 @@ Comment.propTypes = {
 const Comments = (props) => {
   const comments = props.comments || [];
   return (
-    <div className="col-12">
+    <div className="col-11">
       {comments.map((comment, i) => {
         return (<Comment
           key={i}

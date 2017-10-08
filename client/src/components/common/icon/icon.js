@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './icon.scss';
 
 const Icon = (props) => (
-  <div className={classnames('icon-wrapper', props.parentClass,props.active)} >
+  <div className={classnames('icon-wrapper', props.parentClass, props.active)} >
     <i
       className={classnames('icon', props.iconClass, props.className)}
       onClick={props.handleClick}

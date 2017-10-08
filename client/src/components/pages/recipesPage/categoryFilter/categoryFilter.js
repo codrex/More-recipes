@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './categoryFilter.scss';
 
 const CategoryFilterItem = (props) => (
-  <li className="cat-link nav-link active nav-item text-capitalize">
+  <li className="cat-link nav-link nav-item text-capitalize">
     {props.name}
   </li>
 );
@@ -13,7 +13,7 @@ CategoryFilterItem.propTypes = {
 };
 
 const CategoryFilter = () => (
-  <nav className="nav justify-content-center" >
+  <nav className="nav justify-content-center" style={{ margin: '0 50px' }}>
     <CategoryFilterItem name="breakfast" />
     <CategoryFilterItem name="launch" />
     <CategoryFilterItem name="dinner" />

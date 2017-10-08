@@ -1,0 +1,7 @@
+@import '../../../scss/_var.scss';
+
+.top-bar{
+  background-color:$primary-color;
+  justify-content: space-between;
+  display: flex;
+}

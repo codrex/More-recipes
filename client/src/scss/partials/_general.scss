@@ -40,6 +40,9 @@ small, .font_small {font-size: 0.8em;}
 .form-group{
   max-height: fit-content;
 }
+.display-4{
+  font-size:2.5rem;
+}
 
  @media(max-width:767px){
       .animated {
@@ -64,14 +67,14 @@ small, .font_small {font-size: 0.8em;}
 /* Smartphones (landscape) ----------- */
 @media only screen and (min-width : 321px) {
   html{
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
 /* Smartphones (portrait) ----------- */
 @media only screen and (max-width : 320px) {
   html{
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 
@@ -79,7 +82,7 @@ small, .font_small {font-size: 0.8em;}
 /* iPads (landscape) ----------- */
 @media only screen and (min-device-width : 760px) and (max-device-width : 1024px) and (orientation : landscape) {
   html{
-    font-size: 14px;
+    font-size: 12px;
   }
 
 }
@@ -87,27 +90,27 @@ small, .font_small {font-size: 0.8em;}
 /* iPads (portrait) ----------- */
 @media only screen and (min-device-width : 760px) and (max-device-width : 1023px) and (orientation : portrait) {
   html{
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 /* Desktops and laptops ----------- */
 @media only screen  and (min-width : 1024px) {
 /* Styles */
   html{
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 /* Desktops and laptops ----------- */
 @media only screen  and (min-width : 1224px) {
 /* Styles */
   html{
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 
 /* Large screens ----------- */
 @media only screen  and (min-width : 1824px) {
   html{
-    font-size: 16px;
+    font-size: 14px;
   }
 }

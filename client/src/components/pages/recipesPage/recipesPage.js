@@ -52,6 +52,11 @@ class Recipes extends React.Component {
    */
   setShowSidebar() {
     this.setState({ showSidebar: !this.state.showSidebar });
+    if (this.state.showSidebar) {
+      document.getElementById('root').className = '';
+    } else {
+      document.getElementById('root').className = 'no-scroll';
+    }
   }
 
   /**

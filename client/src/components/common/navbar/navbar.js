@@ -27,7 +27,7 @@ ListItem.propTypes = {
 
 const Navbar = () => {
   const linkList = ['Home', 'Recipes', 'Add Recipe'];
-  const links = ['/', '/recipes', 'recipe/create'];
+  const links = ['/', '/recipes', '/recipe/create'];
   return (
     <nav
       className="navbar navbar-toggleable-md navbar-light justify-content-center align-items-center flex-row flex-wrap"

@@ -13,6 +13,7 @@ import { loginOrRegSuccess } from '../actions/userActions';
 import Recipes from '../components/pages/recipesPage/recipesPage';
 import Recipe from '../components/pages/viewRecipePage/recipe';
 import ProfilePage from '../components/pages/ProfilePage/index';
+import SearchBox from '../components/common/searchBox/searchbox';
 
 
 /**

@@ -1,8 +1,9 @@
 @import '../../../../scss/_var.scss';
 
 .sidebar{
-  height: fit-content;
-  min-height: inherit;
+  height: inherit;
+  min-height:fit-content ;
+  overflow: auto;
   background: $primary-color;
   padding: 0;
   &-header{
@@ -27,7 +28,6 @@
   }
   &-list-item{
     padding:1em .5em;
-    font-size: 2em;
     font-weight: normal;
     text-transform: capitalize;
     cursor: pointer;

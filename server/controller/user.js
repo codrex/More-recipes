@@ -142,6 +142,20 @@ export const setFavRecipe = (req, res, next) => {
     });
 };
 
+// add recipe to user list of created recipes
+export const setRecipe = (req, res, next) => {
+  Users.findById(req.requestId)
+    .then((user) => {
+      user.addCreatedRecipes(req.idToFetchRecipe)
+      .then(() => {
+        next();
+      }).catch(() => {
+        serverError(res);
+      });
+    });
+};
+
+
 // get a user's favorite recipe from the dbase
 export const fetchFavRecipes = (req, res) => {
   Users.findOne({

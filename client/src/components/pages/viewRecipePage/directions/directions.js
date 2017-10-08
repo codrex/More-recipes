@@ -15,7 +15,7 @@ const Direction = (props) => (
       index={props.index}
       id={`Step ${props.index}`}
       title={`Step ${props.index + 1}`}
-      className="items-list-item d-flex no-margin direction-header"
+      className=" d-flex no-margin direction-header"
     >
       <Icon iconClass="fa fa-angle-down" />
     </AccordionHeader>

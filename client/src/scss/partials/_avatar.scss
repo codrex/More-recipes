@@ -14,4 +14,8 @@
   color: $primary-color;
   cursor: pointer;
   font-weight: bold;
+  &-md{
+    height: 70px;
+    width:  70px;
+  }
 }
