@@ -3,7 +3,7 @@ import { validateSignupData,
         create, fetchUser,
          validateLoginData, authUser,
          sendDataWithToken, setFavRecipe,
-        fetchFavRecipes, validateUpdate,
+        fetchRecipes, validateUpdate,
         fetchForUpdate, update,
         validateUserId, compareIds } from '../controller/user';
 import { idValidation, checkRecipe } from '../controller/recipe';
@@ -28,9 +28,9 @@ usersRoute.route('/:id')
   .put(verifyToken, idValidation, compareIds, fetchForUpdate, validateUpdate, update, fetchUser);
 
 usersRoute.route('/:id/recipes')
-  .get(verifyToken, idValidation, compareIds, fetchFavRecipes);
+  .get(verifyToken, idValidation, compareIds, fetchRecipes);
 
 usersRoute.route('/:id/recipe')
-.post(verifyToken, idValidation, checkRecipe, setFavRecipe, fetchFavRecipes);
+.post(verifyToken, idValidation, checkRecipe, setFavRecipe, fetchRecipes);
 
 export default usersRoute;

@@ -157,23 +157,14 @@ export const setRecipe = (req, res, next) => {
 
 
 // get a user's favorite recipe from the dbase
-export const fetchFavRecipes = (req, res) => {
+export const fetchRecipes = (req, res) => {
   Users.findOne({
     where: { id: req.requestId },
     attributes: ['id'],
-    include: [{
-      model: db.Recipes,
-      as: 'favRecipes',
-      attributes: {
-        exclude: ['createdAt', 'updatedAt', 'ingredients', 'directions'],
-      },
-      through: {
-        attributes: [],
-      },
-    }],
+    include: [{ all: true }],
   })
-  .then(userFavRecipes => {
-    sendSuccess((res), 200, 'User', userFavRecipes);
+  .then(userRecipes => {
+    sendSuccess((res), 200, 'User', userRecipes);
   }).catch(() => {
     serverError(res);
   });
