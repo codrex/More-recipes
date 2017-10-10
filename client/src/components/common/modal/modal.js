@@ -44,12 +44,13 @@ const Modal = (props) => (
           >
             <button
               type="button"
-              className="btn btn-primary btn-lg text-white text-capitalize" data-dismiss="modal"
+              className="btn btn-secondary btn-lg text-capitalize" data-dismiss="modal"
             >{props.leftBtnText || 'Cancel'}
             </button>
             <button
               type="button"
-              className="btn btn-secondary btn-lg text-white text-capitalize"
+              className="btn btn-primary btn-lg text-capitalize"
+              onClick={props.onContinueClicked}
             >
               {props.rightBtnText || 'Continue'}
             </button>
@@ -71,6 +72,7 @@ Modal.propTypes = {
   title: PropTypes.string.isRequired,
   footer: PropTypes.bool,
   closeBtnClicked: PropTypes.func,
+  onContinueClicked: PropTypes.func
 };
 
 export default Modal;

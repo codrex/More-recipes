@@ -2,13 +2,17 @@ export const USER = 'USER';
 export const GOT_USER_PROFILE = 'GOT_USER_PROFILE';
 export const UPDATE_USER_PROFILE = 'UPDATE_USER_PROFILE';
 export const LOGIN_OR_REG_SUCCESS = 'LOGIN_OR_REG_SUCCESS';
-export const RECIPE = 'RECIPE';
+export const USER_RECIPE_DELETED = 'USER_RECIPE_DELETED';
+export const USER_UN_FAV_RECIPE = 'USER_UN_FAV_RECIPE';
 
+export const RECIPE = 'RECIPE';
+export const CURRENT_RECIPE = 'CURRENT_RECIPE';
 export const GET_ALL_RECIPES = 'GET_ALL_RECIPES';
 export const GET_FAV_RECIPES = 'GET_FAV_RECIPES';
 export const GET_MY_RECIPES = 'GET_MY_RECIPES';
 export const GET_TOP_RECIPES = 'GET_TOP_RECIPES';
 export const GET_RECIPE = 'GET_RECIPE';
+export const DELETE_RECIPE = 'DELETE_RECIPE';
 
 export const AFTER_REVIEW = 'AFTER_REVIEW';
 export const AFTER_VOTE = 'AFTER_VOTE';

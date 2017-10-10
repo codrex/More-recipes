@@ -4,13 +4,16 @@ import classnames from 'classnames';
 import './list.scss';
 
 export const ListItem = (props) => (
-  <h4
-    className={classnames('items-list-item lead list-item', props.className)}
-    data-index={props.index && props.index + 1}
-  >
+  <div className={classnames('items-list-item lead list-item', props.className)}>
+    <h4
+      className="list-item-text"
+      data-index={props.index && props.index + 1}
+      onClick={props.handleClick}
+    >
     {props.content}
-    {props.children}
-  </h4>
+    </h4>
+      {props.children}
+  </div>
 );
 
 ListItem.propTypes = {
@@ -18,6 +21,7 @@ ListItem.propTypes = {
   index: PropTypes.number,
   children: PropTypes.any,
   className: PropTypes.string,
+  handleClick: PropTypes.func,
 };
 
 export const List = (props) => {

@@ -13,8 +13,8 @@
   align-items: center;
   padding: 0 .2em;
   cursor: pointer;
-  & li:hover {
-    color:$secondary-color;
+  & li:hover, & li.active {
+    color:$secondary-color !important;
   }
   & li{
     cursor: pointer;

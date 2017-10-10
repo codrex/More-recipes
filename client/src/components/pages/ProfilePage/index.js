@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import { connect } from 'react-redux';
 import EditProfileForm from '../../common/form/editProfileForm';
 import Modal from '../../common/modal/modal';
@@ -7,7 +8,7 @@ import TopBar from '../../common/topbar/topbar';
 import { bindActionCreators } from 'redux';
 import { ajaxRedirect } from '../../../actions/ajaxActions';
 import { getUserProfile, updateProfile } from '../../../actions/userActions';
-import { toModifyRecipe } from '../../../actions/recipeActions';
+import { toModifyRecipe, setCurrentRecipe, deleteRecipe } from '../../../actions/recipeActions';
 import UserInfo from './userInfo/userInfo';
 import Recipes from './recipesList/recipesList';
 import './profile.scss';
@@ -25,22 +26,34 @@ class ProfilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      myRecipes: true,
-      recipes: props.user.favRecipes,
+      recipes: props.user.createdRecipes,
       filteredRecipes: null,
-
+      active: 'createdRecipes',
+      modalClose: true,
+      modalTitle: '',
+      currentId: null,
     };
+
+    // sets th current recipe to either created recipes or favorite recipes
+    this.setActive = this.setActive.bind(this);
+    // function that runs when edit icon is clicked
     this.modifyRecipe = this.modifyRecipe.bind(this);
-    this.toggleRecipes = this.toggleRecipes.bind(this);
+    // sets recipes in state object to created recipes
     this.setRecipes = this.setRecipes.bind(this);
+    // funtion that filter the list of recipes based on the value inputed into the search box
     this.searchValueChange = this.searchValueChange.bind(this);
+    // function that runs when a recipe list item is clicked
+    this.recipeItemClick = this.recipeItemClick.bind(this);
+    this.modalClose = this.modalClose.bind(this);
+    this.onDeleteRecipeClicked = this.onDeleteRecipeClicked.bind(this);
+    this.deleteRecipe = this.deleteRecipe.bind(this);
   }
 
   /**
    * @return {undefined}
    */
   componentDidMount() {
-    this.props.actions.getUserProfile();
+    if (Object.keys(this.props.user).length < 1) this.props.actions.getUserProfile();
   }
 
    /**
@@ -68,15 +81,41 @@ class ProfilePage extends React.Component {
     }
     return true;
   }
-
+ /**
+   * @return {undefined}
+   * @param {string} modalTitle
+   * @param {number} currentId
+   */
+  onDeleteRecipeClicked(modalTitle, currentId = null) {
+    this.setState({ modalTitle, currentId });
+    this.modalClose();
+  }
   /**
    * @returns{undefined}
    */
   setRecipes() {
-    this.setState({ recipes: this.props.user.favRecipes });
+    this.setState({ recipes: this.props.user.createdRecipes });
   }
 
-  /**
+   /**
+   * @returns{undefined}
+   * @param{string}active
+   */
+  setActive(active) {
+    this.setState({
+      recipes: this.props.user[active],
+      active,
+    });
+  }
+
+   /**
+   * @return {undefined}
+   */
+  deleteRecipe() {
+    this.props.actions.deleteRecipe(this.state.currentId);
+  }
+
+    /**
    * @return {undefined}
    * @param {string} value
    */
@@ -91,21 +130,29 @@ class ProfilePage extends React.Component {
     this.setState({ filteredRecipes });
   }
 
-   /**
-   * @returns{undefined}
-   */
-  toggleRecipes() {
-    this.setState({ myRecipes: !this.state.myRecipes });
-  }
-
   /**
    * @returns{undefined}
    * @param {Object} recipe
    */
   modifyRecipe(recipe) {
-    console.log(this.context);
     this.props.actions.modifyRecipe(recipe);
     this.props.history.push('/recipe/modify');
+  }
+
+  /**
+   * @return {undefined}
+   * @param {object} item
+   */
+  recipeItemClick(item) {
+    this.props.actions.currentRecipe(item);
+    this.props.history.push(`recipe/${item.id}`);
+  }
+
+  /**
+   * @return {undefined}
+   */
+  modalClose() {
+    this.setState({ modalClose: !this.state.modalClose });
   }
 
   /**
@@ -121,27 +168,55 @@ class ProfilePage extends React.Component {
           </TopBar>
         </div>
         <div className="row user-info-wrapper">
-          <UserInfo user={user} />
+          <UserInfo user={user} editBtnClicked={this.modalTitle} />
         </div>
         <div className="row">
           <TopBar className="recipe-list-header" search handleSubmit={this.searchValueChange}>
             <div className="d-flex">
-              <li className="text-capitalize nav-link nav-item">my recipes</li>
-              <li className="text-capitalize nav-link nav-item">favorite recipes</li>
+              <li
+                className={classnames('text-capitalize nav-link nav-item',
+                this.state.active === 'createdRecipes' ? 'active' : '')}
+                onClick={() => this.setActive('createdRecipes')}
+              >
+              my recipes
+              </li>
+              <li
+                className={classnames('text-capitalize nav-link nav-item',
+                this.state.active === 'favRecipes' ? 'active' : '')}
+                onClick={() => this.setActive('favRecipes')}
+              >
+              favorite recipes
+              </li>
             </div>
           </TopBar>
-          <Modal
-            id="editProfileModal"
-            center
-            rightBtnText="Login"
-            title={'Update profile'}
-          >
-            {!this.props.loading && <EditProfileForm update={this.props.actions.update} />}
-          </Modal>
           <Recipes
             recipes={this.state.filteredRecipes || this.state.recipes}
             onEditIconCliked={this.modifyRecipe}
+            onDeleteIconClicked={this.onDeleteRecipeClicked}
+            handleClick={this.recipeItemClick}
           />
+          <Modal
+            id="editProfileModal"
+            center
+            title={this.state.modalTitle}
+            closeBtnClicked={this.modalClose}
+            onContinueClicked={this.deleteRecipe}
+            right
+            left
+            footer={this.state.modalTitle === 'Delete recipe'}
+          >
+            {this.state.modalTitle === 'Delete recipe' &&
+              <div className="modal-body text-white" >
+                <h1>Are u sure u want to delete this recipe ?</h1>
+                <p className="lead text-white">  To delete this recipe click on continue</p>
+              </div>
+            }
+            {
+              !this.props.loading &&
+              this.state.modalTitle === 'Update profile' &&
+                <EditProfileForm update={this.props.actions.update} />
+            }
+          </Modal>
         </div>
       </div>
     );
@@ -170,6 +245,8 @@ const mapDispatchToProps = (dispatch) => (
       getUserProfile: bindActionCreators(getUserProfile, dispatch),
       update: bindActionCreators(updateProfile, dispatch),
       modifyRecipe: bindActionCreators(toModifyRecipe, dispatch),
+      currentRecipe: bindActionCreators(setCurrentRecipe, dispatch),
+      deleteRecipe: bindActionCreators(deleteRecipe, dispatch),
     }
   }
 );

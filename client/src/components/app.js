@@ -6,15 +6,12 @@ import PropTypes from 'prop-types';
 import LandingPage from './pages/landingPage/index';
 import AddRecipePage from './pages/addRecipePage/index';
 import Navbar from '../components/common/navbar/navbar';
-import Loader from '../components/common/preloader/loader';
 import toastr from 'toastr';
 import toastrConfig from '../toastr/config';
 import { loginOrRegSuccess } from '../actions/userActions';
-import Recipes from '../components/pages/recipesPage/recipesPage';
+import Recipes from '../components/pages/dashboard/dashboard';
 import Recipe from '../components/pages/viewRecipePage/recipe';
 import ProfilePage from '../components/pages/ProfilePage/index';
-import SearchBox from '../components/common/searchBox/searchbox';
-
 
 /**
  * App component
@@ -33,7 +30,7 @@ class App extends React.Component {
     if (nextProps.reqError !== this.props.reqError && nextProps.reqError.error) {
       toastr.error(nextProps.reqError.error, 'Error', toastrConfig);
     } else if (nextProps.reqSuccess !== this.props.reqSuccess && nextProps.reqSuccess.success) {
-      toastr.success(nextProps.reqSuccess.success, 'Success', toastrConfig);
+      // toastr.success(nextProps.reqSuccess.success, 'Success', toastrConfig);
     }
     return true;
   }
@@ -43,18 +40,17 @@ class App extends React.Component {
    */
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter >
         <div className="container-fluid  no-padding">
           <Navbar />
           <Switch>
-            <Route exact path="/recipe/create" component={AddRecipePage} />
-            <Route exact path="/recipe/:id" component={Recipe} />
-            <Route exact path="/recipes" component={Recipes} />
-            <Route exact path="/user" component={ProfilePage} />
-            <Route exact path="/" component={LandingPage} />
+            <Route path="/recipe/create" component={AddRecipePage} />
+            <Route path="/recipe/modify" component={AddRecipePage} />
+            <Route path="/recipe/:id" component={Recipe} />
+            <Route static extact path="/recipes/" component={Recipes} />
+            <Route path="/user" component={ProfilePage} />
+            <Route static extact path="/" component={LandingPage} />
           </Switch>
-          <Loader loading={this.props.loading} />
-
         </div>
       </BrowserRouter>
     );
@@ -64,13 +60,11 @@ class App extends React.Component {
 App.propTypes = {
   reqError: PropTypes.object,
   reqSuccess: PropTypes.object,
-  loading: PropTypes.bool,
   token: PropTypes.string,
 };
 
 const mapStateToProps = (state) => (
   {
-    loading: state.ajaxCall > 0,
     reqError: state.ajaxError,
     reqSuccess: state.ajaxSuccess,
     token: state.token,

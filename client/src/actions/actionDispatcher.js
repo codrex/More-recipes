@@ -65,7 +65,7 @@ export default class ActionDispatcher {
         localStorage.setItem(TOKEN_KEY, payload.data.User.token);
       }
     }
-    this.dispatch(action(payload.data));
+    if (action) this.dispatch(action(payload.data));
     dispatchOnSuccess(this.dispatch);
   }
 
@@ -78,7 +78,7 @@ export default class ActionDispatcher {
    * @return {undefined}
    */
   requestAndDispatch(url, reqData, action, reqType) {
-    request(reqData, url, this.dispatch, reqType)
+    return request(reqData, url, this.dispatch, reqType)
     .then((payload) => {
       this.saveToken(action, payload);
     }).catch((error) => {

@@ -3,27 +3,27 @@ import { RECIPE, UPDATE_DIRECTIONS,
           UPDATE_ALL_RECIPE_FIELD, GET_ALL_RECIPES,
           GET_FAV_RECIPES, AFTER_REVIEW,
           GET_RECIPE, GET_TOP_RECIPES, AFTER_VOTE,
-          ADD_TO_FAV, TO_MODIFY_RECICPE } from './actions';
+          ADD_TO_FAV, TO_MODIFY_RECICPE,
+          CURRENT_RECIPE, DELETE_RECIPE } from './actions';
 import ActionDispatcher from './actionDispatcher';
 
 
 export const createOrModifyRecipe = recipe => ({ type: RECIPE, recipe });
-
+export const setCurrentRecipe = recipe => ({ type: CURRENT_RECIPE, recipe });
 export const updateIngredients = ingredient => ({ type: UPDATE_INGREDIENTS, ingredient });
 export const updateDirections = direction => ({ type: UPDATE_DIRECTIONS, direction });
 export const updateNameCategory = (nameAndCat) => ({ type: UPDATE_NAME_CATEGORY, nameAndCat });
 export const updateAllRecipeField = (all) => ({ type: UPDATE_ALL_RECIPE_FIELD, all });
-
-export const afterReview = (recipe) => ({ type: AFTER_REVIEW, recipe });
-export const afterVote = (recipe) => ({ type: AFTER_VOTE, recipe });
-export const afterAddToFav = (recipe) => ({ type: ADD_TO_FAV, recipe });
-
-
-export const gotAllRecipes = (recipes) => ({ type: GET_ALL_RECIPES, recipes });
-export const gotTopRecipes = (recipes) => ({ type: GET_TOP_RECIPES, recipes });
-export const gotFavRecipes = (recipes) => ({ type: GET_FAV_RECIPES, recipes });
-export const gotRecipe = (recipe) => ({ type: GET_RECIPE, recipe });
 export const toModifyRecipe = (recipe) => ({ type: TO_MODIFY_RECICPE, recipe });
+export const gotTopRecipes = (recipes) => ({ type: GET_TOP_RECIPES, recipes });
+
+const afterDeleteRecipe = (userRecipes) => ({ type: DELETE_RECIPE, userRecipes });
+const afterReview = (recipe) => ({ type: AFTER_REVIEW, recipe });
+const afterVote = (recipe) => ({ type: AFTER_VOTE, recipe });
+const afterAddToFav = (recipe) => ({ type: ADD_TO_FAV, recipe });
+const gotAllRecipes = (recipes) => ({ type: GET_ALL_RECIPES, recipes });
+const gotFavRecipes = (recipes) => ({ type: GET_FAV_RECIPES, recipes });
+const gotRecipe = (recipe) => ({ type: GET_RECIPE, recipe });
 
 export const createRecipe = recipe => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
@@ -74,4 +74,15 @@ export const addToFav = (recipeId) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   const id = dispatcher.getIdFromToken();
   dispatcher.requestAndDispatch(`/api/v1/users/${id}/recipe`, recipeId, afterAddToFav, 'post');
+};
+
+export const deleteRecipe = (id) => (dispatch) => {
+  const dispatcher = new ActionDispatcher(dispatch);
+  dispatcher
+  .requestAndDispatch(`/api/v1/recipes/${id}`, null, null, 'delete')
+  .then(() => {
+    const userId = dispatcher.getIdFromToken();
+    dispatcher
+    .requestAndDispatch(`/api/v1/users/${userId}/recipes`, null, afterDeleteRecipe, 'get');
+  });
 };

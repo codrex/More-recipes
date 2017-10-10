@@ -37,7 +37,7 @@ class Recipe extends React.Component {
  */
   componentDidMount() {
     this.recipeId = this.props.match.params.id;
-    this.props.actions.getRecipe(this.recipeId);
+    if (Object.keys(this.props.recipe).length < 1) this.props.actions.getRecipe(this.recipeId);
   }
 
   /**
@@ -134,7 +134,7 @@ class Recipe extends React.Component {
           title="Review"
 
         >
-          <CommentForm id={this.recipeId} />
+          <CommentForm id={parseInt(this.recipeId, 10)} />
         </Modal>
       </div>
     );

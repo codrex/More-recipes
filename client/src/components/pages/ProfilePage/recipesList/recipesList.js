@@ -7,13 +7,16 @@ import './recipeList.scss';
 const Recipes = (props) => {
   const recipes = props.recipes || [];
   return (
-    <List style={{ padding: '2em' }}>
+    <List
+      style={{ padding: '2em' }}
+    >
       {recipes.map((item, i) =>
         (
         <ListItem
           key={i}
           content={item.recipeName}
           className="recipe-list-item"
+          handleClick={() => props.handleClick(item)}
         >
           <div>
             <Icon
@@ -22,6 +25,9 @@ const Recipes = (props) => {
             />
             <Icon
               iconClass="fa fa-trash"
+              dataToggle="modal"
+              dataTarget="#modal"
+              handleClick={() => props.onDeleteIconClicked('Delete recipe', item.id)}
             />
           </div>
         </ ListItem>
@@ -34,6 +40,8 @@ const Recipes = (props) => {
 Recipes.propTypes = {
   recipes: PropTypes.array,
   onEditIconCliked: PropTypes.func,
+  handleClick: PropTypes.func,
+  onDeleteIconClicked: PropTypes.func,
 };
 
 export default Recipes;
