@@ -164,6 +164,17 @@ export const recipeSpec = (user1, user2) => {
               done();
             });
       });
+      it('return 200 as status code', done => {
+        request.post('/api/v1/users/1/recipe')
+            .set('Authorization', token)
+            .send({ recipeId: 1 })
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.status).to.equal('success');
+              expect(res.body.User.favRecipes.length).to.equal(0);
+              done();
+            });
+      });
       it('return 404 as status code when recipe dose not exist', done => {
         request.post('/api/v1/users/1/recipe')
             .set('Authorization', token)

@@ -129,17 +129,40 @@ export const fetchForUpdate = (req, res, next) => {
   });
 };
 
+// // add recipe as a user's favorite recipe
+// export const setFavRecipe = (req, res, next) => {
+//   Users.findById(req.requestId)
+//     .then((user) => {
+//       user.addFavRecipes(req.body.recipeId)
+//       .then(() => {
+//         next();
+//       }).catch(() => {
+//         serverError(res);
+//       });
+//     });
+// };
+
 // add recipe as a user's favorite recipe
 export const setFavRecipe = (req, res, next) => {
   Users.findById(req.requestId)
-    .then((user) => {
-      user.addFavRecipes(req.body.recipeId)
-      .then(() => {
-        next();
-      }).catch(() => {
-        serverError(res);
-      });
+  .then((user) => {
+    user.hasFavRecipes(req.body.recipeId)
+    .then((isFavRecipe) => {
+      if (isFavRecipe) {
+        user.removeFavRecipes(req.body.recipeId)
+        .then(() => {
+          next();
+        });
+      } else {
+        user.addFavRecipes(req.body.recipeId)
+        .then(() => {
+          next();
+        });
+      }
     });
+  }).catch(() => {
+    serverError(res);
+  });
 };
 
 // add recipe to user list of created recipes
