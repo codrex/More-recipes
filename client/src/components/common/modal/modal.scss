@@ -36,6 +36,9 @@
   &-footer{
     border: 0;
     padding-top: 0;
+    & .btn:disabled{
+      box-shadow: none;
+    }
     &-center{
       justify-content: center;
     }

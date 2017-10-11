@@ -18,6 +18,7 @@ const Form = props => (
       type="submit"
       className={classnames('btn btn-lg text-uppercase w-100',
       props.secondary && 'btn-secondary', props.primary && 'btn-primary')}
+      disabled={props.disabled}
     >{props.submitBtnText}
     </button>}
   </form>
@@ -32,6 +33,7 @@ Form.propTypes = {
   onSubmit: PropTypes.func,
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 export default Form;

@@ -58,8 +58,6 @@ class LandingPage extends React.Component {
  */
   afterLogin(actions) {
     this.props.actions.redirect('');
-    document.getElementsByClassName('modal-backdrop')[0].remove();
-    document.getElementsByTagName('body')[0].className = ' ';
     setTimeout(() => {
     // endSuccess is an action creator that
     // ajaxSuccess value in the store to an empty array

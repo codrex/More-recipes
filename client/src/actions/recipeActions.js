@@ -3,7 +3,7 @@ import { RECIPE, UPDATE_DIRECTIONS,
           UPDATE_ALL_RECIPE_FIELD, GET_ALL_RECIPES,
           GET_FAV_RECIPES, AFTER_REVIEW,
           GET_RECIPE, GET_TOP_RECIPES, AFTER_VOTE,
-          ADD_TO_FAV, TO_MODIFY_RECICPE,
+          TOGGLE_FAV, TO_MODIFY_RECICPE,
           CURRENT_RECIPE, DELETE_RECIPE } from './actions';
 import ActionDispatcher from './actionDispatcher';
 
@@ -20,20 +20,22 @@ export const gotTopRecipes = (recipes) => ({ type: GET_TOP_RECIPES, recipes });
 const afterDeleteRecipe = (userRecipes) => ({ type: DELETE_RECIPE, userRecipes });
 const afterReview = (recipe) => ({ type: AFTER_REVIEW, recipe });
 const afterVote = (recipe) => ({ type: AFTER_VOTE, recipe });
-const afterAddToFav = (recipe) => ({ type: ADD_TO_FAV, recipe });
+const afterToggleFav = (user) => ({ type: TOGGLE_FAV, user });
 const gotAllRecipes = (recipes) => ({ type: GET_ALL_RECIPES, recipes });
 const gotFavRecipes = (recipes) => ({ type: GET_FAV_RECIPES, recipes });
 const gotRecipe = (recipe) => ({ type: GET_RECIPE, recipe });
 
 export const createRecipe = recipe => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch('/api/v1/recipes', recipe, createOrModifyRecipe, 'post');
+  dispatcher.requestAndDispatch('/api/v1/recipes',
+                  recipe, createOrModifyRecipe, 'post', 'Recipe added successfully');
 };
 
 export const modifyRecipe = recipe => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher
-    .requestAndDispatch(`/api/v1/recipes/${recipe.id}`, recipe, createOrModifyRecipe, 'put');
+    .requestAndDispatch(`/api/v1/recipes/${recipe.id}`,
+                recipe, createOrModifyRecipe, 'put', 'Recipe modified successfully');
 };
 
 export const getAllRecipes = () => (dispatch) => {
@@ -70,10 +72,11 @@ export const vote = (id, voteType) => (dispatch) => {
   .requestAndDispatch(`/api/v1/recipes/${id}/vote?vote=${voteType}vote`, null, afterVote, 'put');
 };
 
-export const addToFav = (recipeId) => (dispatch) => {
+export const toggleFav = (recipeId, msg = undefined) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   const id = dispatcher.getIdFromToken();
-  dispatcher.requestAndDispatch(`/api/v1/users/${id}/recipe`, recipeId, afterAddToFav, 'post');
+  dispatcher.requestAndDispatch(`/api/v1/users/${id}/recipe`,
+                                  recipeId, afterToggleFav, 'post', msg);
 };
 
 export const deleteRecipe = (id) => (dispatch) => {

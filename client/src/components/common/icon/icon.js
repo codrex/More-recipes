@@ -7,6 +7,7 @@ const Icon = (props) => (
   <div
     className={classnames('icon-wrapper', props.parentClass, props.active)}
     onClick={props.handleClick}
+    onMouseEnter={props.onMouseEnter}
   >
     <i
       className={classnames('icon', props.iconClass, props.className)}

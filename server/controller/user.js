@@ -129,19 +129,6 @@ export const fetchForUpdate = (req, res, next) => {
   });
 };
 
-// // add recipe as a user's favorite recipe
-// export const setFavRecipe = (req, res, next) => {
-//   Users.findById(req.requestId)
-//     .then((user) => {
-//       user.addFavRecipes(req.body.recipeId)
-//       .then(() => {
-//         next();
-//       }).catch(() => {
-//         serverError(res);
-//       });
-//     });
-// };
-
 // add recipe as a user's favorite recipe
 export const setFavRecipe = (req, res, next) => {
   Users.findById(req.requestId)

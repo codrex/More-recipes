@@ -11,10 +11,10 @@ let EditProfile = (props) => {
   const { handleSubmit } = props;
   return (
     <Form
-      submitBtnText="Update"
+      submitBtnText={props.loading && 'Updating...' || 'Update'}
       onSubmit={handleSubmit(props.update)}
-      className={props.loading ? 'hide' : ''}
       primary
+      disabled={props.loading}
     >
       <Field
         component={Input}

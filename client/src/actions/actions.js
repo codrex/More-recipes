@@ -17,7 +17,7 @@ export const DELETE_RECIPE = 'DELETE_RECIPE';
 export const AFTER_REVIEW = 'AFTER_REVIEW';
 export const AFTER_VOTE = 'AFTER_VOTE';
 
-export const ADD_TO_FAV = 'ADD_TO_FAV';
+export const TOGGLE_FAV = 'TOGGLE_FAV';
 
 export const BEGIN_AJAX_REQUEST = 'BEGIN_AJAX_REQUEST';
 export const END_AJAX_REQUEST = 'END_AJAX_REQUEST';

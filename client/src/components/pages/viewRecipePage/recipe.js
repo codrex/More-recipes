@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ajaxRedirect } from '../../../actions/ajaxActions';
-import { getRecipe, vote, addToFav } from '../../../actions/recipeActions';
+import { getRecipe, vote, toggleFav } from '../../../actions/recipeActions';
 import Comments from './comments/comments';
 import Icon from '../../common/icon/icon';
 import Button from '../../common/button/button';
@@ -73,7 +73,7 @@ class Recipe extends React.Component {
  */
   addToFav() {
     this.setState({ addToFav: true });
-    this.props.actions.addToFav({ recipeId: this.recipeId });
+    this.props.actions.toggleFav({ recipeId: this.recipeId });
   }
 
   /**
@@ -162,7 +162,7 @@ const mapDispatchToProps = (dispatch) => (
       redirect: bindActionCreators(ajaxRedirect, dispatch),
       getRecipe: bindActionCreators(getRecipe, dispatch),
       vote: bindActionCreators(vote, dispatch),
-      addToFav: bindActionCreators(addToFav, dispatch)
+      toggleFav: bindActionCreators(toggleFav, dispatch)
     }
   }
 );

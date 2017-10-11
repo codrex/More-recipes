@@ -18,9 +18,9 @@ export const setToken = (token) => {
   axios.defaults.headers.common.Authorization = token;
 };
 
-export const dispatchOnSuccess = (dispatch) => {
-  dispatch(ajaxRequestSuccess());
+export const dispatchOnSuccess = (dispatch, msg = undefined) => {
   dispatch(endAjaxRequest());
+  dispatch(ajaxRequestSuccess({ success: msg }));
 };
 
 export const dispatchOnFail = (dispatch, error) => {

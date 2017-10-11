@@ -8,7 +8,7 @@ const Recipes = (props) => {
   const recipes = props.recipes || [];
   return (
     <List
-      style={{ padding: '2em' }}
+      style={{ padding: '2em 3em' }}
     >
       {recipes.map((item, i) =>
         (
@@ -18,18 +18,28 @@ const Recipes = (props) => {
           className="recipe-list-item"
           handleClick={() => props.handleClick(item)}
         >
-          <div>
-            <Icon
-              iconClass="fa fa-pencil"
-              handleClick={() => props.onEditIconCliked(recipes[i])}
-            />
-            <Icon
-              iconClass="fa fa-trash"
-              dataToggle="modal"
-              dataTarget="#modal"
-              handleClick={() => props.onDeleteIconClicked('Delete recipe', item.id)}
-            />
-          </div>
+          {props.type === 'createdRecipes' &&
+            <div>
+              <Icon
+                iconClass="fa fa-pencil edit-icon"
+                handleClick={() => props.onEditIconCliked(recipes[i])}
+              />
+              <Icon
+                iconClass="fa fa-trash-o delete-icon"
+                dataToggle="modal"
+                dataTarget="#modal"
+                handleClick={() => props.onDeleteIconClicked('Delete recipe', item.id)}
+              />
+            </div>
+          }
+          {props.type === 'favRecipes' &&
+            <div>
+              <Icon
+                iconClass="fa fa-times delete-icon"
+                handleClick={() => props.onFavIconClicked({ recipeId: item.id })}
+              />
+            </div>
+          }
         </ ListItem>
         )
       )}
@@ -42,6 +52,8 @@ Recipes.propTypes = {
   onEditIconCliked: PropTypes.func,
   handleClick: PropTypes.func,
   onDeleteIconClicked: PropTypes.func,
+  onFavIconClicked: PropTypes.func,
+  type: PropTypes.string,
 };
 
 export default Recipes;

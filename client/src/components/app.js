@@ -30,7 +30,7 @@ class App extends React.Component {
     if (nextProps.reqError !== this.props.reqError && nextProps.reqError.error) {
       toastr.error(nextProps.reqError.error, 'Error', toastrConfig);
     } else if (nextProps.reqSuccess !== this.props.reqSuccess && nextProps.reqSuccess.success) {
-      // toastr.success(nextProps.reqSuccess.success, 'Success', toastrConfig);
+      toastr.success(nextProps.reqSuccess.success, 'Success', toastrConfig);
     }
     return true;
   }

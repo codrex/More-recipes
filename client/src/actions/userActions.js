@@ -25,5 +25,5 @@ export const getUserProfile = () => (dispatch) => {
 export const updateProfile = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   const id = dispatcher.getIdFromToken();
-  dispatcher.requestAndDispatch(`/api/v1/users/${id}`, user, updatedProfile, 'put');
+  dispatcher.requestAndDispatch(`/api/v1/users/${id}`, user, updatedProfile, 'put', 'Profile update successfully');
 };

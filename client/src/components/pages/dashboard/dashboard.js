@@ -21,7 +21,6 @@ class Dashboard extends React.Component {
    */
   constructor(props) {
     super(props);
-    // props.actions.getAllRecipes();
     this.state = {
       allRecipes: props.recipes,
       showSidebar: false,
@@ -61,9 +60,9 @@ class Dashboard extends React.Component {
   setShowSidebar() {
     this.setState({ showSidebar: !this.state.showSidebar });
     if (this.state.showSidebar) {
-      document.getElementById('root').className = '';
+      document.getElementById('dashboard').className = '';
     } else {
-      document.getElementById('root').className = 'no-scroll';
+      document.getElementById('dashboard').className = 'no-scroll';
     }
   }
 
@@ -74,7 +73,7 @@ class Dashboard extends React.Component {
     const { actions } = this.props;
     const show = this.state.showSidebar && 'show';
     return (
-      <div className="container-fluid">
+      <div className="container-fluid" id="dashboard">
         <div className="row">
           <div className={`col-xs-12 col-sm-12 col-md-3 col-lg-3 sidebar-wrapper d-flex ${show}`}>
             <Sidebar
