@@ -9,6 +9,14 @@
   margin-bottom: .3em;
   background-color: white;
   color:$dark-text;
+  &-text{
+    margin: .2em 0;
+    cursor: default;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: inherit;
+  }
   &:hover{
     background-color: white;
     color:$dark-text;

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
+import nameAbbr from '../../../../nameAbbr/nameAbbr';
 import './sidebar.scss';
 
 
@@ -50,6 +51,7 @@ class Sidebar extends React.Component {
    * @return {undefined}
    */
   render() {
+    const abbr = nameAbbr(this.props.user.fullname).toUpperCase();
     return (
       <div className="sidebar col-12 ">
         <div className="sidebar-header">
@@ -57,7 +59,7 @@ class Sidebar extends React.Component {
             Recipes
           </h4>
           <div className="avatar avatar-sm" >
-            RO
+            {abbr}
           </div>
         </div>
         <div className="sidebar-body">
@@ -100,6 +102,8 @@ class Sidebar extends React.Component {
 Sidebar.propTypes = {
   actions: PropTypes.array,
   id: PropTypes.number,
+  avatar: PropTypes.string,
+  user: PropTypes.object,
 };
 
 export default Sidebar;

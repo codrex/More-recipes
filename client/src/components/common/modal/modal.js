@@ -11,6 +11,7 @@ const Modal = (props) => (
     role="dialog"
     aria-labelledby={`${props.id}Label`}
     aria-hidden="true"
+    data-backdrop="false"
   >
     <div className="modal-header">
       <h5
@@ -44,14 +45,19 @@ const Modal = (props) => (
           >
             <button
               type="button"
-              className="btn btn-primary btn-lg text-white text-capitalize" data-dismiss="modal"
+              className="btn btn-secondary btn-lg text-capitalize"
+              data-dismiss="modal"
+              disabled={props.loading}
             >{props.leftBtnText || 'Cancel'}
             </button>
             <button
               type="button"
-              className="btn btn-secondary btn-lg text-white text-capitalize"
+              className="btn btn-primary btn-lg text-capitalize"
+              onClick={!props.operationCompleted && props.onContinueClicked}
+              disabled={props.loading}
+              data-dismiss={props.operationCompleted && 'modal'}
             >
-              {props.rightBtnText || 'Continue'}
+              {props.loading && 'Loading...' || (props.rightBtnText || 'Continue')}
             </button>
           </div>
       }
@@ -71,6 +77,9 @@ Modal.propTypes = {
   title: PropTypes.string.isRequired,
   footer: PropTypes.bool,
   closeBtnClicked: PropTypes.func,
+  onContinueClicked: PropTypes.func,
+  loading: PropTypes.bool,
+  operationCompleted: PropTypes.bool,
 };
 
 export default Modal;

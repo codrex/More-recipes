@@ -58,15 +58,16 @@ export default class ActionDispatcher {
  * @return {undefined}
  * @param {function} action
  * @param {object} payload
+ * @param {string} successMsg
  */
-  saveToken(action, payload) {
+  saveToken(action, payload, successMsg) {
     if (payload.data.User) {
       if (payload.data.User.token) {
         localStorage.setItem(TOKEN_KEY, payload.data.User.token);
       }
     }
-    this.dispatch(action(payload.data));
-    dispatchOnSuccess(this.dispatch);
+    if (action) this.dispatch(action(payload.data));
+    dispatchOnSuccess(this.dispatch, successMsg);
   }
 
   /**
@@ -75,12 +76,13 @@ export default class ActionDispatcher {
    * @param {object} reqData: object to sent to the server
    * @param {function} action: action to be dispatch when request was successful
    * @param {string} reqType: type of request
+   * @param {string} successMsg: message to return on success
    * @return {undefined}
    */
-  requestAndDispatch(url, reqData, action, reqType) {
-    request(reqData, url, this.dispatch, reqType)
+  requestAndDispatch(url, reqData, action, reqType, successMsg) {
+    return request(reqData, url, this.dispatch, reqType)
     .then((payload) => {
-      this.saveToken(action, payload);
+      this.saveToken(action, payload, successMsg);
     }).catch((error) => {
       this.onError(error);
     });

@@ -11,9 +11,11 @@ const mapDispatchToProps = (dispatch) => (
     sendItemsToStore: bindActionCreators(updateIngredients, dispatch)
   }
 );
+
 const mapStateToProps = (state) => (
   { items: state.newRecipe.ingredients, }
 );
+
 const AddIngredients = () => {
   const Ingredients = reduxForm({
     validate: validateItems,

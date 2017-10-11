@@ -31,10 +31,13 @@
     display: flex;
     align-items: center;
     padding: 0;
-    &:hover, &.active, .nav-link-active{
+    &:hover{
       border-bottom: $primary-color 2px solid;
     }
   }
+}
+.nav-link-active{
+  border-bottom: $primary-color 2px solid;
 }
 
 @media (max-width:767px){

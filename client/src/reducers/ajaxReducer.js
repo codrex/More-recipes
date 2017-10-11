@@ -27,7 +27,7 @@ export const ajaxErrorReducer = (state = {}, action) => {
 export const ajaxSuccessReducer = (state = {}, action) => {
   switch (action.type) {
     case AJAX_REQUEST_SUCCESS:
-      return { success: 'Operation was successful' };
+      return action.message;
     case LOGIN_OR_REG_SUCCESS:
       return { };
     default:

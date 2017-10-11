@@ -10,18 +10,26 @@ import { updateNameCategory, createRecipe, modifyRecipe } from '../../../../acti
 
 
 const RecipeNameAndCategory = (props) => {
+
   const { handleSubmit } = props;
+
   const onSubmitClick = (value) => {
     const recipe = Object.assign({}, props.newRecipe);
     recipe.recipeName = value.recipeName;
     recipe.category = value.category;
+
+    // when submit btn is clicked, a new recipe is created,
+    // if there is no id or modify the existing recipe with the given recipe id.
+
     if (props.newRecipe.id) {
       props.actions.modifyRecipe(recipe);
     } else {
       props.actions.postRecipe(recipe);
     }
+
     props.actions.updateStore(value);
   };
+
   return (
     <div>
       <h4 className="lead items-header-text">
@@ -60,6 +68,7 @@ const mapDispatchToProps = (dispatch) => ({
     modifyRecipe: bindActionCreators(modifyRecipe, dispatch)
   }
 });
+
 const mapStateToProps = (state) => (
   {
     newRecipe: state.newRecipe,

@@ -23,6 +23,8 @@ const UserInfo = (props) => {
         dataToggle="modal"
         dataTarget="#modal"
         text="edit profile"
+        handleClick={() => props.editBtnClicked('Update profile')}
+
       />
     </div>
   );
@@ -30,6 +32,7 @@ const UserInfo = (props) => {
 
 UserInfo.propTypes = {
   user: PropTypes.object,
+  editBtnClicked: PropTypes.func,
 };
 
 export default UserInfo;

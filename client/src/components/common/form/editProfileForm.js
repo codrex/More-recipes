@@ -7,14 +7,14 @@ import Form from './form';
 import Input from './input';
 
 
-let EditProfileForm = (props) => {
+let EditProfile = (props) => {
   const { handleSubmit } = props;
   return (
     <Form
-      submitBtnText="Update"
+      submitBtnText={props.loading && 'Updating...' || 'Update'}
       onSubmit={handleSubmit(props.update)}
-      className={props.loading ? 'hide' : ''}
       primary
+      disabled={props.loading}
     >
       <Field
         component={Input}
@@ -41,23 +41,20 @@ let EditProfileForm = (props) => {
   );
 };
 
-EditProfileForm.propTypes = {
+EditProfile.propTypes = {
   update: PropTypes.func,
   handleSubmit: PropTypes.func,
   loading: PropTypes.bool,
 };
 
-const mapStateToProps = (state) => {
-  return { initialValues: state.user };
-};
+const mapStateToProps = (state) => ({ initialValues: state.user });
 
-
-EditProfileForm = reduxForm({
+EditProfile = reduxForm({
   validate: validateProfileUpdate,
   form: 'editProfileForm',
-})(EditProfileForm);
+})(EditProfile);
 
-EditProfileForm = connect(mapStateToProps)(EditProfileForm);
+const EditProfileForm = connect(mapStateToProps)(EditProfile);
 
 
 export default EditProfileForm;
