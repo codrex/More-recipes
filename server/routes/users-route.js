@@ -33,6 +33,6 @@ usersRoute.route('/:id/recipes')
   .get(idValidation, compareIds, fetchRecipes);
 
 usersRoute.route('/:id/recipe')
-.post(idValidation, checkRecipe, setFavRecipe, fetchRecipes);
+.post(idValidation, compareIds, checkRecipe, setFavRecipe, fetchRecipes);
 
 export default usersRoute;
