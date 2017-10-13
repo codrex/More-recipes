@@ -1,11 +1,12 @@
+@import '../../../scss/_var.scss';
+
 .a {
   font-size: 1em;
-  color: white ;
+  color: $dark-text ;
   text-decoration: none !important;
 }
 .accordion-text{
-  font-size: 1.5rem;
-  color: rgba(0, 0, 0, 0.54);
+  color: $dark-text ;
   font-weight: 500;
 }
 

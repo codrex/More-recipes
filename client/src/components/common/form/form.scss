@@ -4,28 +4,9 @@
   min-height: 2.5em;
   font-size: 2em;
   transition: box-shadow .3s ease-in;
-  &:focus{
-    border-color:transparent;
-    box-shadow: 1px 1px 10px 6px rgba($secondary-color,.3);
-  }
-
 }
 .help-text{
-  font-size: 1.5em;
-  color: $secondary-color;
+  font-size: 1.2rem;
+  color: $danger-color;
   font-weight: 200;
-}
-.invalid{
-  border:2px $danger-color solid;
-  &:focus {
-    border-color:transparent;
-    box-shadow: 1px 1px 10px 6px rgba($danger-color,.3);
-  }
-}
-.valid{
-  border:2px $success-color solid;
-  &:focus{
-    border-color:transparent;
-    box-shadow: 1px 1px 10px 6px rgba($success-color,.3);
-  }
 }

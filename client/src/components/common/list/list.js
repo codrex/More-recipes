@@ -5,13 +5,13 @@ import './list.scss';
 
 export const ListItem = (props) => (
   <div className={classnames('items-list-item lead list-item', props.className)}>
-    <h4
+    {props.content && <h4
       className="list-item-text"
       data-index={props.index && props.index + 1}
       onClick={props.handleClick}
     >
     {props.content}
-    </h4>
+    </h4>}
       {props.children}
   </div>
 );

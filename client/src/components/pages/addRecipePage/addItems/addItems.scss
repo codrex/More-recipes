@@ -4,6 +4,8 @@
   height: 100%;
   overflow: hidden;
   padding: 0 ;
+  margin:  0 auto;
+  border: 2px solid rgba($dark-text,.1);
   &-header{
     display: flex;
     flex-direction: column;
@@ -13,42 +15,39 @@
     & form{
       max-height: fit-content;
       padding: 0;
-      // margin-top: 1em;
     }
 
   }
   &-header-text{
-    background-color: $primary-color;
-    color: white;
+    background-color: $bg-color;
+    color: $primary-color;
     padding: 1em;
-    font-size: 1.6em;
+    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
   }
   &-list{
     overflow: scroll;
     height: 65%;
-    // margin: .5em 0;
-    padding: 0, .5em;
     &-item {
-      height: 70px;
+      min-height: 50px;
       margin: 0;
       padding: 1em .5em;
-      // margin-bottom: .5em;
-      // text-transform: lowercase;
-      font-size: 1.8em;
-      color: #fff;
+      color:$dark-text;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: rgba($primary-color, .899);
       padding-left: .5em;
       transition: background-color .4s ease-in;
       border-radius: 0 !important;
-      &:hover, &:focus{
-        background-color: darken($primary-color,5%);
-      }
+      width: 95%;
+      margin: .25em auto;
+
     }
   }
 }
@@ -57,7 +56,6 @@
   height: fit-content;
   align-items: flex-start;
   padding: .3em;
-  // margin-bottom: 1em;
 }
 .item-edit-form-textarea{
   flex-direction: column;
@@ -86,4 +84,20 @@
   height: 50px;
 
 }
+.items-list-wrapper{
+  background:$bg-color;
+  height: inherit;
+  padding: 1em 0;
+}
 
+.add-item-input{
+  font-size: 1.5rem;
+  border-radius: 0;
+  & > .help-text {
+    font-size: 1.5em;
+    font-weight: 200;
+    text-align: center;
+    background: rgba(213, 56, 50, 0.06);
+    margin-bottom: 5px;
+}
+}

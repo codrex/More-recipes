@@ -4,6 +4,7 @@
   border-radius: 2px;
   transition: box-shadow .4s ease-in;
   border: 0;
+  font-size: 1.5rem;
   &:hover, &:focus{
     box-shadow: 0px 6px 6px 1px rgba(0, 0, 0, 0.3);
 
@@ -11,13 +12,22 @@
   &-lg{
     font-size: 1.8rem;
   }
-  &-primary{
+  &-secondary{
     background-color: $secondary-color !important;
     color: $primary-color !important;
+    &-inverse{
+      background-color: $primary-color !important;
+      color: $secondary-color !important;
+    }
   }
-  &-secondary{
+  &-primary{
     background-color: $primary-color !important;
     color: $light-text;
+    &-inverse{
+      background-color: $light-text !important;
+      color: $primary-color !important;
+    }
+
   }
   &.outline-btn{
     background: transparent;

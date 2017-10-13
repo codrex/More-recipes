@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Button from '../../common/button/button';
+import TopBar from '../../common/topbar/topbar';
 import AddDirections from './addDirections/addDirections';
 import AddIngredients from './addIngredients/addIngredients';
 import RecipeNameAndCategory from './recipeNameAndCategory/recipeNameAndCategory';
@@ -52,21 +53,23 @@ class AddRecipes extends React.Component {
    */
   render() {
     return (
-      <div className="container-fluid no-padding ">
-        <div className="row d-flex">
-          <div className="col-xs-9 col-sm-9 col-md-10 col-lg-4 name-category no-padding">
-            <h4 className="lead items-header-text">
-              Add recipe
-              <Button text="Done" className="outline-btn float-right" />
-            </h4>
+      <div className="container" style={{ 'max-width': 'unset' }}>
+        <div className="row">
+          <TopBar title="Add recipe" />
+        </div>
+        <div
+          className="row d-flex justify-content-between align-items-start"
+          style={{ margin: '0.5em' }}
+        >
+          <div className="col-xs-11 col-sm-11 col-md-10 col-lg-4 name-category no-padding">
             <div className="col-12">
               <RecipeNameAndCategory createRecipe={createRecipe} />
             </div>
           </div>
-          <div className="col-xs-9 col-sm-9 col-md-10 col-lg-4 d-flex ingredients no-padding">
+          <div className="col-xs-11 col-sm-11 col-md-10 col-lg-4 d-flex ingredients no-padding">
             <AddIngredients />
           </div>
-          <div className="col-xs-9 col-sm-9 col-md-10 col-lg-4 d-flex directions no-padding">
+          <div className="col-xs-11 col-sm-11 col-md-10 col-lg-4 d-flex directions no-padding">
             <AddDirections />
           </div>
         </div>

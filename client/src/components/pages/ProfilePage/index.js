@@ -6,9 +6,8 @@ import EditProfileForm from '../../common/form/editProfileForm';
 import Modal from '../../common/modal/modal';
 import TopBar from '../../common/topbar/topbar';
 import Loader from '../../common/loader/loader';
-import Icon from '../../common/icon/icon';
 import { bindActionCreators } from 'redux';
-import { ajaxRedirect, ajaxRequestSuccess } from '../../../actions/ajaxActions';
+import { ajaxRedirect } from '../../../actions/ajaxActions';
 import { getUserProfile, updateProfile } from '../../../actions/userActions';
 import { toModifyRecipe, setCurrentRecipe,
           deleteRecipe, toggleFav } from '../../../actions/recipeActions';
@@ -202,9 +201,7 @@ class ProfilePage extends React.Component {
     return (
       <div className="container-fluid profile-page">
         <div className="row">
-          <TopBar >
-            <h1 className="text-white text-capitalize">Profile page</h1>
-          </TopBar>
+          <TopBar title="Profile page" />
         </div>
         {!showLoader &&
           <div className="row user-info-wrapper">

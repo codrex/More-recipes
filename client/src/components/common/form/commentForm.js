@@ -6,7 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import Form from './form';
 import Textarea from './textarea';
 import { postReview } from '../../../actions/recipeActions';
-import { validateReview } from '../../../validator/validator';
+import { review } from '../../../validator/validator';
 
 /**
  * review form
@@ -37,13 +37,14 @@ class CommentForm extends React.Component {
         submitBtnText="Post review"
         onSubmit={handleSubmit(this.review)}
         className={this.props.loading ? 'hide' : ''}
-        primary
+        secondary
       >
         <Field
           component={Textarea}
           name="review"
           id="review"
           placeholder="Enter your review"
+          validate={review}
         />
       </Form>
     );
@@ -61,6 +62,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default reduxForm({
-  validate: validateReview,
   form: 'reviewForm'
 })(connect(null, mapDispatchToProps)(CommentForm));

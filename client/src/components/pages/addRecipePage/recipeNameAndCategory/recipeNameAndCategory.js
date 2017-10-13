@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Form from '../../../common/form/form';
 import Input from '../../../common/form/input';
-import { hasRecipeNameAndCategory } from '../../../../validator/validator';
+import { recipeName, category } from '../../../../validator/validator';
 import { updateNameCategory, createRecipe, modifyRecipe } from '../../../../actions/recipeActions';
 
 
@@ -37,8 +37,9 @@ const RecipeNameAndCategory = (props) => {
       </h4>
       <Form
         submitBtnText={props.newRecipe.id ? 'modify recipe' : 'Post Recipe'}
-        primary
+        secondary
         onSubmit={handleSubmit(onSubmitClick)}
+        lg={false}
       >
         <Field
           component={Input}
@@ -46,7 +47,8 @@ const RecipeNameAndCategory = (props) => {
           type="text"
           id="recipeName"
           placeholder="Enter recipe name"
-          helpTextClassName="text-white"
+          className="add-recipe-input"
+          validate={(value) => recipeName(value, 'recipe name')}
         />
         <Field
           component={Input}
@@ -54,7 +56,8 @@ const RecipeNameAndCategory = (props) => {
           type="text"
           id="category"
           placeholder="Enter recipe category"
-          helpTextClassName="text-white"
+          className="add-recipe-input"
+          validate={(value) => category(value, 'recipe category')}
         />
       </Form>
     </div>
@@ -83,6 +86,5 @@ RecipeNameAndCategory.propTypes = {
 };
 
 export default reduxForm({
-  validate: hasRecipeNameAndCategory,
   form: 'recipeNameAndCategory'
 })(connect(mapStateToProps, mapDispatchToProps)(RecipeNameAndCategory));

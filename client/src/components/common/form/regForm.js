@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { validateSignup } from '../../../validator/validator';
+import { email, username, password } from '../../../validator/validator';
 import Form from './form';
 import Input from './input';
 /**
@@ -21,9 +21,7 @@ class RegForm extends React.Component {
    * @return {undefined} undefined
   */
   signup(value) {
-    const state = Object.assign({}, value);
-    delete state.reEnterPassword;
-    this.props.signup(state);
+    this.props.signup(value);
   }
 
   /**
@@ -36,7 +34,7 @@ class RegForm extends React.Component {
         submitBtnText="Register"
         onSubmit={handleSubmit(this.signup)}
         className={this.props.loading ? 'hide' : ''}
-        primary
+        secondary
       >
         <Field
           component={Input}
@@ -44,6 +42,7 @@ class RegForm extends React.Component {
           type="text"
           id="username"
           placeholder="Enter username"
+          validate={username}
         />
         <Field
           component={Input}
@@ -51,6 +50,7 @@ class RegForm extends React.Component {
           type="email"
           id="email"
           placeholder="Enter email"
+          validate={email}
         />
         <Field
           component={Input}
@@ -58,13 +58,7 @@ class RegForm extends React.Component {
           type="password"
           id="password"
           placeholder="Enter password"
-        />
-        <Field
-          component={Input}
-          type="password"
-          name="reEnterPassword"
-          id="reEnterPassword"
-          placeholder="Re-enter password"
+          validate={password}
         />
       </Form>
     );
@@ -79,6 +73,5 @@ RegForm.propTypes = {
 };
 
 export default reduxForm({
-  validate: validateSignup,
   form: 'RegForm',
 })(RegForm);

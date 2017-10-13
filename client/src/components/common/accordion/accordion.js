@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { ListItem } from '../list/list';
 import './accordion.scss';
 
 export const Accordion = (props) => {
   return (
-    <div className={classnames(props.className, 'card accordion')}>
+    <ListItem className={classnames(props.className, 'accordion')}>
       {props.children}
-    </div>
+    </ListItem>
   );
 };
 
@@ -18,7 +19,7 @@ Accordion.propTypes = {
 
 export const AccordionHeader = (props) => (
   <div
-    className={classnames(props.className, 'card-header')} role="tab" id={`accordion${props.index}`}
+    className={classnames(props.className)} role="tab" id={`accordion${props.index}`}
   >
     <h5 className="mb-0 lead flex-auto">
       <a

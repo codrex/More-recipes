@@ -1,28 +1,24 @@
 @import '../../../scss/_var.scss';
 
 .name-category{
-  background: $primary-color;
-  border: $primary-color 1px solid;
-  height: 100vh;
-  margin: 0 auto;
+  background: $bg-color;
 }
 .ingredients{
   background:$bg-color;
-  height: 100vh;
-  margin: 0 auto;
-  border: $primary-color 1px solid;
-
-
 }
 .directions{
   background:$bg-color;
-  height: 100vh;
-  border: $primary-color 1px solid;
-  margin: 0 auto;
 }
 .name-category, .directions, .ingredients{
   padding: 0;
+  height: fit-content;
+  background:$bg-color;
+  margin-top: .5rem;
 }
+.add-recipe-input{
+  font-size: 1.2rem;
+}
+
 @media (max-width:991px){
   .name-category{
     order:1;

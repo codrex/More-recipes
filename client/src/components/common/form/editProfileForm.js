@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { validateProfileUpdate } from '../../../validator/validator';
+import { fullname, email, username } from '../../../validator/validator';
 import Form from './form';
 import Input from './input';
 
@@ -13,7 +13,7 @@ let EditProfile = (props) => {
     <Form
       submitBtnText={props.loading && 'Updating...' || 'Update'}
       onSubmit={handleSubmit(props.update)}
-      primary
+      secondary
       disabled={props.loading}
     >
       <Field
@@ -22,6 +22,7 @@ let EditProfile = (props) => {
         type="text"
         id="fullname"
         placeholder="Enter fullname"
+        validate={fullname}
       />
       <Field
         component={Input}
@@ -29,6 +30,7 @@ let EditProfile = (props) => {
         type="text"
         id="username"
         placeholder="Enter username"
+        validate={username}
       />
       <Field
         component={Input}
@@ -36,6 +38,7 @@ let EditProfile = (props) => {
         type="email"
         id="email"
         placeholder="Enter email"
+        validate={email}
       />
     </Form>
   );
@@ -50,7 +53,6 @@ EditProfile.propTypes = {
 const mapStateToProps = (state) => ({ initialValues: state.user });
 
 EditProfile = reduxForm({
-  validate: validateProfileUpdate,
   form: 'editProfileForm',
 })(EditProfile);
 

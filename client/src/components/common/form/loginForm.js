@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import Form from './form';
 import Input from './input';
-import { validateLogin } from '../../../validator/validator';
+import { username, password } from '../../../validator/validator';
 
 /**
  * User login form
@@ -34,7 +34,7 @@ class LoginForm extends React.Component {
         submitBtnText="Login"
         onSubmit={handleSubmit(this.props.login)}
         className={this.props.loading ? 'hide' : ''}
-        primary
+        secondary
       >
         <Field
           component={Input}
@@ -42,6 +42,7 @@ class LoginForm extends React.Component {
           type="text"
           id="username"
           placeholder="Enter username"
+          validate={username}
         />
         <Field
           component={Input}
@@ -49,6 +50,7 @@ class LoginForm extends React.Component {
           type="password"
           id="password"
           placeholder="Enter password"
+          validate={password}
         />
       </Form>
     );
@@ -61,6 +63,5 @@ LoginForm.propTypes = {
 };
 
 export default reduxForm({
-  validate: validateLogin,
   form: 'LoginForm'
 })(LoginForm);
