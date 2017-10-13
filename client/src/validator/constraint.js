@@ -49,14 +49,14 @@ const constraints = {
       message: 'review can\'t be blank'
     },
   },
-  recipe(fieldName) {
+  presenceAndLength(fieldName) {
     fieldName = {
       presence: {
         message: `${fieldName} can\'t be blank`
       },
       length: {
-        minimum: 3,
-        message: `${fieldName}  must be at least 3 character`,
+        minimum: 2,
+        message: `${fieldName}  must be at least 2 character`,
       },
     };
     return fieldName;
