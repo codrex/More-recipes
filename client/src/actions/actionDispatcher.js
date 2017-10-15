@@ -87,10 +87,10 @@ export default class ActionDispatcher {
    */
   requestAndDispatch(url, reqData, action, reqType, successMsg) {
     return request(reqData, url, this.dispatch, reqType)
-      .then(payload => {
+      .then((payload) => {
         this.saveToken(action, payload, successMsg);
       })
-      .catch(error => {
+      .catch((error) => {
         this.onError(error);
       });
   }

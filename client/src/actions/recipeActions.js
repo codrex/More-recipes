@@ -48,7 +48,7 @@ const gotAllRecipes = recipes => ({ type: GET_ALL_RECIPES, recipes });
 const gotFavRecipes = recipes => ({ type: GET_FAV_RECIPES, recipes });
 const gotRecipe = recipe => ({ type: GET_RECIPE, recipe });
 
-export const createRecipe = (recipe, msg) => dispatch => {
+export const createRecipe = (recipe, msg) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher.requestAndDispatch(
     '/api/v1/recipes',
@@ -59,7 +59,7 @@ export const createRecipe = (recipe, msg) => dispatch => {
   );
 };
 
-export const modifyRecipe = (recipe, msg) => dispatch => {
+export const modifyRecipe = (recipe, msg) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher.requestAndDispatch(
     `/api/v1/recipes/${recipe.id}`,
@@ -70,12 +70,12 @@ export const modifyRecipe = (recipe, msg) => dispatch => {
   );
 };
 
-export const getAllRecipes = () => dispatch => {
+export const getAllRecipes = () => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher.requestAndDispatch('/api/v1/recipes', null, gotAllRecipes, 'get');
 };
 
-export const getFavRecipes = () => dispatch => {
+export const getFavRecipes = () => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   const id = dispatcher.getIdFromToken();
   dispatcher.requestAndDispatch(
@@ -86,7 +86,7 @@ export const getFavRecipes = () => dispatch => {
   );
 };
 
-export const getTopRecipes = () => dispatch => {
+export const getTopRecipes = () => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher.requestAndDispatch(
     '/api/v1/recipes?sort=upvotes&order=ascending',
@@ -96,7 +96,7 @@ export const getTopRecipes = () => dispatch => {
   );
 };
 
-export const getRecipe = id => dispatch => {
+export const getRecipe = id => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher.requestAndDispatch(
     `/api/v1/recipes/${id}`,
@@ -106,7 +106,7 @@ export const getRecipe = id => dispatch => {
   );
 };
 
-export const postReview = (id, review) => dispatch => {
+export const postReview = (id, review) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher.requestAndDispatch(
     `/api/v1/recipes/${id}/reviews`,
@@ -116,7 +116,7 @@ export const postReview = (id, review) => dispatch => {
   );
 };
 
-export const vote = (id, voteType) => dispatch => {
+export const vote = (id, voteType) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher.requestAndDispatch(
     `/api/v1/recipes/${id}/vote?vote=${voteType}vote`,
@@ -126,7 +126,7 @@ export const vote = (id, voteType) => dispatch => {
   );
 };
 
-export const toggleFav = (recipeId, msg = undefined) => dispatch => {
+export const toggleFav = (recipeId, msg = undefined) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   const id = dispatcher.getIdFromToken();
   dispatcher.requestAndDispatch(
@@ -138,7 +138,7 @@ export const toggleFav = (recipeId, msg = undefined) => dispatch => {
   );
 };
 
-export const deleteRecipe = id => dispatch => {
+export const deleteRecipe = id => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher
     .requestAndDispatch(`/api/v1/recipes/${id}`, null, null, 'delete')
