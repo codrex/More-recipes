@@ -7,9 +7,12 @@ import precss from 'precss';
 
 
 module.exports = {
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
   entry: {
     app: [
-      './client/src/index',
+      './client/src/index.jsx',
     ],
   },
   output: {
@@ -53,6 +56,11 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['babel-loader'],
+      },
+      {
+        test: /\.jsx$/,
         exclude: /node_modules/,
         loaders: ['babel-loader'],
       },
