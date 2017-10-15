@@ -17,7 +17,7 @@ import ProfilePage from '../components/pages/ProfilePage/index';
  * App component
  */
 class App extends React.Component {
-/**
+  /**
  * @return {undefined}
  * @param {object} props
  *
@@ -27,9 +27,15 @@ class App extends React.Component {
    * @param {Object} nextProps
    */
   shouldComponentUpdate(nextProps) {
-    if (nextProps.reqError !== this.props.reqError && nextProps.reqError.error) {
+    if (
+      nextProps.reqError !== this.props.reqError &&
+      nextProps.reqError.error
+    ) {
       toastr.error(nextProps.reqError.error, 'Error', toastrConfig);
-    } else if (nextProps.reqSuccess !== this.props.reqSuccess && nextProps.reqSuccess.success) {
+    } else if (
+      nextProps.reqSuccess !== this.props.reqSuccess &&
+      nextProps.reqSuccess.success
+    ) {
       toastr.success(nextProps.reqSuccess.success, 'Success', toastrConfig);
     }
     return true;
@@ -40,7 +46,7 @@ class App extends React.Component {
    */
   render() {
     return (
-      <BrowserRouter >
+      <BrowserRouter>
         <div className="container-fluid  no-padding">
           <Navbar />
           <Switch>
@@ -60,25 +66,19 @@ class App extends React.Component {
 App.propTypes = {
   reqError: PropTypes.object,
   reqSuccess: PropTypes.object,
-  token: PropTypes.string,
+  token: PropTypes.string
 };
 
-const mapStateToProps = (state) => (
-  {
-    reqError: state.ajaxError,
-    reqSuccess: state.ajaxSuccess,
-    token: state.token,
-  }
+const mapStateToProps = state => ({
+  reqError: state.ajaxError,
+  reqSuccess: state.ajaxSuccess,
+  token: state.token
+});
 
-);
-
-const mapDispatchToProps = (dispatch) => (
-  {
-    actions: {
-      loginOrRegSuccess: bindActionCreators(loginOrRegSuccess, dispatch)
-    }
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    loginOrRegSuccess: bindActionCreators(loginOrRegSuccess, dispatch)
   }
-);
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-

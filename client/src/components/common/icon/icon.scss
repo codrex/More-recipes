@@ -1,16 +1,16 @@
-.icon-wrapper{
+.icon-wrapper {
   background: transparent;
   margin: 0;
   display: inline;
-  margin: 0 .4em;
+  margin: 0 0.4em;
   border-radius: 50%;
   cursor: pointer;
 }
-.icon{
+.icon {
   font-size: 1.8rem;
   cursor: pointer;
-  & span{
+  & span {
     font-family: fantasy;
-    font-size: .9em
+    font-size: 0.9em;
   }
 }

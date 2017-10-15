@@ -1,6 +1,6 @@
 @import '../../../../scss/_var.scss';
 
-.recipe-card{
+.recipe-card {
   background: transparent;
   box-shadow: 0px 3px 3px 1px rgba(0, 0, 0, 0.23);
   height: inherit;
@@ -11,7 +11,7 @@
   margin: 1em;
   padding: 0;
   user-select: none;
-  &-header{
+  &-header {
     min-height: 50px;
     background: $secondary-color;
     display: flex;
@@ -21,7 +21,7 @@
     z-index: 1;
     border-radius: 4px 4px 0 0;
 
-    & h4{
+    & h4 {
       text-transform: capitalize;
       color: inherit;
       font-size: 1.7em;
@@ -31,10 +31,9 @@
       overflow: hidden;
       text-overflow: ellipsis;
       word-break: break-all;
-
     }
   }
-  &-body{
+  &-body {
     width: 100%;
     height: 100%;
     background: $primary-color;
@@ -44,35 +43,34 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    color:  $secondary-color;
+    color: $secondary-color;
     position: relative;
     cursor: pointer;
     text-transform: capitalize;
     word-break: break-word;
-    &:hover .recipe-card-underlay{
+    &:hover .recipe-card-underlay {
       opacity: 1;
       background: #0d0221;
       visibility: visible;
     }
   }
-&-footer{
-  min-height: 50px;
-  background:  $secondary-color;
-  color:  $primary-color;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-radius: 0 0 4px 4px ;
+  &-footer {
+    min-height: 50px;
+    background: $secondary-color;
+    color: $primary-color;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 0 0 4px 4px;
   }
-  &-icon{
+  &-icon {
     font-size: 1.8em;
-    & span{
-      font-size: .9em;
-      margin-left: .2em;
-
+    & span {
+      font-size: 0.9em;
+      margin-left: 0.2em;
     }
   }
-  &-underlay{
+  &-underlay {
     position: absolute;
     background: transparent;
     top: 0;
@@ -85,28 +83,25 @@
     align-items: center;
     opacity: 0;
     visibility: hidden;
-    transition: .7s opacity ease-in-out,
-     .7s background-color ease-in-out,.7s visibility ease-in-out;
-    &-btn{
+    transition: 0.7s opacity ease-in-out, 0.7s background-color ease-in-out,
+      0.7s visibility ease-in-out;
+    &-btn {
       background: transparent;
       color: $secondary-color;
       border: 1px $secondary-color solid;
-      transition: color .3s ease-in;
+      transition: color 0.3s ease-in;
     }
-    &-heart{
+    &-heart {
       font-size: 10rem;
-      transition: color .5s ease-in;
-      margin-bottom: .2em;
+      transition: color 0.5s ease-in;
+      margin-bottom: 0.2em;
     }
-    &-heart:hover{
-      color: $primary-color!important;
-
+    &-heart:hover {
+      color: $primary-color !important;
     }
-     &-btn:hover{
-      color: $bg-color!important;
+    &-btn:hover {
+      color: $bg-color !important;
       border: 1px $primary-color solid;
-
     }
-
   }
 }

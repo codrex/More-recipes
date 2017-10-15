@@ -1,82 +1,81 @@
 @import '../../../scss/_var.scss';
 
-.sidebar-wrapper{
- background-color: $primary-color;
- height: 100vh;
- padding: 0;
- transition: transform .5s ease-in;
-  &.show{
+.sidebar-wrapper {
+  background-color: $primary-color;
+  height: 100vh;
+  padding: 0;
+  transition: transform 0.5s ease-in;
+  &.show {
     transform: translateX(0) !important;
   }
 }
-.recipes-wrapper{
+.recipes-wrapper {
   background-color: $bg-color;
   flex-direction: column;
   height: 100vh;
 }
-.category-filter-wrapper{
+.category-filter-wrapper {
   background-color: $primary-color;
   color: #fff;
   min-height: 70px;
   justify-content: center;
 }
-.grid-list-wrapper{
+.grid-list-wrapper {
   background-color: $bg-color;
   flex-grow: 3;
   justify-content: center;
   align-items: stretch;
-  overflow-x:hidden;
+  overflow-x: hidden;
   overflow-y: auto;
 }
-.grid{
-  background-color:$bg-color;
+.grid {
+  background-color: $bg-color;
   min-height: 80%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-
 }
-.pagination-wrapper{
+.pagination-wrapper {
   background-color: wheat;
   min-height: 50px;
 }
 
-.mobile{
+.mobile {
   display: none;
 }
 
-@media(max-width:767px){
-  .sidebar-wrapper{
+@media (max-width: 767px) {
+  .sidebar-wrapper {
     transform: translateX(-140%);
     position: fixed;
-    top:10vh;
+    top: 10vh;
     font-size: 1.5em;
     height: 100vh;
     z-index: 9999;
     background: $primary-color;
     box-shadow: 20px 18px 17px 3px rgba(0, 0, 0, 0.11);
     width: 80%;
-    &-header{
+    &-header {
       font-size: 1em;
     }
-    &>.topbar{
-      font-size: .8em
+    & > .topbar {
+      font-size: 0.8em;
     }
   }
-  .mobile{
+  .mobile {
     display: inline;
-    padding: .5em;
-    margin-right: .2em;
+    padding: 0.5em;
+    margin-right: 0.2em;
     position: absolute;
     z-index: 2;
     margin-right: 10px;
     top: 0;
     font-size: 2em;
     color: #fff;
-    }
-    .recipe-card{
-      margin: 1em auto;
-    }
+  }
+  .recipe-card {
+    margin: 1em auto;
+  }
 }
