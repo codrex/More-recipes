@@ -1,6 +1,6 @@
 const initailState = {
   Recipes: [],
-  newRecipe: {
+  Recipe: {
     id: undefined,
     recipeName: '',
     category: '',

@@ -45,7 +45,7 @@ class App extends React.Component {
           <Navbar />
           <Switch>
             <Route path="/recipe/create" component={AddRecipePage} />
-            <Route path="/recipe/modify" component={AddRecipePage} />
+            <Route path="/recipe/modify/:id" component={AddRecipePage} />
             <Route path="/recipe/:id" component={Recipe} />
             <Route static extact path="/recipes/" component={Recipes} />
             <Route path="/user" component={ProfilePage} />

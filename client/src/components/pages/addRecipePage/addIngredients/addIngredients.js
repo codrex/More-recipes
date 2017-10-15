@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 const mapStateToProps = (state) => (
-  { items: state.newRecipe.ingredients, }
+  { items: state.recipe.ingredients, }
 );
 
 const AddIngredients = () => {

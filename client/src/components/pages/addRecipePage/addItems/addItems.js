@@ -6,7 +6,7 @@ import ItemsList from './itemsList';
 import Input from '../../../common/form/input';
 import Textarea from '../../../common/form/textarea';
 import Icon from '../../../common/icon/icon';
-import {item} from '../../../../validator/validator';
+import { item } from '../../../../validator/validator';
 import './addItems.scss';
 
 /**
@@ -20,7 +20,7 @@ class AddItems extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      items: props.items,
+      items: props.items || [],
       addItem: false,
     };
     this.addItem = this.addItem.bind(this);

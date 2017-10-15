@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -9,60 +9,73 @@ import { recipeName, category } from '../../../../validator/validator';
 import { updateNameCategory, createRecipe, modifyRecipe } from '../../../../actions/recipeActions';
 
 
-const RecipeNameAndCategory = (props) => {
+let RecipeNameAndCategory = (props) => {
 
   const { handleSubmit } = props;
 
   const onSubmitClick = (value) => {
-    const recipe = Object.assign({}, props.newRecipe);
-    recipe.recipeName = value.recipeName;
-    recipe.category = value.category;
-
+    const recipeName = value.recipeName;
+    const category = value.category;
     // when submit btn is clicked, a new recipe is created,
     // if there is no id or modify the existing recipe with the given recipe id.
 
-    if (props.newRecipe.id) {
-      props.actions.modifyRecipe(recipe);
+    if (!props.postRecipe) {
+      props.actions.modifyRecipe({...props.recipe, category, recipeName},props.modify);
     } else {
-      props.actions.postRecipe(recipe);
+      props.actions.postRecipe({...props.recipe, category, recipeName}, props.create);
     }
-
-    props.actions.updateStore(value);
   };
-
-  return (
-    <div>
-      <h4 className="lead items-header-text">
-        Name and category
-      </h4>
-      <Form
-        submitBtnText={props.newRecipe.id ? 'modify recipe' : 'Post Recipe'}
-        secondary
-        onSubmit={handleSubmit(onSubmitClick)}
-        lg={false}
-      >
-        <Field
-          component={Input}
-          name="recipeName"
-          type="text"
-          id="recipeName"
-          placeholder="Enter recipe name"
-          className="add-recipe-input"
-          validate={(value) => recipeName(value, 'recipe name')}
-        />
-        <Field
-          component={Input}
-          name="category"
-          type="text"
-          id="category"
-          placeholder="Enter recipe category"
-          className="add-recipe-input"
-          validate={(value) => category(value, 'recipe category')}
-        />
-      </Form>
-    </div>
-  );
+    return (
+      <div>
+        <h4 className="lead items-header-text">
+          Name and category
+        </h4>
+        <Form
+          submitBtnText={(props.postRecipe ? !props.loading && 'Post Recipe'
+          : !props.loading && 'modify recipe' )||'Loading...'}
+          secondary
+          onSubmit={handleSubmit(onSubmitClick)}
+          lg={false}
+          disabled={props.loading}
+        >
+          <Field
+            component={Input}
+            name="recipeName"
+            type="text"
+            id="recipeName"
+            placeholder="Enter recipe name"
+            className="add-recipe-input"
+            validate={(value) => recipeName(value, 'recipe name')}
+            onBlur={()=> props.actions.updateStore(props.recipeNameAndCategory)}
+          />
+          <Field
+            component={Input}
+            name="category"
+            type="text"
+            id="category"
+            placeholder="Enter recipe category"
+            className="add-recipe-input"
+            validate={(value) => category(value, 'recipe category')}
+            onBlur={()=> props.actions.updateStore(props.recipeNameAndCategory)}
+          />
+        </Form>
+      </div>
+    );
 };
+
+RecipeNameAndCategory.propTypes = {
+  handleSubmit: PropTypes.func,
+  actions: PropTypes.object,
+  recipe: PropTypes.object,
+};
+
+
+RecipeNameAndCategory =  reduxForm({
+  form: 'recipeNameAndCategory',
+  enableReinitialize: true,
+})(RecipeNameAndCategory);
+
+const selector = formValueSelector('recipeNameAndCategory');
 
 const mapDispatchToProps = (dispatch) => ({
   actions: {
@@ -74,17 +87,11 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => (
   {
-    newRecipe: state.newRecipe,
+    recipe: state.recipe,
+    initialValues: state.recipe,
+    recipeNameAndCategory: selector(state, 'recipeName', 'category'),
   }
 );
 
-RecipeNameAndCategory.propTypes = {
-  handleSubmit: PropTypes.func,
-  actions: PropTypes.object,
-  newRecipe: PropTypes.object,
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeNameAndCategory);
 
-};
-
-export default reduxForm({
-  form: 'recipeNameAndCategory'
-})(connect(mapStateToProps, mapDispatchToProps)(RecipeNameAndCategory));

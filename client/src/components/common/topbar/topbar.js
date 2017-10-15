@@ -4,15 +4,13 @@ import classnames from 'classnames';
 import SearchBox from '../../common/searchBox/searchbox';
 import './topbar.scss';
 
-const TopBar = (props) => {
-  return (
-    <div className={classnames('col-12 top-bar', props.className)}>
-      <h1 className="text-white text-capitalize">{props.title}</h1>
-      {props.children}
-      {props.search && <SearchBox handleSubmit={props.handleSubmit} />}
-    </div>
-  );
-};
+const TopBar = (props) => (
+  <div className={classnames('col-12 top-bar', props.className)}>
+    {props.title && <h1 className="text-white text-capitalize">{props.title}</h1>}
+    {props.children}
+    {props.search && <SearchBox handleSubmit={props.handleSubmit} />}
+  </div>
+);
 
 TopBar.propTypes = {
   children: PropTypes.any,
