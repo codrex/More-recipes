@@ -6,8 +6,12 @@ import TopBar from '../../common/topbar/topbar';
 import AddDirections from './addDirections/addDirections';
 import AddIngredients from './addIngredients/addIngredients';
 import RecipeNameAndCategory from './recipeNameAndCategory/recipeNameAndCategory';
-import { updateAllRecipeField, recipeToModify,
-        getRecipe, onNewRecipe } from '../../../actions/recipeActions';
+import {
+  updateAllRecipeField,
+  recipeToModify,
+  getRecipe,
+  onNewRecipe
+} from '../../../actions/recipeActions';
 import { ajaxRedirect, ajaxRequestSuccess } from '../../../actions/ajaxActions';
 import './addRecipe.scss';
 
@@ -15,7 +19,6 @@ import './addRecipe.scss';
  * Add recipe component
  */
 class AddRecipes extends React.Component {
-
   /**
    * @param {object} props
    */
@@ -53,7 +56,7 @@ class AddRecipes extends React.Component {
     }
   }
 
-/**
+  /**
  *
  * @param {object} nextProps
  * @return {bool} true or false
@@ -114,30 +117,24 @@ AddRecipes.propTypes = {
   redirect: PropTypes.func,
   recipe: PropTypes.object,
   recipes: PropTypes.array,
-  match: PropTypes.object,
-
+  match: PropTypes.object
 };
 
-
-const mapStateToProps = (state) => (
-  {
-    loading: state.ajaxCall > 0,
-    redirectUrl: state.redirectUrl,
-    recipes: state.user.createdRecipes,
-    success: state.ajaxSuccess
+const mapStateToProps = state => ({
+  loading: state.ajaxCall > 0,
+  redirectUrl: state.redirectUrl,
+  recipes: state.user.createdRecipes,
+  success: state.ajaxSuccess
+});
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    redirect: bindActionCreators(ajaxRedirect, dispatch),
+    updateLocalRecipe: bindActionCreators(updateAllRecipeField, dispatch),
+    recipeToModify: bindActionCreators(recipeToModify, dispatch),
+    getRecipe: bindActionCreators(getRecipe, dispatch),
+    newRecipe: bindActionCreators(onNewRecipe, dispatch),
+    clearSuccessMsg: bindActionCreators(ajaxRequestSuccess, dispatch)
   }
-);
-const mapDispatchToProps = (dispatch) => (
-  {
-    actions: {
-      redirect: bindActionCreators(ajaxRedirect, dispatch),
-      updateLocalRecipe: bindActionCreators(updateAllRecipeField, dispatch),
-      recipeToModify: bindActionCreators(recipeToModify, dispatch),
-      getRecipe: bindActionCreators(getRecipe, dispatch),
-      newRecipe: bindActionCreators(onNewRecipe, dispatch),
-      clearSuccessMsg: bindActionCreators(ajaxRequestSuccess, dispatch),
-    }
-  }
-);
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddRecipes);
