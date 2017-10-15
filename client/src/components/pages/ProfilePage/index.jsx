@@ -6,11 +6,10 @@ import EditProfileForm from '../../common/form/editProfileForm';
 import Modal from '../../common/modal/modal';
 import TopBar from '../../common/topbar/topbar';
 import Loader from '../../common/loader/loader';
-import Icon from '../../common/icon/icon';
 import { bindActionCreators } from 'redux';
-import { ajaxRedirect, ajaxRequestSuccess } from '../../../actions/ajaxActions';
+import { ajaxRedirect } from '../../../actions/ajaxActions';
 import { getUserProfile, updateProfile } from '../../../actions/userActions';
-import { toModifyRecipe, setCurrentRecipe,
+import { setCurrentRecipe,
           deleteRecipe, toggleFav } from '../../../actions/recipeActions';
 import UserInfo from './userInfo/userInfo';
 import Recipes from './recipesList/recipesList';
@@ -177,11 +176,10 @@ class ProfilePage extends React.Component {
 
   /**
    * @returns{undefined}
-   * @param {Object} recipe
+   * @param {number} id
    */
-  modifyRecipe(recipe) {
-    this.props.actions.modifyRecipe(recipe);
-    this.props.history.push('/recipe/modify');
+  modifyRecipe(id) {
+    this.props.history.push(`/recipe/modify/${id}`);
   }
 
   /**
@@ -202,9 +200,7 @@ class ProfilePage extends React.Component {
     return (
       <div className="container-fluid profile-page">
         <div className="row">
-          <TopBar >
-            <h1 className="text-white text-capitalize">Profile page</h1>
-          </TopBar>
+          <TopBar title="Profile page" />
         </div>
         {!showLoader &&
           <div className="row user-info-wrapper">
@@ -308,7 +304,6 @@ const mapDispatchToProps = (dispatch) => (
       redirect: bindActionCreators(ajaxRedirect, dispatch),
       getUserProfile: bindActionCreators(getUserProfile, dispatch),
       update: bindActionCreators(updateProfile, dispatch),
-      modifyRecipe: bindActionCreators(toModifyRecipe, dispatch),
       currentRecipe: bindActionCreators(setCurrentRecipe, dispatch),
       deleteRecipe: bindActionCreators(deleteRecipe, dispatch),
       removeFromFav: bindActionCreators(toggleFav, dispatch),

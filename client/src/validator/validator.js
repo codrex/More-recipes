@@ -1,68 +1,21 @@
 import validate from 'validate.js';
 import constraint from './constraint';
 
-export const validateLogin = (data) => {
-  const error = {};
-  const username = validate.single(data.username, constraint.username);
-  const password = validate.single(data.password, constraint.password);
+export const username = userName => validate.single(userName, constraint.username);
 
-  if (username)error.username = username;
-  if (password)error.password = password;
-  return error;
-};
-export const validateSignup = (data) => {
-  const error = {};
-  const username = validate.single(data.username, constraint.username);
-  const password = validate.single(data.password, constraint.password);
-  const email = validate.single(data.email, constraint.email);
+export const password = pwsd => validate.single(pwsd, constraint.password);
 
-  if (data.password !== data.reEnterPassword)error.reEnterPassword = 'Password mis-match';
-  if (username)error.username = username;
-  if (password)error.password = password;
-  if (email)error.email = email;
-  return error;
-};
-export const validateProfileUpdate = (data) => {
-  const error = {};
-  const username = validate.single(data.username, constraint.username);
-  const fullname = validate.single(data.fullname, constraint.fullname);
-  const email = validate.single(data.email, constraint.email);
+export const email = eMail => validate.single(eMail, constraint.email);
 
-  if (username)error.username = username;
-  if (fullname)error.fullname = fullname;
-  if (email)error.email = email;
-  return error;
-};
-export const hasRecipeNameAndCategory = (data) => {
-  const error = {};
-  const recipeName = validate.single(data.recipeName, constraint.recipe('recipeName'));
-  const category = validate.single(data.category, constraint.recipe('category'));
+export const fullname = fullName => validate.single(fullName, constraint.fullname);
 
-  if (recipeName)error.recipeName = recipeName[0].replace('recipeName', 'recipe name');
-  if (category)error.category = category;
-  return error;
-};
+export const review = reView => validate.single(reView, constraint.review);
 
-// this validation function validates ingredients or directions
-// depending on the value present.
-export const validateItems = (value) => {
-  const error = {};
-  const ingredient = validate.single(value.ingredient,
-    constraint.recipe('ingredient'));
-  const direction = validate.single(value.direction,
-    constraint.recipe('direction'));
+export const item = (reView, itemName) =>
+validate.single(reView, constraint.presenceAndLength(itemName));
 
-  if (ingredient)error.ingredient = ingredient[0];
-  if (direction)error.direction = direction[0];
+export const recipeName = (recipename, itemName) =>
+validate.single(recipename, constraint.presenceAndLength(itemName));
 
-  return error;
-};
-
-export const validateReview = (value) => {
-  const error = {};
-  const review = validate.single(value.review,
-    constraint.review);
-  if (review)error.review = review;
-  return error;
-};
-
+export const category = (cat, itemName) =>
+validate.single(cat, constraint.presenceAndLength(itemName));

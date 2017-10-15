@@ -22,7 +22,7 @@ const Recipes = (props) => {
             <div>
               <Icon
                 iconClass="fa fa-pencil edit-icon"
-                handleClick={() => props.onEditIconCliked(recipes[i])}
+                handleClick={() => props.onEditIconCliked(recipes[i].id)}
               />
               <Icon
                 iconClass="fa fa-trash-o delete-icon"

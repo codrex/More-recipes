@@ -18,15 +18,22 @@ const Input = (props) => {
         autoComplete={false}
         {...props.input}
       />
-      <span
-        className={
-          classnames(props.meta &&
-          props.meta.touched &&
-          props.meta.error ? 'help-text' : '', props.helpTextClassName)
-        }
-      >
-      {props.meta && props.meta.touched && props.meta.error}
-      </span>
+      {
+        props.meta && props.meta.touched && props.meta.error.map((error, i) =>
+        (
+          <div
+            key={i}
+            className={
+              classnames(props.meta &&
+              props.meta.touched &&
+              props.meta.error ? 'help-text' : '', props.helpTextClassName)
+            }
+          >
+            {error}
+          </div>
+        )
+      )
+    }
     </div>
   );
 };

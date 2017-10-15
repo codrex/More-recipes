@@ -2,7 +2,6 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { validateItems } from '../../../../validator/validator';
 import { updateIngredients } from '../../../../actions/recipeActions';
 import AddItems from '../addItems/addItems';
 
@@ -13,12 +12,11 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 const mapStateToProps = (state) => (
-  { items: state.newRecipe.ingredients, }
+  { items: state.recipe.ingredients, }
 );
 
 const AddIngredients = () => {
   const Ingredients = reduxForm({
-    validate: validateItems,
     form: 'ingredientForm',
   })(connect(mapStateToProps, mapDispatchToProps)(AddItems));
   return (

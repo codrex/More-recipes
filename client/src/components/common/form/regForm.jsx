@@ -1,40 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
+import { email, username, password } from '../../../validator/validator';
 import Form from './form';
 import Input from './input';
-import { validateLogin } from '../../../validator/validator';
-
 /**
- * User login form
+ * User registration form
  */
-class LoginForm extends React.Component {
+class RegForm extends React.Component {
   /**
    * @param {object} props
    */
   constructor(props) {
     super(props);
-    this.login = this.login.bind(this);
-  }
-   /**
-    * @param {object} value (form values)
-   * @return {undefined} undefined
-  */
-  login(value) {
-    this.props.login(value);
+    this.signup = this.signup.bind(this);
   }
 
   /**
-   * @returns {object} the form
+   *  @param {object} value (signup form values)
+   * @return {undefined} undefined
+  */
+  signup(value) {
+    this.props.signup(value);
+  }
+
+  /**
+   * @returns {object} form
    */
   render() {
     const { handleSubmit } = this.props;
     return (
       <Form
-        submitBtnText="Login"
-        onSubmit={handleSubmit(this.props.login)}
+        submitBtnText="Register"
+        onSubmit={handleSubmit(this.signup)}
         className={this.props.loading ? 'hide' : ''}
-        primary
+        secondary
       >
         <Field
           component={Input}
@@ -42,6 +42,15 @@ class LoginForm extends React.Component {
           type="text"
           id="username"
           placeholder="Enter username"
+          validate={username}
+        />
+        <Field
+          component={Input}
+          name="email"
+          type="email"
+          id="email"
+          placeholder="Enter email"
+          validate={email}
         />
         <Field
           component={Input}
@@ -49,18 +58,20 @@ class LoginForm extends React.Component {
           type="password"
           id="password"
           placeholder="Enter password"
+          validate={password}
         />
       </Form>
     );
   }
 }
-LoginForm.propTypes = {
-  login: PropTypes.func,
+
+RegForm.propTypes = {
+  signup: PropTypes.func,
   handleSubmit: PropTypes.func,
-  loading: PropTypes.bool,
+  loading: PropTypes.bool
+
 };
 
 export default reduxForm({
-  validate: validateLogin,
-  form: 'LoginForm'
-})(LoginForm);
+  form: 'RegForm',
+})(RegForm);

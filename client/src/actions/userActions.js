@@ -1,4 +1,9 @@
-import { USER, LOGIN_OR_REG_SUCCESS, GOT_USER_PROFILE, UPDATE_USER_PROFILE } from './actions';
+import {
+  USER,
+  LOGIN_OR_REG_SUCCESS,
+  GOT_USER_PROFILE,
+  UPDATE_USER_PROFILE
+} from './actions';
 import ActionDispatcher from './actionDispatcher';
 
 const userAction = user => ({ type: USER, user });
@@ -8,12 +13,22 @@ export const loginOrRegSuccess = () => ({ type: LOGIN_OR_REG_SUCCESS });
 
 export const userLogin = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch('/api/v1/users/signin', user, userAction, 'post');
+  dispatcher.requestAndDispatch(
+    '/api/v1/users/signin',
+    user,
+    userAction,
+    'post'
+  );
 };
 
 export const userSignup = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch('/api/v1/users/signup', user, userAction, 'post');
+  dispatcher.requestAndDispatch(
+    '/api/v1/users/signup',
+    user,
+    userAction,
+    'post'
+  );
 };
 
 export const getUserProfile = () => (dispatch) => {
@@ -25,5 +40,11 @@ export const getUserProfile = () => (dispatch) => {
 export const updateProfile = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   const id = dispatcher.getIdFromToken();
-  dispatcher.requestAndDispatch(`/api/v1/users/${id}`, user, updatedProfile, 'put', 'Profile update successfully');
+  dispatcher.requestAndDispatch(
+    `/api/v1/users/${id}`,
+    user,
+    updatedProfile,
+    'put',
+    'Profile update successfully'
+  );
 };

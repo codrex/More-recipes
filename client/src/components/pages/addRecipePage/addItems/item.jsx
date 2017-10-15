@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import Form from '../../../common/form/form';
 import Button from '../../../common/button/button';
 import Icon from '../../../common/icon/icon';
+import { ListItem } from '../../../common/list/list';
 import { Accordion, AccordionHeader,
        AccordionBody } from '../../../common/accordion/accordion';
 
@@ -14,12 +15,12 @@ const ListItemIcons = (props) => (
   <div className="d-flex">
     <Icon
       iconClass="fa fa-pencil"
-      className="text-white items-list-item-icon icon"
+      className="items-list-item-icon icon"
       handleClick={props.editIconClicked}
     />
     <Icon
       iconClass="fa fa-trash"
-      className="text-white items-list-item-icon icon"
+      className="items-list-item-icon icon"
       handleClick={props.deleteIconClicked}
     />
   </div>
@@ -32,7 +33,7 @@ ListItemIcons.propTypes = {
 /**
  *  IngredientListItem component
  */
-class ListItem extends React.Component {
+class Item extends React.Component {
 
 /**
  *
@@ -60,7 +61,7 @@ class ListItem extends React.Component {
   }
 
   /**
-   * @return {Object} IngredientListItem
+   * @return {Object} Item
    */
   render() {
     const { handleSubmit } = this.props;
@@ -68,26 +69,25 @@ class ListItem extends React.Component {
       <div className="d-flex flex-column ">
         {
           this.props.ingredients &&
-            <h4 className="items-list-item lead">
-              {this.props.content}
+            <ListItem className="items-list-item lead" content={this.props.content}>
               <ListItemIcons
                 editIconClicked={this.changeEditMode}
                 deleteIconClicked={() => this.props.delete(this.props.index)}
               />
-            </h4>
+            </ListItem>
         }
         {
           this.props.directions &&
             <Accordion
               index={this.props.index}
               id={this.props.name}
-              className=""
+              className="flex-column"
             >
               <AccordionHeader
                 index={this.props.index}
                 id={this.props.name}
                 title={`Direction ${this.props.index + 1}`}
-                className="items-list-item d-flex no-margin"
+                className="d-flex no-margin justify-content-between w-100"
               >
                 <ListItemIcons
                   editIconClicked={this.changeEditMode}
@@ -139,7 +139,7 @@ class ListItem extends React.Component {
   }
 }
 
-ListItem.propTypes = {
+Item.propTypes = {
   content: PropTypes.string,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
@@ -154,4 +154,4 @@ ListItem.propTypes = {
   directions: PropTypes.bool,
 
 };
-export default ListItem;
+export default Item;

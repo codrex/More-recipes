@@ -1,28 +1,29 @@
 @import '../../../scss/_var.scss';
 
-.user-info-wrapper{
+.user-info-wrapper {
   padding: 50px 40px;
 }
 
-.recipe-list-header{
+.recipe-list-header {
   height: 50px;
-  background:$primary-color;
+  background: $primary-color;
   color: white;
   margin: 0;
   display: flex;
   align-items: center;
-  padding: 0 .2em;
+  padding: 0 0.2em;
   cursor: pointer;
-  & li:hover, & li.active {
-    color:$secondary-color !important;
+  & li:hover,
+  & li.active {
+    color: $secondary-color !important;
   }
-  & li{
+  & li {
     cursor: pointer;
     font-size: 1.1em;
   }
 }
 
-.profile-page{
+.profile-page {
   position: relative;
   min-height: 90vh;
 }

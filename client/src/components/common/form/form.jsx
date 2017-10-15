@@ -16,13 +16,22 @@ const Form = props => (
     {props.children}
     {props.submitBtnText && <button
       type="submit"
-      className={classnames('btn btn-lg text-uppercase w-100',
-      props.secondary && 'btn-secondary', props.primary && 'btn-primary')}
+      className={classnames('btn text-uppercase w-100',
+      props.secondary && 'btn-secondary',
+      props.primary && 'btn-primary',
+      props.primaryInverse && 'btn-primary-inverse',
+      props.secondaryInverse && 'btn-secondary-inverse',
+      props.lg && 'btn-lg'
+      )}
       disabled={props.disabled}
     >{props.submitBtnText}
     </button>}
   </form>
 );
+
+Form.defaultProps = {
+  lg: true
+};
 
 Form.propTypes = {
   children: PropTypes.any,
@@ -33,7 +42,10 @@ Form.propTypes = {
   onSubmit: PropTypes.func,
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
+  lg: PropTypes.bool,
   disabled: PropTypes.bool,
+  primaryInverse: PropTypes.bool,
+  secondaryInverse: PropTypes.bool,
 };
 
 export default Form;

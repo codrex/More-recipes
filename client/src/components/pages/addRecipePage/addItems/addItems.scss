@@ -1,89 +1,101 @@
 @import '../../../../scss/_var.scss';
 
-.items{
+.items {
   height: 100%;
   overflow: hidden;
-  padding: 0 ;
-  &-header{
+  padding: 0;
+  margin: 0 auto;
+  border: 2px solid rgba($dark-text, 0.1);
+  &-header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     max-height: 35%;
     height: fit-content;
-    & form{
+    & form {
       max-height: fit-content;
       padding: 0;
-      // margin-top: 1em;
     }
-
   }
-  &-header-text{
-    background-color: $primary-color;
-    color: white;
+  &-header-text {
+    background-color: $bg-color;
+    color: $primary-color;
     padding: 1em;
-    font-size: 1.6em;
+    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
   }
-  &-list{
+  &-list {
     overflow: scroll;
     height: 65%;
-    // margin: .5em 0;
-    padding: 0, .5em;
     &-item {
-      height: 70px;
+      min-height: 50px;
       margin: 0;
-      padding: 1em .5em;
-      // margin-bottom: .5em;
-      // text-transform: lowercase;
-      font-size: 1.8em;
-      color: #fff;
+      padding: 1em 0.5em;
+      color: $dark-text;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-color: rgba($primary-color, .899);
-      padding-left: .5em;
-      transition: background-color .4s ease-in;
+      padding-left: 0.5em;
+      transition: background-color 0.4s ease-in;
       border-radius: 0 !important;
-      &:hover, &:focus{
-        background-color: darken($primary-color,5%);
-      }
+      width: 95%;
+      margin: 0.25em auto;
     }
   }
 }
-.item-edit-form{
+.item-edit-form {
   display: flex;
   height: fit-content;
   align-items: flex-start;
-  padding: .3em;
-  // margin-bottom: 1em;
+  padding: 0.3em;
 }
-.item-edit-form-textarea{
+.item-edit-form-textarea {
   flex-direction: column;
-  padding-top: .5em;
+  padding-top: 0.5em;
   width: 100%;
 }
-.item-edit-input{
-  min-height:1.5em;
+.item-edit-input {
+  min-height: 1.5em;
   font-size: 1.6em;
   height: 50px;
 }
-.item-edit-textarea, textarea{
-    height: 150px;
-    border-radius: 0;
-    margin-bottom: .5em;
+.item-edit-textarea,
+textarea {
+  height: 150px;
+  border-radius: 0;
+  margin-bottom: 0.5em;
 }
-.item-edit-fg{
+.item-edit-fg {
   flex: 2;
   margin: 0;
   width: 100%;
 }
-.item-edit-btn{
+.item-edit-btn {
   align-self: flex-end;
   box-shadow: none !important;
   font-size: 1.4em;
   height: 50px;
-
+}
+.items-list-wrapper {
+  background: $bg-color;
+  height: inherit;
+  padding: 1em 0;
 }
 
+.add-item-input {
+  font-size: 1.5rem;
+  border-radius: 0;
+  & > .help-text {
+    font-size: 1.5em;
+    font-weight: 200;
+    text-align: center;
+    background: rgba(213, 56, 50, 0.06);
+    margin-bottom: 5px;
+  }
+}

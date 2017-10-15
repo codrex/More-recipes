@@ -1,6 +1,10 @@
-import { dispatchOnSuccess,
-         dispatchOnFail, dispatchOnAuthError,
-         setToken, request } from '../requestHandler/requestHandler';
+import {
+  dispatchOnSuccess,
+  dispatchOnFail,
+  dispatchOnAuthError,
+  setToken,
+  request
+} from '../requestHandler/requestHandler';
 import { ajaxRedirect } from './ajaxActions';
 import jwt from 'jsonwebtoken';
 
@@ -40,21 +44,23 @@ export default class ActionDispatcher {
   onError(error) {
     if (error.response) {
       if (error.response.status === 401 || error.response.status === 403) {
-      // if user is not logged in redirect user to home page
-        dispatchOnAuthError(this.dispatch,
-      'Authentication failed. Please SIGN-UP or LOGIN to continue');
+        // if user is not logged in redirect user to home page
+        dispatchOnAuthError(
+          this.dispatch,
+          'Authentication failed. Please SIGN-UP or LOGIN to continue'
+        );
         this.dispatch(ajaxRedirect('/'));
       } else {
         dispatchOnFail(this.dispatch, error.response.data.error);
       }
     }
   }
-//    /**
-//  * @returns {undefined}
-//  * @param {function} action
-//  * @param {object} payload
-//  */
-/**
+  //    /**
+  //  * @returns {undefined}
+  //  * @param {function} action
+  //  * @param {object} payload
+  //  */
+  /**
  * @return {undefined}
  * @param {function} action
  * @param {object} payload
@@ -81,11 +87,11 @@ export default class ActionDispatcher {
    */
   requestAndDispatch(url, reqData, action, reqType, successMsg) {
     return request(reqData, url, this.dispatch, reqType)
-    .then((payload) => {
-      this.saveToken(action, payload, successMsg);
-    }).catch((error) => {
-      this.onError(error);
-    });
+      .then((payload) => {
+        this.saveToken(action, payload, successMsg);
+      })
+      .catch((error) => {
+        this.onError(error);
+      });
   }
-
 }

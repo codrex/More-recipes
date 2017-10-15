@@ -1,6 +1,6 @@
 @import '../../../../scss/_var.scss';
 
-.cta{
+.cta {
   width: 80%;
   max-width: 1000px;
   justify-content: center;
@@ -8,19 +8,19 @@
   display: flex;
   flex-direction: column;
   z-index: 2;
-  > h1{
+  > h1 {
     text-align: center;
     color: $light-text;
     font-size: 3.5em;
     font-weight: 800;
   }
-  &-btn-wrapper{
+  &-btn-wrapper {
     width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: center;
   }
 }
-.login{
-  margin-right: .5em;
+.login {
+  margin-right: 0.5em;
 }
