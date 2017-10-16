@@ -8,11 +8,13 @@ import Comments from './comments/comments';
 import Icon from '../../common/icon/icon';
 import Button from '../../common/button/button';
 import Modal from '../../common/modal/modal';
+import TopBar from '../../common/topbar/topbar';
 import CommentForm from '../../common/form/commentForm';
 import Directions from './directions/directions';
 import Ingredients from './ingredients/ingredients';
 
 import './recipe.scss';
+
 /**
  * Recipes component
  */
@@ -37,7 +39,7 @@ class Recipe extends React.Component {
  */
   componentDidMount() {
     this.recipeId = this.props.match.params.id;
-    if (Object.keys(this.props.recipe).length < 1) this.props.actions.getRecipe(this.recipeId);
+    if (this.props.recipe.id === undefined) this.props.actions.getRecipe(this.recipeId);
   }
 
   /**
@@ -84,12 +86,13 @@ class Recipe extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row flex-column recipe">
-          {!this.props.loading && this.props.recipe.Owner &&
-            <h4 className="lead items-header-text top-bar justify-content-between">
-              {recipeName}
-              <span>posted by <em>{this.props.recipe.Owner.username}</em></span>
-            </h4>
-          }
+          <TopBar
+            title={recipeName}
+            className="top-bar justify-content-between"
+          >
+            {this.props.recipe.Owner &&
+              <span>posted by <em>{this.props.recipe.Owner.username}</em></span>}
+          </TopBar>
           <div className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex ">
             <h5 className="display-4">Ingredients </h5>
             <Ingredients ingredients={ingredients} />
@@ -102,7 +105,7 @@ class Recipe extends React.Component {
             <h5 className="display-4">Reviews and comments
               <Button
                 text="post a review"
-                className="btn-secondary btn-lg"
+                className="btn-secondary"
                 dataToggle="modal"
                 dataTarget="#modal"
               />
@@ -134,7 +137,7 @@ class Recipe extends React.Component {
           title="Review"
 
         >
-          <CommentForm id={parseInt(this.recipeId, 10)} />
+          <CommentForm id={parseInt(this.recipeId, 10)} loading={this.props.loading} />
         </Modal>
       </div>
     );
@@ -152,7 +155,7 @@ Recipe.propTypes = {
 const mapStateToProps = (state) => (
   {
     redirectUrl: state.redirectUrl,
-    recipe: state.selectedRecipe,
+    recipe: state.recipe,
     loading: state.ajaxCall > 0
   }
 );

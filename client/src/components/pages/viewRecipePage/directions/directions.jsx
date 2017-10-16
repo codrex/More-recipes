@@ -9,15 +9,21 @@ const Direction = (props) => (
   <Accordion
     index={props.index}
     id={`Step ${props.index}`}
-    className=""
   >
     <AccordionHeader
       index={props.index}
       id={`Step ${props.index}`}
       title={`Step ${props.index + 1}`}
-      className=" d-flex no-margin direction-header"
+      className=" d-flex no-margin"
     >
-      <Icon iconClass="fa fa-angle-down" />
+      <a
+        href={`#item${props.index}`}
+        data-toggle="collapse"
+        aria-expanded="false"
+        className="collapsed collapse-trigger a"
+      >
+        <Icon iconClass="fa fa-angle-down" />
+      </a>
     </AccordionHeader>
     <AccordionBody
       id={`Step ${props.index}`}

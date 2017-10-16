@@ -106,13 +106,14 @@ export const getRecipe = id => (dispatch) => {
   );
 };
 
-export const postReview = (id, review) => (dispatch) => {
+export const postReview = (id, review, msg) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher.requestAndDispatch(
     `/api/v1/recipes/${id}/reviews`,
     review,
     afterReview,
-    'post'
+    'post',
+    msg
   );
 };
 

@@ -6,6 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import Form from './form';
 import Textarea from './textarea';
 import { postReview } from '../../../actions/recipeActions';
+import { ajaxRequestSuccess } from '../../../actions/ajaxActions';
 import { review } from '../../../validator/validator';
 
 /**
@@ -19,12 +20,22 @@ class CommentForm extends React.Component {
     super(props);
     this.review = this.review.bind(this);
   }
-   /**
+  /**
+   * @return {undefined}
+   * @param {object} nextProps
+   */
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.success.success === 'Review posted') {
+      this.props.reset();
+      this.props.clearSuccessMsg({ success: undefined });
+    }
+  }
+  /**
     * @param {object} value (form values)
    * @return {undefined} undefined
   */
   review(value) {
-    this.props.postReview(this.props.id, value);
+    this.props.postReview(this.props.id, value, 'Review posted');
   }
 
   /**
@@ -34,10 +45,10 @@ class CommentForm extends React.Component {
     const { handleSubmit } = this.props;
     return (
       <Form
-        submitBtnText="Post review"
+        submitBtnText={(!this.props.loading && 'Post review') || 'Loading...'}
         onSubmit={handleSubmit(this.review)}
-        className={this.props.loading ? 'hide' : ''}
         secondary
+        disabled={this.props.loading}
       >
         <Field
           component={Textarea}
@@ -55,12 +66,22 @@ CommentForm.propTypes = {
   handleSubmit: PropTypes.func,
   loading: PropTypes.bool,
   id: PropTypes.number,
+  reset: PropTypes.func,
+  clearSuccessMsg: PropTypes.func,
+  success: PropTypes.object,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  postReview: bindActionCreators(postReview, dispatch)
+const mapDispatchToProps = dispatch => ({
+  postReview: bindActionCreators(postReview, dispatch),
+  clearSuccessMsg: bindActionCreators(ajaxRequestSuccess, dispatch),
 });
+
+const mapStateToProps = (state) => (
+  {
+    success: state.ajaxSuccess,
+  }
+);
 
 export default reduxForm({
   form: 'reviewForm'
-})(connect(null, mapDispatchToProps)(CommentForm));
+})(connect(mapStateToProps, mapDispatchToProps)(CommentForm));

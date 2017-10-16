@@ -17,9 +17,9 @@ const Textarea = (props) => {
         {...props.input}
       >
       </textarea>
-      <span className={props.meta && props.meta.touched && props.meta.error ? 'help-text' : ''}>
+      <div className={props.meta && props.meta.touched && props.meta.error ? 'help-text' : ''}>
       {props.meta && props.meta.touched && props.meta.error}
-      </span>
+      </div>
     </div>
   );
 };

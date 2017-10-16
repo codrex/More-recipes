@@ -44,11 +44,6 @@ const constraints = {
       message: 'Email entered is not valid'
     },
   },
-  review: {
-    presence: {
-      message: 'review can\'t be blank'
-    },
-  },
   presenceAndLength(fieldName) {
     fieldName = {
       presence: {
