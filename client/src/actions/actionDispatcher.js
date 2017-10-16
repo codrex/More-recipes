@@ -51,15 +51,14 @@ export default class ActionDispatcher {
         );
         this.dispatch(ajaxRedirect('/'));
       } else {
-        dispatchOnFail(this.dispatch, error.response.data.error);
+        let errorMsg = error.response.data.error;
+        if (typeof errorMsg === 'object') {
+          errorMsg = errorMsg[Object.keys(errorMsg)[0]];
+        }
+        dispatchOnFail(this.dispatch, errorMsg);
       }
     }
   }
-  //    /**
-  //  * @returns {undefined}
-  //  * @param {function} action
-  //  * @param {object} payload
-  //  */
   /**
  * @return {undefined}
  * @param {function} action

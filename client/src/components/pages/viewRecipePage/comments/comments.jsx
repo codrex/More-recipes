@@ -24,7 +24,7 @@ const Comments = (props) => {
   const comments = props.comments || [];
   return (
     <div className="col-11">
-      {comments.map((comment, i) => {
+      {comments.reverse().map((comment, i) => {
         return (<Comment
           key={i}
           review={comment.review}
@@ -34,7 +34,7 @@ const Comments = (props) => {
       )}
       {comments.length === 0 &&
         <h1 className="text-uppercase msg-display no-comment no-margin">
-          Sorry..<br />No review was found.
+          Sorry..<br />this recipe have no review.
         </h1>
       }
     </div>
