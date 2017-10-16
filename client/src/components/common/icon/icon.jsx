@@ -5,7 +5,8 @@ import './icon.scss';
 
 const Icon = (props) => (
   <div
-    className={classnames('icon-wrapper', props.parentClass, props.active)}
+    className={classnames('icon-wrapper',
+    props.parentClass, props.active, props.pointer && 'pointer')}
     onClick={props.handleClick}
     onMouseEnter={props.onMouseEnter}
   >
@@ -28,5 +29,6 @@ Icon.propTypes = {
   children: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
   dataTarget: PropTypes.string,
   dataToggle: PropTypes.string,
+  pointer: PropTypes.bool,
 };
 export default Icon;

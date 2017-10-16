@@ -23,10 +23,11 @@ const ListItem = props => (
 
 ListItem.propTypes = {
   text: PropTypes.string,
+  to: PropTypes.string,
 };
 
 const Navbar = () => {
-  const linkList = ['Home', 'Recipes', 'Add Recipe'];
+  const linkList = ['Home', 'Dashboard', 'Add Recipe'];
   const links = ['/', '/recipes', '/recipe/create'];
   return (
     <nav
@@ -45,6 +46,5 @@ const Navbar = () => {
     </nav>
     );
 };
-
 
 export default Navbar;

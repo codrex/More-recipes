@@ -1,10 +1,13 @@
 @import '../../../scss/_var.scss';
 
+.dashboard{
+  height: 90vh;
+}
+
 .sidebar-wrapper {
-  background-color: $primary-color;
-  height: 100vh;
+  height: 100%;
   padding: 0;
-  transition: transform 0.5s ease-in;
+  transition: all 0.3s cubic-bezier(1, -0.42, 0, 1.42);
   &.show {
     transform: translateX(0) !important;
   }
@@ -12,7 +15,8 @@
 .recipes-wrapper {
   background-color: $bg-color;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  overflow: hidden;
 }
 .category-filter-wrapper {
   background-color: $primary-color;
@@ -23,19 +27,14 @@
 .grid-list-wrapper {
   background-color: $bg-color;
   flex-grow: 3;
-  justify-content: center;
   align-items: stretch;
   overflow-x: hidden;
   overflow-y: auto;
-}
-.grid {
-  background-color: $bg-color;
-  min-height: 80%;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  max-height: 75%;
+  & > h1 {
+    margin: 20px;
+    font-weight: lighter;
+  }
 }
 .pagination-wrapper {
   background-color: wheat;
@@ -47,15 +46,18 @@
 }
 
 @media (max-width: 767px) {
+  .overlay-active{
+    transition: opacity .4s ease-in;
+  }
   .sidebar-wrapper {
     transform: translateX(-140%);
     position: fixed;
-    top: 10vh;
-    font-size: 1.5em;
+    font-size: 1.2em;
     height: 100vh;
+    top:0;
     z-index: 9999;
-    background: $primary-color;
     box-shadow: 20px 18px 17px 3px rgba(0, 0, 0, 0.11);
+    background-color: rgba($primary-color,.7);
     width: 80%;
     &-header {
       font-size: 1em;
@@ -65,7 +67,6 @@
     }
   }
   .mobile {
-    display: inline;
     padding: 0.5em;
     margin-right: 0.2em;
     position: absolute;
@@ -73,9 +74,29 @@
     margin-right: 10px;
     top: 0;
     font-size: 2em;
-    color: #fff;
+    color:$secondary-color;
+    top:50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+
   }
-  .recipe-card {
-    margin: 1em auto;
+  .overlay-active .animate{
+    transform: translateY(0%);
+    opacity: 1
   }
-}
+  .animate{
+    transform: translateY(-200%);
+    transition: transform .5s ease-in .3s, opacity .2s ease-in .4s;
+    opacity: 0;
+    }
+  .mobile.animate{
+    position: fixed;
+    top: 20px;
+    background: white;
+  }
+  }
+

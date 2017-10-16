@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { email, username, password } from '../../../validator/validator';
+import { email, username, password } from '../../../utils/validator/validator';
 import Form from './form';
 import Input from './input';
 /**

@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import './list.scss';
 
 export const ListItem = (props) => (
-  <div className={classnames('items-list-item lead list-item', props.className)}>
+  <div className={classnames('lead list-item', props.className)}>
     {props.content && <h4
       className="list-item-text"
       data-index={props.index && props.index + 1}

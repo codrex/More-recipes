@@ -1,3 +1,4 @@
+import initialState from '../reducers/initialState';
 import {
   RECIPE,
   UPDATE_DIRECTIONS,
@@ -12,9 +13,9 @@ import {
   AFTER_VOTE,
   RECIPE_TO_MODIFY,
   CURRENT_RECIPE,
-  ON_NEW_RECIPE
+  ON_NEW_RECIPE,
+  FIND_RECIPES
 } from '../actions/actions';
-import initialState from '../reducers/initialState';
 
 export const recipesReducer = (state = initialState.Recipes, action) => {
   switch (action.type) {
@@ -23,6 +24,8 @@ export const recipesReducer = (state = initialState.Recipes, action) => {
     case GET_FAV_RECIPES:
       return action.recipes.User.favRecipes;
     case GET_TOP_RECIPES:
+      return action.recipes.Recipes;
+    case FIND_RECIPES:
       return action.recipes.Recipes;
     default:
       return state;
@@ -34,7 +37,7 @@ export const recipeReducer = (state = initialState.Recipe, action) => {
     return action.recipe.Recipe;
   }
   if (action.type === AFTER_REVIEW) {
-    const RecipeReviews = action.recipe.Recipe.RecipeReviews;
+    const RecipeReviews = action.recipe.Recipe.RecipeReviews.reverse();
     return { ...state,
       RecipeReviews
     };

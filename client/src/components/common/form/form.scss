@@ -11,6 +11,8 @@
   font-weight: 200;
   padding-left: 0.5em;
   padding-top: 0.25em;
+  background: $light-text;
+  font-weight: 600;
   &::first-letter {
     text-transform: uppercase;
   }

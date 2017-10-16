@@ -6,7 +6,7 @@ import ItemsList from './itemsList';
 import Input from '../../../common/form/input';
 import Textarea from '../../../common/form/textarea';
 import Icon from '../../../common/icon/icon';
-import { item } from '../../../../validator/validator';
+import { item } from '../../../../utils/validator/validator';
 import './addItems.scss';
 
 /**

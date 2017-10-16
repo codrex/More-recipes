@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { fullname, email, username } from '../../../validator/validator';
+import { fullname, email, username } from '../../../utils/validator/validator';
 import Form from './form';
 import Input from './input';
 

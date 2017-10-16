@@ -5,12 +5,13 @@
   text-transform: capitalize;
   padding-left: 40px;
   position: relative;
-  margin-bottom: .3em;
-  //color:$dark-text;
+  margin-bottom: .5em;
   background-color:rgba($dimmed-white,0.3);
-  padding: 1em;
+  padding: 1em 1.5em;
   box-shadow: -1px 1px 3px 1px rgba(0, 0, 0, 0.1);
   font-size: 1.1rem;
+  display: flex;
+  align-items: center;
   &-text{
     margin: .2em 0;
     cursor: default;

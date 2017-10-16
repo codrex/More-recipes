@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import Form from './form';
 import Input from './input';
-import { username, password } from '../../../validator/validator';
+import { username, password } from '../../../utils/validator/validator';
 
 /**
  * User login form

@@ -8,16 +8,17 @@ import Comments from './comments/comments';
 import Icon from '../../common/icon/icon';
 import Button from '../../common/button/button';
 import Modal from '../../common/modal/modal';
+import TopBar from '../../common/topbar/topbar';
 import CommentForm from '../../common/form/commentForm';
 import Directions from './directions/directions';
 import Ingredients from './ingredients/ingredients';
 
 import './recipe.scss';
+
 /**
  * Recipes component
  */
 class Recipe extends React.Component {
-
   /**
    * @return {undefined}
    * @param {object} props
@@ -26,18 +27,19 @@ class Recipe extends React.Component {
     super(props);
     this.state = {
       vote: '',
-      addToFav: false,
+      addToFav: false
     };
     this.vote = this.vote.bind(this);
     this.addToFav = this.addToFav.bind(this);
   }
 
-/**
+  /**
  * @return {undefined}
  */
   componentDidMount() {
     this.recipeId = this.props.match.params.id;
-    if (Object.keys(this.props.recipe).length < 1) this.props.actions.getRecipe(this.recipeId);
+    if (this.props.recipe.id === undefined)
+      this.props.actions.getRecipe(this.recipeId);
   }
 
   /**
@@ -80,16 +82,35 @@ class Recipe extends React.Component {
    * @return {undefined}
    */
   render() {
-    const { ingredients, directions, RecipeReviews, recipeName } = this.props.recipe;
+    const {
+      ingredients,
+      directions,
+      RecipeReviews,
+      recipeName,
+      upVotes,
+      downVotes,
+      views
+    } = this.props.recipe;
     return (
       <div className="container-fluid">
         <div className="row flex-column recipe">
-          {!this.props.loading && this.props.recipe.Owner &&
-            <h4 className="lead items-header-text top-bar justify-content-between">
-              {recipeName}
-              <span>posted by <em>{this.props.recipe.Owner.username}</em></span>
-            </h4>
-          }
+          <TopBar
+            title={recipeName}
+            className="top-bar justify-content-between"
+          >
+            {this.props.recipe.Owner && (
+              <span>
+                posted by <em>{this.props.recipe.Owner.username}</em>
+              </span>
+            )}
+          </TopBar>
+          <div className="recipe-stat">
+            <Icon iconClass="fa fa-thumbs-up recipe-card-icon">{upVotes}</Icon>
+            <Icon iconClass="fa fa-thumbs-down recipe-card-icon">
+              {downVotes}
+            </Icon>
+            <Icon iconClass="fa fa-eye recipe-card-icon">{views}</Icon>
+          </div>
           <div className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex ">
             <h5 className="display-4">Ingredients </h5>
             <Ingredients ingredients={ingredients} />
@@ -99,10 +120,11 @@ class Recipe extends React.Component {
             <Directions directions={directions} />
           </div>
           <div className="col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper d-flex">
-            <h5 className="display-4">Reviews and comments
+            <h5 className="display-4">
+              Reviews and comments
               <Button
                 text="post a review"
-                className="btn-secondary btn-lg"
+                className="btn-secondary"
                 dataToggle="modal"
                 dataTarget="#modal"
               />
@@ -110,7 +132,7 @@ class Recipe extends React.Component {
             <Comments comments={RecipeReviews} loading={this.props.loading} />
           </div>
         </div>
-        <div className="d-flex justify-content-around lead topbar flex-column icon-bar" >
+        <div className="d-flex justify-content-around lead topbar flex-column icon-bar">
           <Icon
             iconClass="fa fa-thumbs-o-up"
             active={this.state.vote === 'up' ? 'active' : ''}
@@ -127,14 +149,11 @@ class Recipe extends React.Component {
             handleClick={this.addToFav}
           />
         </div>
-        <Modal
-          id="modal"
-          center
-          rightBtnText="Post review"
-          title="Review"
-
-        >
-          <CommentForm id={parseInt(this.recipeId, 10)} />
+        <Modal id="modal" center rightBtnText="Post review" title="Review">
+          <CommentForm
+            id={parseInt(this.recipeId, 10)}
+            loading={this.props.loading}
+          />
         </Modal>
       </div>
     );
@@ -146,25 +165,21 @@ Recipe.propTypes = {
   history: PropTypes.object,
   recipe: PropTypes.object,
   loading: PropTypes.bool,
-  match: PropTypes.object,
+  match: PropTypes.object
 };
 
-const mapStateToProps = (state) => (
-  {
-    redirectUrl: state.redirectUrl,
-    recipe: state.selectedRecipe,
-    loading: state.ajaxCall > 0
+const mapStateToProps = state => ({
+  redirectUrl: state.redirectUrl,
+  recipe: state.recipe,
+  loading: state.ajaxCall > 0
+});
+const mapDispatchToProps = dispatch => ({
+  actions: {
+    redirect: bindActionCreators(ajaxRedirect, dispatch),
+    getRecipe: bindActionCreators(getRecipe, dispatch),
+    vote: bindActionCreators(vote, dispatch),
+    toggleFav: bindActionCreators(toggleFav, dispatch)
   }
-);
-const mapDispatchToProps = (dispatch) => (
-  {
-    actions: {
-      redirect: bindActionCreators(ajaxRedirect, dispatch),
-      getRecipe: bindActionCreators(getRecipe, dispatch),
-      vote: bindActionCreators(vote, dispatch),
-      toggleFav: bindActionCreators(toggleFav, dispatch)
-    }
-  }
-);
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recipe);
