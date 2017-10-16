@@ -9,7 +9,7 @@ export const email = eMail => validate.single(eMail, constraint.email);
 
 export const fullname = fullName => validate.single(fullName, constraint.fullname);
 
-export const review = (reView) =>
+export const review = reView =>
 validate.single(reView, constraint.presenceAndLength('review'));
 
 export const item = (itm, itemName) =>
