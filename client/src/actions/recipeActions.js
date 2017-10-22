@@ -1,3 +1,4 @@
+import ActionDispatcher from './actionDispatcher';
 import {
   RECIPE,
   UPDATE_DIRECTIONS,
@@ -14,9 +15,9 @@ import {
   RECIPE_TO_MODIFY,
   CURRENT_RECIPE,
   DELETE_RECIPE,
-  ON_NEW_RECIPE
+  ON_NEW_RECIPE,
+  FIND_RECIPES
 } from './actions';
-import ActionDispatcher from './actionDispatcher';
 
 export const createOrModifyRecipe = recipe => ({ type: RECIPE, recipe });
 export const setCurrentRecipe = recipe => ({ type: CURRENT_RECIPE, recipe });
@@ -47,6 +48,7 @@ const afterToggleFav = user => ({ type: TOGGLE_FAV, user });
 const gotAllRecipes = recipes => ({ type: GET_ALL_RECIPES, recipes });
 const gotFavRecipes = recipes => ({ type: GET_FAV_RECIPES, recipes });
 const gotRecipe = recipe => ({ type: GET_RECIPE, recipe });
+const gotFindRecipe = recipes => ({ type: FIND_RECIPES, recipes });
 
 export const createRecipe = (recipe, msg) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
@@ -152,4 +154,15 @@ export const deleteRecipe = id => (dispatch) => {
         'get'
       );
     });
+};
+
+export const findRecipes = (searchTerm, msg = undefined) => (dispatch) => {
+  const dispatcher = new ActionDispatcher(dispatch);
+  dispatcher.requestAndDispatch(
+    `/api/v1/recipes?search=${searchTerm}`,
+    null,
+    gotFindRecipe,
+    'get',
+    msg
+  );
 };

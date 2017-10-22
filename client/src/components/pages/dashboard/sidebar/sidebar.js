@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
-import nameAbbr from '../../../../nameAbbr/nameAbbr';
+import nameAbbr from '../../../../utils/nameAbbr/nameAbbr';
 import './sidebar.scss';
 
 
@@ -33,7 +33,7 @@ class Sidebar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: null,
+      active: 0,
     };
     this.setActive = this.setActive.bind(this);
   }
@@ -45,6 +45,7 @@ class Sidebar extends React.Component {
   setActive(current) {
     this.setState({ active: current });
     this.props.actions[current]();
+    this.props.active(current);
   }
 
   /**
@@ -55,12 +56,17 @@ class Sidebar extends React.Component {
     return (
       <div className="sidebar col-12 ">
         <div className="sidebar-header">
-          <h4 className="lead sidebar-text">
-            Recipes
-          </h4>
           <div className="avatar avatar-sm" >
             {abbr}
           </div>
+          <h4 className="lead sidebar-text">
+            Dashboard
+          </h4>
+          <Link to="/user">
+            <p className="small text-white text-capitalize">
+              my profile
+            </p>
+          </Link>
         </div>
         <div className="sidebar-body">
           <SidebarListItem
@@ -82,16 +88,6 @@ class Sidebar extends React.Component {
             index={2}
 
           />
-          <Link to="/recipe/create">
-            <SidebarListItem
-              name="add recipe"
-            />
-          </Link>
-          <Link to="/user">
-            <SidebarListItem
-              name="my profile"
-            />
-          </Link>
 
         </div>
       </div>
@@ -104,6 +100,7 @@ Sidebar.propTypes = {
   id: PropTypes.number,
   avatar: PropTypes.string,
   user: PropTypes.object,
+  active: PropTypes.func,
 };
 
 export default Sidebar;

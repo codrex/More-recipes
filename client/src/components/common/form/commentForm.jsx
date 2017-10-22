@@ -7,7 +7,7 @@ import Form from './form';
 import Textarea from './textarea';
 import { postReview } from '../../../actions/recipeActions';
 import { ajaxRequestSuccess } from '../../../actions/ajaxActions';
-import { review } from '../../../validator/validator';
+import { review } from '../../../utils/validator/validator';
 
 /**
  * review form

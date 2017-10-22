@@ -209,7 +209,7 @@ class ProfilePage extends React.Component {
         }
         {!showLoader &&
           <div className="row">
-            <TopBar className="recipe-list-header" search handleSubmit={this.searchValueChange}>
+            <TopBar className="recipe-list-header" search handleChange={this.searchValueChange}>
               <div className="d-flex">
                 <li
                   className={classnames('text-capitalize nav-link nav-item',

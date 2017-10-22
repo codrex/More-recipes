@@ -14,6 +14,8 @@ export const GET_MY_RECIPES = 'GET_MY_RECIPES';
 export const GET_TOP_RECIPES = 'GET_TOP_RECIPES';
 export const GET_RECIPE = 'GET_RECIPE';
 export const DELETE_RECIPE = 'DELETE_RECIPE';
+export const FIND_RECIPES = 'FIND_RECIPE';
+
 
 export const AFTER_REVIEW = 'AFTER_REVIEW';
 export const AFTER_VOTE = 'AFTER_VOTE';

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import ListItem from './item';
-import { validateItems } from '../../../../validator/validator';
+import { validateItems } from '../../../../utils/validator/validator';
 import './addItems.scss';
 
 

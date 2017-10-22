@@ -50,7 +50,10 @@ a.bg-primary:hover{
   border-radius: 20px !important;
 }
 .top-margin{
-  margin: 50px !important;
+  margin-top: 50px !important;
+}
+.bottom-margin{
+  margin-bottom: 50px !important;
 }
 .bold{
   font-weight: bold!important;
@@ -74,11 +77,12 @@ a.bg-primary:hover{
   z-index: $overlay-z;
   background: rgba(0,0,0,0.6);
   overflow: hidden;
-  display: none;
   visibility: hidden;
+  opacity: 0;
+  transition: opacity .4s ease-in, visibility .4s ease-in;
   &-active{
-    display: block;
     visibility: visible;
+    opacity: 1;
   }
 }
 .transparent{

@@ -126,8 +126,8 @@
       text-align: center;
       color: white;
       cursor: pointer;
-    
-    
+
+
     }
   &-footer{
     height: 50px;
@@ -180,7 +180,7 @@
       height: 100vh;
       z-index: $sidebar-z;
       background: #631e63;
-      
+
       width: 80%;
       &-header{
         font-size: 1em;
@@ -192,7 +192,7 @@
     .mobile{
       display: inline;
       padding: .5em;
-      margin-right: .2em; 
+      margin-right: .2em;
         position: absolute;
         z-index: 2;
         left: 0;
@@ -205,13 +205,11 @@
         margin: 1em auto;
       }
   }
-   @media(max-width:1528px) and (max-width:991px){
-    
+  @media(max-width:1528px) and (max-width:991px){
     .recipe-card{
       width: 80%;
     }
   }
-  
   @media(min-width:1301px){
     .recipe-card{
       width: 15.5em;
@@ -227,7 +225,7 @@
       width: 13em;
     }
   }
-    @media(min-width:881px){
+  @media(min-width:881px){
     .recipe-card{
       width: 12.9em;
     }
@@ -237,5 +235,5 @@
       width: 13em;
     }
   }
-  
-  
+
+

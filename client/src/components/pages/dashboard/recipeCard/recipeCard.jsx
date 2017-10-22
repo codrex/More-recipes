@@ -5,35 +5,32 @@ import Button from '../../../common/button/button';
 import { Link } from 'react-router-dom';
 import './recipeCard.scss';
 
-const RecipeCard = props => {
-  return (
-    <div className={'recipe-card col-xs-10 col-sm-10 col-md-5 col-lg-5'}>
-      <div className="recipe-card-header">
-        <h4 className="no-margin">{props.category}</h4>
-      </div>
-      <div className="recipe-card-body">
-        <h2 className="recipe-name display-4 text-white ">
-          {props.recipeName}
-        </h2>
-        <div className="recipe-card-underlay">
-          <Link to={`recipe/${props.recipeId}`}>
-            <Button text="view details" className="recipe-card-underlay-btn" />
-          </Link>
-        </div>
-      </div>
+const pix = 'https://i.pinimg.com/564x/b5/be/08/b5be084a849fa67c190cc85b1e9216c3.jpg';
 
-      <div className="recipe-card-footer">
-        <Icon iconClass="fa fa-thumbs-up recipe-card-icon">
-          {props.upVotes}
-        </Icon>
-        <Icon iconClass="fa fa-thumbs-down recipe-card-icon">
-          {props.downVotes}
-        </Icon>
-        <Icon iconClass="fa fa-eye recipe-card-icon">{props.views}</Icon>
+const RecipeCard = props => (
+  <div className="recipe-card">
+    <div className="recipe-card-body">
+      <img src={pix} alt={`${props.recipeName}`} className="recipe-card-img" />
+      <div className="recipe-card-underlay">
+        <p className="lead">{props.category}</p>
+        <h4 className="recipe-card-title">{props.recipeName}</h4>
+        <Link to={`recipe/${props.recipeId}`}>
+          <Button text="view details" className="recipe-card-underlay-btn" />
+        </Link>
       </div>
     </div>
+    <div className="recipe-card-footer">
+      <Icon iconClass="fa fa-thumbs-up recipe-card-icon ">
+        {props.upVotes}
+      </Icon>
+      <Icon iconClass="fa fa-thumbs-down recipe-card-icon ">
+        {props.downVotes}
+      </Icon>
+      <Icon iconClass="fa fa-eye recipe-card-icon">{props.views}</Icon>
+      <Icon iconClass="fa fa-heart-o recipe-card-icon fav-color" pointer />
+    </div>
+  </div>
   );
-};
 
 RecipeCard.propTypes = {
   upVotes: PropTypes.number,
