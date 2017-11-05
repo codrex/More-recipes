@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
       <Form
         submitBtnText="Login"
         onSubmit={handleSubmit(this.props.login)}
-        className={this.props.loading ? 'hide' : ''}
+        disabled={this.props.loading}
         secondary
       >
         <Field

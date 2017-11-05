@@ -12,8 +12,7 @@ import {
   getRecipe,
   onNewRecipe
 } from '../../../actions/recipeActions';
-import { ajaxRedirect, ajaxRequestSuccess } from '../../../actions/ajaxActions';
-import './addRecipe.scss';
+import { ajaxRedirect } from '../../../actions/ajaxActions';
 
 /**
  * Add recipe component
@@ -123,7 +122,7 @@ AddRecipes.propTypes = {
 const mapStateToProps = state => ({
   loading: state.ajaxCall > 0,
   redirectUrl: state.redirectUrl,
-  recipes: state.user.createdRecipes,
+  //recipes: state.user.createdRecipes,
   success: state.ajaxSuccess
 });
 const mapDispatchToProps = dispatch => ({
@@ -133,7 +132,6 @@ const mapDispatchToProps = dispatch => ({
     recipeToModify: bindActionCreators(recipeToModify, dispatch),
     getRecipe: bindActionCreators(getRecipe, dispatch),
     newRecipe: bindActionCreators(onNewRecipe, dispatch),
-    clearSuccessMsg: bindActionCreators(ajaxRequestSuccess, dispatch)
   }
 });
 

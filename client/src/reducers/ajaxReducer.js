@@ -1,39 +1,31 @@
-import { BEGIN_AJAX_REQUEST, END_AJAX_REQUEST,
-         AJAX_REQUEST_ERROR, AJAX_REQUEST_SUCCESS,
-        AJAX_REQUEST_AUTH_ERROR, REDIRECT, LOGIN_OR_REG_SUCCESS } from '../actions/actions';
+import {
+  BEGIN_AJAX_REQUEST,
+  END_AJAX_REQUEST,
+  REDIRECT,
+  RESET_REQ_COUNT
+} from '../actions/actions';
 import initialState from '../reducers/initialState';
 
-export const ajaxReducer = (state = initialState.ajaxRequestRunning, action) => {
+export const ajaxReducer = (state = initialState.networkRequest, action) => {
   switch (action.type) {
     case BEGIN_AJAX_REQUEST:
-      return state + 1;
+      return { ...state, loading: true };
     case END_AJAX_REQUEST:
-      return state - 1;
-    default:
-      return state;
-  }
-};
-export const ajaxErrorReducer = (state = {}, action) => {
-  switch (action.type) {
-    case AJAX_REQUEST_ERROR:
-      return { error: action.error };
-    case AJAX_REQUEST_AUTH_ERROR:
-      return { error: action.error };
+      return {
+        ...state,
+        ...{
+          loading: false,
+          requestCount: state.requestCount + 1,
+          ...action.response
+        }
+      };
+    case RESET_REQ_COUNT:
+      return { ...state, ...{ requestCount: 0, msg: '' } };
     default:
       return state;
   }
 };
 
-export const ajaxSuccessReducer = (state = {}, action) => {
-  switch (action.type) {
-    case AJAX_REQUEST_SUCCESS:
-      return action.message;
-    case LOGIN_OR_REG_SUCCESS:
-      return { };
-    default:
-      return state;
-  }
-};
 export const ajaxRedirectReducer = (state = '', action) => {
   switch (action.type) {
     case REDIRECT:

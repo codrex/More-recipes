@@ -13,9 +13,8 @@ import {
 } from '../../../actions/recipeActions';
 import { getUserProfile } from '../../../actions/userActions';
 import TopBar from '../../common/topbar/topbar';
-import Sidebar from './sidebar/sidebar';
-import RecipeGrid from './recipesGrid/recipesGrid';
-import './dashboard.scss';
+import Sidebar from './sidebar';
+import RecipeGrid from './recipesGrid';
 
 /**
  * Dashboard component

@@ -1,14 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import LandingPage from './pages/landingPage/index';
 import AddRecipePage from './pages/addRecipePage/index';
 import Navbar from '../components/common/navbar/navbar';
 import toastr from 'toastr';
 import toastrConfig from '../toastr/config';
-import { loginOrRegSuccess } from '../actions/userActions';
+import { resetReqCount } from '../actions/ajaxActions';
 import Recipes from '../components/pages/dashboard/dashboard';
 import Recipe from '../components/pages/viewRecipePage/recipe';
 import ProfilePage from '../components/pages/ProfilePage/index';
@@ -27,16 +26,14 @@ class App extends React.Component {
    * @param {Object} nextProps
    */
   shouldComponentUpdate(nextProps) {
-    if (
-      nextProps.reqError !== this.props.reqError &&
-      nextProps.reqError.error
-    ) {
-      toastr.error(nextProps.reqError.error, 'Error', toastrConfig);
-    } else if (
-      nextProps.reqSuccess !== this.props.reqSuccess &&
-      nextProps.reqSuccess.success
-    ) {
-      toastr.success(nextProps.reqSuccess.success, 'Success', toastrConfig);
+    const { request } = nextProps;
+    if (request.requestCount > 0) {
+      if (!request.success) {
+        toastr.error(request.msg, 'Error', toastrConfig);
+      } else if (request.success) {
+        toastr.success(request.msg, 'Success', toastrConfig);
+      }
+      this.props.resetReqCount();
     }
     return true;
   }
@@ -64,21 +61,14 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  reqError: PropTypes.object,
-  reqSuccess: PropTypes.object,
+  resetReqCount: PropTypes.func,
   token: PropTypes.string
 };
 
 const mapStateToProps = state => ({
-  reqError: state.ajaxError,
-  reqSuccess: state.ajaxSuccess,
-  token: state.token
+  request: state.networkRequest
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: {
-    loginOrRegSuccess: bindActionCreators(loginOrRegSuccess, dispatch)
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, {
+  resetReqCount
+})(App);

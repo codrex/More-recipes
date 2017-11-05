@@ -13,8 +13,6 @@ import CommentForm from '../../common/form/commentForm';
 import Directions from './directions/directions';
 import Ingredients from './ingredients/ingredients';
 
-import './recipe.scss';
-
 /**
  * Recipes component
  */

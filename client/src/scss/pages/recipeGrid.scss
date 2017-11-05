@@ -1,0 +1,21 @@
+
+.msg-display{
+  font-size: 1em;
+  font-weight: bold;
+  height: 50vh;
+  color: rgba(0, 0, 0, 0.38);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+.grid {
+  background-color: $bg-color;
+  height: fit-content;
+  min-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}

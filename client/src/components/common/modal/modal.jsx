@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import './modal.scss';
 
 const Modal = (props) => (
   <div
@@ -13,26 +12,25 @@ const Modal = (props) => (
     aria-hidden="true"
     data-backdrop="false"
   >
-    <div className="modal-header">
-      <h5
-        className="modal-title text-capitalize display-4 text-white"
-        id={`${props.id}Label`}
-      >
-        {props.title}
-      </h5>
-      <button
-        type="button"
-        className="close"
-        data-dismiss="modal"
-        aria-label="Close"
-        onClick={props.closeBtnClicked}
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
     <div className="modal-dialog" role="document">
-      <div className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-8">
-
+      <div className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5">
+        <div className="modal-header">
+          <h5
+            className="modal-title text-capitalize display-4"
+            id={`${props.id}Label`}
+          >
+            {props.title}
+          </h5>
+          <button
+            type="button"
+            className="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            onClick={props.closeBtnClicked}
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
         <div className="modal-body">
           {props.children}
         </div>

@@ -1,32 +1,34 @@
 import {
-  USER,
+  LOGIN,
+  SIGNUP,
   LOGIN_OR_REG_SUCCESS,
   GOT_USER_PROFILE,
   UPDATE_USER_PROFILE
 } from './actions';
 import ActionDispatcher from './actionDispatcher';
 
-const userAction = user => ({ type: USER, user });
-const gotProfile = user => ({ type: GOT_USER_PROFILE, user });
-const updatedProfile = user => ({ type: UPDATE_USER_PROFILE, user });
+export const login = payload => ({ type: LOGIN, payload });
+export const signup = payload => ({ type: SIGNUP, payload });
+export const gotProfile = payload => ({ type: GOT_USER_PROFILE, payload });
+export const updatedProfile = payload => ({ type: UPDATE_USER_PROFILE, payload });
 export const loginOrRegSuccess = () => ({ type: LOGIN_OR_REG_SUCCESS });
 
 export const userLogin = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     '/api/v1/users/signin',
     user,
-    userAction,
+    login,
     'post'
   );
 };
 
 export const userSignup = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     '/api/v1/users/signup',
     user,
-    userAction,
+    signup,
     'post'
   );
 };
@@ -34,13 +36,13 @@ export const userSignup = user => (dispatch) => {
 export const getUserProfile = () => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   const id = dispatcher.getIdFromToken();
-  dispatcher.requestAndDispatch(`/api/v1/users/${id}`, null, gotProfile, 'get');
+  return dispatcher.requestAndDispatch(`/api/v1/users/${id}`, null, gotProfile, 'get');
 };
 
 export const updateProfile = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   const id = dispatcher.getIdFromToken();
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     `/api/v1/users/${id}`,
     user,
     updatedProfile,

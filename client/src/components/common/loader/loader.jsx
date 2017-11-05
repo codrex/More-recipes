@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { GridLoader } from 'react-spinners';
-import './loader.scss';
+import { ClipLoader } from 'react-spinners';
 
 const Loader = (props) => (
   <div className={classnames('loader', !props.loading && 'hide')}>
-    <GridLoader
+    <ClipLoader
       color={'#2c3e50'}
       loading={props.loading}
       size={30}

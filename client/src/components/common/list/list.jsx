@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import './list.scss';
 
 export const ListItem = (props) => (
   <div className={classnames('lead list-item', props.className)}>
