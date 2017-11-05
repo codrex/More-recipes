@@ -35,18 +35,9 @@ class LandingPage extends React.Component {
  * @return {bool} true or false
  */
   shouldComponentUpdate(nextProps) {
-    if (this.props === nextProps) {
-      return true;
-    }
-    const { redirectUrl, success, actions } = nextProps;
-    if (success && !redirectUrl) {
-      this.props.history.push('/recipes');
-      this.afterLogin(actions);
-      return false;
-    } else if (success && redirectUrl) {
-      this.props.history.push(redirectUrl);
-      this.afterLogin(actions);
-      return false;
+    const { authenticated, redirectTo } = nextProps.auth;
+    if (authenticated && nextProps.auth !== this.props.auth) {
+      this.props.history.push(redirectTo);
     }
     return true;
   }
@@ -69,10 +60,15 @@ class LandingPage extends React.Component {
    * @return {undfined} undefined
    */
   signin() {
+    const { authenticated, redirectTo } = this.props.auth;
+    if (authenticated) {
+      this.props.history.push(redirectTo);
+      return;
+    }
     this.setState({
       signin: true,
       signup: false,
-      modalTitle: 'Login'
+      modalTitle: 'Log in to your account'
     });
   }
 
@@ -83,7 +79,7 @@ class LandingPage extends React.Component {
     this.setState({
       signin: false,
       signup: true,
-      modalTitle: 'Create account'
+      modalTitle: 'Create an account'
     });
   }
 
@@ -103,9 +99,10 @@ class LandingPage extends React.Component {
    * @return {object} object
    */
   render() {
+    const { loading } = this.props;
     return (
       <div>
-        <Carousel >
+        <Carousel className={this.state.modalTitle && 'blur'}>
           <Cta signin={this.signin} signup={this.signup} />
         </Carousel>
         <Modal
@@ -119,13 +116,28 @@ class LandingPage extends React.Component {
             this.state.signin &&
               <LoginForm
                 login={this.props.actions.loginAction}
+                loading={loading}
+
               />
           }
          {
            this.state.signup &&
              <RegForm
                signup={this.props.actions.signupAction}
+               loading={loading}
              />
+          }
+          {this.state.signin &&
+            <p className="form-text">
+              Don't have an account?
+              <b onClick={this.signup}> Sign up</b>
+            </p>
+          }
+          {this.state.signup &&
+            <p className="form-text">
+              Already have an account?
+              <b onClick={this.signin}> Sign in</b>
+            </p>
           }
         </Modal>
       </div>
@@ -141,25 +153,23 @@ LandingPage.propTypes = {
   redirectUrl: PropTypes.string,
   token: PropTypes.string,
   redirect: PropTypes.func,
+  auth: PropTypes.object,
+  loading: PropTypes.bool,
 };
 
 const mapDispatchToProps = (dispatch) => (
   {
     actions: {
-      redirect: bindActionCreators(ajaxRedirect, dispatch),
       loginAction: bindActionCreators(userLogin, dispatch),
       signupAction: bindActionCreators(userSignup, dispatch),
-      endSuccess: bindActionCreators(loginOrRegSuccess, dispatch)
-
     },
   }
 );
 
 const mapStateToProps = (state) => (
   {
-    success: state.ajaxSuccess.success ? true : false,
-    redirectUrl: state.redirectUrl,
-    token: state.user.token,
+    auth: state.auth,
+    loading: state.networkRequest.loading,
   }
 
 );

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Accordion, AccordionHeader,
   AccordionBody } from '../../../common/accordion/accordion';
 import Icon from '../../../common/icon/icon';
-import './directions.scss';
 
 const Direction = (props) => (
   <Accordion

@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '../../../common/button/button';
 import PropTypes from 'prop-types';
-import './cta.scss';
 
 const Cta = props => (
   <div className="cta ">

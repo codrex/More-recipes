@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add items component  render as expected when directions is passed as props 1`] = `
+<div
+  className="col-11 items "
+>
+  <div
+    className="items-header"
+  >
+    <h4
+      className="lead items-header-text"
+    >
+      s  0
+      <div
+        className="icon-wrapper"
+        onClick={[Function]}
+        onMouseEnter={undefined}
+      >
+        <i
+          className="icon fa fa-plus float-right"
+          data-target={undefined}
+          data-toggle={undefined}
+        >
+          <span />
+        </i>
+      </div>
+    </h4>
+  </div>
+  <div
+    className="col-12 items-list-wrapper"
+  >
+    <div
+      className="items-list"
+    />
+  </div>
+</div>
+`;
+
+exports[`Add items component  render as expected when ingredients is pass as props 1`] = `
+<div
+  className="col-11 items "
+>
+  <div
+    className="items-header"
+  >
+    <h4
+      className="lead items-header-text"
+    >
+      s  0
+      <div
+        className="icon-wrapper"
+        onClick={[Function]}
+        onMouseEnter={undefined}
+      >
+        <i
+          className="icon fa fa-plus float-right"
+          data-target={undefined}
+          data-toggle={undefined}
+        >
+          <span />
+        </i>
+      </div>
+    </h4>
+  </div>
+  <div
+    className="col-12 items-list-wrapper"
+  >
+    <div
+      className="items-list"
+    />
+  </div>
+</div>
+`;

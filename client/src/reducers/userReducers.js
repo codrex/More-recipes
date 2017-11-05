@@ -1,20 +1,27 @@
-import { USER, GOT_USER_PROFILE,
-        UPDATE_USER_PROFILE, DELETE_RECIPE, TOGGLE_FAV } from '../actions/actions';
+import initialState from './initialState';
+import {
+  LOGIN,
+  SIGNUP,
+  GOT_USER_PROFILE,
+  UPDATE_USER_PROFILE,
+  DELETE_RECIPE,
+  TOGGLE_FAV
+} from '../actions/actions';
 
-export const userReducer = (state = { }, action) => {
-  const copyOfState = Object.assign({}, state);
+export const userReducer = (state = initialState.User, action = {}) => {
   switch (action.type) {
-    case USER:
-      return action.user.User;
+    case LOGIN:
+      return { ...state, ...action.payload.User };
+    case SIGNUP:
+      return { ...state, ...action.payload.User };
     case GOT_USER_PROFILE:
-      return action.user.User;
+      return { ...state, ...action.payload.User };
     case UPDATE_USER_PROFILE:
-      return action.user.User;
+      return { ...state, ...action.payload.User };
     case DELETE_RECIPE:
-      return Object.assign({}, state, action.userRecipes.User);
+      return { ...state, ...action.payload.User };
     case TOGGLE_FAV:
-      copyOfState.favRecipes = action.user.User.favRecipes;
-      return copyOfState;
+      return { ...state, ...action.payload.User };
     default:
       return state;
   }
@@ -22,7 +29,7 @@ export const userReducer = (state = { }, action) => {
 
 export const tokenReducer = (state = '', action) => {
   switch (action.type) {
-    case USER:
+    case LOGIN:
       return action.user.User.token;
     default:
       return state;

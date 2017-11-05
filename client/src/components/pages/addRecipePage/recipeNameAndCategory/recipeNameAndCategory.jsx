@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Form from '../../../common/form/form';
 import Input from '../../../common/form/input';
-import { recipeName, category } from '../../../../validator/validator';
+import { recipeName, category } from '../../../../utils/validator/validator';
 import {
   updateNameCategory,
   createRecipe,

@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => (
 const mapStateToProps = (state) => (
   { items: state.recipe.directions, }
 );
-const AddDirections = () => {
+export const AddDirections = () => {
   const Directions = reduxForm({
     form: 'directionForm',
   })(connect(mapStateToProps, mapDispatchToProps)(AddItems));

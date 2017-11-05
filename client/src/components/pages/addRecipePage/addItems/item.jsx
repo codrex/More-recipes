@@ -9,8 +9,6 @@ import { ListItem } from '../../../common/list/list';
 import { Accordion, AccordionHeader,
        AccordionBody } from '../../../common/accordion/accordion';
 
-import './addItems.scss';
-
 const ListItemIcons = (props) => (
   <div className="d-flex">
     <Icon

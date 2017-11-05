@@ -1,6 +1,6 @@
 const toastConfig = {
-  timeOut: 3000,
-  positionClass: 'toast-top-right',
+  timeOut: 4000,
+  positionClass: 'toast-top-full-width',
   preventDuplicates: true,
 };
 export default toastConfig;

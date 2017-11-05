@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sidebar component  render as expected without any recipe 1`] = `
+<div
+  className="sidebar col-12 "
+>
+  <div
+    className="sidebar-header"
+  >
+    <div
+      className="avatar avatar-sm"
+    >
+      
+    </div>
+    <h4
+      className="lead sidebar-text"
+    >
+      Dashboard
+    </h4>
+    <a
+      href="/user"
+      onClick={[Function]}
+    >
+      <p
+        className="small text-white text-capitalize"
+      >
+        my profile
+      </p>
+    </a>
+  </div>
+  <div
+    className="sidebar-body"
+  >
+    <h4
+      className="lead sidebar-text sidebar-list-item active"
+      onClick={[Function]}
+    >
+      All recipes
+    </h4>
+    <h4
+      className="lead sidebar-text sidebar-list-item"
+      onClick={[Function]}
+    >
+      Top recipes
+    </h4>
+    <h4
+      className="lead sidebar-text sidebar-list-item"
+      onClick={[Function]}
+    >
+      Favorite recipes
+    </h4>
+  </div>
+</div>
+`;

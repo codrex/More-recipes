@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { endAjaxRequest, ajaxRequestError,
-        ajaxRequestSuccess, beginAjaxRequest,
+import { endAjaxRequest, beginAjaxRequest,
         ajaxRequestAuthError } from '../actions/ajaxActions';
 
 const rootUrl = 'http://127.0.0.1:8000';
@@ -19,16 +18,23 @@ export const setToken = (token) => {
 };
 
 export const dispatchOnSuccess = (dispatch, msg = undefined) => {
-  dispatch(endAjaxRequest());
-  dispatch(ajaxRequestSuccess({ success: msg }));
+  dispatch(endAjaxRequest({
+    success: true,
+    msg,
+  }));
 };
 
 export const dispatchOnFail = (dispatch, error) => {
-  dispatch(endAjaxRequest());
-  dispatch(ajaxRequestError(error));
+  dispatch(endAjaxRequest({
+    success: false,
+    msg: error,
+  }));
 };
 
 export const dispatchOnAuthError = (dispatch, error) => {
-  dispatch(endAjaxRequest());
-  dispatch(ajaxRequestAuthError(error));
+  dispatch(endAjaxRequest({
+    success: false,
+    msg: error,
+  }));
+  dispatch(ajaxRequestAuthError());
 };

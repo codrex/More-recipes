@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipe name and category component render as expected 1`] = `
+<div>
+  <h4
+    className="lead items-header-text"
+  >
+    Name and category
+  </h4>
+  <form
+    action={undefined}
+    className="col-12"
+    method={undefined}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group"
+    >
+      <input
+        aria-describedby="recipeName"
+        autoComplete="false"
+        className="form-control text-input add-recipe-input"
+        id="recipeName"
+        name="recipeName"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        placeholder="Enter recipe name"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <input
+        aria-describedby="category"
+        autoComplete="false"
+        className="form-control text-input add-recipe-input"
+        id="category"
+        name="category"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onDragStart={[Function]}
+        onDrop={[Function]}
+        onFocus={[Function]}
+        placeholder="Enter recipe category"
+        type="text"
+        value=""
+      />
+    </div>
+    <button
+      className="btn text-uppercase w-100 btn-secondary"
+      disabled={undefined}
+      type="submit"
+    >
+      modify recipe
+    </button>
+  </form>
+</div>
+`;

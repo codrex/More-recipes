@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import './form.scss';
 
 const Input = (props) => {
-  const valid = props.meta && props.meta.touched && !props.meta.error && 'valid';
-  const invalid = props.meta && props.meta.touched && props.meta.error && 'invalid';
+  const { meta } = props;
+  const valid = meta && meta.touched && !meta.error && 'valid';
+  const invalid = meta && meta.touched && meta.error && 'invalid';
   return (
     <div className={classnames('form-group', props.fgClassName)}>
       <input
@@ -15,11 +15,11 @@ const Input = (props) => {
         id={props.id}
         aria-describedby={props.id}
         placeholder={props.placeholder}
-        autoComplete={false}
+        autoComplete={'false'}
         {...props.input}
       />
       {
-        props.meta && props.meta.touched && props.meta.error.map((error, i) =>
+      meta && meta.touched && meta.error && meta.error.map((error, i) =>
         (
           <div
             key={i}

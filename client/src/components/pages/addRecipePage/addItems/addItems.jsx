@@ -7,7 +7,6 @@ import Input from '../../../common/form/input';
 import Textarea from '../../../common/form/textarea';
 import Icon from '../../../common/icon/icon';
 import { item } from '../../../../utils/validator/validator';
-import './addItems.scss';
 
 /**
  * React component to add recipe Items
@@ -43,10 +42,6 @@ class AddItems extends React.PureComponent {
    * @param {object} nextState
    * @return {undefined}
    */
-  // shouldComponentRender(nextState) {
-  //   console.log(nextState, 'componentsup');
-  //   return true;
-  // }
   /**
    *
    * @return {undfined} undefined
@@ -62,7 +57,6 @@ class AddItems extends React.PureComponent {
    * @return {undfined} undefined
    */
   addItem(value) {
-    console.log(value);
     const { items } = this.state;
     const itemsUpdate = items.concat(value[this.props.name]);
     this.props.reset();

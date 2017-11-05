@@ -3,7 +3,6 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import ListItem from './item';
 import { validateItems } from '../../../../utils/validator/validator';
-import './addItems.scss';
 
 
 const ReduxFormItem = (props) => {
