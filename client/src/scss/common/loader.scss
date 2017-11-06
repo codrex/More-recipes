@@ -6,16 +6,16 @@
   align-items: center;
   padding: 1.5em 0;
   border-radius: 4px;
-  position: absolute;
-  background: rgba(0, 0, 0, 0);
   z-index: 9999999;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  min-height: 300px;
   pointer-events: fill;
   &>h1{
-    color: $primary-color;
-    font-weight: bold
+    color: $text-color;
+    font-weight: bold;
+    margin-top:20px;
   }
 }

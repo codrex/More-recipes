@@ -3,13 +3,15 @@
  "extends": "airbnb",
  "esversion": 6,
   "installedESLint": true,
+  "parser": "babel-eslint",
   "plugins": [
         "react"
     ],
  "env": {
    "node": true,
    "es6": true,
-   "mocha": true
+   "mocha": true,
+   "jest": true
  },
  "parserOptions":{
   "ecmaFeatures": {

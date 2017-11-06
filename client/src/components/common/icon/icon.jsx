@@ -25,9 +25,10 @@ Icon.propTypes = {
   className: PropTypes.string,
   active: PropTypes.string,
   handleClick: PropTypes.func,
-  children: PropTypes.oneOfType(PropTypes.number, PropTypes.string),
+  children: PropTypes.any,
   dataTarget: PropTypes.string,
   dataToggle: PropTypes.string,
   pointer: PropTypes.bool,
+  onMouseEnter: PropTypes.func,
 };
 export default Icon;

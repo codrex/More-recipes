@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LandingPage from './pages/landingPage/index';
@@ -8,7 +8,7 @@ import Navbar from '../components/common/navbar/navbar';
 import toastr from 'toastr';
 import toastrConfig from '../toastr/config';
 import { resetReqCount } from '../actions/ajaxActions';
-import Recipes from '../components/pages/dashboard/dashboard';
+import Recipes from '../components/pages/recipes/recipes';
 import Recipe from '../components/pages/viewRecipePage/recipe';
 import ProfilePage from '../components/pages/ProfilePage/index';
 
@@ -16,6 +16,14 @@ import ProfilePage from '../components/pages/ProfilePage/index';
  * App component
  */
 class App extends React.Component {
+  /**
+   * @return {undefined}
+   * @param {object} props
+   */
+  constructor(props) {
+    super(props);
+    this.onAuthenticated = this.onAuthenticated.bind(this);
+  }
   /**
  * @return {undefined}
  * @param {object} props
@@ -37,6 +45,17 @@ class App extends React.Component {
     }
     return true;
   }
+  /**
+   * @return {undefined}
+   * @param {jsx} Component
+   * @param {object} match
+   */
+  onAuthenticated(Component, match) {
+    // check if user is authenticated before accessing protected page
+    // else redirect user to the landing page where user can login or signup
+    const { authenticated } = this.props.auth;
+    return authenticated ? (<Component match={match} />) : <Redirect to="/" />;
+  }
 
   /**
    * @return{undefined}
@@ -50,7 +69,7 @@ class App extends React.Component {
             <Route path="/recipe/create" component={AddRecipePage} />
             <Route path="/recipe/modify/:id" component={AddRecipePage} />
             <Route path="/recipe/:id" component={Recipe} />
-            <Route static extact path="/recipes/" component={Recipes} />
+            <Route static extact path="/recipes/" render={(match) => this.onAuthenticated(Recipes, match)} />
             <Route path="/user" component={ProfilePage} />
             <Route static extact path="/" component={LandingPage} />
           </Switch>
@@ -62,11 +81,13 @@ class App extends React.Component {
 
 App.propTypes = {
   resetReqCount: PropTypes.func,
-  token: PropTypes.string
+  token: PropTypes.string,
+  auth: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
-  request: state.networkRequest
+  request: state.networkRequest,
+  auth: state.auth,
 });
 
 export default connect(mapStateToProps, {

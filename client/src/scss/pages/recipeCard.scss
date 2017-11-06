@@ -1,22 +1,21 @@
 
 .recipe-card{
-  background: $bg-color;
-  height: inherit;
+  background: #fff;
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 20.25%;
-  min-width: 200px;
-  max-width: 230px;
+  width: 100%;
   margin: .5em;
   position: relative;
   height: fit-content;
+  min-height: 100%;
   border-radius: 4px;
   box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+  min-height: 250px;
   &-body{
     width: 100%;
     height: fit-content;
-    background:$bg-color;
+    background:inherit;
     bottom: 0;
     display: flex;
     justify-content: center;
@@ -27,18 +26,13 @@
     border-radius: 4px 4px 0 0;
     position: relative;
     overflow: hidden;
+    flex:1;
     &:hover .recipe-card-underlay {
       opacity: 1;
-      background: rgba($primary-color, 0.7);
+      background: rgba(0,0,0, 0.5);
       visibility: visible;
       border-radius: 4px 4px 0 0;
     }
-    &:hover .recipe-card-title{
-      transform: translateY(0%);
-      opacity: 1;
-      visibility: visible;
-    }
-
   }
   &-title{
     transform: translateY(-1000%);
@@ -54,19 +48,34 @@
     width: 100%;
     object-fit: cover;
     height: 100%;
+    position: absolute;
+    border-radius: 4px 4px 0 0;
+
   }
 &-footer{
-  height: 40px;
-  background: $bg-color;
-  color: $primary-color;
+  background: inherit;
+  color: $text-color;
   display: flex;
+  flex-direction: column;
+  padding: 1em;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   border-radius: 0 0 4px 4px ;
-  & i{
+  & .fav{
+    margin-left: 1em;
     font-size: 1.6em;
+  }
+  & i{
+    font-size: 1.4em;
     padding: 0 .2em;
     }
+  & h4{
+    line-clamp: 2;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    margin: 0 0 1em 0;
+    width: 95%;
+  }
 }
 &-underlay {
   position: absolute;
@@ -88,18 +97,11 @@
     color: $secondary-color;
     border: 1px $secondary-color solid;
     transition: color 0.3s ease-in;
+    cursor: pointer;
   }
-  &-heart {
-    font-size: 10rem;
-    transition: color 0.5s ease-in;
-    margin-bottom: 0.2em;
-  }
-  &-heart:hover {
-    color: $primary-color !important;
-  }
+
   &-btn:hover {
-    color: $bg-color !important;
-    border: 1px $primary-color solid;
+    box-shadow: none;
   }
 }
 }

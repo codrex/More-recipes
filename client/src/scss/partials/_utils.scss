@@ -46,6 +46,14 @@ a.bg-primary:hover{
 .text-white:hover,.text-white:focus,.text-white:active,.text-white:visited{
   color: white !important;
 }
+.text-dark,
+.text-dark:hover,
+.text-dark:focus,
+.text-dark:active,
+.text-dark:visited {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
 .curve{
   border-radius: 20px !important;
 }
@@ -117,4 +125,7 @@ a.bg-primary:hover{
 }
 .blur{
   filter: blur(20px);
+}
+.no-webkit-appearance{
+  -webkit-appearance: none !important;
 }

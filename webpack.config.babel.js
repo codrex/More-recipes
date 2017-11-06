@@ -51,7 +51,7 @@ module.exports = {
             }
           }
         }, {
-          loader: 'sass-loader' // compiles SASS to CSS
+          loader: 'sass-loader'
         }]
       },
       {
@@ -90,6 +90,8 @@ module.exports = {
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default'],
+      Util: 'exports-loader?Util!bootstrap/js/dist/util',
+      Dropdown: 'exports-loader?Dropdown!bootstrap/js/dist/dropdown',
     }),
     new HtmlWebpackPlugin({
       title: 'MoreRecipes',

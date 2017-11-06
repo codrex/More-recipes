@@ -1,3 +1,4 @@
+import { getToken, hasToken } from '../utils/auth/auth';
 const initailState = {
   Recipes: [],
   Recipe: {
@@ -16,8 +17,8 @@ const initailState = {
     createdRecipes: []
   },
   auth: {
-    authenticated: false,
-    token: '',
+    authenticated: hasToken(),
+    token: getToken(),
     redirectTo: '/recipes'
   },
   networkRequest: {

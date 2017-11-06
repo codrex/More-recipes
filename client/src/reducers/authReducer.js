@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, AJAX_REQUEST_AUTH_ERROR } from '../actions/actions';
+import { LOGIN, LOGOUT, SIGNUP, AJAX_REQUEST_AUTH_ERROR } from '../actions/actions';
 import initialState from './initialState';
 
 const authReducer = (state = initialState.auth, action) => {
@@ -11,6 +11,11 @@ const authReducer = (state = initialState.auth, action) => {
         ...{ authenticated: true, token: action.payload.User.token }
       };
     case AJAX_REQUEST_AUTH_ERROR:
+      return {
+        ...state,
+        ...{ authenticated: false, token: '' }
+      };
+    case LOGOUT:
       return {
         ...state,
         ...{ authenticated: false, token: '' }

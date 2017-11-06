@@ -6,9 +6,9 @@ import { ClipLoader } from 'react-spinners';
 const Loader = (props) => (
   <div className={classnames('loader', !props.loading && 'hide')}>
     <ClipLoader
-      color={'#2c3e50'}
+      color={'#7B4E28'}
       loading={props.loading}
-      size={30}
+      size={60}
     />
     <h1 className="display-4">Loading...</h1>
   </div>

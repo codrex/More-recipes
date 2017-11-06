@@ -6,7 +6,6 @@ import {
   UPDATE_INGREDIENTS,
   UPDATE_ALL_RECIPE_FIELD,
   GET_ALL_RECIPES,
-  GET_FAV_RECIPES,
   AFTER_REVIEW,
   GET_RECIPE,
   GET_TOP_RECIPES,
@@ -44,9 +43,8 @@ export const gotTopRecipes = recipes => ({ type: GET_TOP_RECIPES, recipes });
 const afterDeleteRecipe = userRecipes => ({ type: DELETE_RECIPE, userRecipes });
 const afterReview = recipe => ({ type: AFTER_REVIEW, recipe });
 const afterVote = recipe => ({ type: AFTER_VOTE, recipe });
-const afterToggleFav = user => ({ type: TOGGLE_FAV, user });
+const afterToggleFav = payload => ({ type: TOGGLE_FAV, payload });
 const gotAllRecipes = recipes => ({ type: GET_ALL_RECIPES, recipes });
-const gotFavRecipes = recipes => ({ type: GET_FAV_RECIPES, recipes });
 const gotRecipe = recipe => ({ type: GET_RECIPE, recipe });
 const gotFindRecipe = recipes => ({ type: FIND_RECIPES, recipes });
 
@@ -75,17 +73,6 @@ export const modifyRecipe = (recipe, msg) => (dispatch) => {
 export const getAllRecipes = () => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   dispatcher.requestAndDispatch('/api/v1/recipes', null, gotAllRecipes, 'get');
-};
-
-export const getFavRecipes = () => (dispatch) => {
-  const dispatcher = new ActionDispatcher(dispatch);
-  const id = dispatcher.getIdFromToken();
-  dispatcher.requestAndDispatch(
-    `/api/v1/users/${id}/recipes`,
-    null,
-    gotFavRecipes,
-    'get'
-  );
 };
 
 export const getTopRecipes = () => (dispatch) => {
@@ -130,11 +117,11 @@ export const vote = (id, voteType) => (dispatch) => {
 };
 
 export const toggleFav = (recipeId, msg = undefined) => (dispatch) => {
-  const dispatcher = new ActionDispatcher(dispatch);
+  const dispatcher = new ActionDispatcher(dispatch, false);
   const id = dispatcher.getIdFromToken();
   dispatcher.requestAndDispatch(
     `/api/v1/users/${id}/recipe`,
-    recipeId,
+    { recipeId },
     afterToggleFav,
     'post',
     msg
