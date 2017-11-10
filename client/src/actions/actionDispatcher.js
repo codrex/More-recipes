@@ -53,8 +53,12 @@ export default class ActionDispatcher {
         dispatchOnFail(this.dispatch, errorMsg);
       }
     } else if (error.request) {
-      const errorMsg = 'Network error encountered, please check your conention and try again';
-      dispatchOnFail(this.dispatch, errorMsg);
+      if (process.env.NODE_ENV !== 'test') {
+        const errorMsg = 'Network error encountered, please check your conention and try again';
+        dispatchOnFail(this.dispatch, errorMsg);
+      } else {
+        dispatchOnFail(this.dispatch);
+      }
     }
   }
   /**
