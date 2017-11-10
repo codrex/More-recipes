@@ -5,3 +5,4 @@ coverage
 debug.log
 .nyc_output
 npm-debug.log
+unused

@@ -1,5 +1,4 @@
-
-.msg-display{
+.msg-display {
   font-size: 1em;
   font-weight: bold;
   height: 50vh;
@@ -9,13 +8,42 @@
   align-items: center;
   text-align: center;
   width: 100%;
+
 }
 .grid {
-  background-color: $bg-color;
-  height: fit-content;
-  min-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
+  padding: 0;
+}
+.card-wrapper {
+  box-sizing: border-box;
+  padding: 0 8px 8px 0;
+  position: relative;
+  width: 25%;
+  list-style: none;
+}
+@media (max-width: 912px) {
+  .card-wrapper {
+    width: 33%;
+  };
+}
+@media (max-width: 718px) {
+  .card-wrapper {
+    width: 50%;
+  };
+}
+
+@media (max-width: 525px) {
+  .card-wrapper {
+    width: 50%;
+  };
+}
+
+@media (max-width: 400px) {
+  .card-wrapper {
+    width: 80%;
+  };
+  .grid{
+    justify-content: center;
+  }
 }

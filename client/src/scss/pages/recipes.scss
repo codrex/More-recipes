@@ -1,8 +1,8 @@
-
 .dashboard{
-  height: 90vh;
+  margin: 0 auto;
+  max-width: 1250px;
+  padding: 20px 2pc 0
 }
-
 .sidebar-wrapper {
   height: 100%;
   padding: 0;
@@ -12,10 +12,10 @@
   }
 }
 .recipes-wrapper {
-  background-color: $bg-color;
   flex-direction: column;
   height: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  position: relative;
 }
 .category-filter-wrapper {
   background-color: $primary-color;
@@ -24,12 +24,11 @@
   justify-content: center;
 }
 .grid-list-wrapper {
-  background-color: $bg-color;
+  background-color: #fff;
   flex-grow: 3;
   align-items: stretch;
   overflow-x: hidden;
   overflow-y: auto;
-  max-height: 75%;
   & > h1 {
     margin: 20px;
     font-weight: lighter;

@@ -4,8 +4,8 @@ import { endAjaxRequest, beginAjaxRequest,
 
 const rootUrl = 'http://127.0.0.1:8000';
 
-export const request = (payload, path, dispatch, type) => {
-  dispatch(beginAjaxRequest());
+export const request = (payload, path, dispatch, type, loading) => {
+  dispatch(beginAjaxRequest(loading));
   const url = rootUrl + path;
   if (type === ('get' || 'delete')) {
     return axios[type](url);

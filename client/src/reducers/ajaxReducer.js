@@ -9,7 +9,7 @@ import initialState from '../reducers/initialState';
 export const ajaxReducer = (state = initialState.networkRequest, action) => {
   switch (action.type) {
     case BEGIN_AJAX_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, loading: action.loading };
     case END_AJAX_REQUEST:
       return {
         ...state,

@@ -2,7 +2,8 @@ module.exports = {
   globals: {
     window: true
   },
-  setupFiles: ['jest-localstorage-mock'],
+  setupTestFrameworkScriptFile: '<rootDir>/test-setup.js',
+  setupFiles: ['jest-localstorage-mock', 'raf/polyfill'],
   testEnvironment: 'jsdom',
   testPathIgnorePatterns: ['./server/test/test', './node_modules/'],
   moduleNameMapper: {

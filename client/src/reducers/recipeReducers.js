@@ -6,7 +6,6 @@ import {
   UPDATE_NAME_CATEGORY,
   UPDATE_ALL_RECIPE_FIELD,
   GET_ALL_RECIPES,
-  GET_FAV_RECIPES,
   GET_TOP_RECIPES,
   GET_RECIPE,
   AFTER_REVIEW,
@@ -21,8 +20,6 @@ export const recipesReducer = (state = initialState.Recipes, action) => {
   switch (action.type) {
     case GET_ALL_RECIPES:
       return action.recipes.Recipes;
-    case GET_FAV_RECIPES:
-      return action.recipes.User.favRecipes;
     case GET_TOP_RECIPES:
       return action.recipes.Recipes;
     case FIND_RECIPES:

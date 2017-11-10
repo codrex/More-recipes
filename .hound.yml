@@ -4,5 +4,5 @@ eslint:
   checks:
     import/no-unresolved:
       enabled: false
-  scss:
-    enabled: false
+scss:
+  enabled: false

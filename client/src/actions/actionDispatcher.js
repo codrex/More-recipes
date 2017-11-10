@@ -6,10 +6,7 @@ import {
   request
 } from '../requestHandler/requestHandler';
 import { LOGIN, SIGNUP } from './actions';
-import { ajaxRedirect } from './ajaxActions';
-import jwt from 'jsonwebtoken';
-
-const TOKEN_KEY = 'MRAToken';
+import { storeToken, getId, getToken } from '../utils/auth/auth';
 
 /**
  *  A thunk class that is responsible for dispatching actions after an ajax request has returned.
@@ -19,23 +16,21 @@ const TOKEN_KEY = 'MRAToken';
 export default class ActionDispatcher {
   /**
    * @param {function} dispatch: dispatch function
+   * @param {bool} loading
    * @param {string} TOKEN: access token
    */
-  constructor(dispatch, TOKEN = localStorage.getItem(TOKEN_KEY) || '') {
+  constructor(dispatch, loading = true, TOKEN = getToken()) {
     this.dispatch = dispatch;
     this.TOKEN = TOKEN;
     setToken(TOKEN);
+    this.loading = loading;
   }
 
   /**
  * @return {undefined}
  */
   getIdFromToken() {
-    const data = jwt.decode(localStorage.getItem('MRAToken'));
-    if (data) {
-      return data.id;
-    }
-    return undefined;
+    return getId();
   }
 
   /**
@@ -58,8 +53,12 @@ export default class ActionDispatcher {
         dispatchOnFail(this.dispatch, errorMsg);
       }
     } else if (error.request) {
-      const errorMsg = 'Network error encountered, please check your conention and try again';
-      dispatchOnFail(this.dispatch, errorMsg);
+      if (process.env.NODE_ENV !== 'test') {
+        const errorMsg = 'Network error encountered, please check your conention and try again';
+        dispatchOnFail(this.dispatch, errorMsg);
+      } else {
+        dispatchOnFail(this.dispatch);
+      }
     }
   }
   /**
@@ -71,7 +70,7 @@ export default class ActionDispatcher {
   saveToken(action, payload, successMsg) {
     // save token returned during login and signup  in the local storage
     if (action().type === SIGNUP || action().type === LOGIN) {
-      localStorage.setItem(TOKEN_KEY, payload.data.User.token);
+      storeToken(payload.data.User.token);
     }
     if (action) this.dispatch(action(payload.data));
     dispatchOnSuccess(this.dispatch, successMsg);
@@ -87,7 +86,7 @@ export default class ActionDispatcher {
    * @return {object} Promise
    */
   requestAndDispatch(url, reqData, action, reqType, successMsg) {
-    return request(reqData, url, this.dispatch, reqType)
+    return request(reqData, url, this.dispatch, reqType, this.loading)
       .then((payload) => {
         this.saveToken(action, payload, successMsg);
       })

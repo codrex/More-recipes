@@ -43,7 +43,7 @@ class SearchBox extends React.Component {
       <form className="searchbox" onSubmit={this.handleSubmit}>
         <input
           type="search"
-          className="form-control text-input'"
+          className="form-control text-input"
           placeholder="Search"
           onChange={this.handleChange}
           value={this.state.value}

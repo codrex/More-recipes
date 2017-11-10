@@ -16,7 +16,7 @@ describe('Recipes grid component ', () => {
   test('render as expected without any recipe', () => {
     const component = renderer.create(
       <BrowserRouter>
-        <RecipesGrid recipes={[]} />
+        <RecipesGrid recipes={[]} toggleFav={jest.fn()} isUserFav={jest.fn()} />
       </BrowserRouter>
     );
     const tree = component.toJSON();
@@ -25,7 +25,7 @@ describe('Recipes grid component ', () => {
   test('render as expected with one recipe', () => {
     const component = renderer.create(
       <BrowserRouter>
-        <RecipesGrid recipes={[recipe]} />
+        <RecipesGrid recipes={[recipe]} toggleFav={jest.fn()} isUserFav={jest.fn()} />
       </BrowserRouter>
     );
     // const componentTwo = renderer.create(<RecipesGrid recipes={[]} />);
