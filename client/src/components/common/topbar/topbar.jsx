@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import SearchBox from '../../common/searchBox/searchbox';
-import './topbar.scss';
 
 const TopBar = (props) => (
   <div className={classnames('col-12 top-bar', props.className)}>

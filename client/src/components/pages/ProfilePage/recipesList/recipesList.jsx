@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ListItem, List } from '../../../common/list/list';
 import Icon from '../../../common/icon/icon';
-import './recipeList.scss';
 
 const Recipes = (props) => {
   const recipes = props.recipes || [];

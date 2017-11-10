@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import './form.scss';
 
 const Textarea = (props) => {
   const valid = props.meta && props.meta.touched && !props.meta.error && 'valid';

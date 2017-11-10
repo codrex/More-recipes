@@ -1,0 +1,9 @@
+.form-text{
+  margin: 1em 0;
+  font-size: 1.3em;
+  text-align: center;
+  & b {
+    color: $primary-color;
+    cursor: pointer;
+  }
+}

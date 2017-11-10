@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import './form.scss';
 
 const Form = props => (
   <form
@@ -21,10 +20,11 @@ const Form = props => (
       props.primary && 'btn-primary',
       props.primaryInverse && 'btn-primary-inverse',
       props.secondaryInverse && 'btn-secondary-inverse',
-      props.lg && 'btn-lg'
+      props.lg && 'btn-lg',
+      props.disabled && 'disable'
       )}
       disabled={props.disabled}
-    >{props.submitBtnText}
+    >{props.disabled && 'loading...' || props.submitBtnText}
     </button>}
   </form>
 );

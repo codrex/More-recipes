@@ -1,0 +1,41 @@
+
+.searchbox{
+  display: flex;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.17);
+  height: 35px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color:$secondary-color;
+  color: rgba(black,0.6);
+
+  & .text-input{
+    border-color: transparent;
+    box-shadow: none;
+    max-height: 40px;
+    min-height: unset;
+    height: inherit;
+    margin: auto;
+    padding: 0 .5em;
+    height: inherit;
+    font-size: 1.7rem;
+
+  }
+
+  & .icon-wrapper{
+    border-color: transparent;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .form-group {
+    flex: 1;
+    margin: 0;
+    height: inherit
+  }
+
+}
+
+

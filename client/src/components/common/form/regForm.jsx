@@ -33,7 +33,7 @@ class RegForm extends React.Component {
       <Form
         submitBtnText="Register"
         onSubmit={handleSubmit(this.signup)}
-        className={this.props.loading ? 'hide' : ''}
+        disabled={this.props.loading}
         secondary
       >
         <Field

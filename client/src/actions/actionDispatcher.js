@@ -5,6 +5,7 @@ import {
   setToken,
   request
 } from '../requestHandler/requestHandler';
+import { LOGIN, SIGNUP } from './actions';
 import { ajaxRedirect } from './ajaxActions';
 import jwt from 'jsonwebtoken';
 
@@ -49,7 +50,6 @@ export default class ActionDispatcher {
           this.dispatch,
           'Authentication failed. Please SIGN-UP or LOGIN to continue'
         );
-        this.dispatch(ajaxRedirect('/'));
       } else {
         let errorMsg = error.response.data.error;
         if (typeof errorMsg === 'object') {
@@ -57,6 +57,9 @@ export default class ActionDispatcher {
         }
         dispatchOnFail(this.dispatch, errorMsg);
       }
+    } else if (error.request) {
+      const errorMsg = 'Network error encountered, please check your conention and try again';
+      dispatchOnFail(this.dispatch, errorMsg);
     }
   }
   /**
@@ -66,10 +69,9 @@ export default class ActionDispatcher {
  * @param {string} successMsg
  */
   saveToken(action, payload, successMsg) {
-    if (payload.data.User) {
-      if (payload.data.User.token) {
-        localStorage.setItem(TOKEN_KEY, payload.data.User.token);
-      }
+    // save token returned during login and signup  in the local storage
+    if (action().type === SIGNUP || action().type === LOGIN) {
+      localStorage.setItem(TOKEN_KEY, payload.data.User.token);
     }
     if (action) this.dispatch(action(payload.data));
     dispatchOnSuccess(this.dispatch, successMsg);
@@ -82,7 +84,7 @@ export default class ActionDispatcher {
    * @param {function} action: action to be dispatch when request was successful
    * @param {string} reqType: type of request
    * @param {string} successMsg: message to return on success
-   * @return {undefined}
+   * @return {object} Promise
    */
   requestAndDispatch(url, reqData, action, reqType, successMsg) {
     return request(reqData, url, this.dispatch, reqType)

@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import nameAbbr from '../../../../utils/nameAbbr/nameAbbr';
 import Button from '../../../common/button/button';
-import './userInfo.scss';
 
 
 const UserInfo = (props) => {

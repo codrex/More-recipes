@@ -13,7 +13,6 @@ import { setCurrentRecipe,
           deleteRecipe, toggleFav } from '../../../actions/recipeActions';
 import UserInfo from './userInfo/userInfo';
 import Recipes from './recipesList/recipesList';
-import './profile.scss';
 
 
 /**
