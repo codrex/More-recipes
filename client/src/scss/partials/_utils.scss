@@ -34,7 +34,7 @@ a.bg-primary:hover{
 .border-primary{
   border-color: $primary-color!important;
   &:hover,&:focus{
-    background: $bg-color !important;
+    background-color: $bg-color !important;
   }
 }
 .border-white{
