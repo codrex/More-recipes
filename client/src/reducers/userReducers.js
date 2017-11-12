@@ -18,8 +18,11 @@ export const userReducer = (state = initialState.User, action = {}) => {
       return { ...state, ...action.payload.User };
     case UPDATE_USER_PROFILE:
       return { ...state, ...action.payload.User };
-    case DELETE_RECIPE:
-      return { ...state, ...action.payload.User };
+    case DELETE_RECIPE: {
+      const recipes = [...state.createdRecipes];
+      recipes.splice(action.recipeIndex, 1);
+      return { ...state, createdRecipes: recipes };
+    }
     case TOGGLE_FAV:
       return { ...state, ...action.payload.User };
     default:

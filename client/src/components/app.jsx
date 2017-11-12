@@ -70,7 +70,7 @@ class App extends React.Component {
             <Route path="/recipe/modify/:id" component={AddRecipePage} />
             <Route path="/recipe/:id" component={Recipe} />
             <Route static extact path="/recipes/" render={(match) => this.onAuthenticated(Recipes, match)} />
-            <Route path="/user" component={ProfilePage} />
+            <Route path="/user" render={(match) => this.onAuthenticated(ProfilePage, match)} />
             <Route static extact path="/" component={LandingPage} />
           </Switch>
         </div>

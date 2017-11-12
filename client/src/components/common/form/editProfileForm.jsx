@@ -14,7 +14,7 @@ let EditProfile = (props) => {
       submitBtnText={props.loading && 'Updating...' || 'Update'}
       onSubmit={handleSubmit(props.update)}
       secondary
-      disabled={props.loading}
+      disabled={props.submitting}
     >
       <Field
         component={Input}
@@ -47,7 +47,7 @@ let EditProfile = (props) => {
 EditProfile.propTypes = {
   update: PropTypes.func,
   handleSubmit: PropTypes.func,
-  loading: PropTypes.bool,
+  submitting: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({ initialValues: state.user });

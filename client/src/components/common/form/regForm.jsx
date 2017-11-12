@@ -33,7 +33,7 @@ class RegForm extends React.Component {
       <Form
         submitBtnText="Register"
         onSubmit={handleSubmit(this.signup)}
-        disabled={this.props.loading}
+        disabled={this.props.submitting}
         secondary
       >
         <Field
@@ -68,7 +68,7 @@ class RegForm extends React.Component {
 RegForm.propTypes = {
   signup: PropTypes.func,
   handleSubmit: PropTypes.func,
-  loading: PropTypes.bool
+  submitting: PropTypes.bool
 
 };
 

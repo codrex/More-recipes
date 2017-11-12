@@ -137,7 +137,7 @@ describe('Test thunks:: expect request to be successful', () => {
     it(`should return BEGIN_AJAX_REQUEST, UPDATE_USER_PROFILE and
       END_AJAX_REQUEST action when request is made for profile update`, () => {
       const expectedActions = [
-        { type: 'BEGIN_AJAX_REQUEST', loading: true },
+        { type: 'BEGIN_AJAX_REQUEST', loading: false },
         { type: 'UPDATE_USER_PROFILE', payload },
         { type: 'END_AJAX_REQUEST',
         response: { msg: 'Profile update successfully', success: true } },
@@ -215,7 +215,7 @@ describe('Test thunks:: expect request to fail', () => {
     it(`should return BEGIN_AJAX_REQUEST and
       END_AJAX_REQUEST action when request made for profile update is unsuccessful`, () => {
       const expectedActions = [
-        { type: 'BEGIN_AJAX_REQUEST', loading: true },
+        { type: 'BEGIN_AJAX_REQUEST', loading: false },
         { type: 'END_AJAX_REQUEST',
           response: { msg: 'error', success: false } },
       ];
@@ -234,7 +234,7 @@ describe('Test thunks:: expect request to fail', () => {
     it(`should return BEGIN_AJAX_REQUEST, AJAX_REQUEST_AUTH_ERROR and
       END_AJAX_REQUEST action when auth fail with 401 status code`, () => {
       const expectedActions = [
-        { type: 'BEGIN_AJAX_REQUEST', loading: true },
+        { type: 'BEGIN_AJAX_REQUEST', loading: false },
         { type: 'END_AJAX_REQUEST',
           response: {
             msg: 'Authentication failed. Please SIGN-UP or LOGIN to continue',
@@ -256,7 +256,7 @@ describe('Test thunks:: expect request to fail', () => {
     it(`should return BEGIN_AJAX_REQUEST, AJAX_REQUEST_AUTH_ERROR and
       END_AJAX_REQUEST action when auth fail with 403 status code`, () => {
       const expectedActions = [
-        { type: 'BEGIN_AJAX_REQUEST', loading: true },
+        { type: 'BEGIN_AJAX_REQUEST', loading: false },
         { type: 'END_AJAX_REQUEST',
           response: {
             msg: 'Authentication failed. Please SIGN-UP or LOGIN to continue', success: false } },

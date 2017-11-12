@@ -6,8 +6,8 @@ import abbr from '../../../utils/nameAbbr/nameAbbr';
 
 const TopBar = (props) => (
   <div className={classnames('col-12 top-bar', props.className)}>
-    <div className="top-bar-top">
-      {props.title && <h1 className="text-white text-capitalize">{props.title}</h1>}
+    <div className={`top-bar-top ${!props.bottom ? 'flex' : ''}`}>
+      {props.title && <h1 className="text-capitalize no-margin">{props.title}</h1>}
       {props.avatar &&
         <nav className="nav">
           <a className="nav-link" href="#" onClick={() => props.push('/user')}>my profile</a>
@@ -25,9 +25,9 @@ const TopBar = (props) => (
         <SearchBox handleSubmit={props.handleSubmit} handleChange={props.handleChange} />
       }
     </div>
-    <div className="top-bar-bottom">
+    {props.bottom && <div className="top-bar-bottom">
       {props.children}
-    </div>
+    </div>}
   </div>
 );
 

@@ -97,22 +97,9 @@ describe('Testing user reducers', () => {
     expect(user).to.not.eql(state);
   });
   it('should return a newState for action type DELETE_RECIPE', () => {
-    const action = {
-      payload: {
-        User: {
-          email: 'email@email.com',
-          username: 'username',
-          fullname: 'fullname fullname fullname',
-          profilePix: 'UNKNOWN',
-          favRecipes: [],
-          createdRecipes: [{}, {}]
-        }
-      },
-      type: DELETE_RECIPE
-    };
-    const user = reducer(state, action);
-    expect(user).eql({ ...state, ...action.payload.User });
-    expect(user.createdRecipes.length).eql(2);
+    const action = { recipeIndex: 1, type: DELETE_RECIPE };
+    const user = reducer({ ...state, createdRecipes: [{}, {}] }, action);
+    expect(user.createdRecipes.length).eql(1);
     expect(user).to.not.eql(state);
   });
   it('should return a newState for action type TOGGLE_FAV', () => {

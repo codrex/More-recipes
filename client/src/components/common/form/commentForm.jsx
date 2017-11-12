@@ -48,7 +48,7 @@ class CommentForm extends React.Component {
         submitBtnText={(!this.props.loading && 'Post review') || 'Loading...'}
         onSubmit={handleSubmit(this.review)}
         secondary
-        disabled={this.props.loading}
+        disabled={this.props.submitting}
       >
         <Field
           component={Textarea}
@@ -64,7 +64,7 @@ class CommentForm extends React.Component {
 CommentForm.propTypes = {
   postReview: PropTypes.func,
   handleSubmit: PropTypes.func,
-  loading: PropTypes.bool,
+  submitting: PropTypes.bool,
   id: PropTypes.number,
   reset: PropTypes.func,
   clearSuccessMsg: PropTypes.func,

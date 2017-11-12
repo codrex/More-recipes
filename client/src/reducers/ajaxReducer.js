@@ -2,7 +2,8 @@ import {
   BEGIN_AJAX_REQUEST,
   END_AJAX_REQUEST,
   REDIRECT,
-  RESET_REQ_COUNT
+  RESET_REQ_COUNT,
+  RESET_SUCCESS,
 } from '../actions/actions';
 import initialState from '../reducers/initialState';
 
@@ -20,7 +21,9 @@ export const ajaxReducer = (state = initialState.networkRequest, action) => {
         }
       };
     case RESET_REQ_COUNT:
-      return { ...state, ...{ requestCount: 0, msg: '' } };
+      return { ...state, ...{ requestCount: 0 } };
+    case RESET_SUCCESS:
+      return { ...state, ...{ success: false } };
     default:
       return state;
   }

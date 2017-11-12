@@ -49,7 +49,7 @@ export const getUserProfile = () => (dispatch) => {
 };
 
 export const updateProfile = user => (dispatch) => {
-  const dispatcher = new ActionDispatcher(dispatch);
+  const dispatcher = new ActionDispatcher(dispatch, false);
   const id = dispatcher.getIdFromToken();
   return dispatcher.requestAndDispatch(
     `/api/v1/users/${id}`,
