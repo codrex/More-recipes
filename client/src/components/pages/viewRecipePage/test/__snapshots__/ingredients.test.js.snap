@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ingredients display component  expected to match empty snapshot 1`] = `
+<div
+  className="col-12 "
+  style={Object {}}
+>
+  <div
+    className="lead list-item"
+  >
+    <h4
+      className="list-item-text"
+      data-index={0}
+      onClick={undefined}
+    >
+      ingredients 1
+    </h4>
+  </div>
+  <div
+    className="lead list-item"
+  >
+    <h4
+      className="list-item-text"
+      data-index={2}
+      onClick={undefined}
+    >
+      ingredients 2
+    </h4>
+  </div>
+  <div
+    className="lead list-item"
+  >
+    <h4
+      className="list-item-text"
+      data-index={3}
+      onClick={undefined}
+    >
+      ingredients 3
+    </h4>
+  </div>
+</div>
+`;

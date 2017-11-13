@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ajaxRedirect } from '../../../actions/ajaxActions';
+import { getUserProfile } from '../../../actions/userActions';
 import { getRecipe, vote, toggleFav } from '../../../actions/recipeActions';
 import Comments from './comments/comments';
 import Icon from '../../common/icon/icon';
@@ -12,11 +13,12 @@ import TopBar from '../../common/topbar/topbar';
 import CommentForm from '../../common/form/commentForm';
 import Directions from './directions/directions';
 import Ingredients from './ingredients/ingredients';
+import Loader from '../../common/loader/loader';
 
 /**
  * Recipes component
  */
-class Recipe extends React.Component {
+export class Recipe extends React.Component {
   /**
    * @return {undefined}
    * @param {object} props
@@ -29,36 +31,19 @@ class Recipe extends React.Component {
     };
     this.vote = this.vote.bind(this);
     this.addToFav = this.addToFav.bind(this);
+    this.isUserFav = this.isUserFav.bind(this);
+    this.recipeId = parseInt(this.props.match.match.params.id, 10);
   }
 
   /**
  * @return {undefined}
  */
   componentDidMount() {
-    this.recipeId = this.props.match.params.id;
-    if (this.props.recipe.id === undefined)
-      this.props.actions.getRecipe(this.recipeId);
-  }
-
-  /**
-   *
-   * @param {object} nextProps
-   * @return {bool} true or false
-   */
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.redirectUrl === '/') {
-      // redirect unauthenticated user to home page
-      // in other to login pr signup
-      // the current page url is save via the redirect action creator
-      // doing this will enable the user to be re-route back to this page
-      // after a successful authentication
-      this.props.actions.redirect('/recipe');
-      this.props.history.push(nextProps.redirectUrl);
-      return false;
+    this.props.actions.getRecipe(this.recipeId);
+    if (this.props.recipe.id === undefined) {
+      this.props.actions.getUser();
     }
-    return true;
   }
-
   /**
  * @return {undefined}
  * @param {string} type
@@ -72,8 +57,15 @@ class Recipe extends React.Component {
  * @return {undefined}
  */
   addToFav() {
-    this.setState({ addToFav: true });
-    this.props.actions.toggleFav({ recipeId: this.recipeId });
+    this.props.actions.toggleFav(this.recipeId);
+  }
+  /**
+   * @return {bool} true / false
+   */
+  isUserFav() {
+    return this.props.favRecipes.find((recipe) => {
+      return this.recipeId === recipe.id;
+    }) !== undefined;
   }
 
   /**
@@ -87,28 +79,25 @@ class Recipe extends React.Component {
       recipeName,
       upVotes,
       downVotes,
-      views
+      views,
+      Owner
     } = this.props.recipe;
     return (
-      <div className="container-fluid">
+      <div className="container-fluid no-padding">
+        <TopBar
+          bottom
+          title={recipeName}
+          className="top-bar justify-content-between"
+        >
+          {Owner && (
+            <span className="text-white lead text-uppercase">
+              posted by <em className="text-lowercase lead">{`@${Owner.username}`}</em>
+            </span>
+          )}
+        </TopBar>
+      {this.props.loading && <Loader loading={this.props.loading} />}
+      {!this.props.loading &&
         <div className="row flex-column recipe">
-          <TopBar
-            title={recipeName}
-            className="top-bar justify-content-between"
-          >
-            {this.props.recipe.Owner && (
-              <span>
-                posted by <em>{this.props.recipe.Owner.username}</em>
-              </span>
-            )}
-          </TopBar>
-          <div className="recipe-stat">
-            <Icon iconClass="fa fa-thumbs-up recipe-card-icon">{upVotes}</Icon>
-            <Icon iconClass="fa fa-thumbs-down recipe-card-icon">
-              {downVotes}
-            </Icon>
-            <Icon iconClass="fa fa-eye recipe-card-icon">{views}</Icon>
-          </div>
           <div className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex ">
             <h5 className="display-4">Ingredients </h5>
             <Ingredients ingredients={ingredients} />
@@ -125,32 +114,38 @@ class Recipe extends React.Component {
                 className="btn-secondary"
                 dataToggle="modal"
                 dataTarget="#modal"
+                id="reviewBtn"
               />
             </h5>
-            <Comments comments={RecipeReviews} loading={this.props.loading} />
+            <Comments comments={RecipeReviews} />
           </div>
         </div>
+      }
         <div className="d-flex justify-content-around lead topbar flex-column icon-bar">
+          <Icon iconClass="fa fa-eye recipe-card-icon">{views}</Icon>
           <Icon
-            iconClass="fa fa-thumbs-o-up"
-            active={this.state.vote === 'up' ? 'active' : ''}
+            iconClass={this.state.vote === 'up' ? 'fa fa-thumbs-up' : 'fa fa-thumbs-o-up'}
             handleClick={() => this.vote('up')}
-          />
+            id="upvote"
+          >
+            {upVotes}
+          </Icon>
           <Icon
-            iconClass="fa fa-thumbs-o-down"
-            active={this.state.vote === 'down' ? 'active' : ''}
+            iconClass={this.state.vote === 'down' ? 'fa fa-thumbs-down' : 'fa fa-thumbs-o-down'}
             handleClick={() => this.vote('down')}
-          />
+            id="downvote"
+          >
+            {downVotes}
+          </Icon>
           <Icon
-            iconClass="fa fa-heart-o"
-            active={this.state.addToFav ? 'active' : ''}
+            iconClass={this.isUserFav() ? 'fa fa-heart fav' : 'fa fa-heart-o fav'}
             handleClick={this.addToFav}
+            id="toggleFav"
           />
         </div>
         <Modal id="modal" center rightBtnText="Post review" title="Review">
           <CommentForm
             id={parseInt(this.recipeId, 10)}
-            loading={this.props.loading}
           />
         </Modal>
       </div>
@@ -159,24 +154,26 @@ class Recipe extends React.Component {
 }
 
 Recipe.propTypes = {
-  actions: PropTypes.object,
-  history: PropTypes.object,
-  recipe: PropTypes.object,
-  loading: PropTypes.bool,
-  match: PropTypes.object
+  actions: PropTypes.object.isRequired,
+  recipe: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  match: PropTypes.object.isRequired,
+  favRecipes: PropTypes.array,
 };
 
 const mapStateToProps = state => ({
   redirectUrl: state.redirectUrl,
   recipe: state.recipe,
-  loading: state.ajaxCall > 0
+  loading: state.networkRequest.loading,
+  favRecipes: state.user.favRecipes,
 });
 const mapDispatchToProps = dispatch => ({
   actions: {
     redirect: bindActionCreators(ajaxRedirect, dispatch),
     getRecipe: bindActionCreators(getRecipe, dispatch),
     vote: bindActionCreators(vote, dispatch),
-    toggleFav: bindActionCreators(toggleFav, dispatch)
+    toggleFav: bindActionCreators(toggleFav, dispatch),
+    getUser: bindActionCreators(getUserProfile, dispatch),
   }
 });
 

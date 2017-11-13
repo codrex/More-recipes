@@ -28,12 +28,12 @@ class LoginForm extends React.Component {
    * @returns {object} the form
    */
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, submitting } = this.props;
     return (
       <Form
-        submitBtnText="Login"
+        submitBtnText={submitting ? 'loading...' : 'Login'}
         onSubmit={handleSubmit(this.props.login)}
-        disabled={this.props.submitting}
+        disabled={submitting}
         secondary
       >
         <Field

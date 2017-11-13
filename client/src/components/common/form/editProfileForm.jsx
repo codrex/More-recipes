@@ -11,7 +11,7 @@ let EditProfile = (props) => {
   const { handleSubmit } = props;
   return (
     <Form
-      submitBtnText={props.loading && 'Updating...' || 'Update'}
+      submitBtnText={props.submitting ? 'Updating...' : 'Update'}
       onSubmit={handleSubmit(props.update)}
       secondary
       disabled={props.submitting}

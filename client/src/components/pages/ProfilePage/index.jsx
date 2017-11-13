@@ -10,8 +10,7 @@ import Loader from '../../common/loader/loader';
 import { bindActionCreators } from 'redux';
 import { resetSuccess } from '../../../actions/ajaxActions';
 import { getUserProfile, updateProfile } from '../../../actions/userActions';
-import { setCurrentRecipe,
-          deleteRecipe, toggleFav } from '../../../actions/recipeActions';
+import { deleteRecipe, toggleFav } from '../../../actions/recipeActions';
 import UserInfo from './userInfo/userInfo';
 import Recipes from './recipesList/recipesList';
 import { getCurrentPage, getPageCount } from '../../../utils/pagination/pagination';
@@ -207,7 +206,6 @@ export class ProfilePage extends React.Component {
    * @param {object} item
    */
   recipeItemClick(item) {
-    this.props.actions.currentRecipe(item);
     this.props.match.history.push(`recipe/${item.id}`);
   }
 
@@ -335,7 +333,6 @@ const mapDispatchToProps = (dispatch) => (
     actions: {
       getProfile: bindActionCreators(getUserProfile, dispatch),
       update: bindActionCreators(updateProfile, dispatch),
-      currentRecipe: bindActionCreators(setCurrentRecipe, dispatch),
       deleteRecipe: bindActionCreators(deleteRecipe, dispatch),
       removeFromFav: bindActionCreators(toggleFav, dispatch),
       resetSuccess: bindActionCreators(resetSuccess, dispatch),

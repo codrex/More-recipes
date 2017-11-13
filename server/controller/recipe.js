@@ -61,12 +61,12 @@ export const fetchRecipe = (req, res) => {
       'directions', 'upVotes',
       'downVotes', 'views'],
     include: [
-        { model: db.Users,
-          as: 'Owner',
-          attributes: {
-            exclude: ['createdAt', 'updatedAt', 'password'],
-          },
+      { model: db.Users,
+        as: 'Owner',
+        attributes: {
+          exclude: ['createdAt', 'updatedAt', 'password'],
         },
+      },
       {
         model: db.RecipeReviews,
         attributes: {
@@ -80,6 +80,7 @@ export const fetchRecipe = (req, res) => {
         }],
       },
     ],
+    order: [[{ model: db.RecipeReviews }, 'id', 'DESC']],
   }).then((recipe) => {
     if (recipe) {
       if (req.hasNewViewer) recipe.increment('views', { by: 1 });
@@ -247,7 +248,7 @@ export const fetchReview = (req, res) => {
     include: [{
       model: db.RecipeReviews,
       attributes: {
-        exclude: ['createdAt', 'updatedAt'],
+        exclude: ['updatedAt'],
       },
       include: [{
         model: db.Users,
@@ -257,6 +258,7 @@ export const fetchReview = (req, res) => {
         },
       }],
     }],
+    order: [[{ model: db.RecipeReviews }, 'id', 'DESC']],
   })
   .then((recipeReviews) => {
     sendSuccess(res, 200, 'Recipe', recipeReviews);

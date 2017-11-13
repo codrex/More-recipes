@@ -8,18 +8,19 @@ const Direction = (props) => (
   <Accordion
     index={props.index}
     id={`Step ${props.index}`}
+    className="d-flex align-items-start flex-column"
   >
     <AccordionHeader
       index={props.index}
       id={`Step ${props.index}`}
       title={`Step ${props.index + 1}`}
-      className=" d-flex no-margin"
+      className=" d-flex no-margin w-100"
     >
       <a
         href={`#item${props.index}`}
         data-toggle="collapse"
         aria-expanded="false"
-        className="collapsed collapse-trigger a"
+        className="collapsed collapse-trigger a bold"
       >
         <Icon iconClass="fa fa-angle-down" />
       </a>
@@ -28,7 +29,7 @@ const Direction = (props) => (
       id={`Step ${props.index}`}
       index={props.index}
     >
-      <p>{props.content}</p>
+      <p className="no-margin">{props.content}</p>
     </AccordionBody>
   </Accordion>
 );

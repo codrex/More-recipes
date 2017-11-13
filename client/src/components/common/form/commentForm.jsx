@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import Form from './form';
 import Textarea from './textarea';
 import { postReview } from '../../../actions/recipeActions';
-import { ajaxRequestSuccess } from '../../../actions/ajaxActions';
+import { resetSuccess } from '../../../actions/ajaxActions';
 import { review } from '../../../utils/validator/validator';
 
 /**
@@ -25,9 +24,9 @@ class CommentForm extends React.Component {
    * @param {object} nextProps
    */
   componentWillReceiveProps(nextProps) {
-    if (nextProps.success.success === 'Review posted') {
+    if (nextProps.message === 'Review posted' && nextProps.success) {
       this.props.reset();
-      this.props.clearSuccessMsg({ success: undefined });
+      this.props.resetSuccess();
     }
   }
   /**
@@ -35,20 +34,20 @@ class CommentForm extends React.Component {
    * @return {undefined} undefined
   */
   review(value) {
-    this.props.postReview(this.props.id, value, 'Review posted');
+    return this.props.postReview(this.props.id, value, 'Review posted');
   }
 
   /**
    * @returns {object} the form
    */
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, submitting } = this.props;
     return (
       <Form
-        submitBtnText={(!this.props.loading && 'Post review') || 'Loading...'}
+        submitBtnText={(!submitting && 'Post review') || 'Loading...'}
         onSubmit={handleSubmit(this.review)}
         secondary
-        disabled={this.props.submitting}
+        disabled={submitting}
       >
         <Field
           component={Textarea}
@@ -62,26 +61,27 @@ class CommentForm extends React.Component {
   }
 }
 CommentForm.propTypes = {
-  postReview: PropTypes.func,
-  handleSubmit: PropTypes.func,
+  postReview: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool,
   id: PropTypes.number,
   reset: PropTypes.func,
   clearSuccessMsg: PropTypes.func,
-  success: PropTypes.object,
+  success: PropTypes.bool.isRequired,
+  resetSuccess: PropTypes.func.isRequired,
+  message: PropTypes.string,
 };
-
-const mapDispatchToProps = dispatch => ({
-  postReview: bindActionCreators(postReview, dispatch),
-  clearSuccessMsg: bindActionCreators(ajaxRequestSuccess, dispatch),
-});
 
 const mapStateToProps = (state) => (
   {
-    success: state.ajaxSuccess,
+    success: state.networkRequest.success,
+    message: state.networkRequest.message,
   }
 );
 
 export default reduxForm({
   form: 'reviewForm'
-})(connect(mapStateToProps, mapDispatchToProps)(CommentForm));
+})(connect(mapStateToProps, {
+  postReview,
+  resetSuccess
+})(CommentForm));

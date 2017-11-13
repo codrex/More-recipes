@@ -44,7 +44,7 @@ const props = {
 describe('Dashboard component ', () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = shallow(< Dashboard {...props} />);
+    wrapper = shallow(<Dashboard {...props} />);
   });
   test('render as expected ', () => {
     const tree = toJson(wrapper);
@@ -52,13 +52,13 @@ describe('Dashboard component ', () => {
     expect(tree).toBeInstanceOf(Object);
   });
   test('should match empty snapshot when loading is true', () => {
-    const wrapper3 = mount(< Dashboard {...{ ...props, loading: true }} />);
+    const wrapper3 = mount(<Dashboard {...{ ...props, loading: true }} />);
     const tree = toJson(wrapper3);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
   test('should match empty snapshot when recipes is undefined', () => {
-    const wrapper3 = mount(< Dashboard {...{ ...props, loading: true, recipes: undefined }} />);
+    const wrapper3 = mount(<Dashboard {...{ ...props, loading: true, recipes: undefined }} />);
     const tree = toJson(wrapper3);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
@@ -82,6 +82,4 @@ describe('Dashboard component ', () => {
     expect(tree).toMatchSnapshot();
     expect(props.actions.logout).toBeCalled();
   });
-
 });
-
