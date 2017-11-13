@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ajaxRedirect } from '../../../actions/ajaxActions';
-import { userSignup, userLogin, loginOrRegSuccess } from '../../../actions/userActions';
+import { userSignup, userLogin } from '../../../actions/userActions';
 import Modal from '../../common/modal/modal';
 import LoginForm from '../../common/form/loginForm';
 import RegForm from '../../common/form/regForm';

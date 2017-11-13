@@ -21,19 +21,19 @@ class RegForm extends React.Component {
    * @return {undefined} undefined
   */
   signup(value) {
-    this.props.signup(value);
+    return this.props.signup(value);
   }
 
   /**
    * @returns {object} form
    */
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, submitting } = this.props;
     return (
       <Form
-        submitBtnText="Register"
+        submitBtnText={submitting ? 'loading...' : 'Register'}
         onSubmit={handleSubmit(this.signup)}
-        disabled={this.props.submitting}
+        disabled={submitting}
         secondary
       >
         <Field

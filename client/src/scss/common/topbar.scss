@@ -1,6 +1,6 @@
 
 .top-bar{
-  @include box-shadow;
+  @include box-shadow-2;
   background-color: $bg-color;
   display: flex;
   flex-direction: column;

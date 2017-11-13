@@ -46,14 +46,14 @@ describe('Profile Page component ', () => {
     expect(tree).toBeInstanceOf(Object);
   });
   test('render as expected when created recipes nav link is clicked ', () => {
-    const wrapper = mount(< ProfilePage {...{ ...props }} />);
+    const wrapper = mount(<ProfilePage {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     wrapper.find('#createdRecipes').simulate('click');
     expect(tree).toMatchSnapshot();
   });
   test('render as expected when favorite recipes nav link is clicked ', () => {
-    const wrapper = mount(< ProfilePage {...{ ...props }} />);
+    const wrapper = mount(<ProfilePage {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     wrapper.find('#favRecipes').simulate('click');
@@ -62,7 +62,7 @@ describe('Profile Page component ', () => {
   test('render as expected when edit profile button is clicked ', () => {
     const wrapper = mount(
       <Provider store={store}>
-        < SmartProfilePage {...{ ...props, loading: true }} />
+        <SmartProfilePage {...{ ...props, ...{ loading: true } }} />
       </Provider>
     );
     const tree = toJson(wrapper);

@@ -54,6 +54,7 @@ exports[`Recipe name and category component render as expected 1`] = `
     <button
       className="btn text-uppercase w-100 btn-secondary"
       disabled={undefined}
+      id="submit"
       type="submit"
     >
       modify recipe

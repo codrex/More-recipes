@@ -34,7 +34,7 @@ export const recipeReducer = (state = initialState.Recipe, action) => {
     return action.recipe.Recipe;
   }
   if (action.type === AFTER_REVIEW) {
-    const RecipeReviews = action.recipe.Recipe.RecipeReviews.reverse();
+    const RecipeReviews = action.recipe.Recipe.RecipeReviews;
     return { ...state,
       RecipeReviews
     };

@@ -123,6 +123,7 @@ export class Dashboard extends React.Component {
           search avatar fullname={this.props.user.fullname}
           handleSubmit={this.recipeSearch}
           push={this.props.match.history.push}
+          bottom
         >
           <nav className="nav">
             <a
@@ -219,7 +220,7 @@ const mapDispatchToProps = dispatch => ({
     getProfile: bindActionCreators(getUserProfile, dispatch),
     search: bindActionCreators(findRecipes, dispatch),
     logout: bindActionCreators(userLogout, dispatch),
-    toggleFav: bindActionCreators(toggleFav, dispatch)
+    toggleFav: bindActionCreators(toggleFav, dispatch),
   }
 });
 
