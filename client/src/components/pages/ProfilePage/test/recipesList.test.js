@@ -19,7 +19,7 @@ describe('Recipes list component ', () => {
     expect(tree).toBeInstanceOf(Object);
   });
   test('render as expected when created recipes nav link is clicked ', () => {
-    const wrapper = mount(< Recipes {...{ ...props, recipes: [{}] }} />);
+    const wrapper = mount(<Recipes {...{ ...props, recipes: [{}] }} />);
     let tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     wrapper.find('ListItem').simulate('click');
@@ -27,7 +27,7 @@ describe('Recipes list component ', () => {
     expect(tree).toMatchSnapshot();
   });
   test('render as expected when type equals favRecipes ', () => {
-    const wrapper = mount(< Recipes {...{ ...props, recipes: [{}], type: 'favRecipes' }} />);
+    const wrapper = mount(<Recipes {...{ ...props, recipes: [{}], type: 'favRecipes' }} />);
     let tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     wrapper.find('ListItem').simulate('click');
@@ -35,7 +35,7 @@ describe('Recipes list component ', () => {
     expect(tree).toMatchSnapshot();
   });
   test('render as expected when delete and edit icon are clicked ', () => {
-    const wrapper = mount(< Recipes {...{ ...props, recipes: [{}] }} />);
+    const wrapper = mount(<Recipes {...{ ...props, recipes: [{}] }} />);
     let tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     wrapper.find('ListItem').find('Icon').at(0)

@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes) => {
   const RecipeReviws = sequelize.define('RecipeReviews', {
     review: {
       allowNull: false,
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     ReviewerId: {
       allowNull: false,

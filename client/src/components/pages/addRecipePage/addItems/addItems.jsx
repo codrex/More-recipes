@@ -48,7 +48,6 @@ class AddItems extends React.PureComponent {
    */
   newItem() {
     this.setState({ addItem: !this.state.addItem, });
-    this.props.reset();
   }
 
   /**
@@ -57,10 +56,12 @@ class AddItems extends React.PureComponent {
    * @return {undfined} undefined
    */
   addItem(value) {
+    const { directions, ingredients } = this.props;
     const { items } = this.state;
-    const itemsUpdate = items.concat(value[this.props.name]);
-    this.props.reset();
+    const itemsUpdate = (ingredients && [value[this.props.name]].concat(items)) ||
+    (directions && items.concat(value[this.props.name]));
     this.props.sendItemsToStore(itemsUpdate);
+    this.props.initialize();
   }
   /**
    *
@@ -100,7 +101,7 @@ class AddItems extends React.PureComponent {
     const { handleSubmit } = this.props;
     const Component = this.props.ingredients && Input || (this.props.directions && Textarea);
     return (
-      <div className="col-11 items ">
+      <div className="col-xs-12 col-sm-12 col-11 items ">
         <div className="items-header">
           <h4 className="lead items-header-text">
             {`${this.props.name}s ${' '}${this.state.items.length}`}
@@ -157,8 +158,8 @@ AddItems.propTypes = {
   name: PropTypes.string.isRequired,
   ingredients: PropTypes.bool,
   directions: PropTypes.bool,
-  updateParentState: PropTypes.func
-
+  updateParentState: PropTypes.func,
+  initialize: PropTypes.func
 };
 
 export default AddItems;

@@ -2,40 +2,52 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const Input = (props) => {
-  const { meta } = props;
-  const valid = meta && meta.touched && !meta.error && 'valid';
-  const invalid = meta && meta.touched && meta.error && 'invalid';
+const Input = props => {
+  const { meta, helpTextClassName, fgClassName, className } = props;
+  const { error, touched } = meta;
+  const valid = meta && touched && !error && 'valid';
+  const invalid = meta && touched && error && 'invalid';
   return (
-    <div className={classnames('form-group', props.fgClassName)}>
+    <div className={classnames('form-group', fgClassName)}>
       <input
         type={props.type || 'text'}
-        className={classnames('form-control text-input',
-        props.className, valid, invalid)}
+        className={classnames(
+          'form-control text-input',
+          className,
+          valid,
+          invalid
+        )}
         id={props.id}
         aria-describedby={props.id}
         placeholder={props.placeholder}
         autoComplete={'false'}
         {...props.input}
       />
-      {
-      meta && meta.touched && meta.error && meta.error.map((error, i) =>
-        (
+      {meta &&
+        touched &&
+        error &&
+        error.map((err, i) => (
           <div
             key={i}
-            className={
-              classnames(props.meta &&
-              props.meta.touched &&
-              props.meta.error ? 'help-text' : '', props.helpTextClassName)
-            }
+            className={classnames(
+              meta && touched && error ? 'help-text' : '',
+              helpTextClassName
+            )}
           >
-            {error}
+            {err}
           </div>
-        )
-      )
-    }
+        ))}
     </div>
   );
+};
+
+Input.defaultProps = {
+  id: '',
+  placeholder: '',
+  className: '',
+  fgClassName: '',
+  input: {},
+  meta: {},
 };
 
 Input.propTypes = {

@@ -1,11 +1,10 @@
-@import '../../../../scss/_var.scss';
 
 .items {
-  height: 100%;
+  height: fit-content;
   overflow: hidden;
   padding: 0;
   margin: 0 auto;
-  border: 2px solid rgba($dark-text, 0.1);
+  @include box-shadow;
   &-header {
     display: flex;
     flex-direction: column;
@@ -18,8 +17,9 @@
     }
   }
   &-header-text {
+    @include box-shadow;
     background-color: $bg-color;
-    color: $primary-color;
+    color: $text-color;
     padding: 1em;
     font-size: 1rem;
     font-weight: 600;
@@ -28,11 +28,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
   }
   &-list {
     overflow: scroll;
-    height: 65%;
+    height: 100%;
     &-item {
       min-height: 50px;
       margin: 0;
@@ -54,6 +53,7 @@
   height: fit-content;
   align-items: flex-start;
   padding: 0.3em;
+  background-color: $bg-color
 }
 .item-edit-form-textarea {
   flex-direction: column;
@@ -73,7 +73,7 @@ textarea {
 }
 .item-edit-fg {
   flex: 2;
-  margin: 0;
+  margin: 0 !important;
   width: 100%;
 }
 .item-edit-btn {
@@ -83,9 +83,8 @@ textarea {
   height: 50px;
 }
 .items-list-wrapper {
-  background: $bg-color;
   height: inherit;
-  padding: 1em 0;
+  padding: 10px 0 30px 0;
 }
 
 .add-item-input {

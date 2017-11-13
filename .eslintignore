@@ -8,3 +8,5 @@ webpack.connfig.babel.js
 **/README.node_modules
 **/Procfile
 **/package-lock.json
+client/src/**/test/*.js
+client/src/components/**/*.test.js

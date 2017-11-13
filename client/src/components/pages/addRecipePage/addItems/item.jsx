@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Field } from 'redux-form';
 import classnames from 'classnames';
 import Form from '../../../common/form/form';
 import Button from '../../../common/button/button';
 import Icon from '../../../common/icon/icon';
 import { ListItem } from '../../../common/list/list';
+import { item } from '../../../../utils/validator/validator';
 import { Accordion, AccordionHeader,
        AccordionBody } from '../../../common/accordion/accordion';
 
@@ -32,18 +32,30 @@ ListItemIcons.propTypes = {
  *  IngredientListItem component
  */
 class Item extends React.Component {
-
 /**
  *
  * @param {Object} props
  */
   constructor(props) {
     super(props);
-    this.state = { editMode: false };
+    this.state = {
+      editMode: false,
+      itemValue: props.content,
+      ValidationErrors: []
+    };
     this.changeEditMode = this.changeEditMode.bind(this);
     this.updateValue = this.updateValue.bind(this);
+    this.validateItem = this.validateItem.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.saveItemAfterEditing = this.saveItemAfterEditing.bind(this);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props === nextProps && this.state === nextState) {
+      return false;
+    }
+    return true;
+  }
   /**
    * @return {undefined}
    */
@@ -55,19 +67,51 @@ class Item extends React.Component {
    * @return {undefined}
    */
   updateValue(value) {
-    this.props.editItem(value[this.props.name], this.props.index);
+    this.props.editItem(value, this.props.index);
+  }
+  /**
+   * @return {undefined}
+   * @param {string} value
+   */
+  validateItem(value) {
+    return item(value, this.props.name);
+  }
+  /**
+   * @return {undefined}
+   * @param {object} e
+   */
+  handleChange(e) {
+    this.setState({ itemValue: e.target.value });
+  }
+  /**
+   * @return {undefined}
+   * @param {object} e
+   */
+  saveItemAfterEditing() {
+    const { itemValue } = this.state;
+    if (itemValue === this.props.content) {
+      this.changeEditMode();
+      return;
+    }
+    const error = this.validateItem(itemValue);
+    if (error) {
+      this.setState({ ValidationErrors: error, itemValue: this.props.content });
+      return;
+    }
+    this.updateValue(itemValue);
+    this.changeEditMode();
   }
 
   /**
    * @return {Object} Item
    */
   render() {
-    const { handleSubmit } = this.props;
+    const { Component, content } = this.props;
     return (
       <div className="d-flex flex-column ">
         {
           this.props.ingredients &&
-            <ListItem className="items-list-item lead" content={this.props.content}>
+            <ListItem className="items-list-item lead" content={content}>
               <ListItemIcons
                 editIconClicked={this.changeEditMode}
                 deleteIconClicked={() => this.props.delete(this.props.index)}
@@ -79,12 +123,12 @@ class Item extends React.Component {
             <Accordion
               index={this.props.index}
               id={this.props.name}
-              className="flex-column"
+              className="flex-column items-list-item"
             >
               <AccordionHeader
                 index={this.props.index}
                 id={this.props.name}
-                title={`Direction ${this.props.index + 1}`}
+                title={`Step ${this.props.index + 1}: ${content}`}
                 className="d-flex no-margin justify-content-between w-100"
               >
                 <ListItemIcons
@@ -96,33 +140,33 @@ class Item extends React.Component {
                 id={this.props.name}
                 index={this.props.index}
               >
-                <p>{this.props.content}</p>
+                <p>{content}</p>
               </AccordionBody>
             </Accordion>
         }
         {
           this.state.editMode &&
             <Form
-              onSubmit={handleSubmit(value => this.updateValue(value, this.props.index))}
               className={classnames('d-flex item-edit-form',
               this.props.directions && 'd-flex item-edit-form-textarea')}
             >
-              <Field
-                component={this.props.Component}
-                name={this.props.name}
-                type="text"
-                id={this.props.name}
-                placeholder={this.props.placeholder}
+              <Component
+                value={this.state.itemValue}
                 className={classnames(' item-edit-input',
                   this.props.directions && 'item-edit-textarea')}
                 fgClassName={classnames(' item-edit-fg',
-                this.props.directions && 'd-flex flex-column-reverse')}
+                  this.props.directions && 'd-flex flex-column-reverse'
+                )}
+                handleChange={this.handleChange}
+                error={this.state.ValidationErrors}
+                id={this.props.name}
+                name={this.props.name}
               />
               <div className="d-flex">
                 <Button
                   className=" btn-secondary text-white item-edit-btn"
                   text="Save"
-                  type="submit"
+                  handleClick={this.saveItemAfterEditing}
                 />
                 <Button
                   className="btn-primary item-edit-btn"

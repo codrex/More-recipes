@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login form component  render as expected when submitting props is false 1`] = `
+<Form
+  disabled={false}
+  lg={true}
+  secondary={true}
+  submitBtnText="Login"
+>
+  <Field
+    component={[Function]}
+    id="username"
+    name="username"
+    placeholder="Enter username"
+    type="text"
+    validate={[Function]}
+  />
+  <Field
+    component={[Function]}
+    id="password"
+    name="password"
+    placeholder="Enter password"
+    type="password"
+    validate={[Function]}
+  />
+</Form>
+`;
+
+exports[`login form component  render as expected when submitting props is true 1`] = `undefined`;

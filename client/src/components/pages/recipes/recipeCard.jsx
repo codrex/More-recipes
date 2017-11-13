@@ -15,8 +15,11 @@ const RecipeCard = (props) => {
         <img src={pix} alt={`${props.recipeName}`} className="recipe-card-img" />
         <div className="recipe-card-underlay">
           <p className="lead text-capitalize">{props.category}</p>
-          <Link to={`recipe/${props.recipeId}`}>
-            <Button text="view details" className="recipe-card-underlay-btn" />
+          <Link to={`recipe/${props.recipeId}`} >
+            <Button
+              text="view details"
+              className="recipe-card-underlay-btn"
+            />
           </Link>
         </div>
       </div>

@@ -28,7 +28,7 @@ let RecipeNameAndCategory = props => {
       <Form
         submitBtnText={
           (props.postRecipe
-            ? !props.loading && 'Post Recipe'
+            ? !props.loading && 'create recipe'
             : !props.loading && 'modify recipe') || 'Loading...'
         }
         secondary
@@ -62,13 +62,14 @@ let RecipeNameAndCategory = props => {
 };
 
 RecipeNameAndCategory.propTypes = {
-  handleSubmit: PropTypes.func,
-  actions: PropTypes.object,
+  handleSubmit: PropTypes.func.isRequired,
+  actions: PropTypes.object.isRequired,
   recipe: PropTypes.object,
   postRecipe: PropTypes.bool,
   recipeNameAndCategory: PropTypes.object,
   modify: PropTypes.string,
   create: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
 };
 
 RecipeNameAndCategory = reduxForm({
