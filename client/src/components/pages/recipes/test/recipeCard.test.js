@@ -20,7 +20,7 @@ describe('Recipes card component ', () => {
   test('render as expected', () => {
     const component = renderer.create(
       <BrowserRouter>
-        < RecipeCard {...props} />
+        <RecipeCard {...props} />
       </BrowserRouter>
   );
     const tree = component.toJSON();

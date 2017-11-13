@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import Form from './form';
-import Input from './input';
-import { username, password } from '../../../utils/validator/validator';
+import Form from '../../../common/form/form';
+import Input from '../../../common/form/input';
+import { username, password } from '../../../../utils/validator/validator';
 
 /**
  * User login form
  */
-class LoginForm extends React.Component {
+export class LoginForm extends React.Component {
   /**
    * @param {object} props
    */
@@ -28,12 +28,12 @@ class LoginForm extends React.Component {
    * @returns {object} the form
    */
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, submitting } = this.props;
     return (
       <Form
-        submitBtnText="Login"
+        submitBtnText={submitting ? 'loading...' : 'Login'}
         onSubmit={handleSubmit(this.props.login)}
-        disabled={this.props.submitting}
+        disabled={submitting}
         secondary
       >
         <Field
@@ -57,9 +57,9 @@ class LoginForm extends React.Component {
   }
 }
 LoginForm.propTypes = {
-  login: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  submitting: PropTypes.bool,
+  login: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
 };
 
 export default reduxForm({

@@ -1,20 +1,26 @@
 
-.name-category {
-  background: $bg-color;
+.name-category div.col-12 {
+  @include box-shadow-2;
+  padding: 0;
 }
-.ingredients {
-  background: $bg-color;
+.name-category form.col-12 {
+  margin: 10px 0;
+  padding-bottom: 10px;
+  min-height: fit-content;
 }
-.directions {
-  background: $bg-color;
-}
+// .ingredients {
+//   background: $bg-color;
+// }
+// .directions {
+//   background: $bg-color;
+// }
 .name-category,
 .directions,
 .ingredients {
   padding: 0;
   height: fit-content;
-  background: $bg-color;
-  margin-top: 0.5rem;
+  margin: 0.5em 0;
+  border-radius: 4px;
 }
 .add-recipe-input {
   font-size: 1.2rem;

@@ -1,0 +1,124 @@
+import React from 'react';
+import { Provider } from 'react-redux';
+import { Recipe } from '../recipe';
+import toJson from 'enzyme-to-json';
+import configureStore from '../../../../store/configStore';
+
+const store = configureStore();
+const props = {
+  actions: {
+    redirect: jest.fn(),
+    getRecipe: jest.fn(),
+    vote: jest.fn(),
+    toggleFav: jest.fn(),
+    getUser: jest.fn(),
+  },
+  recipe: {
+    recipeName: 'test tester',
+    category: '',
+    views: 1,
+    upVotes: 1,
+    downVotes: 1,
+    recipeId: 1,
+    Owner: {
+      id: 1,
+      username: 'test',
+      fullname: 'test test ',
+      profilePix: 'UNKNOWN',
+      email: 'test.test@gmail.com',
+    },
+    RecipeReviews: [{
+      id: 50,
+      review: 'resioioioioi',
+      ReviewerId: 1,
+      RecipeId: 1,
+      Reviewer: {
+        id: 1,
+        username: 'testi',
+        fullname: 'test tester ',
+        profilePix: 'UNKNOWN',
+        email: 'test.test@gmail.com',
+      }
+    }],
+  },
+  loading: false,
+  match: {
+    history: { push: jest.fn() },
+    match: {
+      params: {
+        id: 2
+      },
+    }
+  },
+  favRecipes: [{
+    recipeName: 'test tester',
+    category: '',
+    views: 1,
+    upVotes: 1,
+    downVotes: 1,
+    recipeId: 1,
+  }],
+};
+
+describe('View Recipes Page component ', () => {
+  test('to match empty snapshot ', () => {
+    const wrapper = shallow(<Recipe {...props} />);
+    const tree = toJson(wrapper);
+    expect(tree).toMatchSnapshot();
+    expect(tree).toBeInstanceOf(Object);
+  });
+  test('should show a loader when loading is true ', () => {
+    const wrapper = shallow(<Recipe {...{ ...props, ...{ loading: true } }} />);
+    const tree = toJson(wrapper);
+    expect(tree).toMatchSnapshot();
+    expect(tree).toBeInstanceOf(Object);
+  });
+  test('render as expected when add a review button is clicked ', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        < Recipe {...props} />
+      </ Provider>
+    );
+    const tree = toJson(wrapper);
+    expect(tree).toMatchSnapshot();
+    wrapper.find('#reviewBtn').simulate('click');
+    expect(tree).toMatchSnapshot();
+  });
+  test('render as expected when favorite icon is clicked ', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        < Recipe {...props} />
+      </ Provider>
+    );
+    const tree = toJson(wrapper);
+    expect(tree).toMatchSnapshot();
+    wrapper.find('#toggleFav').simulate('click');
+    expect(props.actions.toggleFav).toBeCalled();
+    expect(tree).toMatchSnapshot();
+  });
+  test('render as expected when upvote icon is clicked ', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <Recipe {...props} />
+      </ Provider>
+    );
+    const tree = toJson(wrapper);
+    expect(tree).toMatchSnapshot();
+    wrapper.find('#upvote').simulate('click');
+    expect(props.actions.vote).toBeCalled();
+    expect(tree).toMatchSnapshot();
+  });
+  test('render as expected when downvote icon is clicked ', () => {
+    const wrapper = mount(
+      <Provider store={store}>
+        <Recipe {...props} />
+      </ Provider>
+    );
+    const tree = toJson(wrapper);
+    expect(tree).toMatchSnapshot();
+    wrapper.find('#downvote').simulate('click');
+    expect(props.actions.vote).toBeCalled();
+    expect(tree).toMatchSnapshot();
+  });
+});
+

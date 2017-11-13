@@ -2,7 +2,7 @@
 
 exports[`Add directions component to render as expected 1`] = `
 <div
-  className="col-11 items "
+  className="col-xs-12 col-sm-12 col-11 items "
 >
   <div
     className="items-header"
@@ -29,9 +29,7 @@ exports[`Add directions component to render as expected 1`] = `
   <div
     className="col-12 items-list-wrapper"
   >
-    <div
-      className="items-list"
-    />
+    <div />
   </div>
 </div>
 `;

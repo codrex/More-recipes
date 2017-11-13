@@ -1,5 +1,6 @@
 
 .list-item{
+  @include box-shadow;
   min-height: 50px;
   text-transform: capitalize;
   padding-left: 40px;
@@ -7,7 +8,6 @@
   margin-bottom: .5em;
   background-color:rgba($dimmed-white,0.3);
   padding: 1em 1.5em;
-  box-shadow: -1px 1px 3px 1px rgba(0, 0, 0, 0.1);
   font-size: 1.1rem;
   display: flex;
   align-items: center;

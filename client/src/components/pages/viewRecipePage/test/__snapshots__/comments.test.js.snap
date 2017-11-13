@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comments display component  expected to match empty snapshot 1`] = `
+<div
+  className="col-12"
+>
+  <div
+    className="media-object comment"
+  >
+    <div
+      className="avatar avatar-sm"
+    >
+      TT
+    </div>
+    <div
+      className="media-body"
+    >
+      <h1>
+        test tester 
+      </h1>
+      <h6
+        className="text-dark lead"
+      >
+        @testi
+      </h6>
+      <p
+        className="media-text no-margin"
+      >
+        resioioioioi
+      </p>
+    </div>
+  </div>
+</div>
+`;

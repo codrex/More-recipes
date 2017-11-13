@@ -1,0 +1,452 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipes list component  render as expected when created recipes nav link is clicked  1`] = `
+<Recipes
+  handleClick={[Function]}
+  onDeleteIconClicked={[Function]}
+  onEditIconCliked={[Function]}
+  onFavIconClicked={[Function]}
+  recipes={
+    Array [
+      Object {},
+    ]
+  }
+  type="createdRecipes"
+>
+  <List
+    className="recipe-list"
+    style={Object {}}
+  >
+    <div
+      className="col-12 recipe-list"
+      style={Object {}}
+    >
+      <h4
+        className="display-4 bold header"
+      >
+        my recipes
+      </h4>
+      <ListItem
+        className="recipe-list-item"
+        handleClick={[Function]}
+        key="0"
+      >
+        <div
+          className="lead list-item recipe-list-item"
+        >
+          <div>
+            <Icon
+              handleClick={[Function]}
+              iconClass="fa fa-pencil edit-icon"
+              pointer={true}
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+              >
+                <i
+                  className="icon fa fa-pencil edit-icon"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+            <Icon
+              dataTarget="#modal"
+              dataToggle="modal"
+              handleClick={[Function]}
+              iconClass="fa fa-trash-o delete-icon"
+              pointer={true}
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+              >
+                <i
+                  className="icon fa fa-trash-o delete-icon"
+                  data-target="#modal"
+                  data-toggle="modal"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </div>
+      </ListItem>
+    </div>
+  </List>
+</Recipes>
+`;
+
+exports[`Recipes list component  render as expected when created recipes nav link is clicked  2`] = `
+<Recipes
+  handleClick={[Function]}
+  onDeleteIconClicked={[Function]}
+  onEditIconCliked={[Function]}
+  onFavIconClicked={[Function]}
+  recipes={
+    Array [
+      Object {},
+    ]
+  }
+  type="createdRecipes"
+>
+  <List
+    className="recipe-list"
+    style={Object {}}
+  >
+    <div
+      className="col-12 recipe-list"
+      style={Object {}}
+    >
+      <h4
+        className="display-4 bold header"
+      >
+        my recipes
+      </h4>
+      <ListItem
+        className="recipe-list-item"
+        handleClick={[Function]}
+        key="0"
+      >
+        <div
+          className="lead list-item recipe-list-item"
+        >
+          <div>
+            <Icon
+              handleClick={[Function]}
+              iconClass="fa fa-pencil edit-icon"
+              pointer={true}
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+              >
+                <i
+                  className="icon fa fa-pencil edit-icon"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+            <Icon
+              dataTarget="#modal"
+              dataToggle="modal"
+              handleClick={[Function]}
+              iconClass="fa fa-trash-o delete-icon"
+              pointer={true}
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+              >
+                <i
+                  className="icon fa fa-trash-o delete-icon"
+                  data-target="#modal"
+                  data-toggle="modal"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </div>
+      </ListItem>
+    </div>
+  </List>
+</Recipes>
+`;
+
+exports[`Recipes list component  render as expected when delete and edit icon are clicked  1`] = `
+<Recipes
+  handleClick={[Function]}
+  onDeleteIconClicked={[Function]}
+  onEditIconCliked={[Function]}
+  onFavIconClicked={[Function]}
+  recipes={
+    Array [
+      Object {},
+    ]
+  }
+  type="createdRecipes"
+>
+  <List
+    className="recipe-list"
+    style={Object {}}
+  >
+    <div
+      className="col-12 recipe-list"
+      style={Object {}}
+    >
+      <h4
+        className="display-4 bold header"
+      >
+        my recipes
+      </h4>
+      <ListItem
+        className="recipe-list-item"
+        handleClick={[Function]}
+        key="0"
+      >
+        <div
+          className="lead list-item recipe-list-item"
+        >
+          <div>
+            <Icon
+              handleClick={[Function]}
+              iconClass="fa fa-pencil edit-icon"
+              pointer={true}
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+              >
+                <i
+                  className="icon fa fa-pencil edit-icon"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+            <Icon
+              dataTarget="#modal"
+              dataToggle="modal"
+              handleClick={[Function]}
+              iconClass="fa fa-trash-o delete-icon"
+              pointer={true}
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+              >
+                <i
+                  className="icon fa fa-trash-o delete-icon"
+                  data-target="#modal"
+                  data-toggle="modal"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </div>
+      </ListItem>
+    </div>
+  </List>
+</Recipes>
+`;
+
+exports[`Recipes list component  render as expected when delete and edit icon are clicked  2`] = `
+<Recipes
+  handleClick={[Function]}
+  onDeleteIconClicked={[Function]}
+  onEditIconCliked={[Function]}
+  onFavIconClicked={[Function]}
+  recipes={
+    Array [
+      Object {},
+    ]
+  }
+  type="createdRecipes"
+>
+  <List
+    className="recipe-list"
+    style={Object {}}
+  >
+    <div
+      className="col-12 recipe-list"
+      style={Object {}}
+    >
+      <h4
+        className="display-4 bold header"
+      >
+        my recipes
+      </h4>
+      <ListItem
+        className="recipe-list-item"
+        handleClick={[Function]}
+        key="0"
+      >
+        <div
+          className="lead list-item recipe-list-item"
+        >
+          <div>
+            <Icon
+              handleClick={[Function]}
+              iconClass="fa fa-pencil edit-icon"
+              pointer={true}
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+              >
+                <i
+                  className="icon fa fa-pencil edit-icon"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+            <Icon
+              dataTarget="#modal"
+              dataToggle="modal"
+              handleClick={[Function]}
+              iconClass="fa fa-trash-o delete-icon"
+              pointer={true}
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+              >
+                <i
+                  className="icon fa fa-trash-o delete-icon"
+                  data-target="#modal"
+                  data-toggle="modal"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </div>
+      </ListItem>
+    </div>
+  </List>
+</Recipes>
+`;
+
+exports[`Recipes list component  render as expected when type equals favRecipes  1`] = `
+<Recipes
+  handleClick={[Function]}
+  onDeleteIconClicked={[Function]}
+  onEditIconCliked={[Function]}
+  onFavIconClicked={[Function]}
+  recipes={
+    Array [
+      Object {},
+    ]
+  }
+  type="favRecipes"
+>
+  <List
+    className="recipe-list"
+    style={Object {}}
+  >
+    <div
+      className="col-12 recipe-list"
+      style={Object {}}
+    >
+      <h4
+        className="display-4 bold header"
+      >
+        my favorite recipes
+      </h4>
+      <ListItem
+        className="recipe-list-item"
+        handleClick={[Function]}
+        key="0"
+      >
+        <div
+          className="lead list-item recipe-list-item"
+        >
+          <div>
+            <Icon
+              handleClick={[Function]}
+              iconClass="fa fa-heart fav-icon"
+              pointer={true}
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+              >
+                <i
+                  className="icon fa fa-heart fav-icon"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </div>
+      </ListItem>
+    </div>
+  </List>
+</Recipes>
+`;
+
+exports[`Recipes list component  render as expected when type equals favRecipes  2`] = `
+<Recipes
+  handleClick={[Function]}
+  onDeleteIconClicked={[Function]}
+  onEditIconCliked={[Function]}
+  onFavIconClicked={[Function]}
+  recipes={
+    Array [
+      Object {},
+    ]
+  }
+  type="favRecipes"
+>
+  <List
+    className="recipe-list"
+    style={Object {}}
+  >
+    <div
+      className="col-12 recipe-list"
+      style={Object {}}
+    >
+      <h4
+        className="display-4 bold header"
+      >
+        my favorite recipes
+      </h4>
+      <ListItem
+        className="recipe-list-item"
+        handleClick={[Function]}
+        key="0"
+      >
+        <div
+          className="lead list-item recipe-list-item"
+        >
+          <div>
+            <Icon
+              handleClick={[Function]}
+              iconClass="fa fa-heart fav-icon"
+              pointer={true}
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+              >
+                <i
+                  className="icon fa fa-heart fav-icon"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </div>
+      </ListItem>
+    </div>
+  </List>
+</Recipes>
+`;
+
+exports[`Recipes list component  to match empty snapshot  1`] = `
+<List
+  className="recipe-list"
+  style={Object {}}
+>
+  <div
+    className="display-3 text-uppercase msg-display"
+  >
+    <h1>
+      Sorry..
+      <br />
+      No recipe was found.
+    </h1>
+  </div>
+</List>
+`;

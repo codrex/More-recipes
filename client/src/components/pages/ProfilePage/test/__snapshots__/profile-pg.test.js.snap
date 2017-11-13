@@ -1,0 +1,2839 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Page component  render as expected when created recipes nav link is clicked  1`] = `
+<ProfilePage
+  actions={
+    Object {
+      "currentRecipe": [Function],
+      "deleteRecipe": [Function],
+      "getProfile": [Function],
+      "removeFromFav": [Function],
+      "resetSuccess": [Function],
+      "update": [Function],
+    }
+  }
+  loading={false}
+  match={
+    Object {
+      "history": Object {
+        "push": [Function],
+      },
+    }
+  }
+  success={false}
+  user={
+    Object {
+      "createdRecipes": Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "recipeId": 1,
+          "recipeName": "Ogbemudia Rex",
+          "upVotes": 1,
+          "views": 1,
+        },
+      ],
+      "favRecipes": Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "recipeId": 1,
+          "recipeName": "Ogbemudia Rex",
+          "upVotes": 1,
+          "views": 1,
+        },
+      ],
+    }
+  }
+>
+  <div
+    className="container-fluid profile-page"
+  >
+    <div
+      className="row"
+    >
+      <TopBar
+        bottom={true}
+        handleChange={[Function]}
+        search={true}
+        title="Profile page"
+      >
+        <div
+          className="col-12 top-bar"
+        >
+          <div
+            className="top-bar-top "
+          >
+            <h1
+              className="text-capitalize no-margin"
+            >
+              Profile page
+            </h1>
+            <SearchBox
+              handleChange={[Function]}
+            >
+              <form
+                className="searchbox"
+                onSubmit={[Function]}
+              >
+                <input
+                  className="form-control text-input"
+                  onChange={[Function]}
+                  placeholder="Search"
+                  type="search"
+                  value=""
+                />
+                <Icon
+                  iconClass="fa fa-search"
+                >
+                  <div
+                    className="icon-wrapper"
+                  >
+                    <i
+                      className="icon fa fa-search"
+                    >
+                      <span />
+                    </i>
+                  </div>
+                </Icon>
+              </form>
+            </SearchBox>
+          </div>
+          <div
+            className="top-bar-bottom"
+          >
+            <nav
+              className="d-flex no-margin"
+            >
+              <li
+                className="text-capitalize nav-link"
+                id="createdRecipes"
+                onClick={[Function]}
+              >
+                my recipes
+              </li>
+              <li
+                className="text-capitalize nav-link"
+                id="favRecipes"
+                onClick={[Function]}
+              >
+                favorite recipes
+              </li>
+            </nav>
+          </div>
+        </div>
+      </TopBar>
+    </div>
+    <div
+      className="row user-info-wrapper"
+    >
+      <div
+        className="backdrop"
+      >
+        <img
+          alt="backdrop pix"
+          src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+        />
+      </div>
+      <UserInfo
+        editBtnClicked={[Function]}
+        user={
+          Object {
+            "createdRecipes": Array [
+              Object {
+                "category": "",
+                "downVotes": 1,
+                "recipeId": 1,
+                "recipeName": "Ogbemudia Rex",
+                "upVotes": 1,
+                "views": 1,
+              },
+            ],
+            "favRecipes": Array [
+              Object {
+                "category": "",
+                "downVotes": 1,
+                "recipeId": 1,
+                "recipeName": "Ogbemudia Rex",
+                "upVotes": 1,
+                "views": 1,
+              },
+            ],
+          }
+        }
+      >
+        <div
+          className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+        >
+          <div
+            className=" d-flex justify-content-around flex-column align-items-center"
+          >
+            <div
+              className="avatar avatar-md"
+            />
+            <h3
+              className=" text-capitalize s-padding no-margin "
+            />
+          </div>
+          <div
+            className="d-flex no-margin flex-column align-items-center justify-content-center info"
+          >
+            <li
+              className="info-item"
+            />
+            <li
+              className="info-item"
+            >
+              @undefined
+            </li>
+          </div>
+          <Button
+            className=" btn-lg center-margin edit-btn btn-secondary"
+            dataTarget="#modal"
+            dataToggle="modal"
+            handleClick={[Function]}
+            id="editProfile"
+            text="edit profile"
+            type="button"
+          >
+            <button
+              className="btn text-capitalize  btn-lg center-margin edit-btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#modal"
+              data-toggle="modal"
+              onClick={[Function]}
+              type="button"
+            >
+              edit profile
+            </button>
+          </Button>
+        </div>
+      </UserInfo>
+    </div>
+    <div
+      className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin"
+    >
+      <Recipes
+        handleClick={[Function]}
+        onDeleteIconClicked={[Function]}
+        onEditIconCliked={[Function]}
+        onFavIconClicked={[Function]}
+        recipes={
+          Array [
+            Object {
+              "category": "",
+              "downVotes": 1,
+              "recipeId": 1,
+              "recipeName": "Ogbemudia Rex",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+        type="createdRecipes"
+      >
+        <List
+          className="recipe-list"
+          style={Object {}}
+        >
+          <div
+            className="col-12 recipe-list"
+            style={Object {}}
+          >
+            <h4
+              className="display-4 bold header"
+            >
+              my recipes
+            </h4>
+            <ListItem
+              className="recipe-list-item"
+              content="Ogbemudia Rex"
+              handleClick={[Function]}
+              key="0"
+            >
+              <div
+                className="lead list-item recipe-list-item"
+              >
+                <h4
+                  className="list-item-text"
+                  onClick={[Function]}
+                >
+                  Ogbemudia Rex
+                </h4>
+                <div>
+                  <Icon
+                    handleClick={[Function]}
+                    iconClass="fa fa-pencil edit-icon"
+                    pointer={true}
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                    >
+                      <i
+                        className="icon fa fa-pencil edit-icon"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                  <Icon
+                    dataTarget="#modal"
+                    dataToggle="modal"
+                    handleClick={[Function]}
+                    iconClass="fa fa-trash-o delete-icon"
+                    pointer={true}
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                    >
+                      <i
+                        className="icon fa fa-trash-o delete-icon"
+                        data-target="#modal"
+                        data-toggle="modal"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                </div>
+              </div>
+            </ListItem>
+          </div>
+        </List>
+      </Recipes>
+      <Paginator
+        handlePageClick={[Function]}
+        pageCount={1}
+      >
+        <nav
+          aria-label="Page navigation"
+          className="d-flex justify-content-center col-12 bottom-margin"
+        >
+          <PaginationBoxView
+            activeClassName="page-active"
+            breakClassName="break-me"
+            breakLabel={
+              <a
+                href=""
+              >
+                ...
+              </a>
+            }
+            containerClassName="pagination justify-content-center"
+            disableInitialCallback={false}
+            disabledClassName="disabled"
+            marginPagesDisplayed={2}
+            nextClassName="page-item page-link"
+            nextLabel="next"
+            onPageChange={[Function]}
+            pageClassName="page-item"
+            pageCount={1}
+            pageLinkClassName="page-link"
+            pageRangeDisplayed={5}
+            previousClassName="page-item page-link"
+            previousLabel="previous"
+            subContainerClassName="page-item"
+          >
+            <ul
+              className="pagination justify-content-center"
+            >
+              <li
+                className="page-item page-link disabled"
+              >
+                <a
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  previous
+                </a>
+              </li>
+              <PageView
+                activeClassName="page-active"
+                key="key0/.0"
+                onClick={[Function]}
+                page={1}
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                selected={true}
+              >
+                <li
+                  className="page-item page-active"
+                >
+                  <a
+                    aria-current="page"
+                    aria-label="Page 1 is your current page"
+                    className="page-link"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    1
+                  </a>
+                </li>
+              </PageView>
+              <li
+                className="page-item page-link disabled"
+              >
+                <a
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  next
+                </a>
+              </li>
+            </ul>
+          </PaginationBoxView>
+        </nav>
+      </Paginator>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="editProfileModal"
+      left={true}
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={true}
+      title=""
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="editProfileModalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="editProfileModalLabel"
+              />
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</ProfilePage>
+`;
+
+exports[`Profile Page component  render as expected when created recipes nav link is clicked  2`] = `
+<ProfilePage
+  actions={
+    Object {
+      "currentRecipe": [Function],
+      "deleteRecipe": [Function],
+      "getProfile": [Function],
+      "removeFromFav": [Function],
+      "resetSuccess": [Function],
+      "update": [Function],
+    }
+  }
+  loading={false}
+  match={
+    Object {
+      "history": Object {
+        "push": [Function],
+      },
+    }
+  }
+  success={false}
+  user={
+    Object {
+      "createdRecipes": Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "recipeId": 1,
+          "recipeName": "Ogbemudia Rex",
+          "upVotes": 1,
+          "views": 1,
+        },
+      ],
+      "favRecipes": Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "recipeId": 1,
+          "recipeName": "Ogbemudia Rex",
+          "upVotes": 1,
+          "views": 1,
+        },
+      ],
+    }
+  }
+>
+  <div
+    className="container-fluid profile-page"
+  >
+    <div
+      className="row"
+    >
+      <TopBar
+        bottom={true}
+        handleChange={[Function]}
+        search={true}
+        title="Profile page"
+      >
+        <div
+          className="col-12 top-bar"
+        >
+          <div
+            className="top-bar-top "
+          >
+            <h1
+              className="text-capitalize no-margin"
+            >
+              Profile page
+            </h1>
+            <SearchBox
+              handleChange={[Function]}
+            >
+              <form
+                className="searchbox"
+                onSubmit={[Function]}
+              >
+                <input
+                  className="form-control text-input"
+                  onChange={[Function]}
+                  placeholder="Search"
+                  type="search"
+                  value=""
+                />
+                <Icon
+                  iconClass="fa fa-search"
+                >
+                  <div
+                    className="icon-wrapper"
+                  >
+                    <i
+                      className="icon fa fa-search"
+                    >
+                      <span />
+                    </i>
+                  </div>
+                </Icon>
+              </form>
+            </SearchBox>
+          </div>
+          <div
+            className="top-bar-bottom"
+          >
+            <nav
+              className="d-flex no-margin"
+            >
+              <li
+                className="text-capitalize nav-link"
+                id="createdRecipes"
+                onClick={[Function]}
+              >
+                my recipes
+              </li>
+              <li
+                className="text-capitalize nav-link"
+                id="favRecipes"
+                onClick={[Function]}
+              >
+                favorite recipes
+              </li>
+            </nav>
+          </div>
+        </div>
+      </TopBar>
+    </div>
+    <div
+      className="row user-info-wrapper"
+    >
+      <div
+        className="backdrop"
+      >
+        <img
+          alt="backdrop pix"
+          src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+        />
+      </div>
+      <UserInfo
+        editBtnClicked={[Function]}
+        user={
+          Object {
+            "createdRecipes": Array [
+              Object {
+                "category": "",
+                "downVotes": 1,
+                "recipeId": 1,
+                "recipeName": "Ogbemudia Rex",
+                "upVotes": 1,
+                "views": 1,
+              },
+            ],
+            "favRecipes": Array [
+              Object {
+                "category": "",
+                "downVotes": 1,
+                "recipeId": 1,
+                "recipeName": "Ogbemudia Rex",
+                "upVotes": 1,
+                "views": 1,
+              },
+            ],
+          }
+        }
+      >
+        <div
+          className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+        >
+          <div
+            className=" d-flex justify-content-around flex-column align-items-center"
+          >
+            <div
+              className="avatar avatar-md"
+            />
+            <h3
+              className=" text-capitalize s-padding no-margin "
+            />
+          </div>
+          <div
+            className="d-flex no-margin flex-column align-items-center justify-content-center info"
+          >
+            <li
+              className="info-item"
+            />
+            <li
+              className="info-item"
+            >
+              @undefined
+            </li>
+          </div>
+          <Button
+            className=" btn-lg center-margin edit-btn btn-secondary"
+            dataTarget="#modal"
+            dataToggle="modal"
+            handleClick={[Function]}
+            id="editProfile"
+            text="edit profile"
+            type="button"
+          >
+            <button
+              className="btn text-capitalize  btn-lg center-margin edit-btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#modal"
+              data-toggle="modal"
+              onClick={[Function]}
+              type="button"
+            >
+              edit profile
+            </button>
+          </Button>
+        </div>
+      </UserInfo>
+    </div>
+    <div
+      className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin"
+    >
+      <Recipes
+        handleClick={[Function]}
+        onDeleteIconClicked={[Function]}
+        onEditIconCliked={[Function]}
+        onFavIconClicked={[Function]}
+        recipes={
+          Array [
+            Object {
+              "category": "",
+              "downVotes": 1,
+              "recipeId": 1,
+              "recipeName": "Ogbemudia Rex",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+        type="createdRecipes"
+      >
+        <List
+          className="recipe-list"
+          style={Object {}}
+        >
+          <div
+            className="col-12 recipe-list"
+            style={Object {}}
+          >
+            <h4
+              className="display-4 bold header"
+            >
+              my recipes
+            </h4>
+            <ListItem
+              className="recipe-list-item"
+              content="Ogbemudia Rex"
+              handleClick={[Function]}
+              key="0"
+            >
+              <div
+                className="lead list-item recipe-list-item"
+              >
+                <h4
+                  className="list-item-text"
+                  onClick={[Function]}
+                >
+                  Ogbemudia Rex
+                </h4>
+                <div>
+                  <Icon
+                    handleClick={[Function]}
+                    iconClass="fa fa-pencil edit-icon"
+                    pointer={true}
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                    >
+                      <i
+                        className="icon fa fa-pencil edit-icon"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                  <Icon
+                    dataTarget="#modal"
+                    dataToggle="modal"
+                    handleClick={[Function]}
+                    iconClass="fa fa-trash-o delete-icon"
+                    pointer={true}
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                    >
+                      <i
+                        className="icon fa fa-trash-o delete-icon"
+                        data-target="#modal"
+                        data-toggle="modal"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                </div>
+              </div>
+            </ListItem>
+          </div>
+        </List>
+      </Recipes>
+      <Paginator
+        handlePageClick={[Function]}
+        pageCount={1}
+      >
+        <nav
+          aria-label="Page navigation"
+          className="d-flex justify-content-center col-12 bottom-margin"
+        >
+          <PaginationBoxView
+            activeClassName="page-active"
+            breakClassName="break-me"
+            breakLabel={
+              <a
+                href=""
+              >
+                ...
+              </a>
+            }
+            containerClassName="pagination justify-content-center"
+            disableInitialCallback={false}
+            disabledClassName="disabled"
+            marginPagesDisplayed={2}
+            nextClassName="page-item page-link"
+            nextLabel="next"
+            onPageChange={[Function]}
+            pageClassName="page-item"
+            pageCount={1}
+            pageLinkClassName="page-link"
+            pageRangeDisplayed={5}
+            previousClassName="page-item page-link"
+            previousLabel="previous"
+            subContainerClassName="page-item"
+          >
+            <ul
+              className="pagination justify-content-center"
+            >
+              <li
+                className="page-item page-link disabled"
+              >
+                <a
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  previous
+                </a>
+              </li>
+              <PageView
+                activeClassName="page-active"
+                key="key0/.0"
+                onClick={[Function]}
+                page={1}
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                selected={true}
+              >
+                <li
+                  className="page-item page-active"
+                >
+                  <a
+                    aria-current="page"
+                    aria-label="Page 1 is your current page"
+                    className="page-link"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    1
+                  </a>
+                </li>
+              </PageView>
+              <li
+                className="page-item page-link disabled"
+              >
+                <a
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  next
+                </a>
+              </li>
+            </ul>
+          </PaginationBoxView>
+        </nav>
+      </Paginator>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="editProfileModal"
+      left={true}
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={true}
+      title=""
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="editProfileModalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="editProfileModalLabel"
+              />
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</ProfilePage>
+`;
+
+exports[`Profile Page component  render as expected when edit profile button is clicked  1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <ProfilePage
+    actions={
+      Object {
+        "currentRecipe": [Function],
+        "deleteRecipe": [Function],
+        "getProfile": [Function],
+        "removeFromFav": [Function],
+        "resetSuccess": [Function],
+        "update": [Function],
+      }
+    }
+    loading={true}
+    match={
+      Object {
+        "history": Object {
+          "push": [Function],
+        },
+      }
+    }
+    success={false}
+    user={
+      Object {
+        "createdRecipes": Array [
+          Object {
+            "category": "",
+            "downVotes": 1,
+            "recipeId": 1,
+            "recipeName": "Ogbemudia Rex",
+            "upVotes": 1,
+            "views": 1,
+          },
+        ],
+        "favRecipes": Array [
+          Object {
+            "category": "",
+            "downVotes": 1,
+            "recipeId": 1,
+            "recipeName": "Ogbemudia Rex",
+            "upVotes": 1,
+            "views": 1,
+          },
+        ],
+      }
+    }
+  >
+    <div
+      className="container-fluid profile-page"
+    >
+      <div
+        className="row"
+      >
+        <TopBar
+          bottom={true}
+          handleChange={[Function]}
+          search={true}
+          title="Profile page"
+        >
+          <div
+            className="col-12 top-bar"
+          >
+            <div
+              className="top-bar-top "
+            >
+              <h1
+                className="text-capitalize no-margin"
+              >
+                Profile page
+              </h1>
+              <SearchBox
+                handleChange={[Function]}
+              >
+                <form
+                  className="searchbox"
+                  onSubmit={[Function]}
+                >
+                  <input
+                    className="form-control text-input"
+                    onChange={[Function]}
+                    placeholder="Search"
+                    type="search"
+                    value=""
+                  />
+                  <Icon
+                    iconClass="fa fa-search"
+                  >
+                    <div
+                      className="icon-wrapper"
+                    >
+                      <i
+                        className="icon fa fa-search"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                </form>
+              </SearchBox>
+            </div>
+            <div
+              className="top-bar-bottom"
+            >
+              <nav
+                className="d-flex no-margin"
+              >
+                <li
+                  className="text-capitalize nav-link"
+                  id="createdRecipes"
+                  onClick={[Function]}
+                >
+                  my recipes
+                </li>
+                <li
+                  className="text-capitalize nav-link"
+                  id="favRecipes"
+                  onClick={[Function]}
+                >
+                  favorite recipes
+                </li>
+              </nav>
+            </div>
+          </div>
+        </TopBar>
+      </div>
+      <div
+        className="row user-info-wrapper"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="backdrop pix"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+          />
+        </div>
+        <UserInfo
+          editBtnClicked={[Function]}
+          user={
+            Object {
+              "createdRecipes": Array [
+                Object {
+                  "category": "",
+                  "downVotes": 1,
+                  "recipeId": 1,
+                  "recipeName": "Ogbemudia Rex",
+                  "upVotes": 1,
+                  "views": 1,
+                },
+              ],
+              "favRecipes": Array [
+                Object {
+                  "category": "",
+                  "downVotes": 1,
+                  "recipeId": 1,
+                  "recipeName": "Ogbemudia Rex",
+                  "upVotes": 1,
+                  "views": 1,
+                },
+              ],
+            }
+          }
+        >
+          <div
+            className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+          >
+            <div
+              className=" d-flex justify-content-around flex-column align-items-center"
+            >
+              <div
+                className="avatar avatar-md"
+              />
+              <h3
+                className=" text-capitalize s-padding no-margin "
+              />
+            </div>
+            <div
+              className="d-flex no-margin flex-column align-items-center justify-content-center info"
+            >
+              <li
+                className="info-item"
+              />
+              <li
+                className="info-item"
+              >
+                @undefined
+              </li>
+            </div>
+            <Button
+              className=" btn-lg center-margin edit-btn btn-secondary"
+              dataTarget="#modal"
+              dataToggle="modal"
+              handleClick={[Function]}
+              id="editProfile"
+              text="edit profile"
+              type="button"
+            >
+              <button
+                className="btn text-capitalize  btn-lg center-margin edit-btn btn-secondary"
+                data-dismiss="modal"
+                data-target="#modal"
+                data-toggle="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                edit profile
+              </button>
+            </Button>
+          </div>
+        </UserInfo>
+      </div>
+      <div
+        className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin"
+      >
+        <Recipes
+          handleClick={[Function]}
+          onDeleteIconClicked={[Function]}
+          onEditIconCliked={[Function]}
+          onFavIconClicked={[Function]}
+          recipes={
+            Array [
+              Object {
+                "category": "",
+                "downVotes": 1,
+                "recipeId": 1,
+                "recipeName": "Ogbemudia Rex",
+                "upVotes": 1,
+                "views": 1,
+              },
+            ]
+          }
+          type="createdRecipes"
+        >
+          <List
+            className="recipe-list"
+            style={Object {}}
+          >
+            <div
+              className="col-12 recipe-list"
+              style={Object {}}
+            >
+              <h4
+                className="display-4 bold header"
+              >
+                my recipes
+              </h4>
+              <ListItem
+                className="recipe-list-item"
+                content="Ogbemudia Rex"
+                handleClick={[Function]}
+                key="0"
+              >
+                <div
+                  className="lead list-item recipe-list-item"
+                >
+                  <h4
+                    className="list-item-text"
+                    onClick={[Function]}
+                  >
+                    Ogbemudia Rex
+                  </h4>
+                  <div>
+                    <Icon
+                      handleClick={[Function]}
+                      iconClass="fa fa-pencil edit-icon"
+                      pointer={true}
+                    >
+                      <div
+                        className="icon-wrapper pointer"
+                        onClick={[Function]}
+                      >
+                        <i
+                          className="icon fa fa-pencil edit-icon"
+                        >
+                          <span />
+                        </i>
+                      </div>
+                    </Icon>
+                    <Icon
+                      dataTarget="#modal"
+                      dataToggle="modal"
+                      handleClick={[Function]}
+                      iconClass="fa fa-trash-o delete-icon"
+                      pointer={true}
+                    >
+                      <div
+                        className="icon-wrapper pointer"
+                        onClick={[Function]}
+                      >
+                        <i
+                          className="icon fa fa-trash-o delete-icon"
+                          data-target="#modal"
+                          data-toggle="modal"
+                        >
+                          <span />
+                        </i>
+                      </div>
+                    </Icon>
+                  </div>
+                </div>
+              </ListItem>
+            </div>
+          </List>
+        </Recipes>
+        <Paginator
+          handlePageClick={[Function]}
+          pageCount={1}
+        >
+          <nav
+            aria-label="Page navigation"
+            className="d-flex justify-content-center col-12 bottom-margin"
+          >
+            <PaginationBoxView
+              activeClassName="page-active"
+              breakClassName="break-me"
+              breakLabel={
+                <a
+                  href=""
+                >
+                  ...
+                </a>
+              }
+              containerClassName="pagination justify-content-center"
+              disableInitialCallback={false}
+              disabledClassName="disabled"
+              marginPagesDisplayed={2}
+              nextClassName="page-item page-link"
+              nextLabel="next"
+              onPageChange={[Function]}
+              pageClassName="page-item"
+              pageCount={1}
+              pageLinkClassName="page-link"
+              pageRangeDisplayed={5}
+              previousClassName="page-item page-link"
+              previousLabel="previous"
+              subContainerClassName="page-item"
+            >
+              <ul
+                className="pagination justify-content-center"
+              >
+                <li
+                  className="page-item page-link disabled"
+                >
+                  <a
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    previous
+                  </a>
+                </li>
+                <PageView
+                  activeClassName="page-active"
+                  key="key0/.0"
+                  onClick={[Function]}
+                  page={1}
+                  pageClassName="page-item"
+                  pageLinkClassName="page-link"
+                  selected={true}
+                >
+                  <li
+                    className="page-item page-active"
+                  >
+                    <a
+                      aria-current="page"
+                      aria-label="Page 1 is your current page"
+                      className="page-link"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      tabIndex="0"
+                    >
+                      1
+                    </a>
+                  </li>
+                </PageView>
+                <li
+                  className="page-item page-link disabled"
+                >
+                  <a
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    next
+                  </a>
+                </li>
+              </ul>
+            </PaginationBoxView>
+          </nav>
+        </Paginator>
+      </div>
+      <Modal
+        center={true}
+        closeBtnClicked={[Function]}
+        footer={false}
+        id="editProfileModal"
+        left={true}
+        loading={true}
+        onContinueClicked={[Function]}
+        operationCompleted={false}
+        right={true}
+        title=""
+      >
+        <div
+          aria-hidden="true"
+          aria-labelledby="editProfileModalLabel"
+          className="modal fade"
+          data-backdrop="false"
+          id="modal"
+          role="dialog"
+          tabIndex="-1"
+        >
+          <div
+            className="modal-dialog"
+            role="document"
+          >
+            <div
+              className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+            >
+              <div
+                className="modal-header"
+              >
+                <h5
+                  className="modal-title text-capitalize display-4"
+                  id="editProfileModalLabel"
+                />
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>
+              </div>
+              <div
+                className="modal-body"
+              />
+            </div>
+          </div>
+        </div>
+      </Modal>
+    </div>
+  </ProfilePage>
+</Provider>
+`;
+
+exports[`Profile Page component  render as expected when edit profile button is clicked  2`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <ProfilePage
+    actions={
+      Object {
+        "currentRecipe": [Function],
+        "deleteRecipe": [Function],
+        "getProfile": [Function],
+        "removeFromFav": [Function],
+        "resetSuccess": [Function],
+        "update": [Function],
+      }
+    }
+    loading={true}
+    match={
+      Object {
+        "history": Object {
+          "push": [Function],
+        },
+      }
+    }
+    success={false}
+    user={
+      Object {
+        "createdRecipes": Array [
+          Object {
+            "category": "",
+            "downVotes": 1,
+            "recipeId": 1,
+            "recipeName": "Ogbemudia Rex",
+            "upVotes": 1,
+            "views": 1,
+          },
+        ],
+        "favRecipes": Array [
+          Object {
+            "category": "",
+            "downVotes": 1,
+            "recipeId": 1,
+            "recipeName": "Ogbemudia Rex",
+            "upVotes": 1,
+            "views": 1,
+          },
+        ],
+      }
+    }
+  >
+    <div
+      className="container-fluid profile-page"
+    >
+      <div
+        className="row"
+      >
+        <TopBar
+          bottom={true}
+          handleChange={[Function]}
+          search={true}
+          title="Profile page"
+        >
+          <div
+            className="col-12 top-bar"
+          >
+            <div
+              className="top-bar-top "
+            >
+              <h1
+                className="text-capitalize no-margin"
+              >
+                Profile page
+              </h1>
+              <SearchBox
+                handleChange={[Function]}
+              >
+                <form
+                  className="searchbox"
+                  onSubmit={[Function]}
+                >
+                  <input
+                    className="form-control text-input"
+                    onChange={[Function]}
+                    placeholder="Search"
+                    type="search"
+                    value=""
+                  />
+                  <Icon
+                    iconClass="fa fa-search"
+                  >
+                    <div
+                      className="icon-wrapper"
+                    >
+                      <i
+                        className="icon fa fa-search"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                </form>
+              </SearchBox>
+            </div>
+            <div
+              className="top-bar-bottom"
+            >
+              <nav
+                className="d-flex no-margin"
+              >
+                <li
+                  className="text-capitalize nav-link"
+                  id="createdRecipes"
+                  onClick={[Function]}
+                >
+                  my recipes
+                </li>
+                <li
+                  className="text-capitalize nav-link"
+                  id="favRecipes"
+                  onClick={[Function]}
+                >
+                  favorite recipes
+                </li>
+              </nav>
+            </div>
+          </div>
+        </TopBar>
+      </div>
+      <div
+        className="row user-info-wrapper"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="backdrop pix"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+          />
+        </div>
+        <UserInfo
+          editBtnClicked={[Function]}
+          user={
+            Object {
+              "createdRecipes": Array [
+                Object {
+                  "category": "",
+                  "downVotes": 1,
+                  "recipeId": 1,
+                  "recipeName": "Ogbemudia Rex",
+                  "upVotes": 1,
+                  "views": 1,
+                },
+              ],
+              "favRecipes": Array [
+                Object {
+                  "category": "",
+                  "downVotes": 1,
+                  "recipeId": 1,
+                  "recipeName": "Ogbemudia Rex",
+                  "upVotes": 1,
+                  "views": 1,
+                },
+              ],
+            }
+          }
+        >
+          <div
+            className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+          >
+            <div
+              className=" d-flex justify-content-around flex-column align-items-center"
+            >
+              <div
+                className="avatar avatar-md"
+              />
+              <h3
+                className=" text-capitalize s-padding no-margin "
+              />
+            </div>
+            <div
+              className="d-flex no-margin flex-column align-items-center justify-content-center info"
+            >
+              <li
+                className="info-item"
+              />
+              <li
+                className="info-item"
+              >
+                @undefined
+              </li>
+            </div>
+            <Button
+              className=" btn-lg center-margin edit-btn btn-secondary"
+              dataTarget="#modal"
+              dataToggle="modal"
+              handleClick={[Function]}
+              id="editProfile"
+              text="edit profile"
+              type="button"
+            >
+              <button
+                className="btn text-capitalize  btn-lg center-margin edit-btn btn-secondary"
+                data-dismiss="modal"
+                data-target="#modal"
+                data-toggle="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                edit profile
+              </button>
+            </Button>
+          </div>
+        </UserInfo>
+      </div>
+      <div
+        className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin"
+      >
+        <Recipes
+          handleClick={[Function]}
+          onDeleteIconClicked={[Function]}
+          onEditIconCliked={[Function]}
+          onFavIconClicked={[Function]}
+          recipes={
+            Array [
+              Object {
+                "category": "",
+                "downVotes": 1,
+                "recipeId": 1,
+                "recipeName": "Ogbemudia Rex",
+                "upVotes": 1,
+                "views": 1,
+              },
+            ]
+          }
+          type="createdRecipes"
+        >
+          <List
+            className="recipe-list"
+            style={Object {}}
+          >
+            <div
+              className="col-12 recipe-list"
+              style={Object {}}
+            >
+              <h4
+                className="display-4 bold header"
+              >
+                my recipes
+              </h4>
+              <ListItem
+                className="recipe-list-item"
+                content="Ogbemudia Rex"
+                handleClick={[Function]}
+                key="0"
+              >
+                <div
+                  className="lead list-item recipe-list-item"
+                >
+                  <h4
+                    className="list-item-text"
+                    onClick={[Function]}
+                  >
+                    Ogbemudia Rex
+                  </h4>
+                  <div>
+                    <Icon
+                      handleClick={[Function]}
+                      iconClass="fa fa-pencil edit-icon"
+                      pointer={true}
+                    >
+                      <div
+                        className="icon-wrapper pointer"
+                        onClick={[Function]}
+                      >
+                        <i
+                          className="icon fa fa-pencil edit-icon"
+                        >
+                          <span />
+                        </i>
+                      </div>
+                    </Icon>
+                    <Icon
+                      dataTarget="#modal"
+                      dataToggle="modal"
+                      handleClick={[Function]}
+                      iconClass="fa fa-trash-o delete-icon"
+                      pointer={true}
+                    >
+                      <div
+                        className="icon-wrapper pointer"
+                        onClick={[Function]}
+                      >
+                        <i
+                          className="icon fa fa-trash-o delete-icon"
+                          data-target="#modal"
+                          data-toggle="modal"
+                        >
+                          <span />
+                        </i>
+                      </div>
+                    </Icon>
+                  </div>
+                </div>
+              </ListItem>
+            </div>
+          </List>
+        </Recipes>
+        <Paginator
+          handlePageClick={[Function]}
+          pageCount={1}
+        >
+          <nav
+            aria-label="Page navigation"
+            className="d-flex justify-content-center col-12 bottom-margin"
+          >
+            <PaginationBoxView
+              activeClassName="page-active"
+              breakClassName="break-me"
+              breakLabel={
+                <a
+                  href=""
+                >
+                  ...
+                </a>
+              }
+              containerClassName="pagination justify-content-center"
+              disableInitialCallback={false}
+              disabledClassName="disabled"
+              marginPagesDisplayed={2}
+              nextClassName="page-item page-link"
+              nextLabel="next"
+              onPageChange={[Function]}
+              pageClassName="page-item"
+              pageCount={1}
+              pageLinkClassName="page-link"
+              pageRangeDisplayed={5}
+              previousClassName="page-item page-link"
+              previousLabel="previous"
+              subContainerClassName="page-item"
+            >
+              <ul
+                className="pagination justify-content-center"
+              >
+                <li
+                  className="page-item page-link disabled"
+                >
+                  <a
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    previous
+                  </a>
+                </li>
+                <PageView
+                  activeClassName="page-active"
+                  key="key0/.0"
+                  onClick={[Function]}
+                  page={1}
+                  pageClassName="page-item"
+                  pageLinkClassName="page-link"
+                  selected={true}
+                >
+                  <li
+                    className="page-item page-active"
+                  >
+                    <a
+                      aria-current="page"
+                      aria-label="Page 1 is your current page"
+                      className="page-link"
+                      onClick={[Function]}
+                      onKeyPress={[Function]}
+                      tabIndex="0"
+                    >
+                      1
+                    </a>
+                  </li>
+                </PageView>
+                <li
+                  className="page-item page-link disabled"
+                >
+                  <a
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    next
+                  </a>
+                </li>
+              </ul>
+            </PaginationBoxView>
+          </nav>
+        </Paginator>
+      </div>
+      <Modal
+        center={true}
+        closeBtnClicked={[Function]}
+        footer={false}
+        id="editProfileModal"
+        left={true}
+        loading={true}
+        onContinueClicked={[Function]}
+        operationCompleted={false}
+        right={true}
+        title=""
+      >
+        <div
+          aria-hidden="true"
+          aria-labelledby="editProfileModalLabel"
+          className="modal fade"
+          data-backdrop="false"
+          id="modal"
+          role="dialog"
+          tabIndex="-1"
+        >
+          <div
+            className="modal-dialog"
+            role="document"
+          >
+            <div
+              className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+            >
+              <div
+                className="modal-header"
+              >
+                <h5
+                  className="modal-title text-capitalize display-4"
+                  id="editProfileModalLabel"
+                />
+                <button
+                  aria-label="Close"
+                  className="close"
+                  data-dismiss="modal"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <span
+                    aria-hidden="true"
+                  >
+                    ×
+                  </span>
+                </button>
+              </div>
+              <div
+                className="modal-body"
+              />
+            </div>
+          </div>
+        </div>
+      </Modal>
+    </div>
+  </ProfilePage>
+</Provider>
+`;
+
+exports[`Profile Page component  render as expected when favorite recipes nav link is clicked  1`] = `
+<ProfilePage
+  actions={
+    Object {
+      "currentRecipe": [Function],
+      "deleteRecipe": [Function],
+      "getProfile": [Function],
+      "removeFromFav": [Function],
+      "resetSuccess": [Function],
+      "update": [Function],
+    }
+  }
+  loading={false}
+  match={
+    Object {
+      "history": Object {
+        "push": [Function],
+      },
+    }
+  }
+  success={false}
+  user={
+    Object {
+      "createdRecipes": Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "recipeId": 1,
+          "recipeName": "Ogbemudia Rex",
+          "upVotes": 1,
+          "views": 1,
+        },
+      ],
+      "favRecipes": Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "recipeId": 1,
+          "recipeName": "Ogbemudia Rex",
+          "upVotes": 1,
+          "views": 1,
+        },
+      ],
+    }
+  }
+>
+  <div
+    className="container-fluid profile-page"
+  >
+    <div
+      className="row"
+    >
+      <TopBar
+        bottom={true}
+        handleChange={[Function]}
+        search={true}
+        title="Profile page"
+      >
+        <div
+          className="col-12 top-bar"
+        >
+          <div
+            className="top-bar-top "
+          >
+            <h1
+              className="text-capitalize no-margin"
+            >
+              Profile page
+            </h1>
+            <SearchBox
+              handleChange={[Function]}
+            >
+              <form
+                className="searchbox"
+                onSubmit={[Function]}
+              >
+                <input
+                  className="form-control text-input"
+                  onChange={[Function]}
+                  placeholder="Search"
+                  type="search"
+                  value=""
+                />
+                <Icon
+                  iconClass="fa fa-search"
+                >
+                  <div
+                    className="icon-wrapper"
+                  >
+                    <i
+                      className="icon fa fa-search"
+                    >
+                      <span />
+                    </i>
+                  </div>
+                </Icon>
+              </form>
+            </SearchBox>
+          </div>
+          <div
+            className="top-bar-bottom"
+          >
+            <nav
+              className="d-flex no-margin"
+            >
+              <li
+                className="text-capitalize nav-link"
+                id="createdRecipes"
+                onClick={[Function]}
+              >
+                my recipes
+              </li>
+              <li
+                className="text-capitalize nav-link"
+                id="favRecipes"
+                onClick={[Function]}
+              >
+                favorite recipes
+              </li>
+            </nav>
+          </div>
+        </div>
+      </TopBar>
+    </div>
+    <div
+      className="row user-info-wrapper"
+    >
+      <div
+        className="backdrop"
+      >
+        <img
+          alt="backdrop pix"
+          src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+        />
+      </div>
+      <UserInfo
+        editBtnClicked={[Function]}
+        user={
+          Object {
+            "createdRecipes": Array [
+              Object {
+                "category": "",
+                "downVotes": 1,
+                "recipeId": 1,
+                "recipeName": "Ogbemudia Rex",
+                "upVotes": 1,
+                "views": 1,
+              },
+            ],
+            "favRecipes": Array [
+              Object {
+                "category": "",
+                "downVotes": 1,
+                "recipeId": 1,
+                "recipeName": "Ogbemudia Rex",
+                "upVotes": 1,
+                "views": 1,
+              },
+            ],
+          }
+        }
+      >
+        <div
+          className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+        >
+          <div
+            className=" d-flex justify-content-around flex-column align-items-center"
+          >
+            <div
+              className="avatar avatar-md"
+            />
+            <h3
+              className=" text-capitalize s-padding no-margin "
+            />
+          </div>
+          <div
+            className="d-flex no-margin flex-column align-items-center justify-content-center info"
+          >
+            <li
+              className="info-item"
+            />
+            <li
+              className="info-item"
+            >
+              @undefined
+            </li>
+          </div>
+          <Button
+            className=" btn-lg center-margin edit-btn btn-secondary"
+            dataTarget="#modal"
+            dataToggle="modal"
+            handleClick={[Function]}
+            id="editProfile"
+            text="edit profile"
+            type="button"
+          >
+            <button
+              className="btn text-capitalize  btn-lg center-margin edit-btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#modal"
+              data-toggle="modal"
+              onClick={[Function]}
+              type="button"
+            >
+              edit profile
+            </button>
+          </Button>
+        </div>
+      </UserInfo>
+    </div>
+    <div
+      className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin"
+    >
+      <Recipes
+        handleClick={[Function]}
+        onDeleteIconClicked={[Function]}
+        onEditIconCliked={[Function]}
+        onFavIconClicked={[Function]}
+        recipes={
+          Array [
+            Object {
+              "category": "",
+              "downVotes": 1,
+              "recipeId": 1,
+              "recipeName": "Ogbemudia Rex",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+        type="createdRecipes"
+      >
+        <List
+          className="recipe-list"
+          style={Object {}}
+        >
+          <div
+            className="col-12 recipe-list"
+            style={Object {}}
+          >
+            <h4
+              className="display-4 bold header"
+            >
+              my recipes
+            </h4>
+            <ListItem
+              className="recipe-list-item"
+              content="Ogbemudia Rex"
+              handleClick={[Function]}
+              key="0"
+            >
+              <div
+                className="lead list-item recipe-list-item"
+              >
+                <h4
+                  className="list-item-text"
+                  onClick={[Function]}
+                >
+                  Ogbemudia Rex
+                </h4>
+                <div>
+                  <Icon
+                    handleClick={[Function]}
+                    iconClass="fa fa-pencil edit-icon"
+                    pointer={true}
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                    >
+                      <i
+                        className="icon fa fa-pencil edit-icon"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                  <Icon
+                    dataTarget="#modal"
+                    dataToggle="modal"
+                    handleClick={[Function]}
+                    iconClass="fa fa-trash-o delete-icon"
+                    pointer={true}
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                    >
+                      <i
+                        className="icon fa fa-trash-o delete-icon"
+                        data-target="#modal"
+                        data-toggle="modal"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                </div>
+              </div>
+            </ListItem>
+          </div>
+        </List>
+      </Recipes>
+      <Paginator
+        handlePageClick={[Function]}
+        pageCount={1}
+      >
+        <nav
+          aria-label="Page navigation"
+          className="d-flex justify-content-center col-12 bottom-margin"
+        >
+          <PaginationBoxView
+            activeClassName="page-active"
+            breakClassName="break-me"
+            breakLabel={
+              <a
+                href=""
+              >
+                ...
+              </a>
+            }
+            containerClassName="pagination justify-content-center"
+            disableInitialCallback={false}
+            disabledClassName="disabled"
+            marginPagesDisplayed={2}
+            nextClassName="page-item page-link"
+            nextLabel="next"
+            onPageChange={[Function]}
+            pageClassName="page-item"
+            pageCount={1}
+            pageLinkClassName="page-link"
+            pageRangeDisplayed={5}
+            previousClassName="page-item page-link"
+            previousLabel="previous"
+            subContainerClassName="page-item"
+          >
+            <ul
+              className="pagination justify-content-center"
+            >
+              <li
+                className="page-item page-link disabled"
+              >
+                <a
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  previous
+                </a>
+              </li>
+              <PageView
+                activeClassName="page-active"
+                key="key0/.0"
+                onClick={[Function]}
+                page={1}
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                selected={true}
+              >
+                <li
+                  className="page-item page-active"
+                >
+                  <a
+                    aria-current="page"
+                    aria-label="Page 1 is your current page"
+                    className="page-link"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    1
+                  </a>
+                </li>
+              </PageView>
+              <li
+                className="page-item page-link disabled"
+              >
+                <a
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  next
+                </a>
+              </li>
+            </ul>
+          </PaginationBoxView>
+        </nav>
+      </Paginator>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="editProfileModal"
+      left={true}
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={true}
+      title=""
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="editProfileModalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="editProfileModalLabel"
+              />
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</ProfilePage>
+`;
+
+exports[`Profile Page component  render as expected when favorite recipes nav link is clicked  2`] = `
+<ProfilePage
+  actions={
+    Object {
+      "currentRecipe": [Function],
+      "deleteRecipe": [Function],
+      "getProfile": [Function],
+      "removeFromFav": [Function],
+      "resetSuccess": [Function],
+      "update": [Function],
+    }
+  }
+  loading={false}
+  match={
+    Object {
+      "history": Object {
+        "push": [Function],
+      },
+    }
+  }
+  success={false}
+  user={
+    Object {
+      "createdRecipes": Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "recipeId": 1,
+          "recipeName": "Ogbemudia Rex",
+          "upVotes": 1,
+          "views": 1,
+        },
+      ],
+      "favRecipes": Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "recipeId": 1,
+          "recipeName": "Ogbemudia Rex",
+          "upVotes": 1,
+          "views": 1,
+        },
+      ],
+    }
+  }
+>
+  <div
+    className="container-fluid profile-page"
+  >
+    <div
+      className="row"
+    >
+      <TopBar
+        bottom={true}
+        handleChange={[Function]}
+        search={true}
+        title="Profile page"
+      >
+        <div
+          className="col-12 top-bar"
+        >
+          <div
+            className="top-bar-top "
+          >
+            <h1
+              className="text-capitalize no-margin"
+            >
+              Profile page
+            </h1>
+            <SearchBox
+              handleChange={[Function]}
+            >
+              <form
+                className="searchbox"
+                onSubmit={[Function]}
+              >
+                <input
+                  className="form-control text-input"
+                  onChange={[Function]}
+                  placeholder="Search"
+                  type="search"
+                  value=""
+                />
+                <Icon
+                  iconClass="fa fa-search"
+                >
+                  <div
+                    className="icon-wrapper"
+                  >
+                    <i
+                      className="icon fa fa-search"
+                    >
+                      <span />
+                    </i>
+                  </div>
+                </Icon>
+              </form>
+            </SearchBox>
+          </div>
+          <div
+            className="top-bar-bottom"
+          >
+            <nav
+              className="d-flex no-margin"
+            >
+              <li
+                className="text-capitalize nav-link"
+                id="createdRecipes"
+                onClick={[Function]}
+              >
+                my recipes
+              </li>
+              <li
+                className="text-capitalize nav-link"
+                id="favRecipes"
+                onClick={[Function]}
+              >
+                favorite recipes
+              </li>
+            </nav>
+          </div>
+        </div>
+      </TopBar>
+    </div>
+    <div
+      className="row user-info-wrapper"
+    >
+      <div
+        className="backdrop"
+      >
+        <img
+          alt="backdrop pix"
+          src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+        />
+      </div>
+      <UserInfo
+        editBtnClicked={[Function]}
+        user={
+          Object {
+            "createdRecipes": Array [
+              Object {
+                "category": "",
+                "downVotes": 1,
+                "recipeId": 1,
+                "recipeName": "Ogbemudia Rex",
+                "upVotes": 1,
+                "views": 1,
+              },
+            ],
+            "favRecipes": Array [
+              Object {
+                "category": "",
+                "downVotes": 1,
+                "recipeId": 1,
+                "recipeName": "Ogbemudia Rex",
+                "upVotes": 1,
+                "views": 1,
+              },
+            ],
+          }
+        }
+      >
+        <div
+          className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+        >
+          <div
+            className=" d-flex justify-content-around flex-column align-items-center"
+          >
+            <div
+              className="avatar avatar-md"
+            />
+            <h3
+              className=" text-capitalize s-padding no-margin "
+            />
+          </div>
+          <div
+            className="d-flex no-margin flex-column align-items-center justify-content-center info"
+          >
+            <li
+              className="info-item"
+            />
+            <li
+              className="info-item"
+            >
+              @undefined
+            </li>
+          </div>
+          <Button
+            className=" btn-lg center-margin edit-btn btn-secondary"
+            dataTarget="#modal"
+            dataToggle="modal"
+            handleClick={[Function]}
+            id="editProfile"
+            text="edit profile"
+            type="button"
+          >
+            <button
+              className="btn text-capitalize  btn-lg center-margin edit-btn btn-secondary"
+              data-dismiss="modal"
+              data-target="#modal"
+              data-toggle="modal"
+              onClick={[Function]}
+              type="button"
+            >
+              edit profile
+            </button>
+          </Button>
+        </div>
+      </UserInfo>
+    </div>
+    <div
+      className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin"
+    >
+      <Recipes
+        handleClick={[Function]}
+        onDeleteIconClicked={[Function]}
+        onEditIconCliked={[Function]}
+        onFavIconClicked={[Function]}
+        recipes={
+          Array [
+            Object {
+              "category": "",
+              "downVotes": 1,
+              "recipeId": 1,
+              "recipeName": "Ogbemudia Rex",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+        type="createdRecipes"
+      >
+        <List
+          className="recipe-list"
+          style={Object {}}
+        >
+          <div
+            className="col-12 recipe-list"
+            style={Object {}}
+          >
+            <h4
+              className="display-4 bold header"
+            >
+              my recipes
+            </h4>
+            <ListItem
+              className="recipe-list-item"
+              content="Ogbemudia Rex"
+              handleClick={[Function]}
+              key="0"
+            >
+              <div
+                className="lead list-item recipe-list-item"
+              >
+                <h4
+                  className="list-item-text"
+                  onClick={[Function]}
+                >
+                  Ogbemudia Rex
+                </h4>
+                <div>
+                  <Icon
+                    handleClick={[Function]}
+                    iconClass="fa fa-pencil edit-icon"
+                    pointer={true}
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                    >
+                      <i
+                        className="icon fa fa-pencil edit-icon"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                  <Icon
+                    dataTarget="#modal"
+                    dataToggle="modal"
+                    handleClick={[Function]}
+                    iconClass="fa fa-trash-o delete-icon"
+                    pointer={true}
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                    >
+                      <i
+                        className="icon fa fa-trash-o delete-icon"
+                        data-target="#modal"
+                        data-toggle="modal"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                </div>
+              </div>
+            </ListItem>
+          </div>
+        </List>
+      </Recipes>
+      <Paginator
+        handlePageClick={[Function]}
+        pageCount={1}
+      >
+        <nav
+          aria-label="Page navigation"
+          className="d-flex justify-content-center col-12 bottom-margin"
+        >
+          <PaginationBoxView
+            activeClassName="page-active"
+            breakClassName="break-me"
+            breakLabel={
+              <a
+                href=""
+              >
+                ...
+              </a>
+            }
+            containerClassName="pagination justify-content-center"
+            disableInitialCallback={false}
+            disabledClassName="disabled"
+            marginPagesDisplayed={2}
+            nextClassName="page-item page-link"
+            nextLabel="next"
+            onPageChange={[Function]}
+            pageClassName="page-item"
+            pageCount={1}
+            pageLinkClassName="page-link"
+            pageRangeDisplayed={5}
+            previousClassName="page-item page-link"
+            previousLabel="previous"
+            subContainerClassName="page-item"
+          >
+            <ul
+              className="pagination justify-content-center"
+            >
+              <li
+                className="page-item page-link disabled"
+              >
+                <a
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  previous
+                </a>
+              </li>
+              <PageView
+                activeClassName="page-active"
+                key="key0/.0"
+                onClick={[Function]}
+                page={1}
+                pageClassName="page-item"
+                pageLinkClassName="page-link"
+                selected={true}
+              >
+                <li
+                  className="page-item page-active"
+                >
+                  <a
+                    aria-current="page"
+                    aria-label="Page 1 is your current page"
+                    className="page-link"
+                    onClick={[Function]}
+                    onKeyPress={[Function]}
+                    tabIndex="0"
+                  >
+                    1
+                  </a>
+                </li>
+              </PageView>
+              <li
+                className="page-item page-link disabled"
+              >
+                <a
+                  onClick={[Function]}
+                  onKeyPress={[Function]}
+                  tabIndex="0"
+                >
+                  next
+                </a>
+              </li>
+            </ul>
+          </PaginationBoxView>
+        </nav>
+      </Paginator>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="editProfileModal"
+      left={true}
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={true}
+      title=""
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="editProfileModalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="editProfileModalLabel"
+              />
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</ProfilePage>
+`;
+
+exports[`Profile Page component  to match empty snapshot  1`] = `
+<div
+  className="container-fluid profile-page"
+>
+  <div
+    className="row"
+  >
+    <TopBar
+      bottom={true}
+      handleChange={[Function]}
+      search={true}
+      title="Profile page"
+    >
+      <nav
+        className="d-flex no-margin"
+      >
+        <li
+          className="text-capitalize nav-link"
+          id="createdRecipes"
+          onClick={[Function]}
+        >
+          my recipes
+        </li>
+        <li
+          className="text-capitalize nav-link"
+          id="favRecipes"
+          onClick={[Function]}
+        >
+          favorite recipes
+        </li>
+      </nav>
+    </TopBar>
+  </div>
+  <div
+    className="row user-info-wrapper"
+  >
+    <div
+      className="backdrop"
+    >
+      <img
+        alt="backdrop pix"
+        src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+      />
+    </div>
+    <UserInfo
+      editBtnClicked={[Function]}
+      user={
+        Object {
+          "createdRecipes": Array [
+            Object {
+              "category": "",
+              "downVotes": 1,
+              "recipeId": 1,
+              "recipeName": "Ogbemudia Rex",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ],
+          "favRecipes": Array [
+            Object {
+              "category": "",
+              "downVotes": 1,
+              "recipeId": 1,
+              "recipeName": "Ogbemudia Rex",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ],
+        }
+      }
+    />
+  </div>
+  <div
+    className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin"
+  >
+    <Recipes
+      handleClick={[Function]}
+      onDeleteIconClicked={[Function]}
+      onEditIconCliked={[Function]}
+      onFavIconClicked={[Function]}
+      recipes={
+        Array [
+          Object {
+            "category": "",
+            "downVotes": 1,
+            "recipeId": 1,
+            "recipeName": "Ogbemudia Rex",
+            "upVotes": 1,
+            "views": 1,
+          },
+        ]
+      }
+      type="createdRecipes"
+    />
+    <Paginator
+      handlePageClick={[Function]}
+      pageCount={1}
+    />
+  </div>
+  <Modal
+    center={true}
+    closeBtnClicked={[Function]}
+    footer={false}
+    id="editProfileModal"
+    left={true}
+    loading={false}
+    onContinueClicked={[Function]}
+    operationCompleted={false}
+    right={true}
+    title=""
+  />
+</div>
+`;

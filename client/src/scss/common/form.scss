@@ -1,8 +1,12 @@
 
-.text-input {
+.text-input, .text-area {
   min-height: 2.5em;
   font-size: 1.4em;
   transition: box-shadow 0.3s ease-in;
+}
+.text-area{
+  resize: true;
+  min-height: 250px;
 }
 .help-text {
   font-size: 1.2rem;

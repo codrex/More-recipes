@@ -6,7 +6,7 @@
   "scripts": {
     "migrate": "sequelize db:migrate:undo:all&&sequelize db:migrate",
     "wp": "webpack-dev-server --hot --history-api-fallback --open",
-    "test:client": "cross-env NODE_ENV=test nyc mocha --require mock-local-storage client/src/actions/**/*.js client/src/reducers/**/*.js",
+    "test:client": "cross-env NODE_ENV=test nyc mocha --watch --require mock-local-storage client/src/reducers/**/*.js",
     "test": "cross-env NODE_ENV=test nyc mocha --require mock-local-storage server/test/ client/src/actions/**/*.js client/src/reducers/**/*.js",
     "test:db": "cross-env NODE_ENV=test npm run migrate && npm run test && npm run jest",
     "test:travis": "cross-env NODE_ENV=test npm run test && npm run jest -- -u",

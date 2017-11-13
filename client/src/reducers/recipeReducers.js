@@ -12,18 +12,18 @@ import {
   AFTER_VOTE,
   RECIPE_TO_MODIFY,
   CURRENT_RECIPE,
-  ON_NEW_RECIPE,
+  NEW_RECIPE,
   FIND_RECIPES
 } from '../actions/actions';
 
 export const recipesReducer = (state = initialState.Recipes, action) => {
   switch (action.type) {
     case GET_ALL_RECIPES:
-      return action.recipes.Recipes;
+      return action.payload.Recipes;
     case GET_TOP_RECIPES:
-      return action.recipes.Recipes;
+      return action.payload.Recipes;
     case FIND_RECIPES:
-      return action.recipes.Recipes;
+      return action.payload.Recipes;
     default:
       return state;
   }
@@ -31,21 +31,15 @@ export const recipesReducer = (state = initialState.Recipes, action) => {
 
 export const recipeReducer = (state = initialState.Recipe, action) => {
   if (action.type === GET_RECIPE) {
-    return action.recipe.Recipe;
+    return action.payload.Recipe;
   }
   if (action.type === AFTER_REVIEW) {
-    const RecipeReviews = action.recipe.Recipe.RecipeReviews.reverse();
-    return { ...state,
-      RecipeReviews
-    };
+    const RecipeReviews = action.payload.Recipe.RecipeReviews;
+    return { ...state, RecipeReviews };
   }
   if (action.type === AFTER_VOTE) {
-    const upVotes = action.recipe.Recipe.upVotes;
-    const downVotes = action.recipe.Recipe.downVotes;
-    return { ...state,
-      upVotes,
-      downVotes
-    };
+    const { upVotes, downVotes } = action.payload.Recipe;
+    return { ...state, upVotes, downVotes };
   }
   if (action.type === CURRENT_RECIPE) {
     return action.recipe;
@@ -58,29 +52,21 @@ export const recipeReducer = (state = initialState.Recipe, action) => {
   }
   if (action.type === UPDATE_INGREDIENTS) {
     const ingredients = action.ingredient;
-    return { ...state,
-      ingredients
-    };
+    return { ...state, ingredients };
   }
   if (action.type === UPDATE_DIRECTIONS) {
     const directions = action.direction;
-    return { ...state,
-      directions
-    };
+    return { ...state, directions };
   }
   if (action.type === UPDATE_NAME_CATEGORY) {
     const nameAndCat = action.nameAndCat;
-    return { ...state,
-      ...nameAndCat
-    };
+    return { ...state, ...nameAndCat };
   }
   if (action.type === UPDATE_ALL_RECIPE_FIELD) {
-    return { ...state,
-      ...action.all
-    };
+    return { ...state, ...action.all };
   }
-  if (action.type === ON_NEW_RECIPE) {
-    return initialState.Recipe;
+  if (action.type === NEW_RECIPE) {
+    return { ...initialState.Recipe };
   }
   return state;
 };
