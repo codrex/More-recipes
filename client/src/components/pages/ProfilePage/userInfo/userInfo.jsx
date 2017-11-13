@@ -7,7 +7,7 @@ import Button from '../../../common/button/button';
 const UserInfo = (props) => {
   const abbr = nameAbbr(props.user.fullname).toUpperCase();
   return (
-    <div className="info-wrapper mr-auto d-flex flex-column ">
+    <div className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6">
       <div className=" d-flex justify-content-around flex-column align-items-center">
         <div className="avatar avatar-md">{abbr}</div>
         <h3 className=" text-capitalize s-padding no-margin ">{props.user.fullname}</h3>
@@ -22,6 +22,7 @@ const UserInfo = (props) => {
         dataToggle="modal"
         dataTarget="#modal"
         text="edit profile"
+        id="editProfile"
         handleClick={() => props.editBtnClicked('Update profile')}
 
       />

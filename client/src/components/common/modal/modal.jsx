@@ -46,19 +46,24 @@ const Modal = (props) => (
               className="btn btn-secondary btn-lg text-capitalize"
               data-dismiss="modal"
               disabled={props.loading}
+              onClick={props.closeBtnClicked}
             >{props.leftBtnText || 'Cancel'}
             </button>
             <button
               type="button"
               className="btn btn-primary btn-lg text-capitalize"
-              onClick={!props.operationCompleted && props.onContinueClicked}
+              onClick={
+                !props.operationCompleted ?
+                props.onContinueClicked :
+                () => {}
+              }
               disabled={props.loading}
               data-dismiss={props.operationCompleted && 'modal'}
             >
               {props.loading && 'Loading...' || (props.rightBtnText || 'Continue')}
             </button>
           </div>
-      }
+        }
       </div>
     </div>
   </div>

@@ -25,14 +25,18 @@ ListItem.propTypes = {
 
 export const List = (props) => {
   return (
-    <div className="col-12" style={props.style}>
+    <div className={`col-12 ${props.className}`} style={props.style}>
       {props.children}
     </div>
   );
 };
-
+List.defaultProps = {
+  style: {},
+  className: ''
+};
 List.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.any.isRequired,
   style: PropTypes.object,
+  className: PropTypes.string,
 };
 

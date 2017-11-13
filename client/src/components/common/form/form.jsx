@@ -15,6 +15,7 @@ const Form = props => (
     {props.children}
     {props.submitBtnText && <button
       type="submit"
+      id="submit"
       className={classnames('btn text-uppercase w-100',
       props.secondary && 'btn-secondary',
       props.primary && 'btn-primary',

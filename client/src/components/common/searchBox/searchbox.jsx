@@ -24,7 +24,7 @@ class SearchBox extends React.Component {
  */
   handleChange(e) {
     this.setState({ value: e.target.value });
-    // if (this.props.handleChange) this.props.handleChange(e.target.value);
+    if (this.props.handleChange) this.props.handleChange(e.target.value);
   }
 
   /**
@@ -33,7 +33,7 @@ class SearchBox extends React.Component {
  */
   handleSubmit(e) {
     e.preventDefault();
-    this.props.handleSubmit(this.state.value);
+    if (this.props.handleSubmit) this.props.handleSubmit(this.state.value);
   }
   /**
    * @return{undefined}

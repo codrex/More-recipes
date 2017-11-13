@@ -1,10 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
 @import "~toastr/toastr.scss";
 @import './partials/_var.scss';
+@import './partials/_mixins.scss';
 @import './partials/_general.scss';
 @import './partials/_utils.scss';
 @import './partials/_avatar.scss';
 @import './partials/_toastr.scss';
+@import './partials/paginate.scss';
 @import './common/accordion.scss';
 @import './common/button.scss';
 @import './common/footer.scss';

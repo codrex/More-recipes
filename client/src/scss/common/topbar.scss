@@ -1,5 +1,6 @@
 
 .top-bar{
+  @include box-shadow;
   background-color: $bg-color;
   display: flex;
   flex-direction: column;
@@ -10,7 +11,7 @@
   align-items: center;
   font-size: .8rem;
   max-height: 100px;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0,0,0,.26);
+  color: $text-color;
   &-top{
     display: flex;
     height: 80%;

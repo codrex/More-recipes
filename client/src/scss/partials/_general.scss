@@ -70,6 +70,9 @@ small, .font_small {font-size: 0.8em;}
     background-color: darken($primary-color,5%);
   }
 }
+.nav-link{
+  cursor: pointer;
+}
 
 /* Smartphones (landscape) ----------- */
 @media only screen and (min-width : 321px) {
