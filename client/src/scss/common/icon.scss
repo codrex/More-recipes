@@ -1,0 +1,17 @@
+.icon-wrapper {
+  background: transparent;
+  margin: 0;
+  display: inline;
+  margin: 0 0.4em;
+  border-radius: 50%;
+}
+.icon {
+  font-size: 1.5rem;
+  & span {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9em;
+  }
+}
+.pointer{
+  cursor: pointer;
+}

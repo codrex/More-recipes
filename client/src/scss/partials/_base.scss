@@ -1,0 +1,52 @@
+html{
+  width: 100%;
+  height: 100%;
+}
+body{
+  width: inherit;
+  height: inherit;
+}
+.row{
+  height: inherit;
+  margin: 0;
+  padding: 0 !important;
+}
+.display-4{
+  font-size:2em
+}
+.page-link{
+  color:$primary-color;
+  &:focus, &:hover {
+    color: $secondary-color;
+    text-decoration: none;
+    background-color: lighten($secondary-color,41%);
+    border-color: lighten($secondary-color,41%)
+  }
+}
+.page-item{
+  background:$primary-color;
+}
+a,a:focus,a:hover,a:active{
+    color: $dark-text ;
+    text-decoration: none;
+}
+
+.custom-control-input:active ~ .custom-control-indicator {
+    color: #fff;
+    background-color: $primary-color;
+}
+.custom-control-input:checked ~ .custom-control-indicator {
+    color: #fff;
+    background-color: lighten($primary-color,10%);
+}
+.icon-wrapper{
+  height: 50px;
+  width: 50px;
+  background: aliceblue;
+  margin: 0;
+  display: inline-block;
+  margin: 0 .3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

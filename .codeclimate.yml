@@ -1,0 +1,30 @@
+---
+engines:
+  csslint:
+    enabled: false
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+      config:
+      extensions:
+      - .es6
+      - .js
+      - .jsx
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "server/**/*.js"
+exclude_paths:
+  - "node_modules/"
+  - "template/*"
+  - "server/test"
+  - "server/migrations/"
+  - "server/models/"
+  - "server/validators"
+  - "server/reply/"
+  - "client/src/components"

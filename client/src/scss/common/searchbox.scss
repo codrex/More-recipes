@@ -1,0 +1,46 @@
+
+.searchbox{
+  display: flex;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.17);
+  height: 50px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color:#fff;
+  color: rgba(black,0.4);
+  max-width: 400px;
+  width: 60%;
+  padding: 0 1em;
+
+  & .text-input{
+    border-color: transparent;
+    box-shadow: none;
+    max-height: 40px;
+    min-height: unset;
+    height: inherit;
+    margin: auto;
+    padding: 0 .5em;
+    height: inherit;
+    font-size: 1.7rem;
+    border: 0;
+    font-weight: 200;
+  }
+
+  & .icon-wrapper{
+    border-color: transparent;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+  }
+
+  & .form-group {
+    flex: 1;
+    margin: 0;
+    height: inherit
+  }
+
+}
+
+

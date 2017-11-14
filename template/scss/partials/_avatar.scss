@@ -1,0 +1,24 @@
+.avatar{
+  border-radius: 50%;
+  max-width: 100%;
+  border: 1px solid rgba($primary-color,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  &-sm{
+    height: 1em;
+    width: 1em;
+    font-size: 50px
+  }
+  &-md{
+    height: 1.5em;
+    width: 1.5em;
+    font-size: 80px;
+  }
+  &-lg{
+    height: 150px;
+    width: 150px;
+    font-size: 130px;
+  }
+}

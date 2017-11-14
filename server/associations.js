@@ -1,26 +1,21 @@
-const Groups = require('./models/index.js').Groups;
-const Members = require('./models/index.js').Members;
-const Messages = require('./models/index.js').Messages;
-const GroupMembers = require('./models/index.js').GroupMembers;
-const UserGroup = require('./models/index.js').UserGroup;
-const Viewers = require('./models/index.js').Viewers;
-const GroupMessages = require('./models/index.js').GroupMessages;
+import db from './models/index';
 
-module.exports = {
-  associate: () => {
-    Members.belongsToMany(Groups, { through: GroupMembers, as: 'joinedGroups' });
-    Members.belongsToMany(Groups, { through: UserGroup, as: 'createdGroups' });
-    Members.sync();
+const Users = db.Users;
+const Recipes = db.Recipes;
+const FavRecipe = db.FavRecipe;
+const RecipeReviews = db.RecipeReviews;
 
-    Groups.belongsToMany(Members, { through: GroupMembers, as: 'groupMembers' });
-    Groups.belongsToMany(Members, { through: UserGroup, as: 'admin' });
-    Groups.belongsToMany(Messages, { through: GroupMessages });
-    Groups.sync();
+const associate = () => {
+  Users.belongsToMany(Recipes, { through: FavRecipe, as: 'favRecipes' });
+  Users.hasMany(Recipes, { as: 'createdRecipes' });
+  Users.sync();
 
-    Messages.belongsTo(Groups, { as: 'group' });
-    Messages.belongsToMany(Members, { through: Viewers, as: 'viewers' });
-    Messages.belongsTo(Members, { as: 'sender' });
-    Messages.sync();
-  },
+  Recipes.belongsTo(Users, { as: 'Owner' });
+  Recipes.hasMany(RecipeReviews);
+  Recipes.sync();
 
+  RecipeReviews.belongsTo(Users, { as: 'Reviewer' });
+  RecipeReviews.sync();
 };
+
+export default associate;

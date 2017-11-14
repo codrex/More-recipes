@@ -1,48 +1,38 @@
-const validate = require('validate.js');
-const constraint = require('./constraints.js');
-const bcrypt = require('bcrypt-nodejs');
+import validate from 'validate.js';
+import constraint from './constraints';
+import bcrypt from 'bcrypt-nodejs';
+import { sendValidationError } from '../reply/reply';
 
 
+// this function will process the report gotten from the validator
 const processValidationResult = (result) => {
   const valid = result === undefined;
-  let obj;
-  if (valid) {
-    obj = {
-      valid,
-    };
-  } else {
-    const firstObject = Object.keys(result)[0];
-    obj = {
-      valid,
-      error: result[firstObject][0],
-    };
-  }
-  return obj;
+  return (valid && { valid }) || (!valid && { valid, error: result });
 };
+
 const validator = (obj, constraints) => {
   const result = validate(obj, constraints);
   return processValidationResult(result);
 };
-const validateSignup = (obj) => validator(obj, constraint.signupConstraint);
-const validateGroupCreation = (obj) => validator(obj, constraint.createGroupConstraint);
-const validateMessage = (obj) => validator(obj, constraint.messageConstraint);
-const validateAll = (obj, objConstraint) => validator(obj, objConstraint);
 
-
-const validateLogin = (obj) => {
-  let result;
-  if (obj.username === undefined) {
-    result = validate(obj, constraint.loginWithEmailConstraint);
-  } else if (obj.email === undefined) {
-    result = validate(obj, constraint.loginWithUsernameConstraint);
-  } else {
-    result = validate(obj, constraint.loginWithUsernameConstraint);
-  }
-  return processValidationResult(result, obj);
-};
-
-const cleanUp = (whitelist, attrs) => validate.cleanAttributes(attrs, whitelist);
+const validateSignup = obj => validator(obj, constraint.signupConstraint);
+const validateProfileUpdate = obj => validator(obj, constraint.profileUpdateConstraint);
+const validateRecipes = obj => validator(obj, constraint.createRecipeConstraint);
+const validateId = obj => validator(obj, constraint.idConstraint);
+const validateLogin = obj => validator(obj, constraint.loginWithUsernameConstraint);
+const validateReview = obj => validator(obj, constraint.reviewConstraint);
 const comparePwd = (hash, password) => bcrypt.compareSync(password, hash);
+const validateVote = obj => validator(obj, constraint.voteConstraint);
+
+const validationHandler = (obj, validationFunc, req, res, next) => {
+  const isValid = validationFunc(obj);
+  if (isValid.valid) {
+    req.body = obj;
+    next();
+  } else {
+    sendValidationError(res, isValid);
+  }
+};
 
 // custom validator that check for space separated string
 validate.validators.noSpace = (value) => {
@@ -53,24 +43,28 @@ validate.validators.noSpace = (value) => {
   }
   return undefined;
 };
-validate.validators.atLeastTwoWord = (value) => {
-  if (typeof value === 'string') {
-    if (value.split(' ').length < 2) {
-      return 'must be aleast two words';
-    }
+
+// custom validator to check if an array is an array of string
+validate.validators.stringArray = (value) => {
+  if (Array.isArray(value)) {
+    if (value.length < 1) return 'array can only contain type string';
+    // check if value is an array
+    const result = value.every(elem => typeof elem === 'string');
+    return (!result && 'array can only contain type string') || (result && undefined);
   }
-  return undefined;
+  return 'element is not an array';
 };
 
-module.exports = {
-  validateGroupCreation,
+export {
   validateLogin,
-  validateMessage,
   validateSignup,
-  cleanUp,
+  validateRecipes,
+  validateProfileUpdate,
   comparePwd,
-  validateAll,
   validate,
   constraint,
+  validateId,
+  validateReview,
+  validateVote,
+  validationHandler,
 };
-

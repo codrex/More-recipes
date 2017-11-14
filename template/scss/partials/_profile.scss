@@ -1,0 +1,73 @@
+
+.info-wrapper{
+  padding: .7em;
+  font-size: 2em;
+  background: white;
+  width: 80%;
+  border-color:transparent; 
+  border-left: 5px solid $primary-color;
+  position: relative;
+  margin: 0 auto;
+  max-width: 700px;
+  > div>h3{
+    font-size: 1.2em;
+  }
+  &::after, &::before{
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+
+  }
+  &::after{
+    top: -1px;
+    background: $primary-color;
+
+  }
+  &::before{
+    top: 30px;
+    background: $secondary-color;
+
+  }
+}
+.info{
+  font-size: 1em;
+  padding: .5em;
+  &-item{
+    list-style: none;
+    line-height: 1.5em;
+    text-transform: capitalize;
+    font-size: .8em;
+    color: $primary-color;
+  }
+}
+.edit{
+  margin: 0 auto;
+  font-size: .7em !important;
+  text-transform: capitalize;
+  color: rgba($primary-color,.7);
+  cursor: pointer;
+  &:hover{
+    color: rgba($primary-color,.8);
+  }
+  &-active{
+    color:$primary-color !important;
+  }
+}
+.main-content{
+  position: relative;
+  background-color: $primary-color;
+  padding: 50px 0;
+}
+.user-recipes{
+  width: 80%;
+  min-height: 200px;
+  background-color: white;
+  margin: 25px auto;
+  border-right: 5px solid $secondary-color;
+  display: none;
+
+}

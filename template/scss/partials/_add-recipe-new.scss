@@ -1,0 +1,74 @@
+.add-recipe-form{
+  min-height: 83vh;
+  display: flex;
+  flex-direction: column;
+}
+.name-category{
+  display: flex;
+  flex-direction: column;
+  min-height: fit-content;
+  max-height: 150px;
+  margin: 0 0 25px  0;
+  justify-content: center;
+  align-items: center;
+}
+
+.ingredients-directions{
+  display: flex;
+  flex: 10;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  &-header{
+    height: 50px;
+    margin: -15px -15px 0 -15px;
+    background: $primary-color;
+    align-items: center;
+    display: flex;
+    padding: .5em;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+  }
+}
+.directions, .ingredients{
+  margin-bottom:50px;
+  padding: 1em;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $primary-color;
+  &-list{
+    flex: auto;
+    padding: 1em 0;
+
+  }
+}
+.recipe-label{
+  font-size: 1.5em;
+  text-transform: capitalize;
+  color:$primary-color;
+}
+.add-ingredient ,.add-step{
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  &>button{
+    margin-top: 1em!important;
+  }
+}
+.remove-icon{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  font-size: 1.5em;
+  justify-content: center;
+  align-items: center;
+  transition: background-color .4s ease-in;
+  &:hover, &:hover{
+    background-color: rgba($secondary-color,0.6)
+  }
+}

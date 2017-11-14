@@ -1,0 +1,10 @@
+.page-item .page-link, .page-item a, .page-item  {
+  color: $text-color;
+  outline: none;
+  text-decoration: none !important;
+}
+.page-active .page-link{
+  background-color: $text-color;
+  color: #fff;
+  outline: none;
+}

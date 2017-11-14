@@ -1,0 +1,162 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>More-Recipe</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="./css/vendor/bootstrap.min.css">
+        <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/vendor/animate.css">
+        <link rel="stylesheet" href="./css/main.css">
+        <script src="./js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="page">
+          <header class="header row">
+            <div class="col-12 d-flex justify-content-center align-items ">
+              <nav class="navbar navbar-toggleable-md navbar-light justify-content-center align-items-center flex-column">
+                <a class="navbar-brand d-flex justify-content-center align-items-center" href="#">
+                  <h1 class="display-4">More-Recipes</h1>
+                </a>
+                  <ul class="navbar-nav mr-auto col-xs-12 col-sm-10 col-md-8 col-lg-8">
+                    <li class="nav-item">
+                      <a class="nav-link text-uppercase" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-uppercase" href="./recipes.html">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-uppercase" href="./new-add-recipe.html">Add a recipe</a>
+                    </li>
+                  </ul>
+              </nav>
+              <form class="my-2 my-lg-0 search">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+          </header> 
+          <div class="topbar lead">
+            <div class="hero-img-wrapper">
+                  <img class="d-block img-fluid" src="./img/userpix.jpg" alt="First slide">
+              </div>
+            <h1 class="text-capitalize no-margin" style="z-index:2">User profile</h1>
+          </div>
+          <div class="main-content d-flex flex-column bg-white">
+            
+            <div class="info-wrapper mr-auto d-flex flex-column">
+              <div class=" d-flex justify-content-around flex-column align-items-center"style="z-index:2">
+                <img src="./img/userpix.jpg" class="avatar avatar-md" alt="">
+              <h3 class=" text-capitalize s-padding no-margin ">ogbemudia rex</h3>
+            </div>
+            <div class="d-flex no-margin flex-column align-items-center justify-content-center info">
+                <li class="info-item">johdoe@example.com</li>
+                <li class="info-item">093940394</li>
+                <li class="info-item">johnnydoe</li>
+            </div>
+              <button type="button" class="btn btn-outline-primary edit border-primary"  data-toggle="modal" data-target="#editProfile">edit profile</button>
+              
+              <!--profile editor  -->
+              <div  class="row tab d-flex flex-column justify-content-center align-items-center col-12  profile-js"style="max-width:600px;margin:0 auto" >
+
+                <form class="col-12 no-margin" id="edit" method="">
+
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="fullname" aria-describedby="fullname" value="Fullname">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="username" aria-describedby="username" value="username">
+                  </div>
+                  <div class="form-group">
+                    <input type="phone" class="form-control" id="phone-no" aria-describedby="phone-no" value="phone number">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" aria-describedby="email" value="email">
+                  </div>
+                  
+                  <button type="button" class="btn bg-primary text-white col-12 no-b-r text-capitalize" style="font-size:.6em">update</button>
+                </form>
+              </div>
+            </div>
+             
+          </div>
+        </div>
+        <div class="modal fade" id="editProfile" tabindex="-1"
+           role="dialog"      aria-labelledby="editProfileLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-capitalize" id="editProfileLabel">profile edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="col-12 no-margin" id="edit" method="">
+
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="fullname" aria-describedby="fullname" value="Fullname">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="username" aria-describedby="username" value="username">
+                  </div>
+                  <div class="form-group">
+                    <input type="phone" class="form-control" id="phone-no" aria-describedby="phone-no" value="phone number">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="email" aria-describedby="email" value="email">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-secondary text-white text-capitalize" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn bg-primary text-white text-capitalize">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+
+
+
+
+        
+        <script src="js/vendor/jquery-3.2.1.min.js"></script>
+        <script src="js/vendor/popper.min.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+        <script>
+          var log = console.log;
+          $('.edit-icon').on('click',function(){
+            $(this).toggleClass('fa-edit edit-icon-active')
+            $(this).toggleClass('fa-close')
+            $('.profile-js').toggleClass('active-tab')
+              .addClass('animated fadeIn')
+                .one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).removeClass('animated fadeIn')
+              });
+
+          })
+
+        </script>
+    </body>
+</html>

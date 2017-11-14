@@ -1,0 +1,18 @@
+#toast-container {
+  position: absolute;
+  left:0;
+  z-index: 999999;
+  opacity: 1;
+  top: 2;
+  &> div {
+    box-shadow: none;
+    opacity: 1;
+  }
+}
+.toast-title {
+  font-size: 1.2em;
+}
+.toast-message {
+  word-wrap: break-word;
+  font-size: 1.2em;
+}

@@ -8,9 +8,15 @@ body{
 }
 .row{
   height: inherit;
+  margin: 0;
+  padding: 0 !important;
+}
+.display-4{
+  font-size:2em
 }
 a,a:focus,a:hover,a:active{
-    color: white;
+    color: $dark-text ;
+    text-decoration: none;
 }
 
 .custom-control-input:active ~ .custom-control-indicator {

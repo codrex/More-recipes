@@ -1,0 +1,13 @@
+.avatar {
+  border: 50%;
+  max-width: 100%;
+  font-size: 200px; }
+  .avatar-sm {
+    height: 70px;
+    width: 70px; }
+  .avatar-md {
+    height: 100px;
+    width: 100px; }
+  .avatar-lg {
+    height: 150px;
+    width: 150px; }

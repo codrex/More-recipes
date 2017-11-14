@@ -1,0 +1,46 @@
+
+.recipe-list-item {
+  background-color: rgba($dimmed-white, 0.3);
+  min-height: 70px;
+  padding: 1em;
+  box-shadow: -1px 1px 3px 1px rgba(0, 0, 0, 0.1);
+  font-size: 1.1em;
+  &::before {
+    width: 0;
+    height: 0;
+  }
+  &:hover {
+    background-color: $dimmed-white;
+  }
+  & .edit-icon:hover{
+    color: $info-color;
+  }
+  & .fav-icon {
+    color: $danger-color;
+  }
+  & .delete-icon:hover {
+    color: $danger-color;
+  }
+  & .edit-icon,
+  & .fav-icon,
+  & .delete-icon {
+    transition: color 0.2s ease-in;
+  }
+}
+.recipe-list{
+  margin-bottom: 25px;
+  min-height: 40vh;
+  & .header{
+    margin: .9em;
+    width: 100%;
+    text-align: left;
+    text-transform: capitalize;
+    color: $text-color
+  }
+  & .msg-display{
+    height: fit-content;
+    margin-top: 50px;
+  }
+}
+
+

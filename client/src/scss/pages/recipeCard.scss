@@ -1,0 +1,107 @@
+
+.recipe-card{
+  background: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: .5em;
+  position: relative;
+  height: fit-content;
+  min-height: 100%;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+  min-height: 250px;
+  &-body{
+    width: 100%;
+    height: fit-content;
+    background:inherit;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    overflow: hidden;
+    flex:1;
+    &:hover .recipe-card-underlay {
+      opacity: 1;
+      background: rgba(0,0,0, 0.5);
+      visibility: visible;
+      border-radius: 4px 4px 0 0;
+    }
+  }
+  &-title{
+    transform: translateY(-1000%);
+    transition: transform .4s cubic-bezier(0.22, 0.61, 0.36, 1) .4s,
+    .6s opacity cubic-bezier(0.74, -0.17, 0.75, -0.17) .1s;
+    opacity: 0;
+    visibility: hidden;
+    text-transform: capitalize;
+    font-size: 1.6rem;
+    margin-top: .5rem;
+  }
+  &-img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    position: absolute;
+    border-radius: 4px 4px 0 0;
+
+  }
+&-footer{
+  background: inherit;
+  color: $text-color;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-radius: 0 0 4px 4px ;
+  & .fav{
+    margin-left: 1em;
+    font-size: 1.6em;
+  }
+  & i{
+    font-size: 1.4em;
+    padding: 0 .2em;
+    }
+  & h4{
+    line-clamp: 2;
+    text-overflow: ellipsis;
+    font-weight: 600;
+    margin: 0 0 1em 0;
+    width: 95%;
+  }
+}
+&-underlay {
+  position: absolute;
+  background: transparent;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.7s opacity ease-in-out, 0.7s background-color ease-in-out,
+    0.7s visibility ease-in-out;
+  &-btn {
+    background: transparent;
+    color: $secondary-color;
+    border: 1px $secondary-color solid;
+    transition: color 0.3s ease-in;
+    cursor: pointer;
+  }
+
+  &-btn:hover {
+    box-shadow: none;
+  }
+}
+}

@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing page component  render as expected  1`] = `
+<div>
+  <div
+    className="carousel slide "
+    data-ride="carousel"
+    id="carousel"
+  >
+    <ol
+      className="carousel-indicators"
+    >
+      <li
+        className="active"
+        data-slide-to="0"
+        data-target="#carousel"
+      />
+      <li
+        data-slide-to="1"
+        data-target="#carousel"
+      />
+    </ol>
+    <div
+      className="carousel-inner hero"
+    >
+      <div
+        className="carousel-item hero-img-wrapper active"
+      >
+        <img
+          alt="First slide"
+          className="d-block img-fluid"
+          src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+        />
+      </div>
+      <div
+        className="carousel-item hero-img-wrapper"
+      >
+        <img
+          alt="First slide"
+          className="d-block img-fluid"
+          src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_57,w_2057/v1509718828/eaters-collective-172257_qxlazk.jpg"
+        />
+      </div>
+      <div
+        className="cta "
+      >
+        <h1
+          className=" text-uppercase display-4 col-xs-11 col-sm-10 col-md-8 col-lg-9"
+        >
+          ​share​ and view ​awesome​ ​and​ ​exciting​ ​​recipes
+        </h1>
+        <div
+          className="cta-btn-wrapper"
+        >
+          <button
+            className="btn text-capitalize btn-primary btn-lg login"
+            data-dismiss="modal"
+            data-target="#modal"
+            data-toggle="modal"
+            onClick={[Function]}
+            type="button"
+          >
+            Login
+          </button>
+          <button
+            className="btn text-capitalize  btn-secondary btn-lg reg text-white"
+            data-dismiss="modal"
+            data-target="#modal"
+            data-toggle="modal"
+            onClick={[Function]}
+            type="button"
+          >
+            Create an account
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    aria-labelledby="loginModalLabel"
+    className="modal fade"
+    data-backdrop="false"
+    id="modal"
+    role="dialog"
+    tabIndex="-1"
+  >
+    <div
+      className="modal-dialog"
+      role="document"
+    >
+      <div
+        className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+      >
+        <div
+          className="modal-header"
+        >
+          <h5
+            className="modal-title text-capitalize display-4"
+            id="loginModalLabel"
+          >
+            
+          </h5>
+          <button
+            aria-label="Close"
+            className="close"
+            data-dismiss="modal"
+            onClick={[Function]}
+            type="button"
+          >
+            <span
+              aria-hidden="true"
+            >
+              ×
+            </span>
+          </button>
+        </div>
+        <div
+          className="modal-body"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

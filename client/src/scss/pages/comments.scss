@@ -1,0 +1,41 @@
+
+.comment {
+  display: flex;
+  padding-left: 1em;
+  padding: 1em;
+  margin: 0.3em auto;
+}
+
+.no-comment {
+  font-size: 2em;
+}
+
+.media-text {
+  font-size: 1.5rem;
+  color: $dark-text;
+  word-break: break-word;
+}
+
+.media-body h1 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: $text-color;
+}
+.media-object {
+  @include box-shadow;
+  min-height: 100px;
+  max-width: 1000px;
+  border-left: 1px rgba($text-color, .1) solid;
+  align-items: flex-start;
+  justify-content: flex-start;
+  & .avatar {
+    text-align: center;
+    width: 80px;
+    height: 80px;
+  }
+}
+.media-body {
+  margin-left: 0.5em;
+  padding: 0.5em;
+}

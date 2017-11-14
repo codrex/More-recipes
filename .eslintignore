@@ -1,0 +1,10 @@
+server/test/
+template/
+coverage
+node_modules
+.nys_output
+webpack.connfig.babel.js
+**/package.json
+**/README.node_modules
+**/Procfile
+**/package-lock.json
