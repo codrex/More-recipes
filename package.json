@@ -4,18 +4,22 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "build": "webpack --config webpack.config.prod.babel.js -p ",
     "migrate": "sequelize db:migrate:undo:all&&sequelize db:migrate",
-    "wp": "webpack-dev-server --hot --history-api-fallback --open",
+    "wp": "webpack-dev-server --hot --history-api-fallback --open --config webpack.config.dev.babel.js",
     "test:client": "cross-env NODE_ENV=test nyc mocha --require mock-local-storage client/src/actions/**/*.js client/src/reducers/**/*.js",
     "test": "cross-env NODE_ENV=test nyc mocha --require mock-local-storage server/test/ client/src/actions/**/*.js client/src/reducers/**/*.js",
     "test:db": "cross-env NODE_ENV=test npm run migrate && npm run test && npm run jest",
     "test:travis": "cross-env NODE_ENV=test npm run test && npm run jest -- -u",
-    "heroku-postbuild": "sequelize db:migrate",
+    "heroku-postbuild": "sequelize db:migrate && webpack --config webpack.config.prod.babel.js",
     "start": "babel-node server/bin/www",
     "start:dev": "nodemon --exec babel-node server/bin/www",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "shc": "open coverage/lcov-report/index.html",
     "jest": "jest --coverage "
+  },
+  "engines": {
+    "node": "6.11.4"
   },
   "nyc": {
     "require": [
@@ -31,6 +35,7 @@
   "author": "Ogbemudia Rex",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^7.1.4",
     "axios": "^0.16.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.25.0",
@@ -47,17 +52,27 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "bootstrap": "^4.0.0-beta.2",
+    "classnames": "^2.2.5",
+    "clean-webpack-plugin": "^0.1.16",
     "cors": "^2.8.4",
+    "css-loader": "^0.28.7",
+    "exports-loader": "^0.6.4",
     "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^0.11.2",
     "font-awesome": "^4.7.0",
     "font-awesome-sass-loader": "^2.0.1",
+    "html-webpack-plugin": "^2.30.1",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^7.4.1",
     "morgan": "^1.7.0",
+    "node-sass": "^4.6.1",
     "nodemon": "^1.12.0",
     "pg": "^6.1.5",
     "pg-hstore": "^2.3.2",
     "popper.js": "^1.11.0",
+    "postcss-loader": "^2.0.6",
+    "precss": "^2.0.0",
     "prop-types": "^15.5.10",
     "react": "^16.0.0",
     "react-addons-css-transition-group": "^15.6.0",
@@ -75,13 +90,19 @@
     "reactstrap": "^4.8.0",
     "redux": "^3.7.2",
     "redux-form": "^6.6.3",
+    "redux-mock-store": "^1.3.0",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
+    "sass-loader": "^6.0.6",
     "sequelize": "^4.8.0",
     "sequelize-cli": "^2.7.0",
     "slick-carousel": "^1.8.1",
+    "style-loader": "^0.18.2",
     "toastr": "^2.1.2",
-    "validate.js": "^0.11.1"
+    "url-loader": "^0.5.9",
+    "validate.js": "^0.11.1",
+    "webpack": "^3.6.0",
+    "webpack-merge": "^4.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
@@ -107,6 +128,7 @@
     "eslint-plugin-jsx-a11y": "^1.5.5",
     "eslint-plugin-react": "^5.2.2",
     "exports-loader": "^0.6.4",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^0.11.2",
     "font-awesome-sass-loader": "^2.0.1",
     "html-webpack-plugin": "^2.30.1",
@@ -131,6 +153,7 @@
     "supertest": "^3.0.0",
     "url-loader": "^0.5.9",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.6.1"
+    "webpack-dev-server": "^2.6.1",
+    "webpack-merge": "^4.1.1"
   }
 }

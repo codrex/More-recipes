@@ -2,25 +2,21 @@ import express from 'express';
 import logger from 'morgan';
 import bodyPaser from 'body-parser';
 import cors from 'cors';
+import path from 'path';
 import route from './routes/route';
-import { sendSuccess } from './reply/reply';
-
 import associate from './associations';
 
 associate();
-
-
 const app = express();
 app.use(logger('dev'));
 app.use(bodyPaser.json());
 app.use(bodyPaser.urlencoded({ extended: false }));
 app.use(cors());
 app.options('*', cors());
-
+app.use('/', express.static(path.resolve(__dirname, '..', 'dist')));
 app.use('/api/v1/', route);
-app.use('/', (req, res) => {
-  sendSuccess(res, 200, 'message',
-  'You are welcome to More-recipe, please Login or Signup to continue');
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, '..', 'dist', 'index.html'));
 });
 
 module.exports = app;
