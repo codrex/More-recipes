@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { ListItem } from '../list/list';
 
-export const Accordion = (props) => {
-  return (
-    <ListItem className={classnames(props.className, 'accordion')}>
-      {props.children}
-    </ListItem>
-  );
-};
+export const Accordion = (props) => (
+  <ListItem className={classnames(props.className, 'accordion')}>
+    {props.children}
+  </ListItem>
+);
 
 Accordion.propTypes = {
   children: PropTypes.any,
@@ -20,7 +18,7 @@ export const AccordionHeader = (props) => (
   <div
     className={classnames(props.className)} role="tab" id={`accordion${props.index}`}
   >
-    <h5 className="mb-0 lead flex-auto">
+    <h5 className="mb-0 lead flex-auto ellipsis">
       <a
         className="collapsed collapse-trigger a"
         data-toggle="collapse"

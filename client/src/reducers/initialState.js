@@ -7,7 +7,9 @@ const initailState = {
     category: '',
     ingredients: [],
     directions: [],
-    RecipeReviews: []
+    RecipeReviews: [],
+    upVotes: 0,
+    downVotes: 0,
   },
   User: {
     email: '',

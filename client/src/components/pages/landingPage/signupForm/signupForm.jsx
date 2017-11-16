@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { email, username, password } from '../../../utils/validator/validator';
-import Form from './form';
-import Input from './input';
+import { email, username, password } from '../../../../utils/validator/validator';
+import Form from '../../../common/form/form';
+import Input from '../../../common/form/input';
 /**
  * User registration form
  */
-class RegForm extends React.Component {
+class SignupForm extends React.Component {
   /**
    * @param {object} props
    */
@@ -65,7 +65,7 @@ class RegForm extends React.Component {
   }
 }
 
-RegForm.propTypes = {
+SignupForm.propTypes = {
   signup: PropTypes.func,
   handleSubmit: PropTypes.func,
   submitting: PropTypes.bool
@@ -74,4 +74,4 @@ RegForm.propTypes = {
 
 export default reduxForm({
   form: 'RegForm',
-})(RegForm);
+})(SignupForm);

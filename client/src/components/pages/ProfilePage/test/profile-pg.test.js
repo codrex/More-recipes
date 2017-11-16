@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import SmartProfilePage, { ProfilePage } from '../index';
+import { ProfilePage } from '../index';
 import configureStore from '../../../../store/configStore';
 import toJson from 'enzyme-to-json';
 
@@ -62,7 +62,7 @@ describe('Profile Page component ', () => {
   test('render as expected when edit profile button is clicked ', () => {
     const wrapper = mount(
       <Provider store={store}>
-        <SmartProfilePage {...{ ...props, ...{ loading: true } }} />
+        <ProfilePage {...{ ...props, ...{ loading: true } }} />
       </Provider>
     );
     const tree = toJson(wrapper);
