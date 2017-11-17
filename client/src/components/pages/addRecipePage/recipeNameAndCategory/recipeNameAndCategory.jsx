@@ -17,9 +17,13 @@ let RecipeNameAndCategory = props => {
 
   const onSubmitClick = value => {
     if (!props.postRecipe) {
-      props.actions.modifyRecipe({ ...props.recipe, ...value }, props.modify);
+      props.actions.modifyRecipe({
+        ...props.recipe, ...value
+      }, props.modify);
     } else {
-      props.actions.postRecipe({ ...props.recipe, ...value }, props.create);
+      props.actions.postRecipe({
+        ...props.recipe, ...value
+      }, props.create);
     }
   };
   return (
@@ -60,15 +64,21 @@ let RecipeNameAndCategory = props => {
     </div>
   );
 };
-
+RecipeNameAndCategory.defaultProps = {
+  recipe: {
+  },
+  postRecipe: true,
+  recipeNameAndCategory: {
+  },
+};
 RecipeNameAndCategory.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  actions: PropTypes.object.isRequired,
-  recipe: PropTypes.object,
+  actions: PropTypes.shape.isRequired,
+  recipe: PropTypes.shape,
   postRecipe: PropTypes.bool,
-  recipeNameAndCategory: PropTypes.object,
-  modify: PropTypes.string,
-  create: PropTypes.string,
+  recipeNameAndCategory: PropTypes.shape,
+  modify: PropTypes.string.isRequired,
+  create: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
 };
 

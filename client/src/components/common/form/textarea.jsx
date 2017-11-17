@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const Textarea = (props) => {
-  const { meta, fgClassName, className } = props;
+  const {
+ meta,
+    fgClassName,
+    className
+} = props;
   const { error, touched } = meta;
   const valid = meta && touched && !error && 'valid';
   const invalid = meta && touched && error && 'invalid';
@@ -15,8 +19,7 @@ const Textarea = (props) => {
         aria-describedby={`${props.id}Textarea`}
         placeholder={props.placeholder}
         {...props.input}
-      >
-      </textarea>
+      />
       <div className={meta && touched && error ? 'help-text' : ''}>
       {meta && touched && error}
       </div>
@@ -28,8 +31,12 @@ Textarea.defaultProps = {
   placeholder: '',
   className: '',
   fgClassName: '',
-  input: {},
-  meta: {},
+  input: {
+
+  },
+  meta: {
+
+  },
 };
 
 Textarea.propTypes = {

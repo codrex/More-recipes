@@ -32,7 +32,9 @@ export const validateUpdate = (req, res, next) => {
 
 // This function validate recipe id.
 export const idValidation = (req, res, next) => {
-  const validate = validateId({ id: req.body.recipeId || req.params.id });
+  const validate = validateId({
+    id: req.body.recipeId || req.params.id
+  });
   if (validate.valid) {
     next();
   } else {
@@ -55,13 +57,16 @@ export const create = (req, res, next) => {
 // fetch recipe from dbase and send back to the user
 export const fetchRecipe = (req, res) => {
   Recipes.findOne({
-    where: { id: req.idToFetchRecipe || req.params.id },
+    where: {
+      id: req.idToFetchRecipe || req.params.id
+    },
     attributes: ['id', 'recipeName',
       'category', 'ingredients',
       'directions', 'upVotes',
       'downVotes', 'views'],
     include: [
-      { model: db.Users,
+      {
+        model: db.Users,
         as: 'Owner',
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'password'],
@@ -73,17 +78,24 @@ export const fetchRecipe = (req, res) => {
           exclude: ['createdAt', 'updatedAt'],
         },
         include: [{
-          model: db.Users, as: 'Reviewer',
+          model: db.Users,
+          as: 'Reviewer',
           attributes: {
             exclude: ['createdAt', 'updatedAt', 'password'],
           },
         }],
       },
     ],
-    order: [[{ model: db.RecipeReviews }, 'id', 'DESC']],
+    order: [[{
+      model: db.RecipeReviews
+    }, 'id', 'DESC']],
   }).then((recipe) => {
     if (recipe) {
-      if (req.hasNewViewer) recipe.increment('views', { by: 1 });
+      if (req.hasNewViewer) {
+        recipe.increment('views', {
+          by: 1
+        });
+      }
       sendSuccess(res, 200, 'Recipe', recipe.dataValues);
     } else {
       sendFail(res, 404, 'recipe not found');
@@ -96,7 +108,9 @@ export const fetchRecipe = (req, res) => {
 // fetch recipe votes
 export const fetchVotes = (req, res) => {
   Recipes.findOne({
-    where: { id: req.idToFetchRecipe || req.params.id },
+    where: {
+      id: req.idToFetchRecipe || req.params.id
+    },
     attributes: ['id', 'upVotes', 'downVotes'],
   }).then((recipe) => {
     sendSuccess(res, 200, 'Recipe', recipe.dataValues);
@@ -127,8 +141,12 @@ export const fetchAllBySearch = (req, res, next) => {
     limit: 10,
     where: {
       $or: [
-        { recipeName: req.query.search },
-        { category: req.query.search },
+        {
+          recipeName: req.query.search
+        },
+        {
+          category: req.query.search
+        },
       ],
     },
     attributes: ['id', 'recipeName',
@@ -163,7 +181,9 @@ export const fetchRecipeByUpVote = (req, res, next) => {
 // fetch recipe from db before recipe update
 export const fetchForUpdate = (req, res, next) => {
   Recipes.findOne({
-    where: { id: req.params.id },
+    where: {
+      id: req.params.id
+    },
     attributes: ['recipeName',
       'category', 'ingredients',
       'directions'],
@@ -182,7 +202,11 @@ export const fetchForUpdate = (req, res, next) => {
 
 // This function delete a recipe from the recipe table
 export const deleteRecipe = (req, res) => {
-  Recipes.destroy({ where: { id: req.params.id } })
+  Recipes.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
   .then(() => {
     sendSuccess(res, 200, 'success', 'Recipe deleted');
   });
@@ -241,7 +265,9 @@ export const setReview = (req, res, next) => {
 // get reviews on a recipe
 export const fetchReview = (req, res) => {
   Recipes.findOne({
-    where: { id: req.params.id },
+    where: {
+      id: req.params.id
+    },
     attributes: {
       exclude: ['createdAt', 'updatedAt'],
     },
@@ -258,7 +284,9 @@ export const fetchReview = (req, res) => {
         },
       }],
     }],
-    order: [[{ model: db.RecipeReviews }, 'id', 'DESC']],
+    order: [[{
+      model: db.RecipeReviews
+    }, 'id', 'DESC']],
   })
   .then((recipeReviews) => {
     sendSuccess(res, 200, 'Recipe', recipeReviews);
@@ -268,7 +296,11 @@ export const fetchReview = (req, res) => {
 };
 
 export const update = (req, res, next) => {
-  Recipes.update(req.body, { where: { id: req.params.id } })
+  Recipes.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  })
   .then(() => {
     next();
   }).catch(() => {

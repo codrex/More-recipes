@@ -8,23 +8,37 @@ import {
   TOGGLE_FAV
 } from '../actions/actions';
 
-export const userReducer = (state = initialState.User, action = {}) => {
+export const userReducer = (state = initialState.User, action = {
+
+}) => {
   switch (action.type) {
     case LOGIN:
-      return { ...state, ...action.payload.User };
+      return {
+        ...state, ...action.payload.User
+      };
     case SIGNUP:
-      return { ...state, ...action.payload.User };
+      return {
+        ...state, ...action.payload.User
+      };
     case GOT_USER_PROFILE:
-      return { ...state, ...action.payload.User };
+      return {
+        ...state, ...action.payload.User
+      };
     case UPDATE_USER_PROFILE:
-      return { ...state, ...action.payload.User };
+      return {
+        ...state, ...action.payload.User
+      };
     case DELETE_RECIPE: {
       const recipes = [...state.createdRecipes];
       recipes.splice(action.recipeIndex, 1);
-      return { ...state, createdRecipes: recipes };
+      return {
+        ...state, createdRecipes: recipes
+      };
     }
     case TOGGLE_FAV:
-      return { ...state, ...action.payload.User };
+      return {
+        ...state, ...action.payload.User
+      };
     default:
       return state;
   }

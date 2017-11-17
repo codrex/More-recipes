@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const PureTextarea = props => {
-  const { helpTextClassName, fgClassName, className, error } = props;
+  const {
+        helpTextClassName,
+        fgClassName,
+        className,
+        error
+  } = props;
   const valid = !error && 'valid';
   const invalid = error && 'invalid';
   return (
@@ -16,13 +21,12 @@ const PureTextarea = props => {
         {...props.input}
         value={props.value}
         onChange={props.handleChange}
-      >
-      </textarea>
+      />
       {
         error &&
-        error.map((err, i) => (
+        error.map((err) => (
           <div
-            key={`${i}key`}
+            key={`${err}key`}
             className={classnames(error ? 'help-text' : '', helpTextClassName)}
           >
             {err}
@@ -37,7 +41,8 @@ PureTextarea.defaultProps = {
   placeholder: '',
   className: '',
   fgClassName: '',
-  input: {},
+  input: {
+  },
   error: [],
   value: '',
   helpTextClassName: ''

@@ -7,8 +7,8 @@ const pixOne = 'https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2
 const Carousel = (props) => (
   <div id="carousel" className={`carousel slide ${props.className}`} data-ride="carousel">
     <ol className="carousel-indicators">
-      <li data-target="#carousel" data-slide-to="0" className="active"></li>
-      <li data-target="#carousel" data-slide-to="1"></li>
+      <li data-target="#carousel" data-slide-to="0" className="active" />
+      <li data-target="#carousel" data-slide-to="1" />
     </ol>
     <div className="carousel-inner hero">
       <div className="carousel-item hero-img-wrapper active">

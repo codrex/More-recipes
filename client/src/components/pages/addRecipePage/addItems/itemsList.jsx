@@ -7,17 +7,17 @@ import PureTextarea from '../../../common/form/pure-textarea';
 
 const List = (props) => {
   const {
-          items,
-          deleteItem,
-          editItem,
-          ingredients,
-          directions
-        } = props;
+    items,
+    deleteItem,
+    editItem,
+    ingredients,
+    directions
+  } = props;
   return (
     <div>
       {items.map((item, index) =>
         (<ListItem
-          key={`${index}${item}`}
+          key={`${item}${Date.now()}`}
           content={item}
           delete={deleteItem}
           editItem={editItem}
@@ -32,13 +32,18 @@ const List = (props) => {
   );
 };
 
+List.defaultProps = {
+  items: [],
+  name: '',
+};
+
 List.propTypes = {
   items: PropTypes.array,
-  deleteItem: PropTypes.func,
-  editItem: PropTypes.func,
+  deleteItem: PropTypes.func.isRequired,
+  editItem: PropTypes.func.isRequired,
   name: PropTypes.string,
-  directions: PropTypes.bool,
-  ingredients: PropTypes.bool,
+  directions: PropTypes.boolisRequired,
+  ingredients: PropTypes.boolisRequired,
 };
 
 export default List;

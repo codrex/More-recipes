@@ -66,10 +66,24 @@ class App extends React.Component {
         <div className="container-fluid  no-padding">
           <Navbar />
           <Switch>
-            <Route path="/recipe/create" render={match => this.onAuthenticated(AddRecipePage, match)}  />
-            <Route path="/recipe/modify/:id" component={AddRecipePage} />
-            <Route path="/recipe/:id" render={match => this.onAuthenticated(Recipe, match)} />
-            <Route static extact path="/recipes/" render={match => this.onAuthenticated(Recipes, match)} />
+            <Route
+              path="/recipe/create"
+              render={match => this.onAuthenticated(AddRecipePage, match)}
+            />
+            <Route
+              path="/recipe/modify/:id"
+              component={AddRecipePage}
+            />
+            <Route
+              path="/recipe/:id"
+              render={match => this.onAuthenticated(Recipe, match)}
+            />
+            <Route
+              static
+              extact
+              path="/recipes/"
+              render={match => this.onAuthenticated(Recipes, match)}
+            />
             <Route path="/user" render={match => this.onAuthenticated(ProfilePage, match)} />
             <Route static extact path="/" component={LandingPage} />
           </Switch>

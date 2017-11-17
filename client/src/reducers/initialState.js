@@ -1,4 +1,5 @@
 import { getToken, hasToken } from '../utils/auth/auth';
+
 const initailState = {
   Recipes: [],
   Recipe: {

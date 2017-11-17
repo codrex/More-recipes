@@ -72,7 +72,9 @@ export const authUser = (req, res, next) => {
 
 // sends User's info along with an auth token back to the user
 export const sendDataWithToken = (req, res) => {
-  const token = generateToken({ id: req.user.id });
+  const token = generateToken({
+    id: req.user.id
+  });
 
   delete req.user.id;
   delete req.user.password;
@@ -94,7 +96,11 @@ export const create = (req, res, next) => {
 
 // update user record
 export const update = (req, res, next) => {
-  Users.update(req.body, { where: { id: req.params.id } })
+  Users.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  })
   .then(() => {
     next();
   }).catch((error) => {
@@ -105,9 +111,13 @@ export const update = (req, res, next) => {
 // get user record
 export const fetchUser = (req, res) => {
   Users.findOne({
-    where: { id: req.params.id },
+    where: {
+      id: req.params.id
+    },
     attributes: ['id', 'email', 'username', 'fullname', 'profilePix'],
-    include: [{ all: true }]
+    include: [{
+      all: true
+    }]
   }).then((user) => {
     if (user) {
       sendSuccess(res, 200, 'User', user.dataValues);
@@ -119,7 +129,9 @@ export const fetchUser = (req, res) => {
 
 export const fetchForUpdate = (req, res, next) => {
   Users.findOne({
-    where: { id: req.params.id },
+    where: {
+      id: req.params.id
+    },
     attributes: ['email', 'username', 'fullname'],
   }).then((user) => {
     if (user) {
@@ -169,11 +181,14 @@ export const setRecipe = (req, res, next) => {
 // get a user's favorite recipe from the dbase
 export const fetchRecipes = (req, res) => {
   Users.findOne({
-    where: { id: req.requestId },
+    where: {
+      id: req.requestId
+    },
     attributes: ['id'],
-    include: [{ all: true }],
-  })
-  .then(userRecipes => {
+    include: [{
+      all: true
+    }],
+  }).then((userRecipes) => {
     sendSuccess((res), 200, 'User', userRecipes);
   }).catch(() => {
     serverError(res);

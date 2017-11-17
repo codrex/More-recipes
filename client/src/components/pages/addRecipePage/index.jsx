@@ -55,12 +55,16 @@ class AddRecipes extends React.Component {
   componentWillReceiveProps(nextProps) {
     const create = window.location.pathname === '/recipe/create';
     if (create) {
-      this.setState({ create });
-      this.isModificationMode && window.location.reload();
+      this.setState({
+        create
+      });
+      if (this.isModificationMode) window.location.reload();
     }
     if (nextProps.success.success === this.CREATE_RECIPE_SUCCESS) {
       this.props.actions.newRecipe();
-      this.props.actions.clearSuccessMsg({ success: '' });
+      this.props.actions.clearSuccessMsg({
+        success: ''
+      });
     }
   }
 
@@ -85,14 +89,21 @@ class AddRecipes extends React.Component {
     const { loading } = this.props;
     const { create } = this.state;
     return (
-      <div className="container" style={{ maxWidth: 'unset' }}>
+      <div
+        className="container"
+        style={{
+          maxWidth: 'unset'
+        }}
+      >
         <div className="row">
           <TopBar title={create ? 'Create recipe' : 'Modify recipe'} bottom />
         </div>
         {!loading &&
           <div
             className="row d-flex justify-content-between align-items-start"
-            style={{ margin: '0.5em' }}
+            style={{
+              margin: '0.5em'
+            }}
           >
             <div className="col-xs-11 col-sm-11 col-md-10 col-lg-4 name-category no-padding">
               <div className="col-12">

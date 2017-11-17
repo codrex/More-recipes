@@ -47,7 +47,7 @@ const constraints = {
   presenceAndLength(fieldName) {
     fieldName = {
       presence: {
-        message: `${fieldName} can\'t be blank`
+        message: `${fieldName} can't be blank`
       },
       length: {
         minimum: 2,

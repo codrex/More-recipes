@@ -13,25 +13,47 @@ import {
   AFTER_VOTE,
   TOGGLE_FAV,
   RECIPE_TO_MODIFY,
-  CURRENT_RECIPE,
   DELETE_RECIPE,
   CREATE_NEW_RECIPE,
   FIND_RECIPES
 } from './actions';
 
-export const newRecipe = payload => ({ type: NEW_RECIPE, payload });
-export const modifiedRecipe = payload => ({ type: MODIFIED_RECIPE, payload });
-// export const setCurrentRecipe = recipe => ({ type: CURRENT_RECIPE, recipe });
-export const recipeToModify = recipe => ({ type: RECIPE_TO_MODIFY, recipe });
-export const createNewRecipe = () => ({ type: CREATE_NEW_RECIPE });
-export const gotTopRecipes = payload => ({ type: GET_TOP_RECIPES, payload });
-export const afterDeleteRecipe = payload => ({ type: DELETE_RECIPE, payload });
-export const afterReview = payload => ({ type: AFTER_REVIEW, payload });
-export const afterVote = payload => ({ type: AFTER_VOTE, payload });
-export const afterToggleFav = payload => ({ type: TOGGLE_FAV, payload });
-export const gotAllRecipes = payload => ({ type: GET_ALL_RECIPES, payload });
-export const gotRecipe = payload => ({ type: GET_RECIPE, payload });
-export const gotFindRecipe = payload => ({ type: FIND_RECIPES, payload });
+export const newRecipe = payload => ({
+  type: NEW_RECIPE, payload
+});
+export const modifiedRecipe = payload => ({
+  type: MODIFIED_RECIPE, payload
+});
+export const recipeToModify = recipe => ({
+  type: RECIPE_TO_MODIFY, recipe
+});
+export const createNewRecipe = () => ({
+  type: CREATE_NEW_RECIPE
+});
+export const gotTopRecipes = payload => ({
+  type: GET_TOP_RECIPES, payload
+});
+export const afterDeleteRecipe = payload => ({
+  type: DELETE_RECIPE, payload
+});
+export const afterReview = payload => ({
+  type: AFTER_REVIEW, payload
+});
+export const afterVote = payload => ({
+  type: AFTER_VOTE, payload
+});
+export const afterToggleFav = payload => ({
+  type: TOGGLE_FAV, payload
+});
+export const gotAllRecipes = payload => ({
+  type: GET_ALL_RECIPES, payload
+});
+export const gotRecipe = payload => ({
+  type: GET_RECIPE, payload
+});
+export const gotFindRecipe = payload => ({
+  type: FIND_RECIPES, payload
+});
 export const updateIngredients = ingredient => ({
   type: UPDATE_INGREDIENTS,
   ingredient
@@ -123,7 +145,9 @@ export const toggleFav = (recipeId, msg = undefined) => (dispatch) => {
   const id = dispatcher.getIdFromToken();
   return dispatcher.requestAndDispatch(
     `/api/v1/users/${id}/recipe`,
-    { recipeId },
+    {
+      recipeId
+    },
     afterToggleFav,
     'post',
     msg

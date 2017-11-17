@@ -76,7 +76,9 @@ export class ProfilePage extends React.Component {
     if (!this.props.user.username) {
       this.props.actions.getProfile();
     }
-    this.setState({ noLoader: true });
+    this.setState({
+      noLoader: true
+    });
   }
 
    /**
@@ -85,7 +87,9 @@ export class ProfilePage extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     this.setRecipes();
-    this.setState({ recipeDeleted: nextProps.success });
+    this.setState({
+      recipeDeleted: nextProps.success
+    });
   }
 
  /**
@@ -95,7 +99,9 @@ export class ProfilePage extends React.Component {
    * @param {number} currentIndex
    */
   onDeleteRecipeClicked(modalTitle, currentId = null, currentIndex = null) {
-    this.setState({ modalTitle, currentId, currentIndex, noLoader: true });
+    this.setState({
+      modalTitle, currentId, currentIndex, noLoader: true
+    });
     this.onModalOpen();
   }
 
@@ -111,14 +117,18 @@ export class ProfilePage extends React.Component {
    * @return {undefined}
    */
   onModalClose() {
-    this.setState({ isModalOpen: false });
+    this.setState({
+      isModalOpen: false
+    });
     this.props.actions.resetSuccess();
   }
   /**
    * @return {undefined}
    */
   onModalOpen() {
-    this.setState({ isModalOpen: true });
+    this.setState({
+      isModalOpen: true
+    });
     this.props.actions.resetSuccess();
   }
 
@@ -153,7 +163,9 @@ export class ProfilePage extends React.Component {
    * @param {object} number
    */
   handlePageClick(number) {
-    this.setState({ currentPage: number.selected + 1 });
+    this.setState({
+      currentPage: number.selected + 1
+    });
   }
 
   /**
@@ -183,14 +195,18 @@ export class ProfilePage extends React.Component {
    */
   searchValueChange(value) {
     if (value.length < 1) {
-      this.setState({ filteredRecipes: null });
+      this.setState({
+        filteredRecipes: null
+      });
       return;
     }
 
     const filteredRecipes = this.state.recipes
     .filter((recipe) => recipe.recipeName
     .slice(0, value.length).toUpperCase() === value.toUpperCase());
-    this.setState({ filteredRecipes });
+    this.setState({
+      filteredRecipes
+    });
   }
 
   /**

@@ -51,7 +51,9 @@ export class Dashboard extends React.Component {
   componentWillReceiveProps(nextProps) {
     const { allRecipes, active } = this.state;
     if (nextProps.recipes !== this.props.recipes) {
-      this.setState({ allRecipes: nextProps.recipes, loader: nextProps.loading });
+      this.setState({
+        allRecipes: nextProps.recipes, loader: nextProps.loading
+      });
     }
     if (nextProps.user.favRecipes.length !== allRecipes.length && active === 2) {
       this.getFavRecipes();
@@ -62,13 +64,17 @@ export class Dashboard extends React.Component {
    * @return {undefined}
    */
   getUserRecipes() {
-    this.setState({ allRecipes: this.props.user.createdRecipes });
+    this.setState({
+      allRecipes: this.props.user.createdRecipes
+    });
   }
     /**
    * @return {undefined}
    */
   getFavRecipes() {
-    this.setState({ allRecipes: this.props.user.favRecipes });
+    this.setState({
+      allRecipes: this.props.user.favRecipes
+    });
   }
 
    /**
@@ -76,7 +82,9 @@ export class Dashboard extends React.Component {
    * @param {active} active
    */
   setActive(active) {
-    this.setState({ active });
+    this.setState({
+      active
+    });
   }
 
     /**
@@ -194,7 +202,9 @@ export class Dashboard extends React.Component {
 }
 
 Dashboard.defaultProps = {
-  match: {},
+  match: {
+
+  },
 };
 
 Dashboard.propTypes = {

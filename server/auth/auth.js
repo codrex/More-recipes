@@ -1,9 +1,8 @@
 import jwt from 'jsonwebtoken';
 import { sendFail } from '../reply/reply';
+
 const secret = process.env.secret || 'andelabootcamprexogbemudiaosazuwa';
-
 const generateToken = dataToencode => jwt.sign(dataToencode, secret, { expiresIn: '2d' });
-
 const getToken = req => req.body.Authorization || req.query.Authorization ||
 req.headers.authorization;
 
