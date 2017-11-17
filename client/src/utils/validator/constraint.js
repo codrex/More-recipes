@@ -8,10 +8,7 @@ const constraints = {
       flags: 'i',
       message: 'Fullname can only contain alphabet',
     },
-    length: {
-      minimum: 2,
-      message: 'Fullname must be at least 2 character',
-    },
+    words: true,
   },
   password: {
     presence: {

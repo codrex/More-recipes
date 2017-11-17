@@ -17,16 +17,15 @@ module.exports = {
     fullname: {
       type: Sequelize.STRING,
       allowNull: false,
-      defaultValue: 'UNKNOWN',
       validation: {
         max: 50,
         isAlpha: true,
       },
     },
-    profilePix: {
+    profilePicture: {
       type: Sequelize.STRING,
       allowNull: false,
-      defaultValue: 'UNKNOWN',
+      defaultValue: 'none',
     },
     email: {
       type: Sequelize.STRING,

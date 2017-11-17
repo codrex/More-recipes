@@ -1,22 +1,8 @@
 import db from '../models/index';
-import { serverError, sendFail } from '../reply/reply';
-import { validateVote } from '../validators/validator';
-
+import { serverError } from '../reply/reply';
+import { validateVote, validationHandler } from '../validators/validator';
 
 const Votes = db.Votes;
-
-export const voteValidation = (req, res, next) => {
-  const data = {
-    vote: req.query.vote,
-    id: req.params.id,
-  };
-  const validate = validateVote(data);
-  if (validate.valid) {
-    next();
-  } else {
-    sendFail(res, 400, validate.error);
-  }
-};
 const updateVote = (voteInstance, voteData, next) => {
   voteData.id = voteInstance.dataValues.id;
   voteInstance.update(voteData, { fields: ['id', 'upVote', 'downVote'] })
@@ -24,9 +10,19 @@ const updateVote = (voteInstance, voteData, next) => {
       next();
     });
 };
+export const voteValidation = (req, res, next) => {
+  const { up, down } = req.query;
+  const data = {
+    vote: up || down,
+    id: req.params.id,
+  };
+  validationHandler(data, validateVote, req, res, next);
+};
 export const VoteHandler = (req, res, next) => {
-  const voteType = req.query.vote;
-  const voteData = { upVote: voteType === 'upvote', downVote: voteType === 'downvote' };
+  let { up, down } = req.query;
+  if (up) up = JSON.parse(up.toLowerCase());
+  if (down) down = JSON.parse(down.toLowerCase());
+  const voteData = { upVote: up || false, downVote: down || false };
   Votes.findOne(
     {
       where: {
@@ -38,13 +34,13 @@ export const VoteHandler = (req, res, next) => {
       voteData.RecipeId = req.params.id;
       if (!vote) {
         Votes.create(voteData)
-      .then(() => {
-        next();
-      });
+          .then(() => {
+            next();
+          });
       } else {
-        if (vote.dataValues.downVote && voteType === 'upvote') {
+        if (up === true) {
           updateVote(vote, voteData, next);
-        } else if (vote.dataValues.upVote && voteType === 'downvote') {
+        } else if (down === true) {
           updateVote(vote, voteData, next);
         } else {
           vote.destroy({ force: true }).then(() => {
@@ -56,7 +52,6 @@ export const VoteHandler = (req, res, next) => {
       serverError(res);
     });
 };
-
 export const countVote = (req, res, next) => {
   Votes.count({ where: { upVote: true, RecipeId: req.params.id } })
   .then((upvote) => {

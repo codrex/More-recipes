@@ -6,9 +6,10 @@ module.exports = {
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    recipeName: {
+    name: {
       type: Sequelize.STRING,
       allowNull: false,
+      unique: true,
     },
     category: {
       type: Sequelize.STRING,

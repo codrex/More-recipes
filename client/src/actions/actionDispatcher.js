@@ -54,7 +54,7 @@ export default class ActionDispatcher {
       }
     } else if (error.request) {
       if (process.env.NODE_ENV !== 'test') {
-        const errorMsg = 'Network error encountered, please check your conention and try again';
+        const errorMsg = 'Network error encountered, please check your connection and try again';
         dispatchOnFail(this.dispatch, errorMsg);
       } else {
         dispatchOnFail(this.dispatch);
@@ -70,9 +70,9 @@ export default class ActionDispatcher {
   saveToken(action, payload, successMsg) {
     // save token returned during login and signup  in the local storage
     if (action().type === SIGNUP || action().type === LOGIN) {
-      storeToken(payload.data.User.token);
+      storeToken(payload.data.user.token);
     }
-    if (action) this.dispatch(action(payload.data));
+    this.dispatch(action(payload.data));
     dispatchOnSuccess(this.dispatch, successMsg);
   }
 

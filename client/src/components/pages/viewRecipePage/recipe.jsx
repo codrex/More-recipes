@@ -63,9 +63,7 @@ export class Recipe extends React.Component {
    * @return {bool} true / false
    */
   isUserFav() {
-    return this.props.favRecipes.find((recipe) => {
-      return this.recipeId === recipe.id;
-    }) !== undefined;
+    return this.props.favRecipes.find((recipe) => this.recipeId === recipe.id) !== undefined;
   }
 
   /**

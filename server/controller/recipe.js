@@ -7,11 +7,12 @@ const Recipes = db.Recipes;
 // This function validates data gotten from the user
 // before creating a recipe.
 export const validateRecipe = (req, res, next) => {
+  const { name, category, ingredients, directions } = req.body;
   const recipes = {
-    recipeName: req.body.recipeName,
-    category: req.body.category,
-    ingredients: (req.body.ingredients),
-    directions: req.body.directions,
+    name,
+    category,
+    ingredients,
+    directions,
     OwnerId: req.requestId,
   };
   validationHandler(recipes, validateRecipes, req, res, next);
@@ -21,7 +22,7 @@ export const validateRecipe = (req, res, next) => {
 // before updating a recipe.
 export const validateUpdate = (req, res, next) => {
   const recipes = {
-    recipeName: req.body.recipeName || req.recipe.recipeName,
+    name: req.body.name || req.recipe.name,
     category: req.body.category || req.recipe.category,
     ingredients: req.body.ingredients || req.recipe.ingredients,
     directions: req.body.directions || req.recipe.directions,
@@ -31,7 +32,7 @@ export const validateUpdate = (req, res, next) => {
 };
 
 // This function validate recipe id.
-export const idValidation = (req, res, next) => {
+export const recipeIdValidation = (req, res, next) => {
   const validate = validateId({ id: req.body.recipeId || req.params.id });
   if (validate.valid) {
     next();
@@ -47,7 +48,11 @@ export const create = (req, res, next) => {
       req.idToFetchRecipe = recipe.dataValues.id;
       req.recipe = recipe;
       next();
-    }).catch(() => {
+    }).catch((error) => {
+      if (error.name === 'SequelizeUniqueConstraintError') {
+        sendFail(res, 400, 'Sorry, recipe name already exists, please enter another');
+        return;
+      }
       serverError(res);
     });
 };
@@ -56,7 +61,7 @@ export const create = (req, res, next) => {
 export const fetchRecipe = (req, res) => {
   Recipes.findOne({
     where: { id: req.idToFetchRecipe || req.params.id },
-    attributes: ['id', 'recipeName',
+    attributes: ['id', 'name',
       'category', 'ingredients',
       'directions', 'upVotes',
       'downVotes', 'views'],
@@ -66,27 +71,14 @@ export const fetchRecipe = (req, res) => {
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'password'],
         },
-      },
-      {
-        model: db.RecipeReviews,
-        attributes: {
-          exclude: ['createdAt', 'updatedAt'],
-        },
-        include: [{
-          model: db.Users, as: 'Reviewer',
-          attributes: {
-            exclude: ['createdAt', 'updatedAt', 'password'],
-          },
-        }],
-      },
+      }
     ],
-    order: [[{ model: db.RecipeReviews }, 'id', 'DESC']],
   }).then((recipe) => {
     if (recipe) {
       if (req.hasNewViewer) recipe.increment('views', { by: 1 });
-      sendSuccess(res, 200, 'Recipe', recipe.dataValues);
+      sendSuccess(res, 200, 'recipe', recipe.dataValues);
     } else {
-      sendFail(res, 404, 'recipe not found');
+      sendFail(res, 404, 'Sorry, recipe was not found');
     }
   }).catch(() => {
     serverError(res);
@@ -99,7 +91,7 @@ export const fetchVotes = (req, res) => {
     where: { id: req.idToFetchRecipe || req.params.id },
     attributes: ['id', 'upVotes', 'downVotes'],
   }).then((recipe) => {
-    sendSuccess(res, 200, 'Recipe', recipe.dataValues);
+    sendSuccess(res, 200, 'recipe', recipe.dataValues);
   }).catch(() => {
     serverError(res);
   });
@@ -108,13 +100,13 @@ export const fetchVotes = (req, res) => {
 // fetch all recipes from dbase and send it back to the user
 export const fetchAllRecipe = (req, res) => {
   Recipes.findAll({
-    attributes: ['id', 'recipeName',
+    attributes: ['id', 'name',
       'category', 'ingredients',
       'directions', 'upVotes',
       'downVotes', 'views'
     ],
   }).then((recipe) => {
-    sendSuccess(res, 200, 'Recipes', recipe);
+    sendSuccess(res, 200, 'recipes', recipe);
   }).catch(() => {
     serverError(res);
   });
@@ -127,18 +119,18 @@ export const fetchAllBySearch = (req, res, next) => {
     limit: 10,
     where: {
       $or: [
-        { recipeName: req.query.search },
+        { name: req.query.search },
         { category: req.query.search },
       ],
     },
-    attributes: ['id', 'recipeName',
+    attributes: ['id', 'name',
       'category', 'ingredients',
       'directions', 'upVotes',
       'downVotes'
     ],
 
   }).then((recipe) => {
-    sendSuccess(res, 200, 'Recipes', recipe);
+    sendSuccess(res, 200, 'recipes', recipe);
   }).catch(() => {
     serverError(res);
   });
@@ -149,12 +141,12 @@ export const fetchRecipeByUpVote = (req, res, next) => {
   Recipes.findAll({
     limit: 10,
     order: [['upVotes', 'DESC']],
-    attributes: ['id', 'recipeName',
+    attributes: ['id', 'name',
       'category', 'ingredients',
       'directions', 'upVotes',
       'downVotes'],
   }).then((recipes) => {
-    sendSuccess(res, 200, 'Recipes', recipes);
+    sendSuccess(res, 200, 'recipes', recipes);
   }).catch(() => {
     serverError(res);
   });
@@ -164,7 +156,7 @@ export const fetchRecipeByUpVote = (req, res, next) => {
 export const fetchForUpdate = (req, res, next) => {
   Recipes.findOne({
     where: { id: req.params.id },
-    attributes: ['recipeName',
+    attributes: ['name',
       'category', 'ingredients',
       'directions'],
 
@@ -173,7 +165,7 @@ export const fetchForUpdate = (req, res, next) => {
       req.recipe = recipe;
       next();
     } else {
-      sendFail(res, 404, 'recipe not found');
+      sendFail(res, 404, 'Sorry, recipe was not found');
     }
   }).catch(() => {
     serverError(res);
@@ -184,7 +176,7 @@ export const fetchForUpdate = (req, res, next) => {
 export const deleteRecipe = (req, res) => {
   Recipes.destroy({ where: { id: req.params.id } })
   .then(() => {
-    sendSuccess(res, 200, 'success', 'Recipe deleted');
+    sendSuccess(res, 200, 'success', 'Recipe was successfully deleted');
   });
 };
 
@@ -193,7 +185,7 @@ export const checkOwnship = (req, res, next) => {
   Recipes.findById(parseInt(req.params.id, 10))
     .then((recipe) => {
       if (!recipe) {
-        sendFail(res, 404, 'Recipe not found');
+        sendFail(res, 404, 'Sorry, recipe was not found');
         return;
       }
       recipe.getOwner()
@@ -201,7 +193,7 @@ export const checkOwnship = (req, res, next) => {
           if (user && user.id === req.requestId) {
             next();
           } else {
-            sendFail(res, 404, 'Recipe not found for User');
+            sendFail(res, 404, 'Sorry, recipe was not found ');
           }
         });
     }).catch(() => {
@@ -216,7 +208,7 @@ export const checkRecipe = (req, res, next) => {
       if (recipe) {
         next();
       } else {
-        sendFail(res, 404, 'Recipe not found');
+        sendFail(res, 404, 'Sorry, recipe was not found');
       }
     }).catch(() => {
       serverError(res);
@@ -228,7 +220,7 @@ export const setReview = (req, res, next) => {
   Recipes.findById(req.params.id)
     .then((recipe) => {
       if (!recipe) {
-        return sendFail(res, 404, 'Recipe not found');
+        return sendFail(res, 404, 'Sorry, recipe was not found');
       }
       recipe.addRecipeReviews(req.reviewId)
         .then(() => {
@@ -261,7 +253,7 @@ export const fetchReview = (req, res) => {
     order: [[{ model: db.RecipeReviews }, 'id', 'DESC']],
   })
   .then((recipeReviews) => {
-    sendSuccess(res, 200, 'Recipe', recipeReviews);
+    sendSuccess(res, 200, 'recipe', recipeReviews);
   }).catch(() => {
     serverError(res);
   });

@@ -33,14 +33,11 @@
    },
    fullname: {
      presence: true,
+     words: true,
      format: {
        pattern: '[a-zA-Z ]+',
        flags: 'i',
        message: 'can only contain alphabet',
-     },
-     length: {
-       minimum: 3,
-       message: 'must be at least 3 character',
      },
    },
    email: {
@@ -48,7 +45,9 @@
      email: true,
    },
    id: {
-     presence: true,
+     presence: {
+       message: 'sent is invalid'
+     },
      numericality: {
        onlyInteger: true,
        greaterThan: 0,
@@ -68,6 +67,7 @@
      username: objects.username,
      password: objects.password,
      email: objects.email,
+     fullname: objects.fullname,
    },
    profileUpdateConstraint: {
      username: objects.username,
@@ -75,7 +75,7 @@
      fullname: objects.fullname,
    },
    createRecipeConstraint: {
-     recipeName: objects.name,
+     name: objects.name,
      category: objects.name,
      ingredients: objects.array,
      directions: objects.array,
@@ -96,11 +96,13 @@
    voteConstraint: {
      id: objects.id,
      vote: {
-       presence: true,
+       presence: {
+         message: 'parameter is invalid, only true or false is allowed'
+       },
        format: {
-         pattern: '[a-zA-Z ]+',
+         pattern: '(true|false)$',
          flags: 'i',
-         message: 'can only contain alphabet',
+         message: 'parameter is invalid, only true or false is allowed',
        },
      }
    },

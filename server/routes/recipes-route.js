@@ -1,8 +1,8 @@
 import express from 'express';
-import { verifyToken } from '../auth/auth';
+import { verifyToken } from '../authentication/authenticator';
 import { reviewValidation, createReview } from '../controller/review';
 import { validateRecipe, create,
-        fetchRecipe, idValidation,
+        fetchRecipe, recipeIdValidation,
         deleteRecipe, checkOwnship,
         validateUpdate, fetchForUpdate,
          fetchAllRecipe, fetchAllBySearch,
@@ -26,14 +26,14 @@ recipesRoute.route('/')
 
 // Update and delete recipe route
 recipesRoute.route('/:id')
-  .put(idValidation, checkOwnship,
+  .put(recipeIdValidation, checkOwnship,
        fetchForUpdate, validateUpdate, update, fetchRecipe)
-  .delete(idValidation, checkOwnship, deleteRecipe)
-  .get(idValidation, addAsViewer, fetchRecipe);
+  .delete(recipeIdValidation, checkOwnship, deleteRecipe)
+  .get(recipeIdValidation, addAsViewer, fetchRecipe);
 
 // route to post reviews on a recipe
 recipesRoute.route('/:id/reviews')
-  .post(idValidation, reviewValidation, createReview, setReview, fetchReview);
+  .post(recipeIdValidation, reviewValidation, createReview, setReview, fetchReview);
 
 //  route to upvote or down vote a recipe
 recipesRoute.route('/:id/vote')

@@ -2,12 +2,13 @@ import supertest from 'supertest';
 import app from '../bin/www';
 import { expect } from 'chai';
 const request = supertest(app);
-import { generateToken } from '../auth/auth';
+import { generateToken } from '../authentication/authenticator';
 
 
 export const recipeSpec = (user1, user2) => {
   const token = user1;
   const token2 = user2;
+  const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA3NjkxNTY5LCJleHAiOjE1MDc4NjQzNjl9.vymZcUhgjkNncEq1U6I1zdZr6yt-A4EahLc6pk1jPVQ';
 
   describe('Integration test for recipe controller', () => {
     const deletedUser = generateToken({ id: 100 });
@@ -17,46 +18,70 @@ export const recipeSpec = (user1, user2) => {
       let recipe = {};
       beforeEach(() => {
         recipe = {
-          recipeName: 'beans cake',
+          name: 'beans cake',
           category: 'breakfast',
           ingredients: ['beans', 'water', 'oil'],
           directions: ['step 1', 'step 2', 'step 3'],
         };
       });
-      it('return 200 as status code', done => {
+      it('return 200 after recipe is created with valid data', done => {
         request.post('/api/v1/recipes')
-            .set('Authorization', token)
-            .send(recipe)
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              expect(res.body.status).to.equal('success');
-              done();
-            });
+          .set('Authorization', token)
+          .send(recipe)
+          .end((err, res) => {
+            expect(res.status).to.equal(200);
+            expect(res.body.status).to.equal('success');
+            done();
+          });
+      });
+      it('return 400 when recipe name already exists in the system', done => {
+        request.post('/api/v1/recipes')
+          .set('Authorization', token)
+          .send(recipe)
+          .end((err, res) => {
+            expect(res.status).to.equal(400);
+            expect(res.body.status).to.equal('fail');
+            done();
+          });
       });
 
-      it('return 403 for  without access token', done => {
+      it('return 403 when user attempt to get recipe without access token', done => {
         request.post('/api/v1/recipes')
             .send(recipe)
             .end((err, res) => {
               expect(res.status).to.equal(403);
               expect(res.body.status).to.equal('fail');
+              expect(res.body.error).to.equal('Sorry, you need to login or register');
               done();
             });
       });
-      it('return 400 for invalid access token', done => {
+      it('return 403 when user attempt to get recipe an invalid access token', done => {
         const invalidToken = `${token}'dkfjkfjd'`;
         request.post('/api/v1/recipes')
-            .set('Authorization', invalidToken)
-            .send(recipe)
-            .end((err, res) => {
-              expect(res.status).to.equal(401);
-              expect(res.body.status).to.equal('fail');
-              done();
-            });
+        .set('Authorization', invalidToken)
+        .send(recipe)
+        .end((err, res) => {
+          expect(res.status).to.equal(403);
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.error).to.equal('Sorry, you need to login or register');
+          done();
+        });
+      });
+      it('return 401 when user attempt to get recipe an expired access token', done => {
+        request.post('/api/v1/recipes')
+        .set('Authorization', expiredToken)
+        .send(recipe)
+        .end((err, res) => {
+          expect(res.status).to.equal(401);
+          expect(res.body.status).to.equal('fail');
+          expect(res.body.error)
+            .to.equal('Sorry, current session has expired, please login to continue');
+          done();
+        });
       });
       it('return 400 as status code', done => {
         const invalidRecipe = recipe;
-        invalidRecipe.recipeName = '';
+        invalidRecipe.name = '';
         request.post('/api/v1/recipes')
             .set('Authorization', token)
             .send(invalidRecipe)
@@ -104,7 +129,7 @@ export const recipeSpec = (user1, user2) => {
       });
       it('return 400 as status code', done => {
         const invalidRecipe = recipe;
-        invalidRecipe.recipeName = 123456;
+        invalidRecipe.name = 123456;
         request.post('/api/v1/recipes')
             .set('Authorization', token)
             .send(invalidRecipe)
@@ -171,7 +196,7 @@ export const recipeSpec = (user1, user2) => {
             .end((err, res) => {
               expect(res.status).to.equal(200);
               expect(res.body.status).to.equal('success');
-              expect(res.body.User.favRecipes.length).to.equal(0);
+              expect(res.body.user.favRecipes.length).to.equal(0);
               done();
             });
       });
@@ -276,17 +301,8 @@ export const recipeSpec = (user1, user2) => {
     });
       // vote a recipe
     describe('vote a recipe', () => {
-      it('return 404 as status code when user is deleted ', done => {
-        request.put('/api/v1/recipes/1/upvote')
-            .set('Authorization', deletedUser)
-            .end((err, res) => {
-              expect(res.status).to.equal(404);
-              expect(res.body.status).to.equal('fail');
-              done();
-            });
-      });
       it('return 400 as status code for invalid recipe id', done => {
-        request.put('/api/v1/recipes/1lk/vote?vote=upvote')
+        request.put('/api/v1/recipes/1lk/vote?up=true')
             .set('Authorization', token)
             .end((err, res) => {
               expect(res.status).to.equal(400);
@@ -295,7 +311,7 @@ export const recipeSpec = (user1, user2) => {
             });
       });
       it('return 400 as status code when vote type is invalid', done => {
-        request.put('/api/v1/recipes/1/vote?vote=1')
+        request.put('/api/v1/recipes/1/vote?up=KKKKKKK')
             .set('Authorization', token)
             .end((err, res) => {
               expect(res.status).to.equal(400);
@@ -304,7 +320,7 @@ export const recipeSpec = (user1, user2) => {
             });
       });
       it('return 404 as status code when recipe not found', done => {
-        request.put('/api/v1/recipes/100/vote?vote=upvote')
+        request.put('/api/v1/recipes/100/vote?up=true')
             .set('Authorization', token)
             .end((err, res) => {
               expect(res.status).to.equal(404);
@@ -313,117 +329,115 @@ export const recipeSpec = (user1, user2) => {
             });
       });
       it('return 200 as status code when user upvote a recipe for the first time', done => {
-        request.put('/api/v1/recipes/1/vote?vote=upvote')
+        request.put('/api/v1/recipes/1/vote?up=true')
             .set('Authorization', token)
             .end((err, res) => {
               expect(res.status).to.equal(200);
-              expect(res.body.Recipe.upVotes).to.equal(1);
-              expect(res.body.Recipe.downVotes).to.equal(0);
+              expect(res.body.recipe.upVotes).to.equal(1);
+              expect(res.body.recipe.downVotes).to.equal(0);
               done();
             });
       });
-      it('return 200 as status code when user hits upvote route for the second time', done => {
-        request.put('/api/v1/recipes/1/vote?vote=upvote')
+      it('return 200 as status code when user cancel vote', done => {
+        request.put('/api/v1/recipes/1/vote?up=false')
             .set('Authorization', token)
             .end((err, res) => {
               expect(res.status).to.equal(200);
-              expect(res.body.Recipe.upVotes).to.equal(0);
-              expect(res.body.Recipe.downVotes).to.equal(0);
+              expect(res.body.recipe.upVotes).to.equal(0);
+              expect(res.body.recipe.downVotes).to.equal(0);
               done();
             });
       });
-      it('return 200 as status code when user hits upvote route for the third time', done => {
-        request.put('/api/v1/recipes/1/vote?vote=upvote')
+      it('return 200 as status code when user upvotes after a cancelled vote', done => {
+        request.put('/api/v1/recipes/1/vote?up=true')
             .set('Authorization', token)
             .end((err, res) => {
               expect(res.status).to.equal(200);
-              expect(res.body.Recipe.upVotes).to.equal(1);
-              expect(res.body.Recipe.downVotes).to.equal(0);
+              expect(res.body.recipe.upVotes).to.equal(1);
+              expect(res.body.recipe.downVotes).to.equal(0);
               done();
             });
       });
       it('return 200 as status code when another user downvote a recipe', done => {
-        request.put('/api/v1/recipes/1/vote?vote=downvote')
+        request.put('/api/v1/recipes/1/vote?down=true')
             .set('Authorization', token2)
             .end((err, res) => {
               expect(res.status).to.equal(200);
-              expect(res.body.Recipe.upVotes).to.equal(1);
-              expect(res.body.Recipe.downVotes).to.equal(1);
+              expect(res.body.recipe.upVotes).to.equal(1);
+              expect(res.body.recipe.downVotes).to.equal(1);
               done();
             });
       });
-      it(`return 200 as status code when another user hits
-        the downvote recipe route for the second time`, done => {
-        request.put('/api/v1/recipes/1/vote?vote=downvote')
+      it(`return 200 as status code when another user cancel downvote`, done => {
+        request.put('/api/v1/recipes/1/vote?down=False')
             .set('Authorization', token2)
             .end((err, res) => {
               expect(res.status).to.equal(200);
-              expect(res.body.Recipe.upVotes).to.equal(1);
-              expect(res.body.Recipe.downVotes).to.equal(0);
+              expect(res.body.recipe.upVotes).to.equal(1);
+              expect(res.body.recipe.downVotes).to.equal(0);
               done();
             });
       });
-      it(`return 200 as status code when another user hits
-        the downvote recipe route for the third time`, done => {
-        request.put('/api/v1/recipes/1/vote?vote=downvote')
+      it(`return 200 as status code when another user downvote after a cancelled downvote`, done => {
+        request.put('/api/v1/recipes/1/vote?down=true')
             .set('Authorization', token2)
             .end((err, res) => {
               expect(res.status).to.equal(200);
-              expect(res.body.Recipe.upVotes).to.equal(1);
-              expect(res.body.Recipe.downVotes).to.equal(1);
+              expect(res.body.recipe.upVotes).to.equal(1);
+              expect(res.body.recipe.downVotes).to.equal(1);
               done();
             });
       });
       it('return 200 as status code when a user changes from downvote to upvote', done => {
-        request.put('/api/v1/recipes/1/vote?vote=upvote')
+        request.put('/api/v1/recipes/1/vote?up=true')
             .set('Authorization', token2)
             .end((err, res) => {
               expect(res.status).to.equal(200);
-              expect(res.body.Recipe.upVotes).to.equal(2);
-              expect(res.body.Recipe.downVotes).to.equal(0);
+              expect(res.body.recipe.upVotes).to.equal(2);
+              expect(res.body.recipe.downVotes).to.equal(0);
               done();
             });
       });
-          // get recipe by most upvotes
-      describe('get recipe by most upvote', () => {
-        it('return 200 as status code when everything is fine', done => {
-          request.get('/api/v1/recipes?sort=upvotes&order=ascending')
-              .set('Authorization', token)
-              .end((err, res) => {
-                expect(res.status).to.equal(200);
-                expect(res.body.status).to.equal('success');
-                expect(res.body.Recipes[0].id).to.equal(1);
-                done();
-              });
-        });
-      });
       it('return 200 as status code when a user changes from upvote to downvote', done => {
-        request.put('/api/v1/recipes/1/vote?vote=downvote')
+        request.put('/api/v1/recipes/1/vote?down=true')
             .set('Authorization', token)
             .end((err, res) => {
               expect(res.status).to.equal(200);
-              expect(res.body.Recipe.upVotes).to.equal(1);
-              expect(res.body.Recipe.downVotes).to.equal(1);
+              expect(res.body.recipe.upVotes).to.equal(1);
+              expect(res.body.recipe.downVotes).to.equal(1);
               done();
             });
       });
     });
+    // get recipe by most upvotes
+    describe('get recipe by most upvote', () => {
+    it('return 200 as status code when everything is fine', done => {
+      request.get('/api/v1/recipes?sort=upvotes&order=ascending')
+        .set('Authorization', token)
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body.status).to.equal('success');
+          expect(res.body.recipes[0].id).to.equal(1);
+          done();
+        });
+        });
+      });
       // modify recipe request
     describe('modify recipe', () => {
       const updateOne = {
-        recipeName: 'beans cake',
+        name: 'beans cake',
       };
       const updateTwo = {
-        recipeName: 'beans cake',
+        name: 'beans cake',
         category: 'breakfast',
       };
       const updateThree = {
-        recipeName: 'beans cake',
+        name: 'beans cake',
         category: 'breakfast',
         ingredients: ['beans', 'water', 'oil'],
       };
       const updateFour = {
-        recipeName: 'beans and rice',
+        name: 'beans and rice',
         category: 'dinner',
         ingredients: ['beans', 'rice', 'oil'],
         directions: ['step 1', 'step 2', 'step 3', 'step 4'],
@@ -432,7 +446,7 @@ export const recipeSpec = (user1, user2) => {
         request.put('/api/v1/recipes/1')
             .set('Authorization', token)
             .send({
-              recipeName: 9845,
+              name: 9845,
               category: 'breakfast',
             })
             .end((err, res) => {
@@ -604,7 +618,7 @@ export const recipeSpec = (user1, user2) => {
           .end((err, res) => {
             expect(res.status).to.equal(200);
             expect(res.body.status).to.equal('success');
-            expect(res.body.Recipe.views).to.equal(0);
+            expect(res.body.recipe.views).to.equal(0);
             done();
           });
         after(() => {
@@ -614,7 +628,7 @@ export const recipeSpec = (user1, user2) => {
               .end((err, res) => {
                 expect(res.status).to.equal(200);
                 expect(res.body.status).to.equal('success');
-                expect(res.body.Recipe.views).to.equal(1);
+                expect(res.body.recipe.views).to.equal(1);
                 done();
               });
           });
@@ -624,7 +638,7 @@ export const recipeSpec = (user1, user2) => {
               .end((err, res) => {
                 expect(res.status).to.equal(200);
                 expect(res.body.status).to.equal('success');
-                expect(res.body.Recipe.views).to.equal(1);
+                expect(res.body.recipe.views).to.equal(1);
                 done();
               });
           });
@@ -637,7 +651,7 @@ export const recipeSpec = (user1, user2) => {
           .end((err, res) => {
             expect(res.status).to.equal(200);
             expect(res.body.status).to.equal('success');
-            expect(res.body.Recipe.views).to.equal(1);
+            expect(res.body.recipe.views).to.equal(1);
             done();
           });
         after(() => {
@@ -647,7 +661,7 @@ export const recipeSpec = (user1, user2) => {
               .end((err, res) => {
                 expect(res.status).to.equal(200);
                 expect(res.body.status).to.equal('success');
-                expect(res.body.Recipe.views).to.equal(2);
+                expect(res.body.recipe.views).to.equal(2);
                 done();
               });
           });
@@ -657,7 +671,7 @@ export const recipeSpec = (user1, user2) => {
               .end((err, res) => {
                 expect(res.status).to.equal(200);
                 expect(res.body.status).to.equal('success');
-                expect(res.body.Recipe.views).to.equal(2);
+                expect(res.body.recipe.views).to.equal(2);
                 done();
               });
           });
