@@ -543,7 +543,6 @@ exports[`View Recipes Page component  render as expected when add a review butto
                           initialize={[Function]}
                           initialized={false}
                           invalid={true}
-                          msg=""
                           postReview={[Function]}
                           pristine={true}
                           pure={true}
@@ -803,7 +802,6 @@ exports[`View Recipes Page component  render as expected when add a review butto
                                             "review can't be blank",
                                           ],
                                           "form": "reviewForm",
-                                          "initial": undefined,
                                           "invalid": true,
                                           "pristine": true,
                                           "submitFailed": false,
@@ -1408,7 +1406,6 @@ exports[`View Recipes Page component  render as expected when add a review butto
                           initialize={[Function]}
                           initialized={false}
                           invalid={true}
-                          msg=""
                           postReview={[Function]}
                           pristine={true}
                           pure={true}
@@ -1668,7 +1665,6 @@ exports[`View Recipes Page component  render as expected when add a review butto
                                             "review can't be blank",
                                           ],
                                           "form": "reviewForm",
-                                          "initial": undefined,
                                           "invalid": true,
                                           "pristine": true,
                                           "submitFailed": false,
@@ -2273,7 +2269,6 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                           initialize={[Function]}
                           initialized={false}
                           invalid={true}
-                          msg=""
                           postReview={[Function]}
                           pristine={true}
                           pure={true}
@@ -2553,7 +2548,6 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                             "review can't be blank",
                                           ],
                                           "form": "reviewForm",
-                                          "initial": undefined,
                                           "invalid": true,
                                           "pristine": true,
                                           "submitFailed": false,
@@ -3158,7 +3152,6 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                           initialize={[Function]}
                           initialized={false}
                           invalid={true}
-                          msg=""
                           postReview={[Function]}
                           pristine={true}
                           pure={true}
@@ -3438,7 +3431,6 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                             "review can't be blank",
                                           ],
                                           "form": "reviewForm",
-                                          "initial": undefined,
                                           "invalid": true,
                                           "pristine": true,
                                           "submitFailed": false,
@@ -4043,7 +4035,6 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                           initialize={[Function]}
                           initialized={false}
                           invalid={true}
-                          msg=""
                           postReview={[Function]}
                           pristine={true}
                           pure={true}
@@ -4323,7 +4314,6 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                             "review can't be blank",
                                           ],
                                           "form": "reviewForm",
-                                          "initial": undefined,
                                           "invalid": true,
                                           "pristine": true,
                                           "submitFailed": false,
@@ -4928,7 +4918,6 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                           initialize={[Function]}
                           initialized={false}
                           invalid={true}
-                          msg=""
                           postReview={[Function]}
                           pristine={true}
                           pure={true}
@@ -5208,7 +5197,6 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                             "review can't be blank",
                                           ],
                                           "form": "reviewForm",
-                                          "initial": undefined,
                                           "invalid": true,
                                           "pristine": true,
                                           "submitFailed": false,
@@ -5813,7 +5801,6 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                           initialize={[Function]}
                           initialized={false}
                           invalid={true}
-                          msg=""
                           postReview={[Function]}
                           pristine={true}
                           pure={true}
@@ -6093,7 +6080,6 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                             "review can't be blank",
                                           ],
                                           "form": "reviewForm",
-                                          "initial": undefined,
                                           "invalid": true,
                                           "pristine": true,
                                           "submitFailed": false,
@@ -6698,7 +6684,6 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                           initialize={[Function]}
                           initialized={false}
                           invalid={true}
-                          msg=""
                           postReview={[Function]}
                           pristine={true}
                           pure={true}
@@ -6978,7 +6963,6 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                             "review can't be blank",
                                           ],
                                           "form": "reviewForm",
-                                          "initial": undefined,
                                           "invalid": true,
                                           "pristine": true,
                                           "submitFailed": false,

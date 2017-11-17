@@ -8,3 +8,4 @@ webpack.connfig.babel.js
 **/README.node_modules
 **/Procfile
 **/package-lock.json
+dist

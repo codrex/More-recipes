@@ -4,5 +4,6 @@ coverage
 .vscode/*
 debug.log
 .nyc_output
-npm-debug.log
+npm-debug.log.*
 unused
+dist
