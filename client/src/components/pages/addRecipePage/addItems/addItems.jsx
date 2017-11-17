@@ -34,7 +34,9 @@ class AddItems extends React.PureComponent {
    * @return {bool} true and false
    */
   componentWillReceiveProps(nextProps) {
-    this.setState({ items: nextProps.items });
+    this.setState({
+      items: nextProps.items
+    });
     return true;
   }
   /**
@@ -47,8 +49,9 @@ class AddItems extends React.PureComponent {
    * @return {undfined} undefined
    */
   newItem() {
-    this.setState({ addItem: !this.state.addItem, });
-    this.props.reset();
+    this.setState({
+      addItem: !this.state.addItem,
+    });
   }
 
   /**
@@ -149,16 +152,19 @@ class AddItems extends React.PureComponent {
     );
   }
 }
+AddItems.defaultProps = {
+  ingredients: false,
+  directions: false,
+};
 
 AddItems.propTypes = {
-  handleSubmit: PropTypes.func,
-  reset: PropTypes.func,
+  handleSubmit: PropTypes.func.isRequired,
+  reset: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   ingredients: PropTypes.bool,
   directions: PropTypes.bool,
-  updateParentState: PropTypes.func
-
+  initialize: PropTypes.func.isRequired
 };
 
 export default AddItems;

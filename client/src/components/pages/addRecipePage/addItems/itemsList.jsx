@@ -10,7 +10,9 @@ const ReduxFormItem = (props) => {
   const NewListItem = reduxForm({
     validate: validateItems,
     form: `${props.name}_${props.i}`,
-    initialValues: { [name]: props.content },
+    initialValues: {
+      [name]: props.content
+    },
   })(ListItem);
   return (
     <NewListItem

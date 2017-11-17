@@ -12,7 +12,7 @@ import {
   AFTER_VOTE,
   RECIPE_TO_MODIFY,
   CURRENT_RECIPE,
-  ON_NEW_RECIPE,
+  NEW_RECIPE,
   FIND_RECIPES
 } from '../actions/actions';
 
@@ -35,14 +35,16 @@ export const recipeReducer = (state = initialState.Recipe, action) => {
   }
   if (action.type === AFTER_REVIEW) {
     const RecipeReviews = action.recipe.recipe.RecipeReviews;
-    return { ...state,
+    return {
+      ...state,
       RecipeReviews
     };
   }
   if (action.type === AFTER_VOTE) {
     const upVotes = action.recipe.recipe.upVotes;
     const downVotes = action.recipe.recipe.downVotes;
-    return { ...state,
+    return {
+      ...state,
       upVotes,
       downVotes
     };
@@ -58,29 +60,31 @@ export const recipeReducer = (state = initialState.Recipe, action) => {
   }
   if (action.type === UPDATE_INGREDIENTS) {
     const ingredients = action.ingredient;
-    return { ...state,
-      ingredients
+    return {
+      ...state, ingredients
     };
   }
   if (action.type === UPDATE_DIRECTIONS) {
     const directions = action.direction;
-    return { ...state,
-      directions
+    return {
+      ...state, directions
     };
   }
   if (action.type === UPDATE_NAME_CATEGORY) {
     const nameAndCat = action.nameAndCat;
-    return { ...state,
-      ...nameAndCat
+    return {
+      ...state, ...nameAndCat
     };
   }
   if (action.type === UPDATE_ALL_RECIPE_FIELD) {
-    return { ...state,
-      ...action.all
+    return {
+      ...state, ...action.all
     };
   }
-  if (action.type === ON_NEW_RECIPE) {
-    return initialState.Recipe;
+  if (action.type === NEW_RECIPE) {
+    return {
+      ...initialState.Recipe
+    };
   }
   return state;
 };

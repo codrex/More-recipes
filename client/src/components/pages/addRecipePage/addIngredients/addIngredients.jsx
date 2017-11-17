@@ -12,13 +12,17 @@ const mapDispatchToProps = (dispatch) => (
 );
 
 const mapStateToProps = (state) => (
-  { items: state.recipe.ingredients, }
+  {
+    items: state.recipe.ingredients,
+  }
 );
 
 const AddIngredients = () => {
   const Ingredients = reduxForm({
     form: 'ingredientForm',
-  })(connect(mapStateToProps, mapDispatchToProps)(AddItems));
+  })(connect(mapStateToProps, {
+    sendItemsToStore: updateIngredients
+  })(AddItems));
   return (
     <Ingredients
       name="ingredient"

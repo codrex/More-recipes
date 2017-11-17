@@ -23,7 +23,9 @@ class SearchBox extends React.Component {
  * @param {Object} e
  */
   handleChange(e) {
-    this.setState({ value: e.target.value });
+    this.setState({
+      value: e.target.value
+    });
     if (this.props.handleChange) this.props.handleChange(e.target.value);
   }
 

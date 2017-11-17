@@ -50,7 +50,9 @@ EditProfile.propTypes = {
   submitting: PropTypes.bool,
 };
 
-const mapStateToProps = (state) => ({ initialValues: state.user });
+const mapStateToProps = state => ({
+  initialValues: state.user
+});
 
 EditProfile = reduxForm({
   form: 'editProfileForm',

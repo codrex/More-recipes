@@ -51,7 +51,9 @@ class AddRecipes extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.success.success === this.CREATE_RECIPE_SUCCESS) {
       this.props.actions.newRecipe();
-      this.props.actions.clearSuccessMsg({ success: '' });
+      this.props.actions.clearSuccessMsg({
+        success: ''
+      });
     }
   }
 
@@ -78,13 +80,20 @@ class AddRecipes extends React.Component {
    */
   render() {
     return (
-      <div className="container" style={{ maxWidth: 'unset' }}>
+      <div
+        className="container"
+        style={{
+          maxWidth: 'unset'
+        }}
+      >
         <div className="row">
           <TopBar title={this.create ? 'Add recipe' : 'Modify recipe'} />
         </div>
         <div
           className="row d-flex justify-content-between align-items-start"
-          style={{ margin: '0.5em' }}
+          style={{
+            margin: '0.5em'
+          }}
         >
           <div className="col-xs-11 col-sm-11 col-md-10 col-lg-4 name-category no-padding">
             <div className="col-12">
@@ -122,7 +131,7 @@ AddRecipes.propTypes = {
 const mapStateToProps = state => ({
   loading: state.ajaxCall > 0,
   redirectUrl: state.redirectUrl,
-  //recipes: state.user.createdRecipes,
+  // recipes: state.user.createdRecipes,
   success: state.ajaxSuccess
 });
 const mapDispatchToProps = dispatch => ({

@@ -49,7 +49,9 @@ export class Recipe extends React.Component {
  * @param {string} type
  */
   vote(type) {
-    this.setState({ vote: type === this.state.vote ? '' : type });
+    this.setState({
+      vote: type === this.state.vote ? '' : type
+    });
     this.props.actions.vote(this.recipeId, type);
   }
 
@@ -63,7 +65,7 @@ export class Recipe extends React.Component {
    * @return {bool} true / false
    */
   isUserFav() {
-    return this.props.favRecipes.find((recipe) => this.recipeId === recipe.id) !== undefined;
+    return this.props.favRecipes.find(recipe => this.recipeId === recipe.id) !== undefined;
   }
 
   /**

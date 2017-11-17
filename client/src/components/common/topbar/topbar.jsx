@@ -41,6 +41,7 @@ TopBar.propTypes = {
   avatar: PropTypes.bool,
   fullname: PropTypes.string,
   push: PropTypes.func,
+  bottom: PropTypes.bool,
 };
 
 export default TopBar;

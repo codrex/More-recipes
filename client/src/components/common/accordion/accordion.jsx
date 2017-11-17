@@ -43,20 +43,18 @@ AccordionHeader.propTypes = {
   className: PropTypes.string
 };
 
-export const AccordionBody = (props) => {
-  return (
-    <div
-      id={`item${props.index}`}
-      className="collapse"
-      role="tabpanel"
-      data-parent={`#${props.id}`}
-    >
-      <div className={classnames(props.className, 'card-body accordion-text')}>
-        {props.children}
-      </div>
+export const AccordionBody = (props) => (
+  <div
+    id={`item${props.index}`}
+    className="collapse"
+    role="tabpanel"
+    data-parent={`#${props.id}`}
+  >
+    <div className={classnames(props.className, 'card-body accordion-text')}>
+      {props.children}
     </div>
-  );
-};
+  </div>
+);
 
 AccordionBody.propTypes = {
   id: PropTypes.string,
