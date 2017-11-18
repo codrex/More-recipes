@@ -19,16 +19,15 @@ module.exports = (sequelize, DataTypes) => {
     fullname: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 'UNKNOWN',
       validation: {
         max: 50,
         isAlpha: true,
       },
     },
-    profilePix: {
+    profilePicture: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: 'UNKNOWN',
+      defaultValue: 'none',
     },
     email: {
       type: DataTypes.STRING,

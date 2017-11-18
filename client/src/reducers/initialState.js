@@ -9,11 +9,11 @@ const initailState = {
     directions: [],
     RecipeReviews: []
   },
-  User: {
+  user: {
     email: '',
     username: '',
     fullname: '',
-    profilePix: '',
+    profilePicture: '',
     favRecipes: [],
     createdRecipes: []
   },

@@ -19,11 +19,11 @@ import {
 export const recipesReducer = (state = initialState.Recipes, action) => {
   switch (action.type) {
     case GET_ALL_RECIPES:
-      return action.recipes.Recipes;
+      return action.recipes.recipes;
     case GET_TOP_RECIPES:
-      return action.recipes.Recipes;
+      return action.recipes.recipes;
     case FIND_RECIPES:
-      return action.recipes.Recipes;
+      return action.recipes.recipes;
     default:
       return state;
   }
@@ -31,17 +31,17 @@ export const recipesReducer = (state = initialState.Recipes, action) => {
 
 export const recipeReducer = (state = initialState.Recipe, action) => {
   if (action.type === GET_RECIPE) {
-    return action.recipe.Recipe;
+    return action.recipe.recipe;
   }
   if (action.type === AFTER_REVIEW) {
-    const RecipeReviews = action.recipe.Recipe.RecipeReviews;
+    const RecipeReviews = action.recipe.recipe.RecipeReviews;
     return { ...state,
       RecipeReviews
     };
   }
   if (action.type === AFTER_VOTE) {
-    const upVotes = action.recipe.Recipe.upVotes;
-    const downVotes = action.recipe.Recipe.downVotes;
+    const upVotes = action.recipe.recipe.upVotes;
+    const downVotes = action.recipe.recipe.downVotes;
     return { ...state,
       upVotes,
       downVotes
@@ -51,7 +51,7 @@ export const recipeReducer = (state = initialState.Recipe, action) => {
     return action.recipe;
   }
   if (action.type === RECIPE) {
-    return action.recipe.Recipe;
+    return action.recipe.recipe;
   }
   if (action.type === RECIPE_TO_MODIFY) {
     return action.recipe;

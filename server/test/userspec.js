@@ -25,11 +25,12 @@ export const userSpec = (repiceSpec) => {
         email: 'example@user.com',
       };
     });
-    it('return 200 as status code', done => {
+    it('return 200 as status code when user registers with valid data', done => {
       request.post('/api/v1/users/signup')
       .send(userTwo)
       .end((err, res) => {
         expect(res.status).to.equal(200);
+        expect(res.body.user.fullname).to.equal(userTwo.fullname)
         expect(res.body.status).to.equal('success');
         done();
       });
@@ -98,13 +99,24 @@ export const userSpec = (repiceSpec) => {
         done();
       });
     });
+    it('return 400 when fullname is invalid', done => {
+      request.post('/api/v1/users/signup')
+      .send({
+        ...userOne,
+        fullname: 'fullname',
+        username: 'test_user',
+        email: 'email@gmail.com'
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.status).to.equal('fail');
+        done();
+      });
+    });
   });
 
   // user login
   describe('User Login', () => {
-    let userOne = {};
-    let userTwo = {};
-
     beforeEach(() => {
       userOne = {
         username: 'example_user',
@@ -116,31 +128,31 @@ export const userSpec = (repiceSpec) => {
       };
     });
 
-    it('return 200 as status code', done => {
+    it('return 200 as status code when valid user login', done => {
       request.post('/api/v1/users/signin')
       .send(userOne)
       .end((err, res) => {
-        token = res.body.User.token;
+        token = res.body.user.token;
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
-        expect(res.body.User.token).to.not.be.undefined;
+        expect(res.body.user.token).to.not.be.undefined;
 
         done();
       });
     });
-    it('return 200 as status code', done => {
+    it('return 200 as status code when another valid user login', done => {
       request.post('/api/v1/users/signin')
       .send(userTwo)
       .end((err, res) => {
-        token2 = res.body.User.token;
+        token2 = res.body.user.token;
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
-        expect(res.body.User.token).to.not.be.undefined;
+        expect(res.body.user.token).to.not.be.undefined;
 
         done();
       });
     });
-    it('return 400 for invalid username', done => {
+    it('return 400 when an invalid username is supplied', done => {
       const invalidData = userOne;
       invalidData.username = 'kester';
       request.post('/api/v1/users/signin')
@@ -151,7 +163,7 @@ export const userSpec = (repiceSpec) => {
         done();
       });
     });
-    it('return 400 for invalid password', done => {
+    it('return 400 when an invalid password is supplied', done => {
       const invalidData = userOne;
       invalidData.password = 'ecom';
       request.post('/api/v1/users/signin')
@@ -162,19 +174,8 @@ export const userSpec = (repiceSpec) => {
         done();
       });
     });
-    it('return 400 for invalid password', done => {
-      const invalidData = userOne;
-      invalidData.password = '';
-      request.post('/api/v1/users/signin')
-      .send(invalidData)
-      .end((err, res) => {
-        expect(res.status).to.equal(400);
-        expect(res.body.status).to.equal('fail');
-        done();
-      });
-    });
   });
-  describe('view profile', ()=>{
+  describe('view profile', () => {
     it('return 200 as status code for get user profile', done => {
       request.get('/api/v1/users/1')
       .set('Authorization', token)
@@ -184,7 +185,7 @@ export const userSpec = (repiceSpec) => {
         done();
       });
     });
-    it('return 403 as status code for get user profile request with no token', done => {
+    it('return 403 as status code for a request to get user profile without token', done => {
       request.get('/api/v1/users/1')
       .end((err, res) => {
         expect(res.status).to.equal(403);
@@ -201,13 +202,12 @@ export const userSpec = (repiceSpec) => {
         done();
       });
     });
-  })
+  });
 
    // edit user profile
   describe('Profile update', () => {
     let updateOne = {};
     beforeEach(() => {
-      console.log('b4')
       updateOne = {
         fullname: 'example user two',
         username: 'example_user_2',
@@ -219,14 +219,14 @@ export const userSpec = (repiceSpec) => {
     };
     after(() => repiceSpec(token, token2));
 
-    it('return 200 as status code when everything is fine', done => {
+    it('return 200 as status code when a valid user request for his profile', done => {
       request.put('/api/v1/users/2')
       .set('Authorization', token2)
       .send(updateOne)
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
-        expect(res.body.User.fullname).to.equal('example user two');
+        expect(res.body.user.fullname).to.equal('example user two');
         done();
       });
     });
@@ -237,7 +237,7 @@ export const userSpec = (repiceSpec) => {
       .end((err, res) => {
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
-        expect(res.body.User.fullname).to.equal('example user');
+        expect(res.body.user.fullname).to.equal('example user');
         done();
       });
     });

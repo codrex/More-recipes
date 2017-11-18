@@ -1,20 +1,15 @@
 import db from '../models/index';
 import { validateSignup, validateLogin,
-         comparePwd, validateProfileUpdate,
+         comparePassword, validateProfileUpdate,
          validationHandler, validateId } from '../validators/validator';
 import { serverError, sendSuccess, sendFail } from '../reply/reply';
-import { generateToken } from '../auth/auth';
+import { generateToken } from '../authentication/authenticator';
 
 const Users = db.Users;
 
 // This function validates signup inputs
 export const validateSignupData = (req, res, next) => {
-  const signupData = {
-    username: req.body.username,
-    password: req.body.password,
-    email: req.body.email,
-  };
-  validationHandler(signupData, validateSignup, req, res, next);
+  validationHandler({ ...req.body }, validateSignup, req, res, next);
 };
 
 // This function validates profile update data
@@ -45,7 +40,7 @@ export const validateUserId = (req, res, next) => {
 };
 
 // This function handle user authentication
-export const authUser = (req, res, next) => {
+export const loginUser = (req, res, next) => {
   Users.findOne({
     where: {
       username: req.body.username,
@@ -59,7 +54,7 @@ export const authUser = (req, res, next) => {
     }
     const hash = user.dataValues.password;
   // compare proved password
-    if (user && comparePwd(hash, req.body.password)) {
+    if (user && comparePassword(hash, req.body.password)) {
       req.user = user.dataValues;
       next();
     } else {
@@ -76,9 +71,10 @@ export const sendDataWithToken = (req, res) => {
 
   delete req.user.id;
   delete req.user.password;
+  if (req.user.updatedAt) delete req.user.updatedAt;
 
   req.user.token = token;
-  sendSuccess(res, 200, 'User', req.user);
+  sendSuccess(res, 200, 'user', req.user);
 };
 
 // create user record
@@ -88,7 +84,11 @@ export const create = (req, res, next) => {
       req.user = user.dataValues;
       next();
     }).catch((error) => {
-      sendFail(res, 400, error.errors[0].message);
+      if (error.name === 'SequelizeUniqueConstraintError') {
+        sendFail(res, 400, `Sorry, ${error.errors[0].path} already exists, please enter another`);
+        return;
+      }
+      serverError(res);
     });
 };
 
@@ -106,13 +106,13 @@ export const update = (req, res, next) => {
 export const fetchUser = (req, res) => {
   Users.findOne({
     where: { id: req.params.id },
-    attributes: ['id', 'email', 'username', 'fullname', 'profilePix'],
+    attributes: ['id', 'email', 'username', 'fullname', 'profilePicture'],
     include: [{ all: true }]
   }).then((user) => {
     if (user) {
-      sendSuccess(res, 200, 'User', user.dataValues);
+      sendSuccess(res, 200, 'user', user.dataValues);
     } else {
-      sendFail(res, 404, 'User not found');
+      sendFail(res, 404, 'Sorry, user not found');
     }
   });
 };
@@ -165,7 +165,6 @@ export const setRecipe = (req, res, next) => {
     });
 };
 
-
 // get a user's favorite recipe from the dbase
 export const fetchRecipes = (req, res) => {
   Users.findOne({
@@ -174,7 +173,7 @@ export const fetchRecipes = (req, res) => {
     include: [{ all: true }],
   })
   .then(userRecipes => {
-    sendSuccess((res), 200, 'User', userRecipes);
+    sendSuccess((res), 200, 'user', userRecipes);
   }).catch(() => {
     serverError(res);
   });
@@ -186,7 +185,7 @@ export const isIdValidUser = (req, res, next) => {
       if (user) {
         next();
       } else {
-        sendFail(res, 404, 'User not found');
+        sendFail(res, 404, 'Sorry, user not found');
       }
     }).catch(() => {
       serverError(res);
@@ -197,6 +196,6 @@ export const compareIds = (req, res, next) => {
   if (parseInt(req.params.id, 10) === req.requestId) {
     next();
   } else {
-    sendFail(res, 404, 'Record not found');
+    sendFail(res, 404, 'Sorry, user was not found');
   }
 };

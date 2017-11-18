@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
-import { email, username, password } from '../../../utils/validator/validator';
+import { email, username, password, fullname } from '../../../utils/validator/validator';
 import Form from './form';
 import Input from './input';
 /**
@@ -43,6 +43,14 @@ class RegForm extends React.Component {
           id="username"
           placeholder="Enter username"
           validate={username}
+        />
+        <Field
+          component={Input}
+          name="fullname"
+          type="text"
+          id="fullname"
+          placeholder="Enter fullname"
+          validate={fullname}
         />
         <Field
           component={Input}

@@ -63,7 +63,7 @@ describe('Unit test for user actions', () => {
 describe('Test thunks:: expect request to be successful', () => {
   const payload = {
     status: 'success',
-    User: {
+    user: {
       id: 1,
       email: 'email@gmail.com',
       token: '123412341234jjkkklkmkmkmkmkmlkm',
@@ -140,7 +140,7 @@ describe('Test thunks:: expect request to be successful', () => {
         { type: 'BEGIN_AJAX_REQUEST', loading: false },
         { type: 'UPDATE_USER_PROFILE', payload },
         { type: 'END_AJAX_REQUEST',
-        response: { msg: 'Profile update successfully', success: true } },
+          response: { msg: 'Profile update successfully', success: true } },
       ];
 
       const store = mockStore(initailState.user);

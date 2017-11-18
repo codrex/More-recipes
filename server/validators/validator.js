@@ -15,33 +15,29 @@ const validator = (obj, constraints) => {
   return processValidationResult(result);
 };
 
-const validateSignup = obj => validator(obj, constraint.signupConstraint);
-const validateProfileUpdate = obj => validator(obj, constraint.profileUpdateConstraint);
-const validateRecipes = obj => validator(obj, constraint.createRecipeConstraint);
-const validateId = obj => validator(obj, constraint.idConstraint);
-const validateLogin = obj => validator(obj, constraint.loginWithUsernameConstraint);
-const validateReview = obj => validator(obj, constraint.reviewConstraint);
-const comparePwd = (hash, password) => bcrypt.compareSync(password, hash);
-const validateVote = obj => validator(obj, constraint.voteConstraint);
-
-const validationHandler = (obj, validationFunc, req, res, next) => {
-  const isValid = validationFunc(obj);
-  if (isValid.valid) {
-    req.body = obj;
-    next();
-  } else {
-    sendValidationError(res, isValid);
+const isWords = word => {
+  if (typeof word === 'string') {
+    if (word.trim().split(' ').length > 1) {
+      return true;
+    }
   }
+  return false;
 };
 
 // custom validator that check for space separated string
 validate.validators.noSpace = (value) => {
-  if (typeof value === 'string') {
-    if (value.split(' ').length > 1) {
-      return 'can not be space separated';
-    }
+  if (isWords(value)) {
+    return 'can not be space separated';
   }
   return undefined;
+};
+
+// custom validator that check for space separated string
+validate.validators.words = (value) => {
+  if (isWords(value)) {
+    return undefined;
+  }
+  return 'must be more than one word';
 };
 
 // custom validator to check if an array is an array of string
@@ -55,12 +51,42 @@ validate.validators.stringArray = (value) => {
   return 'element is not an array';
 };
 
+// validates user registration data
+const validateSignup = obj => validator(obj, constraint.signupConstraint);
+
+// validates user data during user profile update
+const validateProfileUpdate = obj => validator(obj, constraint.profileUpdateConstraint);
+
+// validates create recipe data
+const validateRecipes = obj => validator(obj, constraint.createRecipeConstraint);
+
+const validateId = obj => validator(obj, constraint.idConstraint);
+
+// validates user login data
+const validateLogin = obj => validator(obj, constraint.loginWithUsernameConstraint);
+
+const validateReview = obj => validator(obj, constraint.reviewConstraint);
+
+const comparePassword = (hash, password) => bcrypt.compareSync(password, hash);
+
+const validateVote = obj => validator(obj, constraint.voteConstraint);
+
+const validationHandler = (obj, validationFunction, req, res, next) => {
+  const isValid = validationFunction(obj);
+  if (isValid.valid) {
+    req.body = obj;
+    next();
+  } else {
+    sendValidationError(res, isValid);
+  }
+};
+
 export {
   validateLogin,
   validateSignup,
   validateRecipes,
   validateProfileUpdate,
-  comparePwd,
+  comparePassword,
   validate,
   constraint,
   validateId,

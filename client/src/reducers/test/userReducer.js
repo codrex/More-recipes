@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { userReducer as reducer } from '../userReducers';
+import reducer from '../userReducers';
 import initialState from '../initialState';
 import {
   LOGIN,
@@ -14,7 +14,7 @@ let state = {};
 
 describe('Testing user reducers', () => {
   beforeEach(() => {
-    state = initialState.User;
+    state = initialState.user;
   });
   it('should return initialState when user reducer is call without args', () => {
     expect(reducer()).eql(state);
@@ -22,7 +22,7 @@ describe('Testing user reducers', () => {
   it('should return a newState for action type LOGIN', () => {
     const action = {
       payload: {
-        User: {
+        user: {
           username: 'username',
           fullname: 'fullname',
           email: 'email@email.com'
@@ -31,13 +31,13 @@ describe('Testing user reducers', () => {
       type: LOGIN
     };
     const user = reducer(state, action);
-    expect(user).eql({ ...state, ...action.payload.User });
+    expect(user).eql({ ...state, ...action.payload.user });
     expect(user).to.not.eql(state);
   });
   it('should return a newState for action type SIGNUP', () => {
     const action = {
       payload: {
-        User: {
+        user: {
           username: 'username',
           fullname: 'fullname',
           email: 'email@email.com'
@@ -46,13 +46,13 @@ describe('Testing user reducers', () => {
       type: SIGNUP
     };
     const user = reducer(state, action);
-    expect(user).eql({ ...state, ...action.payload.User });
+    expect(user).eql({ ...state, ...action.payload.user });
     expect(user).to.not.eql(state);
   });
   it('should return a newState for action type GOT_USER_PROFILE', () => {
     const action = {
       payload: {
-        User: {
+        user: {
           email: 'email@email.com',
           username: 'username',
           fullname: 'fullname fullname fullname',
@@ -77,13 +77,13 @@ describe('Testing user reducers', () => {
       type: GOT_USER_PROFILE
     };
     const user = reducer(state, action);
-    expect(user).eql({ ...state, ...action.payload.User });
+    expect(user).eql({ ...state, ...action.payload.user });
     expect(user).to.not.eql(state);
   });
   it('should return a newState for action type UPDATE_USER_PROFILE', () => {
     const action = {
       payload: {
-        User: {
+        user: {
           email: 'email@email.com',
           username: 'username',
           fullname: 'fullname fullname fullname',
@@ -93,7 +93,7 @@ describe('Testing user reducers', () => {
       type: UPDATE_USER_PROFILE
     };
     const user = reducer(state, action);
-    expect(user).eql({ ...state, ...action.payload.User });
+    expect(user).eql({ ...state, ...action.payload.user });
     expect(user).to.not.eql(state);
   });
   it('should return a newState for action type DELETE_RECIPE', () => {
@@ -105,7 +105,7 @@ describe('Testing user reducers', () => {
   it('should return a newState for action type TOGGLE_FAV', () => {
     const action = {
       payload: {
-        User: {
+        user: {
           email: 'email@email.com',
           username: 'username',
           fullname: 'fullname fullname fullname',
@@ -117,7 +117,7 @@ describe('Testing user reducers', () => {
       type: TOGGLE_FAV
     };
     const user = reducer(state, action);
-    expect(user).eql({ ...state, ...action.payload.User });
+    expect(user).eql({ ...state, ...action.payload.user });
     expect(user.favRecipes.length).eql(2);
     expect(user).to.not.eql(state);
   });
