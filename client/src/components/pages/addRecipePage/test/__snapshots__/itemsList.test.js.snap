@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Items list component  render as expected 1`] = `
-<div
-  className="items-list"
->
+<div>
   <div
     className="d-flex flex-column "
   />

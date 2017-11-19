@@ -25,7 +25,7 @@ export const AddDirections = () => {
       directions
       placeholder="Enter direction"
     />
-    );
+  );
 };
 
 export default AddDirections;

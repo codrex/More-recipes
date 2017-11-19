@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { fullname, email, username } from '../../../utils/validator/validator';
-import Form from './form';
-import Input from './input';
+import { fullname, email, username } from '../../../../utils/validator/validator';
+import Form from '../../../common/form/form';
+import Input from '../../../common/form/input';
 
 
 let EditProfile = (props) => {

@@ -32,7 +32,7 @@ let RecipeNameAndCategory = props => {
       <Form
         submitBtnText={
           (props.postRecipe
-            ? !props.loading && 'Post Recipe'
+            ? !props.loading && 'create recipe'
             : !props.loading && 'modify recipe') || 'Loading...'
         }
         secondary

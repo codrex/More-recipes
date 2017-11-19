@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
 import Paginator from '../../common/paginator/paginator';
-import EditProfileForm from '../../common/form/editProfileForm';
+import EditProfileForm from './editProfileForm/editProfileForm';
 import Modal from '../../common/modal/modal';
 import TopBar from '../../common/topbar/topbar';
 import Loader from '../../common/loader/loader';

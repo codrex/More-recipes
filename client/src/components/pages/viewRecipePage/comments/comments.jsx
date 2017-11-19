@@ -2,20 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import abbr from '../../../../utils/nameAbbr/nameAbbr';
 
-const Comment = (props) => {
-  return (
-    <div className="media-object comment">
-      <div className="avatar avatar-sm">{abbr(props.fullname)}</div>
-      <div className="media-body">
-        <h1>{props.fullname}</h1>
-        <h6 className="text-dark lead">{`@${props.username}`}</h6>
-        <p className="media-text no-margin">
-            {props.review}
-        </p>
-      </div>
+const Comment = props => (
+  <div className="media-object comment">
+    <div className="avatar avatar-sm">{abbr(props.fullname)}</div>
+    <div className="media-body">
+      <h1>{props.fullname}</h1>
+      <h6 className="text-dark lead">{`@${props.username}`}</h6>
+      <p className="media-text no-margin">
+        {props.review}
+      </p>
     </div>
-  );
-};
+  </div>
+);
+
 Comment.propTypes = {
   review: PropTypes.string.isRequired,
   fullname: PropTypes.string.isRequired,

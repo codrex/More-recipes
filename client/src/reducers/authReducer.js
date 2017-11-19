@@ -8,7 +8,7 @@ const authReducer = (state = initialState.auth, action) => {
         ...state,
         ...{
           authenticated: true,
-          token: action.payload.User.token
+          token: action.payload.user.token
         }
       };
     case SIGNUP:
@@ -16,7 +16,7 @@ const authReducer = (state = initialState.auth, action) => {
         ...state,
         ...{
           authenticated: true,
-          token: action.payload.User.token
+          token: action.payload.user.token
         }
       };
     case AJAX_REQUEST_AUTH_ERROR:

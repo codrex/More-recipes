@@ -779,6 +779,8 @@ exports[`View Recipes Page component  render as expected when add a review butto
                                     validate={[Function]}
                                   >
                                     <Textarea
+                                      className=""
+                                      fgClassName=""
                                       id="review"
                                       input={
                                         Object {
@@ -1642,6 +1644,8 @@ exports[`View Recipes Page component  render as expected when add a review butto
                                     validate={[Function]}
                                   >
                                     <Textarea
+                                      className=""
+                                      fgClassName=""
                                       id="review"
                                       input={
                                         Object {
@@ -2525,6 +2529,8 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                     validate={[Function]}
                                   >
                                     <Textarea
+                                      className=""
+                                      fgClassName=""
                                       id="review"
                                       input={
                                         Object {
@@ -3408,6 +3414,8 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                     validate={[Function]}
                                   >
                                     <Textarea
+                                      className=""
+                                      fgClassName=""
                                       id="review"
                                       input={
                                         Object {
@@ -4291,6 +4299,8 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                     validate={[Function]}
                                   >
                                     <Textarea
+                                      className=""
+                                      fgClassName=""
                                       id="review"
                                       input={
                                         Object {
@@ -5174,6 +5184,8 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                     validate={[Function]}
                                   >
                                     <Textarea
+                                      className=""
+                                      fgClassName=""
                                       id="review"
                                       input={
                                         Object {
@@ -6057,6 +6069,8 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                     validate={[Function]}
                                   >
                                     <Textarea
+                                      className=""
+                                      fgClassName=""
                                       id="review"
                                       input={
                                         Object {
@@ -6940,6 +6954,8 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                     validate={[Function]}
                                   >
                                     <Textarea
+                                      className=""
+                                      fgClassName=""
                                       id="review"
                                       input={
                                         Object {

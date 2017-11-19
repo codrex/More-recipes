@@ -1,6 +1,7 @@
 import ActionDispatcher from './actionDispatcher';
 import {
-  RECIPE,
+  NEW_RECIPE,
+  MODIFIED_RECIPE,
   UPDATE_DIRECTIONS,
   UPDATE_NAME_CATEGORY,
   UPDATE_INGREDIENTS,
@@ -13,7 +14,7 @@ import {
   TOGGLE_FAV,
   RECIPE_TO_MODIFY,
   DELETE_RECIPE,
-  ON_NEW_RECIPE,
+  CREATE_NEW_RECIPE,
   FIND_RECIPES
 } from './actions';
 
@@ -61,32 +62,22 @@ export const updateDirections = direction => ({
   type: UPDATE_DIRECTIONS,
   direction
 });
-export const updateNameCategory = nameAndCat => ({
+export const updateNameCategory = nameAndCategory => ({
   type: UPDATE_NAME_CATEGORY,
-  nameAndCat
+  nameAndCategory
 });
 export const updateAllRecipeField = all => ({
   type: UPDATE_ALL_RECIPE_FIELD,
   all
 });
-export const recipeToModify = recipe => ({ type: RECIPE_TO_MODIFY, recipe });
-export const onNewRecipe = () => ({ type: ON_NEW_RECIPE });
-export const gotTopRecipes = recipes => ({ type: GET_TOP_RECIPES, recipes });
 
-const afterDeleteRecipe = payload => ({ type: DELETE_RECIPE, payload });
-const afterReview = recipe => ({ type: AFTER_REVIEW, recipe });
-const afterVote = recipe => ({ type: AFTER_VOTE, recipe });
-const afterToggleFav = payload => ({ type: TOGGLE_FAV, payload });
-const gotAllRecipes = recipes => ({ type: GET_ALL_RECIPES, recipes });
-const gotRecipe = recipe => ({ type: GET_RECIPE, recipe });
-const gotFindRecipe = recipes => ({ type: FIND_RECIPES, recipes });
-
+// thunks
 export const createRecipe = (recipe, msg) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     '/api/v1/recipes',
     recipe,
-    createOrModifyRecipe,
+    newRecipe,
     'post',
     msg
   );
@@ -94,10 +85,10 @@ export const createRecipe = (recipe, msg) => (dispatch) => {
 
 export const modifyRecipe = (recipe, msg) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     `/api/v1/recipes/${recipe.id}`,
     recipe,
-    createOrModifyRecipe,
+    modifiedRecipe,
     'put',
     msg
   );
@@ -105,22 +96,22 @@ export const modifyRecipe = (recipe, msg) => (dispatch) => {
 
 export const getAllRecipes = () => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch('/api/v1/recipes', null, gotAllRecipes, 'get');
+  return dispatcher.requestAndDispatch('/api/v1/recipes', null, gotAllRecipes, 'get');
 };
 
 export const getTopRecipes = () => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     '/api/v1/recipes?sort=upvotes&order=ascending',
     null,
-    gotAllRecipes,
+    gotTopRecipes,
     'get'
   );
 };
 
 export const getRecipe = id => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     `/api/v1/recipes/${id}`,
     null,
     gotRecipe,
@@ -141,7 +132,7 @@ export const postReview = (id, review, msg) => (dispatch) => {
 
 export const vote = (id, voteType) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch, false);
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     `/api/v1/recipes/${id}/vote?vote=${voteType}vote`,
     null,
     afterVote,
@@ -152,7 +143,7 @@ export const vote = (id, voteType) => (dispatch) => {
 export const toggleFav = (recipeId, msg = undefined) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch, false);
   const id = dispatcher.getIdFromToken();
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     `/api/v1/users/${id}/recipe`,
     {
       recipeId
@@ -172,7 +163,7 @@ export const deleteRecipe = (id, index) => (dispatch) => {
     return action;
   };
 
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     `/api/v1/recipes/${id}`,
     null,
     HOActionCreator,
@@ -182,7 +173,7 @@ export const deleteRecipe = (id, index) => (dispatch) => {
 
 export const findRecipes = (searchTerm, msg = undefined) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  dispatcher.requestAndDispatch(
+  return dispatcher.requestAndDispatch(
     `/api/v1/recipes?search=${searchTerm}`,
     null,
     gotFindRecipe,

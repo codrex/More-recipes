@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const Input = props => {
-  const { meta, helpTextClassName, fgClassName, className } = props;
-  const { error, touched } = meta;
-  const valid = meta && touched && !error && 'valid';
-  const invalid = meta && touched && error && 'invalid';
+const PureInput = props => {
+  const { helpTextClassName, fgClassName, className, error } = props;
+  const valid = !error && 'valid';
+  const invalid = error && 'invalid';
   return (
     <div className={classnames('form-group', fgClassName)}>
       <input
@@ -20,19 +19,16 @@ const Input = props => {
         id={props.id}
         aria-describedby={props.id}
         placeholder={props.placeholder}
-        autoComplete={'false'}
         {...props.input}
+        onChange={props.handleChange}
+        value={props.value}
       />
-      {meta &&
-        touched &&
+      {
         error &&
         error.map((err, i) => (
           <div
             key={i}
-            className={classnames(
-              meta && touched && error ? 'help-text' : '',
-              helpTextClassName
-            )}
+            className={classnames(error ? 'help-text' : '', helpTextClassName)}
           >
             {err}
           </div>
@@ -41,24 +37,27 @@ const Input = props => {
   );
 };
 
-Input.defaultProps = {
+PureInput.defaultProps = {
   id: '',
   placeholder: '',
   className: '',
   fgClassName: '',
   input: {},
-  meta: {},
+  error: [],
+  value: ''
 };
 
-Input.propTypes = {
+PureInput.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
   placeholder: PropTypes.string,
   className: PropTypes.string,
   fgClassName: PropTypes.string,
   helpTextClassName: PropTypes.string,
-  input: PropTypes.object,
-  meta: PropTypes.object,
+  input: PropTypes.node,
+  error: PropTypes.arrayOf(PropTypes.string),
+  value: PropTypes.string,
+  handleChange: PropTypes.func.isRequired
 };
 
-export default Input;
+export default PureInput;
