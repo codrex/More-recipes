@@ -5,7 +5,9 @@ import { validateVote, validationHandler } from '../validators/validator';
 const Votes = db.Votes;
 const updateVote = (voteInstance, voteData, next) => {
   voteData.id = voteInstance.dataValues.id;
-  voteInstance.update(voteData, { fields: ['id', 'upVote', 'downVote'] })
+  voteInstance.update(voteData, {
+    fields: ['id', 'upVote', 'downVote']
+  })
     .then(() => {
       next();
     });
@@ -22,7 +24,10 @@ export const VoteHandler = (req, res, next) => {
   let { up, down } = req.query;
   if (up) up = JSON.parse(up.toLowerCase());
   if (down) down = JSON.parse(down.toLowerCase());
-  const voteData = { upVote: up || false, downVote: down || false };
+  const voteData = {
+    upVote: up || false,
+    downVote: down || false
+  };
   Votes.findOne(
     {
       where: {
@@ -43,7 +48,9 @@ export const VoteHandler = (req, res, next) => {
         } else if (down === true) {
           updateVote(vote, voteData, next);
         } else {
-          vote.destroy({ force: true }).then(() => {
+          vote.destroy({
+            force: true
+          }).then(() => {
             next();
           });
         }
@@ -53,10 +60,20 @@ export const VoteHandler = (req, res, next) => {
     });
 };
 export const countVote = (req, res, next) => {
-  Votes.count({ where: { upVote: true, RecipeId: req.params.id } })
+  Votes.count({
+    where: {
+      upVote: true,
+      RecipeId: req.params.id
+    }
+  })
   .then((upvote) => {
     req.body.upVotes = upvote;
-    Votes.count({ where: { downVote: true, RecipeId: req.params.id } })
+    Votes.count({
+      where: {
+        downVote: true,
+        RecipeId: req.params.id
+      }
+    })
     .then((downvote) => {
       req.body.downVotes = downvote;
       next();

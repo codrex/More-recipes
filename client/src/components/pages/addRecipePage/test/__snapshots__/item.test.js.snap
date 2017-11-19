@@ -5,13 +5,3 @@ exports[`Item component  render as expected 1`] = `
   className="d-flex flex-column "
 />
 `;
-
-exports[`Item component  render as expected 2`] = `
-<Item
-  name="directions"
->
-  <div
-    className="d-flex flex-column "
-  />
-</Item>
-`;

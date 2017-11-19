@@ -7,7 +7,11 @@ import { sendValidationError } from '../reply/reply';
 // this function will process the report gotten from the validator
 const processValidationResult = (result) => {
   const valid = result === undefined;
-  return (valid && { valid }) || (!valid && { valid, error: result });
+  return (valid && {
+    valid
+  }) || (!valid && {
+    valid, error: result
+  });
 };
 
 const validator = (obj, constraints) => {
@@ -15,7 +19,7 @@ const validator = (obj, constraints) => {
   return processValidationResult(result);
 };
 
-const isWords = word => {
+const isWords = (word) => {
   if (typeof word === 'string') {
     if (word.trim().split(' ').length > 1) {
       return true;

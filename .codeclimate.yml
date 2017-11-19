@@ -1,4 +1,3 @@
----
 engines:
   csslint:
     enabled: false
@@ -8,17 +7,22 @@ engines:
       languages:
       - javascript
       config:
-      extensions:
-      - .es6
-      - .js
-      - .jsx
+        extensions:
+          - .es6
+          - .js
+  method-lines:
+    enabled: false
   eslint:
     enabled: true
+    config:
+      config_file: .eslintrc.json
   fixme:
     enabled: true
 ratings:
   paths:
   - "server/**/*.js"
+  - "client/**/*.js"
+  - "client/**/*.jsx"
 exclude_paths:
   - "node_modules/"
   - "template/*"
@@ -27,5 +31,8 @@ exclude_paths:
   - "server/models/"
   - "server/validators"
   - "server/reply/"
-  - "client/src/**/test/*.js"
-  - "client/src/components/**/*.test.js"
+  - "client/src/components/"
+  - "**/test/*.js"
+  - "**/*.test.js"
+  - "__mocks__"
+  - "client/src/reducers/**.js"

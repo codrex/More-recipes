@@ -31,6 +31,18 @@ const TopBar = (props) => (
   </div>
 );
 
+TopBar.defaultProps = {
+  handleSubmit: () => {},
+  handleChange: () => {},
+  search: false,
+  className: '',
+  title: '',
+  avatar: false,
+  fullname: '',
+  push: () => {},
+  bottom: false,
+};
+
 TopBar.propTypes = {
   children: PropTypes.any,
   handleSubmit: PropTypes.func,

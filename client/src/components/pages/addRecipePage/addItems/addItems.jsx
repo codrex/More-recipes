@@ -161,7 +161,6 @@ AddItems.defaultProps = {
 
 AddItems.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  reset: PropTypes.func.isRequired,
   placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   ingredients: PropTypes.bool,

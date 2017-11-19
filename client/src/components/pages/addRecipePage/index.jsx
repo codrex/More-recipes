@@ -134,11 +134,11 @@ class AddRecipes extends React.Component {
 }
 
 AddRecipes.propTypes = {
-  actions: PropTypes.object,
-  loading: PropTypes.bool,
+  actions: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
   recipe: PropTypes.object,
   createdRecipes: PropTypes.arrayOf(PropTypes.object),
-  match: PropTypes.object
+  match: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({

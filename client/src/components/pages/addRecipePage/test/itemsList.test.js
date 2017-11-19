@@ -5,11 +5,18 @@ import { Provider } from 'react-redux';
 import configureStore from '../../../../store/configStore';
 
 
+const props = {
+  deleteItem: jest.fn(),
+  editItem: jest.fn(),
+  items: ['item1', 'item2'],
+  name: 'directions',
+  directions: true
+}
 describe('Items list component ', () => {
   test('render as expected', () => {
     const component = renderer.create(
       <Provider store={configureStore()}>
-        <ItemsList items={['item1', 'item2']} name="directions" />
+        <ItemsList {...props} />
       </Provider>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

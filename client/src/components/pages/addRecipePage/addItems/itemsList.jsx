@@ -35,6 +35,8 @@ const List = (props) => {
 List.defaultProps = {
   items: [],
   name: '',
+  ingredients: false,
+  directions: false
 };
 
 List.propTypes = {
@@ -42,8 +44,8 @@ List.propTypes = {
   deleteItem: PropTypes.func.isRequired,
   editItem: PropTypes.func.isRequired,
   name: PropTypes.string,
-  directions: PropTypes.boolisRequired,
-  ingredients: PropTypes.boolisRequired,
+  directions: PropTypes.bool,
+  ingredients: PropTypes.bool,
 };
 
 export default List;

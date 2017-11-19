@@ -60,7 +60,9 @@ class Item extends React.Component {
    * @return {undefined}
    */
   changeEditMode() {
-    this.setState({ editMode: !this.state.editMode });
+    this.setState({
+      editMode: !this.state.editMode
+    });
   }
   /**
    * @param {Object} value
@@ -81,7 +83,9 @@ class Item extends React.Component {
    * @param {object} e
    */
   handleChange(e) {
-    this.setState({ itemValue: e.target.value });
+    this.setState({
+      itemValue: e.target.value
+    });
   }
   /**
    * @return {undefined}
@@ -95,7 +99,10 @@ class Item extends React.Component {
     }
     const error = this.validateItem(itemValue);
     if (error) {
-      this.setState({ ValidationErrors: error, itemValue: this.props.content });
+      this.setState({
+        ValidationErrors: error,
+        itemValue: this.props.content
+      });
       return;
     }
     this.updateValue(itemValue);

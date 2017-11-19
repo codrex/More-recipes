@@ -84,8 +84,14 @@ exports[`View Recipes Page component  render as expected when add a review butto
       className="container-fluid no-padding"
     >
       <TopBar
+        avatar={false}
         bottom={true}
         className="top-bar justify-content-between"
+        fullname=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
+        search={false}
         title="test tester"
       >
         <div
@@ -949,8 +955,14 @@ exports[`View Recipes Page component  render as expected when add a review butto
       className="container-fluid no-padding"
     >
       <TopBar
+        avatar={false}
         bottom={true}
         className="top-bar justify-content-between"
+        fullname=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
+        search={false}
         title="test tester"
       >
         <div
@@ -1814,8 +1826,14 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
       className="container-fluid no-padding"
     >
       <TopBar
+        avatar={false}
         bottom={true}
         className="top-bar justify-content-between"
+        fullname=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
+        search={false}
         title="test tester"
       >
         <div
@@ -2699,8 +2717,14 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
       className="container-fluid no-padding"
     >
       <TopBar
+        avatar={false}
         bottom={true}
         className="top-bar justify-content-between"
+        fullname=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
+        search={false}
         title="test tester"
       >
         <div
@@ -3584,8 +3608,14 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
       className="container-fluid no-padding"
     >
       <TopBar
+        avatar={false}
         bottom={true}
         className="top-bar justify-content-between"
+        fullname=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
+        search={false}
         title="test tester"
       >
         <div
@@ -4469,8 +4499,14 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
       className="container-fluid no-padding"
     >
       <TopBar
+        avatar={false}
         bottom={true}
         className="top-bar justify-content-between"
+        fullname=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
+        search={false}
         title="test tester"
       >
         <div
@@ -5354,8 +5390,14 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
       className="container-fluid no-padding"
     >
       <TopBar
+        avatar={false}
         bottom={true}
         className="top-bar justify-content-between"
+        fullname=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
+        search={false}
         title="test tester"
       >
         <div
@@ -6239,8 +6281,14 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
       className="container-fluid no-padding"
     >
       <TopBar
+        avatar={false}
         bottom={true}
         className="top-bar justify-content-between"
+        fullname=""
+        handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
+        search={false}
         title="test tester"
       >
         <div
@@ -7045,8 +7093,14 @@ exports[`View Recipes Page component  should show a loader when loading is true 
   className="container-fluid no-padding"
 >
   <TopBar
+    avatar={false}
     bottom={true}
     className="top-bar justify-content-between"
+    fullname=""
+    handleChange={[Function]}
+    handleSubmit={[Function]}
+    push={[Function]}
+    search={false}
     title="test tester"
   >
     <span
@@ -7109,8 +7163,14 @@ exports[`View Recipes Page component  to match empty snapshot  1`] = `
   className="container-fluid no-padding"
 >
   <TopBar
+    avatar={false}
     bottom={true}
     className="top-bar justify-content-between"
+    fullname=""
+    handleChange={[Function]}
+    handleSubmit={[Function]}
+    push={[Function]}
+    search={false}
     title="test tester"
   >
     <span

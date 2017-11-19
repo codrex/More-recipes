@@ -1,14 +1,14 @@
 import { getToken, hasToken } from '../utils/auth/auth';
 
 const initailState = {
-  Recipes: [],
-  Recipe: {
+  recipes: [],
+  recipe: {
     id: undefined,
     recipeName: '',
     category: '',
     ingredients: [],
     directions: [],
-    RecipeReviews: [],
+    recipeReviews: [],
     upVotes: 0,
     downVotes: 0,
   },

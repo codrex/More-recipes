@@ -73,7 +73,7 @@ RecipeNameAndCategory.defaultProps = {
 };
 RecipeNameAndCategory.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  actions: PropTypes.objectOf(PropTypes.shape),
+  actions: PropTypes.objectOf(PropTypes.shape).isRequired,
   postRecipe: PropTypes.bool,
   recipeNameAndCategory: PropTypes.objectOf(PropTypes.shape),
   modify: PropTypes.string.isRequired,

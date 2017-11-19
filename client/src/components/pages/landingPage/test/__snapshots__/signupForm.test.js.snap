@@ -30,6 +30,25 @@ exports[`sign up form component  render as expected  1`] = `
     className="form-group"
   >
     <input
+      aria-describedby="fullname"
+      autoComplete="false"
+      className="form-control text-input"
+      id="fullname"
+      name="fullname"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter fullname"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <input
       aria-describedby="email"
       autoComplete="false"
       className="form-control text-input"

@@ -53,8 +53,13 @@ exports[`Profile Page component  render as expected when created recipes nav lin
       className="row"
     >
       <TopBar
+        avatar={false}
         bottom={true}
+        className=""
+        fullname=""
         handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
         search={true}
         title="Profile page"
       >
@@ -71,6 +76,7 @@ exports[`Profile Page component  render as expected when created recipes nav lin
             </h1>
             <SearchBox
               handleChange={[Function]}
+              handleSubmit={[Function]}
             >
               <form
                 className="searchbox"
@@ -503,8 +509,13 @@ exports[`Profile Page component  render as expected when created recipes nav lin
       className="row"
     >
       <TopBar
+        avatar={false}
         bottom={true}
+        className=""
+        fullname=""
         handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
         search={true}
         title="Profile page"
       >
@@ -521,6 +532,7 @@ exports[`Profile Page component  render as expected when created recipes nav lin
             </h1>
             <SearchBox
               handleChange={[Function]}
+              handleSubmit={[Function]}
             >
               <form
                 className="searchbox"
@@ -964,8 +976,13 @@ exports[`Profile Page component  render as expected when edit profile button is 
         className="row"
       >
         <TopBar
+          avatar={false}
           bottom={true}
+          className=""
+          fullname=""
           handleChange={[Function]}
+          handleSubmit={[Function]}
+          push={[Function]}
           search={true}
           title="Profile page"
         >
@@ -982,6 +999,7 @@ exports[`Profile Page component  render as expected when edit profile button is 
               </h1>
               <SearchBox
                 handleChange={[Function]}
+                handleSubmit={[Function]}
               >
                 <form
                   className="searchbox"
@@ -1426,8 +1444,13 @@ exports[`Profile Page component  render as expected when edit profile button is 
         className="row"
       >
         <TopBar
+          avatar={false}
           bottom={true}
+          className=""
+          fullname=""
           handleChange={[Function]}
+          handleSubmit={[Function]}
+          push={[Function]}
           search={true}
           title="Profile page"
         >
@@ -1444,6 +1467,7 @@ exports[`Profile Page component  render as expected when edit profile button is 
               </h1>
               <SearchBox
                 handleChange={[Function]}
+                handleSubmit={[Function]}
               >
                 <form
                   className="searchbox"
@@ -1877,8 +1901,13 @@ exports[`Profile Page component  render as expected when favorite recipes nav li
       className="row"
     >
       <TopBar
+        avatar={false}
         bottom={true}
+        className=""
+        fullname=""
         handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
         search={true}
         title="Profile page"
       >
@@ -1895,6 +1924,7 @@ exports[`Profile Page component  render as expected when favorite recipes nav li
             </h1>
             <SearchBox
               handleChange={[Function]}
+              handleSubmit={[Function]}
             >
               <form
                 className="searchbox"
@@ -2327,8 +2357,13 @@ exports[`Profile Page component  render as expected when favorite recipes nav li
       className="row"
     >
       <TopBar
+        avatar={false}
         bottom={true}
+        className=""
+        fullname=""
         handleChange={[Function]}
+        handleSubmit={[Function]}
+        push={[Function]}
         search={true}
         title="Profile page"
       >
@@ -2345,6 +2380,7 @@ exports[`Profile Page component  render as expected when favorite recipes nav li
             </h1>
             <SearchBox
               handleChange={[Function]}
+              handleSubmit={[Function]}
             >
               <form
                 className="searchbox"
@@ -2732,8 +2768,13 @@ exports[`Profile Page component  to match empty snapshot  1`] = `
     className="row"
   >
     <TopBar
+      avatar={false}
       bottom={true}
+      className=""
+      fullname=""
       handleChange={[Function]}
+      handleSubmit={[Function]}
+      push={[Function]}
       search={true}
       title="Profile page"
     >

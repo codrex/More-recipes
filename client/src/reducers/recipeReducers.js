@@ -11,46 +11,42 @@ import {
   AFTER_REVIEW,
   AFTER_VOTE,
   RECIPE_TO_MODIFY,
-  CURRENT_RECIPE,
   NEW_RECIPE,
   FIND_RECIPES
 } from '../actions/actions';
 
-export const recipesReducer = (state = initialState.Recipes, action) => {
+export const recipesReducer = (state = initialState.recipes, action) => {
   switch (action.type) {
     case GET_ALL_RECIPES:
-      return action.recipes.recipes;
+      return action.payload.recipes;
     case GET_TOP_RECIPES:
-      return action.recipes.recipes;
+      return action.payload.recipes;
     case FIND_RECIPES:
-      return action.recipes.recipes;
+      return action.payload.recipes;
     default:
       return state;
   }
 };
 
-export const recipeReducer = (state = initialState.Recipe, action) => {
+export const recipeReducer = (state = initialState.recipe, action) => {
   if (action.type === GET_RECIPE) {
     return action.recipe.recipe;
   }
   if (action.type === AFTER_REVIEW) {
-    const RecipeReviews = action.recipe.recipe.RecipeReviews;
+    const recipeReviews = action.payload.recipe.recipeReviews;
     return {
       ...state,
-      RecipeReviews
+      recipeReviews
     };
   }
   if (action.type === AFTER_VOTE) {
-    const upVotes = action.recipe.recipe.upVotes;
-    const downVotes = action.recipe.recipe.downVotes;
+    const upVotes = action.payload.recipe.upVotes;
+    const downVotes = action.payload.recipe.downVotes;
     return {
       ...state,
       upVotes,
       downVotes
     };
-  }
-  if (action.type === CURRENT_RECIPE) {
-    return action.recipe;
   }
   if (action.type === RECIPE) {
     return action.recipe.recipe;
@@ -83,7 +79,7 @@ export const recipeReducer = (state = initialState.Recipe, action) => {
   }
   if (action.type === NEW_RECIPE) {
     return {
-      ...initialState.Recipe
+      ...initialState.recipe
     };
   }
   return state;

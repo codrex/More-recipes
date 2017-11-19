@@ -12,37 +12,36 @@ import {
   AFTER_REVIEW,
   AFTER_VOTE,
   RECIPE_TO_MODIFY,
-  CURRENT_RECIPE,
   NEW_RECIPE,
   FIND_RECIPES
 } from '../../actions/actions';
 
 let state = {};
 const recipePayload = {
-  Recipe: {
+  recipe: {
     id: undefined,
     recipeName: '',
     category: '',
     ingredients: [],
     directions: [],
-    RecipeReviews: [],
+    recipeReviews: [{}],
     downVotes: 0,
     upVotes: 0,
   }
 };
-const recipesPayload = { Recipes: [recipePayload, recipePayload] };
+const recipesPayload = { recipes: [recipePayload, recipePayload] };
 
 describe('Testing recipe reducers', () => {
   beforeEach(() => {
-    state = initialState.Recipe;
+    state = initialState.recipe;
   });
   it('should return a newState for action type GET_RECIPE', () => {
     const action = {
-      payload: recipePayload,
+      recipe: recipePayload,
       type: GET_RECIPE
     };
     const recipe = recipeReducer(state, action);
-    expect(recipe).eql({ ...state, ...action.payload.Recipe });
+    expect(recipe).eql({ ...state, ...action.recipe.recipe });
     expect(recipe).to.not.equal(state);
   });
   it('should return a newState for action type AFTER_REVIEW', () => {
@@ -51,7 +50,7 @@ describe('Testing recipe reducers', () => {
       type: AFTER_REVIEW
     };
     const recipe = recipeReducer(state, action);
-    expect(recipe).eql({ ...state, RecipeReviews: action.payload.Recipe.RecipeReviews });
+    expect(recipe).eql({ ...state, ...{recipeReviews: [{}]} });
     expect(recipe).to.not.equal(state);
   });
   it('should return a newState for action type AFTER_VOTE', () => {
@@ -63,28 +62,19 @@ describe('Testing recipe reducers', () => {
     expect(recipe).eql({
       ...state,
       ...{
-        upVotes: action.payload.Recipe.upVotes,
-        downVotes: action.payload.Recipe.downVotes
+        upVotes: action.payload.recipe.upVotes,
+        downVotes: action.payload.recipe.downVotes
       }
     });
     expect(recipe).to.not.equal(state);
   });
-  it('should return a newState for action type CURRENT_RECIPE', () => {
-    const action = {
-      recipe: recipePayload.Recipe,
-      type: CURRENT_RECIPE
-    };
-    const recipe = recipeReducer(state, action);
-    expect(recipe).eql({ ...state, ...action.Recipe });
-    expect(recipe).to.not.equal(state);
-  });
   it('should return a newState for action type RECIPE_TO_MODIFY', () => {
     const action = {
-      recipe: recipePayload.Recipe,
+      recipe: recipePayload.recipe,
       type: RECIPE_TO_MODIFY
     };
     const recipe = recipeReducer(state, action);
-    expect(recipe).eql({ ...state, ...action.Recipe });
+    expect(recipe).eql({ ...state, ...action.recipe });
     expect(recipe).to.not.equal(state);
   });
   it('should return a newState for action type NEW_RECIPE', () => {
@@ -143,7 +133,7 @@ describe('Testing recipe reducers', () => {
 
 describe('Testing recipes reducers', () => {
   beforeEach(() => {
-    state = initialState.Recipes;
+    state = initialState.recipes;
   });
   it('should return a newState for action type GET_ALL_RECIPES', () => {
     const action = {
@@ -151,7 +141,7 @@ describe('Testing recipes reducers', () => {
       type: GET_ALL_RECIPES
     };
     const recipe = recipesReducer(state, action);
-    expect(recipe).eql([...state, ...action.payload.Recipes]);
+    expect(recipe).eql([...state, ...action.payload.recipes]);
     expect(recipe).to.not.equal(state);
   });
   it('should return a newState for action type GET_TOP_RECIPES', () => {
@@ -160,7 +150,7 @@ describe('Testing recipes reducers', () => {
       type: GET_TOP_RECIPES
     };
     const recipe = recipesReducer(state, action);
-    expect(recipe).eql([...state, ...action.payload.Recipes]);
+    expect(recipe).eql([...state, ...action.payload.recipes]);
     expect(recipe).to.not.equal(state);
   });
   it('should return a newState for action type FIND_RECIPES', () => {
@@ -169,7 +159,7 @@ describe('Testing recipes reducers', () => {
       type: FIND_RECIPES
     };
     const recipe = recipesReducer(state, action);
-    expect(recipe).eql([...state, ...action.payload.Recipes]);
+    expect(recipe).eql([...state, ...action.payload.recipes]);
     expect(recipe).to.not.equal(state);
   });
 });

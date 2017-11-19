@@ -8,7 +8,7 @@ import { generateToken } from '../authentication/authenticator';
 export const recipeSpec = (user1, user2) => {
   const token = user1;
   const token2 = user2;
-  const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA3NjkxNTY5LCJleHAiOjE1MDc4NjQzNjl9.vymZcUhgjkNncEq1U6I1zdZr6yt-A4EahLc6pk1jPVQ';
+  const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNTExMTA4ODIwLCJleHAiOjE1MTExMDg4MjF9.qGQceo6WAEoP_1XgxHbiuonKkF_VPnYtpz52w0IvafI';
 
   describe('Integration test for recipe controller', () => {
     const deletedUser = generateToken({ id: 100 });
@@ -51,7 +51,7 @@ export const recipeSpec = (user1, user2) => {
             .end((err, res) => {
               expect(res.status).to.equal(403);
               expect(res.body.status).to.equal('fail');
-              expect(res.body.error).to.equal('Sorry, you need to login or register');
+              expect(res.body.error).to.equal('Sorry, authentication failed, you need to login or register');
               done();
             });
       });
@@ -63,7 +63,7 @@ export const recipeSpec = (user1, user2) => {
         .end((err, res) => {
           expect(res.status).to.equal(403);
           expect(res.body.status).to.equal('fail');
-          expect(res.body.error).to.equal('Sorry, you need to login or register');
+          expect(res.body.error).to.equal('Sorry, authentication failed, you need to login or register');
           done();
         });
       });
@@ -72,6 +72,7 @@ export const recipeSpec = (user1, user2) => {
         .set('Authorization', expiredToken)
         .send(recipe)
         .end((err, res) => {
+          console.log(res.body)
           expect(res.status).to.equal(401);
           expect(res.body.status).to.equal('fail');
           expect(res.body.error)

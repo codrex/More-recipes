@@ -5,7 +5,9 @@ import { sendValidationError, serverError } from '../reply/reply';
 const RecipeReviews = db.RecipeReviews;
 
 export const reviewValidation = (req, res, next) => {
-  const validate = validateReview({ review: req.body.review });
+  const validate = validateReview({
+    review: req.body.review
+  });
   if (validate.valid) {
     next();
   } else {
@@ -13,7 +15,10 @@ export const reviewValidation = (req, res, next) => {
   }
 };
 export const createReview = (req, res, next) => {
-  RecipeReviews.create({ review: req.body.review, ReviewerId: req.requestId })
+  RecipeReviews.create({
+    review: req.body.review,
+    ReviewerId: req.requestId
+  })
     .then((review) => {
       req.reviewId = review.dataValues.id;
       next();

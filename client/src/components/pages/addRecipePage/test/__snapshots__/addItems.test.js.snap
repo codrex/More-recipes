@@ -10,7 +10,7 @@ exports[`Add items component  render as expected when directions is passed as pr
     <h4
       className="lead items-header-text"
     >
-      s  0
+      names  0
       <div
         className="icon-wrapper"
         onClick={[Function]}
@@ -44,7 +44,7 @@ exports[`Add items component  render as expected when ingredients is pass as pro
     <h4
       className="lead items-header-text"
     >
-      s  0
+      names  0
       <div
         className="icon-wrapper"
         onClick={[Function]}
