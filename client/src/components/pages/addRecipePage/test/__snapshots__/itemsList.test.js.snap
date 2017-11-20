@@ -1,14 +1,148 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Items list component  render as expected 1`] = `
-<div
-  className="items-list"
->
+<div>
   <div
     className="d-flex flex-column "
-  />
+  >
+    <div
+      className="lead list-item flex-column items-list-item accordion"
+    >
+      <div
+        className="d-flex no-margin justify-content-between w-100"
+        id="accordion0"
+        role="tab"
+      >
+        <h5
+          className="mb-0 lead flex-auto ellipsis"
+        >
+          <a
+            aria-controls="directions"
+            aria-expanded="false"
+            className="collapsed collapse-trigger a"
+            data-toggle="collapse"
+            href="#item0"
+          >
+            Step 1: item1
+          </a>
+        </h5>
+        <div
+          className="d-flex"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={undefined}
+          >
+            <i
+              className="icon fa fa-pencil items-list-item-icon icon"
+              data-target={undefined}
+              data-toggle={undefined}
+            >
+              <span />
+            </i>
+          </div>
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={undefined}
+          >
+            <i
+              className="icon fa fa-trash items-list-item-icon icon"
+              data-target={undefined}
+              data-toggle={undefined}
+            >
+              <span />
+            </i>
+          </div>
+        </div>
+      </div>
+      <div
+        className="collapse"
+        data-parent="#directions"
+        id="item0"
+        role="tabpanel"
+      >
+        <div
+          className="card-body accordion-text"
+        >
+          <p>
+            item1
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div
     className="d-flex flex-column "
-  />
+  >
+    <div
+      className="lead list-item flex-column items-list-item accordion"
+    >
+      <div
+        className="d-flex no-margin justify-content-between w-100"
+        id="accordion1"
+        role="tab"
+      >
+        <h5
+          className="mb-0 lead flex-auto ellipsis"
+        >
+          <a
+            aria-controls="directions"
+            aria-expanded="false"
+            className="collapsed collapse-trigger a"
+            data-toggle="collapse"
+            href="#item1"
+          >
+            Step 2: item2
+          </a>
+        </h5>
+        <div
+          className="d-flex"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={undefined}
+          >
+            <i
+              className="icon fa fa-pencil items-list-item-icon icon"
+              data-target={undefined}
+              data-toggle={undefined}
+            >
+              <span />
+            </i>
+          </div>
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={undefined}
+          >
+            <i
+              className="icon fa fa-trash items-list-item-icon icon"
+              data-target={undefined}
+              data-toggle={undefined}
+            >
+              <span />
+            </i>
+          </div>
+        </div>
+      </div>
+      <div
+        className="collapse"
+        data-parent="#directions"
+        id="item1"
+        role="tabpanel"
+      >
+        <div
+          className="card-body accordion-text"
+        >
+          <p>
+            item2
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 `;

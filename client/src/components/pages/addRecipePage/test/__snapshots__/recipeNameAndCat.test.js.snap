@@ -53,11 +53,11 @@ exports[`Recipe name and category component render as expected 1`] = `
     </div>
     <button
       className="btn text-uppercase w-100 btn-secondary"
-      disabled={undefined}
+      disabled={false}
       id="submit"
       type="submit"
     >
-      modify recipe
+      create recipe
     </button>
   </form>
 </div>

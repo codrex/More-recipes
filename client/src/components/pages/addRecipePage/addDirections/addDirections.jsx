@@ -11,7 +11,9 @@ const mapDispatchToProps = (dispatch) => (
   }
 );
 const mapStateToProps = (state) => (
-  { items: state.recipe.directions, }
+  {
+    items: state.recipe.directions,
+  }
 );
 export const AddDirections = () => {
   const Directions = reduxForm({
@@ -23,7 +25,7 @@ export const AddDirections = () => {
       directions
       placeholder="Enter direction"
     />
-    );
+  );
 };
 
 export default AddDirections;

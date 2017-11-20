@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import Form from './form';
-import Textarea from './textarea';
-import { postReview } from '../../../actions/recipeActions';
-import { resetSuccess } from '../../../actions/ajaxActions';
-import { review } from '../../../utils/validator/validator';
+import Form from '../../../common/form/form';
+import Textarea from '../../../common/form/textarea';
+import { postReview } from '../../../../actions/recipeActions';
+import { resetSuccess } from '../../../../actions/ajaxActions';
+import { review } from '../../../../utils/validator/validator';
 
 /**
  * review form

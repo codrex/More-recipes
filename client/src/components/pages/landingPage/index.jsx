@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ajaxRedirect } from '../../../actions/ajaxActions';
 import { userSignup, userLogin } from '../../../actions/userActions';
 import Modal from '../../common/modal/modal';
-import LoginForm from '../../common/form/loginForm';
-import RegForm from '../../common/form/regForm';
+import LoginForm from './loginForm/loginForm';
+import SignupForm from './signupForm/signupForm';
 import Carousel from './carousel/carousel';
 import Cta from './cta/cta';
 
@@ -122,7 +121,7 @@ class LandingPage extends React.Component {
           }
          {
            this.state.signup &&
-             <RegForm
+             <SignupForm
                signup={this.props.actions.signupAction}
                loading={loading}
              />
@@ -141,7 +140,7 @@ class LandingPage extends React.Component {
           }
         </Modal>
       </div>
-      );
+    );
   }
 }
 

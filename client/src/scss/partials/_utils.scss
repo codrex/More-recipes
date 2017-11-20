@@ -132,3 +132,8 @@ a.bg-primary:hover{
 .flex{
   flex: 1
 }
+.ellipsis{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

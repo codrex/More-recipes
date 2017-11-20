@@ -30,7 +30,8 @@ const Navbar = () => {
   const links = ['/', '/recipes', '/recipe/create'];
   return (
     <nav
-      className="navbar navbar-toggleable-md navbar-light justify-content-center align-items-center flex-row flex-wrap"
+      className={`navbar navbar-toggleable-md navbar-light
+      justify-content-center align-items-center flex-row flex-wrap`}
     >
       <a
         className="navbar-brand d-flex justify-content-center align-items-center" href="#"
@@ -43,7 +44,7 @@ const Navbar = () => {
         {linkList.map((link, i) => <ListItem key={i} text={link} to={links[i]} />)}
       </ul>
     </nav>
-    );
+  );
 };
 
 export default Navbar;

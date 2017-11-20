@@ -10,7 +10,9 @@ associate();
 const app = express();
 app.use(logger('dev'));
 app.use(bodyPaser.json());
-app.use(bodyPaser.urlencoded({ extended: false }));
+app.use(bodyPaser.urlencoded({
+  extended: false
+}));
 app.use(cors());
 app.options('*', cors());
 app.use('/', express.static(path.resolve(__dirname, '..', 'dist')));

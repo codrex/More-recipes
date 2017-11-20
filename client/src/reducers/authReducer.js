@@ -4,21 +4,36 @@ import initialState from './initialState';
 const authReducer = (state = initialState.auth, action) => {
   switch (action.type) {
     case LOGIN:
-      return { ...state, ...{ authenticated: true, token: action.payload.user.token } };
+      return {
+        ...state,
+        ...{
+          authenticated: true,
+          token: action.payload.user.token
+        }
+      };
     case SIGNUP:
       return {
         ...state,
-        ...{ authenticated: true, token: action.payload.user.token }
+        ...{
+          authenticated: true,
+          token: action.payload.user.token
+        }
       };
     case AJAX_REQUEST_AUTH_ERROR:
       return {
         ...state,
-        ...{ authenticated: false, token: '' }
+        ...{
+          authenticated: false,
+          token: ''
+        }
       };
     case LOGOUT:
       return {
         ...state,
-        ...{ authenticated: false, token: '' }
+        ...{
+          authenticated: false,
+          token: ''
+        }
       };
     default:
       return state;

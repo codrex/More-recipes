@@ -5,9 +5,8 @@
   border: 0;
   font-size: 1.5rem;
   font-weight: normal;
-  @include box-shadow;
-  &:hover, &:focus{
-    @include box-shadow-hover;
+  &:hover {
+    @include box-shadow;
   }
   &-lg{
     font-size: 1.8rem;

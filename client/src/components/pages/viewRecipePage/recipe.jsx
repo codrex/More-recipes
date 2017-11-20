@@ -10,7 +10,7 @@ import Icon from '../../common/icon/icon';
 import Button from '../../common/button/button';
 import Modal from '../../common/modal/modal';
 import TopBar from '../../common/topbar/topbar';
-import CommentForm from '../../common/form/commentForm';
+import CommentForm from './commentform/commentForm';
 import Directions from './directions/directions';
 import Ingredients from './ingredients/ingredients';
 import Loader from '../../common/loader/loader';
@@ -49,7 +49,9 @@ export class Recipe extends React.Component {
  * @param {string} type
  */
   vote(type) {
-    this.setState({ vote: type === this.state.vote ? '' : type });
+    this.setState({
+      vote: type === this.state.vote ? '' : type
+    });
     this.props.actions.vote(this.recipeId, type);
   }
 
@@ -63,7 +65,7 @@ export class Recipe extends React.Component {
    * @return {bool} true / false
    */
   isUserFav() {
-    return this.props.favRecipes.find((recipe) => this.recipeId === recipe.id) !== undefined;
+    return this.props.favRecipes.find(recipe => this.recipeId === recipe.id) !== undefined;
   }
 
   /**

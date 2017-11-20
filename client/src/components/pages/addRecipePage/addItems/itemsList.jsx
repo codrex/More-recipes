@@ -1,67 +1,48 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { reduxForm } from 'redux-form';
 import ListItem from './item';
-import { validateItems } from '../../../../utils/validator/validator';
+import PureInput from '../../../common/form/pure-input';
+import PureTextarea from '../../../common/form/pure-textarea';
 
-
-const ReduxFormItem = (props) => {
-  const { name } = props;
-  const NewListItem = reduxForm({
-    validate: validateItems,
-    form: `${props.name}_${props.i}`,
-    initialValues: { [name]: props.content },
-  })(ListItem);
-  return (
-    <NewListItem
-      content={props.content}
-      delete={props.delete}
-      editItem={props.editItem}
-      index={props.i}
-      Component={props.Component}
-      name={name}
-      ingredients={props.ingredients}
-      directions={props.directions}
-    />
-  );
-};
-ReduxFormItem.propTypes = {
-  content: PropTypes.string,
-  delete: PropTypes.func,
-  editItem: PropTypes.func,
-  name: PropTypes.string,
-  Component: PropTypes.func,
-  i: PropTypes.number,
-  directions: PropTypes.bool,
-  ingredients: PropTypes.bool,
-};
 
 const List = (props) => {
-  const { items, deleteItem, editItem, Component } = props;
+  const {
+    items,
+    deleteItem,
+    editItem,
+    ingredients,
+    directions
+  } = props;
   return (
-    <div className="items-list">
-      {items.map((item, i) =>
-        (<ReduxFormItem
-          key={i}
+    <div>
+      {items.map((item, index) =>
+        (<ListItem
+          key={`${item}${Date.now()}`}
           content={item}
           delete={deleteItem}
           editItem={editItem}
-          Component={Component}
-          i={i}
+          Component={(ingredients && PureInput) || (directions && PureTextarea)}
+          index={index}
           name={props.name}
-          ingredients={props.ingredients}
-          directions={props.directions}
+          ingredients={ingredients}
+          directions={directions}
         />)
       )}
     </div>
   );
 };
 
+List.defaultProps = {
+  items: [],
+  name: '',
+  ingredients: false,
+  directions: false
+};
+
 List.propTypes = {
   items: PropTypes.array,
-  deleteItem: PropTypes.func,
-  editItem: PropTypes.func,
-  Component: PropTypes.func,
+  deleteItem: PropTypes.func.isRequired,
+  editItem: PropTypes.func.isRequired,
   name: PropTypes.string,
   directions: PropTypes.bool,
   ingredients: PropTypes.bool,

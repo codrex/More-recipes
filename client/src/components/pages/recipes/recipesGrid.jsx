@@ -4,7 +4,7 @@ import RecipeCard from './recipeCard';
 
 const RecipesGrid = (props) => {
   const { recipes } = props;
-  if (recipes.length < 1) return <div></div>;
+  if (recipes.length < 1) return <div />;
   return (
     <ul className="grid">
       {recipes.length > 0 && !props.loading &&

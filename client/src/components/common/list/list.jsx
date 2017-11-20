@@ -23,15 +23,15 @@ ListItem.propTypes = {
   handleClick: PropTypes.func,
 };
 
-export const List = (props) => {
-  return (
-    <div className={`col-12 ${props.className}`} style={props.style}>
-      {props.children}
-    </div>
-  );
-};
+export const List = (props) => (
+  <div className={`col-12 ${props.className}`} style={props.style}>
+    {props.children}
+  </div>
+);
 List.defaultProps = {
-  style: {},
+  style: {
+
+  },
   className: ''
 };
 List.propTypes = {

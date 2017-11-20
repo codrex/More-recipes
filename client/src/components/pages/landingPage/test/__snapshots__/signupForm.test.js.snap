@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sign up form component  render as expected  1`] = `
+<form
+  action={undefined}
+  className="col-12"
+  method={undefined}
+  onSubmit={[Function]}
+>
+  <div
+    className="form-group"
+  >
+    <input
+      aria-describedby="username"
+      autoComplete="false"
+      className="form-control text-input"
+      id="username"
+      name="username"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter username"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <input
+      aria-describedby="fullname"
+      autoComplete="false"
+      className="form-control text-input"
+      id="fullname"
+      name="fullname"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter fullname"
+      type="text"
+      value=""
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <input
+      aria-describedby="email"
+      autoComplete="false"
+      className="form-control text-input"
+      id="email"
+      name="email"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter email"
+      type="email"
+      value=""
+    />
+  </div>
+  <div
+    className="form-group"
+  >
+    <input
+      aria-describedby="password"
+      autoComplete="false"
+      className="form-control text-input"
+      id="password"
+      name="password"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onDragStart={[Function]}
+      onDrop={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter password"
+      type="password"
+      value=""
+    />
+  </div>
+  <button
+    className="btn text-uppercase w-100 btn-secondary btn-lg"
+    disabled={false}
+    id="submit"
+    type="submit"
+  >
+    Register
+  </button>
+</form>
+`;
