@@ -7,11 +7,11 @@
  More-Recipes​​ ​provides​ ​a​ ​platform​ ​for​ ​users​ ​to​ ​share​ ​awesome​ ​and​ ​exciting​ ​​ ​recipe​ ​ideas​ ​they  have​ ​invented​ ​or​ ​learnt.​ ​​ ​Suppose​ ​a​ ​user​ ​comes ​up​ ​with​ ​a​ ​recipe,​ ​​ ​he/she​ ​can​ ​post​ ​it​ ​on  More-Recipes​​ ​and​ ​​ ​get​ ​feedback​ ​in​ ​form​ ​of​ ​reviews​ ​and​ ​votes​ ​from​ ​other​ ​users​ ​who​ ​explored​ the ​recipe.​
 
 ### API Documentation
-The documentation of the API available in this project is documented on
+The documentation of the API routes available for this project is documented on
 [this link](http://docs.morerecipes.apiary.io)
 
 ### Prerequisites
-Before you can run this project locally on your machine here are the things you need to install:
+Before you can run this project locally on your machine here are the applications you need to install on your machine:
 
 1. [ Nodejs 6](https://nodejs.org/en/)
 1. [Postgres DB](https://www.postgresql.org/download/)
@@ -20,10 +20,10 @@ Before you can run this project locally on your machine here are the things you 
 ### How to install 
 * **Open a terminal/command prompt** on your computer and cd into your preferred path/location.
 * **Clone repo:** to do this, run the following command on your **terminal/command prompt.**
-```https://github.com/codrex/More-recipes.git```
+```git clone https://github.com/codrex/More-recipes.git```
 * **Navigate to the cloned directory**
 * **Install dependencies:** To do this, run the following command: ```npm install```
-* **Add the required environment variables:** Locate a file with the filename `.sample.env` in the root directory and copy its content into a different file you will have to create in the root directory of the cloned repo and give it a filename of `.env`. In the `.env` file specify the environmental variable.
+* **Add the required environment variables:** Locate a file with the filename `.sample.env` in the root directory and copy its content into a different file you will have to create in the root directory of the cloned repo and give it a filename of `.env`. In the `.env` file specify the environmental variables.
 
 * **Initialize the DB:** Run the following commands:
 ```npm run migrate```
@@ -48,7 +48,7 @@ This project was built using the following technology:
 
  ### Contributing
 
-You can send us your bug reports, suggestions, feedback etc by sending us a [mail](mailto:rex.ogbemudia@andela.com). we hope to hear from you.
+You can send us your bug reports, suggestions, feedback e.t.c by sending us a [mail](mailto:rex.ogbemudia@andela.com). we hope to hear from you.
 ### License
 
 This project is authored by Ogbemudia Rex and it is licensed for your use, modification and distribution under the MIT license.
