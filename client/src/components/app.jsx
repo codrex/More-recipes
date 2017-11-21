@@ -11,6 +11,7 @@ import { resetReqCount } from '../actions/ajaxActions';
 import Recipes from '../components/pages/recipes/recipes';
 import Recipe from '../components/pages/viewRecipePage/recipe';
 import ProfilePage from '../components/pages/ProfilePage/index';
+import Footer from '../components/common/footer/footer';
 
 /**
  * App component
@@ -87,6 +88,7 @@ class App extends React.Component {
             <Route path="/user" render={match => this.onAuthenticated(ProfilePage, match)} />
             <Route static extact path="/" component={LandingPage} />
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     );
