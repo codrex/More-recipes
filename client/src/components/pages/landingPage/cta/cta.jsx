@@ -11,26 +11,31 @@ const Cta = props => (
     </h1>
     <div className="cta-btn-wrapper">
       <Button
+        id="login"
+        handleClick={() => {
+          props.signin();
+          props.push('/login');
+        }}
         className="btn-primary btn-lg login"
         text="Login"
-        dataToggle="modal"
-        dataTarget="#modal"
-        handleClick={props.signin}
       />
       <Button
+        id="signup"
         className=" btn-secondary btn-lg reg text-white"
         text="Create an account"
-        dataToggle="modal"
-        dataTarget="#modal"
-        handleClick={props.signup}
+        handleClick={() => {
+          props.signup();
+          props.push('/create-account');
+        }}
       />
     </div>
   </div>
   );
 
 Cta.propTypes = {
-  signin: PropTypes.func,
-  signup: PropTypes.func,
+  signin: PropTypes.func.isRequired,
+  signup: PropTypes.func.isRequired,
+  push: PropTypes.func.isRequired,
 };
 
 export default Cta;

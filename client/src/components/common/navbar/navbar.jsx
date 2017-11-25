@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 /**
  * @returns{Object} list item component
  * @param{object} props
  */
-
-const ListItem = props => (
+const NavItem = props => (
   <li className="nav-item">
     <NavLink
-      className="nav-link text-uppercase"
+      className="nav-link text-capitalize "
       activeClassName="nav-link-active"
       to={props.to}
       exact
@@ -20,31 +20,40 @@ const ListItem = props => (
   </li>
 );
 
-ListItem.propTypes = {
+NavItem.propTypes = {
   text: PropTypes.string,
   to: PropTypes.string,
 };
 
-const Navbar = () => {
-  const linkList = ['Home', 'Dashboard', 'Add Recipe'];
-  const links = ['/', '/recipes', '/recipe/create'];
+const Navbar = (props) => {
+  const links = props.authenticated ? ['Recipes', 'Add Recipe'] : ['login', 'create account'];
+  const url = props.authenticated ? ['/recipes', '/recipe/create']
+    : ['/login', '/create-account'];
   return (
     <nav
       className={`navbar navbar-toggleable-md navbar-light
-      justify-content-center align-items-center flex-row flex-wrap`}
+      justify-content-md-between justify-content-center align-items-center flex-row flex-wrap`}
     >
       <a
-        className="navbar-brand d-flex justify-content-center align-items-center" href="#"
+        className="navbar-brand d-flex justify-content-center align-items-center display-4"
+        href="/"
       >
-        <h1 className="display-4 ">More-Recipes</h1>
+        More-Recipes
       </a>
-      <ul
-        className="navbar-nav mr-auto col-xs-12 col-sm-10 col-md-7 col-lg-7"
-      >
-        {linkList.map((link, i) => <ListItem key={i} text={link} to={links[i]} />)}
+      <ul className="navbar-nav mr-auto col-xs-12 col-sm-10 col-md-7 col-lg-7" >
+        {links.map((link, i) => <NavItem key={link} text={link} to={url[i]} />)}
       </ul>
     </nav>
   );
 };
 
-export default Navbar;
+Navbar.propTypes = {
+  authenticated: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => (
+  {
+    authenticated: state.auth.authenticated
+  }
+);
+export default connect(mapStateToProps)(Navbar);

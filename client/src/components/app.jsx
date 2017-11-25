@@ -50,12 +50,34 @@ class App extends React.Component {
    * @return {undefined}
    * @param {jsx} Component
    * @param {object} match
+   * @summary check if user is authenticated before accessing protected page
+              else redirect user to the landing page where user can login or signup
    */
   onAuthenticated(Component, match) {
-    // check if user is authenticated before accessing protected page
-    // else redirect user to the landing page where user can login or signup
     const { authenticated } = this.props.auth;
-    return authenticated ? (<Component match={match} />) : <Redirect to="/" />;
+    // passing match to Navbar will enable it render when path changes
+    return authenticated ? (
+      <div>
+        <Navbar {...match} />
+        <Component match={match} />
+      </div>
+    ) : <Redirect to="/" />;
+  }
+
+  /**
+   * @return {undefined}
+   * @param {jsx} Component
+   * @param {object} match
+   */
+  isLoggedIn(Component, match) {
+    const { authenticated } = this.props.auth;
+    // passing match to Navbar will enable it render when path changes
+    return !authenticated ? (
+      <div>
+        <Navbar {...match} />
+        <Component {...match} />
+      </div>
+    ) : <Redirect to="/recipes" />;
   }
 
   /**
@@ -65,7 +87,6 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <div className="container-fluid  no-padding">
-          <Navbar />
           <Switch>
             <Route
               path="/recipe/create"
@@ -85,8 +106,27 @@ class App extends React.Component {
               path="/recipes/"
               render={match => this.onAuthenticated(Recipes, match)}
             />
-            <Route path="/user" render={match => this.onAuthenticated(ProfilePage, match)} />
-            <Route static extact path="/" component={LandingPage} />
+            <Route
+              path="/user"
+              render={match => this.onAuthenticated(ProfilePage, match)}
+            />
+            <Route
+              static
+              extact
+              path="/login"
+              render={match => this.isLoggedIn(LandingPage, match)}
+            />
+            <Route
+              static
+              extact
+              path="/create-account"
+              render={match => this.isLoggedIn(LandingPage, match)}
+            />
+            <Route
+              static
+              extact
+              path="/" render={match => this.isLoggedIn(LandingPage, match)}
+            />
           </Switch>
           <Footer />
         </div>

@@ -1,13 +1,14 @@
 
 .navbar{
-  min-height: 10vh;
+  min-height: 7vh;
+  height: 7vh;
 }
 
 .navbar-brand{
   margin: 0;
   color: $text-color !important;
   &>h1{
-    font-weight: 400;
+    font-weight: 900;
   }
 }
 .navbar-nav{
@@ -16,24 +17,24 @@
   flex-direction: row;
   justify-content: flex-end;
   padding: 0;
-  height: inherit;
+  height: inherit
 }
 .nav-item{
   padding: 0 .2em;
   margin: 0 .5em;
   height: inherit;
   display: flex;
+  font-size: 1.2rem;
   align-items: center;
   > a{
     color: $text-color !important;
-    height: 3vh;
+    height: inherit;
     display: flex;
     align-items: center;
     padding: 0;
-    border-bottom: transparent 2px solid;
-
-    &:hover, .nav-link-active{
-      border-bottom: $secondary-color 2px solid;
+    transition: border-bottom-color .4s ease;
+    &:hover{
+      border-bottom: $secondary-color 3px solid;
     }
   }
 }
@@ -45,3 +46,6 @@
     }
   }
 
+  .nav-link-active{
+    border-bottom: $secondary-color 3px solid;
+  }
