@@ -31,8 +31,6 @@ exclude_paths:
   - "server/models/"
   - "server/validators"
   - "server/reply/"
-  - "client/src/components/"
   - "**/test/*.js"
   - "**/*.test.js"
   - "__mocks__"
-  - "client/src/reducers/**.js"

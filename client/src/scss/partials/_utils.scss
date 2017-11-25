@@ -53,6 +53,13 @@ a.bg-primary:hover{
 .text-dark:visited {
   color: rgba(0, 0, 0, 0.6) !important;
 }
+.text-color,
+.text-color:hover,
+.text-color:focus,
+.text-color:active,
+.text-color:visited {
+  color: $text-color !important;
+}
 
 .curve{
   border-radius: 20px !important;

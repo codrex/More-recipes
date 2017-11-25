@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import $ from 'jquery';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { userSignup, userLogin } from '../../../actions/userActions';
@@ -12,7 +13,7 @@ import Cta from './cta/cta';
 /**
  * Landing page with signin and signup forms
  */
-class LandingPage extends React.Component {
+export class LandingPage extends React.Component {
 /**
  *
  * @param {object} props
@@ -23,15 +24,42 @@ class LandingPage extends React.Component {
       signin: false,
       signup: false,
       modalTitle: '',
+      openModal: props.match.path !== '/',
     };
     this.signin = this.signin.bind(this);
     this.signup = this.signup.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.modalOpen = this.modalOpen.bind(this);
   }
+
+  /**
+ *
+ * @return {undefined}
+ */
+  componentDidMount() {
+    const { path } = this.props.match;
+    if (this.state.openModal) {
+      this.modalOpen(path);
+    }
+  }
+
   /**
  *
  * @param {object} nextProps
- * @return {bool} true or false
+ * @return {undefined}
+ */
+  componentWillReceiveProps(nextProps) {
+    const { path } = nextProps.match;
+
+    if (path !== '/') {
+      this.modalOpen(path);
+    }
+  }
+   /**
+ *
+ * @param {object} nextProps
+ * @return {bool} true
+ * @summary redirect users to other pages after login or signup was successful
  */
   shouldComponentUpdate(nextProps) {
     const { authenticated, redirectTo } = nextProps.auth;
@@ -39,20 +67,6 @@ class LandingPage extends React.Component {
       this.props.history.push(redirectTo);
     }
     return true;
-  }
-
-  /**
- * operations carried after login
- * @param {object} actions
- * @return {undefined}
- */
-  afterLogin(actions) {
-    this.props.actions.redirect('');
-    setTimeout(() => {
-    // endSuccess is an action creator that
-    // ajaxSuccess value in the store to an empty array
-      actions.endSuccess();
-    }, 1000);
   }
 
   /**
@@ -67,7 +81,7 @@ class LandingPage extends React.Component {
     this.setState({
       signin: true,
       signup: false,
-      modalTitle: 'Log in to your account'
+      modalTitle: 'Log in to your account',
     });
   }
 
@@ -78,7 +92,7 @@ class LandingPage extends React.Component {
     this.setState({
       signin: false,
       signup: true,
-      modalTitle: 'Create an account'
+      modalTitle: 'Create an account',
     });
   }
 
@@ -86,37 +100,57 @@ class LandingPage extends React.Component {
    * @return {undfined} undefined
    */
   closeModal() {
+    const { history } = this.props;
     this.setState({
       signin: false,
       signup: false,
-      modalTitle: ''
+      modalTitle: '',
+      openModal: '/'
     });
+    history.push('/');
   }
 
+  /**
+  * @param {string} path
+  * @return {undfined} undefined
+  */
+  modalOpen(path) {
+    if (path === '/create-account') {
+      this.signup();
+    } else if (path === '/login') {
+      this.signin();
+    }
+    const modal = $('div#modal');
+    if (modal.modal) modal.modal('show');
+  }
 
   /**
    * @return {object} object
    */
   render() {
-    const { loading } = this.props;
+    const { loading, history } = this.props;
     return (
       <div>
         <Carousel className={this.state.modalTitle && 'blur'}>
-          <Cta signin={this.signin} signup={this.signup} />
+          <Cta
+            signin={this.signin}
+            signup={this.signup}
+            push={history.push}
+          />
         </Carousel>
         <Modal
-          id="loginModal"
+          id="modal"
           center
           rightBtnText="Login"
           title={this.state.modalTitle}
           closeBtnClicked={this.closeModal}
+          openModal={this.state.openModal}
         >
           {
             this.state.signin &&
               <LoginForm
                 login={this.props.actions.loginAction}
                 loading={loading}
-
               />
           }
          {
@@ -129,13 +163,31 @@ class LandingPage extends React.Component {
           {this.state.signin &&
             <p className="form-text">
               Don't have an account?
-              <b onClick={this.signup}> Sign up</b>
+              <span
+                onClick={() => {
+                  this.signup();
+                  history.push('/create-account');
+                }}
+              >
+                <b>
+                  Sign up
+                </b>
+              </span>
             </p>
           }
           {this.state.signup &&
             <p className="form-text">
               Already have an account?
-              <b onClick={this.signin}> Sign in</b>
+              <span
+                onClick={() => {
+                  this.signin();
+                  history.push('/login');
+                }}
+              >
+                <b >
+                  Sign in
+                </b>
+              </span>
             </p>
           }
         </Modal>
@@ -144,16 +196,12 @@ class LandingPage extends React.Component {
   }
 }
 
-
 LandingPage.propTypes = {
-  actions: PropTypes.object,
-  success: PropTypes.bool,
-  history: PropTypes.object,
-  redirectUrl: PropTypes.string,
-  token: PropTypes.string,
-  redirect: PropTypes.func,
-  auth: PropTypes.object,
-  loading: PropTypes.bool,
+  actions: PropTypes.objectOf(PropTypes.shape).isRequired,
+  history: PropTypes.objectOf(PropTypes.shape).isRequired,
+  auth: PropTypes.objectOf(PropTypes.shape).isRequired,
+  loading: PropTypes.bool.isRequired,
+  match: PropTypes.objectOf(PropTypes.shape).isRequired
 };
 
 const mapDispatchToProps = (dispatch) => (
