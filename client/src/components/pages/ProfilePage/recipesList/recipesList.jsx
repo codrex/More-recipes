@@ -5,6 +5,12 @@ import Icon from '../../../common/icon/icon';
 
 const Recipes = (props) => {
   const recipes = props.recipes || [];
+  const {
+    onDeleteIconClicked,
+    onFavIconClicked,
+    onEditIconCliked,
+    handleClick
+  } = props;
   return (
     <List
       className="recipe-list"
@@ -21,53 +27,55 @@ const Recipes = (props) => {
         </div>
       }
 
-      {recipes.map((item, i) =>
-        (
-        <ListItem
-          key={i}
-          content={item.recipeName}
-          className="recipe-list-item"
-          handleClick={() => props.handleClick(item)}
-        >
-          {props.type === 'createdRecipes' &&
-            <div>
-              <Icon
-                iconClass="fa fa-pencil edit-icon"
-                pointer
-                handleClick={() => props.onEditIconCliked(recipes[i].id)}
-              />
-              <Icon
-                iconClass="fa fa-trash-o delete-icon"
-                dataToggle="modal"
-                dataTarget="#modal"
-                pointer
-                handleClick={() => props.onDeleteIconClicked('Delete recipe', item.id, i)}
-              />
-            </div>
-          }
-          {props.type === 'favRecipes' &&
-            <div>
-              <Icon
-                iconClass="fa fa-heart fav-icon"
-                pointer
-                handleClick={() => props.onFavIconClicked(item.id)}
-              />
-            </div>
-          }
-        </ ListItem>
-        )
-      )}
+      {
+        recipes.map((item, i) =>
+          (
+            <ListItem
+              key={item}
+              index={i}
+              content={item.name}
+              className="recipe-list-item"
+              handleClick={() => handleClick(item)}
+            >
+              {props.type === 'createdRecipes' &&
+              <div>
+                <Icon
+                  iconClass="fa fa-pencil edit-icon"
+                  pointer
+                  handleClick={() => onEditIconCliked(recipes[i].id)}
+                />
+                <Icon
+                  iconClass="fa fa-trash-o delete-icon"
+                  dataToggle="modal"
+                  dataTarget="#modal"
+                  pointer
+                  handleClick={() => onDeleteIconClicked('Delete recipe', item.id, i)}
+                />
+              </div>
+              }
+              {props.type === 'favRecipes' &&
+              <div>
+                <Icon
+                  iconClass="fa fa-heart fav-icon"
+                  pointer
+                  handleClick={() => onFavIconClicked(item.id)}
+                />
+              </div>
+              }
+            </ListItem>
+          )
+        )}
     </List>
   );
 };
 
 Recipes.propTypes = {
-  recipes: PropTypes.array,
-  onEditIconCliked: PropTypes.func,
-  handleClick: PropTypes.func,
-  onDeleteIconClicked: PropTypes.func,
-  onFavIconClicked: PropTypes.func,
-  type: PropTypes.string,
+  recipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  onEditIconCliked: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
+  onDeleteIconClicked: PropTypes.func.isRequired,
+  onFavIconClicked: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default Recipes;

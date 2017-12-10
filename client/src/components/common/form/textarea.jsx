@@ -4,10 +4,17 @@ import classnames from 'classnames';
 
 const Textarea = (props) => {
   const {
- meta,
     fgClassName,
-    className
-} = props;
+    className,
+    externalError
+  } = props;
+  let { meta } = props;
+  if (externalError.error) {
+    meta = {
+      ...meta,
+      ...externalError
+    };
+  }
   const { error, touched } = meta;
   const valid = meta && touched && !error && 'valid';
   const invalid = meta && touched && error && 'invalid';
@@ -19,9 +26,10 @@ const Textarea = (props) => {
         aria-describedby={`${props.id}Textarea`}
         placeholder={props.placeholder}
         {...props.input}
+        rows={props.row}
       />
       <div className={meta && touched && error ? 'help-text' : ''}>
-      {meta && touched && error}
+        {meta && touched && error}
       </div>
     </div>
   );
@@ -31,12 +39,13 @@ Textarea.defaultProps = {
   placeholder: '',
   className: '',
   fgClassName: '',
+  row: '1',
   input: {
-
   },
   meta: {
-
   },
+  externalError: {
+  }
 };
 
 Textarea.propTypes = {
@@ -44,8 +53,10 @@ Textarea.propTypes = {
   placeholder: PropTypes.string,
   className: PropTypes.string,
   fgClassName: PropTypes.string,
-  input: PropTypes.object,
-  meta: PropTypes.object,
+  input: PropTypes.objectOf(PropTypes.shape),
+  meta: PropTypes.objectOf(PropTypes.shape),
+  row: PropTypes.string,
+  externalError: PropTypes.objectOf(PropTypes.shape)
 };
 
 export default Textarea;

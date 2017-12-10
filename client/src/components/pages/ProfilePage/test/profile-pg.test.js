@@ -20,7 +20,7 @@ const props = {
   success: false,
   user: {
     favRecipes: [{
-      recipeName: 'Ogbemudia Rex',
+      name: 'recipe',
       category: '',
       views: 1,
       upVotes: 1,
@@ -28,7 +28,7 @@ const props = {
       recipeId: 1,
     }],
     createdRecipes: [{
-      recipeName: 'Ogbemudia Rex',
+      name: 'recipe',
       category: '',
       views: 1,
       upVotes: 1,
@@ -45,24 +45,10 @@ describe('Profile Page component ', () => {
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  test('render as expected when created recipes nav link is clicked ', () => {
-    const wrapper = mount(<ProfilePage {...props} />);
-    const tree = toJson(wrapper);
-    expect(tree).toMatchSnapshot();
-    wrapper.find('#createdRecipes').simulate('click');
-    expect(tree).toMatchSnapshot();
-  });
-  test('render as expected when favorite recipes nav link is clicked ', () => {
-    const wrapper = mount(<ProfilePage {...props} />);
-    const tree = toJson(wrapper);
-    expect(tree).toMatchSnapshot();
-    wrapper.find('#favRecipes').simulate('click');
-    expect(tree).toMatchSnapshot();
-  });
   test('render as expected when edit profile button is clicked ', () => {
     const wrapper = mount(
       <Provider store={store}>
-        <ProfilePage {...{ ...props, ...{ loading: true } }} />
+        <ProfilePage {...props} />
       </Provider>
     );
     const tree = toJson(wrapper);

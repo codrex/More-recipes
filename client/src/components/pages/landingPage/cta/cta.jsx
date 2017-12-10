@@ -30,7 +30,7 @@ const Cta = props => (
       />
     </div>
   </div>
-  );
+);
 
 Cta.propTypes = {
   signin: PropTypes.func.isRequired,

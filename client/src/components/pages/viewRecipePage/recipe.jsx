@@ -9,7 +9,6 @@ import Comments from './comments/comments';
 import Icon from '../../common/icon/icon';
 import Button from '../../common/button/button';
 import Modal from '../../common/modal/modal';
-import TopBar from '../../common/topbar/topbar';
 import CommentForm from './commentform/commentForm';
 import Directions from './directions/directions';
 import Ingredients from './ingredients/ingredients';
@@ -32,16 +31,16 @@ export class Recipe extends React.Component {
     this.vote = this.vote.bind(this);
     this.addToFav = this.addToFav.bind(this);
     this.isUserFav = this.isUserFav.bind(this);
-    this.recipeId = parseInt(this.props.match.match.params.id, 10);
+    this.recipeId = parseInt(this.props.match.params.id, 10);
   }
 
   /**
  * @return {undefined}
  */
   componentDidMount() {
-    this.props.actions.getRecipe(this.recipeId);
-    if (this.props.recipe.id === undefined) {
-      this.props.actions.getUser();
+    const { actions, recipe } = this.props;
+    if (recipe.id === undefined || this.recipeId !== recipe.id) {
+      actions.getRecipe(this.recipeId);
     }
   }
   /**
@@ -73,32 +72,32 @@ export class Recipe extends React.Component {
    */
   render() {
     const {
+      id,
       ingredients,
       directions,
       RecipeReviews,
-      recipeName,
       upVotes,
       downVotes,
       views,
       Owner
     } = this.props.recipe;
+    const { history, userId } = this.props;
+    const isOwner = Owner && Owner.id === userId;
     return (
       <div className="container-fluid no-padding">
-        <TopBar
-          bottom
-          title={recipeName}
-          className="top-bar justify-content-between"
-        >
-          {Owner && (
-            <span className="text-white lead text-uppercase">
-              posted by <em className="text-lowercase lead">{`@${Owner.username}`}</em>
-            </span>
-          )}
-        </TopBar>
-      {this.props.loading && <Loader loading={this.props.loading} />}
-      {!this.props.loading &&
+        {this.props.loading && <Loader loading={this.props.loading} />}
         <div className="row flex-column recipe">
           <div className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex ">
+            {isOwner &&
+              <div className="col-12 modify-recipe-wrapper">
+                <Button
+                  text="Modify recipe"
+                  handleClick={() => {
+                    history.push(`/modify/${id}`);
+                  }}
+                />
+              </div>
+            }
             <h5 className="display-4">Ingredients </h5>
             <Ingredients ingredients={ingredients} />
           </div>
@@ -120,7 +119,7 @@ export class Recipe extends React.Component {
             <Comments comments={RecipeReviews} />
           </div>
         </div>
-      }
+
         <div className="d-flex justify-content-around lead topbar flex-column icon-bar">
           <Icon iconClass="fa fa-eye recipe-card-icon">{views}</Icon>
           <Icon
@@ -154,11 +153,13 @@ export class Recipe extends React.Component {
 }
 
 Recipe.propTypes = {
-  actions: PropTypes.object.isRequired,
-  recipe: PropTypes.object.isRequired,
+  actions: PropTypes.objectOf(PropTypes.shape).isRequired,
+  favRecipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  history: PropTypes.objectOf(PropTypes.shape).isRequired,
   loading: PropTypes.bool.isRequired,
-  match: PropTypes.object.isRequired,
-  favRecipes: PropTypes.array,
+  match: PropTypes.objectOf(PropTypes.shape).isRequired,
+  recipe: PropTypes.objectOf(PropTypes.shape).isRequired,
+  userId: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -166,6 +167,7 @@ const mapStateToProps = state => ({
   recipe: state.recipe,
   loading: state.networkRequest.loading,
   favRecipes: state.user.favRecipes,
+  userId: state.user.id
 });
 const mapDispatchToProps = dispatch => ({
   actions: {

@@ -76,8 +76,8 @@ const Modal = (props) => {
                 className="btn btn-primary btn-lg text-capitalize"
                 onClick={
                   !operationCompleted ?
-                  onContinueClicked :
-                  () => {}
+                    onContinueClicked :
+                    () => {}
                 }
                 disabled={loading}
                 data-dismiss={operationCompleted && 'modal'}
@@ -92,8 +92,21 @@ const Modal = (props) => {
   );
 };
 
+Modal.defaultProps = {
+  leftBtnText: '',
+  rightBtnText: '',
+  center: false,
+  left: false,
+  right: false,
+  footer: false,
+  closeBtnClicked: () => {},
+  onContinueClicked: () => {},
+  loading: false,
+  operationCompleted: false,
+};
+
 Modal.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node.isRequired,
   id: PropTypes.string.isRequired,
   leftBtnText: PropTypes.string,
   rightBtnText: PropTypes.string,

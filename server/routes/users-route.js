@@ -1,11 +1,11 @@
 import express from 'express';
 import { validateSignupData,
-        create, fetchUser,
-         validateLoginData, loginUser,
-         sendDataWithToken, setFavRecipe,
-        fetchRecipes, validateUpdate,
-        fetchForUpdate, update,
-        validateUserId, compareIds, isIdValidUser } from '../controller/user';
+  create, fetchUser,
+  validateLoginData, loginUser,
+  sendDataWithToken, setFavRecipe,
+  fetchRecipes, validateUpdate,
+  fetchForUpdate, update,
+  validateUserId, compareIds, isIdValidUser } from '../controller/user';
 import { recipeIdValidation, checkRecipe } from '../controller/recipe';
 import { verifyToken } from '../authentication/authenticator';
 
@@ -17,8 +17,8 @@ usersRoute.use((req, res, next) => {
 
 usersRoute.route('/signup')
   .post(validateSignupData,
-            create,
-            sendDataWithToken);
+    create,
+    sendDataWithToken);
 
 usersRoute.route('/signin')
   .post(validateLoginData, loginUser, sendDataWithToken);
@@ -33,6 +33,6 @@ usersRoute.route('/:id/recipes')
   .get(recipeIdValidation, compareIds, fetchRecipes);
 
 usersRoute.route('/:id/recipe')
-.post(recipeIdValidation, compareIds, checkRecipe, setFavRecipe, fetchRecipes);
+  .post(recipeIdValidation, compareIds, checkRecipe, setFavRecipe, fetchRecipes);
 
 export default usersRoute;

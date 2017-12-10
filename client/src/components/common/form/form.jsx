@@ -7,8 +7,8 @@ const Form = props => (
     className={classnames('col-12', props.className)}
     action={props.action}
     method={props.method}
-    onSubmit={e => {
-      e.preventDefault();
+    onSubmit={(event) => {
+      event.preventDefault();
       props.onSubmit();
     }}
   >
@@ -16,26 +16,37 @@ const Form = props => (
     {props.submitBtnText && <button
       type="submit"
       id="submit"
-      className={classnames('btn text-uppercase w-100',
-      props.secondary && 'btn-secondary',
-      props.primary && 'btn-primary',
-      props.primaryInverse && 'btn-primary-inverse',
-      props.secondaryInverse && 'btn-secondary-inverse',
-      props.lg && 'btn-lg',
-      props.disabled && 'disable'
+      className={classnames('btn text-capitalize w-100',
+        props.secondary && 'btn-secondary',
+        props.primary && 'btn-primary',
+        props.primaryInverse && 'btn-primary-inverse',
+        props.secondaryInverse && 'btn-secondary-inverse',
+        props.lg && 'btn-lg',
+        props.disabled && 'disable'
       )}
       disabled={props.disabled}
-    >{props.disabled && 'loading...' || props.submitBtnText}
+    >{(props.disabled && 'loading...') || props.submitBtnText}
     </button>}
   </form>
 );
 
 Form.defaultProps = {
-  lg: true
+  lg: true,
+  children: null,
+  action: '',
+  method: '',
+  className: '',
+  submitBtnText: '',
+  onSubmit: () => {},
+  primary: false,
+  secondary: false,
+  disabled: false,
+  primaryInverse: false,
+  secondaryInverse: false,
 };
 
 Form.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   action: PropTypes.string,
   method: PropTypes.string,
   className: PropTypes.string,

@@ -79,6 +79,10 @@ const constraint = {
     category: objects.name,
     ingredients: objects.array,
     directions: objects.array,
+    image: {
+      presence: true,
+      isString: true,
+    },
     OwnerId: objects.id,
   },
   idConstraint: {

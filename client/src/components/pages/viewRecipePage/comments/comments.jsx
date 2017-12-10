@@ -26,7 +26,7 @@ const Comments = (props) => {
   return (
     <div className="col-12">
       {comments.map((comment, i) => (<Comment
-        key={i}
+        key={comment + Date.now()}
         review={comment.review}
         fullname={comment.Reviewer.fullname}
         username={comment.Reviewer.username}
@@ -46,7 +46,7 @@ Comments.defaultProps = {
   comments: []
 };
 Comments.propTypes = {
-  comments: PropTypes.array,
+  comments: PropTypes.arrayOf(PropTypes.shape),
 };
 
 export default Comments;

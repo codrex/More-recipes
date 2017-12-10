@@ -13,7 +13,7 @@ import Cta from './cta/cta';
 /**
  * Landing page with signin and signup forms
  */
-export class LandingPage extends React.Component {
+class LandingPage extends React.Component {
 /**
  *
  * @param {object} props
@@ -55,7 +55,7 @@ export class LandingPage extends React.Component {
       this.modalOpen(path);
     }
   }
-   /**
+  /**
  *
  * @param {object} nextProps
  * @return {bool} true
@@ -128,7 +128,7 @@ export class LandingPage extends React.Component {
    * @return {object} object
    */
   render() {
-    const { loading, history } = this.props;
+    const { loading, history, actions } = this.props;
     return (
       <div>
         <Carousel className={this.state.modalTitle && 'blur'}>
@@ -149,21 +149,23 @@ export class LandingPage extends React.Component {
           {
             this.state.signin &&
               <LoginForm
-                login={this.props.actions.loginAction}
+                login={actions.loginAction}
                 loading={loading}
               />
           }
-         {
-           this.state.signup &&
-             <SignupForm
-               signup={this.props.actions.signupAction}
-               loading={loading}
-             />
+          {
+            this.state.signup &&
+            <SignupForm
+              signup={actions.signupAction}
+              loading={loading}
+            />
           }
           {this.state.signin &&
             <p className="form-text">
-              Don't have an account?
+              {"Don't have an account?"}
               <span
+                role="button"
+                tabIndex="0"
                 onClick={() => {
                   this.signup();
                   history.push('/create-account');
@@ -179,6 +181,8 @@ export class LandingPage extends React.Component {
             <p className="form-text">
               Already have an account?
               <span
+                role="button"
+                tabIndex="0"
                 onClick={() => {
                   this.signin();
                   history.push('/login');
@@ -204,7 +208,7 @@ LandingPage.propTypes = {
   match: PropTypes.objectOf(PropTypes.shape).isRequired
 };
 
-const mapDispatchToProps = (dispatch) => (
+const mapDispatchToProps = dispatch => (
   {
     actions: {
       loginAction: bindActionCreators(userLogin, dispatch),
@@ -213,12 +217,13 @@ const mapDispatchToProps = (dispatch) => (
   }
 );
 
-const mapStateToProps = (state) => (
+const mapStateToProps = state => (
   {
     auth: state.auth,
     loading: state.networkRequest.loading,
   }
 
 );
+export { LandingPage as PureLandingPage };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingPage);

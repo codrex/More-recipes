@@ -2,9 +2,9 @@
 
 exports[`sign up form component  render as expected  1`] = `
 <form
-  action={undefined}
+  action=""
   className="col-12"
-  method={undefined}
+  method=""
   onSubmit={[Function]}
 >
   <div
@@ -84,7 +84,7 @@ exports[`sign up form component  render as expected  1`] = `
     />
   </div>
   <button
-    className="btn text-uppercase w-100 btn-secondary btn-lg"
+    className="btn text-capitalize w-100 btn-secondary btn-lg"
     disabled={false}
     id="submit"
     type="submit"

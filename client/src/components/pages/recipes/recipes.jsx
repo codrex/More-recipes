@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Loader from '../../common/loader/loader';
 import { bindActionCreators } from 'redux';
+import Loader from '../../common/loader/loader';
 import { ajaxRedirect } from '../../../actions/ajaxActions';
 import {
   getAllRecipes,
@@ -10,8 +10,7 @@ import {
   findRecipes,
   toggleFav,
 } from '../../../actions/recipeActions';
-import { getUserProfile, userLogout } from '../../../actions/userActions';
-import TopBar from '../../common/topbar/topbar';
+import { getUserProfile } from '../../../actions/userActions';
 import RecipeGrid from './recipesGrid';
 
 /**
@@ -60,7 +59,7 @@ export class Dashboard extends React.Component {
     }
   }
 
- /**
+  /**
    * @return {undefined}
    */
   getUserRecipes() {
@@ -68,7 +67,7 @@ export class Dashboard extends React.Component {
       allRecipes: this.props.user.createdRecipes
     });
   }
-    /**
+  /**
    * @return {undefined}
    */
   getFavRecipes() {
@@ -77,7 +76,7 @@ export class Dashboard extends React.Component {
     });
   }
 
-   /**
+  /**
    * @return {undefined}
    * @param {active} active
    */
@@ -87,7 +86,7 @@ export class Dashboard extends React.Component {
     });
   }
 
-    /**
+  /**
    * @return {undefined}
    * @param {number} id
    */
@@ -98,7 +97,7 @@ export class Dashboard extends React.Component {
     });
   }
 
-    /**
+  /**
    * @return {undefined}
    * @param {number} id
    */
@@ -106,7 +105,7 @@ export class Dashboard extends React.Component {
     this.props.actions.toggleFav(id);
   }
 
-   /**
+  /**
    * @return{undefined}
    * @param {string} value
    */
@@ -127,92 +126,39 @@ export class Dashboard extends React.Component {
     const { loading } = this.props;
     return (
       <div className="container-fluid no-padding" id="dashboard">
-        <TopBar
-          search avatar fullname={this.props.user.fullname}
-          handleSubmit={this.recipeSearch}
-          push={this.props.match.history.push}
-          bottom
-        >
-          <nav className="nav">
-            <a
-              className="nav-link"
-              href="#"
-              onClick={() => {
-                this.setActive(0);
-                this.props.actions.getTopRecipes();
-              }}
-              id="getTopRecipes"
-            >
-            Top recipes</a>
-            <a
-              className="nav-link" href="#"
-              onClick={() => {
-                this.setActive(1);
-                this.getUserRecipes();
-              }}
-              id="getMyRecipes"
-            >
-            My recipes
-            </a>
-            <a
-              className="nav-link" href="#"
-              onClick={() => {
-                this.setActive(2);
-                this.getFavRecipes();
-              }}
-              id="getFavRecipes"
-            >
-            Favourite recipes</a>
-          </nav>
-          <nav className="nav">
-            <a
-              className="nav-link logout text-capitalize"
-              href="#" onClick={this.props.actions.logout}
-              id="logout"
-            >
-            logout</a>
-          </nav>
-        </TopBar>
         <div className="row dashboard d-flex flex-column">
-            {!loading && this.props.recipes.length > 0 &&
-              <h1
-                id="display-1"
-                className={`display-4 text-capitalize text-left
+          {!loading && this.props.recipes.length > 0 &&
+          <h1
+            id="display-1"
+            className={`display-4 text-capitalize text-left
                 bold text-dark d-flex justify-content-between align-items-center`}
-              >
-                {this.state.activeStates[this.state.active]}
-                {this.state.allRecipes && <span className="lead">{`Total Recipes: ${this.state.allRecipes.length}`}</span>}
-              </h1>
-            }
-            {!loading &&
-              <RecipeGrid
-                recipes={this.state.allRecipes}
-                loading={loading}
-                toggleFav={this.toggleFav}
-                isUserFav={this.isUserFav}
-              />
-            }
-            {loading &&
-              <Loader loading={loading} />
-            }
+          >
+            {this.state.activeStates[this.state.active]}
+            {this.state.allRecipes && <span className="lead">{`Total Recipes: ${this.state.allRecipes.length}`}</span>}
+          </h1>
+          }
+          {!loading &&
+          <RecipeGrid
+            recipes={this.state.allRecipes}
+            loading={loading}
+            toggleFav={this.toggleFav}
+            isUserFav={this.isUserFav}
+          />
+          }
+          {loading &&
+          <Loader loading={loading} />
+          }
         </div>
       </div>
     );
   }
 }
 
-Dashboard.defaultProps = {
-  match: {
-
-  },
-};
-
 Dashboard.propTypes = {
-  actions: PropTypes.object.isRequired,
-  recipes: PropTypes.array,
-  user: PropTypes.object.isRequired,
+  actions: PropTypes.objectOf(PropTypes.shape).isRequired,
   loading: PropTypes.bool.isRequired,
-  match: PropTypes.object,
+  recipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  user: PropTypes.objectOf(PropTypes.shape).isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -229,7 +175,6 @@ const mapDispatchToProps = dispatch => ({
     getTopRecipes: bindActionCreators(getTopRecipes, dispatch),
     getProfile: bindActionCreators(getUserProfile, dispatch),
     search: bindActionCreators(findRecipes, dispatch),
-    logout: bindActionCreators(userLogout, dispatch),
     toggleFav: bindActionCreators(toggleFav, dispatch),
   }
 });

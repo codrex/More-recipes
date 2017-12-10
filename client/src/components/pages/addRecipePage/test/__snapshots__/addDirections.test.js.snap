@@ -2,29 +2,52 @@
 
 exports[`Add directions component to render as expected 1`] = `
 <div
-  className="col-xs-12 col-sm-12 col-11 items "
+  className="col-12 items "
 >
   <div
     className="items-header"
   >
     <h4
-      className="lead items-header-text"
+      className="items-header-text"
     >
       directions  0
-      <div
-        className="icon-wrapper"
-        onClick={[Function]}
-        onMouseEnter={undefined}
-      >
-        <i
-          className="icon fa fa-plus float-right"
-          data-target={undefined}
-          data-toggle={undefined}
-        >
-          <span />
-        </i>
-      </div>
     </h4>
+    <form
+      action=""
+      className="col-12"
+      method=""
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group d-flex flex-column no-margin"
+      >
+        <textarea
+          aria-describedby="directionTextarea"
+          className="form-control text-area no-margin add-item-input"
+          id="directionTextarea"
+          name="direction"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onDragStart={[Function]}
+          onDrop={[Function]}
+          onFocus={[Function]}
+          placeholder="Enter direction"
+          rows="1"
+          value=""
+        />
+        <div
+          className=""
+        />
+      </div>
+      <button
+        className="btn text-capitalize w-100 btn-secondary"
+        disabled={false}
+        id="submit"
+        type="submit"
+      >
+        add direction
+      </button>
+    </form>
   </div>
   <div
     className="col-12 items-list-wrapper"

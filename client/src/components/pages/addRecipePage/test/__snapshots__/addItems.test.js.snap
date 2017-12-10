@@ -2,68 +2,120 @@
 
 exports[`Add items component  render as expected when directions is passed as props 1`] = `
 <div
-  className="col-xs-12 col-sm-12 col-11 items "
+  className="col-12 items "
 >
   <div
     className="items-header"
   >
     <h4
-      className="lead items-header-text"
+      className="items-header-text"
     >
-      names  0
-      <div
-        className="icon-wrapper"
-        onClick={[Function]}
-        onMouseEnter={undefined}
-      >
-        <i
-          className="icon fa fa-plus float-right"
-          data-target={undefined}
-          data-toggle={undefined}
-        >
-          <span />
-        </i>
-      </div>
+      s  0
     </h4>
+    <Form
+      action=""
+      className=""
+      disabled={false}
+      lg={false}
+      method=""
+      onSubmit={[Function]}
+      primary={false}
+      primaryInverse={false}
+      secondary={true}
+      secondaryInverse={false}
+      submitBtnText="add "
+    >
+      <Field
+        className="no-margin add-item-input"
+        component={[Function]}
+        externalError={
+          Object {
+            "error": false,
+            "touched": true,
+          }
+        }
+        fgClassName="d-flex flex-column no-margin"
+        id=""
+        name=""
+        onFocus={[Function]}
+        placeholder=""
+        type="text"
+        validate={[Function]}
+      />
+    </Form>
   </div>
   <div
     className="col-12 items-list-wrapper"
   >
-    <div />
+    <List
+      componentType=""
+      deleteItem={[Function]}
+      directions={true}
+      editItem={[Function]}
+      ingredients={false}
+      items={Array []}
+      name=""
+    />
   </div>
 </div>
 `;
 
-exports[`Add items component  render as expected when ingredients is pass as props 1`] = `
+exports[`Add items component  render as expected when form is submitted 1`] = `
 <div
-  className="col-xs-12 col-sm-12 col-11 items "
+  className="col-12 items "
 >
   <div
     className="items-header"
   >
     <h4
-      className="lead items-header-text"
+      className="items-header-text"
     >
-      names  0
-      <div
-        className="icon-wrapper"
-        onClick={[Function]}
-        onMouseEnter={undefined}
-      >
-        <i
-          className="icon fa fa-plus float-right"
-          data-target={undefined}
-          data-toggle={undefined}
-        >
-          <span />
-        </i>
-      </div>
+      s  0
     </h4>
+    <Form
+      action=""
+      className=""
+      disabled={false}
+      lg={false}
+      method=""
+      onSubmit={[Function]}
+      primary={false}
+      primaryInverse={false}
+      secondary={true}
+      secondaryInverse={false}
+      submitBtnText="add "
+    >
+      <Field
+        className="no-margin add-item-input"
+        component={[Function]}
+        externalError={
+          Object {
+            "error": false,
+            "touched": true,
+          }
+        }
+        fgClassName="d-flex flex-column no-margin"
+        id=""
+        name=""
+        onFocus={[Function]}
+        placeholder=""
+        type="text"
+        validate={[Function]}
+      />
+    </Form>
   </div>
   <div
     className="col-12 items-list-wrapper"
   >
-    <div />
+    <List
+      componentType=""
+      deleteItem={[Function]}
+      directions={true}
+      editItem={[Function]}
+      ingredients={true}
+      items={Array []}
+      name=""
+    />
   </div>
 </div>
 `;

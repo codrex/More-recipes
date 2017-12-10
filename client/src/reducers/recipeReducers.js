@@ -3,17 +3,36 @@ import {
   RECIPE,
   UPDATE_DIRECTIONS,
   UPDATE_INGREDIENTS,
-  UPDATE_NAME_CATEGORY,
+  UPDATE_CATEGORY,
+  UPDATE_RECIPE_NAME,
+  UPDATE_RECIPE_IMAGE,
   UPDATE_ALL_RECIPE_FIELD,
   GET_ALL_RECIPES,
   GET_TOP_RECIPES,
-  GET_RECIPE,
+  GOT_RECIPE,
   AFTER_REVIEW,
   AFTER_VOTE,
   RECIPE_TO_MODIFY,
   NEW_RECIPE,
-  FIND_RECIPES
+  FIND_RECIPES,
+  RECIPE_VALIDATION_ERROR,
+  CLEAR_VALIDATION_ERROR,
+  ABOUT_TO_CREATE_RECIPE
 } from '../actions/actions';
+
+export const recipeValidationError = (state = initialState.recipes, action) => {
+  switch (action.type) {
+    case RECIPE_VALIDATION_ERROR:
+      return action.error;
+    case CLEAR_VALIDATION_ERROR:
+      return {
+        ...state,
+        ...action.error
+      };
+    default:
+      return state;
+  }
+};
 
 export const recipesReducer = (state = initialState.recipes, action) => {
   switch (action.type) {
@@ -29,8 +48,8 @@ export const recipesReducer = (state = initialState.recipes, action) => {
 };
 
 export const recipeReducer = (state = initialState.recipe, action) => {
-  if (action.type === GET_RECIPE) {
-    return action.recipe.recipe;
+  if (action.type === GOT_RECIPE) {
+    return action.payload.recipe;
   }
   if (action.type === AFTER_REVIEW) {
     const recipeReviews = action.payload.recipe.recipeReviews;
@@ -66,10 +85,22 @@ export const recipeReducer = (state = initialState.recipe, action) => {
       ...state, directions
     };
   }
-  if (action.type === UPDATE_NAME_CATEGORY) {
-    const nameAndCat = action.nameAndCat;
+  if (action.type === UPDATE_CATEGORY) {
+    const { category } = action;
     return {
-      ...state, ...nameAndCat
+      ...state, category
+    };
+  }
+  if (action.type === UPDATE_RECIPE_NAME) {
+    const { name } = action;
+    return {
+      ...state, name
+    };
+  }
+  if (action.type === UPDATE_RECIPE_IMAGE) {
+    const { image } = action;
+    return {
+      ...state, image
     };
   }
   if (action.type === UPDATE_ALL_RECIPE_FIELD) {
@@ -78,6 +109,11 @@ export const recipeReducer = (state = initialState.recipe, action) => {
     };
   }
   if (action.type === NEW_RECIPE) {
+    return {
+      ...action.payload.recipe
+    };
+  }
+  if (action.type === ABOUT_TO_CREATE_RECIPE) {
     return {
       ...initialState.recipe
     };

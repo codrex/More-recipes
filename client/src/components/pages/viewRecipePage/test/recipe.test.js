@@ -6,6 +6,7 @@ import configureStore from '../../../../store/configStore';
 
 const store = configureStore();
 const props = {
+  userId: 1,
   actions: {
     redirect: jest.fn(),
     getRecipe: jest.fn(),
@@ -20,6 +21,8 @@ const props = {
     upVotes: 1,
     downVotes: 1,
     recipeId: 1,
+    ingredients: [],
+    directions: [],
     Owner: {
       id: 1,
       username: 'test',
@@ -42,13 +45,12 @@ const props = {
     }],
   },
   loading: false,
+  history: { push: jest.fn() },
   match: {
-    history: { push: jest.fn() },
-    match: {
-      params: {
-        id: 2
-      },
-    }
+    params: {
+      id: 2
+    },
+
   },
   favRecipes: [{
     recipeName: 'test tester',
@@ -73,22 +75,11 @@ describe('View Recipes Page component ', () => {
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  test('render as expected when add a review button is clicked ', () => {
-    const wrapper = mount(
-      <Provider store={store}>
-        < Recipe {...props} />
-      </ Provider>
-    );
-    const tree = toJson(wrapper);
-    expect(tree).toMatchSnapshot();
-    wrapper.find('#reviewBtn').simulate('click');
-    expect(tree).toMatchSnapshot();
-  });
   test('render as expected when favorite icon is clicked ', () => {
     const wrapper = mount(
       <Provider store={store}>
-        < Recipe {...props} />
-      </ Provider>
+        <Recipe {...props} />
+      </Provider>
     );
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
@@ -100,7 +91,7 @@ describe('View Recipes Page component ', () => {
     const wrapper = mount(
       <Provider store={store}>
         <Recipe {...props} />
-      </ Provider>
+      </Provider>
     );
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
@@ -112,7 +103,7 @@ describe('View Recipes Page component ', () => {
     const wrapper = mount(
       <Provider store={store}>
         <Recipe {...props} />
-      </ Provider>
+      </Provider>
     );
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();

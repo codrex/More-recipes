@@ -1,53 +1,85 @@
 {
+  "globals": {
+      "document": true,
+      "foo": true,
+      "window": true,
+      "localStorage": true
+  },
+  "parserOptions": {
+      "ecmaVersion": 8,
+      "sourceType": "module",
+      "ecmaFeatures": {
+          "jsx": true,
+          "arrowFunctions": true,
+          "blockBindings": true,
+          "classes": true,
+          "defaultParams": true,
+          "destructuring": true,
+          "forOf": true,
+          "generators": false,
+          "modules": true,
+          "objectLiteralComputedProperties": true,
+          "objectLiteralDuplicateProperties": false,
+          "objectLiteralShorthandMethods": true,
+          "objectLiteralShorthandProperties": true,
+          "spread": true,
+          "superInFunctions": true,
+          "templateStrings": true
+      }
+  },
   "root": true,
   "extends": "airbnb",
-  "parser": "babel-eslint",
-  "plugins": [
-    "react",
-    "jsx-a11y",
-    "import"
-  ],
   "env": {
-    "node": true,
-    "browser": true,
-    "es6": true,
-    "mocha": true,
-    "jest": true
+      "node": true,
+      "es6": true,
+      "mocha": true,
+      "jest": true
   },
-  "globals": {
-    "shallow": true,
-    "mount": true
-  },
+  "plugins": [
+      "react"
+  ],
   "rules": {
-    "one-var": 0,
-    "one-var-declaration-per-line": 0,
-    "new-cap": 0,
-    "consistent-return": 0,
-    "no-param-reassign": 0,
-    "comma-dangle": 0,
-    "no-return-assign": 0,
-    "curly": ["error", "multi-line"],
-    "object-curly-newline": ["error", {
-      "ObjectExpression": "always",
-      "ObjectPattern": { "multiline": true }
-    }],
-    "import/no-unresolved": 0,
-    "import/extensions": [2, { "js": "never"}],
-    "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
-    "valid-jsdoc": ["error", {
-      "requireReturn": true,
-      "requireReturnType": true,
-      "requireParamDescription": false,
-      "requireReturnDescription": true
-    }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
-    "react/jsx-uses-react": 2,
-    "react/react-in-jsx-scope": 2,
-    "react/self-closing-comp": ["error", {
-      "component": true,
-      "html": true
-    }],
-    "react/jsx-indent": [2, 2]
+      "no-nested-ternary": 0,
+      "one-var": 0,
+      "one-var-declaration-per-line": 0,
+      "no-underscore-dangle": 0,
+      "no-undef": 0,
+      "new-cap": 0,
+      "consistent-return": 0,
+      "no-param-reassign": 0,
+      "comma-dangle": 0,
+      "curly": [
+          "error",
+          "multi-line"
+      ],
+      "no-shadow": [
+          "error",
+          {
+              "allow": [
+                  "req",
+                  "res",
+                  "err"
+              ]
+          }
+      ],
+      "valid-jsdoc": [
+          "error",
+          {
+              "requireReturn": true,
+              "requireReturnType": true,
+              "requireParamDescription": false,
+              "requireReturnDescription": true
+          }
+      ],
+      "require-jsdoc": [
+          "error",
+          {
+              "require": {
+                  "FunctionDeclaration": true,
+                  "MethodDefinition": true,
+                  "ClassDeclaration": true
+              }
+          }
+      ]
   }
 }

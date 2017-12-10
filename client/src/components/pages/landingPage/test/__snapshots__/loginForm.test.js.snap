@@ -2,9 +2,16 @@
 
 exports[`login form component  render as expected when submitting props is false 1`] = `
 <Form
+  action=""
+  className=""
   disabled={false}
   lg={true}
+  method=""
+  onSubmit={[Function]}
+  primary={false}
+  primaryInverse={false}
   secondary={true}
+  secondaryInverse={false}
   submitBtnText="Login"
 >
   <Field

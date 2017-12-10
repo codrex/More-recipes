@@ -2,7 +2,7 @@ import React from 'react';
 import Paginate from 'react-paginate';
 import PropTypes from 'prop-types';
 
-const Paginator = (props) => (
+const Paginator = props => (
   <nav
     aria-label="Page navigation"
     className="d-flex justify-content-center col-12 bottom-margin"

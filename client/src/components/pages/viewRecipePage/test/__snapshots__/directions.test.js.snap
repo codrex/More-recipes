@@ -7,13 +7,19 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
   <div
     className="lead list-item d-flex align-items-start flex-column accordion"
   >
+    
     <div
       className=" d-flex no-margin w-100"
       id="accordion0"
       role="tab"
     >
-      <h5
+      <h4
         className="mb-0 lead flex-auto ellipsis"
+        style={
+          Object {
+            "margin": ".2rem",
+          }
+        }
       >
         <a
           aria-controls="Step 0"
@@ -24,7 +30,7 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
         >
           Step 1
         </a>
-      </h5>
+      </h4>
       <a
         aria-expanded="false"
         className="collapsed collapse-trigger a bold"
@@ -33,13 +39,15 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
       >
         <div
           className="icon-wrapper"
-          onClick={undefined}
-          onMouseEnter={undefined}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          role="button"
+          tabIndex="0"
         >
           <i
             className="icon fa fa-angle-down"
-            data-target={undefined}
-            data-toggle={undefined}
+            data-target=""
+            data-toggle=""
           >
             <span />
           </i>
@@ -47,7 +55,7 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
       </a>
     </div>
     <div
-      className="collapse"
+      className="collapse w-100"
       data-parent="#Step 0"
       id="item0"
       role="tabpanel"
@@ -66,13 +74,19 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
   <div
     className="lead list-item d-flex align-items-start flex-column accordion"
   >
+    
     <div
       className=" d-flex no-margin w-100"
       id="accordion1"
       role="tab"
     >
-      <h5
+      <h4
         className="mb-0 lead flex-auto ellipsis"
+        style={
+          Object {
+            "margin": ".2rem",
+          }
+        }
       >
         <a
           aria-controls="Step 1"
@@ -83,7 +97,7 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
         >
           Step 2
         </a>
-      </h5>
+      </h4>
       <a
         aria-expanded="false"
         className="collapsed collapse-trigger a bold"
@@ -92,13 +106,15 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
       >
         <div
           className="icon-wrapper"
-          onClick={undefined}
-          onMouseEnter={undefined}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          role="button"
+          tabIndex="0"
         >
           <i
             className="icon fa fa-angle-down"
-            data-target={undefined}
-            data-toggle={undefined}
+            data-target=""
+            data-toggle=""
           >
             <span />
           </i>
@@ -106,7 +122,7 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
       </a>
     </div>
     <div
-      className="collapse"
+      className="collapse w-100"
       data-parent="#Step 1"
       id="item1"
       role="tabpanel"
@@ -125,13 +141,19 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
   <div
     className="lead list-item d-flex align-items-start flex-column accordion"
   >
+    
     <div
       className=" d-flex no-margin w-100"
       id="accordion2"
       role="tab"
     >
-      <h5
+      <h4
         className="mb-0 lead flex-auto ellipsis"
+        style={
+          Object {
+            "margin": ".2rem",
+          }
+        }
       >
         <a
           aria-controls="Step 2"
@@ -142,7 +164,7 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
         >
           Step 3
         </a>
-      </h5>
+      </h4>
       <a
         aria-expanded="false"
         className="collapsed collapse-trigger a bold"
@@ -151,13 +173,15 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
       >
         <div
           className="icon-wrapper"
-          onClick={undefined}
-          onMouseEnter={undefined}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          role="button"
+          tabIndex="0"
         >
           <i
             className="icon fa fa-angle-down"
-            data-target={undefined}
-            data-toggle={undefined}
+            data-target=""
+            data-toggle=""
           >
             <span />
           </i>
@@ -165,7 +189,7 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
       </a>
     </div>
     <div
-      className="collapse"
+      className="collapse w-100"
       data-parent="#Step 2"
       id="item2"
       role="tabpanel"

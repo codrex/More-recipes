@@ -2,6 +2,7 @@ html, body, #root{
   width: 100%;
   height: 100%;
   overflow-x: hidden;
+  zoom: 0.98;
 }
 html {font-size: 1em;}
 
@@ -48,6 +49,10 @@ small, .font_small {font-size: 0.8em;}
 }
 .vote-color{
   color:$vote-color;
+}
+
+.main{
+  min-height: 92vh;
 }
 
  @media(max-width:767px){

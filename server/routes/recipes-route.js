@@ -2,13 +2,13 @@ import express from 'express';
 import { verifyToken } from '../authentication/authenticator';
 import { reviewValidation, createReview } from '../controller/review';
 import { validateRecipe, create,
-        fetchRecipe, recipeIdValidation,
-        deleteRecipe, checkOwnship,
-        validateUpdate, fetchForUpdate,
-         fetchAllRecipe, fetchAllBySearch,
-         setReview, fetchReview,
-         fetchVotes, fetchRecipeByUpVote,
-         update, checkRecipe } from '../controller/recipe';
+  fetchRecipe, recipeIdValidation,
+  deleteRecipe, checkOwnship,
+  validateUpdate, fetchForUpdate,
+  fetchAllRecipe, fetchAllBySearch,
+  setReview, fetchReview,
+  fetchVotes, fetchRecipeByUpVote,
+  update, checkRecipe } from '../controller/recipe';
 import { VoteHandler, countVote, voteValidation } from '../controller/vote';
 import { isIdValidUser, setRecipe } from '../controller/user';
 import addAsViewer from '../controller/viewer';
@@ -27,7 +27,7 @@ recipesRoute.route('/')
 // Update and delete recipe route
 recipesRoute.route('/:id')
   .put(recipeIdValidation, checkOwnship,
-       fetchForUpdate, validateUpdate, update, fetchRecipe)
+    fetchForUpdate, validateUpdate, update, fetchRecipe)
   .delete(recipeIdValidation, checkOwnship, deleteRecipe)
   .get(recipeIdValidation, addAsViewer, fetchRecipe);
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemsList from '../addItems/itemsList';
-import renderer from 'react-test-renderer';
+import toJson from 'enzyme-to-json';
 import { Provider } from 'react-redux';
 import configureStore from '../../../../store/configStore';
 
@@ -8,17 +8,17 @@ import configureStore from '../../../../store/configStore';
 const props = {
   deleteItem: jest.fn(),
   editItem: jest.fn(),
-  items: ['item1', 'item2'],
+  items: [{}],
   name: 'directions',
   directions: true
 }
 describe('Items list component ', () => {
   test('render as expected', () => {
-    const component = renderer.create(
+    const component = shallow(
       <Provider store={configureStore()}>
         <ItemsList {...props} />
       </Provider>);
-    const tree = component.toJSON();
+    const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
 });

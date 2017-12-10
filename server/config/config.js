@@ -12,7 +12,7 @@ module.exports = {
     password: process.env.PASSWORD,
     database: process.env.TEST_DATABASE,
     dialect: 'postgres',
-    logging: process.env.LOGGING
+    logging: false
   },
   production: {
     use_env_variable: process.env.DB_PRODUCTION,

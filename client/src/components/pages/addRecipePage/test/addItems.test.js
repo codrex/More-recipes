@@ -1,27 +1,36 @@
 import React from 'react';
 import AddItems from '../addItems/addItems';
-import renderer from 'react-test-renderer';
+import toJson from 'enzyme-to-json';
 
 const props = {
   handleSubmit: jest.fn(),
   placeholder: '',
-  name: 'name',
+  name: 'ingredient',
   initialize: jest.fn(),
+  clearValidationError: jest.fn(),
+  externalError: false,
+  handleSubmit: jest.fn(),
+  items: [],
+  directions: true,
+  name: '',
+  placeholder: '',
+  sendItemsToStore: jest.fn(),
 };
 
 describe('Add items component ', () => {
   test('render as expected when directions is passed as props', () => {
-    const component = renderer.create(
-      <AddItems {...props} directions />
+    const component = shallow(
+      <AddItems {...props} />
     );
-    const tree = component.toJSON();
+    const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
-  test('render as expected when ingredients is pass as props', () => {
-    const component = renderer.create(
+  test('render as expected when form is submitted', () => {
+    const component = shallow(
       <AddItems {...props} ingredients />
     );
-    const tree = component.toJSON();
+    component.find('Form').simulate('submit');
+    const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
 });

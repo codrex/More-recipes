@@ -149,13 +149,18 @@ exports[`Landing page component  expected to match snapshot  1`] = `
                       >
                         <Button
                           className="btn-primary btn-lg login"
+                          dataTarget=""
+                          dataToggle=""
                           handleClick={[Function]}
                           id="login"
                           text="Login"
+                          type="button"
                         >
                           <button
-                            className="btn text-capitalize btn-primary btn-lg login"
+                            className="btn btn-primary btn-lg login"
                             data-dismiss="modal"
+                            data-target=""
+                            data-toggle=""
                             onClick={[Function]}
                             type="button"
                           >
@@ -164,13 +169,18 @@ exports[`Landing page component  expected to match snapshot  1`] = `
                         </Button>
                         <Button
                           className=" btn-secondary btn-lg reg text-white"
+                          dataTarget=""
+                          dataToggle=""
                           handleClick={[Function]}
                           id="signup"
                           text="Create an account"
+                          type="button"
                         >
                           <button
-                            className="btn text-capitalize  btn-secondary btn-lg reg text-white"
+                            className="btn  btn-secondary btn-lg reg text-white"
                             data-dismiss="modal"
+                            data-target=""
+                            data-toggle=""
                             onClick={[Function]}
                             type="button"
                           >
@@ -186,8 +196,15 @@ exports[`Landing page component  expected to match snapshot  1`] = `
             <Modal
               center={true}
               closeBtnClicked={[Function]}
+              footer={false}
               id="modal"
+              left={false}
+              leftBtnText=""
+              loading={false}
+              onContinueClicked={[Function]}
               openModal={false}
+              operationCompleted={false}
+              right={false}
               rightBtnText="Login"
               title=""
             >
@@ -258,8 +275,15 @@ exports[`Landing page component  expected to match snapshot when user is signed 
   <Modal
     center={true}
     closeBtnClicked={[Function]}
+    footer={false}
     id="modal"
+    left={false}
+    leftBtnText=""
+    loading={false}
+    onContinueClicked={[Function]}
     openModal={true}
+    operationCompleted={false}
+    right={false}
     rightBtnText="Login"
     title="Create an account"
   >
@@ -271,10 +295,12 @@ exports[`Landing page component  expected to match snapshot when user is signed 
       className="form-text"
     >
       Already have an account?
-      <span>
-        <b
-          onClick={[Function]}
-        >
+      <span
+        onClick={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        <b>
           Sign in
         </b>
       </span>
@@ -297,8 +323,15 @@ exports[`Landing page component  expected to match snapshot when user is signed 
   <Modal
     center={true}
     closeBtnClicked={[Function]}
+    footer={false}
     id="modal"
+    left={false}
+    leftBtnText=""
+    loading={false}
+    onContinueClicked={[Function]}
     openModal={true}
+    operationCompleted={false}
+    right={false}
     rightBtnText="Login"
     title="Create an account"
   >
@@ -310,10 +343,12 @@ exports[`Landing page component  expected to match snapshot when user is signed 
       className="form-text"
     >
       Already have an account?
-      <span>
-        <b
-          onClick={[Function]}
-        >
+      <span
+        onClick={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        <b>
           Sign in
         </b>
       </span>
@@ -502,13 +537,18 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                       >
                         <Button
                           className="btn-primary btn-lg login"
+                          dataTarget=""
+                          dataToggle=""
                           handleClick={[Function]}
                           id="login"
                           text="Login"
+                          type="button"
                         >
                           <button
-                            className="btn text-capitalize btn-primary btn-lg login"
+                            className="btn btn-primary btn-lg login"
                             data-dismiss="modal"
+                            data-target=""
+                            data-toggle=""
                             onClick={[Function]}
                             type="button"
                           >
@@ -517,13 +557,18 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                         </Button>
                         <Button
                           className=" btn-secondary btn-lg reg text-white"
+                          dataTarget=""
+                          dataToggle=""
                           handleClick={[Function]}
                           id="signup"
                           text="Create an account"
+                          type="button"
                         >
                           <button
-                            className="btn text-capitalize  btn-secondary btn-lg reg text-white"
+                            className="btn  btn-secondary btn-lg reg text-white"
                             data-dismiss="modal"
+                            data-target=""
+                            data-toggle=""
                             onClick={[Function]}
                             type="button"
                           >
@@ -539,8 +584,15 @@ exports[`Landing page component  expected to match snapshot when user is trying 
             <Modal
               center={true}
               closeBtnClicked={[Function]}
+              footer={false}
               id="modal"
+              left={false}
+              leftBtnText=""
+              loading={false}
+              onContinueClicked={[Function]}
               openModal={true}
+              operationCompleted={false}
+              right={false}
               rightBtnText="Login"
               title="Create an account"
             >
@@ -771,14 +823,22 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                               valid={false}
                             >
                               <Form
+                                action=""
+                                className=""
                                 disabled={false}
                                 lg={true}
+                                method=""
                                 onSubmit={[Function]}
+                                primary={false}
+                                primaryInverse={false}
                                 secondary={true}
+                                secondaryInverse={false}
                                 submitBtnText="Register"
                               >
                                 <form
+                                  action=""
                                   className="col-12"
+                                  method=""
                                   onSubmit={[Function]}
                                 >
                                   <Field
@@ -998,7 +1058,9 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                       >
                                         <Input
                                           className=""
+                                          externalError={Object {}}
                                           fgClassName=""
+                                          helpTextClassName=""
                                           id="username"
                                           input={
                                             Object {
@@ -1276,7 +1338,9 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                       >
                                         <Input
                                           className=""
+                                          externalError={Object {}}
                                           fgClassName=""
+                                          helpTextClassName=""
                                           id="fullname"
                                           input={
                                             Object {
@@ -1554,7 +1618,9 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                       >
                                         <Input
                                           className=""
+                                          externalError={Object {}}
                                           fgClassName=""
+                                          helpTextClassName=""
                                           id="email"
                                           input={
                                             Object {
@@ -1831,7 +1897,9 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                       >
                                         <Input
                                           className=""
+                                          externalError={Object {}}
                                           fgClassName=""
+                                          helpTextClassName=""
                                           id="password"
                                           input={
                                             Object {
@@ -1892,7 +1960,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                     </Connect(ConnectedField)>
                                   </Field>
                                   <button
-                                    className="btn text-uppercase w-100 btn-secondary btn-lg"
+                                    className="btn text-capitalize w-100 btn-secondary btn-lg"
                                     disabled={false}
                                     id="submit"
                                     type="submit"
@@ -1909,10 +1977,12 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                         className="form-text"
                       >
                         Already have an account?
-                        <span>
-                          <b
-                            onClick={[Function]}
-                          >
+                        <span
+                          onClick={[Function]}
+                          role="button"
+                          tabIndex="0"
+                        >
+                          <b>
                             Sign in
                           </b>
                         </span>

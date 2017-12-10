@@ -8,35 +8,41 @@ exports[`Ingredients display component  expected to match empty snapshot 1`] = `
   <div
     className="lead list-item"
   >
-    <h4
-      className="list-item-text"
+    <div
+      className="list-item-text lead"
       data-index={0}
-      onClick={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex="0"
     >
       ingredients 1
-    </h4>
+    </div>
   </div>
   <div
     className="lead list-item"
   >
-    <h4
-      className="list-item-text"
+    <div
+      className="list-item-text lead"
       data-index={2}
-      onClick={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex="0"
     >
       ingredients 2
-    </h4>
+    </div>
   </div>
   <div
     className="lead list-item"
   >
-    <h4
-      className="list-item-text"
+    <div
+      className="list-item-text lead"
       data-index={3}
-      onClick={undefined}
+      onClick={[Function]}
+      role="button"
+      tabIndex="0"
     >
       ingredients 3
-    </h4>
+    </div>
   </div>
 </div>
 `;

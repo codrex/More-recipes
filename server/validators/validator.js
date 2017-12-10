@@ -1,6 +1,6 @@
 import validate from 'validate.js';
-import constraint from './constraints';
 import bcrypt from 'bcrypt-nodejs';
+import constraint from './constraints';
 import { sendValidationError } from '../reply/reply';
 
 
@@ -48,25 +48,25 @@ validate.validators.words = (value) => {
 validate.validators.stringArray = (value) => {
   if (Array.isArray(value)) {
     if (value.length < 1) return 'array can only contain type string';
-    // check if value is an array
     const result = value.every(elem => typeof elem === 'string');
     return (!result && 'array can only contain type string') || (result && undefined);
   }
   return 'element is not an array';
 };
 
-// validates user registration data
+validate.validators.isString = (value) => {
+  if (typeof value === 'string') return undefined;
+  return 'can only be a string';
+};
+
 const validateSignup = obj => validator(obj, constraint.signupConstraint);
 
-// validates user data during user profile update
 const validateProfileUpdate = obj => validator(obj, constraint.profileUpdateConstraint);
 
-// validates create recipe data
 const validateRecipes = obj => validator(obj, constraint.createRecipeConstraint);
 
 const validateId = obj => validator(obj, constraint.idConstraint);
 
-// validates user login data
 const validateLogin = obj => validator(obj, constraint.loginWithUsernameConstraint);
 
 const validateReview = obj => validator(obj, constraint.reviewConstraint);

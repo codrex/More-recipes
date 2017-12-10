@@ -1,21 +1,26 @@
 import ActionDispatcher from './actionDispatcher';
+import { validateRecipe } from '../utils/validator/validator';
 import {
   NEW_RECIPE,
   MODIFIED_RECIPE,
   UPDATE_DIRECTIONS,
-  UPDATE_NAME_CATEGORY,
+  UPDATE_RECIPE_NAME,
+  UPDATE_CATEGORY,
   UPDATE_INGREDIENTS,
   UPDATE_ALL_RECIPE_FIELD,
   GET_ALL_RECIPES,
   AFTER_REVIEW,
-  GET_RECIPE,
+  GOT_RECIPE,
   GET_TOP_RECIPES,
   AFTER_VOTE,
   TOGGLE_FAV,
   RECIPE_TO_MODIFY,
   DELETE_RECIPE,
-  CREATE_NEW_RECIPE,
-  FIND_RECIPES
+  ABOUT_TO_CREATE_RECIPE,
+  FIND_RECIPES,
+  RECIPE_VALIDATION_ERROR,
+  CLEAR_VALIDATION_ERROR,
+  UPDATE_RECIPE_IMAGE
 } from './actions';
 
 export const newRecipe = payload => ({
@@ -27,8 +32,8 @@ export const modifiedRecipe = payload => ({
 export const recipeToModify = recipe => ({
   type: RECIPE_TO_MODIFY, recipe
 });
-export const createNewRecipe = () => ({
-  type: CREATE_NEW_RECIPE
+export const aboutToCreateRecipe = () => ({
+  type: ABOUT_TO_CREATE_RECIPE
 });
 export const gotTopRecipes = payload => ({
   type: GET_TOP_RECIPES, payload
@@ -49,7 +54,7 @@ export const gotAllRecipes = payload => ({
   type: GET_ALL_RECIPES, payload
 });
 export const gotRecipe = payload => ({
-  type: GET_RECIPE, payload
+  type: GOT_RECIPE, payload
 });
 export const gotFindRecipe = payload => ({
   type: FIND_RECIPES, payload
@@ -58,21 +63,52 @@ export const updateIngredients = ingredient => ({
   type: UPDATE_INGREDIENTS,
   ingredient
 });
+export const updateImage = image => ({
+  type: UPDATE_RECIPE_IMAGE,
+  image
+});
 export const updateDirections = direction => ({
   type: UPDATE_DIRECTIONS,
   direction
 });
-export const updateNameCategory = nameAndCategory => ({
-  type: UPDATE_NAME_CATEGORY,
-  nameAndCategory
+export const updateCategory = category => ({
+  type: UPDATE_CATEGORY,
+  category
+});
+export const updateName = name => ({
+  type: UPDATE_RECIPE_NAME,
+  name
 });
 export const updateAllRecipeField = all => ({
   type: UPDATE_ALL_RECIPE_FIELD,
   all
 });
 
+export const recipeValidationError = error => ({
+  type: RECIPE_VALIDATION_ERROR,
+  error
+});
+
+export const clearValidationError = error => ({
+  type: CLEAR_VALIDATION_ERROR,
+  error
+});
+
+
+const dispatchValidatioError = (recipe, dispatch) => {
+  const error = validateRecipe(recipe);
+  const hasError = error.category || error.directions || error.ingredients || error.name;
+  if (hasError) {
+    return dispatch(recipeValidationError(error));
+  }
+  return undefined;
+};
 // thunks
 export const createRecipe = (recipe, msg) => (dispatch) => {
+  if (dispatchValidatioError(recipe, dispatch)) {
+    return;
+  }
+
   const dispatcher = new ActionDispatcher(dispatch);
   return dispatcher.requestAndDispatch(
     '/api/v1/recipes',
@@ -84,6 +120,10 @@ export const createRecipe = (recipe, msg) => (dispatch) => {
 };
 
 export const modifyRecipe = (recipe, msg) => (dispatch) => {
+  if (dispatchValidatioError(recipe, dispatch)) {
+    return;
+  }
+
   const dispatcher = new ActionDispatcher(dispatch);
   return dispatcher.requestAndDispatch(
     `/api/v1/recipes/${recipe.id}`,

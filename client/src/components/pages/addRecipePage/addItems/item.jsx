@@ -6,17 +6,22 @@ import Button from '../../../common/button/button';
 import Icon from '../../../common/icon/icon';
 import { ListItem } from '../../../common/list/list';
 import { item } from '../../../../utils/validator/validator';
-import { Accordion, AccordionHeader,
-       AccordionBody } from '../../../common/accordion/accordion';
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionBody
+} from '../../../common/accordion/accordion';
 
 const ListItemIcons = (props) => (
   <div className="d-flex">
     <Icon
+      id="editIcon"
       iconClass="fa fa-pencil"
       className="items-list-item-icon icon"
       handleClick={props.editIconClicked}
     />
     <Icon
+      id="deleteIcon"
       iconClass="fa fa-trash"
       className="items-list-item-icon icon"
       handleClick={props.deleteIconClicked}
@@ -24,18 +29,18 @@ const ListItemIcons = (props) => (
   </div>
 );
 ListItemIcons.propTypes = {
-  editIconClicked: PropTypes.func,
   deleteIconClicked: PropTypes.func,
+  editIconClicked: PropTypes.func,
 };
 
 /**
- *  IngredientListItem component
+ *  Item component
  */
 class Item extends React.Component {
-/**
- *
- * @param {Object} props
- */
+  /**
+   *
+   * @param {Object} props
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -43,55 +48,47 @@ class Item extends React.Component {
       itemValue: props.content,
       ValidationErrors: []
     };
-    this.changeEditMode = this.changeEditMode.bind(this);
-    this.updateValue = this.updateValue.bind(this);
-    this.validateItem = this.validateItem.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.saveItemAfterEditing = this.saveItemAfterEditing.bind(this);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props === nextProps && this.state === nextState) {
-      return false;
-    }
-    return true;
-  }
   /**
    * @return {undefined}
    */
-  changeEditMode() {
+  changeEditMode = () => {
     this.setState({
       editMode: !this.state.editMode
     });
   }
+
   /**
    * @param {Object} value
    * @return {undefined}
    */
-  updateValue(value) {
+  updateValue = (value) => {
     this.props.editItem(value, this.props.index);
   }
+
   /**
    * @return {undefined}
    * @param {string} value
    */
-  validateItem(value) {
+  validateItem = (value) =>  {
     return item(value, this.props.name);
   }
+
   /**
    * @return {undefined}
-   * @param {object} e
+   * @param {object} event
    */
-  handleChange(e) {
+  handleChange = (event) => {
     this.setState({
-      itemValue: e.target.value
+      itemValue: event.target.value
     });
   }
+
   /**
    * @return {undefined}
-   * @param {object} e
    */
-  saveItemAfterEditing() {
+  saveItemAfterEditing = () => {
     const { itemValue } = this.state;
     if (itemValue === this.props.content) {
       this.changeEditMode();
@@ -110,97 +107,125 @@ class Item extends React.Component {
   }
 
   /**
-   * @return {Object} Item
+   * @return {React} Ingredients List
+   */
+  renderIngredient = () => {
+    const { content, ingredients } = this.props;
+    if (ingredients) {
+      return (
+        <ListItem className="items-list-item" content={content} >
+          <ListItemIcons
+            editIconClicked={this.changeEditMode}
+            deleteIconClicked={() => this.props.delete(this.props.index)}
+          />
+        </ListItem>
+      );
+    } return null;
+  }
+
+  /**
+   * @return {React} Directions List
+   */
+  renderDirection = () => {
+    const { content, directions, index, name } = this.props;
+    if (directions) {
+      return (
+        <Accordion
+          index={index}
+          id={name}
+          className="flex-column items-list-item"
+        >
+          <AccordionHeader
+            index={index}
+            id={name}
+            title={`Step ${index + 1}: ${content}`}
+            className="d-flex justify-content-between w-100"
+          >
+            <ListItemIcons
+              editIconClicked={this.changeEditMode}
+              deleteIconClicked={() => this.props.delete(index)}
+            />
+          </AccordionHeader>
+          <AccordionBody
+            id={name}
+            index={index}
+          >
+            <p>{content}</p>
+          </AccordionBody>
+        </Accordion>
+      );
+    } return null;
+  }
+
+  /**
+   * @return {React} Editing form
+   */
+  renderEditForm = () => {
+    const { directions, name, Component } = this.props;
+    const { editMode, ValidationErrors } = this.state;
+    if (editMode) {
+      return (
+        <Form
+          className={classnames('d-flex item-edit-form',
+        directions && 'd-flex item-edit-form-textarea')}
+        >
+          <Component
+            value={this.state.itemValue}
+            className={classnames(' item-edit-input', directions && 'item-edit-textarea')}
+            fgClassName={classnames(' item-edit-fg', directions && 'd-flex flex-column-reverse')}
+            handleChange={this.handleChange}
+            error={ValidationErrors}
+            id={name}
+            name={name}
+          />
+          <div className="d-flex">
+            <Button
+              id="saveBtn"
+              className=" btn-secondary text-white item-edit-btn"
+              text="Save"
+              handleClick={this.saveItemAfterEditing}
+            />
+            <Button
+              id="closeBtn"
+              className="btn-primary item-edit-btn"
+              handleClick={this.changeEditMode}
+              text="close"
+            />
+          </div>
+        </Form>
+      );
+    } return null;
+  }
+
+  /**
+   * @return {React} Item
    */
   render() {
-    const { Component, content } = this.props;
     return (
       <div className="d-flex flex-column ">
-        {
-          this.props.ingredients &&
-            <ListItem className="items-list-item lead" content={content}>
-              <ListItemIcons
-                editIconClicked={this.changeEditMode}
-                deleteIconClicked={() => this.props.delete(this.props.index)}
-              />
-            </ListItem>
-        }
-        {
-          this.props.directions &&
-            <Accordion
-              index={this.props.index}
-              id={this.props.name}
-              className="flex-column items-list-item"
-            >
-              <AccordionHeader
-                index={this.props.index}
-                id={this.props.name}
-                title={`Step ${this.props.index + 1}: ${content}`}
-                className="d-flex no-margin justify-content-between w-100"
-              >
-                <ListItemIcons
-                  editIconClicked={this.changeEditMode}
-                  deleteIconClicked={() => this.props.delete(this.props.index)}
-                />
-              </AccordionHeader>
-              <AccordionBody
-                id={this.props.name}
-                index={this.props.index}
-              >
-                <p>{content}</p>
-              </AccordionBody>
-            </Accordion>
-        }
-        {
-          this.state.editMode &&
-            <Form
-              className={classnames('d-flex item-edit-form',
-              this.props.directions && 'd-flex item-edit-form-textarea')}
-            >
-              <Component
-                value={this.state.itemValue}
-                className={classnames(' item-edit-input',
-                  this.props.directions && 'item-edit-textarea')}
-                fgClassName={classnames(' item-edit-fg',
-                  this.props.directions && 'd-flex flex-column-reverse'
-                )}
-                handleChange={this.handleChange}
-                error={this.state.ValidationErrors}
-                id={this.props.name}
-                name={this.props.name}
-              />
-              <div className="d-flex">
-                <Button
-                  className=" btn-secondary text-white item-edit-btn"
-                  text="Save"
-                  handleClick={this.saveItemAfterEditing}
-                />
-                <Button
-                  className="btn-primary item-edit-btn"
-                  handleClick={this.changeEditMode}
-                  text="close"
-                />
-              </div>
-            </Form>
-        }
+        {this.renderIngredient()}
+        {this.renderDirection()}
+        {this.renderEditForm()}
       </div>
     );
   }
 }
 
+Item.defaultProps = {
+  ingredients: false,
+  directions: false,
+};
+
 Item.propTypes = {
-  content: PropTypes.string,
+  content: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  edit: PropTypes.func,
-  delete: PropTypes.func,
-  index: PropTypes.number,
-  handleSubmit: PropTypes.func,
-  editItem: PropTypes.func,
-  input: PropTypes.object,
-  Component: PropTypes.func,
+  index: PropTypes.number.isRequired,
+  editItem: PropTypes.func.isRequired,
+  Component: PropTypes.func.isRequired,
   ingredients: PropTypes.bool,
   directions: PropTypes.bool,
-
+  delete: PropTypes.func.isRequired
 };
+
 export default Item;
