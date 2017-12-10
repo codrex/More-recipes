@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const Button = (props) => (
+const Button = props => (
   <button
     type={props.type || 'button'}
-    className={classnames('btn text-capitalize', props.className)}
+    className={classnames('btn', props.className)}
     data-dismiss="modal"
     data-toggle={props.dataToggle}
     data-target={props.dataTarget}
@@ -23,8 +23,16 @@ Button.propTypes = {
   dataToggle: PropTypes.string,
   dataTarget: PropTypes.string,
   handleClick: PropTypes.func,
-  children: PropTypes.element,
-
+  children: PropTypes.node,
+};
+Button.defaultProps = {
+  type: 'button',
+  text: '',
+  className: '',
+  dataToggle: '',
+  dataTarget: '',
+  handleClick: () => {},
+  children: null,
 };
 
 export default Button;

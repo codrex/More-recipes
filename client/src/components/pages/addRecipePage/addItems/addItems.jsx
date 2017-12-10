@@ -5,13 +5,15 @@ import Form from '../../../common/form/form';
 import ItemsList from './itemsList';
 import Input from '../../../common/form/input';
 import Textarea from '../../../common/form/textarea';
+import Button from '../../../common/button/button';
 import Icon from '../../../common/icon/icon';
 import { item } from '../../../../utils/validator/validator';
+import { RECIPE_ADDED } from '../../../../constants/constants';
 
 /**
  * React component to add recipe Items
  */
-class AddItems extends React.PureComponent {
+class AddItems extends React.Component {
   /**
    *
    * @param {object} props
@@ -20,38 +22,36 @@ class AddItems extends React.PureComponent {
     super(props);
     this.state = {
       items: props.items || [],
-      addItem: false,
+      showInput: true,
+      validationError: props.externalError
     };
-    this.addItem = this.addItem.bind(this);
-    this.editItems = this.editItems.bind(this);
-    this.deleteFromList = this.deleteFromList.bind(this);
-    this.newItem = this.newItem.bind(this);
-    this.validateItem = this.validateItem.bind(this);
   }
-  /**
+
+/**
    *
    * @param {Object} nextProps
-   * @return {bool} true and false
+   * @return {boolean} boolean value
    */
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps = (nextProps) => {
+    if (this.state.validationError !== nextProps.externalError) {
+      this.setState({
+        validationError: nextProps.externalError
+      });
+    }
     this.setState({
       items: nextProps.items
     });
-    return true;
   }
+
   /**
-   *
-   * @param {object} nextState
-   * @return {undefined}
+   * @param {object} nextProps
+   * @return {boolean} boolean value
    */
-  /**
-   *
-   * @return {undfined} undefined
-   */
-  newItem() {
-    this.setState({
-      addItem: !this.state.addItem,
-    });
+  shouldComponentUpdate = (nextProps) => {
+    if (nextProps.message === RECIPE_ADDED) {
+      return false;
+    }
+    return true;
   }
 
   /**
@@ -59,7 +59,7 @@ class AddItems extends React.PureComponent {
    * @param {String} value
    * @return {undfined} undefined
    */
-  addItem(value) {
+  addItem = (value) => {
     const { directions, ingredients } = this.props;
     const { items } = this.state;
     const itemsUpdate = (ingredients && [value[this.props.name]].concat(items)) ||
@@ -67,12 +67,13 @@ class AddItems extends React.PureComponent {
     this.props.sendItemsToStore(itemsUpdate);
     this.props.initialize();
   }
+
   /**
    *
    * @param {number} index
    * @return {undfined} undefined
    */
-  deleteFromList(index) {
+  deleteFromList = (index) => {
     const items = [].concat(this.state.items);
     items.splice(index, 1);
     this.props.sendItemsToStore(items);
@@ -83,7 +84,7 @@ class AddItems extends React.PureComponent {
    * @param {number} index
    * @return {undfined} undefined
    */
-  editItems(value, index) {
+  editItems = (value, index) => {
     const items = [].concat(this.state.items);
     items[index] = value;
     this.props.sendItemsToStore(items);
@@ -93,62 +94,103 @@ class AddItems extends React.PureComponent {
    * @return {undefined}
    * @param {string} value
    */
-  validateItem(value) {
-    return item(value, this.props.name);
+  validateItem = (value) => {
+    const { name } = this.props;
+    if (this.state.items.includes(value)) {
+      return [`${name} is already on the list`];
+    }
+    return item(value, name);
   }
 
+  /**
+   * @return {React} Form jsx
+   */
+  renderForm = () => {
+    const {
+      handleSubmit,
+      name,
+      placeholder,
+      ingredients,
+      directions,
+      clearValidationError
+    } = this.props;
+    const Component = ingredients && Input || (directions && Textarea);
+    if (this.state.showInput) {
+      return (
+        <Form
+        onSubmit={handleSubmit(this.addItem)}
+        submitBtnText={`add ${name}`}
+        secondary
+        lg={false}
+        >
+          <Field
+            component={Component}
+            name={name}
+            type="text"
+            id={name}
+            placeholder={placeholder}
+            fgClassName="d-flex flex-column no-margin"
+            className="no-margin add-item-input"
+            validate={this.validateItem}
+            onFocus={() => clearValidationError({
+              [`${name}s`]: ''
+            })}
+            externalError={{
+              touched: true,
+              error: this.state.validationError
+            }}
+          />
+        </Form>
+      );
+    } return null
+  }
 
   /**
-   * @return {function} AddItem jsx
+   * @return {React} List jsx
    */
-  render() {
-    const { handleSubmit } = this.props;
-    const Component = this.props.ingredients && Input || (this.props.directions && Textarea);
+  renderList = () => {
+    const {
+      name,
+      Component,
+      ingredients,
+      directions
+    } = this.props;
     return (
-      <div className="col-xs-12 col-sm-12 col-11 items ">
+      <ItemsList
+      items={this.state.items}
+      deleteItem={this.deleteFromList}
+      editItem={this.editItems}
+      componentType={name}
+      Component={Component}
+      name={name}
+      directions={directions}
+      ingredients={ingredients}
+    />
+    );
+  }
+
+  /**
+   * @return {React} AddItem jsx
+   */
+  render = () => {
+    const {
+      handleSubmit,
+      name,
+    } = this.props;
+    const {
+      items,
+      showInput
+    } = this.state;
+    return (
+      <div className="col-12 items ">
         <div className="items-header">
-          <h4 className="lead items-header-text">
-            {`${this.props.name}s ${' '}${this.state.items.length}`}
-            <Icon
-              iconClass={!this.state.addItem && 'fa fa-plus' ||
-              this.state.addItem && 'fa fa-remove'}
-              className="float-right"
-              handleClick={this.newItem}
-            />
+          <h4 className="items-header-text">
+            {`${name}s ${' '}${items.length}`}
           </h4>
-
-         {this.state.addItem &&
-           <Form
-             onSubmit={handleSubmit(this.addItem)}
-             submitBtnText="add to list"
-             primaryInverse
-             lg={false}
-           >
-             <Field
-               component={Component}
-               name={this.props.name}
-               type="text"
-               id={this.props.name}
-               placeholder={this.props.placeholder}
-               fgClassName="d-flex flex-column-reverse"
-               className="no-margin add-item-input"
-               validate={this.validateItem}
-             />
-           </Form>
-        }
-
+         {this.renderForm()}
         </div>
         <div className="col-12 items-list-wrapper">
-          {<ItemsList
-            items={this.state.items}
-            deleteItem={this.deleteFromList}
-            editItem={this.editItems}
-            componentType={this.props.name}
-            Component={Component}
-            name={this.props.name}
-            directions={this.props.directions}
-            ingredients={this.props.ingredients}
-          />}
+          {this.renderList()}
         </div>
       </div>
     );
@@ -160,12 +202,16 @@ AddItems.defaultProps = {
 };
 
 AddItems.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  ingredients: PropTypes.bool,
+  clearValidationError: PropTypes.func.isRequired,
   directions: PropTypes.bool,
-  initialize: PropTypes.func.isRequired
+  externalError: PropTypes.any,
+  handleSubmit: PropTypes.func.isRequired,
+  ingredients: PropTypes.bool,
+  initialize: PropTypes.func.isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  sendItemsToStore: PropTypes.func.isRequired,
 };
 
 export default AddItems;

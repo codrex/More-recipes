@@ -10,6 +10,15 @@
   font-family: fantasy;
   color: $text-color;
 }
+.modify-recipe-wrapper{
+  margin-top: 50px;
+  display: flex;
+  justify-content: flex-end;
+
+  & .btn {
+    color: $secondary-color;
+  }
+}
 
 .ingredients-wrapper,
 .directions-wrapper,

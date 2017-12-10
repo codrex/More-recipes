@@ -6,5 +6,5 @@ export const getPageCount = (length, OFFSET) => {
 };
 
 export const getCurrentPage = (items, currentPos, OFFSET) =>
-items.slice((currentPos * OFFSET) - OFFSET, currentPos * OFFSET);
+  items.slice((currentPos * OFFSET) - OFFSET, currentPos * OFFSET);
 

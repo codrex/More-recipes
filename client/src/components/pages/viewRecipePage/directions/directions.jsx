@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Accordion, AccordionHeader,
-  AccordionBody } from '../../../common/accordion/accordion';
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionBody
+} from '../../../common/accordion/accordion';
 import Icon from '../../../common/icon/icon';
 
-const Direction = (props) => (
+const Direction = props => (
   <Accordion
     index={props.index}
     id={`Step ${props.index}`}
@@ -35,8 +38,8 @@ const Direction = (props) => (
 );
 
 Direction.propTypes = {
-  index: PropTypes.number,
-  content: PropTypes.string
+  index: PropTypes.number.isRequired,
+  content: PropTypes.string.isRequired
 };
 
 const Directions = (props) => {
@@ -55,6 +58,6 @@ const Directions = (props) => {
 };
 
 Directions.propTypes = {
-  directions: PropTypes.array,
+  directions: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 export default Directions;

@@ -35,29 +35,27 @@ export const VoteHandler = (req, res, next) => {
         RecipeId: req.params.id,
       }
     }).then((vote) => {
-      voteData.voterId = req.requestId;
-      voteData.RecipeId = req.params.id;
-      if (!vote) {
-        Votes.create(voteData)
-          .then(() => {
-            next();
-          });
-      } else {
-        if (up === true) {
-          updateVote(vote, voteData, next);
-        } else if (down === true) {
-          updateVote(vote, voteData, next);
-        } else {
-          vote.destroy({
-            force: true
-          }).then(() => {
-            next();
-          });
-        }
-      }
-    }).catch(() => {
-      serverError(res);
-    });
+    voteData.voterId = req.requestId;
+    voteData.RecipeId = req.params.id;
+    if (!vote) {
+      Votes.create(voteData)
+        .then(() => {
+          next();
+        });
+    } else if (up === true) {
+      updateVote(vote, voteData, next);
+    } else if (down === true) {
+      updateVote(vote, voteData, next);
+    } else {
+      vote.destroy({
+        force: true
+      }).then(() => {
+        next();
+      });
+    }
+  }).catch(() => {
+    serverError(res);
+  });
 };
 export const countVote = (req, res, next) => {
   Votes.count({
@@ -66,19 +64,19 @@ export const countVote = (req, res, next) => {
       RecipeId: req.params.id
     }
   })
-  .then((upvote) => {
-    req.body.upVotes = upvote;
-    Votes.count({
-      where: {
-        downVote: true,
-        RecipeId: req.params.id
-      }
-    })
-    .then((downvote) => {
-      req.body.downVotes = downvote;
-      next();
+    .then((upvote) => {
+      req.body.upVotes = upvote;
+      Votes.count({
+        where: {
+          downVote: true,
+          RecipeId: req.params.id
+        }
+      })
+        .then((downvote) => {
+          req.body.downVotes = downvote;
+          next();
+        });
+    }).catch(() => {
+      serverError(res);
     });
-  }).catch(() => {
-    serverError(res);
-  });
 };

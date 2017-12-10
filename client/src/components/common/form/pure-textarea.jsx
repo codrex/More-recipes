@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-const PureTextarea = props => {
+const PureTextarea = (props) => {
   const {
-        helpTextClassName,
-        fgClassName,
-        className,
-        error
+    helpTextClassName,
+    fgClassName,
+    className,
+    error
   } = props;
   const valid = !error && 'valid';
   const invalid = error && 'invalid';
@@ -21,10 +21,11 @@ const PureTextarea = props => {
         {...props.input}
         value={props.value}
         onChange={props.handleChange}
+        rows="2"
       />
       {
         error &&
-        error.map((err) => (
+        error.map(err => (
           <div
             key={`${err}key`}
             className={classnames(error ? 'help-text' : '', helpTextClassName)}
@@ -54,7 +55,7 @@ PureTextarea.propTypes = {
   className: PropTypes.string,
   fgClassName: PropTypes.string,
   helpTextClassName: PropTypes.string,
-  input: PropTypes.node,
+  input: PropTypes.objectOf(PropTypes.shape),
   error: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   handleChange: PropTypes.func.isRequired

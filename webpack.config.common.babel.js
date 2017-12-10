@@ -2,10 +2,20 @@ import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import webpack from 'webpack';
+import Dotenv from 'dotenv-webpack';
 
 module.exports = {
+
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      fs: 'browserfs/dist/shims/fs.js',
+      buffer: 'browserfs/dist/shims/buffer.js',
+      path: 'browserfs/dist/shims/path.js',
+      processGlobal: 'browserfs/dist/shims/process.js',
+      bufferGlobal: 'browserfs/dist/shims/bufferGlobal.js',
+      bfsGlobal: require.resolve('browserfs')
+    }
   },
   entry: {
     app: [
@@ -20,7 +30,9 @@ module.exports = {
   node: {
     net: 'empty',
     tls: 'empty',
-    dns: 'empty'
+    dns: 'empty',
+    process: false,
+    Buffer: false
   },
   stats: {
     colors: true,
@@ -74,5 +86,15 @@ module.exports = {
       template: './client/src/index.html',
     }),
     new CleanWebpackPlugin(['dist']),
+    new Dotenv(
+      {
+        path: './.env',
+      }
+    ),
+    new webpack.ProvidePlugin({
+      BrowserFS: 'bfsGlobal',
+      process: 'processGlobal',
+      Buffer: 'bufferGlobal'
+    })
   ],
 };

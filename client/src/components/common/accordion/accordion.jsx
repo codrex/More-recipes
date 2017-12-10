@@ -3,22 +3,27 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { ListItem } from '../list/list';
 
-export const Accordion = (props) => (
+export const Accordion = props => (
   <ListItem className={classnames(props.className, 'accordion')}>
     {props.children}
   </ListItem>
 );
 
 Accordion.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
   className: PropTypes.string
 };
+Accordion.defaultProps = {
+  className: ''
+};
 
-export const AccordionHeader = (props) => (
+export const AccordionHeader = props => (
   <div
-    className={classnames(props.className)} role="tab" id={`accordion${props.index}`}
+    className={classnames(props.className)}
+    role="tab"
+    id={`accordion${props.index}`}
   >
-    <h5 className="mb-0 lead flex-auto ellipsis">
+    <h4 className="mb-0 lead flex-auto ellipsis" style={{ margin: '.2rem' }}>
       <a
         className="collapsed collapse-trigger a"
         data-toggle="collapse"
@@ -28,7 +33,7 @@ export const AccordionHeader = (props) => (
       >
         {props.title}
       </a>
-    </h5>
+    </h4>
     {props.children}
   </div>
 );
@@ -37,14 +42,21 @@ AccordionHeader.propTypes = {
   id: PropTypes.string,
   title: PropTypes.string,
   index: PropTypes.number,
-  children: PropTypes.any,
+  children: PropTypes.node,
   className: PropTypes.string
 };
+AccordionHeader.defaultProps = {
+  id: 0,
+  title: '',
+  index: 0,
+  children: null,
+  className: ''
+};
 
-export const AccordionBody = (props) => (
+export const AccordionBody = props => (
   <div
     id={`item${props.index}`}
-    className="collapse"
+    className="collapse w-100"
     role="tabpanel"
     data-parent={`#${props.id}`}
   >
@@ -56,7 +68,13 @@ export const AccordionBody = (props) => (
 
 AccordionBody.propTypes = {
   id: PropTypes.string,
-  children: PropTypes.any,
+  children: PropTypes.node,
   index: PropTypes.number,
   className: PropTypes.string
+};
+AccordionBody.defaultProps = {
+  id: 0,
+  children: null,
+  index: 0,
+  className: ''
 };

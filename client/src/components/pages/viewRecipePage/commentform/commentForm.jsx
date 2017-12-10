@@ -25,7 +25,7 @@ class CommentForm extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     if (nextProps.message === 'Review posted' && nextProps.success) {
-      this.props.reset();
+      this.props.initialize();
       this.props.resetSuccess();
     }
   }
@@ -60,19 +60,22 @@ class CommentForm extends React.Component {
     );
   }
 }
+CommentForm.defaultProps = {
+  message: ''
+};
+
 CommentForm.propTypes = {
   postReview: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  submitting: PropTypes.bool,
-  id: PropTypes.number,
-  reset: PropTypes.func,
-  clearSuccessMsg: PropTypes.func,
+  submitting: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
+  initialize: PropTypes.func.isRequired,
   success: PropTypes.bool.isRequired,
   resetSuccess: PropTypes.func.isRequired,
   message: PropTypes.string,
 };
 
-const mapStateToProps = (state) => (
+const mapStateToProps = state => (
   {
     success: state.networkRequest.success,
     message: state.networkRequest.message,

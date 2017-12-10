@@ -9,9 +9,9 @@
   height: 100px;
   min-height: fit-content;
   align-items: center;
-  font-size: .8rem;
+  font-size: 1rem;
   max-height: 100px;
-  color: $text-color;
+  color: $white;
   &-top{
     display: flex;
     height: 80%;
@@ -20,7 +20,6 @@
     align-items: center;
     padding: 0 1rem;
     & .avatar{
-      margin: 0 .5em;
       text-align: center;
       user-select: none;
       order: -1;
@@ -37,23 +36,21 @@
   &-bottom{
     background: #311b02;
     width: 100%;
-    height: 30px;
+    height: 50px;
     min-height: fit-content;
-    padding-left: 5%;
+    padding: 0 1%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    & .nav-link{
+    & .nav-link, & .logout{
       padding: 0.5rem 0.5rem;
       color: darken(#fff, 20%);
       text-transform: uppercase;
       transition: color .3s ease;
+      font-size: 1rem;
       &:hover{
         color: #fff;
       }
-    }
-    & .logout{
-      padding-right: 1rem;
     }
   }
 }

@@ -1,7 +1,616 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Item component  render as expected 1`] = `
-<div
-  className="d-flex flex-column "
-/>
+exports[`Item component  expected to match empty snapshot 1`] = `
+<Item
+  Component={[Function]}
+  content="recipe"
+  delete={[Function]}
+  directions={false}
+  editItem={[Function]}
+  handleSubmit={[Function]}
+  index={1}
+  ingredients={true}
+  name="ingredients"
+  placeholder=""
+>
+  <div
+    className="d-flex flex-column "
+  >
+    <ListItem
+      className="items-list-item"
+      content="recipe"
+      handleClick={[Function]}
+      index={0}
+    >
+      <div
+        className="lead list-item items-list-item"
+      >
+        <div
+          className="list-item-text lead"
+          data-index={0}
+          onClick={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          recipe
+        </div>
+        <ListItemIcons
+          deleteIconClicked={[Function]}
+          editIconClicked={[Function]}
+        >
+          <div
+            className="d-flex"
+          >
+            <Icon
+              active=""
+              className="items-list-item-icon icon"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-pencil"
+              id="editIcon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={false}
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-pencil items-list-item-icon icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+            <Icon
+              active=""
+              className="items-list-item-icon icon"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-trash"
+              id="deleteIcon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={false}
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-trash items-list-item-icon icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </ListItemIcons>
+      </div>
+    </ListItem>
+  </div>
+</Item>
+`;
+
+exports[`Item component  expected to match snapshot when close button is clicked 1`] = `
+<Item
+  Component={[Function]}
+  content="recipe"
+  delete={[Function]}
+  directions={false}
+  editItem={[Function]}
+  handleSubmit={[Function]}
+  index={1}
+  ingredients={true}
+  name="ingredients"
+  placeholder=""
+>
+  <div
+    className="d-flex flex-column "
+  >
+    <ListItem
+      className="items-list-item"
+      content="recipe"
+      handleClick={[Function]}
+      index={0}
+    >
+      <div
+        className="lead list-item items-list-item"
+      >
+        <div
+          className="list-item-text lead"
+          data-index={0}
+          onClick={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          recipe
+        </div>
+        <ListItemIcons
+          deleteIconClicked={[Function]}
+          editIconClicked={[Function]}
+        >
+          <div
+            className="d-flex"
+          >
+            <Icon
+              active=""
+              className="items-list-item-icon icon"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-pencil"
+              id="editIcon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={false}
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-pencil items-list-item-icon icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+            <Icon
+              active=""
+              className="items-list-item-icon icon"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-trash"
+              id="deleteIcon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={false}
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-trash items-list-item-icon icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </ListItemIcons>
+      </div>
+    </ListItem>
+  </div>
+</Item>
+`;
+
+exports[`Item component  expected to match snapshot when edit icon is clicked 1`] = `
+<Item
+  Component={[Function]}
+  content="recipe"
+  delete={[Function]}
+  directions={false}
+  editItem={[Function]}
+  handleSubmit={[Function]}
+  index={1}
+  ingredients={true}
+  name="ingredients"
+  placeholder=""
+>
+  <div
+    className="d-flex flex-column "
+  >
+    <ListItem
+      className="items-list-item"
+      content="recipe"
+      handleClick={[Function]}
+      index={0}
+    >
+      <div
+        className="lead list-item items-list-item"
+      >
+        <div
+          className="list-item-text lead"
+          data-index={0}
+          onClick={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          recipe
+        </div>
+        <ListItemIcons
+          deleteIconClicked={[Function]}
+          editIconClicked={[Function]}
+        >
+          <div
+            className="d-flex"
+          >
+            <Icon
+              active=""
+              className="items-list-item-icon icon"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-pencil"
+              id="editIcon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={false}
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-pencil items-list-item-icon icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+            <Icon
+              active=""
+              className="items-list-item-icon icon"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-trash"
+              id="deleteIcon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={false}
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-trash items-list-item-icon icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </ListItemIcons>
+      </div>
+    </ListItem>
+    <Form
+      action=""
+      className="d-flex item-edit-form"
+      disabled={false}
+      lg={true}
+      method=""
+      onSubmit={[Function]}
+      primary={false}
+      primaryInverse={false}
+      secondary={false}
+      secondaryInverse={false}
+      submitBtnText=""
+    >
+      <form
+        action=""
+        className="col-12 d-flex item-edit-form"
+        method=""
+        onSubmit={[Function]}
+      >
+        <PureInput
+          className=" item-edit-input"
+          error={Array []}
+          fgClassName=" item-edit-fg"
+          handleChange={[Function]}
+          id="ingredients"
+          input={Object {}}
+          name="ingredients"
+          placeholder=""
+          value="recipe"
+        >
+          <div
+            className="form-group  item-edit-fg"
+          >
+            <input
+              aria-describedby="ingredients"
+              className="form-control text-input  item-edit-input invalid"
+              id="ingredients"
+              onChange={[Function]}
+              placeholder=""
+              type="text"
+              value="recipe"
+            />
+          </div>
+        </PureInput>
+        <div
+          className="d-flex"
+        >
+          <Button
+            className=" btn-secondary text-white item-edit-btn"
+            dataTarget=""
+            dataToggle=""
+            handleClick={[Function]}
+            id="saveBtn"
+            text="Save"
+            type="button"
+          >
+            <button
+              className="btn  btn-secondary text-white item-edit-btn"
+              data-dismiss="modal"
+              data-target=""
+              data-toggle=""
+              onClick={[Function]}
+              type="button"
+            >
+              Save
+            </button>
+          </Button>
+          <Button
+            className="btn-primary item-edit-btn"
+            dataTarget=""
+            dataToggle=""
+            handleClick={[Function]}
+            id="closeBtn"
+            text="close"
+            type="button"
+          >
+            <button
+              className="btn btn-primary item-edit-btn"
+              data-dismiss="modal"
+              data-target=""
+              data-toggle=""
+              onClick={[Function]}
+              type="button"
+            >
+              close
+            </button>
+          </Button>
+        </div>
+      </form>
+    </Form>
+  </div>
+</Item>
+`;
+
+exports[`Item component  expected to match snapshot when edit icon is clicked 2`] = `
+<Item
+  Component={[Function]}
+  content="recipe"
+  delete={[Function]}
+  directions={false}
+  editItem={[Function]}
+  handleSubmit={[Function]}
+  index={1}
+  ingredients={true}
+  name="ingredients"
+  placeholder=""
+>
+  <div
+    className="d-flex flex-column "
+  >
+    <ListItem
+      className="items-list-item"
+      content="recipe"
+      handleClick={[Function]}
+      index={0}
+    >
+      <div
+        className="lead list-item items-list-item"
+      >
+        <div
+          className="list-item-text lead"
+          data-index={0}
+          onClick={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          recipe
+        </div>
+        <ListItemIcons
+          deleteIconClicked={[Function]}
+          editIconClicked={[Function]}
+        >
+          <div
+            className="d-flex"
+          >
+            <Icon
+              active=""
+              className="items-list-item-icon icon"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-pencil"
+              id="editIcon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={false}
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-pencil items-list-item-icon icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+            <Icon
+              active=""
+              className="items-list-item-icon icon"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-trash"
+              id="deleteIcon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={false}
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-trash items-list-item-icon icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </ListItemIcons>
+      </div>
+    </ListItem>
+  </div>
+</Item>
+`;
+
+exports[`Item component  expected to match snapshot when save after edit button is clicked 1`] = `
+<Item
+  Component={[Function]}
+  content="recipe"
+  delete={[Function]}
+  directions={false}
+  editItem={[Function]}
+  handleSubmit={[Function]}
+  index={1}
+  ingredients={true}
+  name="ingredients"
+  placeholder=""
+>
+  <div
+    className="d-flex flex-column "
+  >
+    <ListItem
+      className="items-list-item"
+      content="recipe"
+      handleClick={[Function]}
+      index={0}
+    >
+      <div
+        className="lead list-item items-list-item"
+      >
+        <div
+          className="list-item-text lead"
+          data-index={0}
+          onClick={[Function]}
+          role="button"
+          tabIndex="0"
+        >
+          recipe
+        </div>
+        <ListItemIcons
+          deleteIconClicked={[Function]}
+          editIconClicked={[Function]}
+        >
+          <div
+            className="d-flex"
+          >
+            <Icon
+              active=""
+              className="items-list-item-icon icon"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-pencil"
+              id="editIcon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={false}
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-pencil items-list-item-icon icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+            <Icon
+              active=""
+              className="items-list-item-icon icon"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-trash"
+              id="deleteIcon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={false}
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-trash items-list-item-icon icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </ListItemIcons>
+      </div>
+    </ListItem>
+  </div>
+</Item>
 `;

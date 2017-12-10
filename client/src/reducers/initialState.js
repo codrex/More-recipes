@@ -4,11 +4,18 @@ const initailState = {
   recipes: [],
   recipe: {
     id: undefined,
-    recipeName: '',
+    name: '',
     category: '',
     ingredients: [],
     directions: [],
     recipeReviews: [],
+    image: JSON.stringify({
+      publicId: '',
+      secureUrl: '',
+      signature: '',
+      thumbnailUrl: '',
+      url: '',
+    }),
     upVotes: 0,
     downVotes: 0,
   },
@@ -30,6 +37,8 @@ const initailState = {
     msg: '',
     loading: false,
     requestCount: 0,
+  },
+  recipeValidationError: {
   }
 };
 

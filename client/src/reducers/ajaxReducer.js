@@ -34,7 +34,8 @@ export const ajaxReducer = (state = initialState.networkRequest, action) => {
       return {
         ...state,
         ...{
-          success: false
+          success: false,
+          msg: ''
         }
       };
     default:

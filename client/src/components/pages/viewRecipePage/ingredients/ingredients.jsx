@@ -7,10 +7,10 @@ const Ingredients = (props) => {
   const ingredients = props.ingredients || [];
   return (
     <List>
-      {ingredients.map((item, i) =>
+      {ingredients.map((content, i) =>
         (<ListItem
-          key={i}
-          content={item}
+          key={content + Date.now()}
+          content={content}
           index={i}
         />)
       )}
@@ -19,7 +19,7 @@ const Ingredients = (props) => {
 };
 
 Ingredients.propTypes = {
-  ingredients: PropTypes.array,
+  ingredients: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 
 export default Ingredients;

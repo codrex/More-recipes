@@ -31,8 +31,8 @@ const UserInfo = (props) => {
 };
 
 UserInfo.propTypes = {
-  user: PropTypes.object,
-  editBtnClicked: PropTypes.func,
+  user: PropTypes.objectOf(PropTypes.shape).isRequired,
+  editBtnClicked: PropTypes.func.isRequired,
 };
 
 export default UserInfo;

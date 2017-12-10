@@ -45,9 +45,9 @@ let EditProfile = (props) => {
 };
 
 EditProfile.propTypes = {
-  update: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  submitting: PropTypes.bool,
+  update: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({

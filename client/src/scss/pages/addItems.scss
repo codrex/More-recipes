@@ -1,33 +1,33 @@
 
 .items {
-  height: fit-content;
+  height: inherit;
   overflow: hidden;
   padding: 0;
   margin: 0 auto;
-  @include box-shadow;
   &-header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     max-height: 35%;
     height: fit-content;
+    font-size: .7rem;
     & form {
       max-height: fit-content;
       padding: 0;
     }
   }
   &-header-text {
-    @include box-shadow;
     background-color: $bg-color;
     color: $text-color;
     padding: 1em;
-    font-size: 1rem;
-    font-weight: 600;
+    font-weight: 200;
     text-transform: uppercase;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: 1rem;
+    font-weight: bold;
   }
   &-list {
     overflow: scroll;
@@ -43,8 +43,7 @@
       padding-left: 0.5em;
       transition: background-color 0.4s ease-in;
       border-radius: 0 !important;
-      width: 95%;
-      margin: 0.25em auto;
+      width: 100%;
     }
   }
 }
@@ -62,12 +61,12 @@
 }
 .item-edit-input {
   min-height: 1.5em;
-  font-size: 1.6em;
-  height: 50px;
+  font-size: 1.2em;
+  height: 40px;
 }
 .item-edit-textarea,
 textarea {
-  height: 150px;
+  height: unset;
   border-radius: 0;
   margin-bottom: 0.5em;
 }
@@ -79,19 +78,20 @@ textarea {
 .item-edit-btn {
   align-self: flex-end;
   box-shadow: none !important;
-  font-size: 1.4em;
-  height: 50px;
+  font-size: 1em;
+  height: 40px;
 }
 .items-list-wrapper {
-  height: inherit;
+  height: 60vh;
+  overflow: scroll;
   padding: 10px 0 30px 0;
 }
 
 .add-item-input {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   border-radius: 0;
   & > .help-text {
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: 200;
     text-align: center;
     background: rgba(213, 56, 50, 0.06);

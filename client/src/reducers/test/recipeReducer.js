@@ -4,7 +4,8 @@ import initialState from '../initialState';
 import {
   UPDATE_DIRECTIONS,
   UPDATE_INGREDIENTS,
-  UPDATE_NAME_CATEGORY,
+  UPDATE_RECIPE_NAME,
+  UPDATE_CATEGORY,
   UPDATE_ALL_RECIPE_FIELD,
   GET_ALL_RECIPES,
   GET_TOP_RECIPES,
@@ -13,17 +14,19 @@ import {
   AFTER_VOTE,
   RECIPE_TO_MODIFY,
   NEW_RECIPE,
-  FIND_RECIPES
+  FIND_RECIPES,
+  UPDATE_RECIPE_IMAGE
 } from '../../actions/actions';
 
 let state = {};
 const recipePayload = {
   recipe: {
     id: undefined,
-    recipeName: '',
+    name: '',
     category: '',
     ingredients: [],
     directions: [],
+    image: '',
     recipeReviews: [{}],
     downVotes: 0,
     upVotes: 0,
@@ -50,7 +53,7 @@ describe('Testing recipe reducers', () => {
       type: AFTER_REVIEW
     };
     const recipe = recipeReducer(state, action);
-    expect(recipe).eql({ ...state, ...{recipeReviews: [{}]} });
+    expect(recipe).eql({ ...state, ...{ recipeReviews: [{}] } });
     expect(recipe).to.not.equal(state);
   });
   it('should return a newState for action type AFTER_VOTE', () => {
@@ -79,10 +82,13 @@ describe('Testing recipe reducers', () => {
   });
   it('should return a newState for action type NEW_RECIPE', () => {
     const action = {
-      type: NEW_RECIPE
+      type: NEW_RECIPE,
+      payload: {
+        recipe: { ...recipePayload.recipe }
+      }
     };
     const recipe = recipeReducer(state, action);
-    expect(recipe).eql(state);
+    expect(recipe).eql(recipePayload.recipe);
     expect(recipe).to.not.equal(state);
   });
   it('should return a newState for action type UPDATE_ALL_RECIPE_FIELD', () => {
@@ -99,16 +105,31 @@ describe('Testing recipe reducers', () => {
     expect(recipe).eql({ ...{ ...state, ...action.all } });
     expect(recipe).to.not.equal(state);
   });
-  it('should return a newState for action type UPDATE_NAME_CATEGORY', () => {
+  it('should return a newState for action type UPDATE_RECIPE_NAME', () => {
     const action = {
-      type: UPDATE_NAME_CATEGORY,
-      nameAndCat: {
-        recipeName: '',
-        category: '',
-      }
+      type: UPDATE_RECIPE_NAME,
+      name: 'name'
     };
     const recipe = recipeReducer(state, action);
-    expect(recipe).eql({ ...{ ...state, ...action.nameAndCat } });
+    expect(recipe).eql({ ...state, name:action.name } );
+    expect(recipe).to.not.equal(state);
+  });
+  it('should return a newState for action type UPDATE_RECIPE_IMAGE', () => {
+    const action = {
+      type: UPDATE_RECIPE_IMAGE,
+      image: 'image'
+    };
+    const recipe = recipeReducer(state, action);
+    expect(recipe).eql({ ...state, image:action.image } );
+    expect(recipe).to.not.equal(state);
+  });
+  it('should return a newState for action type UPDATE_NAME_CATEGORY', () => {
+    const action = {
+      type: UPDATE_CATEGORY,
+      category: 'category'
+    };
+    const recipe = recipeReducer(state, action);
+    expect(recipe).eql({ ...state, category:action.category  });
     expect(recipe).to.not.equal(state);
   });
   it('should return a newState for action type UPDATE_DIRECTIONS', () => {

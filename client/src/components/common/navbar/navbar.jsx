@@ -21,13 +21,13 @@ const NavItem = props => (
 );
 
 NavItem.propTypes = {
-  text: PropTypes.string,
-  to: PropTypes.string,
+  text: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
 };
 
 const Navbar = (props) => {
   const links = props.authenticated ? ['Recipes', 'Add Recipe'] : ['login', 'create account'];
-  const url = props.authenticated ? ['/recipes', '/recipe/create']
+  const url = props.authenticated ? ['/recipes', '/create']
     : ['/login', '/create-account'];
   return (
     <nav

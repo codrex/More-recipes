@@ -1,31 +1,29 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { updateDirections } from '../../../../actions/recipeActions';
+import { updateDirections, clearValidationError } from '../../../../actions/recipeActions';
 import AddItems from '../addItems/addItems';
 
-const mapDispatchToProps = (dispatch) => (
-  {
-    sendItemsToStore: bindActionCreators(updateDirections, dispatch)
-  }
+const AddDirections = props => (
+  <AddItems
+    name="direction"
+    directions
+    placeholder="Enter direction"
+    {...props}
+  />
 );
-const mapStateToProps = (state) => (
+
+const mapStateToProps = state => (
   {
     items: state.recipe.directions,
+    externalError: state.recipeValidationError.directions,
+    message: state.networkRequest.msg
   }
 );
-export const AddDirections = () => {
-  const Directions = reduxForm({
-    form: 'directionForm',
-  })(connect(mapStateToProps, mapDispatchToProps)(AddItems));
-  return (
-    <Directions
-      name="direction"
-      directions
-      placeholder="Enter direction"
-    />
-  );
-};
 
-export default AddDirections;
+export default reduxForm({
+  form: 'directionForm'
+})(connect(mapStateToProps, {
+  sendItemsToStore: updateDirections,
+  clearValidationError
+})(AddDirections));

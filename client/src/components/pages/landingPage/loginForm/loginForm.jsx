@@ -8,7 +8,7 @@ import { username, password } from '../../../../utils/validator/validator';
 /**
  * User login form
  */
-export class LoginForm extends React.Component {
+class LoginForm extends React.Component {
   /**
    * @param {object} props
    */
@@ -16,7 +16,7 @@ export class LoginForm extends React.Component {
     super(props);
     this.login = this.login.bind(this);
   }
-   /**
+  /**
     * @param {object} value (form values)
    * @return {undefined} undefined
   */
@@ -61,6 +61,8 @@ LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
 };
+
+export { LoginForm as PureLoginForm };
 
 export default reduxForm({
   form: 'LoginForm'

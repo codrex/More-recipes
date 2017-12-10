@@ -1,7 +1,7 @@
 import db from '../models/index';
 import { validateSignup, validateLogin,
-         comparePassword, validateProfileUpdate,
-         validationHandler, validateId } from '../validators/validator';
+  comparePassword, validateProfileUpdate,
+  validationHandler, validateId } from '../validators/validator';
 import { serverError, sendSuccess, sendFail } from '../reply/reply';
 import { generateToken } from '../authentication/authenticator';
 
@@ -55,7 +55,7 @@ export const loginUser = (req, res, next) => {
       return;
     }
     const hash = user.dataValues.password;
-  // compare proved password
+    // compare proved password
     if (user && comparePassword(hash, req.body.password)) {
       req.user = user.dataValues;
       next();
@@ -103,11 +103,11 @@ export const update = (req, res, next) => {
       id: req.params.id
     }
   })
-  .then(() => {
-    next();
-  }).catch((error) => {
-    sendFail(res, 400, error.errors[0].message);
-  });
+    .then(() => {
+      next();
+    }).catch((error) => {
+      sendFail(res, 400, error.errors[0].message);
+    });
 };
 
 // get user record
@@ -146,24 +146,24 @@ export const fetchForUpdate = (req, res, next) => {
 // add recipe as a user's favorite recipe
 export const setFavRecipe = (req, res, next) => {
   Users.findById(req.requestId)
-  .then((user) => {
-    user.hasFavRecipes(req.body.recipeId)
-    .then((isFavRecipe) => {
-      if (isFavRecipe) {
-        user.removeFavRecipes(req.body.recipeId)
-        .then(() => {
-          next();
+    .then((user) => {
+      user.hasFavRecipes(req.body.recipeId)
+        .then((isFavRecipe) => {
+          if (isFavRecipe) {
+            user.removeFavRecipes(req.body.recipeId)
+              .then(() => {
+                next();
+              });
+          } else {
+            user.addFavRecipes(req.body.recipeId)
+              .then(() => {
+                next();
+              });
+          }
         });
-      } else {
-        user.addFavRecipes(req.body.recipeId)
-        .then(() => {
-          next();
-        });
-      }
+    }).catch(() => {
+      serverError(res);
     });
-  }).catch(() => {
-    serverError(res);
-  });
 };
 
 // add recipe to user list of created recipes
@@ -171,11 +171,11 @@ export const setRecipe = (req, res, next) => {
   Users.findById(req.requestId)
     .then((user) => {
       user.addCreatedRecipes(req.idToFetchRecipe)
-      .then(() => {
-        next();
-      }).catch(() => {
-        serverError(res);
-      });
+        .then(() => {
+          next();
+        }).catch(() => {
+          serverError(res);
+        });
     });
 };
 
@@ -190,11 +190,11 @@ export const fetchRecipes = (req, res) => {
       all: true
     }],
   })
-  .then(userRecipes => {
-    sendSuccess((res), 200, 'user', userRecipes);
-  }).catch(() => {
-    serverError(res);
-  });
+    .then((userRecipes) => {
+      sendSuccess((res), 200, 'user', userRecipes);
+    }).catch(() => {
+      serverError(res);
+    });
 };
 
 export const isIdValidUser = (req, res, next) => {

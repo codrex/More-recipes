@@ -1,35 +1,82 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { connect } from 'react-redux';
+import { NavLink, Link } from 'react-router-dom';
 import SearchBox from '../../common/searchBox/searchbox';
 import abbr from '../../../utils/nameAbbr/nameAbbr';
+import { userLogout } from '../../../actions/userActions';
 
-const TopBar = (props) => (
-  <div className={classnames('col-12 top-bar', props.className)}>
-    <div className={`top-bar-top ${!props.bottom ? 'flex' : ''}`}>
-      {props.title && <h1 className="text-capitalize no-margin">{props.title}</h1>}
-      {props.avatar &&
+const TopBar = (props) => {
+  const { fullname, logout } = props;
+  return (
+    <div className={classnames('col-12 top-bar', props.className)}>
+      <div className="top-bar-top 'flex">
         <nav className="nav">
-          <a className="nav-link" href="#" onClick={() => props.push('/user')}>my profile</a>
+          <Link className="nav-link" to="/user">
+              profile
+          </Link>
         </nav>
-      }
-      {props.avatar &&
+
         <div
           id="myPopover"
           className="avatar avatar-sm"
-          data-toggle="tooltip" data-placement="right" title="Tooltip on right"
+          data-toggle="tooltip"
+          data-placement="right"
+          title="Tooltip on right"
         >
-          {props.fullname && abbr(props.fullname)}
-        </div>}
-      {props.search &&
-        <SearchBox handleSubmit={props.handleSubmit} handleChange={props.handleChange} />
-      }
+          {fullname && abbr(fullname)}
+        </div>
+        <SearchBox
+          handleSubmit={props.handleSubmit}
+          handleChange={props.handleChange}
+        />
+
+      </div>
+      <div className="top-bar-bottom">
+        <nav className="nav">
+          <NavLink
+            className="nav-link text-capitalize "
+            activeClassName="nav-link-active"
+            to={'/recipes/top-recipes'}
+            exact
+            id="getTopRecipes"
+          >
+            Top recipes
+          </NavLink>
+          <NavLink
+            className="nav-link text-capitalize "
+            activeClassName="nav-link-active"
+            to={'/recipes/created-recipes'}
+            exact
+            id="getMyRecipes"
+          >
+            created recipes
+          </NavLink>
+          <NavLink
+            className="nav-link text-capitalize "
+            activeClassName="nav-link-active"
+            to={'/recipes/favourite-recipes'}
+            exact
+            id="getFavRecipes"
+          >
+            Favourite recipes
+          </NavLink>
+        </nav>
+        <nav className="nav">
+          <a
+            className="nav-link logout text-capitalize"
+            onClick={logout}
+            id="logout"
+            role="button"
+            tabIndex="0"
+          >
+          logout</a>
+        </nav>
+      </div>
     </div>
-    {props.bottom && <div className="top-bar-bottom">
-      {props.children}
-    </div>}
-  </div>
-);
+  );
+};
 
 TopBar.defaultProps = {
   handleSubmit: () => {},
@@ -38,22 +85,19 @@ TopBar.defaultProps = {
   className: '',
   title: '',
   avatar: false,
-  fullname: '',
-  push: () => {},
   bottom: false,
 };
 
 TopBar.propTypes = {
-  children: PropTypes.any,
   handleSubmit: PropTypes.func,
   handleChange: PropTypes.func,
-  search: PropTypes.bool,
   className: PropTypes.string,
-  title: PropTypes.string,
-  avatar: PropTypes.bool,
-  fullname: PropTypes.string,
-  push: PropTypes.func,
-  bottom: PropTypes.bool,
+  fullname: PropTypes.string.isRequired,
+  logout: PropTypes.func.isRequired,
 };
-
-export default TopBar;
+const mapStateToProps = state => ({
+  fullname: state.user.fullname,
+});
+export default connect(mapStateToProps, {
+  logout: userLogout
+})(TopBar);

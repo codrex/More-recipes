@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import ListItem from './item';
+import Item from './item';
 import PureInput from '../../../common/form/pure-input';
 import PureTextarea from '../../../common/form/pure-textarea';
-
 
 const List = (props) => {
   const {
@@ -11,19 +10,20 @@ const List = (props) => {
     deleteItem,
     editItem,
     ingredients,
-    directions
+    directions,
+    name
   } = props;
   return (
     <div>
       {items.map((item, index) =>
-        (<ListItem
+        (<Item
           key={`${item}${Date.now()}`}
           content={item}
           delete={deleteItem}
           editItem={editItem}
           Component={(ingredients && PureInput) || (directions && PureTextarea)}
           index={index}
-          name={props.name}
+          name={name}
           ingredients={ingredients}
           directions={directions}
         />)
@@ -40,7 +40,7 @@ List.defaultProps = {
 };
 
 List.propTypes = {
-  items: PropTypes.array,
+  items: PropTypes.arrayOf(PropTypes.shape),
   deleteItem: PropTypes.func.isRequired,
   editItem: PropTypes.func.isRequired,
   name: PropTypes.string,

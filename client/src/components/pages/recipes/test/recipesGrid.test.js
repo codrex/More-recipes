@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import { BrowserRouter } from 'react-router-dom';
 
 const recipe = {
-  recipeName: 'coco rice',
+  name: 'coco rice',
   category: 'breakfast',
   views: 22,
   upVotes: 22,
@@ -28,7 +28,6 @@ describe('Recipes grid component ', () => {
         <RecipesGrid recipes={[recipe]} toggleFav={jest.fn()} isUserFav={jest.fn()} />
       </BrowserRouter>
     );
-    // const componentTwo = renderer.create(<RecipesGrid recipes={[]} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

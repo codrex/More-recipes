@@ -25,11 +25,11 @@ exports[`Recipes card component  render as expected 1`] = `
         onClick={[Function]}
       >
         <button
-          className="btn text-capitalize recipe-card-underlay-btn"
+          className="btn recipe-card-underlay-btn"
           data-dismiss="modal"
-          data-target={undefined}
-          data-toggle={undefined}
-          onClick={undefined}
+          data-target=""
+          data-toggle=""
+          onClick={[Function]}
           type="button"
         >
           view details
@@ -51,13 +51,15 @@ exports[`Recipes card component  render as expected 1`] = `
       >
         <div
           className="icon-wrapper"
-          onClick={undefined}
-          onMouseEnter={undefined}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          role="button"
+          tabIndex="0"
         >
           <i
             className="icon fa fa-thumbs-up recipe-card-icon "
-            data-target={undefined}
-            data-toggle={undefined}
+            data-target=""
+            data-toggle=""
           >
             <span>
               30
@@ -66,13 +68,15 @@ exports[`Recipes card component  render as expected 1`] = `
         </div>
         <div
           className="icon-wrapper"
-          onClick={undefined}
-          onMouseEnter={undefined}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          role="button"
+          tabIndex="0"
         >
           <i
             className="icon fa fa-thumbs-down recipe-card-icon "
-            data-target={undefined}
-            data-toggle={undefined}
+            data-target=""
+            data-toggle=""
           >
             <span>
               0
@@ -81,13 +85,15 @@ exports[`Recipes card component  render as expected 1`] = `
         </div>
         <div
           className="icon-wrapper"
-          onClick={undefined}
-          onMouseEnter={undefined}
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          role="button"
+          tabIndex="0"
         >
           <i
             className="icon fa fa-eye recipe-card-icon"
-            data-target={undefined}
-            data-toggle={undefined}
+            data-target=""
+            data-toggle=""
           >
             <span>
               120
@@ -98,12 +104,14 @@ exports[`Recipes card component  render as expected 1`] = `
       <div
         className="icon-wrapper pointer"
         onClick={[Function]}
-        onMouseEnter={undefined}
+        onMouseEnter={[Function]}
+        role="button"
+        tabIndex="0"
       >
         <i
           className="icon fa recipe-card-icon fav-color fav fa-heart-o"
-          data-target={undefined}
-          data-toggle={undefined}
+          data-target=""
+          data-toggle=""
         >
           <span />
         </i>
@@ -176,11 +184,18 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
               >
                 <Button
                   className="recipe-card-underlay-btn"
+                  dataTarget=""
+                  dataToggle=""
+                  handleClick={[Function]}
                   text="view details"
+                  type="button"
                 >
                   <button
-                    className="btn text-capitalize recipe-card-underlay-btn"
+                    className="btn recipe-card-underlay-btn"
                     data-dismiss="modal"
+                    data-target=""
+                    data-toggle=""
+                    onClick={[Function]}
                     type="button"
                   >
                     view details
@@ -203,13 +218,27 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
               className="d-flex col-8 no-padding"
             >
               <Icon
+                active=""
+                className=""
+                dataTarget=""
+                dataToggle=""
+                handleClick={[Function]}
                 iconClass="fa fa-thumbs-up recipe-card-icon "
+                onMouseEnter={[Function]}
+                parentClass=""
+                pointer={false}
               >
                 <div
                   className="icon-wrapper"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  role="button"
+                  tabIndex="0"
                 >
                   <i
                     className="icon fa fa-thumbs-up recipe-card-icon "
+                    data-target=""
+                    data-toggle=""
                   >
                     <span>
                       30
@@ -218,13 +247,27 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                 </div>
               </Icon>
               <Icon
+                active=""
+                className=""
+                dataTarget=""
+                dataToggle=""
+                handleClick={[Function]}
                 iconClass="fa fa-thumbs-down recipe-card-icon "
+                onMouseEnter={[Function]}
+                parentClass=""
+                pointer={false}
               >
                 <div
                   className="icon-wrapper"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  role="button"
+                  tabIndex="0"
                 >
                   <i
                     className="icon fa fa-thumbs-down recipe-card-icon "
+                    data-target=""
+                    data-toggle=""
                   >
                     <span>
                       0
@@ -233,13 +276,27 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                 </div>
               </Icon>
               <Icon
+                active=""
+                className=""
+                dataTarget=""
+                dataToggle=""
+                handleClick={[Function]}
                 iconClass="fa fa-eye recipe-card-icon"
+                onMouseEnter={[Function]}
+                parentClass=""
+                pointer={false}
               >
                 <div
                   className="icon-wrapper"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  role="button"
+                  tabIndex="0"
                 >
                   <i
                     className="icon fa fa-eye recipe-card-icon"
+                    data-target=""
+                    data-toggle=""
                   >
                     <span>
                       120
@@ -249,16 +306,27 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
               </Icon>
             </div>
             <Icon
+              active=""
+              className=""
+              dataTarget=""
+              dataToggle=""
               handleClick={[Function]}
               iconClass="fa recipe-card-icon fav-color fav fa-heart-o"
+              onMouseEnter={[Function]}
+              parentClass=""
               pointer={true}
             >
               <div
                 className="icon-wrapper pointer"
                 onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
               >
                 <i
                   className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                  data-target=""
+                  data-toggle=""
                 >
                   <span />
                 </i>
@@ -335,11 +403,18 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
               >
                 <Button
                   className="recipe-card-underlay-btn"
+                  dataTarget=""
+                  dataToggle=""
+                  handleClick={[Function]}
                   text="view details"
+                  type="button"
                 >
                   <button
-                    className="btn text-capitalize recipe-card-underlay-btn"
+                    className="btn recipe-card-underlay-btn"
                     data-dismiss="modal"
+                    data-target=""
+                    data-toggle=""
+                    onClick={[Function]}
                     type="button"
                   >
                     view details
@@ -362,13 +437,27 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
               className="d-flex col-8 no-padding"
             >
               <Icon
+                active=""
+                className=""
+                dataTarget=""
+                dataToggle=""
+                handleClick={[Function]}
                 iconClass="fa fa-thumbs-up recipe-card-icon "
+                onMouseEnter={[Function]}
+                parentClass=""
+                pointer={false}
               >
                 <div
                   className="icon-wrapper"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  role="button"
+                  tabIndex="0"
                 >
                   <i
                     className="icon fa fa-thumbs-up recipe-card-icon "
+                    data-target=""
+                    data-toggle=""
                   >
                     <span>
                       30
@@ -377,13 +466,27 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                 </div>
               </Icon>
               <Icon
+                active=""
+                className=""
+                dataTarget=""
+                dataToggle=""
+                handleClick={[Function]}
                 iconClass="fa fa-thumbs-down recipe-card-icon "
+                onMouseEnter={[Function]}
+                parentClass=""
+                pointer={false}
               >
                 <div
                   className="icon-wrapper"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  role="button"
+                  tabIndex="0"
                 >
                   <i
                     className="icon fa fa-thumbs-down recipe-card-icon "
+                    data-target=""
+                    data-toggle=""
                   >
                     <span>
                       0
@@ -392,13 +495,27 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                 </div>
               </Icon>
               <Icon
+                active=""
+                className=""
+                dataTarget=""
+                dataToggle=""
+                handleClick={[Function]}
                 iconClass="fa fa-eye recipe-card-icon"
+                onMouseEnter={[Function]}
+                parentClass=""
+                pointer={false}
               >
                 <div
                   className="icon-wrapper"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  role="button"
+                  tabIndex="0"
                 >
                   <i
                     className="icon fa fa-eye recipe-card-icon"
+                    data-target=""
+                    data-toggle=""
                   >
                     <span>
                       120
@@ -408,16 +525,27 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
               </Icon>
             </div>
             <Icon
+              active=""
+              className=""
+              dataTarget=""
+              dataToggle=""
               handleClick={[Function]}
               iconClass="fa recipe-card-icon fav-color fav fa-heart-o"
+              onMouseEnter={[Function]}
+              parentClass=""
               pointer={true}
             >
               <div
                 className="icon-wrapper pointer"
                 onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
               >
                 <i
                   className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                  data-target=""
+                  data-toggle=""
                 >
                   <span />
                 </i>

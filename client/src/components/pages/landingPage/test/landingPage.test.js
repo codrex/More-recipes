@@ -1,10 +1,8 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import toJson from 'enzyme-to-json';
-import $ from 'jquery';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import SmartLandingPage, { LandingPage } from '../index';
+import LandingPage, { PureLandingPage } from '../landingPage';
 import configureStore from '../../../../store/configStore';
 
 const props = {
@@ -21,15 +19,15 @@ const props = {
     redirectTo: '/recipes'
   },
   loading: false,
-  match: { path:'/' }
-}
+  match: { path: '/' }
+};
 
 describe('Landing page component ', () => {
   test('expected to match snapshot ', () => {
     const component = mount(
       <Provider store={configureStore()}>
         <BrowserRouter>
-          <SmartLandingPage {...props} />
+          <LandingPage {...props} />
         </BrowserRouter>
       </Provider>
     );
@@ -40,7 +38,7 @@ describe('Landing page component ', () => {
     const component = shallow(
       <Provider store={configureStore()}>
         <BrowserRouter>
-          <SmartLandingPage {...{...props, match:{path:'/login'} }} />
+          <LandingPage {...{ ...props, match: { path: '/login' } }} />
         </BrowserRouter>
       </Provider>
     );
@@ -51,7 +49,7 @@ describe('Landing page component ', () => {
     const component = mount(
       <Provider store={configureStore()}>
         <BrowserRouter>
-        <SmartLandingPage {...{...props, match:{path:'/create-account'} }} />
+          <LandingPage {...{ ...props, match: { path: '/create-account' } }} />
         </BrowserRouter>
       </Provider>
     );
@@ -60,7 +58,7 @@ describe('Landing page component ', () => {
   });
   test('expected to match snapshot when user is signed in', () => {
     const component = shallow(
-        <LandingPage {...{...props, match:{path:'/create-account'} }} />
+      <PureLandingPage {...{ ...props, match: { path: '/create-account' } }} />
     );
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
@@ -68,8 +66,8 @@ describe('Landing page component ', () => {
       auth: {
         authenticated: true,
       },
-      match: { path:'/' }
-    }
+      match: { path: '/' }
+    };
     expect(tree).toMatchSnapshot();
   });
 });

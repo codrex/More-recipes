@@ -22,8 +22,10 @@ export const recipeSpec = (user1, user2) => {
           category: 'breakfast',
           ingredients: ['beans', 'water', 'oil'],
           directions: ['step 1', 'step 2', 'step 3'],
+          image: 'image'
         };
       });
+
       it('return 200 after recipe is created with valid data', done => {
         request.post('/api/v1/recipes')
           .set('Authorization', token)
@@ -31,6 +33,7 @@ export const recipeSpec = (user1, user2) => {
           .end((err, res) => {
             expect(res.status).to.equal(200);
             expect(res.body.status).to.equal('success');
+            expect(res.body.recipe.image).not.to.be.undefined;
             done();
           });
       });
@@ -72,7 +75,6 @@ export const recipeSpec = (user1, user2) => {
         .set('Authorization', expiredToken)
         .send(recipe)
         .end((err, res) => {
-          console.log(res.body)
           expect(res.status).to.equal(401);
           expect(res.body.status).to.equal('fail');
           expect(res.body.error)
@@ -80,7 +82,7 @@ export const recipeSpec = (user1, user2) => {
           done();
         });
       });
-      it('return 400 as status code', done => {
+      it('return 400 as status code when recipe name is an empty string', done => {
         const invalidRecipe = recipe;
         invalidRecipe.name = '';
         request.post('/api/v1/recipes')
@@ -92,7 +94,7 @@ export const recipeSpec = (user1, user2) => {
               done();
             });
       });
-      it('return 400 as status code', done => {
+      it('return 400 as status code category is an empty string', done => {
         const invalidRecipe = recipe;
         invalidRecipe.category = '';
         request.post('/api/v1/recipes')
@@ -104,7 +106,7 @@ export const recipeSpec = (user1, user2) => {
               done();
             });
       });
-      it('return 400 as status code for empty directions array', done => {
+      it('return 400 as status code when directions array is empty', done => {
         const invalidRecipe = recipe;
         invalidRecipe.directions = [];
         request.post('/api/v1/recipes')
@@ -116,7 +118,7 @@ export const recipeSpec = (user1, user2) => {
               done();
             });
       });
-      it('return 400 as status code', done => {
+      it('return 400 as status code when ingredients array is empty', done => {
         const invalidRecipe = recipe;
         invalidRecipe.ingredients = [];
         request.post('/api/v1/recipes')
@@ -128,7 +130,7 @@ export const recipeSpec = (user1, user2) => {
               done();
             });
       });
-      it('return 400 as status code', done => {
+      it('return 400 as status code when recipe is a number', done => {
         const invalidRecipe = recipe;
         invalidRecipe.name = 123456;
         request.post('/api/v1/recipes')
@@ -140,7 +142,7 @@ export const recipeSpec = (user1, user2) => {
               done();
             });
       });
-      it('return 400 as status code', done => {
+      it('return 400 as status code when category is undefined', done => {
         const invalidRecipe = recipe;
         invalidRecipe.category = undefined;
         request.post('/api/v1/recipes')
@@ -164,9 +166,21 @@ export const recipeSpec = (user1, user2) => {
               done();
             });
       });
-      it('return 400 as status code', done => {
+      it('return 400 as status code when ingredient is not an array', done => {
         const invalidRecipe = recipe;
         invalidRecipe.ingredients = { step: 'one', step2: 'two' };
+        request.post('/api/v1/recipes')
+            .set('Authorization', token)
+            .send(invalidRecipe)
+            .end((err, res) => {
+              expect(res.status).to.equal(400);
+              expect(res.body.status).to.equal('fail');
+              done();
+            });
+      });
+      it('return 400 as status code when image is not a string', done => {
+        const invalidRecipe = recipe;
+        invalidRecipe.image = { step: 'one', step2: 'two' };
         request.post('/api/v1/recipes')
             .set('Authorization', token)
             .send(invalidRecipe)

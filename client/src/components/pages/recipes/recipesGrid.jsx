@@ -8,10 +8,10 @@ const RecipesGrid = (props) => {
   return (
     <ul className="grid">
       {recipes.length > 0 && !props.loading &&
-        recipes.map((recipe) => (
+        recipes.map(recipe => (
           <li className="card-wrapper" key={recipe.id}>
             <RecipeCard
-              recipeName={recipe.recipeName}
+              recipeName={recipe.name}
               category={recipe.category}
               views={recipe.views}
               upVotes={recipe.upVotes}
@@ -21,7 +21,7 @@ const RecipesGrid = (props) => {
               isFav={props.isUserFav}
             />
           </li>
-          )
+        )
         )
       }
       {recipes.length < 1 && !props.loading &&

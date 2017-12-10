@@ -3,13 +3,14 @@
   border-radius: 2px;
   transition: box-shadow .4s ease-in;
   border: 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: normal;
+  text-transform: capitalize;
   &:hover {
     @include box-shadow;
   }
   &-lg{
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
   &-secondary{
     background-color: $secondary-color !important;

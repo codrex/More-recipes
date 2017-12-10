@@ -1,6 +1,6 @@
 
 .navbar{
-  min-height: 7vh;
+  min-height: fit-content;
   height: 7vh;
 }
 
@@ -34,7 +34,7 @@
     padding: 0;
     transition: border-bottom-color .4s ease;
     &:hover{
-      border-bottom: $secondary-color 3px solid;
+      border-bottom: $text-color  3px solid;
     }
   }
 }
@@ -47,5 +47,5 @@
   }
 
   .nav-link-active{
-    border-bottom: $secondary-color 3px solid;
+    border-bottom: $text-color 3px solid;
   }

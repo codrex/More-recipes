@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import Icon from '../../common/icon/icon';
 import Button from '../../common/button/button';
-import { Link } from 'react-router-dom';
 
 const pix = 'https://i.pinimg.com/564x/b5/be/08/b5be084a849fa67c190cc85b1e9216c3.jpg';
 
@@ -37,8 +37,9 @@ const RecipeCard = (props) => {
           </div>
           <Icon
             iconClass={classnames('fa recipe-card-icon fav-color fav',
-            !fav && 'fa-heart-o', fav && 'fa-heart')}
-            pointer handleClick={() => props.toggleFav(props.recipeId)}
+              !fav && 'fa-heart-o', fav && 'fa-heart')}
+            pointer
+            handleClick={() => props.toggleFav(props.recipeId)}
           />
         </div>
       </div>

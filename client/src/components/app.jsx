@@ -2,16 +2,18 @@ import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LandingPage from './pages/landingPage/index';
-import AddRecipePage from './pages/addRecipePage/index';
-import Navbar from '../components/common/navbar/navbar';
 import toastr from 'toastr';
+import LandingPage from './pages/landingPage/landingPage';
+import AddRecipePage from './pages/addRecipePage/addRecipePage';
+import Navbar from '../components/common/navbar/navbar';
+import TopBar from '../components/common/topbar/topbar';
 import toastrConfig from '../toastr/config';
 import { resetReqCount } from '../actions/ajaxActions';
 import Recipes from '../components/pages/recipes/recipes';
 import Recipe from '../components/pages/viewRecipePage/recipe';
 import ProfilePage from '../components/pages/ProfilePage/index';
 import Footer from '../components/common/footer/footer';
+import { getUserProfile } from '../actions/userActions';
 
 /**
  * App component
@@ -26,10 +28,14 @@ class App extends React.Component {
     this.onAuthenticated = this.onAuthenticated.bind(this);
   }
   /**
- * @return {undefined}
- * @param {object} props
- *
- */
+   * @return {undefined}
+   */
+  componentDidMount() {
+    const { user, auth, getUserProfile } = this.props;
+    if (auth.authenticated && !user.id) {
+      getUserProfile();
+    }
+  }
   /**
    * @return {bool} true or false
    * @param {Object} nextProps
@@ -37,9 +43,10 @@ class App extends React.Component {
   shouldComponentUpdate(nextProps) {
     const { request } = nextProps;
     if (request.requestCount > 0) {
+      toastr.clear();
       if (!request.success) {
         toastr.error(request.msg, 'Error', toastrConfig);
-      } else if (request.success) {
+      } else if (request.success && request.msg) {
         toastr.success(request.msg, 'Success', toastrConfig);
       }
       this.props.resetReqCount();
@@ -59,7 +66,8 @@ class App extends React.Component {
     return authenticated ? (
       <div>
         <Navbar {...match} />
-        <Component match={match} />
+        <TopBar {...match} />
+        <Component {...match} />
       </div>
     ) : <Redirect to="/" />;
   }
@@ -89,21 +97,27 @@ class App extends React.Component {
         <div className="container-fluid  no-padding">
           <Switch>
             <Route
-              path="/recipe/create"
+              static
+              path="/create"
+              extact
               render={match => this.onAuthenticated(AddRecipePage, match)}
             />
             <Route
-              path="/recipe/modify/:id"
-              component={AddRecipePage}
+              static
+              path="/modify/:id"
+              extact
+              render={match => this.onAuthenticated(AddRecipePage, match)}
             />
             <Route
+              static
               path="/recipe/:id"
+              extact
               render={match => this.onAuthenticated(Recipe, match)}
             />
             <Route
               static
               extact
-              path="/recipes/"
+              path="/recipes"
               render={match => this.onAuthenticated(Recipes, match)}
             />
             <Route
@@ -123,9 +137,9 @@ class App extends React.Component {
               render={match => this.isLoggedIn(LandingPage, match)}
             />
             <Route
-              static
               extact
-              path="/" render={match => this.isLoggedIn(LandingPage, match)}
+              path="/"
+              render={match => this.isLoggedIn(LandingPage, match)}
             />
           </Switch>
           <Footer />
@@ -136,16 +150,19 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  resetReqCount: PropTypes.func,
-  token: PropTypes.string,
-  auth: PropTypes.object,
+  auth: PropTypes.objectOf(PropTypes.shape).isRequired,
+  getUserProfile: PropTypes.func.isRequired,
+  user: PropTypes.objectOf(PropTypes.shape).isRequired,
+  resetReqCount: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   request: state.networkRequest,
   auth: state.auth,
+  user: state.user
 });
 
 export default connect(mapStateToProps, {
-  resetReqCount
+  resetReqCount,
+  getUserProfile
 })(App);

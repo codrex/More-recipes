@@ -23,6 +23,11 @@ module.exports = {
       type: Sequelize.ARRAY(Sequelize.STRING),
       allowNull: false,
     },
+    image: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+      defaultValue: 'none'
+    },
     upVotes: {
       type: Sequelize.INTEGER,
       defaultValue: 0,

@@ -18,7 +18,7 @@ class SearchBox extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-/**
+  /**
  * @return {undefined}
  * @param {Object} e
  */
@@ -55,6 +55,11 @@ class SearchBox extends React.Component {
     );
   }
 }
+
+SearchBox.defaultProps = {
+  handleChange: () => {},
+  handleSubmit: () => {},
+};
 
 SearchBox.propTypes = {
   handleChange: PropTypes.func,
