@@ -1,8 +1,6 @@
 import validate from 'validate.js';
-import bcrypt from 'bcrypt-nodejs';
 import constraint from './constraints';
 import { sendValidationError } from '../reply/reply';
-
 
 // this function will process the report gotten from the validator
 const processValidationResult = (result) => {
@@ -48,8 +46,16 @@ validate.validators.words = (value) => {
 validate.validators.stringArray = (value) => {
   if (Array.isArray(value)) {
     if (value.length < 1) return 'array can only contain type string';
-    const result = value.every(elem => typeof elem === 'string');
-    return (!result && 'array can only contain type string') || (result && undefined);
+    const result = value.every(element => typeof element === 'string');
+    return (!result && 'array can only contain strings') || (result && undefined);
+  }
+  return 'element is not an array';
+};
+
+validate.validators.numberArray = (value) => {
+  if (Array.isArray(value)) {
+    const result = value.every(element => !isNaN(parseInt(element, 10)));
+    return (!result && 'array can only contain number ') || (result && undefined);
   }
   return 'element is not an array';
 };
@@ -67,22 +73,19 @@ const validateRecipes = obj => validator(obj, constraint.createRecipeConstraint)
 
 const validateId = obj => validator(obj, constraint.idConstraint);
 
+const validateRecipeIds = obj => validator(obj, constraint.recipeIdsConstraint);
+
 const validateLogin = obj => validator(obj, constraint.loginWithUsernameConstraint);
 
 const validateReview = obj => validator(obj, constraint.reviewConstraint);
 
-const comparePassword = (hash, password) => bcrypt.compareSync(password, hash);
-
 const validateVote = obj => validator(obj, constraint.voteConstraint);
 
-const validationHandler = (obj, validationFunction, req, res, next) => {
+const validationHandler = (obj, validationFunction, req, res, next = null) => {
   const isValid = validationFunction(obj);
   if (isValid.valid) {
-    req.body = obj;
-    next();
-  } else {
-    sendValidationError(res, isValid);
-  }
+    if (next) next();
+  } else sendValidationError(res, isValid);
 };
 
 export {
@@ -90,11 +93,11 @@ export {
   validateSignup,
   validateRecipes,
   validateProfileUpdate,
-  comparePassword,
   validate,
   constraint,
   validateId,
   validateReview,
   validateVote,
   validationHandler,
+  validateRecipeIds
 };

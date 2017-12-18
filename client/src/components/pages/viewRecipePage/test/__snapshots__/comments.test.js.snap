@@ -15,14 +15,18 @@ exports[`Comments display component  expected to match empty snapshot 1`] = `
     <div
       className="media-body"
     >
-      <h1>
-        test tester 
-      </h1>
-      <h6
-        className="text-dark lead"
+      <div
+        className="d-flex justify-content-between align-items-center"
       >
-        @testi
-      </h6>
+        <h1>
+          @testi
+        </h1>
+        <span
+          className="text-center bold"
+        >
+          a few seconds ago
+        </span>
+      </div>
       <p
         className="media-text no-margin"
       >

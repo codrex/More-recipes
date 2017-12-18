@@ -18,10 +18,12 @@ exports[`Cta form component  expect to match snapshot when signin button is clic
       className="cta-btn-wrapper"
     >
       <Button
+        Tag="button"
         className="btn-primary btn-lg login"
         dataTarget=""
         dataToggle=""
         handleClick={[Function]}
+        href=""
         id="login"
         text="Login"
         type="button"
@@ -31,6 +33,7 @@ exports[`Cta form component  expect to match snapshot when signin button is clic
           data-dismiss="modal"
           data-target=""
           data-toggle=""
+          href=""
           onClick={[Function]}
           type="button"
         >
@@ -38,10 +41,12 @@ exports[`Cta form component  expect to match snapshot when signin button is clic
         </button>
       </Button>
       <Button
+        Tag="button"
         className=" btn-secondary btn-lg reg text-white"
         dataTarget=""
         dataToggle=""
         handleClick={[Function]}
+        href=""
         id="signup"
         text="Create an account"
         type="button"
@@ -51,6 +56,7 @@ exports[`Cta form component  expect to match snapshot when signin button is clic
           data-dismiss="modal"
           data-target=""
           data-toggle=""
+          href=""
           onClick={[Function]}
           type="button"
         >
@@ -80,10 +86,12 @@ exports[`Cta form component  expect to match snapshot when signup button is clic
       className="cta-btn-wrapper"
     >
       <Button
+        Tag="button"
         className="btn-primary btn-lg login"
         dataTarget=""
         dataToggle=""
         handleClick={[Function]}
+        href=""
         id="login"
         text="Login"
         type="button"
@@ -93,6 +101,7 @@ exports[`Cta form component  expect to match snapshot when signup button is clic
           data-dismiss="modal"
           data-target=""
           data-toggle=""
+          href=""
           onClick={[Function]}
           type="button"
         >
@@ -100,10 +109,12 @@ exports[`Cta form component  expect to match snapshot when signup button is clic
         </button>
       </Button>
       <Button
+        Tag="button"
         className=" btn-secondary btn-lg reg text-white"
         dataTarget=""
         dataToggle=""
         handleClick={[Function]}
+        href=""
         id="signup"
         text="Create an account"
         type="button"
@@ -113,6 +124,7 @@ exports[`Cta form component  expect to match snapshot when signup button is clic
           data-dismiss="modal"
           data-target=""
           data-toggle=""
+          href=""
           onClick={[Function]}
           type="button"
         >

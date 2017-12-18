@@ -37,7 +37,15 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 0,
       allowNull: false,
     },
-    OwnerId: {
+    favRecipesId: {
+      allowNull: true,
+      type: DataTypes.INTEGER,
+    },
+    ownerId: {
+      allowNull: true,
+      type: DataTypes.INTEGER,
+    },
+    createdRecipesId: {
       allowNull: true,
       type: DataTypes.INTEGER,
     },

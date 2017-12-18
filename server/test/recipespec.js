@@ -8,6 +8,7 @@ import { generateToken } from '../authentication/authenticator';
 export const recipeSpec = (user1, user2) => {
   const token = user1;
   const token2 = user2;
+  const TEST_REVIEW = 'testing something';
   const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNTExMTA4ODIwLCJleHAiOjE1MTExMDg4MjF9.qGQceo6WAEoP_1XgxHbiuonKkF_VPnYtpz52w0IvafI';
 
   describe('Integration test for recipe controller', () => {
@@ -33,6 +34,18 @@ export const recipeSpec = (user1, user2) => {
           .end((err, res) => {
             expect(res.status).to.equal(200);
             expect(res.body.status).to.equal('success');
+            expect(res.body.recipe.image).not.to.be.undefined;
+            done();
+          });
+      });
+      it('return 200 when a second recipe is added', done => {
+        request.post('/api/v1/recipes')
+          .set('Authorization', token)
+          .send({...recipe, name:'coco drink'})
+          .end((err, res) => {
+            expect(res.status).to.equal(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.recipe.id).to.equal(2);
             expect(res.body.recipe.image).not.to.be.undefined;
             done();
           });
@@ -194,84 +207,57 @@ export const recipeSpec = (user1, user2) => {
 
       // add fav recipe
     describe('add fav recipe', () => {
-      it('return 200 as status code', done => {
-        request.post('/api/v1/users/1/recipe')
-            .set('Authorization', token)
-            .send({ recipeId: 1 })
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              expect(res.body.status).to.equal('success');
-              done();
-            });
+      it('return 200 as status code when user add favourite recipe', done => {
+        request.post('/api/v1/users/recipe')
+          .set('Authorization', token)
+          .send({ recipeId: 1 })
+          .end((err, res) => {
+            expect(res.status).to.equal(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.favRecipe.added).to.equal(true);
+            done();
+          });
       });
       it('return 200 as status code', done => {
-        request.post('/api/v1/users/1/recipe')
-            .set('Authorization', token)
-            .send({ recipeId: 1 })
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              expect(res.body.status).to.equal('success');
-              expect(res.body.user.favRecipes.length).to.equal(0);
-              done();
-            });
+        request.post('/api/v1/users/recipe')
+          .set('Authorization', token)
+          .send({ recipeId: 1 })
+          .end((err, res) => {
+            expect(res.status).to.equal(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.favRecipe.added).to.equal(false);
+            done();
+          });
       });
       it('return 404 as status code when recipe dose not exist', done => {
-        request.post('/api/v1/users/1/recipe')
-            .set('Authorization', token)
-            .send({ recipeId: 100 })
-            .end((err, res) => {
-              expect(res.status).to.equal(404);
-              expect(res.body.status).to.equal('fail');
-              done();
-            });
+        request.post('/api/v1/users/recipe')
+          .set('Authorization', token)
+          .send({ recipeId: 100 })
+          .end((err, res) => {
+            expect(res.status).to.equal(404);
+            expect(res.body.status).to.equal('fail');
+            done();
+          });
       });
       it('return 400 as status code for invalid recipe id', done => {
-        request.post('/api/v1/users/1/recipe')
-            .set('Authorization', token)
-            .send({ recipeId: '<script>alert("hello you")</script>' })
-            .end((err, res) => {
-              expect(res.status).to.equal(400);
-              expect(res.body.status).to.equal('fail');
-              done();
-            });
+        request.post('/api/v1/users/recipe')
+          .set('Authorization', token)
+          .send({ recipeId: '<script>alert("hello you")</script>' })
+          .end((err, res) => {
+            expect(res.status).to.equal(400);
+            expect(res.body.status).to.equal('fail');
+            done();
+          });
       });
     });
 
-    // get fav recipes
-    describe('get fav recipes', () => {
-      it('return 200 as status code when everything is ok', done => {
-        request.get('/api/v1/users/1/recipes')
-          .set('Authorization', token)
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              expect(res.body.status).to.equal('success');
-              done();
-            });
-      });
-      it('return 404 as status code when user dose not exist', done => {
-        request.get('/api/v1/users/100/recipes')
-          .set('Authorization', token)
-            .end((err, res) => {
-              expect(res.status).to.equal(404);
-              expect(res.body.status).to.equal('fail');
-              done();
-            });
-      });
-      it('return 400 as status code for invalid user id', done => {
-        request.get('/api/v1/users/1kgg/recipes')
-          .set('Authorization', token)
-            .end((err, res) => {
-              expect(res.status).to.equal(400);
-              expect(res.body.status).to.equal('fail');
-              done();
-            });
-      });
-    });
-
-      // post a review on a recipe
+     // post a review on a recipe
     describe('post a review', () => {
       const review = {
         review: 'i love this recipe',
+      };
+      const secondReview = {
+        review: TEST_REVIEW,
       };
       it('return 200 as status code when everything is ok', done => {
         request.post('/api/v1/recipes/1/reviews')
@@ -424,20 +410,204 @@ export const recipeSpec = (user1, user2) => {
             });
       });
     });
-    // get recipe by most upvotes
-    describe('get recipe by most upvote', () => {
-    it('return 200 as status code when everything is fine', done => {
-      request.get('/api/v1/recipes?sort=upvotes&order=ascending')
-        .set('Authorization', token)
-        .end((err, res) => {
-          expect(res.status).to.equal(200);
-          expect(res.body.status).to.equal('success');
-          expect(res.body.recipes[0].id).to.equal(1);
-          done();
-        });
+
+    // get recipes routes
+    describe('get recipes routes', () => {
+
+      // get all recipe request
+      describe('get all recipe', () => {
+        it('return 200 as status code', done => {
+          request.get('/api/v1/recipes')
+              .set('Authorization', token)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                done();
+              });
         });
       });
-      // modify recipe request
+
+      // get recipes by most upvotes
+      describe('get recipes by most upvote', () => {
+        it('return 200 as status code when limit and page query params are undefined', done => {
+        request.get('/api/v1/recipes?sort=upvotes&order=ascending')
+          .set('Authorization', token)
+          .end((err, res) => {
+            expect(res.status).to.equal(200);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.recipes[0].id).to.equal(1);
+            expect(res.body.recipes.length).to.equal(2);
+            expect(res.body.pageCount).to.equal(1);
+            done();
+          });
+          });
+        it('return 200 as status code when limit is 1 and page 2', done => {
+          request.get('/api/v1/recipes?sort=upvotes&order=ascending&limit=1&page=2')
+            .set('Authorization', token)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.status).to.equal('success');
+              expect(res.body.recipes[0].id).to.equal(2);
+              expect(res.body.recipes.length).to.equal(1);
+              expect(res.body.pageCount).to.equal(2);
+              done();
+          });
+        });
+        it('return 200 as status code when limit is not a number', done => {
+          request.get('/api/v1/recipes?sort=upvotes&order=ascending&limit=iihb&page=1')
+            .set('Authorization', token)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.status).to.equal('success');
+              expect(res.body.recipes.length).to.equal(2);
+              done();
+          });
+        });
+        it('return 200 as status code when page is not a number', done => {
+          request.get('/api/v1/recipes?sort=upvotes&order=ascending&limit=1&page=kmkn')
+            .set('Authorization', token)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.status).to.equal('success');
+              expect(res.body.recipes.length).to.equal(1);
+              done();
+          });
+        });
+      });
+
+      // search for recipe by recipe name request
+      describe('search for recipe by recipe name ', () => {
+        it('return 200 as status code for get recipe by recipe name', done => {
+          request.get('/api/v1/recipes?search=beans+cake')
+            .set('Authorization', token)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.status).to.equal('success');
+              expect(res.body.pageCount).to.equal(1);
+              expect(res.body.recipes.length).to.equal(1)
+              done();
+          });
+        });
+        it('return 200 as status code for get recipe by recipe category', done => {
+          request.get('/api/v1/recipes?search=breakfast')
+            .set('Authorization', token)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.status).to.equal('success');
+              expect(res.body.pageCount).to.equal(1);
+              expect(res.body.recipes.length).to.equal(2)
+              done();
+          });
+        });
+        it('return 200 as status code and pageCount to equal 2 when limit is 1', done => {
+          request.get('/api/v1/recipes?search=breakfast&limit=1&page=1')
+            .set('Authorization', token)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.status).to.equal('success');
+              expect(res.body.pageCount).to.equal(2);
+              done();
+          });
+        });
+        it('return 200 as status code for get recipe by recipe name', done => {
+          request.get('/api/v1/recipes?search=bannana+drink&limit=1&page=1')
+            .set('Authorization', token)
+            .end((err, res) => {
+              expect(res.status).to.equal(200);
+              expect(res.body.status).to.equal('success');
+              expect(res.body.pageCount).to.equal(0);
+              expect(res.body.recipes.length).to.equal(0)
+              done();
+            });
+        });
+
+        it('return 200 as status code when invalid search parameter is pass', done => {
+          request.get('/api/v1/recipes?search=[]')
+              .set('Authorization', token)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                done();
+              });
+        });
+        it('return 200 as status code when invalid search parameter is pass', done => {
+          request.get('/api/v1/recipes?search=j2\'/[765]')
+              .set('Authorization', token)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                done();
+              });
+        });
+      });
+
+      // get favourite recipes
+      describe('get favourite recipes', () => {
+        it('return 200 as status code when everything is ok', done => {
+          request.get('/api/v1/users/1/recipes/favourite')
+            .set('Authorization', token)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                expect(res.body.pageCount).not.to.be.undefined;
+                expect(res.body.recipes).to.be.instanceOf(Array)
+                done();
+              });
+        });
+      });
+
+       // get created recipes
+      describe('get created recipes', () => {
+        it('return 200 as status code when everything is ok', done => {
+          request.get('/api/v1/users/1/recipes/created')
+            .set('Authorization', token)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                expect(res.body.pageCount).not.to.be.undefined;
+                expect(res.body.recipes).to.be.instanceOf(Array)
+                done();
+            });
+        });
+      });
+
+       // get recipe reviews
+       describe('get recipe reviews', () => {
+        it('return 200 as status code when recipe is found', done => {
+          request.get('/api/v1/recipes/1/reviews')
+            .set('Authorization', token)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                expect(res.body.pageCount).not.to.be.undefined;
+                expect(res.body.reviews).to.be.instanceOf(Array)
+                done();
+            });
+        });
+        it('return 200 as status code when limit and page are set to equal 1', done => {
+          request.get('/api/v1/recipes/1/reviews?limit=1&page=1')
+            .set('Authorization', token)
+              .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body.status).to.equal('success');
+                expect(res.body.pageCount).not.to.be.undefined;
+                expect(res.body.reviews.length).to.equal(1)
+                done();
+            });
+        });
+        it('return 404 as status code when recipe is not found', done => {
+          request.get('/api/v1/recipes/100/reviews')
+            .set('Authorization', token)
+              .end((err, res) => {
+                expect(res.status).to.equal(404);
+                expect(res.body.status).to.equal('fail');
+                done();
+            });
+        });
+      });
+    })
+
+    // modify recipe request
     describe('modify recipe', () => {
       const updateOne = {
         name: 'beans cake',
@@ -553,69 +723,6 @@ export const recipeSpec = (user1, user2) => {
       });
     });
 
-      // get all recipe request
-    describe('get all recipe', () => {
-      it('return 200 as status code', done => {
-        request.get('/api/v1/recipes')
-            .set('Authorization', token)
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              expect(res.body.status).to.equal('success');
-              done();
-            });
-      });
-    });
-
-      // search for recipe by recipe name request
-    describe('search for recipe by recipe name ', () => {
-      it('return 200 as status code for get recipe by recipe name', done => {
-        request.get('/api/v1/recipes?search=beans+cake')
-            .set('Authorization', token)
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              expect(res.body.status).to.equal('success');
-              done();
-            });
-      });
-      it('return 200 as status code for get recipe by recipe name', done => {
-        request.get('/api/v1/recipes?search=bannana+drink')
-            .set('Authorization', token)
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              expect(res.body.status).to.equal('success');
-              done();
-            });
-      });
-
-      it('return 200 as status code for get recipe by recipe category', done => {
-        request.get('/api/v1/recipes?search=breakfast')
-            .set('Authorization', token)
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              expect(res.body.status).to.equal('success');
-              done();
-            });
-      });
-      it('return 200 as status code when invalid search parameter is pass', done => {
-        request.get('/api/v1/recipes?search=[]')
-            .set('Authorization', token)
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              expect(res.body.status).to.equal('success');
-              done();
-            });
-      });
-      it('return 200 as status code when invalid search parameter is pass', done => {
-        request.get('/api/v1/recipes?search=j2\'/[765]')
-            .set('Authorization', token)
-            .end((err, res) => {
-              expect(res.status).to.equal(200);
-              expect(res.body.status).to.equal('success');
-              done();
-            });
-      });
-    });
-
     // get recipe request
     describe('view recipe', () => {
       it('return 404 as status code when recipe is not found', done => {
@@ -631,6 +738,7 @@ export const recipeSpec = (user1, user2) => {
         request.get('/api/v1/recipes/1')
           .set('Authorization', token)
           .end((err, res) => {
+            console.log(res.body.recipe.Votes,'pppppppp')
             expect(res.status).to.equal(200);
             expect(res.body.status).to.equal('success');
             expect(res.body.recipe.views).to.equal(0);

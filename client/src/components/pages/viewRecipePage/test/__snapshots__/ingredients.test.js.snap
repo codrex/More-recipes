@@ -2,11 +2,16 @@
 
 exports[`Ingredients display component  expected to match empty snapshot 1`] = `
 <div
-  className="col-12 "
+  className="col-12 ingredient-list-wrapper"
   style={Object {}}
 >
+  <h5
+    className="display-4 w-100"
+  >
+    Ingredients 
+  </h5>
   <div
-    className="lead list-item"
+    className="lead list-item col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
   >
     <div
       className="list-item-text lead"
@@ -19,7 +24,7 @@ exports[`Ingredients display component  expected to match empty snapshot 1`] = `
     </div>
   </div>
   <div
-    className="lead list-item"
+    className="lead list-item col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
   >
     <div
       className="list-item-text lead"
@@ -32,7 +37,7 @@ exports[`Ingredients display component  expected to match empty snapshot 1`] = `
     </div>
   </div>
   <div
-    className="lead list-item"
+    className="lead list-item col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
   >
     <div
       className="list-item-text lead"

@@ -43,7 +43,15 @@ module.exports = {
       defaultValue: 0,
       allowNull: false,
     },
-    OwnerId: {
+    ownerId: {
+      allowNull: true,
+      type: Sequelize.INTEGER,
+    },
+    favRecipesId: {
+      allowNull: true,
+      type: Sequelize.INTEGER,
+    },
+    createdRecipesId: {
       allowNull: true,
       type: Sequelize.INTEGER,
     },

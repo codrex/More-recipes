@@ -335,10 +335,12 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
           error={Array []}
           fgClassName=" item-edit-fg"
           handleChange={[Function]}
+          helpTextClassName=""
           id="ingredients"
           input={Object {}}
           name="ingredients"
           placeholder=""
+          type="text"
           value="recipe"
         >
           <div
@@ -359,10 +361,12 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
           className="d-flex"
         >
           <Button
+            Tag="button"
             className=" btn-secondary text-white item-edit-btn"
             dataTarget=""
             dataToggle=""
             handleClick={[Function]}
+            href=""
             id="saveBtn"
             text="Save"
             type="button"
@@ -372,6 +376,7 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
               data-dismiss="modal"
               data-target=""
               data-toggle=""
+              href=""
               onClick={[Function]}
               type="button"
             >
@@ -379,10 +384,12 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
             </button>
           </Button>
           <Button
+            Tag="button"
             className="btn-primary item-edit-btn"
             dataTarget=""
             dataToggle=""
             handleClick={[Function]}
+            href=""
             id="closeBtn"
             text="close"
             type="button"
@@ -392,6 +399,7 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
               data-dismiss="modal"
               data-target=""
               data-toggle=""
+              href=""
               onClick={[Function]}
               type="button"
             >

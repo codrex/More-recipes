@@ -1,124 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Recipe name and category component render as expected 1`] = `
-<div>
-  <h4
-    className="items-header-text"
-  >
-    Recipe name and category
-  </h4>
-  <form
-    action=""
-    className="col-12"
-    method=""
-    onSubmit={[Function]}
-  >
-    <div
-      className="form-group"
-    >
-      <input
-        aria-describedby="recipeName"
-        autoComplete="false"
-        className="form-control text-input add-recipe-input"
-        id="recipeName"
-        name="name"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onDragStart={[Function]}
-        onDrop={[Function]}
-        onFocus={[Function]}
-        placeholder="Enter recipe name"
-        type="text"
-        value=""
-      />
-    </div>
-    <div
-      className="form-group"
-    >
-      <div
-        className="Select add-recipe-input Select--single is-clearable is-searchable"
-        style={undefined}
-      >
-        <div
-          className="Select-control"
-          onKeyDown={[Function]}
-          onMouseDown={[Function]}
-          onTouchEnd={[Function]}
-          onTouchMove={[Function]}
-          onTouchStart={[Function]}
-          style={undefined}
-        >
-          <span
-            className="Select-multi-value-wrapper"
-            id="react-select-2--value"
-          >
-            <div
-              className="Select-placeholder"
-            >
-              Select recipe category
-            </div>
-            <div
-              className="Select-input"
-              style={
-                Object {
-                  "display": "inline-block",
-                }
-              }
-            >
-              <input
-                aria-activedescendant="react-select-2--value"
-                aria-describedby={undefined}
-                aria-expanded="false"
-                aria-haspopup="false"
-                aria-label={undefined}
-                aria-labelledby={undefined}
-                aria-owns=""
-                className={undefined}
-                id={undefined}
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                required={false}
-                role="combobox"
-                style={
-                  Object {
-                    "boxSizing": "content-box",
-                    "width": "5px",
-                  }
-                }
-                tabIndex={undefined}
-                value=""
-              />
-              <div
-                style={
-                  Object {
-                    "height": 0,
-                    "left": 0,
-                    "overflow": "scroll",
-                    "position": "absolute",
-                    "top": 0,
-                    "visibility": "hidden",
-                    "whiteSpace": "pre",
-                  }
-                }
-              >
-                
-              </div>
-            </div>
-          </span>
-          <span
-            className="Select-arrow-zone"
-            onMouseDown={[Function]}
-          >
-            <span
-              className="Select-arrow"
-              onMouseDown={[Function]}
-            />
-          </span>
-        </div>
-      </div>
-    </div>
-    
-  </form>
-</div>
+<Connect(ReduxForm)
+  actions={
+    Object {
+      "modifyRecipe": [Function],
+      "postRecipe": [Function],
+      "updateStore": [Function],
+    }
+  }
+  create=""
+  handleSubmit={[Function]}
+  loading={false}
+  modify=""
+/>
 `;

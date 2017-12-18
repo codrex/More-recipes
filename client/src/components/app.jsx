@@ -13,6 +13,7 @@ import Recipes from '../components/pages/recipes/recipes';
 import Recipe from '../components/pages/viewRecipePage/recipe';
 import ProfilePage from '../components/pages/ProfilePage/index';
 import Footer from '../components/common/footer/footer';
+import NotFound from '../components/pages/notFound/notFound';
 import { getUserProfile } from '../actions/userActions';
 
 /**
@@ -31,9 +32,9 @@ class App extends React.Component {
    * @return {undefined}
    */
   componentDidMount() {
-    const { user, auth, getUserProfile } = this.props;
+    const { user, auth, getProfile } = this.props;
     if (auth.authenticated && !user.id) {
-      getUserProfile();
+      getProfile();
     }
   }
   /**
@@ -89,6 +90,20 @@ class App extends React.Component {
   }
 
   /**
+   * @return {undefined}
+   * @param {object} match
+   */
+  renderNotFound = match => (
+    <div>
+      <Navbar {...match} />
+      <TopBar {...match} />
+      <div className="not-found-wrapper">
+        <NotFound message="page not found" />
+      </div>
+    </div>
+  )
+
+  /**
    * @return{undefined}
    */
   render() {
@@ -137,6 +152,12 @@ class App extends React.Component {
               render={match => this.isLoggedIn(LandingPage, match)}
             />
             <Route
+              static
+              extact
+              path="/not-found"
+              render={match => this.renderNotFound(match)}
+            />
+            <Route
               extact
               path="/"
               render={match => this.isLoggedIn(LandingPage, match)}
@@ -151,7 +172,7 @@ class App extends React.Component {
 
 App.propTypes = {
   auth: PropTypes.objectOf(PropTypes.shape).isRequired,
-  getUserProfile: PropTypes.func.isRequired,
+  getProfile: PropTypes.func.isRequired,
   user: PropTypes.objectOf(PropTypes.shape).isRequired,
   resetReqCount: PropTypes.func.isRequired,
 };
@@ -164,5 +185,5 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   resetReqCount,
-  getUserProfile
+  getProfile: getUserProfile
 })(App);

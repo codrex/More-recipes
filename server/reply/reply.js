@@ -25,9 +25,19 @@ const sendValidationError = (res, validation) => {
     error: validation.error,
   });
 };
+const sendPaginatedData = (dataName, data, res) => {
+  const { count, limit, rows } = data;
+  res.status(200).send({
+    status: 'success',
+    pageCount: Math.ceil(count / limit),
+    [dataName]: rows
+  });
+};
+
 export {
   sendFail,
   sendSuccess,
   serverError,
   sendValidationError,
+  sendPaginatedData
 };

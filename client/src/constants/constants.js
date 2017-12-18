@@ -21,3 +21,5 @@ export const CATEGORIES = [
   { value: 'cookies & candy', label: 'Cookies & Candy' },
   { value: 'miscellaneous', label: 'Miscellaneous' },
 ];
+export const LIMIT = 10;
+export const DEFAULT_PIX = 'https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg';

@@ -8,6 +8,7 @@ import { postReview } from '../../../../actions/recipeActions';
 import { resetSuccess } from '../../../../actions/ajaxActions';
 import { review } from '../../../../utils/validator/validator';
 
+const REVIEW_MESSAGE = 'Review posted';
 /**
  * review form
  */
@@ -24,7 +25,7 @@ class CommentForm extends React.Component {
    * @param {object} nextProps
    */
   componentWillReceiveProps(nextProps) {
-    if (nextProps.message === 'Review posted' && nextProps.success) {
+    if (nextProps.success) {
       this.props.initialize();
       this.props.resetSuccess();
     }
@@ -34,7 +35,7 @@ class CommentForm extends React.Component {
    * @return {undefined} undefined
   */
   review(value) {
-    return this.props.postReview(this.props.id, value, 'Review posted');
+    return this.props.postReview(this.props.id, value, 'REVIEW_MESSAGE');
   }
 
   /**
@@ -55,6 +56,7 @@ class CommentForm extends React.Component {
           id="review"
           placeholder="Enter your review"
           validate={review}
+          row="4"
         />
       </Form>
     );

@@ -2,13 +2,14 @@ import { getToken, hasToken } from '../utils/auth/auth';
 
 const initailState = {
   recipes: [],
+  pageCount: 0,
   recipe: {
     id: undefined,
     name: '',
     category: '',
     ingredients: [],
     directions: [],
-    recipeReviews: [],
+    reviews: [],
     image: JSON.stringify({
       publicId: '',
       secureUrl: '',
@@ -25,7 +26,8 @@ const initailState = {
     fullname: '',
     profilePicture: '',
     favRecipes: [],
-    createdRecipes: []
+    createdRecipes: [],
+    votes: []
   },
   auth: {
     authenticated: hasToken(),
@@ -34,7 +36,7 @@ const initailState = {
   },
   networkRequest: {
     success: false,
-    msg: '',
+    msg: ' l',
     loading: false,
     requestCount: 0,
   },

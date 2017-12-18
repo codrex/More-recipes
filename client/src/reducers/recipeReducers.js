@@ -17,10 +17,13 @@ import {
   FIND_RECIPES,
   RECIPE_VALIDATION_ERROR,
   CLEAR_VALIDATION_ERROR,
-  ABOUT_TO_CREATE_RECIPE
+  ABOUT_TO_CREATE_RECIPE,
+  GET_CREATED_RECIPES,
+  GET_FAVOURITE_RECIPES,
+  GET_REVIEWS
 } from '../actions/actions';
 
-export const recipeValidationError = (state = initialState.recipes, action) => {
+export const recipeValidationError = (state = initialState.recipeValidationError, action) => {
   switch (action.type) {
     case RECIPE_VALIDATION_ERROR:
       return action.error;
@@ -40,6 +43,10 @@ export const recipesReducer = (state = initialState.recipes, action) => {
       return action.payload.recipes;
     case GET_TOP_RECIPES:
       return action.payload.recipes;
+    case GET_CREATED_RECIPES:
+      return action.payload.recipes;
+    case GET_FAVOURITE_RECIPES:
+      return action.payload.recipes;
     case FIND_RECIPES:
       return action.payload.recipes;
     default:
@@ -49,18 +56,25 @@ export const recipesReducer = (state = initialState.recipes, action) => {
 
 export const recipeReducer = (state = initialState.recipe, action) => {
   if (action.type === GOT_RECIPE) {
-    return action.payload.recipe;
+    return { ...state, ...action.payload.recipe };
   }
   if (action.type === AFTER_REVIEW) {
-    const recipeReviews = action.payload.recipe.recipeReviews;
+    const { reviews } = action.payload;
     return {
       ...state,
-      recipeReviews
+      reviews
+    };
+  }
+  if (action.type === GET_REVIEWS) {
+    const { reviews } = action.payload;
+    return {
+      ...state,
+      reviews
     };
   }
   if (action.type === AFTER_VOTE) {
-    const upVotes = action.payload.recipe.upVotes;
-    const downVotes = action.payload.recipe.downVotes;
+    const { upVotes } = action.payload.recipe;
+    const { downVotes } = action.payload.recipe;
     return {
       ...state,
       upVotes,
@@ -68,21 +82,21 @@ export const recipeReducer = (state = initialState.recipe, action) => {
     };
   }
   if (action.type === RECIPE) {
-    return action.recipe.recipe;
+    return { ...state, ...action.recipe.recipe };
   }
   if (action.type === RECIPE_TO_MODIFY) {
-    return action.recipe;
+    return { ...state, ...action.recipe };
   }
   if (action.type === UPDATE_INGREDIENTS) {
-    const ingredients = action.ingredient;
+    const { ingredient } = action;
     return {
-      ...state, ingredients
+      ...state, ingredients: ingredient
     };
   }
   if (action.type === UPDATE_DIRECTIONS) {
-    const directions = action.direction;
+    const { direction } = action;
     return {
-      ...state, directions
+      ...state, directions: direction
     };
   }
   if (action.type === UPDATE_CATEGORY) {
@@ -105,7 +119,7 @@ export const recipeReducer = (state = initialState.recipe, action) => {
   }
   if (action.type === UPDATE_ALL_RECIPE_FIELD) {
     return {
-      ...state, ...action.all
+      ...state, ...action.recipe
     };
   }
   if (action.type === NEW_RECIPE) {

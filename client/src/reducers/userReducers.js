@@ -5,7 +5,8 @@ import {
   GOT_USER_PROFILE,
   UPDATE_USER_PROFILE,
   DELETE_RECIPE,
-  TOGGLE_FAV
+  TOGGLE_FAV,
+  GET_USER_VOTES
 } from '../actions/actions';
 
 const userReducer = (state = initialState.user, action = {
@@ -35,10 +36,25 @@ const userReducer = (state = initialState.user, action = {
         ...state, createdRecipes: recipes
       };
     }
-    case TOGGLE_FAV:
+    case TOGGLE_FAV: {
+      const {
+        added,
+        id
+      } = action.payload.favRecipe;
+      const { favRecipes } = state;
       return {
-        ...state, ...action.payload.user
+        ...state,
+        favRecipes: added ? favRecipes.concat([{ id }])
+          : favRecipes.filter(recipe => recipe.id !== id)
       };
+    }
+    case GET_USER_VOTES: {
+      const { votes } = action.payload;
+      return {
+        ...state,
+        votes
+      };
+    }
     default:
       return state;
   }

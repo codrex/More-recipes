@@ -27,7 +27,7 @@ class AddItems extends React.Component {
     };
   }
 
-/**
+  /**
    *
    * @param {Object} nextProps
    * @return {boolean} boolean value
@@ -118,10 +118,10 @@ class AddItems extends React.Component {
     if (this.state.showInput) {
       return (
         <Form
-        onSubmit={handleSubmit(this.addItem)}
-        submitBtnText={`add ${name}`}
-        secondary
-        lg={false}
+          onSubmit={handleSubmit(this.addItem)}
+          submitBtnText={`add ${name}`}
+          secondary
+          lg={false}
         >
           <Field
             component={Component}
@@ -142,7 +142,7 @@ class AddItems extends React.Component {
           />
         </Form>
       );
-    } return null
+    } return null;
   }
 
   /**
@@ -157,15 +157,15 @@ class AddItems extends React.Component {
     } = this.props;
     return (
       <ItemsList
-      items={this.state.items}
-      deleteItem={this.deleteFromList}
-      editItem={this.editItems}
-      componentType={name}
-      Component={Component}
-      name={name}
-      directions={directions}
-      ingredients={ingredients}
-    />
+        items={this.state.items}
+        deleteItem={this.deleteFromList}
+        editItem={this.editItems}
+        componentType={name}
+        Component={Component}
+        name={name}
+        directions={directions}
+        ingredients={ingredients}
+      />
     );
   }
 
@@ -173,21 +173,15 @@ class AddItems extends React.Component {
    * @return {React} AddItem jsx
    */
   render = () => {
-    const {
-      handleSubmit,
-      name,
-    } = this.props;
-    const {
-      items,
-      showInput
-    } = this.state;
+    const { name } = this.props;
+    const { items } = this.state;
     return (
       <div className="col-12 items ">
         <div className="items-header">
           <h4 className="items-header-text">
             {`${name}s ${' '}${items.length}`}
           </h4>
-         {this.renderForm()}
+          {this.renderForm()}
         </div>
         <div className="col-12 items-list-wrapper">
           {this.renderList()}
@@ -199,12 +193,13 @@ class AddItems extends React.Component {
 AddItems.defaultProps = {
   ingredients: false,
   directions: false,
+  externalError: false
 };
 
 AddItems.propTypes = {
   clearValidationError: PropTypes.func.isRequired,
   directions: PropTypes.bool,
-  externalError: PropTypes.any,
+  externalError: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
   handleSubmit: PropTypes.func.isRequired,
   ingredients: PropTypes.bool,
   initialize: PropTypes.func.isRequired,

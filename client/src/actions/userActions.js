@@ -4,7 +4,8 @@ import {
   SIGNUP,
   LOGIN_OR_REG_SUCCESS,
   GOT_USER_PROFILE,
-  UPDATE_USER_PROFILE
+  UPDATE_USER_PROFILE,
+  GET_USER_VOTES,
 } from './actions';
 import { clearToken } from '../utils/auth/auth';
 import ActionDispatcher from './actionDispatcher';
@@ -26,6 +27,10 @@ export const updatedProfile = payload => ({
 });
 export const loginOrRegSuccess = () => ({
   type: LOGIN_OR_REG_SUCCESS
+});
+
+export const gotVotes = payload => ({
+  type: GET_USER_VOTES, payload
 });
 
 export const userLogin = user => (dispatch) => {
@@ -58,6 +63,16 @@ export const getUserProfile = () => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   const id = dispatcher.getIdFromToken();
   return dispatcher.requestAndDispatch(`/api/v1/users/${id}`, null, gotProfile, 'get');
+};
+
+export const getVotes = recipeIds => (dispatch) => {
+  const dispatcher = new ActionDispatcher(dispatch, false);
+  return dispatcher.requestAndDispatch(
+    `/api/v1/users/votes?ids=${recipeIds.join()}`,
+    null,
+    gotVotes,
+    'get'
+  );
 };
 
 export const updateProfile = user => (dispatch) => {

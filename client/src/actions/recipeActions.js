@@ -20,8 +20,12 @@ import {
   FIND_RECIPES,
   RECIPE_VALIDATION_ERROR,
   CLEAR_VALIDATION_ERROR,
-  UPDATE_RECIPE_IMAGE
+  UPDATE_RECIPE_IMAGE,
+  GET_CREATED_RECIPES,
+  GET_FAVOURITE_RECIPES,
+  GET_REVIEWS
 } from './actions';
+import { LIMIT } from '../constants/constants';
 
 export const newRecipe = payload => ({
   type: NEW_RECIPE, payload
@@ -38,6 +42,16 @@ export const aboutToCreateRecipe = () => ({
 export const gotTopRecipes = payload => ({
   type: GET_TOP_RECIPES, payload
 });
+export const gotFavouriteRecipes = payload => ({
+  type: GET_FAVOURITE_RECIPES, payload
+});
+export const gotCreatedRecipes = payload => ({
+  type: GET_CREATED_RECIPES, payload
+});
+export const gotReviews = payload => ({
+  type: GET_REVIEWS, payload
+});
+
 export const afterDeleteRecipe = payload => ({
   type: DELETE_RECIPE, payload
 });
@@ -79,9 +93,9 @@ export const updateName = name => ({
   type: UPDATE_RECIPE_NAME,
   name
 });
-export const updateAllRecipeField = all => ({
+export const updateAllRecipeField = recipe => ({
   type: UPDATE_ALL_RECIPE_FIELD,
-  all
+  recipe
 });
 
 export const recipeValidationError = error => ({
@@ -103,6 +117,7 @@ const dispatchValidatioError = (recipe, dispatch) => {
   }
   return undefined;
 };
+
 // thunks
 export const createRecipe = (recipe, msg) => (dispatch) => {
   if (dispatchValidatioError(recipe, dispatch)) {
@@ -134,17 +149,54 @@ export const modifyRecipe = (recipe, msg) => (dispatch) => {
   );
 };
 
-export const getAllRecipes = () => (dispatch) => {
-  const dispatcher = new ActionDispatcher(dispatch);
-  return dispatcher.requestAndDispatch('/api/v1/recipes', null, gotAllRecipes, 'get');
-};
-
-export const getTopRecipes = () => (dispatch) => {
+export const getAllRecipes = page => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   return dispatcher.requestAndDispatch(
-    '/api/v1/recipes?sort=upvotes&order=ascending',
+    `/api/v1/recipes?limit=${LIMIT}&page=${page}`,
+    null,
+    gotAllRecipes,
+    'get'
+  );
+};
+
+export const getTopRecipes = page => (dispatch) => {
+  const dispatcher = new ActionDispatcher(dispatch);
+  return dispatcher.requestAndDispatch(
+    `/api/v1/recipes?sort=upvotes&order=ascending&limit=${LIMIT}&page=${page}`,
     null,
     gotTopRecipes,
+    'get'
+  );
+};
+
+export const getFavouriteRecipes = page => (dispatch) => {
+  const dispatcher = new ActionDispatcher(dispatch);
+  const id = dispatcher.getIdFromToken();
+  return dispatcher.requestAndDispatch(
+    `/api/v1/users/${id}/recipes/favourite?limit=${LIMIT}&page=${page}`,
+    null,
+    gotTopRecipes,
+    'get'
+  );
+};
+
+export const getCreatedRecipes = page => (dispatch) => {
+  const dispatcher = new ActionDispatcher(dispatch);
+  const id = dispatcher.getIdFromToken();
+  return dispatcher.requestAndDispatch(
+    `/api/v1/users/${id}/recipes/created?&limit=${LIMIT}&page=${page}`,
+    null,
+    gotCreatedRecipes,
+    'get'
+  );
+};
+
+export const getReviews = (recipeId, page) => (dispatch) => {
+  const dispatcher = new ActionDispatcher(dispatch, false);
+  return dispatcher.requestAndDispatch(
+    `/api/v1/recipes/${recipeId}/reviews?&limit=${LIMIT}&page=${page}`,
+    null,
+    gotReviews,
     'get'
   );
 };
@@ -170,10 +222,10 @@ export const postReview = (id, review, msg) => (dispatch) => {
   );
 };
 
-export const vote = (id, voteType) => (dispatch) => {
+export const vote = (id, voteType, status) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch, false);
   return dispatcher.requestAndDispatch(
-    `/api/v1/recipes/${id}/vote?vote=${voteType}vote`,
+    `/api/v1/recipes/${id}/vote?${voteType}=${status}`,
     null,
     afterVote,
     'put'
@@ -182,9 +234,8 @@ export const vote = (id, voteType) => (dispatch) => {
 
 export const toggleFav = (recipeId, msg = undefined) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch, false);
-  const id = dispatcher.getIdFromToken();
   return dispatcher.requestAndDispatch(
-    `/api/v1/users/${id}/recipe`,
+    '/api/v1/users/recipe',
     {
       recipeId
     },

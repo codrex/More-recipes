@@ -29,9 +29,7 @@ export default class ActionDispatcher {
   /**
  * @return {undefined}
  */
-  getIdFromToken() {
-    return getId();
-  }
+  getIdFromToken = () => getId()
 
   /**
  * @returns {undefined}

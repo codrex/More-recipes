@@ -20,7 +20,10 @@ let RecipeNameAndCategory = (props) => {
     validationError,
     clearValidationError
   } = props;
-  const { name: nameError, category: categoryError } = validationError;
+  const {
+    name: nameError,
+    category: categoryError
+  } = validationError;
   return (
     <div>
       <h4 className="items-header-text">
@@ -76,7 +79,7 @@ RecipeNameAndCategory.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.shape).isRequired,
   updateName: PropTypes.func.isRequired,
   updateCategory: PropTypes.func.isRequired,
-  validationError: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  validationError: PropTypes.objectOf(PropTypes.shape).isRequired,
 };
 
 RecipeNameAndCategory = reduxForm({

@@ -14,6 +14,7 @@ const props = {
   recipeId: 1,
   toggleFav: jest.fn(),
   isFav: jest.fn(),
+  push:jest.fn()
 };
 
 describe('Recipes card component ', () => {

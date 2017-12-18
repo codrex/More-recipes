@@ -1,66 +1,43 @@
 import db from '../models/index';
-import { validateRecipes, validateId, validationHandler } from '../validators/validator';
-import { sendValidationError, serverError, sendSuccess, sendFail } from '../reply/reply';
+import {
+  serverError,
+  sendSuccess,
+  sendFail,
+  sendPaginatedData
+} from '../reply/reply';
+import getParams from '../utils/pagination';
+import { ATTRIBUTES, RECIPE_NOT_FOUND } from '../constants/constants';
 
 const Recipes = db.Recipes;
-const attributes = [
-  'id',
-  'name',
-  'category',
-  'image',
-  'ingredients',
-  'directions',
-  'upVotes',
-  'downVotes',
-  'views'
-];
-const RECIPE_NOT_FOUND = 'Sorry, recipe was not found';
 
-// This function validates data gotten from the user before creating a recipe.
-export const validateRecipe = (req, res, next) => {
-  const { name, category, ingredients, directions, image } = req.body;
-  const recipes = {
-    name,
-    category,
-    ingredients,
-    directions,
-    image,
-    OwnerId: req.requestId,
-  };
-  validationHandler(recipes, validateRecipes, req, res, next);
-};
 
-// This function validates data gotten from the user before updating a recipe.
-export const validateUpdate = (req, res, next) => {
-  const recipes = {
-    name: req.body.name || req.recipe.name,
-    category: req.body.category || req.recipe.category,
-    ingredients: req.body.ingredients || req.recipe.ingredients,
-    directions: req.body.directions || req.recipe.directions,
-    image: req.body.image || req.recipe.image,
-    OwnerId: req.requestId,
-  };
-  validationHandler(recipes, validateRecipes, req, res, next);
-};
-
-// This function validate recipe id.
-export const recipeIdValidation = (req, res, next) => {
-  const validate = validateId({
-    id: req.body.recipeId || req.params.id
+const fetch = (where = {}, order = [], req, res) => {
+  const { limit, offset } = getParams(req);
+  Recipes.findAndCountAll({
+    where,
+    limit,
+    offset,
+    order,
+    attributes: ATTRIBUTES,
+  }).then(({ count, rows }) => {
+    sendPaginatedData('recipes', { rows, count, limit }, res);
+  }).catch(() => {
+    serverError(res);
   });
-  if (validate.valid) {
-    next();
-  } else {
-    sendValidationError(res, validate);
-  }
 };
 
 export const create = (req, res, next) => {
   Recipes.create(req.body)
     .then((recipe) => {
-      req.idToFetchRecipe = recipe.dataValues.id;
-      req.recipe = recipe;
-      next();
+      recipe.setOwner(req.requestId).then(() => {
+        req.currentRecipeId = recipe.dataValues.id;
+        recipe.reload({
+          attributes: ATTRIBUTES
+        }).then((reloadRecipe) => {
+          sendSuccess(res, 200, 'recipe', reloadRecipe);
+        });
+        next();
+      });
     }).catch((error) => {
       if (error.name === 'SequelizeUniqueConstraintError') {
         sendFail(res, 400, 'Sorry, recipe name already exist, please enter another');
@@ -71,15 +48,16 @@ export const create = (req, res, next) => {
 };
 
 export const fetchRecipe = (req, res) => {
+  const id = req.currentRecipeId || req.params.id || req.body.recipeId;
   Recipes.findOne({
     where: {
-      id: req.idToFetchRecipe || req.params.id
+      id,
     },
-    attributes,
+    attributes: ATTRIBUTES,
     include: [
       {
         model: db.Users,
-        as: 'Owner',
+        as: 'owner',
         attributes: {
           exclude: ['createdAt', 'updatedAt', 'password'],
         },
@@ -87,12 +65,12 @@ export const fetchRecipe = (req, res) => {
     ],
   }).then((recipe) => {
     if (recipe) {
+      sendSuccess(res, 200, 'recipe', recipe.dataValues);
       if (req.hasNewViewer) {
         recipe.increment('views', {
           by: 1
         });
       }
-      sendSuccess(res, 200, 'recipe', recipe.dataValues);
     } else {
       sendFail(res, 404, RECIPE_NOT_FOUND);
     }
@@ -105,7 +83,7 @@ export const fetchRecipe = (req, res) => {
 export const fetchVotes = (req, res) => {
   Recipes.findOne({
     where: {
-      id: req.idToFetchRecipe || req.params.id
+      id: req.currentRecipeId || req.params.id
     },
     attributes: ['id', 'upVotes', 'downVotes'],
   }).then((recipe) => {
@@ -116,49 +94,28 @@ export const fetchVotes = (req, res) => {
 };
 
 export const fetchAllRecipe = (req, res) => {
-  Recipes.findAll({
-    attributes,
-  }).then((recipe) => {
-    sendSuccess(res, 200, 'recipes', recipe);
-  }).catch(() => {
-    serverError(res);
-  });
+  fetch({}, [], req, res);
 };
 
 export const fetchAllBySearch = (req, res, next) => {
   if (req.query.search === undefined) return next();
-  Recipes.findAll({
-    limit: 10,
-    where: {
-      $or: [
-        {
-          name: req.query.search
-        },
-        {
-          category: req.query.search
-        },
-      ],
-    },
-    attributes,
-
-  }).then((recipe) => {
-    sendSuccess(res, 200, 'recipes', recipe);
-  }).catch(() => {
-    serverError(res);
-  });
+  const where = {
+    $or: [
+      {
+        name: req.query.search
+      },
+      {
+        category: req.query.search
+      },
+    ],
+  };
+  fetch(where, [], req, res);
 };
+
 // fetch recipes by upVotes in desending order
 export const fetchRecipeByUpVote = (req, res, next) => {
   if (req.query.sort === undefined) return next();
-  Recipes.findAll({
-    limit: 10,
-    order: [['upVotes', 'DESC']],
-    attributes,
-  }).then((recipes) => {
-    sendSuccess(res, 200, 'recipes', recipes);
-  }).catch(() => {
-    serverError(res);
-  });
+  fetch({}, [['upVotes', 'DESC']], req, res);
 };
 
 export const fetchForUpdate = (req, res, next) => {
@@ -166,9 +123,13 @@ export const fetchForUpdate = (req, res, next) => {
     where: {
       id: req.params.id
     },
-    attributes: ['name',
-      'category', 'ingredients',
-      'directions', 'image'],
+    attributes: [
+      'name',
+      'category',
+      'ingredients',
+      'directions',
+      'image'
+    ],
   }).then((recipe) => {
     if (recipe) {
       req.recipe = recipe;
@@ -195,20 +156,18 @@ export const deleteRecipe = (req, res) => {
 
 // checking if a requesting id is the id that created the post
 export const checkOwnship = (req, res, next) => {
-  Recipes.findById(parseInt(req.params.id, 10))
+  Recipes.findOne({
+    where: {
+      id: parseInt(req.params.id, 10),
+      ownerId: req.requestId
+    }
+  })
     .then((recipe) => {
       if (!recipe) {
         sendFail(res, 404, RECIPE_NOT_FOUND);
-        return;
+      } else {
+        next();
       }
-      recipe.getOwner()
-        .then((user) => {
-          if (user && user.id === req.requestId) {
-            next();
-          } else {
-            sendFail(res, 404, RECIPE_NOT_FOUND);
-          }
-        });
     }).catch(() => {
       serverError(res);
     });
@@ -243,34 +202,40 @@ export const setReview = (req, res, next) => {
       serverError(res);
     });
 };
+
 // get reviews on a recipe
 export const fetchReview = (req, res) => {
+  const { limit, offset } = getParams(req);
   Recipes.findOne({
     where: {
       id: req.params.id
     },
-    attributes: {
-      exclude: ['createdAt', 'updatedAt'],
-    },
+    attributes: ['id'],
     include: [{
       model: db.RecipeReviews,
-      attributes: {
-        exclude: ['updatedAt'],
-      },
+      limit,
+      offset,
+      attributes: ['id', 'RecipeId', 'createdAt', 'review'],
       include: [{
         model: db.Users,
         as: 'Reviewer',
-        attributes: {
-          exclude: ['createdAt', 'updatedAt', 'password'],
-        },
+        attributes: ['id', 'username', 'fullname']
       }],
+      order: [['id', 'DESC']],
     }],
-    order: [[{
-      model: db.RecipeReviews
-    }, 'id', 'DESC']],
   })
-    .then((recipeReviews) => {
-      sendSuccess(res, 200, 'recipe', recipeReviews);
+    .then((recipe) => {
+      if (recipe) {
+        recipe.getRecipeReviews()
+          .then((recipeReviews) => {
+            const count = recipeReviews.length;
+            sendPaginatedData('reviews', {
+              count,
+              limit,
+              rows: recipe.RecipeReviews
+            }, res);
+          });
+      } else sendFail(res, 404, RECIPE_NOT_FOUND);
     }).catch(() => {
       serverError(res);
     });
@@ -288,3 +253,4 @@ export const update = (req, res, next) => {
       serverError(res);
     });
 };
+

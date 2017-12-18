@@ -81,7 +81,7 @@ describe('Test thunks:: expect request to be successful', () => {
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: 'SIGNUP', payload },
         { type: 'END_AJAX_REQUEST',
-          response: { msg: undefined, success: true } },
+          response: { msg: "", success: true } },
       ];
       // mocking store
       const store = mockStore(initailState.user);
@@ -101,7 +101,7 @@ describe('Test thunks:: expect request to be successful', () => {
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: 'LOGIN', payload },
-        { type: 'END_AJAX_REQUEST', response: { msg: undefined, success: true } },
+        { type: 'END_AJAX_REQUEST', response: { msg: "", success: true } },
       ];
 
       const store = mockStore(initailState.user);
@@ -120,7 +120,7 @@ describe('Test thunks:: expect request to be successful', () => {
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: 'GOT_USER_PROFILE', payload },
-        { type: 'END_AJAX_REQUEST', response: { msg: undefined, success: true } },
+        { type: 'END_AJAX_REQUEST', response: { msg: "", success: true } },
       ];
 
       const store = mockStore(initailState.user);
