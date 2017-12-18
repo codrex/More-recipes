@@ -37,7 +37,7 @@ export class ProfilePage extends React.Component {
       noLoader: false,
       currentPage: 1,
     };
-}
+  }
 
   /**
    * @return {undefined}
@@ -114,9 +114,7 @@ export class ProfilePage extends React.Component {
    * @returns{number} pageNumber
    * @param {array} recipes
    */
-  getPageCount = (recipes) => {
-    return getPageCount(recipes.length, OFFSET);
-  }
+  getPageCount = (recipes) => getPageCount(recipes.length, OFFSET)
   /**
    * @returns{undefined}
    * @param{string}active

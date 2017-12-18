@@ -17,18 +17,27 @@
     &-inverse{
       background-color: $primary-color !important;
     }
+    &-outline{
+      background: transparent;
+      color:  $secondary-color !important;
+      border: 1px  $secondary-color solid;
+      transition: color .3s ease-in;
+      box-shadow: none !important;
+    }
   }
   &-primary{
     background-color: $primary-color !important;
     &-inverse{
       background-color: $light-text !important;
     }
+    &-outline{
+      background: transparent;
+      color:  $primary-color !important;
+      border: 1px  $primary-color solid;
+      transition: color .3s ease-in;
+      box-shadow: none !important;
+    }
 
   }
-  &.outline-btn{
-    background: transparent;
-    color: white;
-    border: 1px white solid;
-    transition: color .3s ease-in;
-  }
+
 }

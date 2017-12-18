@@ -1,45 +1,16 @@
 import db from '../models/index';
-import { validateSignup, validateLogin,
-  comparePassword, validateProfileUpdate,
-  validationHandler, validateId } from '../validators/validator';
-import { serverError, sendSuccess, sendFail } from '../reply/reply';
+import comparePassword from '../utils/comparePassword';
+import {
+  serverError,
+  sendSuccess,
+  sendFail,
+  sendPaginatedData
+} from '../reply/reply';
 import { generateToken } from '../authentication/authenticator';
+import getParams from '../utils/pagination';
+import { ATTRIBUTES, USER_NOT_FOUND } from '../constants/constants';
 
 const Users = db.Users;
-
-// This function validates signup inputs
-export const validateSignupData = (req, res, next) => {
-  validationHandler({
-    ...req.body
-  }, validateSignup, req, res, next);
-};
-
-// This function validates profile update data
-export const validateUpdate = (req, res, next) => {
-  const updateData = {
-    username: req.body.username || req.user.username,
-    fullname: req.body.fullname || req.user.fullname,
-    email: req.body.email || req.user.email,
-  };
-  validationHandler(updateData, validateProfileUpdate, req, res, next);
-};
-
-// This function validates signin inputs
-export const validateLoginData = (req, res, next) => {
-  const loginData = {
-    username: req.body.username,
-    password: req.body.password,
-  };
-  validationHandler(loginData, validateLogin, req, res, next);
-};
-
-// This function validates  user id gotten from req.params
-export const validateUserId = (req, res, next) => {
-  const id = {
-    id: req.params.id,
-  };
-  validationHandler(id, validateId, req, res, next);
-};
 
 // This function handle user authentication
 export const loginUser = (req, res, next) => {
@@ -118,13 +89,15 @@ export const fetchUser = (req, res) => {
     },
     attributes: ['id', 'email', 'username', 'fullname', 'profilePicture'],
     include: [{
-      all: true
+      model: db.Recipes,
+      as: 'favRecipes',
+      attributes: ['id'],
     }]
   }).then((user) => {
     if (user) {
       sendSuccess(res, 200, 'user', user.dataValues);
     } else {
-      sendFail(res, 404, 'Sorry, user not found');
+      sendFail(res, 404, USER_NOT_FOUND);
     }
   });
 };
@@ -144,20 +117,27 @@ export const fetchForUpdate = (req, res, next) => {
 };
 
 // add recipe as a user's favorite recipe
-export const setFavRecipe = (req, res, next) => {
+export const setFavRecipe = (req, res) => {
   Users.findById(req.requestId)
     .then((user) => {
-      user.hasFavRecipes(req.body.recipeId)
+      const { recipeId } = req.body;
+      user.hasFavRecipes(recipeId)
         .then((isFavRecipe) => {
           if (isFavRecipe) {
-            user.removeFavRecipes(req.body.recipeId)
+            user.removeFavRecipes(recipeId)
               .then(() => {
-                next();
+                sendSuccess(res, 200, 'favRecipe', {
+                  id: recipeId,
+                  added: false
+                });
               });
           } else {
-            user.addFavRecipes(req.body.recipeId)
+            user.addFavRecipes(recipeId)
               .then(() => {
-                next();
+                sendSuccess(res, 200, 'favRecipe', {
+                  id: recipeId,
+                  added: true
+                });
               });
           }
         });
@@ -167,34 +147,62 @@ export const setFavRecipe = (req, res, next) => {
 };
 
 // add recipe to user list of created recipes
-export const setRecipe = (req, res, next) => {
+export const setRecipe = (req) => {
   Users.findById(req.requestId)
     .then((user) => {
-      user.addCreatedRecipes(req.idToFetchRecipe)
-        .then(() => {
-          next();
-        }).catch(() => {
-          serverError(res);
-        });
+      user.addCreatedRecipes(req.currentRecipeId)
+        .catch(() => {});
     });
 };
 
-// get a user's favorite recipe from the dbase
-export const fetchRecipes = (req, res) => {
+export const fetchRecipes = (model, alias, req, res) => {
+  const { as } = model;
+  const attributes = ATTRIBUTES.concat(`${as}Id`);
+  const { limit, offset } = getParams(req);
   Users.findOne({
     where: {
       id: req.requestId
     },
     attributes: ['id'],
-    include: [{
-      all: true
-    }],
+    include: [
+      {
+        ...model,
+        limit,
+        offset,
+        attributes
+      },
+    ]
   })
     .then((userRecipes) => {
-      sendSuccess((res), 200, 'user', userRecipes);
+      userRecipes[`get${alias}`]()
+        .then((recipes) => {
+          sendPaginatedData('recipes', {
+            rows: userRecipes[as],
+            count: recipes.length,
+            limit
+          }, res);
+        });
     }).catch(() => {
       serverError(res);
     });
+};
+
+// get a user's favorite recipe from the dbase
+export const fetchFavouriteRecipes = (req, res) => {
+  const model = {
+    model: db.Recipes,
+    as: 'favRecipes'
+  };
+  fetchRecipes(model, 'FavRecipes', req, res);
+};
+
+// get a user's favorite recipe from the dbase
+export const fetchCreatedRecipes = (req, res) => {
+  const model = {
+    model: db.Recipes,
+    as: 'createdRecipes'
+  };
+  fetchRecipes(model, 'CreatedRecipes', req, res);
 };
 
 export const isIdValidUser = (req, res, next) => {
@@ -203,7 +211,7 @@ export const isIdValidUser = (req, res, next) => {
       if (user) {
         next();
       } else {
-        sendFail(res, 404, 'Sorry, user not found');
+        sendFail(res, 404, USER_NOT_FOUND);
       }
     }).catch(() => {
       serverError(res);
@@ -214,6 +222,6 @@ export const compareIds = (req, res, next) => {
   if (parseInt(req.params.id, 10) === req.requestId) {
     next();
   } else {
-    sendFail(res, 404, 'Sorry, user was not found');
+    sendFail(res, 404, USER_NOT_FOUND);
   }
 };

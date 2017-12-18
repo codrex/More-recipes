@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import TopBar from '../../common/topbar/topbar';
 import Loader from '../../common/loader/loader';
 import Button from '../../common/button/button';
 import AddDirections from './addDirections/addDirections';
@@ -26,17 +25,26 @@ import {
 } from '../../../actions/recipeActions';
 
 /**
- * Add recipe component
+ * @name AddRecipe
+ * @return {React} jsx
  */
 class AddRecipes extends React.Component {
+  /**
+   * @returns {undefined}
+   * @param {object} props
+   */
   constructor(props) {
     super(props);
-    const { match } = props;
+    const { match, actions } = props;
     this.isModifyRecipe = match.path === MODIFY_RECIPE_PATH;
     this.recipeId = parseInt(match.params.id, 10);
     this.handleButtonClick = this.handleButtonClick.bind(this);
+    actions.aboutToCreateRecipe();
   }
 
+  /**
+   * @returns {undefined}
+   */
   componentDidMount() {
     const { match, actions, recipe } = this.props;
     if (match.path === MODIFY_RECIPE_PATH) {
@@ -45,13 +53,19 @@ class AddRecipes extends React.Component {
           actions.getRecipe(this.recipeId);
         } else { console.log('recipe not found'); }
       }
-    } else {
-      actions.aboutToCreateRecipe();
     }
   }
 
+  /**
+   * @returns {undefined}
+   * @param {object} nextProps
+   */
   componentWillReceiveProps(nextProps) {
-    const { message, actions, match } = nextProps;
+    const {
+      message,
+      actions,
+      match
+    } = nextProps;
 
     if (message === RECIPE_ADDED || message === RECIPE_MODIFIED) {
       actions.resetSuccessMessage();
@@ -64,7 +78,10 @@ class AddRecipes extends React.Component {
     }
   }
 
-  handleButtonClick() {
+  /**
+   * @returns {undefined}
+   */
+  handleButtonClick = () => {
     const { recipe, actions } = this.props;
 
     if (this.isModifyRecipe) {
@@ -75,42 +92,41 @@ class AddRecipes extends React.Component {
   }
   renderBody = () => {
     const {
-      loading,
       recipe,
     } = this.props;
     const hasRecipeToModify = this.isModifyRecipe && recipe.id === this.recipeId;
     const isCreateRecipe = !this.isModifyRecipe;
-      return (
-        <div>
-          <div
-            className="row d-flex justify-content-between align-items-start"
-            style={{
-              margin: '0.5em'
-            }}
-          >
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 name-category no-padding">
+    return (
+      <div>
+        <div
+          className="row d-flex justify-content-between align-items-start"
+          style={{
+            margin: '0.5em'
+          }}
+        >
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 name-category no-padding">
             {/*
               hasRecipeToModify will prevent RecipeNameAndCategory from rendering until
               recipe props is available
              */}
-              {hasRecipeToModify && <RecipeNameAndCategory />}
-              {isCreateRecipe && <RecipeNameAndCategory />}
-              <RecipeImage />
-            </div>
-            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 d-flex ingredients no-padding">
-              <AddIngredients />
-            </div>
-            <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 d-flex directions no-padding">
-              <AddDirections />
-            </div>
-            <Button
+            {hasRecipeToModify && <RecipeNameAndCategory />}
+            {isCreateRecipe && <RecipeNameAndCategory />}
+            <RecipeImage />
+          </div>
+          <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 d-flex ingredients no-padding">
+            <AddIngredients />
+          </div>
+          <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 d-flex directions no-padding">
+            <AddDirections />
+          </div>
+          <Button
             text={this.isModifyRecipe ? 'modify recipe' : 'post recipe'}
             className="btn-secondary btn-lg w-100 text-uppercase add-recipe-btn"
             handleClick={this.handleButtonClick}
           />
-          </div>
         </div>
-      );
+      </div>
+    );
   }
 
   /**
@@ -119,12 +135,11 @@ class AddRecipes extends React.Component {
   render() {
     const {
       loading,
-      history
     } = this.props;
     return (
       <div
         className="container main"
-        style={{maxWidth: 'unset'}}
+        style={{ maxWidth: 'unset' }}
       >
         {this.renderBody()}
         {loading && <Loader loading={loading} />}
@@ -134,17 +149,20 @@ class AddRecipes extends React.Component {
 }
 
 AddRecipes.propTypes = {
-  actions: PropTypes.object.isRequired,
-  createdRecipes: PropTypes.arrayOf(PropTypes.object),
-  history: PropTypes.object.isRequired,
+  actions: PropTypes.objectOf(PropTypes.shape).isRequired,
+  history: PropTypes.objectOf(PropTypes.shape).isRequired,
   loading: PropTypes.bool.isRequired,
-  match: PropTypes.objectOf(PropTypes.shape),
-  recipe: PropTypes.object,
+  match: PropTypes.objectOf(PropTypes.shape).isRequired,
+  message: PropTypes.string,
+  recipe: PropTypes.PropTypes.objectOf(PropTypes.shape).isRequired,
+};
+
+AddRecipes.defaultProps = {
+  message: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
   loading: state.networkRequest.loading,
-  createdRecipes: state.user.createdRecipes,
   success: state.networkRequest.success,
   message: state.networkRequest.msg,
   recipe: state.recipe,

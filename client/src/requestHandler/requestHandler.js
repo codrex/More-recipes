@@ -1,6 +1,9 @@
 import axios from 'axios';
-import { endAjaxRequest, beginAjaxRequest,
-  ajaxRequestAuthError } from '../actions/ajaxActions';
+import {
+  endAjaxRequest,
+  beginAjaxRequest,
+  ajaxRequestAuthError
+} from '../actions/ajaxActions';
 
 const productionUrl = 'https://more-recipesrex.herokuapp.com';
 const localhost = 'http://127.0.0.1:8000';
@@ -19,7 +22,7 @@ export const setToken = (token) => {
   axios.defaults.headers.common.Authorization = token;
 };
 
-export const dispatchOnSuccess = (dispatch, msg = undefined) => {
+export const dispatchOnSuccess = (dispatch, msg = '') => {
   dispatch(endAjaxRequest({
     success: true,
     msg,

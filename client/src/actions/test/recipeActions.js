@@ -163,7 +163,7 @@ describe('Unit test for recipe actions:: ', () => {
     const all = {};
     const updateAllRecipeField = {
       type: actionTypes.UPDATE_ALL_RECIPE_FIELD,
-      all
+      ...all
     };
     expect(actions.updateAllRecipeField(all)).contain(updateAllRecipeField);
   });
@@ -201,21 +201,22 @@ describe('Test thunks:: expect request to be successful', () => {
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: actionTypes.NEW_RECIPE, payload },
         { type: 'END_AJAX_REQUEST',
-          response: { msg: undefined, success: true } },
+          response: { msg: "", success: true } },
       ];
       return store.dispatch(actions.createRecipe(payload.recipe))
         .then(() => {
           expect(store.getActions()).to.deep.equal(expectedActions);
-        });
-    });
-  it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.MODIFIED_RECIPE} and
+      });
+  });
+
+    it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.MODIFIED_RECIPE} and
   END_AJAX_REQUEST actions on recipe modification`, () => {
       const { payload, store, scope } = setup('/api/v1/recipes/1', 'put', initailState.Recipe);
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: actionTypes.MODIFIED_RECIPE, payload },
         { type: 'END_AJAX_REQUEST',
-          response: { msg: undefined, success: true } },
+          response: { msg: "", success: true } },
       ];
       return store.dispatch(actions.modifyRecipe({ id: 1, ...payload.recipe }))
         .then(() => {
@@ -224,68 +225,84 @@ describe('Test thunks:: expect request to be successful', () => {
     });
   it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.GET_ALL_RECIPES} and
   END_AJAX_REQUEST action on successful login`, () => {
-      const { payload, store, scope } = setup('/api/v1/recipes', 'get', initailState.Recipes);
+      const { payload, store, scope } = setup('/api/v1/recipes?limit=10&page=1', 'get', initailState.Recipes);
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: actionTypes.GET_ALL_RECIPES, payload },
         { type: 'END_AJAX_REQUEST',
-          response: { msg: undefined, success: true } },
+          response: { msg: "", success: true } },
       ];
-      return store.dispatch(actions.getAllRecipes({ id: 1 }))
+      return store.dispatch(actions.getAllRecipes(1))
         .then(() => {
           expect(store.getActions()).to.deep.equal(expectedActions);
         });
     });
   it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.GET_TOP_RECIPES} and
   END_AJAX_REQUEST action on successful login`, () => {
-      const { payload, store, scope } = setup('/api/v1/recipes?sort=upvotes&order=ascending', 'get', initailState.Recipes);
+      const { payload, store, scope } = setup('/api/v1/recipes?sort=upvotes&order=ascending&limit=10&page=1', 'get', initailState.Recipes);
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: actionTypes.GET_TOP_RECIPES, payload },
         { type: 'END_AJAX_REQUEST',
-          response: { msg: undefined, success: true } },
+          response: { msg: "", success: true } },
       ];
-      return store.dispatch(actions.getTopRecipes({ id: 1 }))
+      return store.dispatch(actions.getTopRecipes(1))
         .then(() => {
           expect(store.getActions()).to.deep.equal(expectedActions);
         });
     });
+  it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.GET_REVIEWS} and
+    END_AJAX_REQUEST action when get recipe reviews action creator is called`, () => {
+        const { payload, store, scope } = setup('/api/v1/recipes/1/reviews?&limit=10&page=1',
+         'get', initailState.recipe.reviews);
+        const expectedActions = [
+          { type: 'BEGIN_AJAX_REQUEST', loading: false },
+          { type: actionTypes.GET_REVIEWS, payload },
+          { type: 'END_AJAX_REQUEST',
+            response: { msg: "", success: true } },
+        ];
+        return store.dispatch(actions.getReviews(1, 1))
+          .then(() => {
+            expect(store.getActions()).to.deep.equal(expectedActions);
+          });
+      });
    it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.AFTER_REVIEW} and
-  END_AJAX_REQUEST action on successful login`, () => {
+  END_AJAX_REQUEST action on after a review is posted`, () => {
       const { payload, store, scope } = setup('/api/v1/recipes/1/reviews', 'post', initailState.Recipe);
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: false },
         { type: actionTypes.AFTER_REVIEW, payload },
         { type: 'END_AJAX_REQUEST',
-          response: { msg: undefined, success: true } },
+          response: { msg: "", success: true } },
       ];
       return store.dispatch(actions.postReview(1, 'hello'))
         .then(() => {
           expect(store.getActions()).to.deep.equal(expectedActions);
         });
     });
+
   it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.AFTER_VOTE} and
   END_AJAX_REQUEST action on successful login`, () => {
-      const { payload, store, scope } = setup('/api/v1/recipes/1/vote?vote=upvote', 'put', initailState.Recipe);
+      const { payload, store, scope } = setup('/api/v1/recipes/1/vote?up=true', 'put', initailState.Recipe);
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: false },
         { type: actionTypes.AFTER_VOTE, payload },
         { type: 'END_AJAX_REQUEST',
-          response: { msg: undefined, success: true } },
+          response: { msg: "", success: true } },
       ];
-      return store.dispatch(actions.vote(1, 'up'))
+      return store.dispatch(actions.vote(1, 'up', true))
         .then(() => {
           expect(store.getActions()).to.deep.equal(expectedActions);
         });
     });
   it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.TOGGLE_FAV} and
   END_AJAX_REQUEST action on successful login`, () => {
-      const { payload, store, scope } = setup('/api/v1/users//recipe', 'post', initailState.Recipe);
+      const { payload, store, scope } = setup('/api/v1/users/recipe', 'post', initailState.Recipe);
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: false },
         { type: actionTypes.TOGGLE_FAV, payload },
         { type: 'END_AJAX_REQUEST',
-          response: { msg: undefined, success: true } },
+          response: { msg: "", success: true } },
       ];
       return store.dispatch(actions.toggleFav(1))
         .then(() => {
@@ -299,7 +316,7 @@ describe('Test thunks:: expect request to be successful', () => {
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: actionTypes.DELETE_RECIPE, payload, recipeIndex: 12 },
         { type: 'END_AJAX_REQUEST',
-          response: { msg: undefined, success: true } },
+          response: { msg: "", success: true } },
       ];
       return store.dispatch(actions.deleteRecipe(1, 12))
         .then(() => {
@@ -315,7 +332,7 @@ describe('Test thunks:: expect request to be successful', () => {
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: actionTypes.FIND_RECIPES, payload },
         { type: 'END_AJAX_REQUEST',
-          response: { msg: undefined, success: true } },
+          response: { msg: "", success: true } },
       ];
       return store.dispatch(actions.findRecipes(searchTerm))
         .then(() => {

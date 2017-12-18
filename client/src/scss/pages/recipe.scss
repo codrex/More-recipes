@@ -1,4 +1,6 @@
-
+.main{
+  min-height: 70vh;
+}
 .recipe {
   display: flex;
   justify-content: center;
@@ -24,13 +26,14 @@
 .directions-wrapper,
 .comments-wrapper {
   min-height: fit-content;
-  margin-top: 25px;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   & .display-4 {
     margin: 25px;
     text-transform: capitalize;
+    font-size: 2.6rem;
+    font-weight: bold
   }
 }
 .ingredients-wrapper, .ingredients-wrapper {
@@ -38,18 +41,38 @@
 }
 .comments-wrapper {
   min-height: 30vh;
-  margin-bottom: 100px;
-  justify-content: center;
+  margin-bottom: 50px;
+  justify-content: space-between;
   align-items: center;
   padding: 0;
   & h5 {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 90%;
-    padding: 1em;
+    padding: 1em 0;
     font-size: 2em;
   }
+}
+.ingredient-list-wrapper,
+.directions-list-wrapper
+{
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 4px;
+  margin-bottom: 50px;
+}
+.recipe-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 1em 2em 0
+}
+
+.ingredient-list-wrapper .list-item-text,
+.directions-list-wrapper .accordion-text
+{
+  font-size: 1.5rem
 }
 
 .top-bar {
@@ -67,13 +90,14 @@
   width: auto;
   position: fixed;
   left: 2%;
-  bottom: 50%;
+  bottom: 30%;
   transform: translateY(50%);
   & .icon-wrapper {
-    font-size: 1.8rem;
+    @include box-shadow;
+    font-size: .9em;
     cursor: pointer;
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
     background: white;
     color: $text-color;
     justify-content: center;
@@ -115,9 +139,6 @@
     transform: translateY(0);
     background: white;
     border-top: 1px solid $primary-color;
-  }
-  .recipe {
-    margin-bottom: 100px;
   }
 }
 @media (max-width: 990px) {

@@ -26,27 +26,25 @@ exports[`Recipes grid component  render as expected with one recipe 1`] = `
           >
             breakfast
           </p>
-          <a
-            href="recipe/1"
+          <button
+            className="btn recipe-card-underlay-btn"
+            data-dismiss="modal"
+            data-target=""
+            data-toggle=""
+            href=""
             onClick={[Function]}
+            type="button"
           >
-            <button
-              className="btn recipe-card-underlay-btn"
-              data-dismiss="modal"
-              data-target=""
-              data-toggle=""
-              onClick={[Function]}
-              type="button"
-            >
-              view details
-            </button>
-          </a>
+            view details
+          </button>
         </div>
       </div>
       <div
         className="recipe-card-footer"
       >
-        <h4>
+        <h4
+          className="ellipsis"
+        >
           coco rice
         </h4>
         <div

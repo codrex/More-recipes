@@ -11,3 +11,4 @@ webpack.connfig.babel.js
 dist
 client/src/**/test/*.js
 client/src/components/**/*.test.js
+package-lock.json

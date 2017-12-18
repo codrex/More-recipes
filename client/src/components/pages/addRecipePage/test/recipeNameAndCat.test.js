@@ -1,7 +1,7 @@
 import React from 'react';
 import RecipeNameAndCategory from '../recipeNameAndCategory/recipeNameAndCategory';
-import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
+import toJSON from "enzyme-to-json"
 import configureStore from '../../../../store/configStore';
 
 const props = {
@@ -17,11 +17,11 @@ const props = {
 }
 describe('Recipe name and category component', () => {
   test('render as expected', () => {
-    const component = renderer.create(
+    const component = shallow(
       <Provider store={configureStore()}>
         <RecipeNameAndCategory {...props} />
       </Provider>);
-    const tree = component.toJSON();
+    const tree = toJSON(component);
     expect(tree).toMatchSnapshot();
   });
 });

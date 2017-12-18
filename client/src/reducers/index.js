@@ -4,8 +4,8 @@ import userReducer from './userReducers';
 import { recipesReducer, recipeReducer, recipeValidationError } from './recipeReducers';
 import { ajaxReducer, ajaxRedirectReducer } from './ajaxReducer';
 import authReducer from './authReducer';
+import pageCountReducer from './pageCount';
 import * as initialState from './initialState';
-
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -13,6 +13,7 @@ const rootReducer = combineReducers({
   networkRequest: ajaxReducer,
   recipe: recipeReducer,
   recipes: recipesReducer,
+  pageCount: pageCountReducer,
   redirectUrl: ajaxRedirectReducer,
   auth: authReducer,
   recipeValidationError,

@@ -10,7 +10,7 @@ module.exports = {
       allowNull: false,
       type: Sequelize.INTEGER,
     },
-    RecipeId: {
+    recipeId: {
       allowNull: true,
       type: Sequelize.INTEGER,
     },

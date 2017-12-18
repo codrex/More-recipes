@@ -53,8 +53,11 @@ const objects = {
       greaterThan: 0,
     },
   },
-  array: {
+  stringArray: {
     stringArray: true,
+  },
+  numberArray: {
+    numberArray: true,
   },
 };
 
@@ -77,13 +80,13 @@ const constraint = {
   createRecipeConstraint: {
     name: objects.name,
     category: objects.name,
-    ingredients: objects.array,
-    directions: objects.array,
+    ingredients: objects.stringArray,
+    directions: objects.stringArray,
     image: {
       presence: true,
       isString: true,
     },
-    OwnerId: objects.id,
+    ownerId: objects.id,
   },
   idConstraint: {
     id: objects.id,
@@ -110,6 +113,9 @@ const constraint = {
       },
     }
   },
+  recipeIdsConstraint: {
+    recipeIds: objects.numberArray
+  }
 };
 
 export default constraint;

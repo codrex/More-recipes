@@ -1,19 +1,9 @@
 import db from '../models/index';
-import { validateReview } from '../validators/validator';
-import { sendValidationError, serverError } from '../reply/reply';
+import { serverError, sendPaginatedRecipes } from '../reply/reply';
+import getParams from '../utils/pagination';
 
 const RecipeReviews = db.RecipeReviews;
 
-export const reviewValidation = (req, res, next) => {
-  const validate = validateReview({
-    review: req.body.review
-  });
-  if (validate.valid) {
-    next();
-  } else {
-    sendValidationError(res, validate);
-  }
-};
 export const createReview = (req, res, next) => {
   RecipeReviews.create({
     review: req.body.review,
@@ -25,4 +15,21 @@ export const createReview = (req, res, next) => {
     }).catch(() => {
       serverError(res);
     });
+};
+
+// get reviews on a recipe
+export const fetchReviews = (req, res) => {
+  const { limit, offset } = getParams(req);
+  Recipes.findAndCountAll({
+    where: {
+      recipeId: req.params.id
+    },
+    limit,
+    offset,
+    order: [['id', 'DESC']],
+  }).then(({ count, rows }) => {
+    sendPaginatedRecipes(rows, count, limit, res);
+  }).catch(() => {
+    serverError(res);
+  });
 };

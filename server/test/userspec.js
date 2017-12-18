@@ -330,5 +330,42 @@ export const userSpec = (repiceSpec) => {
       });
     });
   });
+
+  // get user votes
+  describe('get user votes', () => {
+    it('return 200 as status code when all ids are numbers', done => {
+      request.get('/api/v1/users/votes?ids=1,2,3')
+      .set('Authorization', token)
+      .end((err, res) => {
+        console.log(res.body)
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        expect(typeof res.body.votes).to.be.equal(typeof []);
+        done();
+      });
+    });
+    it('return 200 as status code when an alphabet is passed as an id', done => {
+      request.get('/api/v1/users/votes?ids=1,2,kdjd')
+      .set('Authorization', token)
+      .end((err, res) => {
+        console.log(res.body)
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        expect(typeof res.body.votes).to.be.equal(typeof []);
+        done();
+      });
+    });
+    it('return 200 as status code when no id was sent', done => {
+      request.get('/api/v1/users/votes')
+      .set('Authorization', token2)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal('success');
+        expect(res.body.votes).to.be.eql([]);
+        done();
+      });
+    });
+  });
+
 };
 

@@ -105,20 +105,16 @@ describe('Testing user reducers', () => {
   it('should return a newState for action type TOGGLE_FAV', () => {
     const action = {
       payload: {
-        user: {
-          email: 'email@email.com',
-          username: 'username',
-          fullname: 'fullname fullname fullname',
-          profilePix: 'UNKNOWN',
-          favRecipes: [{}, {}],
-          createdRecipes: []
+        favRecipe: {
+          added: true,
+          id:1
         }
       },
       type: TOGGLE_FAV
     };
     const user = reducer(state, action);
-    expect(user).eql({ ...state, ...action.payload.user });
-    expect(user.favRecipes.length).eql(2);
+    expect(user).eql({ ...state,favRecipes:[{id:1}] });
+    expect(user.favRecipes.length).eql(1);
     expect(user).to.not.eql(state);
   });
 });

@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import abbr from '../../../../utils/nameAbbr/nameAbbr';
 
 const Comment = props => (
   <div className="media-object comment">
     <div className="avatar avatar-sm">{abbr(props.fullname)}</div>
     <div className="media-body">
-      <h1>{props.fullname}</h1>
-      <h6 className="text-dark lead">{`@${props.username}`}</h6>
+      <div className="d-flex justify-content-between align-items-center">
+        <h1>
+          {`@${props.username}`}
+        </h1>
+        <span className="text-center bold">
+          {moment(props.createdAt).fromNow()}
+        </span>
+      </div>
+      {/* <h6 className="text-dark lead">{`@${props.username}`}</h6> */}
       <p className="media-text no-margin">
         {props.review}
       </p>
@@ -22,14 +30,20 @@ Comment.propTypes = {
 };
 
 const Comments = (props) => {
-  const comments = props.comments;
+  const { comments } = props;
   return (
     <div className="col-12">
-      {comments.map((comment, i) => (<Comment
-        key={comment + Date.now()}
-        review={comment.review}
-        fullname={comment.Reviewer.fullname}
-        username={comment.Reviewer.username}
+      {comments.map(({
+        id,
+        Reviewer,
+        review,
+        createdAt
+      }, i) => (<Comment
+        key={id}
+        review={review}
+        createdAt={createdAt}
+        fullname={Reviewer.fullname}
+        username={Reviewer.username}
         index={i}
       />)
       )}

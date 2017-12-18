@@ -13,6 +13,8 @@ const props = {
     vote: jest.fn(),
     toggleFav: jest.fn(),
     getUser: jest.fn(),
+    getReviews: jest.fn(),
+    getVotes: jest.fn()
   },
   recipe: {
     recipeName: 'test tester',
@@ -60,6 +62,8 @@ const props = {
     downVotes: 1,
     recipeId: 1,
   }],
+
+  votes: []
 };
 
 describe('View Recipes Page component ', () => {

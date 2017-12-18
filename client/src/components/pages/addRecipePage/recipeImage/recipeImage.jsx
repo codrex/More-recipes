@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { updateImage } from '../../../../actions/recipeActions';
+import imageParser from '../../../../utils/imageParser/imageParser';
 
 dotenv.config();
 
@@ -18,7 +19,7 @@ class RecipeImage extends React.Component {
     super(props);
     const { image } = props;
     this.state = {
-      image: image && JSON.parse(image)
+      image: imageParser(image)
     };
     this.loadImage = this.loadImage.bind(this);
   }
@@ -29,7 +30,7 @@ class RecipeImage extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props !== nextProps) {
       const { image } = nextProps;
-      if (image) this.setState({ image: JSON.parse(image) });
+      this.setState({ image: imageParser(image) });
     }
   }
   /**
@@ -62,6 +63,7 @@ class RecipeImage extends React.Component {
       this.props.updateImage(JSON.stringify(image));
     });
   }
+
   /**
    * @return {ReactElement} Image
    */

@@ -16,7 +16,9 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
     actions={
       Object {
         "getRecipe": [Function],
+        "getReviews": [Function],
         "getUser": [Function],
+        "getVotes": [Function],
         "redirect": [Function],
         "toggleFav": [Function],
         "vote": [Function],
@@ -47,6 +49,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
         },
       }
     }
+    pageCount={0}
     recipe={
       Object {
         "Owner": Object {
@@ -82,72 +85,74 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
       }
     }
     userId={1}
+    votes={Array []}
   >
     <div
-      className="container-fluid no-padding"
+      className="container-fluid no-padding main"
     >
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+        title=""
+      >
+        <div
+          className="hero-half backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
+          />
+        </div>
+      </HeroArea>
       <div
         className="row flex-column recipe"
       >
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex "
         >
-          <div
-            className="col-12 modify-recipe-wrapper"
-          >
-            <Button
-              className=""
-              dataTarget=""
-              dataToggle=""
-              handleClick={[Function]}
-              text="Modify recipe"
-              type="button"
-            >
-              <button
-                className="btn"
-                data-dismiss="modal"
-                data-target=""
-                data-toggle=""
-                onClick={[Function]}
-                type="button"
-              >
-                Modify recipe
-              </button>
-            </Button>
-          </div>
-          <h5
-            className="display-4"
-          >
-            Ingredients 
-          </h5>
           <Ingredients
             ingredients={Array []}
           >
             <List
-              className=""
+              className="ingredient-list-wrapper"
               style={Object {}}
             >
               <div
-                className="col-12 "
+                className="col-12 ingredient-list-wrapper"
                 style={Object {}}
-              />
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
             </List>
           </Ingredients>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper d-flex"
         >
-          <h5
-            className="display-4"
-          >
-            Directions 
-          </h5>
           <Directions
             directions={Array []}
           >
             <div
-              className="col-12"
-            />
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
           </Directions>
         </div>
         <div
@@ -156,12 +161,14 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
           <h5
             className="display-4"
           >
-            Reviews and comments
+            Reviews
             <Button
+              Tag="button"
               className="btn-secondary"
               dataTarget="#modal"
               dataToggle="modal"
               handleClick={[Function]}
+              href=""
               id="reviewBtn"
               text="post a review"
               type="button"
@@ -171,6 +178,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                 data-dismiss="modal"
                 data-target="#modal"
                 data-toggle="modal"
+                href=""
                 onClick={[Function]}
                 type="button"
               >
@@ -179,61 +187,18 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             </Button>
           </h5>
           <Comments
-            comments={
-              Array [
-                Object {
-                  "RecipeId": 1,
-                  "Reviewer": Object {
-                    "email": "test.test@gmail.com",
-                    "fullname": "test tester ",
-                    "id": 1,
-                    "profilePix": "UNKNOWN",
-                    "username": "testi",
-                  },
-                  "ReviewerId": 1,
-                  "id": 50,
-                  "review": "resioioioioi",
-                },
-              ]
-            }
+            comments={Array []}
           >
             <div
               className="col-12"
             >
-              <Comment
-                fullname="test tester "
-                index={0}
-                key="[object Object]1512925105663"
-                review="resioioioioi"
-                username="testi"
+              <h1
+                className="text-uppercase display-4 msg-display no-comment no-margin"
               >
-                <div
-                  className="media-object comment"
-                >
-                  <div
-                    className="avatar avatar-sm"
-                  >
-                    TT
-                  </div>
-                  <div
-                    className="media-body"
-                  >
-                    <h1>
-                      test tester 
-                    </h1>
-                    <h6
-                      className="text-dark lead"
-                    >
-                      @testi
-                    </h6>
-                    <p
-                      className="media-text no-margin"
-                    >
-                      resioioioioi
-                    </p>
-                  </div>
-                </div>
-              </Comment>
+                Sorry..
+                <br />
+                this recipe have no review.
+              </h1>
             </div>
           </Comments>
         </div>
@@ -241,35 +206,6 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
       <div
         className="d-flex justify-content-around lead topbar flex-column icon-bar"
       >
-        <Icon
-          active=""
-          className=""
-          dataTarget=""
-          dataToggle=""
-          handleClick={[Function]}
-          iconClass="fa fa-eye recipe-card-icon"
-          onMouseEnter={[Function]}
-          parentClass=""
-          pointer={false}
-        >
-          <div
-            className="icon-wrapper"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            role="button"
-            tabIndex="0"
-          >
-            <i
-              className="icon fa fa-eye recipe-card-icon"
-              data-target=""
-              data-toggle=""
-            >
-              <span>
-                1
-              </span>
-            </i>
-          </div>
-        </Icon>
         <Icon
           active=""
           className=""
@@ -294,9 +230,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -324,9 +258,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -642,6 +574,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                 id="review"
                                 name="review"
                                 placeholder="Enter your review"
+                                row="4"
                                 validate={[Function]}
                               >
                                 <Connect(ConnectedField)
@@ -749,6 +682,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                   name="review"
                                   normalize={[Function]}
                                   placeholder="Enter your review"
+                                  row="4"
                                   validate={[Function]}
                                 >
                                   <ConnectedField
@@ -860,6 +794,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                     normalize={[Function]}
                                     placeholder="Enter your review"
                                     pristine={true}
+                                    row="4"
                                     syncError={
                                       Array [
                                         "review can't be blank",
@@ -905,7 +840,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                         }
                                       }
                                       placeholder="Enter your review"
-                                      row="1"
+                                      row="4"
                                     >
                                       <div
                                         className="form-group"
@@ -921,7 +856,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                           onDrop={[Function]}
                                           onFocus={[Function]}
                                           placeholder="Enter your review"
-                                          rows="1"
+                                          rows="4"
                                           value=""
                                         />
                                         <div
@@ -973,7 +908,9 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
     actions={
       Object {
         "getRecipe": [Function],
+        "getReviews": [Function],
         "getUser": [Function],
+        "getVotes": [Function],
         "redirect": [Function],
         "toggleFav": [Function],
         "vote": [Function],
@@ -1004,6 +941,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
         },
       }
     }
+    pageCount={0}
     recipe={
       Object {
         "Owner": Object {
@@ -1039,72 +977,74 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
       }
     }
     userId={1}
+    votes={Array []}
   >
     <div
-      className="container-fluid no-padding"
+      className="container-fluid no-padding main"
     >
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+        title=""
+      >
+        <div
+          className="hero-half backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
+          />
+        </div>
+      </HeroArea>
       <div
         className="row flex-column recipe"
       >
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex "
         >
-          <div
-            className="col-12 modify-recipe-wrapper"
-          >
-            <Button
-              className=""
-              dataTarget=""
-              dataToggle=""
-              handleClick={[Function]}
-              text="Modify recipe"
-              type="button"
-            >
-              <button
-                className="btn"
-                data-dismiss="modal"
-                data-target=""
-                data-toggle=""
-                onClick={[Function]}
-                type="button"
-              >
-                Modify recipe
-              </button>
-            </Button>
-          </div>
-          <h5
-            className="display-4"
-          >
-            Ingredients 
-          </h5>
           <Ingredients
             ingredients={Array []}
           >
             <List
-              className=""
+              className="ingredient-list-wrapper"
               style={Object {}}
             >
               <div
-                className="col-12 "
+                className="col-12 ingredient-list-wrapper"
                 style={Object {}}
-              />
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
             </List>
           </Ingredients>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper d-flex"
         >
-          <h5
-            className="display-4"
-          >
-            Directions 
-          </h5>
           <Directions
             directions={Array []}
           >
             <div
-              className="col-12"
-            />
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
           </Directions>
         </div>
         <div
@@ -1113,12 +1053,14 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
           <h5
             className="display-4"
           >
-            Reviews and comments
+            Reviews
             <Button
+              Tag="button"
               className="btn-secondary"
               dataTarget="#modal"
               dataToggle="modal"
               handleClick={[Function]}
+              href=""
               id="reviewBtn"
               text="post a review"
               type="button"
@@ -1128,6 +1070,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                 data-dismiss="modal"
                 data-target="#modal"
                 data-toggle="modal"
+                href=""
                 onClick={[Function]}
                 type="button"
               >
@@ -1136,61 +1079,18 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             </Button>
           </h5>
           <Comments
-            comments={
-              Array [
-                Object {
-                  "RecipeId": 1,
-                  "Reviewer": Object {
-                    "email": "test.test@gmail.com",
-                    "fullname": "test tester ",
-                    "id": 1,
-                    "profilePix": "UNKNOWN",
-                    "username": "testi",
-                  },
-                  "ReviewerId": 1,
-                  "id": 50,
-                  "review": "resioioioioi",
-                },
-              ]
-            }
+            comments={Array []}
           >
             <div
               className="col-12"
             >
-              <Comment
-                fullname="test tester "
-                index={0}
-                key="[object Object]1512925105663"
-                review="resioioioioi"
-                username="testi"
+              <h1
+                className="text-uppercase display-4 msg-display no-comment no-margin"
               >
-                <div
-                  className="media-object comment"
-                >
-                  <div
-                    className="avatar avatar-sm"
-                  >
-                    TT
-                  </div>
-                  <div
-                    className="media-body"
-                  >
-                    <h1>
-                      test tester 
-                    </h1>
-                    <h6
-                      className="text-dark lead"
-                    >
-                      @testi
-                    </h6>
-                    <p
-                      className="media-text no-margin"
-                    >
-                      resioioioioi
-                    </p>
-                  </div>
-                </div>
-              </Comment>
+                Sorry..
+                <br />
+                this recipe have no review.
+              </h1>
             </div>
           </Comments>
         </div>
@@ -1198,35 +1098,6 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
       <div
         className="d-flex justify-content-around lead topbar flex-column icon-bar"
       >
-        <Icon
-          active=""
-          className=""
-          dataTarget=""
-          dataToggle=""
-          handleClick={[Function]}
-          iconClass="fa fa-eye recipe-card-icon"
-          onMouseEnter={[Function]}
-          parentClass=""
-          pointer={false}
-        >
-          <div
-            className="icon-wrapper"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            role="button"
-            tabIndex="0"
-          >
-            <i
-              className="icon fa fa-eye recipe-card-icon"
-              data-target=""
-              data-toggle=""
-            >
-              <span>
-                1
-              </span>
-            </i>
-          </div>
-        </Icon>
         <Icon
           active=""
           className=""
@@ -1251,9 +1122,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -1281,9 +1150,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -1599,6 +1466,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                 id="review"
                                 name="review"
                                 placeholder="Enter your review"
+                                row="4"
                                 validate={[Function]}
                               >
                                 <Connect(ConnectedField)
@@ -1706,6 +1574,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                   name="review"
                                   normalize={[Function]}
                                   placeholder="Enter your review"
+                                  row="4"
                                   validate={[Function]}
                                 >
                                   <ConnectedField
@@ -1817,6 +1686,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                     normalize={[Function]}
                                     placeholder="Enter your review"
                                     pristine={true}
+                                    row="4"
                                     syncError={
                                       Array [
                                         "review can't be blank",
@@ -1862,7 +1732,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                         }
                                       }
                                       placeholder="Enter your review"
-                                      row="1"
+                                      row="4"
                                     >
                                       <div
                                         className="form-group"
@@ -1878,7 +1748,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
                                           onDrop={[Function]}
                                           onFocus={[Function]}
                                           placeholder="Enter your review"
-                                          rows="1"
+                                          rows="4"
                                           value=""
                                         />
                                         <div
@@ -1930,7 +1800,9 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
     actions={
       Object {
         "getRecipe": [Function],
+        "getReviews": [Function],
         "getUser": [Function],
+        "getVotes": [Function],
         "redirect": [Function],
         "toggleFav": [Function],
         "vote": [Function],
@@ -1961,6 +1833,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
         },
       }
     }
+    pageCount={0}
     recipe={
       Object {
         "Owner": Object {
@@ -1996,72 +1869,74 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
       }
     }
     userId={1}
+    votes={Array []}
   >
     <div
-      className="container-fluid no-padding"
+      className="container-fluid no-padding main"
     >
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+        title=""
+      >
+        <div
+          className="hero-half backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
+          />
+        </div>
+      </HeroArea>
       <div
         className="row flex-column recipe"
       >
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex "
         >
-          <div
-            className="col-12 modify-recipe-wrapper"
-          >
-            <Button
-              className=""
-              dataTarget=""
-              dataToggle=""
-              handleClick={[Function]}
-              text="Modify recipe"
-              type="button"
-            >
-              <button
-                className="btn"
-                data-dismiss="modal"
-                data-target=""
-                data-toggle=""
-                onClick={[Function]}
-                type="button"
-              >
-                Modify recipe
-              </button>
-            </Button>
-          </div>
-          <h5
-            className="display-4"
-          >
-            Ingredients 
-          </h5>
           <Ingredients
             ingredients={Array []}
           >
             <List
-              className=""
+              className="ingredient-list-wrapper"
               style={Object {}}
             >
               <div
-                className="col-12 "
+                className="col-12 ingredient-list-wrapper"
                 style={Object {}}
-              />
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
             </List>
           </Ingredients>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper d-flex"
         >
-          <h5
-            className="display-4"
-          >
-            Directions 
-          </h5>
           <Directions
             directions={Array []}
           >
             <div
-              className="col-12"
-            />
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
           </Directions>
         </div>
         <div
@@ -2070,12 +1945,14 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
           <h5
             className="display-4"
           >
-            Reviews and comments
+            Reviews
             <Button
+              Tag="button"
               className="btn-secondary"
               dataTarget="#modal"
               dataToggle="modal"
               handleClick={[Function]}
+              href=""
               id="reviewBtn"
               text="post a review"
               type="button"
@@ -2085,6 +1962,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                 data-dismiss="modal"
                 data-target="#modal"
                 data-toggle="modal"
+                href=""
                 onClick={[Function]}
                 type="button"
               >
@@ -2093,61 +1971,18 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             </Button>
           </h5>
           <Comments
-            comments={
-              Array [
-                Object {
-                  "RecipeId": 1,
-                  "Reviewer": Object {
-                    "email": "test.test@gmail.com",
-                    "fullname": "test tester ",
-                    "id": 1,
-                    "profilePix": "UNKNOWN",
-                    "username": "testi",
-                  },
-                  "ReviewerId": 1,
-                  "id": 50,
-                  "review": "resioioioioi",
-                },
-              ]
-            }
+            comments={Array []}
           >
             <div
               className="col-12"
             >
-              <Comment
-                fullname="test tester "
-                index={0}
-                key="[object Object]1512925105502"
-                review="resioioioioi"
-                username="testi"
+              <h1
+                className="text-uppercase display-4 msg-display no-comment no-margin"
               >
-                <div
-                  className="media-object comment"
-                >
-                  <div
-                    className="avatar avatar-sm"
-                  >
-                    TT
-                  </div>
-                  <div
-                    className="media-body"
-                  >
-                    <h1>
-                      test tester 
-                    </h1>
-                    <h6
-                      className="text-dark lead"
-                    >
-                      @testi
-                    </h6>
-                    <p
-                      className="media-text no-margin"
-                    >
-                      resioioioioi
-                    </p>
-                  </div>
-                </div>
-              </Comment>
+                Sorry..
+                <br />
+                this recipe have no review.
+              </h1>
             </div>
           </Comments>
         </div>
@@ -2155,35 +1990,6 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
       <div
         className="d-flex justify-content-around lead topbar flex-column icon-bar"
       >
-        <Icon
-          active=""
-          className=""
-          dataTarget=""
-          dataToggle=""
-          handleClick={[Function]}
-          iconClass="fa fa-eye recipe-card-icon"
-          onMouseEnter={[Function]}
-          parentClass=""
-          pointer={false}
-        >
-          <div
-            className="icon-wrapper"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            role="button"
-            tabIndex="0"
-          >
-            <i
-              className="icon fa fa-eye recipe-card-icon"
-              data-target=""
-              data-toggle=""
-            >
-              <span>
-                1
-              </span>
-            </i>
-          </div>
-        </Icon>
         <Icon
           active=""
           className=""
@@ -2208,9 +2014,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -2238,9 +2042,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -2556,6 +2358,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                 id="review"
                                 name="review"
                                 placeholder="Enter your review"
+                                row="4"
                                 validate={[Function]}
                               >
                                 <Connect(ConnectedField)
@@ -2653,6 +2456,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                   name="review"
                                   normalize={[Function]}
                                   placeholder="Enter your review"
+                                  row="4"
                                   validate={[Function]}
                                 >
                                   <ConnectedField
@@ -2754,6 +2558,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                     normalize={[Function]}
                                     placeholder="Enter your review"
                                     pristine={true}
+                                    row="4"
                                     syncError={
                                       Array [
                                         "review can't be blank",
@@ -2799,7 +2604,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                         }
                                       }
                                       placeholder="Enter your review"
-                                      row="1"
+                                      row="4"
                                     >
                                       <div
                                         className="form-group"
@@ -2815,7 +2620,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                           onDrop={[Function]}
                                           onFocus={[Function]}
                                           placeholder="Enter your review"
-                                          rows="1"
+                                          rows="4"
                                           value=""
                                         />
                                         <div
@@ -2867,7 +2672,9 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
     actions={
       Object {
         "getRecipe": [Function],
+        "getReviews": [Function],
         "getUser": [Function],
+        "getVotes": [Function],
         "redirect": [Function],
         "toggleFav": [Function],
         "vote": [Function],
@@ -2898,6 +2705,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
         },
       }
     }
+    pageCount={0}
     recipe={
       Object {
         "Owner": Object {
@@ -2933,72 +2741,74 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
       }
     }
     userId={1}
+    votes={Array []}
   >
     <div
-      className="container-fluid no-padding"
+      className="container-fluid no-padding main"
     >
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+        title=""
+      >
+        <div
+          className="hero-half backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
+          />
+        </div>
+      </HeroArea>
       <div
         className="row flex-column recipe"
       >
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex "
         >
-          <div
-            className="col-12 modify-recipe-wrapper"
-          >
-            <Button
-              className=""
-              dataTarget=""
-              dataToggle=""
-              handleClick={[Function]}
-              text="Modify recipe"
-              type="button"
-            >
-              <button
-                className="btn"
-                data-dismiss="modal"
-                data-target=""
-                data-toggle=""
-                onClick={[Function]}
-                type="button"
-              >
-                Modify recipe
-              </button>
-            </Button>
-          </div>
-          <h5
-            className="display-4"
-          >
-            Ingredients 
-          </h5>
           <Ingredients
             ingredients={Array []}
           >
             <List
-              className=""
+              className="ingredient-list-wrapper"
               style={Object {}}
             >
               <div
-                className="col-12 "
+                className="col-12 ingredient-list-wrapper"
                 style={Object {}}
-              />
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
             </List>
           </Ingredients>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper d-flex"
         >
-          <h5
-            className="display-4"
-          >
-            Directions 
-          </h5>
           <Directions
             directions={Array []}
           >
             <div
-              className="col-12"
-            />
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
           </Directions>
         </div>
         <div
@@ -3007,12 +2817,14 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
           <h5
             className="display-4"
           >
-            Reviews and comments
+            Reviews
             <Button
+              Tag="button"
               className="btn-secondary"
               dataTarget="#modal"
               dataToggle="modal"
               handleClick={[Function]}
+              href=""
               id="reviewBtn"
               text="post a review"
               type="button"
@@ -3022,6 +2834,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                 data-dismiss="modal"
                 data-target="#modal"
                 data-toggle="modal"
+                href=""
                 onClick={[Function]}
                 type="button"
               >
@@ -3030,61 +2843,18 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             </Button>
           </h5>
           <Comments
-            comments={
-              Array [
-                Object {
-                  "RecipeId": 1,
-                  "Reviewer": Object {
-                    "email": "test.test@gmail.com",
-                    "fullname": "test tester ",
-                    "id": 1,
-                    "profilePix": "UNKNOWN",
-                    "username": "testi",
-                  },
-                  "ReviewerId": 1,
-                  "id": 50,
-                  "review": "resioioioioi",
-                },
-              ]
-            }
+            comments={Array []}
           >
             <div
               className="col-12"
             >
-              <Comment
-                fullname="test tester "
-                index={0}
-                key="[object Object]1512925105502"
-                review="resioioioioi"
-                username="testi"
+              <h1
+                className="text-uppercase display-4 msg-display no-comment no-margin"
               >
-                <div
-                  className="media-object comment"
-                >
-                  <div
-                    className="avatar avatar-sm"
-                  >
-                    TT
-                  </div>
-                  <div
-                    className="media-body"
-                  >
-                    <h1>
-                      test tester 
-                    </h1>
-                    <h6
-                      className="text-dark lead"
-                    >
-                      @testi
-                    </h6>
-                    <p
-                      className="media-text no-margin"
-                    >
-                      resioioioioi
-                    </p>
-                  </div>
-                </div>
-              </Comment>
+                Sorry..
+                <br />
+                this recipe have no review.
+              </h1>
             </div>
           </Comments>
         </div>
@@ -3092,35 +2862,6 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
       <div
         className="d-flex justify-content-around lead topbar flex-column icon-bar"
       >
-        <Icon
-          active=""
-          className=""
-          dataTarget=""
-          dataToggle=""
-          handleClick={[Function]}
-          iconClass="fa fa-eye recipe-card-icon"
-          onMouseEnter={[Function]}
-          parentClass=""
-          pointer={false}
-        >
-          <div
-            className="icon-wrapper"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            role="button"
-            tabIndex="0"
-          >
-            <i
-              className="icon fa fa-eye recipe-card-icon"
-              data-target=""
-              data-toggle=""
-            >
-              <span>
-                1
-              </span>
-            </i>
-          </div>
-        </Icon>
         <Icon
           active=""
           className=""
@@ -3145,9 +2886,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -3175,9 +2914,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -3493,6 +3230,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                 id="review"
                                 name="review"
                                 placeholder="Enter your review"
+                                row="4"
                                 validate={[Function]}
                               >
                                 <Connect(ConnectedField)
@@ -3590,6 +3328,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                   name="review"
                                   normalize={[Function]}
                                   placeholder="Enter your review"
+                                  row="4"
                                   validate={[Function]}
                                 >
                                   <ConnectedField
@@ -3691,6 +3430,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                     normalize={[Function]}
                                     placeholder="Enter your review"
                                     pristine={true}
+                                    row="4"
                                     syncError={
                                       Array [
                                         "review can't be blank",
@@ -3736,7 +3476,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                         }
                                       }
                                       placeholder="Enter your review"
-                                      row="1"
+                                      row="4"
                                     >
                                       <div
                                         className="form-group"
@@ -3752,7 +3492,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
                                           onDrop={[Function]}
                                           onFocus={[Function]}
                                           placeholder="Enter your review"
-                                          rows="1"
+                                          rows="4"
                                           value=""
                                         />
                                         <div
@@ -3804,7 +3544,9 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
     actions={
       Object {
         "getRecipe": [Function],
+        "getReviews": [Function],
         "getUser": [Function],
+        "getVotes": [Function],
         "redirect": [Function],
         "toggleFav": [Function],
         "vote": [Function],
@@ -3835,6 +3577,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
         },
       }
     }
+    pageCount={0}
     recipe={
       Object {
         "Owner": Object {
@@ -3870,72 +3613,74 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
       }
     }
     userId={1}
+    votes={Array []}
   >
     <div
-      className="container-fluid no-padding"
+      className="container-fluid no-padding main"
     >
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+        title=""
+      >
+        <div
+          className="hero-half backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
+          />
+        </div>
+      </HeroArea>
       <div
         className="row flex-column recipe"
       >
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex "
         >
-          <div
-            className="col-12 modify-recipe-wrapper"
-          >
-            <Button
-              className=""
-              dataTarget=""
-              dataToggle=""
-              handleClick={[Function]}
-              text="Modify recipe"
-              type="button"
-            >
-              <button
-                className="btn"
-                data-dismiss="modal"
-                data-target=""
-                data-toggle=""
-                onClick={[Function]}
-                type="button"
-              >
-                Modify recipe
-              </button>
-            </Button>
-          </div>
-          <h5
-            className="display-4"
-          >
-            Ingredients 
-          </h5>
           <Ingredients
             ingredients={Array []}
           >
             <List
-              className=""
+              className="ingredient-list-wrapper"
               style={Object {}}
             >
               <div
-                className="col-12 "
+                className="col-12 ingredient-list-wrapper"
                 style={Object {}}
-              />
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
             </List>
           </Ingredients>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper d-flex"
         >
-          <h5
-            className="display-4"
-          >
-            Directions 
-          </h5>
           <Directions
             directions={Array []}
           >
             <div
-              className="col-12"
-            />
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
           </Directions>
         </div>
         <div
@@ -3944,12 +3689,14 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
           <h5
             className="display-4"
           >
-            Reviews and comments
+            Reviews
             <Button
+              Tag="button"
               className="btn-secondary"
               dataTarget="#modal"
               dataToggle="modal"
               handleClick={[Function]}
+              href=""
               id="reviewBtn"
               text="post a review"
               type="button"
@@ -3959,6 +3706,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                 data-dismiss="modal"
                 data-target="#modal"
                 data-toggle="modal"
+                href=""
                 onClick={[Function]}
                 type="button"
               >
@@ -3967,61 +3715,18 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             </Button>
           </h5>
           <Comments
-            comments={
-              Array [
-                Object {
-                  "RecipeId": 1,
-                  "Reviewer": Object {
-                    "email": "test.test@gmail.com",
-                    "fullname": "test tester ",
-                    "id": 1,
-                    "profilePix": "UNKNOWN",
-                    "username": "testi",
-                  },
-                  "ReviewerId": 1,
-                  "id": 50,
-                  "review": "resioioioioi",
-                },
-              ]
-            }
+            comments={Array []}
           >
             <div
               className="col-12"
             >
-              <Comment
-                fullname="test tester "
-                index={0}
-                key="[object Object]1512925105604"
-                review="resioioioioi"
-                username="testi"
+              <h1
+                className="text-uppercase display-4 msg-display no-comment no-margin"
               >
-                <div
-                  className="media-object comment"
-                >
-                  <div
-                    className="avatar avatar-sm"
-                  >
-                    TT
-                  </div>
-                  <div
-                    className="media-body"
-                  >
-                    <h1>
-                      test tester 
-                    </h1>
-                    <h6
-                      className="text-dark lead"
-                    >
-                      @testi
-                    </h6>
-                    <p
-                      className="media-text no-margin"
-                    >
-                      resioioioioi
-                    </p>
-                  </div>
-                </div>
-              </Comment>
+                Sorry..
+                <br />
+                this recipe have no review.
+              </h1>
             </div>
           </Comments>
         </div>
@@ -4029,35 +3734,6 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
       <div
         className="d-flex justify-content-around lead topbar flex-column icon-bar"
       >
-        <Icon
-          active=""
-          className=""
-          dataTarget=""
-          dataToggle=""
-          handleClick={[Function]}
-          iconClass="fa fa-eye recipe-card-icon"
-          onMouseEnter={[Function]}
-          parentClass=""
-          pointer={false}
-        >
-          <div
-            className="icon-wrapper"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            role="button"
-            tabIndex="0"
-          >
-            <i
-              className="icon fa fa-eye recipe-card-icon"
-              data-target=""
-              data-toggle=""
-            >
-              <span>
-                1
-              </span>
-            </i>
-          </div>
-        </Icon>
         <Icon
           active=""
           className=""
@@ -4082,9 +3758,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -4112,9 +3786,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -4430,6 +4102,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                 id="review"
                                 name="review"
                                 placeholder="Enter your review"
+                                row="4"
                                 validate={[Function]}
                               >
                                 <Connect(ConnectedField)
@@ -4537,6 +4210,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                   name="review"
                                   normalize={[Function]}
                                   placeholder="Enter your review"
+                                  row="4"
                                   validate={[Function]}
                                 >
                                   <ConnectedField
@@ -4648,6 +4322,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                     normalize={[Function]}
                                     placeholder="Enter your review"
                                     pristine={true}
+                                    row="4"
                                     syncError={
                                       Array [
                                         "review can't be blank",
@@ -4693,7 +4368,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                         }
                                       }
                                       placeholder="Enter your review"
-                                      row="1"
+                                      row="4"
                                     >
                                       <div
                                         className="form-group"
@@ -4709,7 +4384,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                           onDrop={[Function]}
                                           onFocus={[Function]}
                                           placeholder="Enter your review"
-                                          rows="1"
+                                          rows="4"
                                           value=""
                                         />
                                         <div
@@ -4761,7 +4436,9 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
     actions={
       Object {
         "getRecipe": [Function],
+        "getReviews": [Function],
         "getUser": [Function],
+        "getVotes": [Function],
         "redirect": [Function],
         "toggleFav": [Function],
         "vote": [Function],
@@ -4792,6 +4469,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
         },
       }
     }
+    pageCount={0}
     recipe={
       Object {
         "Owner": Object {
@@ -4827,72 +4505,74 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
       }
     }
     userId={1}
+    votes={Array []}
   >
     <div
-      className="container-fluid no-padding"
+      className="container-fluid no-padding main"
     >
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+        title=""
+      >
+        <div
+          className="hero-half backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
+          />
+        </div>
+      </HeroArea>
       <div
         className="row flex-column recipe"
       >
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex "
         >
-          <div
-            className="col-12 modify-recipe-wrapper"
-          >
-            <Button
-              className=""
-              dataTarget=""
-              dataToggle=""
-              handleClick={[Function]}
-              text="Modify recipe"
-              type="button"
-            >
-              <button
-                className="btn"
-                data-dismiss="modal"
-                data-target=""
-                data-toggle=""
-                onClick={[Function]}
-                type="button"
-              >
-                Modify recipe
-              </button>
-            </Button>
-          </div>
-          <h5
-            className="display-4"
-          >
-            Ingredients 
-          </h5>
           <Ingredients
             ingredients={Array []}
           >
             <List
-              className=""
+              className="ingredient-list-wrapper"
               style={Object {}}
             >
               <div
-                className="col-12 "
+                className="col-12 ingredient-list-wrapper"
                 style={Object {}}
-              />
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
             </List>
           </Ingredients>
         </div>
         <div
           className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper d-flex"
         >
-          <h5
-            className="display-4"
-          >
-            Directions 
-          </h5>
           <Directions
             directions={Array []}
           >
             <div
-              className="col-12"
-            />
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
           </Directions>
         </div>
         <div
@@ -4901,12 +4581,14 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
           <h5
             className="display-4"
           >
-            Reviews and comments
+            Reviews
             <Button
+              Tag="button"
               className="btn-secondary"
               dataTarget="#modal"
               dataToggle="modal"
               handleClick={[Function]}
+              href=""
               id="reviewBtn"
               text="post a review"
               type="button"
@@ -4916,6 +4598,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                 data-dismiss="modal"
                 data-target="#modal"
                 data-toggle="modal"
+                href=""
                 onClick={[Function]}
                 type="button"
               >
@@ -4924,61 +4607,18 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             </Button>
           </h5>
           <Comments
-            comments={
-              Array [
-                Object {
-                  "RecipeId": 1,
-                  "Reviewer": Object {
-                    "email": "test.test@gmail.com",
-                    "fullname": "test tester ",
-                    "id": 1,
-                    "profilePix": "UNKNOWN",
-                    "username": "testi",
-                  },
-                  "ReviewerId": 1,
-                  "id": 50,
-                  "review": "resioioioioi",
-                },
-              ]
-            }
+            comments={Array []}
           >
             <div
               className="col-12"
             >
-              <Comment
-                fullname="test tester "
-                index={0}
-                key="[object Object]1512925105604"
-                review="resioioioioi"
-                username="testi"
+              <h1
+                className="text-uppercase display-4 msg-display no-comment no-margin"
               >
-                <div
-                  className="media-object comment"
-                >
-                  <div
-                    className="avatar avatar-sm"
-                  >
-                    TT
-                  </div>
-                  <div
-                    className="media-body"
-                  >
-                    <h1>
-                      test tester 
-                    </h1>
-                    <h6
-                      className="text-dark lead"
-                    >
-                      @testi
-                    </h6>
-                    <p
-                      className="media-text no-margin"
-                    >
-                      resioioioioi
-                    </p>
-                  </div>
-                </div>
-              </Comment>
+                Sorry..
+                <br />
+                this recipe have no review.
+              </h1>
             </div>
           </Comments>
         </div>
@@ -4986,35 +4626,6 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
       <div
         className="d-flex justify-content-around lead topbar flex-column icon-bar"
       >
-        <Icon
-          active=""
-          className=""
-          dataTarget=""
-          dataToggle=""
-          handleClick={[Function]}
-          iconClass="fa fa-eye recipe-card-icon"
-          onMouseEnter={[Function]}
-          parentClass=""
-          pointer={false}
-        >
-          <div
-            className="icon-wrapper"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            role="button"
-            tabIndex="0"
-          >
-            <i
-              className="icon fa fa-eye recipe-card-icon"
-              data-target=""
-              data-toggle=""
-            >
-              <span>
-                1
-              </span>
-            </i>
-          </div>
-        </Icon>
         <Icon
           active=""
           className=""
@@ -5039,9 +4650,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -5069,9 +4678,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
               data-target=""
               data-toggle=""
             >
-              <span>
-                1
-              </span>
+              <span />
             </i>
           </div>
         </Icon>
@@ -5387,6 +4994,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                 id="review"
                                 name="review"
                                 placeholder="Enter your review"
+                                row="4"
                                 validate={[Function]}
                               >
                                 <Connect(ConnectedField)
@@ -5494,6 +5102,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                   name="review"
                                   normalize={[Function]}
                                   placeholder="Enter your review"
+                                  row="4"
                                   validate={[Function]}
                                 >
                                   <ConnectedField
@@ -5605,6 +5214,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                     normalize={[Function]}
                                     placeholder="Enter your review"
                                     pristine={true}
+                                    row="4"
                                     syncError={
                                       Array [
                                         "review can't be blank",
@@ -5650,7 +5260,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                         }
                                       }
                                       placeholder="Enter your review"
-                                      row="1"
+                                      row="4"
                                     >
                                       <div
                                         className="form-group"
@@ -5666,7 +5276,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
                                           onDrop={[Function]}
                                           onFocus={[Function]}
                                           placeholder="Enter your review"
-                                          rows="1"
+                                          rows="4"
                                           value=""
                                         />
                                         <div
@@ -5704,104 +5314,18 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
 
 exports[`View Recipes Page component  should show a loader when loading is true  1`] = `
 <div
-  className="container-fluid no-padding"
+  className="container-fluid no-padding main"
 >
   <Loader
     loading={true}
   />
-  <div
-    className="row flex-column recipe"
-  >
-    <div
-      className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex "
-    >
-      <div
-        className="col-12 modify-recipe-wrapper"
-      >
-        <Button
-          className=""
-          dataTarget=""
-          dataToggle=""
-          handleClick={[Function]}
-          text="Modify recipe"
-          type="button"
-        />
-      </div>
-      <h5
-        className="display-4"
-      >
-        Ingredients 
-      </h5>
-      <Ingredients
-        ingredients={Array []}
-      />
-    </div>
-    <div
-      className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper d-flex"
-    >
-      <h5
-        className="display-4"
-      >
-        Directions 
-      </h5>
-      <Directions
-        directions={Array []}
-      />
-    </div>
-    <div
-      className="col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper d-flex"
-    >
-      <h5
-        className="display-4"
-      >
-        Reviews and comments
-        <Button
-          className="btn-secondary"
-          dataTarget="#modal"
-          dataToggle="modal"
-          handleClick={[Function]}
-          id="reviewBtn"
-          text="post a review"
-          type="button"
-        />
-      </h5>
-      <Comments
-        comments={
-          Array [
-            Object {
-              "RecipeId": 1,
-              "Reviewer": Object {
-                "email": "test.test@gmail.com",
-                "fullname": "test tester ",
-                "id": 1,
-                "profilePix": "UNKNOWN",
-                "username": "testi",
-              },
-              "ReviewerId": 1,
-              "id": 50,
-              "review": "resioioioioi",
-            },
-          ]
-        }
-      />
-    </div>
-  </div>
+  <HeroArea
+    image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+    title=""
+  />
   <div
     className="d-flex justify-content-around lead topbar flex-column icon-bar"
   >
-    <Icon
-      active=""
-      className=""
-      dataTarget=""
-      dataToggle=""
-      handleClick={[Function]}
-      iconClass="fa fa-eye recipe-card-icon"
-      onMouseEnter={[Function]}
-      parentClass=""
-      pointer={false}
-    >
-      1
-    </Icon>
     <Icon
       active=""
       className=""
@@ -5813,9 +5337,7 @@ exports[`View Recipes Page component  should show a loader when loading is true 
       onMouseEnter={[Function]}
       parentClass=""
       pointer={false}
-    >
-      1
-    </Icon>
+    />
     <Icon
       active=""
       className=""
@@ -5827,9 +5349,7 @@ exports[`View Recipes Page component  should show a loader when loading is true 
       onMouseEnter={[Function]}
       parentClass=""
       pointer={false}
-    >
-      1
-    </Icon>
+    />
     <Icon
       active=""
       className=""
@@ -5866,31 +5386,18 @@ exports[`View Recipes Page component  should show a loader when loading is true 
 
 exports[`View Recipes Page component  to match empty snapshot  1`] = `
 <div
-  className="container-fluid no-padding"
+  className="container-fluid no-padding main"
 >
+  <HeroArea
+    image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+    title=""
+  />
   <div
     className="row flex-column recipe"
   >
     <div
       className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex "
     >
-      <div
-        className="col-12 modify-recipe-wrapper"
-      >
-        <Button
-          className=""
-          dataTarget=""
-          dataToggle=""
-          handleClick={[Function]}
-          text="Modify recipe"
-          type="button"
-        />
-      </div>
-      <h5
-        className="display-4"
-      >
-        Ingredients 
-      </h5>
       <Ingredients
         ingredients={Array []}
       />
@@ -5898,11 +5405,6 @@ exports[`View Recipes Page component  to match empty snapshot  1`] = `
     <div
       className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper d-flex"
     >
-      <h5
-        className="display-4"
-      >
-        Directions 
-      </h5>
       <Directions
         directions={Array []}
       />
@@ -5913,35 +5415,21 @@ exports[`View Recipes Page component  to match empty snapshot  1`] = `
       <h5
         className="display-4"
       >
-        Reviews and comments
+        Reviews
         <Button
+          Tag="button"
           className="btn-secondary"
           dataTarget="#modal"
           dataToggle="modal"
           handleClick={[Function]}
+          href=""
           id="reviewBtn"
           text="post a review"
           type="button"
         />
       </h5>
       <Comments
-        comments={
-          Array [
-            Object {
-              "RecipeId": 1,
-              "Reviewer": Object {
-                "email": "test.test@gmail.com",
-                "fullname": "test tester ",
-                "id": 1,
-                "profilePix": "UNKNOWN",
-                "username": "testi",
-              },
-              "ReviewerId": 1,
-              "id": 50,
-              "review": "resioioioioi",
-            },
-          ]
-        }
+        comments={Array []}
       />
     </div>
   </div>
@@ -5954,27 +5442,12 @@ exports[`View Recipes Page component  to match empty snapshot  1`] = `
       dataTarget=""
       dataToggle=""
       handleClick={[Function]}
-      iconClass="fa fa-eye recipe-card-icon"
-      onMouseEnter={[Function]}
-      parentClass=""
-      pointer={false}
-    >
-      1
-    </Icon>
-    <Icon
-      active=""
-      className=""
-      dataTarget=""
-      dataToggle=""
-      handleClick={[Function]}
       iconClass="fa fa-thumbs-o-up"
       id="upvote"
       onMouseEnter={[Function]}
       parentClass=""
       pointer={false}
-    >
-      1
-    </Icon>
+    />
     <Icon
       active=""
       className=""
@@ -5986,9 +5459,7 @@ exports[`View Recipes Page component  to match empty snapshot  1`] = `
       onMouseEnter={[Function]}
       parentClass=""
       pointer={false}
-    >
-      1
-    </Icon>
+    />
     <Icon
       active=""
       className=""

@@ -2,10 +2,15 @@
 
 exports[`Directions display component  expected to match empty snapshot 1`] = `
 <div
-  className="col-12"
+  className="col-12 directions-list-wrapper"
 >
+  <h5
+    className="display-4"
+  >
+    Directions 
+  </h5>
   <div
-    className="lead list-item d-flex align-items-start flex-column accordion"
+    className="lead list-item d-flex align-items-start flex-column col-12 no-box-shadow accordion"
   >
     
     <div
@@ -33,25 +38,13 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
       </h4>
       <a
         aria-expanded="false"
-        className="collapsed collapse-trigger a bold"
+        className="collapsed collapse-trigger a btn btn-secondary-outline"
         data-toggle="collapse"
         href="#item0"
+        onClick={[Function]}
+        type=""
       >
-        <div
-          className="icon-wrapper"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          role="button"
-          tabIndex="0"
-        >
-          <i
-            className="icon fa fa-angle-down"
-            data-target=""
-            data-toggle=""
-          >
-            <span />
-          </i>
-        </div>
+        Show
       </a>
     </div>
     <div
@@ -72,7 +65,7 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
     </div>
   </div>
   <div
-    className="lead list-item d-flex align-items-start flex-column accordion"
+    className="lead list-item d-flex align-items-start flex-column col-12 no-box-shadow accordion"
   >
     
     <div
@@ -100,25 +93,13 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
       </h4>
       <a
         aria-expanded="false"
-        className="collapsed collapse-trigger a bold"
+        className="collapsed collapse-trigger a btn btn-secondary-outline"
         data-toggle="collapse"
         href="#item1"
+        onClick={[Function]}
+        type=""
       >
-        <div
-          className="icon-wrapper"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          role="button"
-          tabIndex="0"
-        >
-          <i
-            className="icon fa fa-angle-down"
-            data-target=""
-            data-toggle=""
-          >
-            <span />
-          </i>
-        </div>
+        Show
       </a>
     </div>
     <div
@@ -139,7 +120,7 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
     </div>
   </div>
   <div
-    className="lead list-item d-flex align-items-start flex-column accordion"
+    className="lead list-item d-flex align-items-start flex-column col-12 no-box-shadow accordion"
   >
     
     <div
@@ -167,25 +148,13 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
       </h4>
       <a
         aria-expanded="false"
-        className="collapsed collapse-trigger a bold"
+        className="collapsed collapse-trigger a btn btn-secondary-outline"
         data-toggle="collapse"
         href="#item2"
+        onClick={[Function]}
+        type=""
       >
-        <div
-          className="icon-wrapper"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          role="button"
-          tabIndex="0"
-        >
-          <i
-            className="icon fa fa-angle-down"
-            data-target=""
-            data-toggle=""
-          >
-            <span />
-          </i>
-        </div>
+        Show
       </a>
     </div>
     <div

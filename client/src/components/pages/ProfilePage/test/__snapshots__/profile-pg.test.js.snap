@@ -124,10 +124,12 @@ exports[`Profile Page component  render as expected when edit profile button is 
               </li>
             </div>
             <Button
+              Tag="button"
               className=" btn-lg center-margin edit-btn btn-secondary"
               dataTarget="#modal"
               dataToggle="modal"
               handleClick={[Function]}
+              href=""
               id="editProfile"
               text="edit profile"
               type="button"
@@ -137,6 +139,7 @@ exports[`Profile Page component  render as expected when edit profile button is 
                 data-dismiss="modal"
                 data-target="#modal"
                 data-toggle="modal"
+                href=""
                 onClick={[Function]}
                 type="button"
               >
@@ -267,7 +270,7 @@ exports[`Profile Page component  render as expected when edit profile button is 
         >
           <nav
             aria-label="Page navigation"
-            className="d-flex justify-content-center col-12 bottom-margin"
+            className="d-flex justify-content-center col-12 "
           >
             <PaginationBoxView
               activeClassName="page-active"
@@ -289,7 +292,7 @@ exports[`Profile Page component  render as expected when edit profile button is 
               pageClassName="page-item"
               pageCount={1}
               pageLinkClassName="page-link"
-              pageRangeDisplayed={5}
+              pageRangeDisplayed={1}
               previousClassName="page-item page-link"
               previousLabel="previous"
               subContainerClassName="page-item"
@@ -536,10 +539,12 @@ exports[`Profile Page component  render as expected when edit profile button is 
               </li>
             </div>
             <Button
+              Tag="button"
               className=" btn-lg center-margin edit-btn btn-secondary"
               dataTarget="#modal"
               dataToggle="modal"
               handleClick={[Function]}
+              href=""
               id="editProfile"
               text="edit profile"
               type="button"
@@ -549,6 +554,7 @@ exports[`Profile Page component  render as expected when edit profile button is 
                 data-dismiss="modal"
                 data-target="#modal"
                 data-toggle="modal"
+                href=""
                 onClick={[Function]}
                 type="button"
               >
@@ -679,7 +685,7 @@ exports[`Profile Page component  render as expected when edit profile button is 
         >
           <nav
             aria-label="Page navigation"
-            className="d-flex justify-content-center col-12 bottom-margin"
+            className="d-flex justify-content-center col-12 "
           >
             <PaginationBoxView
               activeClassName="page-active"
@@ -701,7 +707,7 @@ exports[`Profile Page component  render as expected when edit profile button is 
               pageClassName="page-item"
               pageCount={1}
               pageLinkClassName="page-link"
-              pageRangeDisplayed={5}
+              pageRangeDisplayed={1}
               previousClassName="page-item page-link"
               previousLabel="previous"
               subContainerClassName="page-item"

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 import Icon from '../../common/icon/icon';
 import Button from '../../common/button/button';
@@ -15,16 +15,17 @@ const RecipeCard = (props) => {
         <img src={pix} alt={`${props.recipeName}`} className="recipe-card-img" />
         <div className="recipe-card-underlay">
           <p className="lead text-capitalize">{props.category}</p>
-          <Link to={`recipe/${props.recipeId}`} >
-            <Button
-              text="view details"
-              className="recipe-card-underlay-btn"
-            />
-          </Link>
+          <Button
+            handleClick={() => {
+              props.push(`/recipe/${props.recipeId}`);
+            }}
+            text="view details"
+            className="recipe-card-underlay-btn"
+          />
         </div>
       </div>
       <div className="recipe-card-footer">
-        <h4>{props.recipeName}</h4>
+        <h4 className="ellipsis">{props.recipeName}</h4>
         <div className="d-flex col-12 no-padding justify-content-between">
           <div className="d-flex col-8 no-padding">
             <Icon iconClass="fa fa-thumbs-up recipe-card-icon ">
@@ -55,7 +56,8 @@ RecipeCard.propTypes = {
   category: PropTypes.string.isRequired,
   recipeId: PropTypes.number.isRequired,
   toggleFav: PropTypes.func.isRequired,
-  isFav: PropTypes.func.isRequired
+  isFav: PropTypes.func.isRequired,
+  push: PropTypes.func.isRequired,
 };
 
 export default RecipeCard;

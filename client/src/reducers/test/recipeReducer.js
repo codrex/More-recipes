@@ -27,7 +27,6 @@ const recipePayload = {
     ingredients: [],
     directions: [],
     image: '',
-    recipeReviews: [{}],
     downVotes: 0,
     upVotes: 0,
   }
@@ -49,11 +48,13 @@ describe('Testing recipe reducers', () => {
   });
   it('should return a newState for action type AFTER_REVIEW', () => {
     const action = {
-      payload: recipePayload,
+      payload: {
+        reviews: [{}]
+      },
       type: AFTER_REVIEW
     };
     const recipe = recipeReducer(state, action);
-    expect(recipe).eql({ ...state, ...{ recipeReviews: [{}] } });
+    expect(recipe).eql({ ...state, reviews: [{}] });
     expect(recipe).to.not.equal(state);
   });
   it('should return a newState for action type AFTER_VOTE', () => {
@@ -95,7 +96,7 @@ describe('Testing recipe reducers', () => {
     const action = {
       type: UPDATE_ALL_RECIPE_FIELD,
       all: {
-        recipeName: '',
+        name: '',
         category: '',
         ingredients: [],
         directions: [],

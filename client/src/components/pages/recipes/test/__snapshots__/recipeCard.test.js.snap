@@ -20,27 +20,25 @@ exports[`Recipes card component  render as expected 1`] = `
       >
         dinner
       </p>
-      <a
-        href="recipe/1"
+      <button
+        className="btn recipe-card-underlay-btn"
+        data-dismiss="modal"
+        data-target=""
+        data-toggle=""
+        href=""
         onClick={[Function]}
+        type="button"
       >
-        <button
-          className="btn recipe-card-underlay-btn"
-          data-dismiss="modal"
-          data-target=""
-          data-toggle=""
-          onClick={[Function]}
-          type="button"
-        >
-          view details
-        </button>
-      </a>
+        view details
+      </button>
     </div>
   </div>
   <div
     className="recipe-card-footer"
   >
-    <h4>
+    <h4
+      className="ellipsis"
+    >
       rice and beans
     </h4>
     <div
@@ -149,6 +147,7 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
       category="dinner"
       downVotes={0}
       isFav={[Function]}
+      push={[Function]}
       recipeId={1}
       recipeName="rice and beans"
       toggleFav={[Function]}
@@ -174,41 +173,36 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
             >
               dinner
             </p>
-            <Link
-              replace={false}
-              to="recipe/1"
+            <Button
+              Tag="button"
+              className="recipe-card-underlay-btn"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              href=""
+              text="view details"
+              type="button"
             >
-              <a
-                href="recipe/1"
+              <button
+                className="btn recipe-card-underlay-btn"
+                data-dismiss="modal"
+                data-target=""
+                data-toggle=""
+                href=""
                 onClick={[Function]}
+                type="button"
               >
-                <Button
-                  className="recipe-card-underlay-btn"
-                  dataTarget=""
-                  dataToggle=""
-                  handleClick={[Function]}
-                  text="view details"
-                  type="button"
-                >
-                  <button
-                    className="btn recipe-card-underlay-btn"
-                    data-dismiss="modal"
-                    data-target=""
-                    data-toggle=""
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    view details
-                  </button>
-                </Button>
-              </a>
-            </Link>
+                view details
+              </button>
+            </Button>
           </div>
         </div>
         <div
           className="recipe-card-footer"
         >
-          <h4>
+          <h4
+            className="ellipsis"
+          >
             rice and beans
           </h4>
           <div
@@ -368,6 +362,7 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
       category="dinner"
       downVotes={0}
       isFav={[Function]}
+      push={[Function]}
       recipeId={1}
       recipeName="rice and beans"
       toggleFav={[Function]}
@@ -393,41 +388,36 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
             >
               dinner
             </p>
-            <Link
-              replace={false}
-              to="recipe/1"
+            <Button
+              Tag="button"
+              className="recipe-card-underlay-btn"
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              href=""
+              text="view details"
+              type="button"
             >
-              <a
-                href="recipe/1"
+              <button
+                className="btn recipe-card-underlay-btn"
+                data-dismiss="modal"
+                data-target=""
+                data-toggle=""
+                href=""
                 onClick={[Function]}
+                type="button"
               >
-                <Button
-                  className="recipe-card-underlay-btn"
-                  dataTarget=""
-                  dataToggle=""
-                  handleClick={[Function]}
-                  text="view details"
-                  type="button"
-                >
-                  <button
-                    className="btn recipe-card-underlay-btn"
-                    data-dismiss="modal"
-                    data-target=""
-                    data-toggle=""
-                    onClick={[Function]}
-                    type="button"
-                  >
-                    view details
-                  </button>
-                </Button>
-              </a>
-            </Link>
+                view details
+              </button>
+            </Button>
           </div>
         </div>
         <div
           className="recipe-card-footer"
         >
-          <h4>
+          <h4
+            className="ellipsis"
+          >
             rice and beans
           </h4>
           <div

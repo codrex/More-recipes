@@ -148,10 +148,12 @@ exports[`Landing page component  expected to match snapshot  1`] = `
                         className="cta-btn-wrapper"
                       >
                         <Button
+                          Tag="button"
                           className="btn-primary btn-lg login"
                           dataTarget=""
                           dataToggle=""
                           handleClick={[Function]}
+                          href=""
                           id="login"
                           text="Login"
                           type="button"
@@ -161,6 +163,7 @@ exports[`Landing page component  expected to match snapshot  1`] = `
                             data-dismiss="modal"
                             data-target=""
                             data-toggle=""
+                            href=""
                             onClick={[Function]}
                             type="button"
                           >
@@ -168,10 +171,12 @@ exports[`Landing page component  expected to match snapshot  1`] = `
                           </button>
                         </Button>
                         <Button
+                          Tag="button"
                           className=" btn-secondary btn-lg reg text-white"
                           dataTarget=""
                           dataToggle=""
                           handleClick={[Function]}
+                          href=""
                           id="signup"
                           text="Create an account"
                           type="button"
@@ -181,6 +186,7 @@ exports[`Landing page component  expected to match snapshot  1`] = `
                             data-dismiss="modal"
                             data-target=""
                             data-toggle=""
+                            href=""
                             onClick={[Function]}
                             type="button"
                           >
@@ -536,10 +542,12 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                         className="cta-btn-wrapper"
                       >
                         <Button
+                          Tag="button"
                           className="btn-primary btn-lg login"
                           dataTarget=""
                           dataToggle=""
                           handleClick={[Function]}
+                          href=""
                           id="login"
                           text="Login"
                           type="button"
@@ -549,6 +557,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                             data-dismiss="modal"
                             data-target=""
                             data-toggle=""
+                            href=""
                             onClick={[Function]}
                             type="button"
                           >
@@ -556,10 +565,12 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                           </button>
                         </Button>
                         <Button
+                          Tag="button"
                           className=" btn-secondary btn-lg reg text-white"
                           dataTarget=""
                           dataToggle=""
                           handleClick={[Function]}
+                          href=""
                           id="signup"
                           text="Create an account"
                           type="button"
@@ -569,6 +580,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                             data-dismiss="modal"
                             data-target=""
                             data-toggle=""
+                            href=""
                             onClick={[Function]}
                             type="button"
                           >

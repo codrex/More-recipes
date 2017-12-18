@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Paginator = props => (
   <nav
     aria-label="Page navigation"
-    className="d-flex justify-content-center col-12 bottom-margin"
+    className="d-flex justify-content-center col-12 "
   >
     <Paginate
       previousLabel={'previous'}
@@ -14,7 +14,7 @@ const Paginator = props => (
       breakClassName={'break-me'}
       pageCount={props.pageCount}
       marginPagesDisplayed={2}
-      pageRangeDisplayed={5}
+      pageRangeDisplayed={props.pageCount}
       onPageChange={props.handlePageClick}
       containerClassName={'pagination justify-content-center'}
       subContainerClassName={'page-item'}
