@@ -8,7 +8,7 @@ const props = {
   name: 'ingredient',
   initialize: jest.fn(),
   clearValidationError: jest.fn(),
-  externalError: false,
+  externalError: [],
   handleSubmit: jest.fn(),
   items: [],
   directions: true,

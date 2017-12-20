@@ -50,6 +50,19 @@ small, .font_small {font-size: 0.8em;}
 .vote-color{
   color:$vote-color;
 }
+.page-link{
+  @include box-shadow;
+  border:0;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 .3rem;
+  cursor: pointer;
+
+}
 
 .main{
   min-height: 92vh;

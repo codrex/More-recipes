@@ -23,6 +23,7 @@ exports[`Add items component  render as expected when directions is passed as pr
       primaryInverse={false}
       secondary={true}
       secondaryInverse={false}
+      style={Object {}}
       submitBtnText="add "
     >
       <Field
@@ -30,7 +31,7 @@ exports[`Add items component  render as expected when directions is passed as pr
         component={[Function]}
         externalError={
           Object {
-            "error": false,
+            "error": Array [],
             "touched": true,
           }
         }
@@ -48,6 +49,7 @@ exports[`Add items component  render as expected when directions is passed as pr
     className="col-12 items-list-wrapper"
   >
     <List
+      Component={null}
       componentType=""
       deleteItem={[Function]}
       directions={true}
@@ -83,6 +85,7 @@ exports[`Add items component  render as expected when form is submitted 1`] = `
       primaryInverse={false}
       secondary={true}
       secondaryInverse={false}
+      style={Object {}}
       submitBtnText="add "
     >
       <Field
@@ -90,7 +93,7 @@ exports[`Add items component  render as expected when form is submitted 1`] = `
         component={[Function]}
         externalError={
           Object {
-            "error": false,
+            "error": Array [],
             "touched": true,
           }
         }
@@ -108,6 +111,7 @@ exports[`Add items component  render as expected when form is submitted 1`] = `
     className="col-12 items-list-wrapper"
   >
     <List
+      Component={null}
       componentType=""
       deleteItem={[Function]}
       directions={true}

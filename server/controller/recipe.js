@@ -1,3 +1,4 @@
+import Sequelize from 'sequelize';
 import db from '../models/index';
 import {
   serverError,
@@ -99,15 +100,31 @@ export const fetchAllRecipe = (req, res) => {
 
 export const fetchAllBySearch = (req, res, next) => {
   if (req.query.search === undefined) return next();
+  const { search } = req.query;
+  const Op = Sequelize.Op;
   const where = {
-    $or: [
+    [Op.or]: [
       {
-        name: req.query.search
+        name: {
+          [Op.iLike]: `%${search}%`
+        }
       },
       {
-        category: req.query.search
+        category: {
+          [Op.iLike]: `%${search}%`
+        }
       },
-    ],
+      {
+        ingredients: {
+          [Op.contains]: [search]
+        }
+      },
+      {
+        directions: {
+          [Op.contains]: [search]
+        }
+      }
+    ]
   };
   fetch(where, [], req, res);
 };
@@ -178,6 +195,7 @@ export const checkRecipe = (req, res, next) => {
   Recipes.findById(req.body.recipeId || req.params.id)
     .then((recipe) => {
       if (recipe) {
+        req.currentRecipe = recipe.dataValues;
         next();
       } else {
         sendFail(res, 404, RECIPE_NOT_FOUND);

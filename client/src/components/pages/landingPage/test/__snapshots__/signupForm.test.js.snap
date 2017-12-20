@@ -6,6 +6,7 @@ exports[`sign up form component  render as expected  1`] = `
   className="col-12"
   method=""
   onSubmit={[Function]}
+  style={Object {}}
 >
   <div
     className="form-group"

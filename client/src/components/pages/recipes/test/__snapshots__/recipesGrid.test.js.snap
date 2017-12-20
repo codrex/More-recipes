@@ -14,9 +14,10 @@ exports[`Recipes grid component  render as expected with one recipe 1`] = `
         className="recipe-card-body"
       >
         <img
-          alt="coco rice"
           className="recipe-card-img"
-          src="https://i.pinimg.com/564x/b5/be/08/b5be084a849fa67c190cc85b1e9216c3.jpg"
+          height="250"
+          src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+          width="400"
         />
         <div
           className="recipe-card-underlay"

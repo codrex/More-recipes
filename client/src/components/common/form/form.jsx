@@ -7,6 +7,7 @@ const Form = props => (
     className={classnames('col-12', props.className)}
     action={props.action}
     method={props.method}
+    style={props.style}
     onSubmit={(event) => {
       event.preventDefault();
       props.onSubmit();
@@ -43,6 +44,7 @@ Form.defaultProps = {
   disabled: false,
   primaryInverse: false,
   secondaryInverse: false,
+  style: {}
 };
 
 Form.propTypes = {
@@ -58,6 +60,7 @@ Form.propTypes = {
   disabled: PropTypes.bool,
   primaryInverse: PropTypes.bool,
   secondaryInverse: PropTypes.bool,
+  style: PropTypes.objectOf(PropTypes.shape)
 };
 
 export default Form;

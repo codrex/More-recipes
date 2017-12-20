@@ -96,18 +96,14 @@ describe('Testing user reducers', () => {
     expect(user).eql({ ...state, ...action.payload.user });
     expect(user).to.not.eql(state);
   });
-  it('should return a newState for action type DELETE_RECIPE', () => {
-    const action = { recipeIndex: 1, type: DELETE_RECIPE };
-    const user = reducer({ ...state, createdRecipes: [{}, {}] }, action);
-    expect(user.createdRecipes.length).eql(1);
-    expect(user).to.not.eql(state);
-  });
-  it('should return a newState for action type TOGGLE_FAV', () => {
+
+  it('should return a newState for action type TOGGLE_FAV when user added a favorite recipe', () => {
     const action = {
       payload: {
         favRecipe: {
           added: true,
-          id:1
+          id:1,
+          recipe: {id:1}
         }
       },
       type: TOGGLE_FAV
@@ -116,6 +112,21 @@ describe('Testing user reducers', () => {
     expect(user).eql({ ...state,favRecipes:[{id:1}] });
     expect(user.favRecipes.length).eql(1);
     expect(user).to.not.eql(state);
+  });
+  it('should return a newState for action type TOGGLE_FAV when user removed a favorite recipe', () => {
+    const action = {
+      payload: {
+        favRecipe: {
+          added: false,
+          id:1
+        }
+      },
+      type: TOGGLE_FAV
+    };
+    const user = reducer(state, action);
+    expect(user).eql({ ...state,favRecipes:[] });
+    expect(user.favRecipes.length).eql(0);
+    expect(user).to.not.equal(state);
   });
 });
 

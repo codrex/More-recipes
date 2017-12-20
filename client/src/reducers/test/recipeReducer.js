@@ -15,7 +15,8 @@ import {
   RECIPE_TO_MODIFY,
   NEW_RECIPE,
   FIND_RECIPES,
-  UPDATE_RECIPE_IMAGE
+  UPDATE_RECIPE_IMAGE,
+  DELETE_RECIPE
 } from '../../actions/actions';
 
 let state = {};
@@ -162,9 +163,9 @@ describe('Testing recipes reducers', () => {
       payload: recipesPayload,
       type: GET_ALL_RECIPES
     };
-    const recipe = recipesReducer(state, action);
-    expect(recipe).eql([...state, ...action.payload.recipes]);
-    expect(recipe).to.not.equal(state);
+    const recipes = recipesReducer(state, action);
+    expect(recipes).eql([...state, ...action.payload.recipes]);
+    expect(recipes).to.not.equal(state);
   });
   it('should return a newState for action type GET_TOP_RECIPES', () => {
     const action = {
@@ -183,6 +184,13 @@ describe('Testing recipes reducers', () => {
     const recipe = recipesReducer(state, action);
     expect(recipe).eql([...state, ...action.payload.recipes]);
     expect(recipe).to.not.equal(state);
+  });
+  it('should return a newState for action type DELETE_RECIPE', () => {
+    console.log(state)
+    const action = { recipeIndex: 1, type: DELETE_RECIPE };
+    const  recipes = recipesReducer([{},{}], action);
+    expect(recipes.length).eql(1);
+    expect(recipes).to.not.eql(state);
   });
 });
 

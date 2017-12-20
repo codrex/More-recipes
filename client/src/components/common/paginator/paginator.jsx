@@ -1,6 +1,7 @@
 import React from 'react';
 import Paginate from 'react-paginate';
 import PropTypes from 'prop-types';
+import Icon from '../icon/icon';
 
 const Paginator = props => (
   <nav
@@ -8,8 +9,8 @@ const Paginator = props => (
     className="d-flex justify-content-center col-12 "
   >
     <Paginate
-      previousLabel={'previous'}
-      nextLabel={'next'}
+      previousLabel={<Icon iconClass="fa fa-angle-double-left" />}
+      nextLabel={<Icon iconClass="fa fa-angle-double-right" />}
       breakLabel={<a href="">...</a>}
       breakClassName={'break-me'}
       pageCount={props.pageCount}

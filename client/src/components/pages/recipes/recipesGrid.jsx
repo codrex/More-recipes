@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RecipeCard from './recipeCard';
 import Loader from '../../common/loader/loader';
+import imageParser from '../../../utils/imageParser/imageParser';
 
 const RecipesGrid = (props) => {
   const { recipes, loading } = props;
@@ -21,6 +22,7 @@ const RecipesGrid = (props) => {
               toggleFav={props.toggleFav}
               isFav={props.isUserFav}
               push={props.history.push}
+              image={imageParser(recipe.image)}
             />
           </li>
         )

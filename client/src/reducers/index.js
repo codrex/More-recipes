@@ -1,7 +1,12 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import userReducer from './userReducers';
-import { recipesReducer, recipeReducer, recipeValidationError } from './recipeReducers';
+import {
+  recipesReducer,
+  recipeReducer,
+  recipeValidationError,
+  favoriteRecipesReducer
+} from './recipeReducers';
 import { ajaxReducer, ajaxRedirectReducer } from './ajaxReducer';
 import authReducer from './authReducer';
 import pageCountReducer from './pageCount';
@@ -17,6 +22,7 @@ const rootReducer = combineReducers({
   redirectUrl: ajaxRedirectReducer,
   auth: authReducer,
   recipeValidationError,
+  favoriteRecipes: favoriteRecipesReducer,
   initialState
 });
 

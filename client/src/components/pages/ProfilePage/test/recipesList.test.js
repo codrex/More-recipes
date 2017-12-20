@@ -9,7 +9,7 @@ const props = {
     views: 1,
     upVotes: 1,
     downVotes: 1,
-    recipeId: 1,
+    id:1
   }],
   onEditIconCliked: jest.fn(),
   handleClick: jest.fn(),
@@ -26,22 +26,6 @@ describe('Recipes list component ', () => {
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  // test('render as expected when created recipes nav link is clicked ', () => {
-  //   const wrapper = mount(<Recipes {...{ ...props, recipes: [{}] }} />);
-  //   let tree = toJson(wrapper);
-  //   expect(tree).toMatchSnapshot();
-  //   wrapper.find('ListItem').simulate('click');
-  //   tree = toJson(wrapper);
-  //   expect(tree).toMatchSnapshot();
-  // });
-  // test('render as expected when type equals favRecipes ', () => {
-  //   const wrapper = mount(<Recipes {...{ ...props, recipes: [{}], type: 'favRecipes' }} />);
-  //   let tree = toJson(wrapper);
-  //   expect(tree).toMatchSnapshot();
-  //   wrapper.find('ListItem').simulate('click');
-  //   tree = toJson(wrapper);
-  //   expect(tree).toMatchSnapshot();
-  // });
   test('render as expected when delete and edit icon are clicked ', () => {
     const wrapper = mount(<Recipes {...props} />);
     let tree = toJson(wrapper);

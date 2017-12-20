@@ -20,7 +20,9 @@ import {
   ABOUT_TO_CREATE_RECIPE,
   GET_CREATED_RECIPES,
   GET_FAVOURITE_RECIPES,
-  GET_REVIEWS
+  GET_REVIEWS,
+  DELETE_RECIPE,
+  TOGGLE_FAV
 } from '../actions/actions';
 
 export const recipeValidationError = (state = initialState.recipeValidationError, action) => {
@@ -45,10 +47,13 @@ export const recipesReducer = (state = initialState.recipes, action) => {
       return action.payload.recipes;
     case GET_CREATED_RECIPES:
       return action.payload.recipes;
-    case GET_FAVOURITE_RECIPES:
-      return action.payload.recipes;
     case FIND_RECIPES:
       return action.payload.recipes;
+    case DELETE_RECIPE: {
+      const recipes = [...state];
+      recipes.splice(action.recipeIndex, 1);
+      return recipes;
+    }
     default:
       return state;
   }
@@ -133,4 +138,22 @@ export const recipeReducer = (state = initialState.recipe, action) => {
     };
   }
   return state;
+};
+
+export const favoriteRecipesReducer = (state = initialState.favouriteRecipes, action) => {
+  switch (action.type) {
+    case TOGGLE_FAV: {
+      const {
+        added,
+        id,
+        recipe
+      } = action.payload.favRecipe;
+      return added ? [...state].concat([recipe])
+        : [...state].filter(item => item.id !== id);
+    }
+    case GET_FAVOURITE_RECIPES:
+      return action.payload.recipes;
+    default:
+      return state;
+  }
 };

@@ -7,8 +7,8 @@ import Textarea from '../../../common/form/textarea';
 import { postReview } from '../../../../actions/recipeActions';
 import { resetSuccess } from '../../../../actions/ajaxActions';
 import { review } from '../../../../utils/validator/validator';
+import { REVIEW_MESSAGE } from '../../../../constants/constants';
 
-const REVIEW_MESSAGE = 'Review posted';
 /**
  * review form
  */
@@ -35,7 +35,7 @@ class CommentForm extends React.Component {
    * @return {undefined} undefined
   */
   review(value) {
-    return this.props.postReview(this.props.id, value, 'REVIEW_MESSAGE');
+    return this.props.postReview(this.props.id, value, REVIEW_MESSAGE);
   }
 
   /**
@@ -62,9 +62,6 @@ class CommentForm extends React.Component {
     );
   }
 }
-CommentForm.defaultProps = {
-  message: ''
-};
 
 CommentForm.propTypes = {
   postReview: PropTypes.func.isRequired,
@@ -74,7 +71,6 @@ CommentForm.propTypes = {
   initialize: PropTypes.func.isRequired,
   success: PropTypes.bool.isRequired,
   resetSuccess: PropTypes.func.isRequired,
-  message: PropTypes.string,
 };
 
 const mapStateToProps = state => (

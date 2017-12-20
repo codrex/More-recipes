@@ -845,6 +845,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                 primaryInverse={false}
                                 secondary={true}
                                 secondaryInverse={false}
+                                style={Object {}}
                                 submitBtnText="Register"
                               >
                                 <form
@@ -852,6 +853,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                   className="col-12"
                                   method=""
                                   onSubmit={[Function]}
+                                  style={Object {}}
                                 >
                                   <Field
                                     component={[Function]}

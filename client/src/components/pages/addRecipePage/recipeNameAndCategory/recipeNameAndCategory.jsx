@@ -29,7 +29,7 @@ let RecipeNameAndCategory = (props) => {
       <h4 className="items-header-text">
         Recipe name and category
       </h4>
-      <Form>
+      <Form style={{ zIndex: 4 }}>
         <Field
           component={Input}
           name="name"

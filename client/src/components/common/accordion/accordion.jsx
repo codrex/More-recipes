@@ -23,7 +23,7 @@ export const AccordionHeader = props => (
     role="tab"
     id={`accordion${props.index}`}
   >
-    <h4 className="mb-0 lead flex-auto ellipsis" style={{ margin: '.2rem' }}>
+    <h4 className="mb-0 lead flex-auto ellipsis" style={{ margin: '0 1rem .2rem .0' }}>
       <a
         className="collapsed collapse-trigger a"
         data-toggle="collapse"

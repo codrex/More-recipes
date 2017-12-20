@@ -12,6 +12,7 @@ exports[`login form component  render as expected when submitting props is false
   primaryInverse={false}
   secondary={true}
   secondaryInverse={false}
+  style={Object {}}
   submitBtnText="Login"
 >
   <Field

@@ -8,15 +8,17 @@ import Modal from '../../common/modal/modal';
 import Loader from '../../common/loader/loader';
 import { resetSuccess } from '../../../actions/ajaxActions';
 import { getUserProfile, updateProfile } from '../../../actions/userActions';
-import { deleteRecipe, toggleFav } from '../../../actions/recipeActions';
+import { deleteRecipe, toggleFav, getCreatedRecipes } from '../../../actions/recipeActions';
 import UserInfo from './userInfo/userInfo';
 import Recipes from './recipesList/recipesList';
-import { getCurrentPage, getPageCount } from '../../../utils/pagination/pagination';
+import HeroArea from '../../common/heroArea/heroArea';
+import { PROFILE_PAGE_PIX } from '../../../constants/constants';
+import NotFound from '../../common/notFound/notFound';
+import Button from '../../common/button/button';
 
-const OFFSET = 10;
-const PIX = 'https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg';
 /**
- * Profile page component
+ * @summary Profile page component
+ * @return {React} ProfilePage
  */
 export class ProfilePage extends React.Component {
   /**
@@ -38,19 +40,19 @@ export class ProfilePage extends React.Component {
       currentPage: 1,
     };
   }
-
   /**
    * @return {undefined}
    */
   componentDidMount() {
+    const { actions } = this.props;
     if (!this.props.user.username) {
-      this.props.actions.getProfile();
+      actions.getProfile();
     }
+    actions.getCreatedRecipes(1);
     this.setState({
       noLoader: true
     });
   }
-
   /**
    * @return{undefined}
    * @param {object} nextProps
@@ -61,7 +63,6 @@ export class ProfilePage extends React.Component {
       recipeDeleted: nextProps.success
     });
   }
-
   /**
    * @return {undefined}
    * @param {string} modalTitle
@@ -70,19 +71,13 @@ export class ProfilePage extends React.Component {
    */
   onDeleteRecipeClicked = (modalTitle, currentId = null, currentIndex = null) => {
     this.setState({
-      modalTitle, currentId, currentIndex, noLoader: true
+      modalTitle,
+      currentId,
+      currentIndex,
+      noLoader: true
     });
     this.onModalOpen();
   }
-
-  /**
-   * @return {undefined}
-   * @param {number} currentId
-   */
-  onFavRecipeClicked = (currentId) => {
-    this.props.actions.removeFromFav(currentId);
-  }
-
   /**
    * @return {undefined}
    */
@@ -101,7 +96,6 @@ export class ProfilePage extends React.Component {
     });
     this.props.actions.resetSuccess();
   }
-
   /**
    * @returns{undefined}
    */
@@ -110,32 +104,6 @@ export class ProfilePage extends React.Component {
       recipes: this.props.user[this.state.active],
     });
   }
-  /**
-   * @returns{number} pageNumber
-   * @param {array} recipes
-   */
-  getPageCount = (recipes) => getPageCount(recipes.length, OFFSET)
-  /**
-   * @returns{undefined}
-   * @param{string}active
-   */
-  setActive = (active) => {
-    this.setState({
-      recipes: this.props.user[active],
-      active,
-    });
-  }
-
-  /**
-   * @return {undefined}
-   * @param {object} number
-   */
-  handlePageClick = (number) => {
-    this.setState({
-      currentPage: number.selected + 1
-    });
-  }
-
   /**
    * @returns{undefined}
    * @param{string} modalTitle
@@ -146,7 +114,6 @@ export class ProfilePage extends React.Component {
     });
     this.onModalOpen();
   }
-
   /**
    * @return {undefined}
    * @param {number} index
@@ -156,119 +123,156 @@ export class ProfilePage extends React.Component {
     this.props.actions.deleteRecipe(currentId, currentIndex);
     if (this.props.success) this.props.actions.resetSuccess();
   }
-
-  /**
-   * @return {undefined}
-   * @param {string} value
-   */
-  searchValueChange = (value) => {
-    if (value.length < 1) {
-      this.setState({
-        filteredRecipes: null
-      });
-      return;
-    }
-
-    const filteredRecipes = this.state.recipes
-      .filter(recipe => recipe.recipeName
-        .slice(0, value.length).toUpperCase() === value.toUpperCase());
-    this.setState({
-      filteredRecipes
-    });
-  }
-
   /**
    * @returns{undefined}
    * @param {number} id
    */
   modifyRecipe = (id) => {
-    this.props.match.history.push(`/recipe/modify/${id}`);
+    this.props.history.push(`/modify/${id}`);
   }
-
   /**
    * @return {undefined}
    * @param {object} item
    */
   recipeItemClick = (item) => {
-    this.props.match.history.push(`recipe/${item.id}`);
+    this.props.history.push(`recipe/${item.id}`);
   }
+  /**
+   * @return {React} jsx
+   */
+  renderPagination = () => {
+    const {
+      pageCount,
+      actions
+    } = this.props;
+    if (pageCount > 1) {
+      return (
+        <Paginator
+          pageCount={pageCount}
+          handlePageClick={({ selected }) => {
+            actions.getCreatedRecipes(selected + 1);
+          }}
+        />
+      );
+    } return null;
+  }
+  /**
+   * @return {React} jsx
+   */
+  renderUSerInfo = () => {
+    if (this.state.noLoader) {
+      const { user } = this.props;
+      return (
+        <HeroArea image={PROFILE_PAGE_PIX}>
+          <UserInfo user={user} editBtnClicked={this.editProfileClicked} />
+        </HeroArea>
+      );
+    }
+  }
+  /**
+   * @return {React} jsx
+   */
+  renderUSerRecipes = () => {
+    if (this.state.noLoader) {
+      const {
+        recipes,
+        history
+      } = this.props;
+      if (recipes.length < 1) {
+        return (
+          <NotFound message="you have no recipes" >
+            <Button
+              text="add recipe"
+              className="btn-secondary-outline btn-lg"
+              handleClick={() => {
+                history.push('/create');
+              }}
+            />
+          </NotFound>
+        );
+      }
+      return (
+        <div className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin">
+          <Recipes
+            recipes={recipes}
+            onEditIconCliked={this.modifyRecipe}
+            onDeleteIconClicked={this.onDeleteRecipeClicked}
+            handleClick={this.recipeItemClick}
+            type={this.state.active}
+          />
+          {this.renderPagination()}
+        </div>
+      );
+    }
+  }
+  /**
+   * @return {React} jsx
+   */
+  renderModal = () => {
+    const {
+      loading,
+      actions
+    } = this.props;
+    const {
+      modalTitle,
+      recipeDeleted
+    } = this.state;
+    return (
+      <Modal
+        id="editProfileModal"
+        center
+        title={modalTitle}
+        closeBtnClicked={this.onModalClose}
+        onContinueClicked={this.deleteRecipe}
+        right
+        left
+        footer={modalTitle === 'Delete recipe'}
+        loading={loading}
+        operationCompleted={recipeDeleted}
+      >
+        {modalTitle === 'Delete recipe' &&
+          <div className="modal-body text-dark" >
+            {!recipeDeleted && !loading &&
+            <h1>Are u sure u want to delete this recipe ?</h1>}
 
+            {loading && <h1>Deleting...</h1>}
+
+            {recipeDeleted && !loading &&
+            <h1>Recipe succefully deleted</h1>}
+
+            {!recipeDeleted && !loading &&
+            <p className="lead">  To delete this recipe click on continue</p>}
+
+          </div>
+        }
+        {
+
+          modalTitle === 'Update profile' &&
+            <div className="modal-body text-white" >
+              <EditProfileForm
+                update={actions.update}
+                loading={loading}
+              />
+            </div>
+        }
+      </Modal>
+    );
+  }
   /**
    * @return {undefined}
    */
   render() {
-    const { user, loading } = this.props;
-    const { currentPage, filteredRecipes, recipes } = this.state;
-    let currentRecipes = filteredRecipes || recipes;
-    currentRecipes = getCurrentPage(currentRecipes, currentPage, OFFSET);
+    const { loading } = this.props;
+    const {
+      noLoader,
+      isModalOpen
+    } = this.state;
     return (
-      <div className="container-fluid profile-page">
-        {this.state.noLoader &&
-          <div className="row user-info-wrapper">
-            <div className="backdrop">
-              <img src={PIX} alt="backdrop pix" />
-            </div>
-            <UserInfo user={user} editBtnClicked={this.editProfileClicked} />
-          </div>
-        }
-        {this.state.noLoader &&
-          <div className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin">
-            <Recipes
-              recipes={recipes}
-              onEditIconCliked={this.modifyRecipe}
-              onDeleteIconClicked={this.onDeleteRecipeClicked}
-              handleClick={this.recipeItemClick}
-              onFavIconClicked={this.onFavRecipeClicked}
-              type={this.state.active}
-            />
-            <Paginator
-              pageCount={this.getPageCount(filteredRecipes || recipes)}
-              handlePageClick={this.handlePageClick}
-            />
-          </div>
-        }
-
-        <Modal
-          id="editProfileModal"
-          center
-          title={this.state.modalTitle}
-          closeBtnClicked={this.onModalClose}
-          onContinueClicked={this.deleteRecipe}
-          right
-          left
-          footer={this.state.modalTitle === 'Delete recipe'}
-          loading={this.props.loading}
-          operationCompleted={this.state.recipeDeleted}
-        >
-          {this.state.modalTitle === 'Delete recipe' &&
-            <div className="modal-body text-dark" >
-              {!this.state.recipeDeleted && !this.props.loading &&
-                <h1>Are u sure u want to delete this recipe ?</h1>}
-
-              {this.props.loading && <h1>Deleting...</h1>}
-
-              {this.state.recipeDeleted && !this.props.loading &&
-                <h1>Recipe succefully deleted</h1>}
-
-              {!this.state.recipeDeleted && !this.props.loading &&
-                <p className="lead">  To delete this recipe click on continue</p>}
-
-            </div>
-          }
-          {
-
-            this.state.modalTitle === 'Update profile' &&
-              <div className="modal-body text-white" >
-                <EditProfileForm
-                  update={this.props.actions.update}
-                  loading={this.props.loading}
-                />
-              </div>
-          }
-        </Modal>
-        {!this.state.noLoader &&
-          <Loader loading={loading && !this.state.isModalOpen} />
-        }
+      <div className="container-fluid profile-page no-padding">
+        {this.renderUSerInfo()}
+        {this.renderUSerRecipes()}
+        {this.renderModal()}
+        {!noLoader && <Loader loading={loading && !isModalOpen} />}
       </div>
     );
   }
@@ -278,15 +282,23 @@ ProfilePage.propTypes = {
   user: PropTypes.objectOf(PropTypes.shape).isRequired,
   actions: PropTypes.objectOf(PropTypes.shape).isRequired,
   loading: PropTypes.bool.isRequired,
-  match: PropTypes.objectOf(PropTypes.shape).isRequired,
+  history: PropTypes.objectOf(PropTypes.shape).isRequired,
+  recipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
   success: PropTypes.bool.isRequired,
+  pageCount: PropTypes.number,
+};
+
+ProfilePage.defaultProps = {
+  pageCount: 0,
 };
 
 const mapStateToProps = state => (
   {
     loading: state.networkRequest.loading,
     user: state.user,
+    recipes: state.recipes,
     success: state.networkRequest.success,
+    pageCount: state.pageCount,
   }
 );
 
@@ -298,6 +310,7 @@ const mapDispatchToProps = dispatch => (
       deleteRecipe: bindActionCreators(deleteRecipe, dispatch),
       removeFromFav: bindActionCreators(toggleFav, dispatch),
       resetSuccess: bindActionCreators(resetSuccess, dispatch),
+      getCreatedRecipes: bindActionCreators(getCreatedRecipes, dispatch)
     }
   }
 );

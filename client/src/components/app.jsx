@@ -13,8 +13,9 @@ import Recipes from '../components/pages/recipes/recipes';
 import Recipe from '../components/pages/viewRecipePage/recipe';
 import ProfilePage from '../components/pages/ProfilePage/index';
 import Footer from '../components/common/footer/footer';
-import NotFound from '../components/pages/notFound/notFound';
+import NotFound from '../components/common/notFound/notFound';
 import { getUserProfile } from '../actions/userActions';
+import { findRecipes } from '../actions/recipeActions';
 
 /**
  * App component
@@ -67,10 +68,23 @@ class App extends React.Component {
     return authenticated ? (
       <div>
         <Navbar {...match} />
-        <TopBar {...match} />
+        <TopBar
+          {...match}
+          handleChange={value => this.handleRecipeSearch(match.history.push, value)}
+        />
         <Component {...match} />
       </div>
     ) : <Redirect to="/" />;
+  }
+
+  /**
+   * @param{object} push
+   * @param {string} value
+   * @return {undefined}
+   */
+  handleRecipeSearch = (push, value) => {
+    push('/recipes');
+    this.props.searchRecipes(value);
   }
 
   /**
@@ -96,7 +110,10 @@ class App extends React.Component {
   renderNotFound = match => (
     <div>
       <Navbar {...match} />
-      <TopBar {...match} />
+      <TopBar
+        {...match}
+        handleChange={value => this.handleRecipeSearch(match.history.push, value)}
+      />
       <div className="not-found-wrapper">
         <NotFound message="page not found" />
       </div>
@@ -134,6 +151,10 @@ class App extends React.Component {
               extact
               path="/recipes"
               render={match => this.onAuthenticated(Recipes, match)}
+            />
+            <Route
+              path="/user/edit"
+              render={match => this.onAuthenticated(ProfilePage, match)}
             />
             <Route
               path="/user"
@@ -175,6 +196,7 @@ App.propTypes = {
   getProfile: PropTypes.func.isRequired,
   user: PropTypes.objectOf(PropTypes.shape).isRequired,
   resetReqCount: PropTypes.func.isRequired,
+  searchRecipes: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -185,5 +207,6 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps, {
   resetReqCount,
-  getProfile: getUserProfile
+  getProfile: getUserProfile,
+  searchRecipes: findRecipes
 })(App);

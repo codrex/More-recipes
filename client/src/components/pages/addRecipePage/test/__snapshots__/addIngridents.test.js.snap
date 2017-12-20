@@ -17,13 +17,14 @@ exports[`Add ingredients component  render as expected 1`] = `
       className="col-12"
       method=""
       onSubmit={[Function]}
+      style={Object {}}
     >
       <div
         className="form-group d-flex flex-column no-margin"
       >
         <textarea
           aria-describedby="Textarea"
-          className="form-control text-area no-margin add-item-input"
+          className="form-control text-area no-margin add-item-input invalid"
           id="Textarea"
           name=""
           onBlur={[Function]}
@@ -36,7 +37,7 @@ exports[`Add ingredients component  render as expected 1`] = `
           value=""
         />
         <div
-          className=""
+          className="help-text"
         />
       </div>
       <button

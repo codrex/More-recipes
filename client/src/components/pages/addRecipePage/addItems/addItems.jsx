@@ -193,13 +193,14 @@ class AddItems extends React.Component {
 AddItems.defaultProps = {
   ingredients: false,
   directions: false,
-  externalError: false
+  externalError: [],
+  Component: null
 };
 
 AddItems.propTypes = {
   clearValidationError: PropTypes.func.isRequired,
   directions: PropTypes.bool,
-  externalError: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
+  externalError: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   handleSubmit: PropTypes.func.isRequired,
   ingredients: PropTypes.bool,
   initialize: PropTypes.func.isRequired,
@@ -207,6 +208,7 @@ AddItems.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   sendItemsToStore: PropTypes.func.isRequired,
+  Component: PropTypes.node,
 };
 
 export default AddItems;

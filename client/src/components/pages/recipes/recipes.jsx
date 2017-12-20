@@ -13,39 +13,43 @@ import {
 import { getUserProfile } from '../../../actions/userActions';
 import RecipeGrid from './recipesGrid';
 import Paginator from '../../common/paginator/paginator';
-import NotFound from '../notFound/notFound';
+import NotFound from '../../common/notFound/notFound';
 import HeroArea from '../../common/heroArea/heroArea';
-
-const pix = 'https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg';
+import { DEFAULT_PIX } from '../../../constants/constants';
 
 /**
- * Dashboard component
- * @returns {React} react
+ * @return {React} Recipes
  */
-export class Dashboard extends React.Component {
+export class Recipes extends React.Component {
   /**
    * @param {object} props
    */
   constructor(props) {
     super(props);
-    const { actions, location, history } = props;
+    const {
+      actions,
+      location,
+      history
+    } = props;
+    const currentPath = this.editPathName(location.pathname);
     this.mapPathToActions = {
       'recipestop-recipes': actions.getTopRecipes,
       'recipesfavourite-recipes': actions.getFavouriteRecipes,
-      'recipescreated-recipes': actions.getCreatedRecipes,
       recipes: actions.getAllRecipes
     };
     this.mapPathToTitle = {
       'recipestop-recipes': 'top recipe',
       'recipesfavourite-recipes': 'favorite recipes',
-      'recipescreated-recipes': 'created recipes',
       recipes: 'recipes'
     };
     this.paths = Object.keys(this.mapPathToActions);
     this.state = {
-      allRecipes: props.recipes || [],
+      allRecipes: (
+        currentPath === this.paths[1]
+          ? props.favoriteRecipes : props.recipes
+      ) || [],
       currentActions: getTopRecipes,
-      currentPath: this.editPathName(location.pathname),
+      currentPath,
       isValidPath: this.paths.includes(this.editPathName(location.pathname))
     };
     if (this.state.isValidPath) {
@@ -59,13 +63,17 @@ export class Dashboard extends React.Component {
    */
   componentWillReceiveProps(nextProps) {
     let { pathname } = nextProps.location;
+    pathname = this.editPathName(pathname);
     const { currentPath } = this.state;
-    if (nextProps.recipes !== this.props.recipes) {
+    const {
+      favoriteRecipes,
+      recipes
+    } = nextProps;
+    if (recipes !== this.props.recipes || favoriteRecipes !== this.props.favoriteRecipes) {
       this.setState({
-        allRecipes: nextProps.recipes
+        allRecipes: pathname === 'recipesfavourite-recipes' ? favoriteRecipes : recipes,
       });
     }
-    pathname = this.editPathName(pathname);
     if (currentPath !== pathname) {
       const isValidPath = this.paths.includes(pathname);
       this.setState({
@@ -94,22 +102,11 @@ export class Dashboard extends React.Component {
   toggleFav = (id) => {
     this.props.actions.toggleFav(id);
   }
-
-  editPathName = value => value.replace(/\//g, '').trim();
-
   /**
-   * @return {undefined}
-   * @param {string} value
+   * @return {string} name
+   * @param {string} name
    */
-  recipeSearch = (value) => {
-    // const activeStates = [...this.state.activeStates];
-    // activeStates[3] = `search for ${value}`;
-    // this.setState({
-    //   activeStates,
-    //   active: 3,
-    // });
-    this.props.actions.search(value);
-  }
+  editPathName = name => name.replace(/\//g, '').trim();
 
   /**
    * @return {React} RecipeGrid
@@ -130,7 +127,7 @@ export class Dashboard extends React.Component {
    * @return {React} Paginator
    */
   renderPagination = () => {
-    const { pageCount, loading } = this.props;
+    const { pageCount } = this.props;
     const { currentPath } = this.state;
     if (pageCount > 1) {
       return (
@@ -164,7 +161,7 @@ export class Dashboard extends React.Component {
     const { currentPath } = this.state;
     return (
       <div className="container-fluid no-padding" id="dashboard">
-        <HeroArea image={pix} title={this.mapPathToTitle[currentPath]} />
+        <HeroArea image={DEFAULT_PIX} title={this.mapPathToTitle[currentPath]} />
         <div className="row recipes-board d-flex flex-column">
           {!loading && recipes.length > 0 &&
             <div
@@ -192,11 +189,19 @@ export class Dashboard extends React.Component {
   }
 }
 
-Dashboard.propTypes = {
+Recipes.propTypes = {
   actions: PropTypes.objectOf(PropTypes.shape).isRequired,
   loading: PropTypes.bool.isRequired,
   recipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  favoriteRecipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
   user: PropTypes.objectOf(PropTypes.shape).isRequired,
+  location: PropTypes.objectOf(PropTypes.shape).isRequired,
+  history: PropTypes.objectOf(PropTypes.shape).isRequired,
+  pageCount: PropTypes.number
+};
+
+Recipes.defaultProps = {
+  pageCount: 0
 };
 
 const mapStateToProps = state => ({
@@ -205,7 +210,8 @@ const mapStateToProps = state => ({
   user: state.user,
   loading: state.networkRequest.loading,
   auth: state.auth,
-  pageCount: state.pageCount
+  pageCount: state.pageCount,
+  favoriteRecipes: state.favoriteRecipes
 });
 const mapDispatchToProps = dispatch => ({
   actions: {
@@ -219,4 +225,4 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

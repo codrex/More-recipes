@@ -17,20 +17,21 @@ exports[`Profile Page component  render as expected when edit profile button is 
       Object {
         "currentRecipe": [Function],
         "deleteRecipe": [Function],
+        "getCreatedRecipes": [Function],
         "getProfile": [Function],
         "removeFromFav": [Function],
         "resetSuccess": [Function],
         "update": [Function],
       }
     }
-    loading={false}
-    match={
+    history={
       Object {
-        "history": Object {
-          "push": [Function],
-        },
+        "push": [Function],
       }
     }
+    loading={false}
+    pageCount={0}
+    recipes={Array []}
     success={false}
     user={
       Object {
@@ -58,299 +59,150 @@ exports[`Profile Page component  render as expected when edit profile button is 
     }
   >
     <div
-      className="container-fluid profile-page"
+      className="container-fluid profile-page no-padding"
     >
-      <div
-        className="row user-info-wrapper"
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+        title=""
       >
         <div
-          className="backdrop"
+          className="hero-half backdrop"
         >
           <img
-            alt="backdrop pix"
+            alt="heroimage"
             src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
           />
-        </div>
-        <UserInfo
-          editBtnClicked={[Function]}
-          user={
-            Object {
-              "createdRecipes": Array [
-                Object {
-                  "category": "",
-                  "downVotes": 1,
-                  "name": "recipe",
-                  "recipeId": 1,
-                  "upVotes": 1,
-                  "views": 1,
-                },
-              ],
-              "favRecipes": Array [
-                Object {
-                  "category": "",
-                  "downVotes": 1,
-                  "name": "recipe",
-                  "recipeId": 1,
-                  "upVotes": 1,
-                  "views": 1,
-                },
-              ],
-            }
-          }
-        >
-          <div
-            className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
           >
-            <div
-              className=" d-flex justify-content-around flex-column align-items-center"
+            <UserInfo
+              editBtnClicked={[Function]}
+              user={
+                Object {
+                  "createdRecipes": Array [
+                    Object {
+                      "category": "",
+                      "downVotes": 1,
+                      "name": "recipe",
+                      "recipeId": 1,
+                      "upVotes": 1,
+                      "views": 1,
+                    },
+                  ],
+                  "favRecipes": Array [
+                    Object {
+                      "category": "",
+                      "downVotes": 1,
+                      "name": "recipe",
+                      "recipeId": 1,
+                      "upVotes": 1,
+                      "views": 1,
+                    },
+                  ],
+                }
+              }
             >
               <div
-                className="avatar avatar-md"
-              />
-              <h3
-                className=" text-capitalize s-padding no-margin "
-              />
-            </div>
-            <div
-              className="d-flex no-margin flex-column align-items-center justify-content-center info"
-            >
-              <li
-                className="info-item"
-              />
-              <li
-                className="info-item"
-              >
-                @undefined
-              </li>
-            </div>
-            <Button
-              Tag="button"
-              className=" btn-lg center-margin edit-btn btn-secondary"
-              dataTarget="#modal"
-              dataToggle="modal"
-              handleClick={[Function]}
-              href=""
-              id="editProfile"
-              text="edit profile"
-              type="button"
-            >
-              <button
-                className="btn  btn-lg center-margin edit-btn btn-secondary"
-                data-dismiss="modal"
-                data-target="#modal"
-                data-toggle="modal"
-                href=""
-                onClick={[Function]}
-                type="button"
-              >
-                edit profile
-              </button>
-            </Button>
-          </div>
-        </UserInfo>
-      </div>
-      <div
-        className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin"
-      >
-        <Recipes
-          handleClick={[Function]}
-          onDeleteIconClicked={[Function]}
-          onEditIconCliked={[Function]}
-          onFavIconClicked={[Function]}
-          recipes={
-            Array [
-              Object {
-                "category": "",
-                "downVotes": 1,
-                "name": "recipe",
-                "recipeId": 1,
-                "upVotes": 1,
-                "views": 1,
-              },
-            ]
-          }
-          type="createdRecipes"
-        >
-          <List
-            className="recipe-list"
-            style={Object {}}
-          >
-            <div
-              className="col-12 recipe-list"
-              style={Object {}}
-            >
-              <h4
-                className="display-4 bold header"
-              >
-                my recipes
-              </h4>
-              <ListItem
-                className="recipe-list-item"
-                content="recipe"
-                handleClick={[Function]}
-                index={0}
-                key="[object Object]"
+                className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
               >
                 <div
-                  className="lead list-item recipe-list-item"
+                  className=" d-flex justify-content-around flex-column align-items-center"
                 >
                   <div
-                    className="list-item-text lead"
-                    data-index={0}
-                    onClick={[Function]}
-                    role="button"
-                    tabIndex="0"
-                  >
-                    recipe
-                  </div>
-                  <div>
-                    <Icon
-                      active=""
-                      className=""
-                      dataTarget=""
-                      dataToggle=""
-                      handleClick={[Function]}
-                      iconClass="fa fa-pencil edit-icon"
-                      onMouseEnter={[Function]}
-                      parentClass=""
-                      pointer={true}
-                    >
-                      <div
-                        className="icon-wrapper pointer"
-                        onClick={[Function]}
-                        onMouseEnter={[Function]}
-                        role="button"
-                        tabIndex="0"
-                      >
-                        <i
-                          className="icon fa fa-pencil edit-icon"
-                          data-target=""
-                          data-toggle=""
-                        >
-                          <span />
-                        </i>
-                      </div>
-                    </Icon>
-                    <Icon
-                      active=""
-                      className=""
-                      dataTarget="#modal"
-                      dataToggle="modal"
-                      handleClick={[Function]}
-                      iconClass="fa fa-trash-o delete-icon"
-                      onMouseEnter={[Function]}
-                      parentClass=""
-                      pointer={true}
-                    >
-                      <div
-                        className="icon-wrapper pointer"
-                        onClick={[Function]}
-                        onMouseEnter={[Function]}
-                        role="button"
-                        tabIndex="0"
-                      >
-                        <i
-                          className="icon fa fa-trash-o delete-icon"
-                          data-target="#modal"
-                          data-toggle="modal"
-                        >
-                          <span />
-                        </i>
-                      </div>
-                    </Icon>
-                  </div>
+                    className="avatar avatar-md"
+                  />
+                  <h3
+                    className=" text-capitalize s-padding no-margin "
+                  />
                 </div>
-              </ListItem>
-            </div>
-          </List>
-        </Recipes>
-        <Paginator
-          handlePageClick={[Function]}
-          pageCount={1}
-        >
-          <nav
-            aria-label="Page navigation"
-            className="d-flex justify-content-center col-12 "
-          >
-            <PaginationBoxView
-              activeClassName="page-active"
-              breakClassName="break-me"
-              breakLabel={
-                <a
-                  href=""
-                >
-                  ...
-                </a>
-              }
-              containerClassName="pagination justify-content-center"
-              disableInitialCallback={false}
-              disabledClassName="disabled"
-              marginPagesDisplayed={2}
-              nextClassName="page-item page-link"
-              nextLabel="next"
-              onPageChange={[Function]}
-              pageClassName="page-item"
-              pageCount={1}
-              pageLinkClassName="page-link"
-              pageRangeDisplayed={1}
-              previousClassName="page-item page-link"
-              previousLabel="previous"
-              subContainerClassName="page-item"
-            >
-              <ul
-                className="pagination justify-content-center"
-              >
-                <li
-                  className="page-item page-link disabled"
-                >
-                  <a
-                    onClick={[Function]}
-                    onKeyPress={[Function]}
-                    tabIndex="0"
-                  >
-                    previous
-                  </a>
-                </li>
-                <PageView
-                  activeClassName="page-active"
-                  key="key0/.0"
-                  onClick={[Function]}
-                  page={1}
-                  pageClassName="page-item"
-                  pageLinkClassName="page-link"
-                  selected={true}
+                <div
+                  className="d-flex no-margin flex-column align-items-center justify-content-center info"
                 >
                   <li
-                    className="page-item page-active"
+                    className="info-item"
+                  />
+                  <li
+                    className="info-item"
                   >
-                    <a
-                      aria-current="page"
-                      aria-label="Page 1 is your current page"
-                      className="page-link"
-                      onClick={[Function]}
-                      onKeyPress={[Function]}
-                      tabIndex="0"
-                    >
-                      1
-                    </a>
+                    @undefined
                   </li>
-                </PageView>
-                <li
-                  className="page-item page-link disabled"
+                </div>
+                <Button
+                  Tag="button"
+                  className=" btn-lg center-margin edit-btn btn-secondary"
+                  dataTarget="#modal"
+                  dataToggle="modal"
+                  handleClick={[Function]}
+                  href=""
+                  id="editProfile"
+                  text="edit profile"
+                  type="button"
                 >
-                  <a
+                  <button
+                    className="btn  btn-lg center-margin edit-btn btn-secondary"
+                    data-dismiss="modal"
+                    data-target="#modal"
+                    data-toggle="modal"
+                    href=""
                     onClick={[Function]}
-                    onKeyPress={[Function]}
-                    tabIndex="0"
+                    type="button"
                   >
-                    next
-                  </a>
-                </li>
-              </ul>
-            </PaginationBoxView>
-          </nav>
-        </Paginator>
-      </div>
+                    edit profile
+                  </button>
+                </Button>
+              </div>
+            </UserInfo>
+          </h1>
+        </div>
+      </HeroArea>
+      <NotFound
+        message="you have no recipes"
+      >
+        <div
+          className="display-3 text-uppercase msg-display no-margin d-flex flex-column "
+        >
+          <h1
+            className="not-found-text"
+          >
+            <i
+              className="fa fa-meh-o"
+            />
+            <em>
+              oops!
+            </em>
+            <br />
+            you have no recipes
+          </h1>
+          <Button
+            Tag="button"
+            className="btn-secondary-outline btn-lg"
+            dataTarget=""
+            dataToggle=""
+            handleClick={[Function]}
+            href=""
+            text="add recipe"
+            type="button"
+          >
+            <button
+              className="btn btn-secondary-outline btn-lg"
+              data-dismiss="modal"
+              data-target=""
+              data-toggle=""
+              href=""
+              onClick={[Function]}
+              type="button"
+            >
+              add recipe
+            </button>
+          </Button>
+        </div>
+      </NotFound>
       <Modal
         center={true}
         closeBtnClicked={[Function]}
@@ -432,20 +284,21 @@ exports[`Profile Page component  render as expected when edit profile button is 
       Object {
         "currentRecipe": [Function],
         "deleteRecipe": [Function],
+        "getCreatedRecipes": [Function],
         "getProfile": [Function],
         "removeFromFav": [Function],
         "resetSuccess": [Function],
         "update": [Function],
       }
     }
-    loading={false}
-    match={
+    history={
       Object {
-        "history": Object {
-          "push": [Function],
-        },
+        "push": [Function],
       }
     }
+    loading={false}
+    pageCount={0}
+    recipes={Array []}
     success={false}
     user={
       Object {
@@ -473,299 +326,150 @@ exports[`Profile Page component  render as expected when edit profile button is 
     }
   >
     <div
-      className="container-fluid profile-page"
+      className="container-fluid profile-page no-padding"
     >
-      <div
-        className="row user-info-wrapper"
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+        title=""
       >
         <div
-          className="backdrop"
+          className="hero-half backdrop"
         >
           <img
-            alt="backdrop pix"
+            alt="heroimage"
             src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
           />
-        </div>
-        <UserInfo
-          editBtnClicked={[Function]}
-          user={
-            Object {
-              "createdRecipes": Array [
-                Object {
-                  "category": "",
-                  "downVotes": 1,
-                  "name": "recipe",
-                  "recipeId": 1,
-                  "upVotes": 1,
-                  "views": 1,
-                },
-              ],
-              "favRecipes": Array [
-                Object {
-                  "category": "",
-                  "downVotes": 1,
-                  "name": "recipe",
-                  "recipeId": 1,
-                  "upVotes": 1,
-                  "views": 1,
-                },
-              ],
-            }
-          }
-        >
-          <div
-            className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
           >
-            <div
-              className=" d-flex justify-content-around flex-column align-items-center"
+            <UserInfo
+              editBtnClicked={[Function]}
+              user={
+                Object {
+                  "createdRecipes": Array [
+                    Object {
+                      "category": "",
+                      "downVotes": 1,
+                      "name": "recipe",
+                      "recipeId": 1,
+                      "upVotes": 1,
+                      "views": 1,
+                    },
+                  ],
+                  "favRecipes": Array [
+                    Object {
+                      "category": "",
+                      "downVotes": 1,
+                      "name": "recipe",
+                      "recipeId": 1,
+                      "upVotes": 1,
+                      "views": 1,
+                    },
+                  ],
+                }
+              }
             >
               <div
-                className="avatar avatar-md"
-              />
-              <h3
-                className=" text-capitalize s-padding no-margin "
-              />
-            </div>
-            <div
-              className="d-flex no-margin flex-column align-items-center justify-content-center info"
-            >
-              <li
-                className="info-item"
-              />
-              <li
-                className="info-item"
-              >
-                @undefined
-              </li>
-            </div>
-            <Button
-              Tag="button"
-              className=" btn-lg center-margin edit-btn btn-secondary"
-              dataTarget="#modal"
-              dataToggle="modal"
-              handleClick={[Function]}
-              href=""
-              id="editProfile"
-              text="edit profile"
-              type="button"
-            >
-              <button
-                className="btn  btn-lg center-margin edit-btn btn-secondary"
-                data-dismiss="modal"
-                data-target="#modal"
-                data-toggle="modal"
-                href=""
-                onClick={[Function]}
-                type="button"
-              >
-                edit profile
-              </button>
-            </Button>
-          </div>
-        </UserInfo>
-      </div>
-      <div
-        className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin"
-      >
-        <Recipes
-          handleClick={[Function]}
-          onDeleteIconClicked={[Function]}
-          onEditIconCliked={[Function]}
-          onFavIconClicked={[Function]}
-          recipes={
-            Array [
-              Object {
-                "category": "",
-                "downVotes": 1,
-                "name": "recipe",
-                "recipeId": 1,
-                "upVotes": 1,
-                "views": 1,
-              },
-            ]
-          }
-          type="createdRecipes"
-        >
-          <List
-            className="recipe-list"
-            style={Object {}}
-          >
-            <div
-              className="col-12 recipe-list"
-              style={Object {}}
-            >
-              <h4
-                className="display-4 bold header"
-              >
-                my recipes
-              </h4>
-              <ListItem
-                className="recipe-list-item"
-                content="recipe"
-                handleClick={[Function]}
-                index={0}
-                key="[object Object]"
+                className="info-wrapper mr-auto d-flex flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
               >
                 <div
-                  className="lead list-item recipe-list-item"
+                  className=" d-flex justify-content-around flex-column align-items-center"
                 >
                   <div
-                    className="list-item-text lead"
-                    data-index={0}
-                    onClick={[Function]}
-                    role="button"
-                    tabIndex="0"
-                  >
-                    recipe
-                  </div>
-                  <div>
-                    <Icon
-                      active=""
-                      className=""
-                      dataTarget=""
-                      dataToggle=""
-                      handleClick={[Function]}
-                      iconClass="fa fa-pencil edit-icon"
-                      onMouseEnter={[Function]}
-                      parentClass=""
-                      pointer={true}
-                    >
-                      <div
-                        className="icon-wrapper pointer"
-                        onClick={[Function]}
-                        onMouseEnter={[Function]}
-                        role="button"
-                        tabIndex="0"
-                      >
-                        <i
-                          className="icon fa fa-pencil edit-icon"
-                          data-target=""
-                          data-toggle=""
-                        >
-                          <span />
-                        </i>
-                      </div>
-                    </Icon>
-                    <Icon
-                      active=""
-                      className=""
-                      dataTarget="#modal"
-                      dataToggle="modal"
-                      handleClick={[Function]}
-                      iconClass="fa fa-trash-o delete-icon"
-                      onMouseEnter={[Function]}
-                      parentClass=""
-                      pointer={true}
-                    >
-                      <div
-                        className="icon-wrapper pointer"
-                        onClick={[Function]}
-                        onMouseEnter={[Function]}
-                        role="button"
-                        tabIndex="0"
-                      >
-                        <i
-                          className="icon fa fa-trash-o delete-icon"
-                          data-target="#modal"
-                          data-toggle="modal"
-                        >
-                          <span />
-                        </i>
-                      </div>
-                    </Icon>
-                  </div>
+                    className="avatar avatar-md"
+                  />
+                  <h3
+                    className=" text-capitalize s-padding no-margin "
+                  />
                 </div>
-              </ListItem>
-            </div>
-          </List>
-        </Recipes>
-        <Paginator
-          handlePageClick={[Function]}
-          pageCount={1}
-        >
-          <nav
-            aria-label="Page navigation"
-            className="d-flex justify-content-center col-12 "
-          >
-            <PaginationBoxView
-              activeClassName="page-active"
-              breakClassName="break-me"
-              breakLabel={
-                <a
-                  href=""
-                >
-                  ...
-                </a>
-              }
-              containerClassName="pagination justify-content-center"
-              disableInitialCallback={false}
-              disabledClassName="disabled"
-              marginPagesDisplayed={2}
-              nextClassName="page-item page-link"
-              nextLabel="next"
-              onPageChange={[Function]}
-              pageClassName="page-item"
-              pageCount={1}
-              pageLinkClassName="page-link"
-              pageRangeDisplayed={1}
-              previousClassName="page-item page-link"
-              previousLabel="previous"
-              subContainerClassName="page-item"
-            >
-              <ul
-                className="pagination justify-content-center"
-              >
-                <li
-                  className="page-item page-link disabled"
-                >
-                  <a
-                    onClick={[Function]}
-                    onKeyPress={[Function]}
-                    tabIndex="0"
-                  >
-                    previous
-                  </a>
-                </li>
-                <PageView
-                  activeClassName="page-active"
-                  key="key0/.0"
-                  onClick={[Function]}
-                  page={1}
-                  pageClassName="page-item"
-                  pageLinkClassName="page-link"
-                  selected={true}
+                <div
+                  className="d-flex no-margin flex-column align-items-center justify-content-center info"
                 >
                   <li
-                    className="page-item page-active"
+                    className="info-item"
+                  />
+                  <li
+                    className="info-item"
                   >
-                    <a
-                      aria-current="page"
-                      aria-label="Page 1 is your current page"
-                      className="page-link"
-                      onClick={[Function]}
-                      onKeyPress={[Function]}
-                      tabIndex="0"
-                    >
-                      1
-                    </a>
+                    @undefined
                   </li>
-                </PageView>
-                <li
-                  className="page-item page-link disabled"
+                </div>
+                <Button
+                  Tag="button"
+                  className=" btn-lg center-margin edit-btn btn-secondary"
+                  dataTarget="#modal"
+                  dataToggle="modal"
+                  handleClick={[Function]}
+                  href=""
+                  id="editProfile"
+                  text="edit profile"
+                  type="button"
                 >
-                  <a
+                  <button
+                    className="btn  btn-lg center-margin edit-btn btn-secondary"
+                    data-dismiss="modal"
+                    data-target="#modal"
+                    data-toggle="modal"
+                    href=""
                     onClick={[Function]}
-                    onKeyPress={[Function]}
-                    tabIndex="0"
+                    type="button"
                   >
-                    next
-                  </a>
-                </li>
-              </ul>
-            </PaginationBoxView>
-          </nav>
-        </Paginator>
-      </div>
+                    edit profile
+                  </button>
+                </Button>
+              </div>
+            </UserInfo>
+          </h1>
+        </div>
+      </HeroArea>
+      <NotFound
+        message="you have no recipes"
+      >
+        <div
+          className="display-3 text-uppercase msg-display no-margin d-flex flex-column "
+        >
+          <h1
+            className="not-found-text"
+          >
+            <i
+              className="fa fa-meh-o"
+            />
+            <em>
+              oops!
+            </em>
+            <br />
+            you have no recipes
+          </h1>
+          <Button
+            Tag="button"
+            className="btn-secondary-outline btn-lg"
+            dataTarget=""
+            dataToggle=""
+            handleClick={[Function]}
+            href=""
+            text="add recipe"
+            type="button"
+          >
+            <button
+              className="btn btn-secondary-outline btn-lg"
+              data-dismiss="modal"
+              data-target=""
+              data-toggle=""
+              href=""
+              onClick={[Function]}
+              type="button"
+            >
+              add recipe
+            </button>
+          </Button>
+        </div>
+      </NotFound>
       <Modal
         center={true}
         closeBtnClicked={[Function]}
@@ -832,19 +536,12 @@ exports[`Profile Page component  render as expected when edit profile button is 
 
 exports[`Profile Page component  to match empty snapshot  1`] = `
 <div
-  className="container-fluid profile-page"
+  className="container-fluid profile-page no-padding"
 >
-  <div
-    className="row user-info-wrapper"
+  <HeroArea
+    image="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+    title=""
   >
-    <div
-      className="backdrop"
-    >
-      <img
-        alt="backdrop pix"
-        src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
-      />
-    </div>
     <UserInfo
       editBtnClicked={[Function]}
       user={
@@ -872,34 +569,21 @@ exports[`Profile Page component  to match empty snapshot  1`] = `
         }
       }
     />
-  </div>
-  <div
-    className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin"
+  </HeroArea>
+  <NotFound
+    message="you have no recipes"
   >
-    <Recipes
+    <Button
+      Tag="button"
+      className="btn-secondary-outline btn-lg"
+      dataTarget=""
+      dataToggle=""
       handleClick={[Function]}
-      onDeleteIconClicked={[Function]}
-      onEditIconCliked={[Function]}
-      onFavIconClicked={[Function]}
-      recipes={
-        Array [
-          Object {
-            "category": "",
-            "downVotes": 1,
-            "name": "recipe",
-            "recipeId": 1,
-            "upVotes": 1,
-            "views": 1,
-          },
-        ]
-      }
-      type="createdRecipes"
+      href=""
+      text="add recipe"
+      type="button"
     />
-    <Paginator
-      handlePageClick={[Function]}
-      pageCount={1}
-    />
-  </div>
+  </NotFound>
   <Modal
     center={true}
     closeBtnClicked={[Function]}

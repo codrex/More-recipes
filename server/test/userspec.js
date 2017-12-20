@@ -337,7 +337,6 @@ export const userSpec = (repiceSpec) => {
       request.get('/api/v1/users/votes?ids=1,2,3')
       .set('Authorization', token)
       .end((err, res) => {
-        console.log(res.body)
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         expect(typeof res.body.votes).to.be.equal(typeof []);
@@ -348,7 +347,6 @@ export const userSpec = (repiceSpec) => {
       request.get('/api/v1/users/votes?ids=1,2,kdjd')
       .set('Authorization', token)
       .end((err, res) => {
-        console.log(res.body)
         expect(res.status).to.equal(200);
         expect(res.body.status).to.equal('success');
         expect(typeof res.body.votes).to.be.equal(typeof []);

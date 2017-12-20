@@ -12,8 +12,8 @@ import {
   AccordionBody
 } from '../../../common/accordion/accordion';
 
-const ListItemIcons = (props) => (
-  <div className="d-flex">
+const ListItemIcons = props => (
+  <div className="d-flex align-items-center">
     <Icon
       id="editIcon"
       iconClass="fa fa-pencil"
@@ -31,6 +31,10 @@ const ListItemIcons = (props) => (
 ListItemIcons.propTypes = {
   deleteIconClicked: PropTypes.func,
   editIconClicked: PropTypes.func,
+};
+ListItemIcons.defaultProps = {
+  deleteIconClicked: () => {},
+  editIconClicked: () => {},
 };
 
 /**
@@ -71,9 +75,7 @@ class Item extends React.Component {
    * @return {undefined}
    * @param {string} value
    */
-  validateItem = (value) =>  {
-    return item(value, this.props.name);
-  }
+  validateItem = value => item(value, this.props.name)
 
   /**
    * @return {undefined}
@@ -167,7 +169,7 @@ class Item extends React.Component {
       return (
         <Form
           className={classnames('d-flex item-edit-form',
-        directions && 'd-flex item-edit-form-textarea')}
+            directions && 'd-flex item-edit-form-textarea')}
         >
           <Component
             value={this.state.itemValue}
@@ -219,7 +221,6 @@ Item.defaultProps = {
 Item.propTypes = {
   content: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
   index: PropTypes.number.isRequired,
   editItem: PropTypes.func.isRequired,
   Component: PropTypes.func.isRequired,

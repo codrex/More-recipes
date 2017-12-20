@@ -20,21 +20,21 @@ class SearchBox extends React.Component {
   }
   /**
  * @return {undefined}
- * @param {Object} e
+ * @param {Object} event
  */
-  handleChange(e) {
+  handleChange(event) {
     this.setState({
-      value: e.target.value
+      value: event.target.value
     });
-    if (this.props.handleChange) this.props.handleChange(e.target.value);
+    if (this.props.handleChange) this.props.handleChange(event.target.value);
   }
 
   /**
  * @return {undefined}
- * @param {Object} e
+ * @param {Object} event
  */
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
     if (this.props.handleSubmit) this.props.handleSubmit(this.state.value);
   }
   /**
