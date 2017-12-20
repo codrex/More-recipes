@@ -5,6 +5,7 @@ import nock from 'nock';
 import initailState from '../../reducers/initialState';
 import * as actions from '../recipeActions';
 import * as actionTypes from '../actions';
+import {LIMIT, REVIEW_LIMIT} from '../../constants/constants';
 
 // mocking http request
 const nockMocker = (path, payloadData, reqType, statusCode) => {
@@ -225,7 +226,7 @@ describe('Test thunks:: expect request to be successful', () => {
     });
   it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.GET_ALL_RECIPES} and
   END_AJAX_REQUEST action on successful login`, () => {
-      const { payload, store, scope } = setup('/api/v1/recipes?limit=10&page=1', 'get', initailState.Recipes);
+      const { payload, store, scope } = setup(`/api/v1/recipes?limit=${LIMIT}&page=1`, 'get', initailState.Recipes);
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: actionTypes.GET_ALL_RECIPES, payload },
@@ -239,7 +240,7 @@ describe('Test thunks:: expect request to be successful', () => {
     });
   it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.GET_TOP_RECIPES} and
   END_AJAX_REQUEST action on successful login`, () => {
-      const { payload, store, scope } = setup('/api/v1/recipes?sort=upvotes&order=ascending&limit=10&page=1', 'get', initailState.Recipes);
+      const { payload, store, scope } = setup(`/api/v1/recipes?sort=upvotes&order=ascending&limit=${LIMIT}&page=1`, 'get', initailState.Recipes);
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         { type: actionTypes.GET_TOP_RECIPES, payload },
@@ -253,7 +254,7 @@ describe('Test thunks:: expect request to be successful', () => {
     });
   it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.GET_REVIEWS} and
     END_AJAX_REQUEST action when get recipe reviews action creator is called`, () => {
-        const { payload, store, scope } = setup('/api/v1/recipes/1/reviews?&limit=10&page=1',
+        const { payload, store, scope } = setup(`/api/v1/recipes/1/reviews?&limit=${REVIEW_LIMIT}&page=1`,
          'get', initailState.recipe.reviews);
         const expectedActions = [
           { type: 'BEGIN_AJAX_REQUEST', loading: false },
@@ -268,7 +269,7 @@ describe('Test thunks:: expect request to be successful', () => {
       });
    it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.AFTER_REVIEW} and
   END_AJAX_REQUEST action on after a review is posted`, () => {
-      const { payload, store, scope } = setup('/api/v1/recipes/1/reviews', 'post', initailState.Recipe);
+      const { payload, store, scope } = setup(`/api/v1/recipes/1/reviews?limit=${REVIEW_LIMIT}`, 'post', initailState.Recipe);
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: false },
         { type: actionTypes.AFTER_REVIEW, payload },
@@ -326,7 +327,7 @@ describe('Test thunks:: expect request to be successful', () => {
   it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.FIND_RECIPES} and
   END_AJAX_REQUEST action on successful login`, () => {
       const searchTerm = 'term';
-      const { payload, store, scope } = setup(`/api/v1/recipes?search=${searchTerm}`
+      const { payload, store, scope } = setup(`/api/v1/recipes?search=${searchTerm}&limit=${LIMIT}&page=1`
         , 'get', initailState.Recipes);
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: true },

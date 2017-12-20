@@ -47,15 +47,6 @@ const TopBar = (props) => {
           <NavLink
             className="nav-link text-capitalize "
             activeClassName="nav-link-active"
-            to={'/recipes/created-recipes'}
-            exact
-            id="getMyRecipes"
-          >
-            created recipes
-          </NavLink>
-          <NavLink
-            className="nav-link text-capitalize "
-            activeClassName="nav-link-active"
             to={'/recipes/favourite-recipes'}
             exact
             id="getFavRecipes"

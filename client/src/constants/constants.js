@@ -23,3 +23,8 @@ export const CATEGORIES = [
 ];
 export const LIMIT = 10;
 export const DEFAULT_PIX = 'https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg';
+export const DEFAULT_RECIPE_PIX = 'recipes/s9ej2m9vcvagobqadebh.jpg';
+export const DEFAULT_RECIPE_PIX_URL = 'http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg';
+export const PROFILE_PAGE_PIX = 'https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg';
+export const REVIEW_MESSAGE = 'Review posted';
+export const REVIEW_LIMIT = 5;

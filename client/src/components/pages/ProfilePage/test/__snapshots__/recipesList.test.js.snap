@@ -12,8 +12,8 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
       Object {
         "category": "",
         "downVotes": 1,
+        "id": 1,
         "name": "recipe",
-        "recipeId": 1,
         "upVotes": 1,
         "views": 1,
       },
@@ -39,7 +39,7 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
         content="recipe"
         handleClick={[Function]}
         index={0}
-        key="[object Object]"
+        key="1"
       >
         <div
           className="lead list-item recipe-list-item"
@@ -128,8 +128,8 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
       Object {
         "category": "",
         "downVotes": 1,
+        "id": 1,
         "name": "recipe",
-        "recipeId": 1,
         "upVotes": 1,
         "views": 1,
       },
@@ -155,7 +155,7 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
         content="recipe"
         handleClick={[Function]}
         index={0}
-        key="[object Object]"
+        key="1"
       >
         <div
           className="lead list-item recipe-list-item"
@@ -247,7 +247,7 @@ exports[`Recipes list component  to match empty snapshot  1`] = `
     content="recipe"
     handleClick={[Function]}
     index={0}
-    key="[object Object]"
+    key="1"
   >
     <div>
       <Icon

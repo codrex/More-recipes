@@ -2,7 +2,7 @@
 
 exports[`Comments display component  expected to match empty snapshot 1`] = `
 <div
-  className="col-12"
+  className="col-12 "
 >
   <div
     className="media-object comment"

@@ -32,7 +32,7 @@ Comment.propTypes = {
 const Comments = (props) => {
   const { comments } = props;
   return (
-    <div className="col-12">
+    <div className="col-12 ">
       {comments.map(({
         id,
         Reviewer,
@@ -57,10 +57,12 @@ const Comments = (props) => {
 };
 
 Comments.defaultProps = {
-  comments: []
+  comments: [],
+  createdAt: ''
 };
 Comments.propTypes = {
   comments: PropTypes.arrayOf(PropTypes.shape),
+  createdAt: PropTypes.string,
 };
 
 export default Comments;

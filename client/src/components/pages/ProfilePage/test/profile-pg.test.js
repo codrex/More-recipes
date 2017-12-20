@@ -13,9 +13,11 @@ const props = {
     deleteRecipe: jest.fn(),
     removeFromFav: jest.fn(),
     resetSuccess: jest.fn(),
+    getCreatedRecipes: jest.fn()
 
   },
-  match: { history: { push: jest.fn() } },
+  recipes: [],
+  history:{ push: jest.fn() },
   loading: false,
   success: false,
   user: {

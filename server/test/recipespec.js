@@ -738,7 +738,6 @@ export const recipeSpec = (user1, user2) => {
         request.get('/api/v1/recipes/1')
           .set('Authorization', token)
           .end((err, res) => {
-            console.log(res.body.recipe.Votes,'pppppppp')
             expect(res.status).to.equal(200);
             expect(res.body.status).to.equal('success');
             expect(res.body.recipe.views).to.equal(0);

@@ -8,9 +8,10 @@ exports[`Recipes card component  render as expected 1`] = `
     className="recipe-card-body"
   >
     <img
-      alt="rice and beans"
       className="recipe-card-img"
-      src="https://i.pinimg.com/564x/b5/be/08/b5be084a849fa67c190cc85b1e9216c3.jpg"
+      height="250"
+      src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+      width="400"
     />
     <div
       className="recipe-card-underlay"
@@ -146,6 +147,7 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
     <RecipeCard
       category="dinner"
       downVotes={0}
+      image={Object {}}
       isFav={[Function]}
       push={[Function]}
       recipeId={1}
@@ -160,11 +162,21 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
         <div
           className="recipe-card-body"
         >
-          <img
-            alt="rice and beans"
+          <Image
             className="recipe-card-img"
-            src="https://i.pinimg.com/564x/b5/be/08/b5be084a849fa67c190cc85b1e9216c3.jpg"
-          />
+            cloudName="resycom"
+            crop="fill"
+            height="250"
+            publicId="recipes/s9ej2m9vcvagobqadebh.jpg"
+            width="400"
+          >
+            <img
+              className="recipe-card-img"
+              height="250"
+              src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+              width="400"
+            />
+          </Image>
           <div
             className="recipe-card-underlay"
           >
@@ -361,6 +373,7 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
     <RecipeCard
       category="dinner"
       downVotes={0}
+      image={Object {}}
       isFav={[Function]}
       push={[Function]}
       recipeId={1}
@@ -375,11 +388,21 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
         <div
           className="recipe-card-body"
         >
-          <img
-            alt="rice and beans"
+          <Image
             className="recipe-card-img"
-            src="https://i.pinimg.com/564x/b5/be/08/b5be084a849fa67c190cc85b1e9216c3.jpg"
-          />
+            cloudName="resycom"
+            crop="fill"
+            height="250"
+            publicId="recipes/s9ej2m9vcvagobqadebh.jpg"
+            width="400"
+          >
+            <img
+              className="recipe-card-img"
+              height="250"
+              src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+              width="400"
+            />
+          </Image>
           <div
             className="recipe-card-underlay"
           >

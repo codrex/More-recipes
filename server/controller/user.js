@@ -135,6 +135,7 @@ export const setFavRecipe = (req, res) => {
             user.addFavRecipes(recipeId)
               .then(() => {
                 sendSuccess(res, 200, 'favRecipe', {
+                  recipe: req.currentRecipe,
                   id: recipeId,
                   added: true
                 });

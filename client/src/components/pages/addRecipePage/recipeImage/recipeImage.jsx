@@ -1,9 +1,11 @@
 import React from 'react';
 import dotenv from 'dotenv';
 import { connect } from 'react-redux';
+import { Image } from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import { updateImage } from '../../../../actions/recipeActions';
 import imageParser from '../../../../utils/imageParser/imageParser';
+import { DEFAULT_RECIPE_PIX } from '../../../../constants/constants';
 
 dotenv.config();
 
@@ -75,7 +77,14 @@ class RecipeImage extends React.Component {
           Recipe image
         </h4>
         <div className="display-4">
-          <img src={image.url} alt="" />
+          <Image
+            cloudName="resycom"
+            publicId={image.publicId || DEFAULT_RECIPE_PIX}
+            width="400"
+            height="500"
+            crop="fill"
+            className="recipe-card-img"
+          />
           <span
             role="button"
             tabIndex="0"

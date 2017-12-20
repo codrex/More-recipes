@@ -23,7 +23,7 @@ import Ingredients from './ingredients/ingredients';
 import Loader from '../../common/loader/loader';
 import Paginator from '../../common/paginator/paginator';
 import HeroArea from '../../common/heroArea/heroArea';
-import { DEFAULT_PIX } from '../../../constants/constants';
+import { DEFAULT_RECIPE_PIX_URL } from '../../../constants/constants';
 import imageParser from '../../../utils/imageParser/imageParser';
 
 /**
@@ -45,7 +45,7 @@ export class Recipe extends React.Component {
     this.state = {
       addToFav: false,
       upVote,
-      downVote
+      downVote,
     };
   }
 
@@ -169,20 +169,28 @@ export class Recipe extends React.Component {
   }
   renderReviews = () => {
     const { reviews } = this.props.recipe;
+    const { loading } = this.props;
+    if (loading) {
+      return (
+        <Loader loading={loading} />
+      );
+    }
     return (
       <div className="col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper d-flex">
-        <h5 className="display-4">
+        <div className="d-flex align-items-start flex-column col-12">
+          <h5 className="display-4">
             Reviews
-          <Button
-            text="post a review"
-            className="btn-secondary"
-            dataToggle="modal"
-            dataTarget="#modal"
-            id="reviewBtn"
-          />
-        </h5>
-        {this.renderPagination()}
-        <Comments comments={reviews} />
+            <Button
+              text="post a review"
+              className="btn-secondary"
+              dataToggle="modal"
+              dataTarget="#modal"
+              id="reviewBtn"
+            />
+          </h5>
+          {this.renderPagination()}
+          <Comments comments={reviews} />
+        </div>
       </div>
     );
   }
@@ -207,7 +215,7 @@ export class Recipe extends React.Component {
       <div className="recipe-info-wrapper">
         <h6 className="lead text-capitalize ">
         posted by:
-          <span className="bold">{owner.username} </span> </h6>
+          <span className="bold">{owner && owner.username} </span> </h6>
         <h6 className="lead text-capitalize ">
           Views: <span className="bold">{views}</span>
         </h6>
@@ -244,11 +252,11 @@ export class Recipe extends React.Component {
    */
   render() {
     const { loading, recipe } = this.props;
-    const url = imageParser(recipe.image).url || DEFAULT_PIX;
+    const url = imageParser(recipe.image).url || DEFAULT_RECIPE_PIX_URL;
     return (
       <div className="container-fluid no-padding main">
         {loading && <Loader loading={loading} />}
-        <HeroArea image={url} title={recipe.name} />
+        {!loading && <HeroArea image={url} title={recipe.name} />}
         {this.renderRecipeInfo()}
         {this.renderRecipeDetails()}
         {this.renderSidIcons()}

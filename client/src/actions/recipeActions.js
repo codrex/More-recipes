@@ -25,7 +25,7 @@ import {
   GET_FAVOURITE_RECIPES,
   GET_REVIEWS
 } from './actions';
-import { LIMIT } from '../constants/constants';
+import { LIMIT, REVIEW_LIMIT } from '../constants/constants';
 
 export const newRecipe = payload => ({
   type: NEW_RECIPE, payload
@@ -175,7 +175,7 @@ export const getFavouriteRecipes = page => (dispatch) => {
   return dispatcher.requestAndDispatch(
     `/api/v1/users/${id}/recipes/favourite?limit=${LIMIT}&page=${page}`,
     null,
-    gotTopRecipes,
+    gotFavouriteRecipes,
     'get'
   );
 };
@@ -194,7 +194,7 @@ export const getCreatedRecipes = page => (dispatch) => {
 export const getReviews = (recipeId, page) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch, false);
   return dispatcher.requestAndDispatch(
-    `/api/v1/recipes/${recipeId}/reviews?&limit=${LIMIT}&page=${page}`,
+    `/api/v1/recipes/${recipeId}/reviews?&limit=${REVIEW_LIMIT}&page=${page}`,
     null,
     gotReviews,
     'get'
@@ -214,7 +214,7 @@ export const getRecipe = id => (dispatch) => {
 export const postReview = (id, review, msg) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch, false);
   return dispatcher.requestAndDispatch(
-    `/api/v1/recipes/${id}/reviews`,
+    `/api/v1/recipes/${id}/reviews?limit=${REVIEW_LIMIT}`,
     review,
     afterReview,
     'post',
@@ -265,7 +265,7 @@ export const deleteRecipe = (id, index) => (dispatch) => {
 export const findRecipes = (searchTerm, msg = undefined) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   return dispatcher.requestAndDispatch(
-    `/api/v1/recipes?search=${searchTerm}`,
+    `/api/v1/recipes?search=${searchTerm}&limit=${LIMIT}&page=1`,
     null,
     gotFindRecipe,
     'get',

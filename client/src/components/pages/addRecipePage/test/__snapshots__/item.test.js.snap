@@ -39,7 +39,7 @@ exports[`Item component  expected to match empty snapshot 1`] = `
           editIconClicked={[Function]}
         >
           <div
-            className="d-flex"
+            className="d-flex align-items-center"
           >
             <Icon
               active=""
@@ -144,7 +144,7 @@ exports[`Item component  expected to match snapshot when close button is clicked
           editIconClicked={[Function]}
         >
           <div
-            className="d-flex"
+            className="d-flex align-items-center"
           >
             <Icon
               active=""
@@ -249,7 +249,7 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
           editIconClicked={[Function]}
         >
           <div
-            className="d-flex"
+            className="d-flex align-items-center"
           >
             <Icon
               active=""
@@ -322,6 +322,7 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
       primaryInverse={false}
       secondary={false}
       secondaryInverse={false}
+      style={Object {}}
       submitBtnText=""
     >
       <form
@@ -329,6 +330,7 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
         className="col-12 d-flex item-edit-form"
         method=""
         onSubmit={[Function]}
+        style={Object {}}
       >
         <PureInput
           className=" item-edit-input"
@@ -452,7 +454,7 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 2`
           editIconClicked={[Function]}
         >
           <div
-            className="d-flex"
+            className="d-flex align-items-center"
           >
             <Icon
               active=""
@@ -557,7 +559,7 @@ exports[`Item component  expected to match snapshot when save after edit button 
           editIconClicked={[Function]}
         >
           <div
-            className="d-flex"
+            className="d-flex align-items-center"
           >
             <Icon
               active=""

@@ -6,6 +6,7 @@
   font-size: 1.2rem;
   font-weight: normal;
   text-transform: capitalize;
+  cursor: pointer;
   &:hover {
     @include box-shadow;
   }
