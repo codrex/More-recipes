@@ -1,34 +1,65 @@
 import db from '../models/index';
-import { serverError, sendPaginatedRecipes } from '../reply/reply';
 import getParams from '../utils/pagination';
+import { serverError, sendPaginatedData } from '../utils/responder';
 
 const RecipeReviews = db.RecipeReviews;
 
+/**
+ * @name createReview
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Object} next - Express next middleware function
+ * @return {*} void
+ */
 export const createReview = (req, res, next) => {
   RecipeReviews.create({
     review: req.body.review,
-    ReviewerId: req.requestId
+    reviewerId: req.requestId
   })
     .then((review) => {
-      req.reviewId = review.dataValues.id;
-      next();
+      review.reload({
+        attributes: ['id', 'review'],
+        include: [{
+          model: db.Users,
+          as: 'reviewer',
+          attributes: ['id', 'username', 'fullname']
+        }],
+      }).then((createdReview) => {
+        req.createdReview = createdReview;
+        next();
+      });
     }).catch(() => {
       serverError(res);
     });
 };
 
-// get reviews on a recipe
-export const fetchReviews = (req, res) => {
+/**
+ * @name fetchReviews
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Object} next - Express next middleware function
+ * @return {*} void
+ */
+export const fetchReviews = (req, res, next) => {
   const { limit, offset } = getParams(req);
-  Recipes.findAndCountAll({
+  RecipeReviews.findAndCountAll({
     where: {
-      recipeId: req.params.id
+      RecipeId: req.params.id
     },
+    attributes: ['id', 'RecipeId', 'createdAt', 'review'],
+    include: [{
+      model: db.Users,
+      as: 'reviewer',
+      attributes: ['id', 'username', 'fullname']
+    }],
     limit,
     offset,
     order: [['id', 'DESC']],
   }).then(({ count, rows }) => {
-    sendPaginatedRecipes(rows, count, limit, res);
+    sendPaginatedData('reviews', { rows, count, limit }, res);
+    if (req.createdReview) next();
   }).catch(() => {
     serverError(res);
   });

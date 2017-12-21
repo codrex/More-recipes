@@ -1,8 +1,14 @@
-import db from '../models/index';
+import { Viewers } from '../models/index';
 
-const Viewers = db.Viewers;
-
-const addAsViewer = (req, res, next) => {
+/**
+ * @name addViewer
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Object} next - Express next middleware function
+ * @return {*} void
+ */
+const addViewer = (req, res, next) => {
   Viewers.findOne(
     {
       where: {
@@ -28,4 +34,4 @@ const addAsViewer = (req, res, next) => {
     });
 };
 
-export default addAsViewer;
+export default addViewer;

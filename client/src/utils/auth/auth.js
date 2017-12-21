@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 
 export const TOKEN_ID = 'MRAToken';
-
 export const getToken = () => localStorage.getItem(TOKEN_ID);
 
 export const getId = () => {
