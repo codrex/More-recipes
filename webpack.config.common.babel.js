@@ -38,6 +38,7 @@ module.exports = {
     colors: true,
   },
   module: {
+    noParse: /browserfs\.js/,
     rules: [
       {
         test: /\.js$/,

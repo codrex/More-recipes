@@ -1,54 +1,54 @@
 import express from 'express';
-import {
-  create,
-  fetchUser,
-  loginUser,
-  sendDataWithToken,
-  setFavRecipe,
-  fetchForUpdate,
-  update,
-  compareIds,
-  isIdValidUser,
-  fetchFavouriteRecipes,
-  fetchCreatedRecipes,
-} from '../controller/user';
 import { fetchVotes } from '../controller/vote';
+import { verifyToken } from '../authentication/authenticator';
 import {
   recipeIdValidation,
   recipeIdsValidation
 } from '../middleware/validation/recipe';
+import {
+  isRecipe,
+  setFavouriteAssociation
+} from '../controller/recipe';
 import {
   validateSignupData,
   validateLoginData,
   validateUpdate,
   validateUserId,
 } from '../middleware/validation/user';
-import { checkRecipe } from '../controller/recipe';
-
-import { verifyToken } from '../authentication/authenticator';
+import {
+  create,
+  fetchUser,
+  login,
+  addAccessToken,
+  addFavouriteRecipe,
+  beforeUpdate,
+  update,
+  compareIds,
+  isValidUser,
+  fetchFavouriteRecipes,
+  fetchCreatedRecipes,
+} from '../controller/user';
 
 const usersRoute = express.Router();
 
 usersRoute.use((req, res, next) => {
   next();
 });
-
 usersRoute.route('/signup')
   .post(
     validateSignupData,
     create,
-    sendDataWithToken
+    addAccessToken
   );
 
 usersRoute.route('/signin')
   .post(
     validateLoginData,
-    loginUser,
-    sendDataWithToken
+    login,
+    addAccessToken
   );
 
-usersRoute.use(verifyToken, isIdValidUser);
-
+usersRoute.use(verifyToken, isValidUser);
 usersRoute.route('/votes')
   .get(
     recipeIdsValidation,
@@ -63,12 +63,11 @@ usersRoute.route('/:id')
   .put(
     recipeIdValidation,
     compareIds,
-    fetchForUpdate,
+    beforeUpdate,
     validateUpdate,
     update,
     fetchUser
   );
-
 usersRoute.route('/:id/recipes/favourite')
   .get(
     recipeIdValidation,
@@ -85,8 +84,9 @@ usersRoute.route('/:id/recipes/created')
 usersRoute.route('/recipe')
   .post(
     recipeIdValidation,
-    checkRecipe,
-    setFavRecipe
+    isRecipe,
+    setFavouriteAssociation,
+    addFavouriteRecipe,
   );
 
 export default usersRoute;

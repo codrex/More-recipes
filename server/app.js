@@ -3,7 +3,7 @@ import logger from 'morgan';
 import bodyPaser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
-import route from './routes/route';
+import route from './routes';
 import associate from './associations';
 
 associate();
