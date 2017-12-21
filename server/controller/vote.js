@@ -1,7 +1,14 @@
-import db from '../models/index';
-import { serverError, sendSuccess } from '../reply/reply';
+import { Votes } from '../models/index';
+import { serverError, sendSuccess } from '../utils/responder';
 
-const Votes = db.Votes;
+/**
+ * @name updateVote
+ * @function
+ * @param {Object} voteInstance
+ * @param {Object} voteData
+ * @param {Object} next - Express next middleware function
+ * @return {*} void
+ */
 const updateVote = (voteInstance, voteData, next) => {
   voteData.id = voteInstance.dataValues.id;
   voteInstance.update(voteData, {
@@ -13,6 +20,14 @@ const updateVote = (voteInstance, voteData, next) => {
     });
 };
 
+/**
+ * @name VoteHandler
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Object} next - Express next middleware function
+ * @return {*} void
+ */
 export const VoteHandler = (req, res, next) => {
   let { up, down } = req.query;
   if (up) up = JSON.parse(up.toLowerCase());
@@ -51,6 +66,14 @@ export const VoteHandler = (req, res, next) => {
   });
 };
 
+/**
+ * @name countVote
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Object} next - Express next middleware function
+ * @return {*} void
+ */
 export const countVote = (req, res, next) => {
   Votes.count({
     where: {
@@ -75,6 +98,14 @@ export const countVote = (req, res, next) => {
     });
 };
 
+/**
+ * @name fetchVotes
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Object} next - Express next middleware function
+ * @return {*} void
+ */
 export const fetchVotes = (req, res) => {
   Votes.findAll({
     attributes: ['upVote', 'recipeId', 'downVote'],

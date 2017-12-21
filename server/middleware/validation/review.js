@@ -1,8 +1,16 @@
 import {
   validateReview,
   validationHandler
-} from '../../validators/validator';
+} from '../../utils/validators/validator';
 
+/**
+ * @name reviewValidation
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Object} next - Express next middleware function
+ * @return {*} void
+ */
 const reviewValidation = (req, res, next) => {
   const { review } = req.body;
   validationHandler({ review }, validateReview, req, res, next);

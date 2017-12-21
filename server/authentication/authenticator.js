@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { sendFail } from '../reply/reply';
+import { sendFail } from '../utils/responder';
 
 const secret = process.env.secret;
 const generateToken = dataToencode => jwt.sign(dataToencode, secret, {
