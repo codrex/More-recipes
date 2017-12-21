@@ -35,15 +35,15 @@ const Comments = (props) => {
     <div className="col-12 ">
       {comments.map(({
         id,
-        reviewer,
+        Reviewer,
         review,
         createdAt
       }, i) => (<Comment
         key={id}
         review={review}
         createdAt={createdAt}
-        fullname={reviewer.fullname}
-        username={reviewer.username}
+        fullname={Reviewer.fullname}
+        username={Reviewer.username}
         index={i}
       />)
       )}

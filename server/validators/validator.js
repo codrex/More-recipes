@@ -1,9 +1,9 @@
 import validate from 'validate.js';
 import constraint from './constraints';
-import { sendValidationError } from '../responder';
+import { sendValidationError } from '../reply/reply';
 
 // this function will process the report gotten from the validator
-const processResult = (result) => {
+const processValidationResult = (result) => {
   const valid = result === undefined;
   return (valid && {
     valid
@@ -14,7 +14,7 @@ const processResult = (result) => {
 
 const validator = (obj, constraints) => {
   const result = validate(obj, constraints);
-  return processResult(result);
+  return processValidationResult(result);
 };
 
 const isWords = (word) => {
@@ -66,13 +66,21 @@ validate.validators.isString = (value) => {
 };
 
 const validateSignup = obj => validator(obj, constraint.signupConstraint);
+
 const validateProfileUpdate = obj => validator(obj, constraint.profileUpdateConstraint);
+
 const validateRecipes = obj => validator(obj, constraint.createRecipeConstraint);
+
 const validateId = obj => validator(obj, constraint.idConstraint);
+
 const validateRecipeIds = obj => validator(obj, constraint.recipeIdsConstraint);
+
 const validateLogin = obj => validator(obj, constraint.loginWithUsernameConstraint);
+
 const validateReview = obj => validator(obj, constraint.reviewConstraint);
+
 const validateVote = obj => validator(obj, constraint.voteConstraint);
+
 const validationHandler = (obj, validationFunction, req, res, next = null) => {
   const isValid = validationFunction(obj);
   if (isValid.valid) {

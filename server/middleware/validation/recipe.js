@@ -3,35 +3,23 @@ import {
   validateId,
   validationHandler,
   validateRecipeIds
-} from '../../utils/validators/validator';
+} from '../../validators/validator';
 
-/**
- * @name validateRecipe
- * @description validates data gotten from the user before creating a recipe.
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// This function validates data gotten from the user before creating a recipe.
 export const validateRecipe = (req, res, next) => {
+  const { name, category, ingredients, directions, image } = req.body;
   const recipes = {
-    ...req.body,
+    name,
+    category,
+    ingredients,
+    directions,
+    image,
     ownerId: req.requestId,
   };
   validationHandler(recipes, validateRecipes, req, res, next);
 };
 
-
-/**
- * @name validateUpdate
- * @description validates data gotten from the user before updating a recipe.
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// This function validates data gotten from the user before updating a recipe.
 export const validateUpdate = (req, res, next) => {
   const recipes = {
     name: req.body.name || req.recipe.name,
@@ -44,28 +32,11 @@ export const validateUpdate = (req, res, next) => {
   validationHandler(recipes, validateRecipes, req, res, next);
 };
 
-/**
- * @name recipeIdValidation
- * @description validates recipe id.
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// This function validate recipe id.
 export const recipeIdValidation = (req, res, next) => {
   validationHandler({ id: req.body.recipeId || req.params.id }, validateId, req, res, next);
 };
 
-/**
- * @name recipeIdsValidation
- * @description validates recipe ids.
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
 export const recipeIdsValidation = (req, res, next) => {
   const { ids } = req.query;
   const recipeIds = ids && ids.split(',');

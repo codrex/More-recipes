@@ -1,88 +1,85 @@
 import express from 'express';
 import { verifyToken } from '../authentication/authenticator';
-import { createReview, fetchReviews } from '../controller/review';
+import { createReview } from '../controller/review';
 import reviewValidation from '../middleware/validation/review';
-import { VoteHandler, countVote } from '../controller/vote';
-import voteValidation from '../middleware/validation/votes';
-import { isValidUser, addCreatedRecipe } from '../controller/user';
-import addViewer from '../controller/viewer';
 import {
-  notifyFavouriteUsers,
-  notifyOwner
-} from '../middleware/notifications/notifications';
+  create,
+  fetchRecipe,
+  deleteRecipe,
+  checkOwnship,
+  fetchForUpdate,
+  fetchAllRecipe,
+  fetchAllBySearch,
+  setReview,
+  fetchReview,
+  fetchVotes,
+  fetchRecipeByUpVote,
+  update,
+  checkRecipe
+} from '../controller/recipe';
 import {
   validateRecipe,
   validateUpdate,
   recipeIdValidation
 } from '../middleware/validation/recipe';
-import {
-  create,
-  fetchRecipe,
-  remove,
-  isOwner,
-  beforeUpdate,
-  fetchRecipes,
-  recipesSearch,
-  setReviewAssociation,
-  fetchVotes,
-  fetchRecipeByUpVote,
-  update,
-  isRecipe
-} from '../controller/recipe';
-
+import { VoteHandler, countVote } from '../controller/vote';
+import voteValidation from '../middleware/validation/votes';
+import { isIdValidUser, setRecipe } from '../controller/user';
+import addAsViewer from '../controller/viewer';
 
 const recipesRoute = express.Router();
 
-recipesRoute.use(verifyToken, isValidUser, (req, res, next) => {
+recipesRoute.use(verifyToken, isIdValidUser, (req, res, next) => {
   next();
 });
+
+// create recipe and get recipes route
 recipesRoute.route('/')
   .get(
-    recipesSearch,
+    fetchAllBySearch,
     fetchRecipeByUpVote,
-    fetchRecipes
+    fetchAllRecipe
   )
   .post(
     validateRecipe,
     create,
-    addCreatedRecipe,
-  );
-
-recipesRoute.route('/:id')
-  .put(
-    recipeIdValidation,
-    isOwner,
-    beforeUpdate,
-    validateUpdate,
-    update,
-    fetchRecipe,
-    notifyFavouriteUsers
-  ).delete(
-    recipeIdValidation,
-    isOwner,
-    remove)
-  .get(
-    recipeIdValidation,
-    addViewer,
+    setRecipe,
     fetchRecipe
   );
 
+// Update and delete recipe route
+recipesRoute.route('/:id')
+  .put(
+    recipeIdValidation,
+    checkOwnship,
+    fetchForUpdate,
+    validateUpdate,
+    update,
+    fetchRecipe
+  ).delete(
+    recipeIdValidation,
+    checkOwnship,
+    deleteRecipe)
+  .get(
+    recipeIdValidation,
+    addAsViewer,
+    fetchRecipe
+  );
+
+// route to post reviews on a recipe
 recipesRoute.route('/:id/reviews')
   .post(
     recipeIdValidation,
     reviewValidation,
-    isRecipe,
     createReview,
-    setReviewAssociation,
-    fetchReviews,
-    notifyOwner
-  )
-  .get(recipeIdValidation, isRecipe, fetchReviews);
+    setReview, fetchReview)
+  .get(recipeIdValidation, fetchReview);
 
+//  route to upvote or down vote a recipe
 recipesRoute.route('/:id/vote')
   .put(
     voteValidation,
-    isRecipe,
+    checkRecipe,
     VoteHandler,
     countVote,
     update,
