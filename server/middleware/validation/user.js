@@ -4,31 +4,16 @@ import {
   validateProfileUpdate,
   validationHandler,
   validateId
-} from '../../utils/validators/validator';
+} from '../../validators/validator';
 
-/**
- * @name validateSignupData
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// This function validates signup inputs
 export const validateSignupData = (req, res, next) => {
   validationHandler({
     ...req.body
   }, validateSignup, req, res, next);
 };
 
-
-/**
- * @name validateUpdate
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// This function validates profile update data
 export const validateUpdate = (req, res, next) => {
   const updateData = {
     username: req.body.username || req.user.username,
@@ -38,14 +23,7 @@ export const validateUpdate = (req, res, next) => {
   validationHandler(updateData, validateProfileUpdate, req, res, next);
 };
 
-/**
- * @name validateLoginData
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// This function validates signin inputs
 export const validateLoginData = (req, res, next) => {
   const loginData = {
     username: req.body.username,
@@ -54,14 +32,7 @@ export const validateLoginData = (req, res, next) => {
   validationHandler(loginData, validateLogin, req, res, next);
 };
 
-/**
- * @name validateUserId
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// This function validates  user id gotten from req.params
 export const validateUserId = (req, res, next) => {
   const id = {
     id: req.params.id,

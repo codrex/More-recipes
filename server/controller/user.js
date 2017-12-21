@@ -1,24 +1,19 @@
-import { Users, Recipes } from '../models/index';
+import db from '../models/index';
 import comparePassword from '../utils/comparePassword';
-import { generateToken } from '../authentication/authenticator';
-import getParams from '../utils/pagination';
-import { ATTRIBUTES, USER_NOT_FOUND } from '../constants/constants';
 import {
   serverError,
   sendSuccess,
   sendFail,
   sendPaginatedData
-} from '../utils/responder';
+} from '../reply/reply';
+import { generateToken } from '../authentication/authenticator';
+import getParams from '../utils/pagination';
+import { ATTRIBUTES, USER_NOT_FOUND } from '../constants/constants';
 
-/**
- * @name login
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const login = (req, res, next) => {
+const Users = db.Users;
+
+// This function handle user authentication
+export const loginUser = (req, res, next) => {
   Users.findOne({
     where: {
       username: req.body.username,
@@ -43,23 +38,26 @@ export const login = (req, res, next) => {
   });
 };
 
-/**
- * @name create
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// sends User's info along with an auth token back to the user
+export const sendDataWithToken = (req, res) => {
+  const token = generateToken({
+    id: req.user.id
+  });
+
+  delete req.user.id;
+  delete req.user.password;
+  if (req.user.updatedAt) delete req.user.updatedAt;
+
+  req.user.token = token;
+  sendSuccess(res, 200, 'user', req.user);
+};
+
+// create user record
 export const create = (req, res, next) => {
   Users.create(req.body)
     .then((user) => {
-      user.reload({
-        attributes: ['id', 'email', 'username', 'fullname'],
-      }).then((createdUser) => {
-        req.user = createdUser.dataValues;
-        next();
-      });
+      req.user = user.dataValues;
+      next();
     }).catch((error) => {
       if (error.name === 'SequelizeUniqueConstraintError') {
         sendFail(res, 400, `Sorry, ${error.errors[0].path} already exists, please enter another`);
@@ -69,33 +67,7 @@ export const create = (req, res, next) => {
     });
 };
 
-/**
- * @name addAccessToken
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const addAccessToken = (req, res) => {
-  const { user } = req;
-  const token = generateToken({
-    id: user.id
-  });
-  if (user.password) delete user.password;
-  delete user.id;
-  user.token = token;
-  sendSuccess(res, 200, 'user', user);
-};
-
-/**
- * @name update
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// update user record
 export const update = (req, res, next) => {
   Users.update(req.body, {
     where: {
@@ -109,14 +81,7 @@ export const update = (req, res, next) => {
     });
 };
 
-/**
- * @name fetchUser
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// get user record
 export const fetchUser = (req, res) => {
   Users.findOne({
     where: {
@@ -124,7 +89,7 @@ export const fetchUser = (req, res) => {
     },
     attributes: ['id', 'email', 'username', 'fullname', 'profilePicture'],
     include: [{
-      model: Recipes,
+      model: db.Recipes,
       as: 'favRecipes',
       attributes: ['id'],
     }]
@@ -137,15 +102,7 @@ export const fetchUser = (req, res) => {
   });
 };
 
-/**
- * @name beforeUpdate
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const beforeUpdate = (req, res, next) => {
+export const fetchForUpdate = (req, res, next) => {
   Users.findOne({
     where: {
       id: req.params.id
@@ -159,14 +116,8 @@ export const beforeUpdate = (req, res, next) => {
   });
 };
 
-/**
- * @name addFavouriteRecipe
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @return {*} void
- */
-export const addFavouriteRecipe = (req, res) => {
+// add recipe as a user's favorite recipe
+export const setFavRecipe = (req, res) => {
   Users.findById(req.requestId)
     .then((user) => {
       const { recipeId } = req.body;
@@ -196,13 +147,8 @@ export const addFavouriteRecipe = (req, res) => {
     });
 };
 
-/**
- * @name addCreatedRecipe
- * @function
- * @param {Object} req - Express request object
- * @return {*} void
- */
-export const addCreatedRecipe = (req) => {
+// add recipe to user list of created recipes
+export const setRecipe = (req) => {
   Users.findById(req.requestId)
     .then((user) => {
       user.addCreatedRecipes(req.currentRecipeId)
@@ -210,15 +156,6 @@ export const addCreatedRecipe = (req) => {
     });
 };
 
-/**
- * @name fetchRecipes
- * @function
- * @param {Object} model
- * @param {String} alias
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @return {*} void
- */
 export const fetchRecipes = (model, alias, req, res) => {
   const { as } = model;
   const attributes = ATTRIBUTES.concat(`${as}Id`);
@@ -251,45 +188,25 @@ export const fetchRecipes = (model, alias, req, res) => {
     });
 };
 
-/**
- * @name fetchFavouriteRecipes
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @return {*} void
- */
+// get a user's favorite recipe from the dbase
 export const fetchFavouriteRecipes = (req, res) => {
   const model = {
-    model: Recipes,
+    model: db.Recipes,
     as: 'favRecipes'
   };
   fetchRecipes(model, 'FavRecipes', req, res);
 };
 
-/**
- * @name fetchCreatedRecipes
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @return {*} void
- */
+// get a user's favorite recipe from the dbase
 export const fetchCreatedRecipes = (req, res) => {
   const model = {
-    model: Recipes,
+    model: db.Recipes,
     as: 'createdRecipes'
   };
   fetchRecipes(model, 'CreatedRecipes', req, res);
 };
 
-/**
- * @name isValidUser
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const isValidUser = (req, res, next) => {
+export const isIdValidUser = (req, res, next) => {
   Users.findById(req.requestId)
     .then((user) => {
       if (user) {
@@ -302,14 +219,6 @@ export const isValidUser = (req, res, next) => {
     });
 };
 
-/**
- * @name compareIds
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
 export const compareIds = (req, res, next) => {
   if (parseInt(req.params.id, 10) === req.requestId) {
     next();

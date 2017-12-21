@@ -1,54 +1,54 @@
 import express from 'express';
+import {
+  create,
+  fetchUser,
+  loginUser,
+  sendDataWithToken,
+  setFavRecipe,
+  fetchForUpdate,
+  update,
+  compareIds,
+  isIdValidUser,
+  fetchFavouriteRecipes,
+  fetchCreatedRecipes,
+} from '../controller/user';
 import { fetchVotes } from '../controller/vote';
-import { verifyToken } from '../authentication/authenticator';
 import {
   recipeIdValidation,
   recipeIdsValidation
 } from '../middleware/validation/recipe';
-import {
-  isRecipe,
-  setFavouriteAssociation
-} from '../controller/recipe';
 import {
   validateSignupData,
   validateLoginData,
   validateUpdate,
   validateUserId,
 } from '../middleware/validation/user';
-import {
-  create,
-  fetchUser,
-  login,
-  addAccessToken,
-  addFavouriteRecipe,
-  beforeUpdate,
-  update,
-  compareIds,
-  isValidUser,
-  fetchFavouriteRecipes,
-  fetchCreatedRecipes,
-} from '../controller/user';
+import { checkRecipe } from '../controller/recipe';
+
+import { verifyToken } from '../authentication/authenticator';
 
 const usersRoute = express.Router();
 
 usersRoute.use((req, res, next) => {
   next();
 });
+
 usersRoute.route('/signup')
   .post(
     validateSignupData,
     create,
-    addAccessToken
+    sendDataWithToken
   );
 
 usersRoute.route('/signin')
   .post(
     validateLoginData,
-    login,
-    addAccessToken
+    loginUser,
+    sendDataWithToken
   );
 
-usersRoute.use(verifyToken, isValidUser);
+usersRoute.use(verifyToken, isIdValidUser);
+
 usersRoute.route('/votes')
   .get(
     recipeIdsValidation,
@@ -63,11 +63,12 @@ usersRoute.route('/:id')
   .put(
     recipeIdValidation,
     compareIds,
-    beforeUpdate,
+    fetchForUpdate,
     validateUpdate,
     update,
     fetchUser
   );
+
 usersRoute.route('/:id/recipes/favourite')
   .get(
     recipeIdValidation,
@@ -84,9 +85,8 @@ usersRoute.route('/:id/recipes/created')
 usersRoute.route('/recipe')
   .post(
     recipeIdValidation,
-    isRecipe,
-    setFavouriteAssociation,
-    addFavouriteRecipe,
+    checkRecipe,
+    setFavRecipe
   );
 
 export default usersRoute;

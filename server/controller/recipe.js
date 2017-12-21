@@ -1,25 +1,17 @@
 import Sequelize from 'sequelize';
 import db from '../models/index';
-import getParams from '../utils/pagination';
-import { ATTRIBUTES, RECIPE_NOT_FOUND } from '../constants/constants';
 import {
   serverError,
   sendSuccess,
   sendFail,
   sendPaginatedData
-} from '../utils/responder';
+} from '../reply/reply';
+import getParams from '../utils/pagination';
+import { ATTRIBUTES, RECIPE_NOT_FOUND } from '../constants/constants';
 
 const Recipes = db.Recipes;
 
-/**
- * @name fetch
- * @function
-* @param {Object} where
- * @param {Object} order
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @return {*} void
- */
+
 const fetch = (where = {}, order = [], req, res) => {
   const { limit, offset } = getParams(req);
   Recipes.findAndCountAll({
@@ -35,15 +27,6 @@ const fetch = (where = {}, order = [], req, res) => {
   });
 };
 
-/**
- * @name create
- * @description create recipe record.
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
 export const create = (req, res, next) => {
   Recipes.create(req.body)
     .then((recipe) => {
@@ -65,13 +48,6 @@ export const create = (req, res, next) => {
     });
 };
 
-/**
- * @name  fetchRecipe
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @return {*} void
- */
 export const fetchRecipe = (req, res) => {
   const id = req.currentRecipeId || req.params.id || req.body.recipeId;
   Recipes.findOne({
@@ -104,13 +80,7 @@ export const fetchRecipe = (req, res) => {
   });
 };
 
-/**
- * @name  fetchVotes
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @return {*} void
- */
+// fetch recipe votes
 export const fetchVotes = (req, res) => {
   Recipes.findOne({
     where: {
@@ -124,26 +94,11 @@ export const fetchVotes = (req, res) => {
   });
 };
 
-/**
- * @name  fetchRecipes
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @return {*} void
- */
-export const fetchRecipes = (req, res) => {
+export const fetchAllRecipe = (req, res) => {
   fetch({}, [], req, res);
 };
 
-/**
- * @name recipesSearch
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const recipesSearch = (req, res, next) => {
+export const fetchAllBySearch = (req, res, next) => {
   if (req.query.search === undefined) return next();
   const { search } = req.query;
   const Op = Sequelize.Op;
@@ -174,29 +129,13 @@ export const recipesSearch = (req, res, next) => {
   fetch(where, [], req, res);
 };
 
-/**
- * @name fetchRecipeByUpVote
- * @description  get records from the recipe table by highest number of upvotes
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
+// fetch recipes by upVotes in desending order
 export const fetchRecipeByUpVote = (req, res, next) => {
   if (req.query.sort === undefined) return next();
   fetch({}, [['upVotes', 'DESC']], req, res);
 };
 
-/**
- * @name beforeUpdate
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const beforeUpdate = (req, res, next) => {
+export const fetchForUpdate = (req, res, next) => {
   Recipes.findOne({
     where: {
       id: req.params.id
@@ -209,23 +148,19 @@ export const beforeUpdate = (req, res, next) => {
       'image'
     ],
   }).then((recipe) => {
-    req.recipe = recipe;
-    next();
+    if (recipe) {
+      req.recipe = recipe;
+      next();
+    } else {
+      sendFail(res, 404, RECIPE_NOT_FOUND);
+    }
   }).catch(() => {
     serverError(res);
   });
 };
 
 // This function delete a recipe from the recipe table
-/**
- * @name remove
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const remove = (req, res) => {
+export const deleteRecipe = (req, res) => {
   Recipes.destroy({
     where: {
       id: req.params.id
@@ -236,15 +171,8 @@ export const remove = (req, res) => {
     });
 };
 
-/**
- * @name isOwner
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const isOwner = (req, res, next) => {
+// checking if a requesting id is the id that created the post
+export const checkOwnship = (req, res, next) => {
   Recipes.findOne({
     where: {
       id: parseInt(req.params.id, 10),
@@ -262,16 +190,8 @@ export const isOwner = (req, res, next) => {
     });
 };
 
-/**
- * @name isRecipe
- * @description checking if recipe record exist in database
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const isRecipe = (req, res, next) => {
+// checking if recipe exist in dbase
+export const checkRecipe = (req, res, next) => {
   Recipes.findById(req.body.recipeId || req.params.id)
     .then((recipe) => {
       if (recipe) {
@@ -285,19 +205,14 @@ export const isRecipe = (req, res, next) => {
     });
 };
 
-/**
- * @name setReviewAssociation
- * @description set association between recipe and review
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const setReviewAssociation = (req, res, next) => {
+// set association between recipe and review
+export const setReview = (req, res, next) => {
   Recipes.findById(req.params.id)
     .then((recipe) => {
-      recipe.addReview(req.createdReview.id)
+      if (!recipe) {
+        return sendFail(res, 404, RECIPE_NOT_FOUND);
+      }
+      recipe.addRecipeReviews(req.reviewId)
         .then(() => {
           next();
         });
@@ -306,45 +221,44 @@ export const setReviewAssociation = (req, res, next) => {
     });
 };
 
-/**
- * @name setFavouriteAssociation
- * @description set association between recipe and review.
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
-export const setFavouriteAssociation = (req, res, next) => {
-  Recipes.findById(req.body.recipeId)
+// get reviews on a recipe
+export const fetchReview = (req, res) => {
+  const { limit, offset } = getParams(req);
+  Recipes.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['id'],
+    include: [{
+      model: db.RecipeReviews,
+      limit,
+      offset,
+      attributes: ['id', 'RecipeId', 'createdAt', 'review'],
+      include: [{
+        model: db.Users,
+        as: 'Reviewer',
+        attributes: ['id', 'username', 'fullname']
+      }],
+      order: [['id', 'DESC']],
+    }],
+  })
     .then((recipe) => {
-      const { requestId } = req;
-      recipe.hasFavoriteUsers(requestId)
-        .then((hasUser) => {
-          if (hasUser) {
-            recipe.removeFavoriteUsers(requestId)
-              .then(() => {
-                next();
-              });
-          } else {
-            recipe.addFavoriteUsers(requestId)
-              .then(() => {
-                next();
-              });
-          }
-        });
+      if (recipe) {
+        recipe.getRecipeReviews()
+          .then((recipeReviews) => {
+            const count = recipeReviews.length;
+            sendPaginatedData('reviews', {
+              count,
+              limit,
+              rows: recipe.RecipeReviews
+            }, res);
+          });
+      } else sendFail(res, 404, RECIPE_NOT_FOUND);
+    }).catch(() => {
+      serverError(res);
     });
 };
 
-/**
- * @name update
- * @description update recipe record.
- * @function
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Object} next - Express next middleware function
- * @return {*} void
- */
 export const update = (req, res, next) => {
   Recipes.update(req.body, {
     where: {
