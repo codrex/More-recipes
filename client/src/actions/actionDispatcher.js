@@ -48,7 +48,7 @@ export default class ActionDispatcher {
         if (typeof errorMsg === 'object') {
           errorMsg = errorMsg[Object.keys(errorMsg)[0]];
         }
-        dispatchOnFail(this.dispatch, errorMsg);
+        dispatchOnFail(this.dispatch, errorMsg, error.response.status);
       }
     } else if (error.request) {
       if (process.env.NODE_ENV !== 'test') {
@@ -59,6 +59,7 @@ export default class ActionDispatcher {
       }
     }
   }
+
   /**
  * @return {undefined}
  * @param {function} action

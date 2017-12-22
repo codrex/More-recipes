@@ -1,9 +1,9 @@
 {
   "globals": {
       "document": true,
-      "foo": true,
       "window": true,
-      "localStorage": true
+      "localStorage": true,
+      "scope": true
   },
   "parser": "babel-eslint",
   "parserOptions": {

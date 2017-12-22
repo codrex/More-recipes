@@ -84,6 +84,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
         "views": 1,
       }
     }
+    statusCode={-1}
     userId={1}
     votes={Array []}
   >
@@ -982,6 +983,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
         "views": 1,
       }
     }
+    statusCode={-1}
     userId={1}
     votes={Array []}
   >
@@ -1880,6 +1882,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
         "views": 1,
       }
     }
+    statusCode={-1}
     userId={1}
     votes={Array []}
   >
@@ -2758,6 +2761,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
         "views": 1,
       }
     }
+    statusCode={-1}
     userId={1}
     votes={Array []}
   >
@@ -3636,6 +3640,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
         "views": 1,
       }
     }
+    statusCode={-1}
     userId={1}
     votes={Array []}
   >
@@ -4534,6 +4539,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
         "views": 1,
       }
     }
+    statusCode={-1}
     userId={1}
     votes={Array []}
   >
@@ -5355,46 +5361,6 @@ exports[`View Recipes Page component  should show a loader when loading is true 
   <Loader
     loading={true}
   />
-  <div
-    className="d-flex justify-content-around lead topbar flex-column icon-bar"
-  >
-    <Icon
-      active=""
-      className=""
-      dataTarget=""
-      dataToggle=""
-      handleClick={[Function]}
-      iconClass="fa fa-thumbs-o-up"
-      id="upvote"
-      onMouseEnter={[Function]}
-      parentClass=""
-      pointer={false}
-    />
-    <Icon
-      active=""
-      className=""
-      dataTarget=""
-      dataToggle=""
-      handleClick={[Function]}
-      iconClass="fa fa-thumbs-o-down"
-      id="downvote"
-      onMouseEnter={[Function]}
-      parentClass=""
-      pointer={false}
-    />
-    <Icon
-      active=""
-      className=""
-      dataTarget=""
-      dataToggle=""
-      handleClick={[Function]}
-      iconClass="fa fa-heart-o fav"
-      id="toggleFav"
-      onMouseEnter={[Function]}
-      parentClass=""
-      pointer={false}
-    />
-  </div>
   <Modal
     center={true}
     closeBtnClicked={[Function]}

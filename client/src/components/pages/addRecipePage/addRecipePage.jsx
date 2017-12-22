@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import toastr from 'toastr';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Loader from '../../common/loader/loader';
@@ -8,7 +9,9 @@ import AddDirections from './addDirections/addDirections';
 import AddIngredients from './addIngredients/addIngredients';
 import RecipeNameAndCategory from './recipeNameAndCategory/recipeNameAndCategory';
 import RecipeImage from './recipeImage/recipeImage';
+import NotFound from '../../common/notFound/notFound';
 import { resetSuccess } from '../../../actions/ajaxActions';
+import toastrConfig from '../../../toastr/config';
 import {
   RECIPE_ADDED,
   RECIPE_MODIFIED,
@@ -36,7 +39,10 @@ class AddRecipes extends React.Component {
   constructor(props) {
     super(props);
     const { match, actions } = props;
-    this.isModifyRecipe = match.path === MODIFY_RECIPE_PATH;
+    this.state = {
+      notFound: false,
+      isModifyRecipe: match.path === MODIFY_RECIPE_PATH,
+    };
     this.recipeId = parseInt(match.params.id, 10);
     this.handleButtonClick = this.handleButtonClick.bind(this);
     actions.aboutToCreateRecipe();
@@ -51,7 +57,10 @@ class AddRecipes extends React.Component {
       if (recipe.recipeId !== this.recipeId) {
         if (!isNaN(this.recipeId)) {
           actions.getRecipe(this.recipeId);
-        } else { console.log('recipe not found'); }
+        } else if (!this.state.notFound) {
+          this.setState({ notFound: true });
+          toastr.error('Sorry, recipe not found', 'Error', toastrConfig);
+        }
       }
     }
   }
@@ -64,17 +73,26 @@ class AddRecipes extends React.Component {
     const {
       message,
       actions,
-      match
+      match,
+      statusCode
     } = nextProps;
+    const { isModifyRecipe } = this.state;
+    const { path } = match;
 
     if (message === RECIPE_ADDED || message === RECIPE_MODIFIED) {
       actions.resetSuccessMessage();
       nextProps.history.push(`/recipe/${nextProps.recipe.id}`);
     }
-    const { path } = match;
-    if (path === CREATE_RECIPE_PATH && this.isModifyRecipe) {
+
+    if (path === CREATE_RECIPE_PATH && isModifyRecipe) {
       actions.aboutToCreateRecipe();
-      this.isModifyRecipe = path === MODIFY_RECIPE_PATH;
+      this.setState({ isModifyRecipe: path === MODIFY_RECIPE_PATH });
+    }
+
+    if (statusCode === 404 && !this.state.notFound && path === MODIFY_RECIPE_PATH) {
+      this.setState({ notFound: true });
+    } else if (this.state.notFound && path === CREATE_RECIPE_PATH) {
+      this.setState({ notFound: false });
     }
   }
 
@@ -83,19 +101,31 @@ class AddRecipes extends React.Component {
    */
   handleButtonClick = () => {
     const { recipe, actions } = this.props;
-
-    if (this.isModifyRecipe) {
+    const { isModifyRecipe } = this.state;
+    if (isModifyRecipe) {
       actions.modifyRecipe(recipe, RECIPE_MODIFIED);
     } else {
       actions.createRecipe(recipe, RECIPE_ADDED);
     }
   }
+
+  renderNotFound = () => {
+    const { notFound } = this.state;
+    if (notFound) {
+      return <NotFound message="Recipe not found" />;
+    }
+    return null;
+  }
+
   renderBody = () => {
     const {
       recipe,
+      loading
     } = this.props;
-    const hasRecipeToModify = this.isModifyRecipe && recipe.id === this.recipeId;
-    const isCreateRecipe = !this.isModifyRecipe;
+    const { notFound, isModifyRecipe } = this.state;
+    if (loading || notFound) return null;
+    const hasRecipeToModify = isModifyRecipe && recipe.id === this.recipeId;
+    const isCreateRecipe = !isModifyRecipe;
     return (
       <div>
         <div
@@ -120,7 +150,7 @@ class AddRecipes extends React.Component {
             <AddDirections />
           </div>
           <Button
-            text={this.isModifyRecipe ? 'modify recipe' : 'post recipe'}
+            text={isModifyRecipe ? 'modify recipe' : 'post recipe'}
             className="btn-secondary btn-lg w-100 text-uppercase add-recipe-btn"
             handleClick={this.handleButtonClick}
           />
@@ -141,6 +171,7 @@ class AddRecipes extends React.Component {
         className="container main"
         style={{ maxWidth: 'unset' }}
       >
+        {this.renderNotFound()}
         {this.renderBody()}
         {loading && <Loader loading={loading} />}
       </div>
@@ -154,11 +185,13 @@ AddRecipes.propTypes = {
   loading: PropTypes.bool.isRequired,
   match: PropTypes.objectOf(PropTypes.shape).isRequired,
   message: PropTypes.string,
-  recipe: PropTypes.PropTypes.objectOf(PropTypes.shape).isRequired,
+  recipe: PropTypes.objectOf(PropTypes.shape).isRequired,
+  statusCode: PropTypes.number
 };
 
 AddRecipes.defaultProps = {
   message: PropTypes.string,
+  statusCode: -1
 };
 
 const mapStateToProps = state => ({
@@ -166,6 +199,7 @@ const mapStateToProps = state => ({
   success: state.networkRequest.success,
   message: state.networkRequest.msg,
   recipe: state.recipe,
+  statusCode: state.currentStatusCode
 });
 
 const mapDispatchToProps = dispatch => ({

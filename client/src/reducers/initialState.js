@@ -1,6 +1,7 @@
 import { getToken, hasToken } from '../utils/auth/auth';
 
 const initailState = {
+  currentStatusCode: 0,
   recipes: [],
   favouriteRecipes: [],
   pageCount: 0,

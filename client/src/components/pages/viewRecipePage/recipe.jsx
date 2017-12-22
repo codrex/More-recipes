@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import toastr from 'toastr';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ajaxRedirect } from '../../../actions/ajaxActions';
@@ -22,7 +23,10 @@ import Directions from './directions/directions';
 import Ingredients from './ingredients/ingredients';
 import Loader from '../../common/loader/loader';
 import Paginator from '../../common/paginator/paginator';
+import NotFound from '../../common/notFound/notFound';
 import HeroArea from '../../common/heroArea/heroArea';
+import toastrConfig from '../../../toastr/config';
+
 import { DEFAULT_RECIPE_PIX_URL } from '../../../constants/constants';
 import imageParser from '../../../utils/imageParser/imageParser';
 
@@ -46,6 +50,7 @@ export class Recipe extends React.Component {
       addToFav: false,
       upVote,
       downVote,
+      notFound: false
     };
   }
 
@@ -55,9 +60,14 @@ export class Recipe extends React.Component {
   componentDidMount() {
     const { actions, recipe } = this.props;
     if (recipe.id === undefined || this.recipeId !== recipe.id) {
-      actions.getRecipe(this.recipeId);
-      actions.getReviews(this.recipeId, 1);
-      actions.getVotes([this.recipeId]);
+      if (!isNaN(this.recipeId)) {
+        actions.getRecipe(this.recipeId);
+        actions.getReviews(this.recipeId, 1);
+        actions.getVotes([this.recipeId]);
+      } else {
+        this.setState({ notFound: true });
+        toastr.error('Sorry, recipe not found', 'Error', toastrConfig);
+      }
     }
   }
 
@@ -75,6 +85,10 @@ export class Recipe extends React.Component {
       upVote,
       downVote
     });
+
+    if (nextProps.statusCode === 404 && !this.state.notFound) {
+      this.setState({ notFound: true });
+    }
   }
 
  /**
@@ -109,6 +123,8 @@ export class Recipe extends React.Component {
    */
   isUserFav = () => this.props.favRecipes.some(recipe => recipe.id === this.recipeId)
   renderSidIcons = () => {
+    if (this.props.loading) return null;
+
     const {
       upVote,
       downVote,
@@ -119,6 +135,7 @@ export class Recipe extends React.Component {
     } = this.props.recipe;
     const { history, userId } = this.props;
     const isOwner = owner && owner.id === userId;
+
     return (
       <div className="d-flex justify-content-around lead topbar flex-column icon-bar">
         <Icon
@@ -146,6 +163,10 @@ export class Recipe extends React.Component {
       </div>
     );
   }
+
+  /**
+   * @return {React} Component
+   */
   renderIngredients = () => {
     const {
       ingredients,
@@ -156,6 +177,10 @@ export class Recipe extends React.Component {
       </div>
     );
   }
+
+  /**
+   * @return {React} Component
+   */
   renderRecipeDetails = () => {
     if (!this.props.loading) {
       return (
@@ -167,6 +192,10 @@ export class Recipe extends React.Component {
       );
     }
   }
+
+  /**
+   * @return {React} Component
+   */
   renderReviews = () => {
     const { reviews } = this.props.recipe;
     const { loading } = this.props;
@@ -194,6 +223,10 @@ export class Recipe extends React.Component {
       </div>
     );
   }
+
+  /**
+   * @return {React} Component
+   */
   renderDirections = () => {
     const { directions } = this.props.recipe;
     return (
@@ -202,6 +235,9 @@ export class Recipe extends React.Component {
       </div>
     );
   }
+  /**
+   * @return {React} Component
+   */
   renderRecipeInfo = () => {
     const {
       views,
@@ -228,6 +264,7 @@ export class Recipe extends React.Component {
       </div>
     );
   }
+
   /**
    * @return {React} Paginator
    */
@@ -248,9 +285,17 @@ export class Recipe extends React.Component {
     } return null;
   }
   /**
-   * @return {React} component
+   * @return {React} Paginator
    */
-  render() {
+  renderPage = () => {
+    const { notFound } = this.state;
+    if (notFound) {
+      return (
+        <div className="container-fluid no-padding main">
+          <NotFound message="recipe not found" />
+        </div>
+      );
+    }
     const { loading, recipe } = this.props;
     const url = imageParser(recipe.image).url || DEFAULT_RECIPE_PIX_URL;
     return (
@@ -268,6 +313,14 @@ export class Recipe extends React.Component {
       </div>
     );
   }
+  /**
+   * @return {React} component
+   */
+  render() {
+    return (
+      this.renderPage()
+    );
+  }
 }
 
 Recipe.propTypes = {
@@ -279,11 +332,13 @@ Recipe.propTypes = {
   recipe: PropTypes.objectOf(PropTypes.shape).isRequired,
   votes: PropTypes.arrayOf(PropTypes.shape).isRequired,
   userId: PropTypes.number,
-  pageCount: PropTypes.number
+  pageCount: PropTypes.number,
+  statusCode: PropTypes.number,
 };
 Recipe.defaultProps = {
   userId: 0,
-  pageCount: 0
+  pageCount: 0,
+  statusCode: -1,
 };
 
 const mapStateToProps = state => ({
@@ -293,7 +348,8 @@ const mapStateToProps = state => ({
   pageCount: state.pageCount,
   favRecipes: state.user.favRecipes,
   userId: state.user.id,
-  votes: state.user.votes
+  votes: state.user.votes,
+  statusCode: state.currentStatusCode
 });
 const mapDispatchToProps = dispatch => ({
   actions: {
