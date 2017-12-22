@@ -15,6 +15,7 @@ import RecipeGrid from './recipesGrid';
 import Paginator from '../../common/paginator/paginator';
 import NotFound from '../../common/notFound/notFound';
 import HeroArea from '../../common/heroArea/heroArea';
+import Loader from '../../common/loader/loader';
 import { DEFAULT_PIX } from '../../../constants/constants';
 
 /**
@@ -183,6 +184,10 @@ export class Recipes extends React.Component {
           {this.renderRecipeGrid()}
           {this.renderPagination()}
           {this.renderNotFound()}
+          {
+            loading &&
+            <Loader loading={loading} />
+          }
         </div>
       </div>
     );

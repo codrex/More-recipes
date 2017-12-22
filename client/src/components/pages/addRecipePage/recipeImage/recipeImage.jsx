@@ -1,13 +1,10 @@
 import React from 'react';
-import dotenv from 'dotenv';
 import { connect } from 'react-redux';
 import { Image } from 'cloudinary-react';
 import PropTypes from 'prop-types';
 import { updateImage } from '../../../../actions/recipeActions';
 import imageParser from '../../../../utils/imageParser/imageParser';
 import { DEFAULT_RECIPE_PIX } from '../../../../constants/constants';
-
-dotenv.config();
 
 /**
  * ReactImage uploader component

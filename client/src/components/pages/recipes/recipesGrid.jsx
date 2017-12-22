@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RecipeCard from './recipeCard';
-import Loader from '../../common/loader/loader';
 import imageParser from '../../../utils/imageParser/imageParser';
 
 const RecipesGrid = (props) => {
@@ -27,15 +26,6 @@ const RecipesGrid = (props) => {
           </li>
         )
         )
-      }
-      {recipes.length < 1 && !loading &&
-        <div className="display-3 text-uppercase msg-display no-margin">
-          <h1>Sorry..<br />No recipe was found.</h1>
-        </div>
-      }
-      {
-        loading &&
-        <Loader loading={loading} />
       }
     </ul>
   );

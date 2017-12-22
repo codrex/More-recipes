@@ -9,5 +9,5 @@ export const ATTRIBUTES = [
   'downVotes',
   'views'
 ];
-export const RECIPE_NOT_FOUND = 'Sorry, recipe was not found';
+export const RECIPE_NOT_FOUND = 'Sorry, recipe not found';
 export const USER_NOT_FOUND = 'Sorry, user not found';

@@ -91,15 +91,16 @@ class AddItems extends React.Component {
   }
 
   /**
-   * @return {undefined}
+   * @return {Array} array of strings
    * @param {string} value
    */
   validateItem = (value) => {
     const { name } = this.props;
-    if (this.state.items.includes(value)) {
+    const lowerCaseValue = value && value.toLowerCase();
+    if (this.state.items.includes(lowerCaseValue)) {
       return [`${name} is already on the list`];
     }
-    return item(value, name);
+    return item(lowerCaseValue, name);
   }
 
   /**
@@ -114,7 +115,7 @@ class AddItems extends React.Component {
       directions,
       clearValidationError
     } = this.props;
-    const Component = ingredients && Input || (directions && Textarea);
+    const Component = (ingredients && Input) || (directions && Textarea);
     if (this.state.showInput) {
       return (
         <Form

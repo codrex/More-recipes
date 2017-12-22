@@ -2,10 +2,12 @@ import merge from 'webpack-merge';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import precss from 'precss';
 import autoprefixer from 'autoprefixer';
+import dotenv from 'dotenv';
 import webpack, { optimize } from 'webpack';
 import common from './webpack.config.common.babel';
 
-const { DedupePlugin, AggressiveMergingPlugin, UglifyJsPlugin } = optimize;
+dotenv.config();
+const { AggressiveMergingPlugin, UglifyJsPlugin } = optimize;
 
 module.exports = merge(common, {
   module: {
@@ -37,10 +39,12 @@ module.exports = merge(common, {
     }),
     new webpack.DefinePlugin({
       'process.env': {
+        CLOUDINARY_NAME: JSON.stringify(process.env.CLOUDINARY_NAME),
+        CLOUDINARY_API_KEY: JSON.stringify(process.env.CLOUDINARY_API_KEY),
+        CLOUDINARY_PRESET: JSON.stringify(process.env.CLOUDINARY_PRESET),
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new DedupePlugin(),
     new AggressiveMergingPlugin()
   ],
 });

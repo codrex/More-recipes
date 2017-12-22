@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import abbr from '../../../../utils/nameAbbr/nameAbbr';
+import NotFound from '../../../common/notFound/notFound';
 
 const Comment = props => (
   <div className="media-object comment">
@@ -48,9 +49,7 @@ const Comments = (props) => {
       />)
       )}
       {comments.length === 0 &&
-        <h1 className="text-uppercase display-4 msg-display no-comment no-margin">
-          Sorry..<br />this recipe have no review.
-        </h1>
+        <NotFound message="no review found" />
       }
     </div>
   );

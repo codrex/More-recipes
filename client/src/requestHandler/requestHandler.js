@@ -22,17 +22,19 @@ export const setToken = (token) => {
   axios.defaults.headers.common.Authorization = token;
 };
 
-export const dispatchOnSuccess = (dispatch, msg = '') => {
+export const dispatchOnSuccess = (dispatch, msg = '', code = 200) => {
   dispatch(endAjaxRequest({
     success: true,
     msg,
+    code
   }));
 };
 
-export const dispatchOnFail = (dispatch, error) => {
+export const dispatchOnFail = (dispatch, error, code = 0) => {
   dispatch(endAjaxRequest({
     success: false,
     msg: error,
+    code
   }));
 };
 

@@ -9,6 +9,6 @@ webpack.connfig.babel.js
 **/Procfile
 **/package-lock.json
 dist
-client/src/**/test/*.js
+//client/src/**/test/*.js
 client/src/components/**/*.test.js
 package-lock.json

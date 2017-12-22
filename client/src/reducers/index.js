@@ -11,6 +11,7 @@ import { ajaxReducer, ajaxRedirectReducer } from './ajaxReducer';
 import authReducer from './authReducer';
 import pageCountReducer from './pageCount';
 import * as initialState from './initialState';
+import statusCodeReducer from './statusCodeReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   recipeValidationError,
   favoriteRecipes: favoriteRecipesReducer,
+  currentStatusCode: statusCodeReducer,
   initialState
 });
 
