@@ -14,9 +14,9 @@ import {
   GET_TOP_RECIPES,
   AFTER_VOTE,
   TOGGLE_FAV,
-  RECIPE_TO_MODIFY,
   DELETE_RECIPE,
-  ABOUT_TO_CREATE_RECIPE,
+  RESET_RECIPE,
+  RESET_RECIPES,
   FIND_RECIPES,
   RECIPE_VALIDATION_ERROR,
   CLEAR_VALIDATION_ERROR,
@@ -25,7 +25,7 @@ import {
   GET_FAVOURITE_RECIPES,
   GET_REVIEWS
 } from './actions';
-import { LIMIT, REVIEW_LIMIT } from '../constants/constants';
+import { LIMIT, REVIEW_LIMIT } from '../constants';
 
 export const newRecipe = payload => ({
   type: NEW_RECIPE, payload
@@ -33,11 +33,11 @@ export const newRecipe = payload => ({
 export const modifiedRecipe = payload => ({
   type: MODIFIED_RECIPE, payload
 });
-export const recipeToModify = recipe => ({
-  type: RECIPE_TO_MODIFY, recipe
+export const resetRecipe = () => ({
+  type: RESET_RECIPE
 });
-export const aboutToCreateRecipe = () => ({
-  type: ABOUT_TO_CREATE_RECIPE
+export const resetRecipes = () => ({
+  type: RESET_RECIPES
 });
 export const gotTopRecipes = payload => ({
   type: GET_TOP_RECIPES, payload
@@ -222,17 +222,18 @@ export const postReview = (id, review, msg) => (dispatch) => {
   );
 };
 
-export const vote = (id, voteType, status) => (dispatch) => {
+export const vote = (id, voteType, status, message) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch, false);
   return dispatcher.requestAndDispatch(
     `/api/v1/recipes/${id}/vote?${voteType}=${status}`,
     null,
     afterVote,
-    'put'
+    'put',
+    message
   );
 };
 
-export const toggleFav = (recipeId, msg = undefined) => (dispatch) => {
+export const toggleFav = (recipeId, message = undefined) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch, false);
   return dispatcher.requestAndDispatch(
     '/api/v1/users/recipe',
@@ -241,7 +242,7 @@ export const toggleFav = (recipeId, msg = undefined) => (dispatch) => {
     },
     afterToggleFav,
     'post',
-    msg
+    message
   );
 };
 

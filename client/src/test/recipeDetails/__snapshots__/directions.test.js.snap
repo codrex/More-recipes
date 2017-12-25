@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Directions display component  expected to match empty snapshot 1`] = `
+<div
+  className="col-12 directions-list-wrapper"
+>
+  <h5
+    className="display-4"
+  >
+    Directions 
+  </h5>
+  <div
+    className="lead list-item d-flex align-items-start flex-column col-12 no-box-shadow accordion"
+  >
+    
+    <div
+      className=" d-flex no-margin w-100"
+      id="accordion0"
+      role="tab"
+    >
+      <h4
+        className="mb-0 flex-auto ellipsis"
+        style={
+          Object {
+            "margin": ".1em",
+          }
+        }
+      >
+        <a
+          aria-controls="Step 0"
+          aria-expanded="false"
+          className="collapsed collapse-trigger lead a"
+          data-toggle="collapse"
+          href="#item0"
+        >
+          Step 1
+        </a>
+      </h4>
+      <a
+        aria-expanded="false"
+        className="collapsed collapse-trigger a btn btn-secondary-outline"
+        data-toggle="collapse"
+        href="#item0"
+        onClick={[Function]}
+        type=""
+      >
+        Show
+      </a>
+    </div>
+    <div
+      className="collapse w-100"
+      data-parent="#Step 0"
+      id="item0"
+      role="tabpanel"
+    >
+      <div
+        className="card-body accordion-text"
+      >
+        <p
+          className="no-margin"
+        >
+          directions 1
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="lead list-item d-flex align-items-start flex-column col-12 no-box-shadow accordion"
+  >
+    
+    <div
+      className=" d-flex no-margin w-100"
+      id="accordion1"
+      role="tab"
+    >
+      <h4
+        className="mb-0 flex-auto ellipsis"
+        style={
+          Object {
+            "margin": ".1em",
+          }
+        }
+      >
+        <a
+          aria-controls="Step 1"
+          aria-expanded="false"
+          className="collapsed collapse-trigger lead a"
+          data-toggle="collapse"
+          href="#item1"
+        >
+          Step 2
+        </a>
+      </h4>
+      <a
+        aria-expanded="false"
+        className="collapsed collapse-trigger a btn btn-secondary-outline"
+        data-toggle="collapse"
+        href="#item1"
+        onClick={[Function]}
+        type=""
+      >
+        Show
+      </a>
+    </div>
+    <div
+      className="collapse w-100"
+      data-parent="#Step 1"
+      id="item1"
+      role="tabpanel"
+    >
+      <div
+        className="card-body accordion-text"
+      >
+        <p
+          className="no-margin"
+        >
+          direction 2
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="lead list-item d-flex align-items-start flex-column col-12 no-box-shadow accordion"
+  >
+    
+    <div
+      className=" d-flex no-margin w-100"
+      id="accordion2"
+      role="tab"
+    >
+      <h4
+        className="mb-0 flex-auto ellipsis"
+        style={
+          Object {
+            "margin": ".1em",
+          }
+        }
+      >
+        <a
+          aria-controls="Step 2"
+          aria-expanded="false"
+          className="collapsed collapse-trigger lead a"
+          data-toggle="collapse"
+          href="#item2"
+        >
+          Step 3
+        </a>
+      </h4>
+      <a
+        aria-expanded="false"
+        className="collapsed collapse-trigger a btn btn-secondary-outline"
+        data-toggle="collapse"
+        href="#item2"
+        onClick={[Function]}
+        type=""
+      >
+        Show
+      </a>
+    </div>
+    <div
+      className="collapse w-100"
+      data-parent="#Step 2"
+      id="item2"
+      role="tabpanel"
+    >
+      <div
+        className="card-body accordion-text"
+      >
+        <p
+          className="no-margin"
+        >
+          direction 3
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

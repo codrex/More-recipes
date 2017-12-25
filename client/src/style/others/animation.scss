@@ -1,0 +1,49 @@
+.dropdown-menu-appear {
+  opacity: 0.1;
+  visibility: hidden;
+}
+
+.dropdown-menu-appear.dropdown-menu-appear-active {
+  opacity: 1;
+  visibility: visible;
+  transition: all .3s ease-in;
+}
+
+.fade-appear {
+  opacity: 0;
+  transform: scale(0.977);
+  visibility: collapse;
+}
+
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: all .6s ease-out;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: scale(0.977);
+  visibility: collapse;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: all .6s ease-out;
+}
+
+.fade-leave {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0;
+  transform: scale(0.977);
+  visibility: collapse;
+  // transition: all .6s ease-out;
+}

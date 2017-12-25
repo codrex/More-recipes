@@ -12,14 +12,17 @@ export const ajaxReducer = (state = initialState.networkRequest, action) => {
     case BEGIN_AJAX_REQUEST:
       return {
         ...state,
-        loading: action.loading
+        ...{
+          requestCount: state.requestCount + 1,
+          loading: action.loading
+        }
       };
     case END_AJAX_REQUEST:
       return {
         ...state,
         ...{
-          loading: false,
-          requestCount: state.requestCount + 1,
+          loading: state.requestCount > 1,
+          requestCount: state.requestCount - 1,
           ...action.response
         }
       };

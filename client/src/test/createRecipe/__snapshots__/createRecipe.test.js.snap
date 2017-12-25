@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Recipe page component  render as expected when page is mounted 1`] = `
+<RecipeEditor
+  handleButtonClick={[Function]}
+  hasNotFound={false}
+  hasRender={true}
+  loading={false}
+  message={[Function]}
+  statusCode={-1}
+  submitButtonText="post recipe"
+/>
+`;
+
+exports[`Create Recipe page component  render as expected when recipe was created 1`] = `
+<RecipeEditor
+  handleButtonClick={[Function]}
+  hasNotFound={false}
+  hasRender={true}
+  loading={false}
+  message={[Function]}
+  statusCode={-1}
+  submitButtonText="post recipe"
+/>
+`;

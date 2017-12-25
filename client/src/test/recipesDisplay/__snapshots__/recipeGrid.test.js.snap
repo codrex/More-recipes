@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipes grid component  render as expected with one recipe 1`] = `
+<ul
+  className="grid"
+>
+  <li
+    className="card-wrapper"
+  >
+    <span>
+      <div
+        className="recipe-card"
+      >
+        <div
+          className="recipe-card-body"
+        >
+          <img
+            className="recipe-card-img"
+            height="250"
+            src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+            width="400"
+          />
+          <div
+            className="recipe-card-underlay"
+          >
+            <p
+              className="lead text-capitalize"
+            >
+              breakfast
+            </p>
+            <button
+              className="btn recipe-card-underlay-btn"
+              data-dismiss="modal"
+              data-target=""
+              data-toggle=""
+              href=""
+              onClick={[Function]}
+              type="button"
+            >
+              view details
+            </button>
+          </div>
+        </div>
+        <div
+          className="recipe-card-footer"
+        >
+          <h4
+            className="ellipsis"
+          >
+            coco rice
+          </h4>
+          <div
+            className="d-flex col-12 no-padding justify-content-between"
+          >
+            <div
+              className="d-flex col-8 no-padding"
+            >
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-thumbs-up recipe-card-icon "
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span>
+                    22
+                  </span>
+                </i>
+              </div>
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-thumbs-down recipe-card-icon "
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span>
+                    0
+                  </span>
+                </i>
+              </div>
+              <div
+                className="icon-wrapper"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-eye recipe-card-icon"
+                  data-target=""
+                  data-toggle=""
+                >
+                  <span>
+                    22
+                  </span>
+                </i>
+              </div>
+            </div>
+            <div
+              className="icon-wrapper pointer"
+              onClick={[Function]}
+              onMouseEnter={[Function]}
+              role="button"
+              tabIndex="0"
+            >
+              <i
+                className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                data-target=""
+                data-toggle=""
+              >
+                <span />
+              </i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+  </li>
+</ul>
+`;
+
+exports[`Recipes grid component  render as expected without any recipe 1`] = `null`;

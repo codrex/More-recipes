@@ -8,9 +8,7 @@ import {
   GET_USER_VOTES
 } from '../actions/actions';
 
-const userReducer = (state = initialState.user, action = {
-
-}) => {
+const userReducer = (state = initialState.user, action = {}) => {
   switch (action.type) {
     case LOGIN:
       return {

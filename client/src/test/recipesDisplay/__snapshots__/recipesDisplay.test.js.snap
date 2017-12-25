@@ -1,0 +1,597 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecipesDisplay page component  render as expected  1`] = `
+<RecipesDisplay
+  getRecipes={[Function]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  pageCount={0}
+  recipes={
+    Array [
+      Object {
+        "category": "drinks",
+        "downVotes": 1,
+        "id": 1,
+        "image": Object {},
+        "name": "capachino",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  resetPageCount={[Function]}
+  store={
+    Object {
+      "store": [Function],
+    }
+  }
+  title=""
+  toggleFav={[Function]}
+  user={
+    Object {
+      "favRecipes": Array [
+        Object {
+          "id": 1,
+        },
+      ],
+      "id": 1,
+    }
+  }
+>
+  <div
+    className="container-fluid no-padding"
+    id="recipes"
+  >
+    <HeroArea
+      image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+      title=""
+    >
+      <div
+        className="hero-half"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
+          />
+        </div>
+      </div>
+    </HeroArea>
+    <div
+      className="row recipes-board d-flex flex-column"
+    >
+      <div
+        className="bold
+                text-dark
+                d-flex
+                justify-content-between"
+        id="display-1"
+      >
+        <span
+          className="lead"
+        >
+          Total Recipes: 1
+        </span>
+      </div>
+      <RecipeGrid
+        history={
+          Object {
+            "push": [Function],
+          }
+        }
+        isUserFav={[Function]}
+        loading={false}
+        recipes={
+          Array [
+            Object {
+              "category": "drinks",
+              "downVotes": 1,
+              "id": 1,
+              "image": Object {},
+              "name": "capachino",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+        toggleFav={[Function]}
+      >
+        <ul
+          className="grid"
+        >
+          <li
+            className="card-wrapper"
+            key="1"
+          >
+            <RecipeCard
+              category="drinks"
+              downVotes={1}
+              image={Object {}}
+              isFav={[Function]}
+              push={[Function]}
+              recipeId={1}
+              recipeName="capachino"
+              toggleFav={[Function]}
+              upVotes={1}
+              views={1}
+            >
+              <Animation
+                appear={true}
+                name="fade"
+                timeOut={600}
+              >
+                <CSSTransitionGroup
+                  transitionAppear={true}
+                  transitionAppearTimeout={600}
+                  transitionEnter={true}
+                  transitionEnterTimeout={600}
+                  transitionLeave={true}
+                  transitionLeaveTimeout={600}
+                  transitionName="fade"
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component="span"
+                    transitionAppear={true}
+                    transitionAppearTimeout={600}
+                    transitionEnter={true}
+                    transitionEnterTimeout={600}
+                    transitionLeave={true}
+                    transitionLeaveTimeout={600}
+                    transitionName="fade"
+                  >
+                    <span>
+                      <CSSTransitionGroupChild
+                        appear={true}
+                        appearTimeout={600}
+                        enter={true}
+                        enterTimeout={600}
+                        key=".0"
+                        leave={true}
+                        leaveTimeout={600}
+                        name="fade"
+                      >
+                        <div
+                          className="recipe-card"
+                          key=".0"
+                        >
+                          <div
+                            className="recipe-card-body"
+                          >
+                            <Image
+                              className="recipe-card-img"
+                              cloudName="resycom"
+                              crop="fill"
+                              height="250"
+                              publicId="recipes/s9ej2m9vcvagobqadebh.jpg"
+                              width="400"
+                            >
+                              <img
+                                className="recipe-card-img"
+                                height="250"
+                                src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+                                width="400"
+                              />
+                            </Image>
+                            <div
+                              className="recipe-card-underlay"
+                            >
+                              <p
+                                className="lead text-capitalize"
+                              >
+                                drinks
+                              </p>
+                              <Button
+                                Tag="button"
+                                className="recipe-card-underlay-btn"
+                                dataTarget=""
+                                dataToggle=""
+                                handleClick={[Function]}
+                                href=""
+                                text="view details"
+                                type="button"
+                              >
+                                <button
+                                  className="btn recipe-card-underlay-btn"
+                                  data-dismiss="modal"
+                                  data-target=""
+                                  data-toggle=""
+                                  href=""
+                                  onClick={[Function]}
+                                  type="button"
+                                >
+                                  view details
+                                </button>
+                              </Button>
+                            </div>
+                          </div>
+                          <div
+                            className="recipe-card-footer"
+                          >
+                            <h4
+                              className="ellipsis"
+                            >
+                              capachino
+                            </h4>
+                            <div
+                              className="d-flex col-12 no-padding justify-content-between"
+                            >
+                              <div
+                                className="d-flex col-8 no-padding"
+                              >
+                                <Icon
+                                  active=""
+                                  className=""
+                                  dataTarget=""
+                                  dataToggle=""
+                                  handleClick={[Function]}
+                                  iconClass="fa fa-thumbs-up recipe-card-icon "
+                                  onMouseEnter={[Function]}
+                                  parentClass=""
+                                  pointer={false}
+                                >
+                                  <div
+                                    className="icon-wrapper"
+                                    onClick={[Function]}
+                                    onMouseEnter={[Function]}
+                                    role="button"
+                                    tabIndex="0"
+                                  >
+                                    <i
+                                      className="icon fa fa-thumbs-up recipe-card-icon "
+                                      data-target=""
+                                      data-toggle=""
+                                    >
+                                      <span>
+                                        1
+                                      </span>
+                                    </i>
+                                  </div>
+                                </Icon>
+                                <Icon
+                                  active=""
+                                  className=""
+                                  dataTarget=""
+                                  dataToggle=""
+                                  handleClick={[Function]}
+                                  iconClass="fa fa-thumbs-down recipe-card-icon "
+                                  onMouseEnter={[Function]}
+                                  parentClass=""
+                                  pointer={false}
+                                >
+                                  <div
+                                    className="icon-wrapper"
+                                    onClick={[Function]}
+                                    onMouseEnter={[Function]}
+                                    role="button"
+                                    tabIndex="0"
+                                  >
+                                    <i
+                                      className="icon fa fa-thumbs-down recipe-card-icon "
+                                      data-target=""
+                                      data-toggle=""
+                                    >
+                                      <span>
+                                        1
+                                      </span>
+                                    </i>
+                                  </div>
+                                </Icon>
+                                <Icon
+                                  active=""
+                                  className=""
+                                  dataTarget=""
+                                  dataToggle=""
+                                  handleClick={[Function]}
+                                  iconClass="fa fa-eye recipe-card-icon"
+                                  onMouseEnter={[Function]}
+                                  parentClass=""
+                                  pointer={false}
+                                >
+                                  <div
+                                    className="icon-wrapper"
+                                    onClick={[Function]}
+                                    onMouseEnter={[Function]}
+                                    role="button"
+                                    tabIndex="0"
+                                  >
+                                    <i
+                                      className="icon fa fa-eye recipe-card-icon"
+                                      data-target=""
+                                      data-toggle=""
+                                    >
+                                      <span>
+                                        1
+                                      </span>
+                                    </i>
+                                  </div>
+                                </Icon>
+                              </div>
+                              <Icon
+                                active=""
+                                className=""
+                                dataTarget=""
+                                dataToggle=""
+                                handleClick={[Function]}
+                                iconClass="fa recipe-card-icon fav-color fav fa-heart"
+                                onMouseEnter={[Function]}
+                                parentClass=""
+                                pointer={true}
+                              >
+                                <div
+                                  className="icon-wrapper pointer"
+                                  onClick={[Function]}
+                                  onMouseEnter={[Function]}
+                                  role="button"
+                                  tabIndex="0"
+                                >
+                                  <i
+                                    className="icon fa recipe-card-icon fav-color fav fa-heart"
+                                    data-target=""
+                                    data-toggle=""
+                                  >
+                                    <span />
+                                  </i>
+                                </div>
+                              </Icon>
+                            </div>
+                          </div>
+                        </div>
+                      </CSSTransitionGroupChild>
+                    </span>
+                  </TransitionGroup>
+                </CSSTransitionGroup>
+              </Animation>
+            </RecipeCard>
+          </li>
+        </ul>
+      </RecipeGrid>
+    </div>
+  </div>
+</RecipesDisplay>
+`;
+
+exports[`RecipesDisplay page component  should match empty snapshot when loading is true 1`] = `
+<RecipesDisplay
+  getRecipes={[Function]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={true}
+  pageCount={0}
+  recipes={
+    Array [
+      Object {
+        "category": "drinks",
+        "downVotes": 1,
+        "id": 1,
+        "image": Object {},
+        "name": "capachino",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  resetPageCount={[Function]}
+  store={
+    Object {
+      "store": [Function],
+    }
+  }
+  title=""
+  toggleFav={[Function]}
+  user={
+    Object {
+      "favRecipes": Array [
+        Object {
+          "id": 1,
+        },
+      ],
+      "id": 1,
+    }
+  }
+>
+  <div
+    className="container-fluid no-padding"
+    id="recipes"
+  >
+    <HeroArea
+      image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+      title=""
+    >
+      <div
+        className="hero-half"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
+          />
+        </div>
+      </div>
+    </HeroArea>
+    <div
+      className="row recipes-board d-flex flex-column"
+    >
+      <RecipeGrid
+        history={
+          Object {
+            "push": [Function],
+          }
+        }
+        isUserFav={[Function]}
+        loading={true}
+        recipes={
+          Array [
+            Object {
+              "category": "drinks",
+              "downVotes": 1,
+              "id": 1,
+              "image": Object {},
+              "name": "capachino",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+        toggleFav={[Function]}
+      >
+        <Loader
+          loading={true}
+        >
+          <div
+            className="loader"
+          >
+            <onlyUpdateForKeys(Loader)
+              color="#7B4E28"
+              loading={true}
+              size={60}
+            >
+              <Loader
+                color="#7B4E28"
+                loading={true}
+                size={60}
+              >
+                <div
+                  className="css-1tc3baf"
+                />
+              </Loader>
+            </onlyUpdateForKeys(Loader)>
+          </div>
+        </Loader>
+      </RecipeGrid>
+    </div>
+  </div>
+</RecipesDisplay>
+`;
+
+exports[`RecipesDisplay page component  should match empty snapshot when recipes has a length of 0 1`] = `
+<RecipesDisplay
+  getRecipes={[Function]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={true}
+  pageCount={0}
+  recipes={Array []}
+  resetPageCount={[Function]}
+  store={
+    Object {
+      "store": [Function],
+    }
+  }
+  title=""
+  toggleFav={[Function]}
+  user={
+    Object {
+      "favRecipes": Array [
+        Object {
+          "id": 1,
+        },
+      ],
+      "id": 1,
+    }
+  }
+>
+  <div
+    className="container-fluid no-padding"
+    id="recipes"
+  >
+    <HeroArea
+      image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+      title=""
+    >
+      <div
+        className="hero-half"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-8
+          bold
+          text-center
+          "
+            id="display-1"
+          />
+        </div>
+      </div>
+    </HeroArea>
+    <div
+      className="row recipes-board d-flex flex-column"
+    >
+      <RecipeGrid
+        history={
+          Object {
+            "push": [Function],
+          }
+        }
+        isUserFav={[Function]}
+        loading={true}
+        recipes={Array []}
+        toggleFav={[Function]}
+      >
+        <Loader
+          loading={true}
+        >
+          <div
+            className="loader"
+          >
+            <onlyUpdateForKeys(Loader)
+              color="#7B4E28"
+              loading={true}
+              size={60}
+            >
+              <Loader
+                color="#7B4E28"
+                loading={true}
+                size={60}
+              >
+                <div
+                  className="css-1tc3baf"
+                />
+              </Loader>
+            </onlyUpdateForKeys(Loader)>
+          </div>
+        </Loader>
+      </RecipeGrid>
+    </div>
+  </div>
+</RecipesDisplay>
+`;

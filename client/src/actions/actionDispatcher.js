@@ -4,9 +4,10 @@ import {
   dispatchOnAuthError,
   setToken,
   request
-} from '../requestHandler/requestHandler';
+} from '../utils/requestHandler';
 import { LOGIN, SIGNUP } from './actions';
 import { storeToken, getId, getToken } from '../utils/auth/auth';
+
 
 /**
  *  A thunk class that is responsible for dispatching actions after an ajax request has returned.

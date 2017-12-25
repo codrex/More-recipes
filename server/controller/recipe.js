@@ -50,7 +50,16 @@ export const create = (req, res, next) => {
       recipe.setOwner(req.requestId).then(() => {
         req.currentRecipeId = recipe.dataValues.id;
         recipe.reload({
-          attributes: ATTRIBUTES
+          attributes: ATTRIBUTES,
+          include: [
+            {
+              model: db.Users,
+              as: 'owner',
+              attributes: {
+                exclude: ['createdAt', 'updatedAt', 'password'],
+              },
+            }
+          ],
         }).then((reloadRecipe) => {
           sendSuccess(res, 200, 'recipe', reloadRecipe);
         });
@@ -216,7 +225,6 @@ export const beforeUpdate = (req, res, next) => {
   });
 };
 
-// This function delete a recipe from the recipe table
 /**
  * @name remove
  * @function

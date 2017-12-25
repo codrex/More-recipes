@@ -37,9 +37,9 @@ const initailState = {
     redirectTo: '/recipes'
   },
   networkRequest: {
-    success: false,
-    msg: ' l',
-    loading: false,
+    success: true,
+    msg: '',
+    loading: true,
     requestCount: 0,
   },
   recipeValidationError: {

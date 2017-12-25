@@ -26,8 +26,8 @@ NavItem.propTypes = {
 };
 
 const Navbar = (props) => {
-  const links = props.authenticated ? ['Recipes', 'Add Recipe'] : ['login', 'create account'];
-  const url = props.authenticated ? ['/recipes', '/create']
+  const links = props.authenticated ? ['Recipes', 'Top Recipes', 'Add Recipe'] : ['login', 'create account'];
+  const url = props.authenticated ? ['/recipes', '/top-recipes', '/create']
     : ['/login', '/create-account'];
   return (
     <nav

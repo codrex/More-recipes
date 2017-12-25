@@ -1,12 +1,16 @@
 import React from 'react';
 import Paginate from 'react-paginate';
 import PropTypes from 'prop-types';
-import Icon from '../icon/icon';
+import classnames from 'classnames';
+import Icon from '../icon';
 
 const Paginator = props => (
   <nav
     aria-label="Page navigation"
-    className="d-flex justify-content-center col-12 "
+    className={classnames(
+      'd-flex justify-content-center col-12 ',
+      props.loading ? 'hide' : ''
+    )}
   >
     <Paginate
       previousLabel={<Icon iconClass="fa fa-angle-double-left" />}
@@ -31,6 +35,11 @@ const Paginator = props => (
 Paginator.propTypes = {
   pageCount: PropTypes.number.isRequired,
   handlePageClick: PropTypes.func.isRequired,
+  loading: PropTypes.bool
+};
+
+Paginator.defaultProps = {
+  loading: false
 };
 export default Paginator;
 
