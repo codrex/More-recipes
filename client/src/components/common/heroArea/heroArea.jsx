@@ -2,22 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const HeroArea = props => (
-  <div className="hero-half backdrop">
-    <img src={props.image} alt="heroimage" />
-    <h1
-      id="display-1"
-      className={
-        `display-4
+  <div className="hero-half">
+    <div className="backdrop" >
+      <img src={props.image} alt="heroimage" />
+      <h1
+        id="display-1"
+        className={
+          `display-4
           text-capitalize
           col-8
           bold
           text-center
           `
-      }
-    >
-      {props.title}
-      {props.children}
-    </h1>
+        }
+      >
+        {props.title}
+        {props.children}
+      </h1>
+    </div>
   </div>
 );
 

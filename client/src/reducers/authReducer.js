@@ -1,7 +1,12 @@
-import { LOGIN, LOGOUT, SIGNUP, AJAX_REQUEST_AUTH_ERROR } from '../actions/actions';
+import {
+  LOGIN,
+  LOGOUT,
+  SIGNUP,
+  AJAX_REQUEST_AUTH_ERROR
+} from '../actions/actions';
 import initialState from './initialState';
 
-const authReducer = (state = initialState.auth, action) => {
+const authReducer = (state = initialState.auth, action = {}) => {
   switch (action.type) {
     case LOGIN:
       return {

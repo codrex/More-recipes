@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cta form component  expect to match snapshot when signin button is clicked 1`] = `
+<CallToAction
+  push={[Function]}
+  signin={[Function]}
+  signup={[Function]}
+>
+  <div
+    className="cta "
+  >
+    <h1
+      className=" text-uppercase display-4 col-xs-11 col-sm-10 col-md-8 col-lg-9"
+    >
+      ​share​ and view ​awesome​ ​and​ ​exciting​ ​​recipes
+    </h1>
+    <div
+      className="cta-btn-wrapper"
+    >
+      <Button
+        Tag="button"
+        className="btn-primary btn-lg login"
+        dataTarget=""
+        dataToggle=""
+        handleClick={[Function]}
+        href=""
+        id="login"
+        text="Login"
+        type="button"
+      >
+        <button
+          className="btn btn-primary btn-lg login"
+          data-dismiss="modal"
+          data-target=""
+          data-toggle=""
+          href=""
+          onClick={[Function]}
+          type="button"
+        >
+          Login
+        </button>
+      </Button>
+      <Button
+        Tag="button"
+        className=" btn-secondary btn-lg reg text-white"
+        dataTarget=""
+        dataToggle=""
+        handleClick={[Function]}
+        href=""
+        id="signup"
+        text="Create an account"
+        type="button"
+      >
+        <button
+          className="btn  btn-secondary btn-lg reg text-white"
+          data-dismiss="modal"
+          data-target=""
+          data-toggle=""
+          href=""
+          onClick={[Function]}
+          type="button"
+        >
+          Create an account
+        </button>
+      </Button>
+    </div>
+  </div>
+</CallToAction>
+`;
+
+exports[`Cta form component  expect to match snapshot when signup button is clicked 1`] = `
+<CallToAction
+  push={[Function]}
+  signin={[Function]}
+  signup={[Function]}
+>
+  <div
+    className="cta "
+  >
+    <h1
+      className=" text-uppercase display-4 col-xs-11 col-sm-10 col-md-8 col-lg-9"
+    >
+      ​share​ and view ​awesome​ ​and​ ​exciting​ ​​recipes
+    </h1>
+    <div
+      className="cta-btn-wrapper"
+    >
+      <Button
+        Tag="button"
+        className="btn-primary btn-lg login"
+        dataTarget=""
+        dataToggle=""
+        handleClick={[Function]}
+        href=""
+        id="login"
+        text="Login"
+        type="button"
+      >
+        <button
+          className="btn btn-primary btn-lg login"
+          data-dismiss="modal"
+          data-target=""
+          data-toggle=""
+          href=""
+          onClick={[Function]}
+          type="button"
+        >
+          Login
+        </button>
+      </Button>
+      <Button
+        Tag="button"
+        className=" btn-secondary btn-lg reg text-white"
+        dataTarget=""
+        dataToggle=""
+        handleClick={[Function]}
+        href=""
+        id="signup"
+        text="Create an account"
+        type="button"
+      >
+        <button
+          className="btn  btn-secondary btn-lg reg text-white"
+          data-dismiss="modal"
+          data-target=""
+          data-toggle=""
+          href=""
+          onClick={[Function]}
+          type="button"
+        >
+          Create an account
+        </button>
+      </Button>
+    </div>
+  </div>
+</CallToAction>
+`;

@@ -9,7 +9,7 @@ import {
 } from './recipeReducers';
 import { ajaxReducer, ajaxRedirectReducer } from './ajaxReducer';
 import authReducer from './authReducer';
-import pageCountReducer from './pageCount';
+import pageCountReducer from './pageCountReducers';
 import * as initialState from './initialState';
 import statusCodeReducer from './statusCodeReducer';
 

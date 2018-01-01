@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Items list component  render as expected 1`] = `
+<List
+  deleteItem={[Function]}
+  directions={true}
+  editItem={[Function]}
+  ingredients={false}
+  items={
+    Array [
+      Object {},
+    ]
+  }
+  name="directions"
+  uniquenessChecker={[Function]}
+/>
+`;

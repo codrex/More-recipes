@@ -1,4 +1,7 @@
-
+/**
+ * @return {object} image
+ * @param {string} image
+ */
 const imageParser = (image) => {
   try {
     const parsedImage = JSON.parse(image);

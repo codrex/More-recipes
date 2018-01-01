@@ -3,20 +3,24 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import toastr from 'toastr';
-import LandingPage from './pages/landingPage/landingPage';
-import AddRecipePage from './pages/addRecipePage/addRecipePage';
-import Navbar from '../components/common/navbar/navbar';
-import TopBar from '../components/common/topbar/topbar';
-import toastrConfig from '../toastr/config';
-import { resetReqCount } from '../actions/ajaxActions';
-import Recipes from '../components/pages/recipes/recipes';
-import Recipe from '../components/pages/viewRecipePage/recipe';
-import ProfilePage from '../components/pages/ProfilePage/index';
-import Footer from '../components/common/footer/footer';
-import NotFound from '../components/common/notFound/notFound';
+import Navbar from '../components/common/navbar';
+import SecondaryNavBar from '../components/common/secondaryNavBar';
+import Footer from '../components/common/footer';
+import NotFound from '../components/common/notFound';
+import FavouriteRecipes from '../components/pages/favouriteRecipes';
+import CreatedRecipes from '../components/pages/createdRecipes';
+import TopRecipes from '../components/pages/topRecipes';
+import Recipes from '../components/pages/recipes';
+import RecipeDetails from '../components/pages/recipeDetails';
+import Profile from '../components/pages/profile';
+import Landing from './pages/landing';
+import ModifyRecipe from './pages/modifyRecipe';
+import CreateRecipe from './pages/createRecipe';
 import { getUserProfile } from '../actions/userActions';
+import toastrConfig from '../toastr/config';
+import { resetReqCount, resetSuccess } from '../actions/ajaxActions';
 import { findRecipes } from '../actions/recipeActions';
-
+import Dropdown from '../components/common/dropdown';
 /**
  * App component
  */
@@ -44,15 +48,16 @@ class App extends React.Component {
    */
   shouldComponentUpdate(nextProps) {
     const { request } = nextProps;
-    if (request.requestCount > 0) {
+    if (request.msg) {
       toastr.clear();
-      if (!request.success) {
+      if (!request.success && request.msg) {
         toastr.error(request.msg, 'Error', toastrConfig);
+        this.props.resetMessage();
       } else if (request.success && request.msg) {
         toastr.success(request.msg, 'Success', toastrConfig);
       }
-      this.props.resetReqCount();
     }
+
     return true;
   }
   /**
@@ -68,7 +73,7 @@ class App extends React.Component {
     return authenticated ? (
       <div>
         <Navbar {...match} />
-        <TopBar
+        <SecondaryNavBar
           {...match}
           handleChange={value => this.handleRecipeSearch(match.history.push, value)}
         />
@@ -78,7 +83,7 @@ class App extends React.Component {
   }
 
   /**
-   * @param{object} push
+   * @param {object} push
    * @param {string} value
    * @return {undefined}
    */
@@ -110,7 +115,7 @@ class App extends React.Component {
   renderNotFound = match => (
     <div>
       <Navbar {...match} />
-      <TopBar
+      <SecondaryNavBar
         {...match}
         handleChange={value => this.handleRecipeSearch(match.history.push, value)}
       />
@@ -130,21 +135,45 @@ class App extends React.Component {
           <Switch>
             <Route
               static
+              path="/drop"
+              extact
+              component={Dropdown}
+            />
+            <Route
+              static
               path="/create"
               extact
-              render={match => this.onAuthenticated(AddRecipePage, match)}
+              render={match => this.onAuthenticated(CreateRecipe, match)}
             />
             <Route
               static
               path="/modify/:id"
               extact
-              render={match => this.onAuthenticated(AddRecipePage, match)}
+              render={match => this.onAuthenticated(ModifyRecipe, match)}
             />
             <Route
               static
               path="/recipe/:id"
               extact
-              render={match => this.onAuthenticated(Recipe, match)}
+              render={match => this.onAuthenticated(RecipeDetails, match)}
+            />
+            <Route
+              static
+              extact
+              path="/created-recipes"
+              render={match => this.onAuthenticated(CreatedRecipes, match)}
+            />
+            <Route
+              static
+              extact
+              path="/favourite-recipes"
+              render={match => this.onAuthenticated(FavouriteRecipes, match)}
+            />
+            <Route
+              static
+              extact
+              path="/top-recipes"
+              render={match => this.onAuthenticated(TopRecipes, match)}
             />
             <Route
               static
@@ -153,24 +182,20 @@ class App extends React.Component {
               render={match => this.onAuthenticated(Recipes, match)}
             />
             <Route
-              path="/user/edit"
-              render={match => this.onAuthenticated(ProfilePage, match)}
-            />
-            <Route
               path="/user"
-              render={match => this.onAuthenticated(ProfilePage, match)}
+              render={match => this.onAuthenticated(Profile, match)}
             />
             <Route
               static
               extact
               path="/login"
-              render={match => this.isLoggedIn(LandingPage, match)}
+              render={match => this.isLoggedIn(Landing, match)}
             />
             <Route
               static
               extact
               path="/create-account"
-              render={match => this.isLoggedIn(LandingPage, match)}
+              render={match => this.isLoggedIn(Landing, match)}
             />
             <Route
               static
@@ -181,7 +206,7 @@ class App extends React.Component {
             <Route
               extact
               path="/"
-              render={match => this.isLoggedIn(LandingPage, match)}
+              render={match => this.isLoggedIn(Landing, match)}
             />
           </Switch>
           <Footer />
@@ -194,6 +219,7 @@ class App extends React.Component {
 App.propTypes = {
   auth: PropTypes.objectOf(PropTypes.shape).isRequired,
   getProfile: PropTypes.func.isRequired,
+  resetMessage: PropTypes.func.isRequired,
   user: PropTypes.objectOf(PropTypes.shape).isRequired,
   resetReqCount: PropTypes.func.isRequired,
   searchRecipes: PropTypes.func.isRequired,
@@ -208,5 +234,6 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   resetReqCount,
   getProfile: getUserProfile,
-  searchRecipes: findRecipes
+  searchRecipes: findRecipes,
+  resetMessage: resetSuccess
 })(App);

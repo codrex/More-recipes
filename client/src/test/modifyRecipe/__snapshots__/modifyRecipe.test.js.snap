@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modify recipe page component  render as expected  1`] = `
+<RecipeEditor
+  handleButtonClick={[Function]}
+  hasNotFound={false}
+  hasRender={true}
+  loading={false}
+  message={[Function]}
+  statusCode={-1}
+  submitButtonText="modify recipe"
+/>
+`;
+
+exports[`Modify recipe page component  render as expected when recipe id is not a number 1`] = `
+<RecipeEditor
+  handleButtonClick={[Function]}
+  hasNotFound={true}
+  hasRender={false}
+  loading={false}
+  message={[Function]}
+  statusCode={-1}
+  submitButtonText="modify recipe"
+/>
+`;
+
+exports[`Modify recipe page component  render as expected when recipe was not found  1`] = `
+<RecipeEditor
+  handleButtonClick={[Function]}
+  hasNotFound={true}
+  hasRender={true}
+  loading={false}
+  message={[Function]}
+  statusCode={-1}
+  submitButtonText="modify recipe"
+/>
+`;

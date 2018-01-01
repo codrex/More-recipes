@@ -1,6 +1,6 @@
 import initialState from '../reducers/initialState';
 import {
-  RECIPE,
+  RESET_RECIPES,
   UPDATE_DIRECTIONS,
   UPDATE_INGREDIENTS,
   UPDATE_CATEGORY,
@@ -17,7 +17,7 @@ import {
   FIND_RECIPES,
   RECIPE_VALIDATION_ERROR,
   CLEAR_VALIDATION_ERROR,
-  ABOUT_TO_CREATE_RECIPE,
+  RESET_RECIPE,
   GET_CREATED_RECIPES,
   GET_FAVOURITE_RECIPES,
   GET_REVIEWS,
@@ -54,6 +54,9 @@ export const recipesReducer = (state = initialState.recipes, action) => {
       recipes.splice(action.recipeIndex, 1);
       return recipes;
     }
+    case RESET_RECIPES: {
+      return [];
+    }
     default:
       return state;
   }
@@ -85,9 +88,6 @@ export const recipeReducer = (state = initialState.recipe, action) => {
       upVotes,
       downVotes
     };
-  }
-  if (action.type === RECIPE) {
-    return { ...state, ...action.recipe.recipe };
   }
   if (action.type === RECIPE_TO_MODIFY) {
     return { ...state, ...action.recipe };
@@ -132,7 +132,7 @@ export const recipeReducer = (state = initialState.recipe, action) => {
       ...action.payload.recipe
     };
   }
-  if (action.type === ABOUT_TO_CREATE_RECIPE) {
+  if (action.type === RESET_RECIPE) {
     return {
       ...initialState.recipe
     };

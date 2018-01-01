@@ -1,0 +1,412 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recipe name and category component render as expected when component is mounted 1`] = `
+<div>
+  <h4
+    className="items-header-text"
+  >
+    Recipe name and category
+  </h4>
+  <Form
+    action=""
+    className=""
+    disabled={false}
+    lg={true}
+    method=""
+    onSubmit={[Function]}
+    primary={false}
+    primaryInverse={false}
+    secondary={false}
+    secondaryInverse={false}
+    style={
+      Object {
+        "zIndex": 4,
+      }
+    }
+    submitBtnText=""
+  >
+    <Field
+      className="add-recipe-input"
+      component={[Function]}
+      externalError={
+        Object {
+          "error": undefined,
+          "touched": true,
+        }
+      }
+      id="recipeName"
+      name="name"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter recipe name"
+      type="text"
+      validate={[Function]}
+    />
+    <Select
+      className="add-recipe-input"
+      externalError={
+        Object {
+          "error": undefined,
+          "touched": true,
+        }
+      }
+      fgClassName=""
+      handleChange={[Function]}
+      helpTextClassName=""
+      id="category"
+      input={Object {}}
+      meta={Object {}}
+      name="category"
+      options={
+        Array [
+          Object {
+            "label": "Breakfast",
+            "value": "breakfast",
+          },
+          Object {
+            "label": "Brunch",
+            "value": "brunch",
+          },
+          Object {
+            "label": "Lunch",
+            "value": "lunch",
+          },
+          Object {
+            "label": "Snacks",
+            "value": "snacks",
+          },
+          Object {
+            "label": "Appertisers",
+            "value": "appertisers",
+          },
+          Object {
+            "label": "Dinner",
+            "value": "dinner",
+          },
+          Object {
+            "label": "Soup",
+            "value": "soup",
+          },
+          Object {
+            "label": "Noodles",
+            "value": "noodles",
+          },
+          Object {
+            "label": "Vegeterian",
+            "value": "vegeterian",
+          },
+          Object {
+            "label": "Salads",
+            "value": "salads",
+          },
+          Object {
+            "label": "Sides",
+            "value": "sides",
+          },
+          Object {
+            "label": "Sauces",
+            "value": "sauces",
+          },
+          Object {
+            "label": "Baking",
+            "value": "baking",
+          },
+          Object {
+            "label": "Desserts",
+            "value": "desserts",
+          },
+          Object {
+            "label": "Drinks",
+            "value": "drinks",
+          },
+          Object {
+            "label": "Cookies and Candy",
+            "value": "cookies and candy",
+          },
+          Object {
+            "label": "Miscellaneous",
+            "value": "miscellaneous",
+          },
+        ]
+      }
+      placeholder="Select recipe category"
+      type="text"
+      value=""
+    />
+  </Form>
+</div>
+`;
+
+exports[`Recipe name and category component render as expected when name field has blur 1`] = `
+<div>
+  <h4
+    className="items-header-text"
+  >
+    Recipe name and category
+  </h4>
+  <Form
+    action=""
+    className=""
+    disabled={false}
+    lg={true}
+    method=""
+    onSubmit={[Function]}
+    primary={false}
+    primaryInverse={false}
+    secondary={false}
+    secondaryInverse={false}
+    style={
+      Object {
+        "zIndex": 4,
+      }
+    }
+    submitBtnText=""
+  >
+    <Field
+      className="add-recipe-input"
+      component={[Function]}
+      externalError={
+        Object {
+          "error": undefined,
+          "touched": true,
+        }
+      }
+      id="recipeName"
+      name="name"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter recipe name"
+      type="text"
+      validate={[Function]}
+    />
+    <Select
+      className="add-recipe-input"
+      externalError={
+        Object {
+          "error": undefined,
+          "touched": true,
+        }
+      }
+      fgClassName=""
+      handleChange={[Function]}
+      helpTextClassName=""
+      id="category"
+      input={Object {}}
+      meta={Object {}}
+      name="category"
+      options={
+        Array [
+          Object {
+            "label": "Breakfast",
+            "value": "breakfast",
+          },
+          Object {
+            "label": "Brunch",
+            "value": "brunch",
+          },
+          Object {
+            "label": "Lunch",
+            "value": "lunch",
+          },
+          Object {
+            "label": "Snacks",
+            "value": "snacks",
+          },
+          Object {
+            "label": "Appertisers",
+            "value": "appertisers",
+          },
+          Object {
+            "label": "Dinner",
+            "value": "dinner",
+          },
+          Object {
+            "label": "Soup",
+            "value": "soup",
+          },
+          Object {
+            "label": "Noodles",
+            "value": "noodles",
+          },
+          Object {
+            "label": "Vegeterian",
+            "value": "vegeterian",
+          },
+          Object {
+            "label": "Salads",
+            "value": "salads",
+          },
+          Object {
+            "label": "Sides",
+            "value": "sides",
+          },
+          Object {
+            "label": "Sauces",
+            "value": "sauces",
+          },
+          Object {
+            "label": "Baking",
+            "value": "baking",
+          },
+          Object {
+            "label": "Desserts",
+            "value": "desserts",
+          },
+          Object {
+            "label": "Drinks",
+            "value": "drinks",
+          },
+          Object {
+            "label": "Cookies and Candy",
+            "value": "cookies and candy",
+          },
+          Object {
+            "label": "Miscellaneous",
+            "value": "miscellaneous",
+          },
+        ]
+      }
+      placeholder="Select recipe category"
+      type="text"
+      value=""
+    />
+  </Form>
+</div>
+`;
+
+exports[`Recipe name and category component render as expected when name field has focus 1`] = `
+<div>
+  <h4
+    className="items-header-text"
+  >
+    Recipe name and category
+  </h4>
+  <Form
+    action=""
+    className=""
+    disabled={false}
+    lg={true}
+    method=""
+    onSubmit={[Function]}
+    primary={false}
+    primaryInverse={false}
+    secondary={false}
+    secondaryInverse={false}
+    style={
+      Object {
+        "zIndex": 4,
+      }
+    }
+    submitBtnText=""
+  >
+    <Field
+      className="add-recipe-input"
+      component={[Function]}
+      externalError={
+        Object {
+          "error": undefined,
+          "touched": true,
+        }
+      }
+      id="recipeName"
+      name="name"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Enter recipe name"
+      type="text"
+      validate={[Function]}
+    />
+    <Select
+      className="add-recipe-input"
+      externalError={
+        Object {
+          "error": undefined,
+          "touched": true,
+        }
+      }
+      fgClassName=""
+      handleChange={[Function]}
+      helpTextClassName=""
+      id="category"
+      input={Object {}}
+      meta={Object {}}
+      name="category"
+      options={
+        Array [
+          Object {
+            "label": "Breakfast",
+            "value": "breakfast",
+          },
+          Object {
+            "label": "Brunch",
+            "value": "brunch",
+          },
+          Object {
+            "label": "Lunch",
+            "value": "lunch",
+          },
+          Object {
+            "label": "Snacks",
+            "value": "snacks",
+          },
+          Object {
+            "label": "Appertisers",
+            "value": "appertisers",
+          },
+          Object {
+            "label": "Dinner",
+            "value": "dinner",
+          },
+          Object {
+            "label": "Soup",
+            "value": "soup",
+          },
+          Object {
+            "label": "Noodles",
+            "value": "noodles",
+          },
+          Object {
+            "label": "Vegeterian",
+            "value": "vegeterian",
+          },
+          Object {
+            "label": "Salads",
+            "value": "salads",
+          },
+          Object {
+            "label": "Sides",
+            "value": "sides",
+          },
+          Object {
+            "label": "Sauces",
+            "value": "sauces",
+          },
+          Object {
+            "label": "Baking",
+            "value": "baking",
+          },
+          Object {
+            "label": "Desserts",
+            "value": "desserts",
+          },
+          Object {
+            "label": "Drinks",
+            "value": "drinks",
+          },
+          Object {
+            "label": "Cookies and Candy",
+            "value": "cookies and candy",
+          },
+          Object {
+            "label": "Miscellaneous",
+            "value": "miscellaneous",
+          },
+        ]
+      }
+      placeholder="Select recipe category"
+      type="text"
+      value=""
+    />
+  </Form>
+</div>
+`;

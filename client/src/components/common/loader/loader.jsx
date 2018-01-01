@@ -10,7 +10,6 @@ const Loader = props => (
       loading={props.loading}
       size={60}
     />
-    <h1 className="display-4">Loading...</h1>
   </div>
 );
 

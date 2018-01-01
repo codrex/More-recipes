@@ -18,6 +18,8 @@ engines:
       config_file: .eslintrc.json
   fixme:
     enabled: true
+  file-lines:
+   enabled: false
 ratings:
   paths:
   - "server/**/*.js"

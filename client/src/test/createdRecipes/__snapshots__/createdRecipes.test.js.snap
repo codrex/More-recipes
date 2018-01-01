@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopRecipes page component  render as expected  1`] = `
+<Connect(RecipesDisplay)
+  createdRecipes={
+    Array [
+      Object {
+        "category": "drinks",
+        "downVotes": 1,
+        "id": 1,
+        "image": Object {},
+        "name": "capachino",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  getCreatedRecipes={[Function]}
+  getRecipes={[Function]}
+  recipes={
+    Array [
+      Object {
+        "category": "drinks",
+        "downVotes": 1,
+        "id": 1,
+        "image": Object {},
+        "name": "capachino",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  title="Created recipes"
+  user={
+    Object {
+      "favRecipes": Array [
+        Object {
+          "id": 1,
+        },
+      ],
+      "id": 1,
+    }
+  }
+/>
+`;

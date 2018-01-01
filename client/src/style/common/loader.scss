@@ -1,0 +1,17 @@
+
+.loader{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5em 0;
+  border-radius: 4px;
+  z-index: 9999999;
+  margin-top: 50px;
+  pointer-events: fill;
+  &>h1{
+    color: $text-color;
+    font-weight: bold;
+    margin-top:20px;
+  }
+}
