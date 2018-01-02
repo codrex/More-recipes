@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from '../icon/icon';
 
 /**
- * SearchBox component
+ * @name SearchBox
  */
 class SearchBox extends React.Component {
   /**
