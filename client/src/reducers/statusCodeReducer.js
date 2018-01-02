@@ -4,6 +4,11 @@ import {
 } from '../actions/actions';
 import initialState from '../reducers/initialState';
 
+/**
+ * @return {object} newState
+ * @param {object} state
+ * @param {object} action
+ */
 const statusCodeReducer = (state = initialState.currentStatusCode, action = {}) => {
   switch (action.type) {
     case BEGIN_AJAX_REQUEST:

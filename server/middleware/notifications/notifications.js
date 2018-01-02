@@ -2,11 +2,12 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 import isOnline from 'is-online';
 import db from '../../models/index';
-import emailTemplate from './template';
+import emailTemplate from './emailTemplate';
+import { PRODUCTION_URL } from '../../constants';
 
 dotenv.load();
 
-const url = 'https://more-recipesrex.herokuapp.com';
+const url = PRODUCTION_URL;
 const { Recipes, Users } = db;
 
 const transporter = nodemailer.createTransport({
@@ -51,7 +52,7 @@ export const notifyOwner = (req) => {
             from: `"MoreRecipes Admin" <${process.env.APP_EMAIL}>`,
             to: owner.email,
             subject: 'You have a new notification',
-            html: emailTemplate('Notification', 'see recipe', message, `${url}/recipe/${id}`),
+            html: emailTemplate('see recipe', message, `${url}/recipe/${id}`),
           };
           transporter.sendMail(mailOptions);
         });
@@ -72,7 +73,7 @@ export const notifyFavouriteUsers = (req) => {
     if (online) {
       Recipes.findOne({
         where: { id: req.params.id },
-        attributes: [name],
+        attributes: ['id', 'name'],
         include: {
           model: Users,
           as: 'favoriteUsers',
@@ -80,15 +81,17 @@ export const notifyFavouriteUsers = (req) => {
           attributes: ['email']
         }
       })
-        .then(({ favoriteUsers }) => {
-          const emails = favoriteUsers.map((user => user.email));
-          const { name, id } = recipe;
-          const message = `Modification have been made to one of your favourite recipes (${name})`;
+        .then((recipe) => {
+          const { name, id, favoriteUsers } = recipe;
+          const emails = favoriteUsers.map((user => user.email)) || [];
+          if (emails.length < 1) return;
+          const message = `Modification have been made to one of your favourite recipes.<br/>
+          <p>Recipe name: ${name}</p>`;
           const mailOptions = {
             from: `"MoreRecipes Admin" <${process.env.APP_EMAIL}>`,
             to: emails,
             subject: 'You have a new notification',
-            html: emailTemplate('Notification', 'see recipe', message, `${url}/recipe/${id}`),
+            html: emailTemplate('see recipe', message, `${url}/recipe/${id}`),
           };
           transporter.sendMail(mailOptions);
         });

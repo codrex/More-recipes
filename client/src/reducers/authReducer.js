@@ -6,6 +6,11 @@ import {
 } from '../actions/actions';
 import initialState from './initialState';
 
+/**
+ * @return {object} newState
+ * @param {object} state
+ * @param {object} action
+ */
 const authReducer = (state = initialState.auth, action = {}) => {
   switch (action.type) {
     case LOGIN:

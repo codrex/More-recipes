@@ -25,6 +25,11 @@ import {
   TOGGLE_FAV
 } from '../actions/actions';
 
+/**
+ * @return {object} newState
+ * @param {object} state
+ * @param {object} action
+ */
 export const recipeValidationError = (state = initialState.recipeValidationError, action) => {
   switch (action.type) {
     case RECIPE_VALIDATION_ERROR:
@@ -39,6 +44,11 @@ export const recipeValidationError = (state = initialState.recipeValidationError
   }
 };
 
+/**
+ * @return {object} newState
+ * @param {object} state
+ * @param {object} action
+ */
 export const recipesReducer = (state = initialState.recipes, action) => {
   switch (action.type) {
     case GET_ALL_RECIPES:
@@ -62,6 +72,11 @@ export const recipesReducer = (state = initialState.recipes, action) => {
   }
 };
 
+/**
+ * @return {object} newState
+ * @param {object} state
+ * @param {object} action
+ */
 export const recipeReducer = (state = initialState.recipe, action) => {
   if (action.type === GOT_RECIPE) {
     return { ...state, ...action.payload.recipe };
@@ -140,6 +155,11 @@ export const recipeReducer = (state = initialState.recipe, action) => {
   return state;
 };
 
+/**
+ * @return {object} newState
+ * @param {object} state
+ * @param {object} action
+ */
 export const favoriteRecipesReducer = (state = initialState.favouriteRecipes, action) => {
   switch (action.type) {
     case TOGGLE_FAV: {

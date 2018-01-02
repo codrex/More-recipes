@@ -7,6 +7,11 @@ import {
 } from '../actions/actions';
 import initialState from '../reducers/initialState';
 
+/**
+ * @return {object} newState
+ * @param {object} state
+ * @param {object} action
+ */
 export const ajaxReducer = (state = initialState.networkRequest, action) => {
   switch (action.type) {
     case BEGIN_AJAX_REQUEST:
@@ -46,6 +51,11 @@ export const ajaxReducer = (state = initialState.networkRequest, action) => {
   }
 };
 
+/**
+ * @return {object} newState
+ * @param {object} state
+ * @param {object} action
+ */
 export const ajaxRedirectReducer = (state = '', action) => {
   switch (action.type) {
     case REDIRECT:

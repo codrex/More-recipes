@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import db from '../models/index';
 import getParams from '../utils/pagination';
-import { ATTRIBUTES, RECIPE_NOT_FOUND } from '../constants/constants';
+import { ATTRIBUTES, RECIPE_NOT_FOUND } from '../constants';
 import {
   serverError,
   sendSuccess,
@@ -79,9 +79,10 @@ export const create = (req, res, next) => {
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
+ * @param {Object} next - Express next middleware function
  * @return {*} void
  */
-export const fetchRecipe = (req, res) => {
+export const fetchRecipe = (req, res, next) => {
   const id = req.currentRecipeId || req.params.id || req.body.recipeId;
   Recipes.findOne({
     where: {
@@ -105,6 +106,7 @@ export const fetchRecipe = (req, res) => {
           by: 1
         });
       }
+      if (req.recipeUpdated) next();
     } else {
       sendFail(res, 404, RECIPE_NOT_FOUND);
     }
@@ -360,6 +362,7 @@ export const update = (req, res, next) => {
     }
   })
     .then(() => {
+      req.recipeUpdated = true;
       next();
     }).catch(() => {
       serverError(res);
