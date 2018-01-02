@@ -1,3 +1,7 @@
+/**
+ * @return {string} result
+ * @param {string} value
+ */
 const getInitials = (value) => {
   if (typeof value === 'string') {
     if (value.split(' ').length > 1) {

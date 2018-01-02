@@ -11,6 +11,11 @@ import {
 } from '../actions/actions';
 
 
+/**
+ * @return {object} newState
+ * @param {object} state
+ * @param {object} action
+ */
 const pageCountReducer = (state = initialState.pageCount, action = {}) => {
   switch (action.type) {
     case GET_TOP_RECIPES:

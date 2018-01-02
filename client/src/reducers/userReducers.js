@@ -8,6 +8,11 @@ import {
   GET_USER_VOTES
 } from '../actions/actions';
 
+/**
+ * @return {object} newState
+ * @param {object} state
+ * @param {object} action
+ */
 const userReducer = (state = initialState.user, action = {}) => {
   switch (action.type) {
     case LOGIN:

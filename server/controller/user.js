@@ -2,7 +2,7 @@ import { Users, Recipes } from '../models/index';
 import comparePassword from '../utils/comparePassword';
 import { generateToken } from '../authentication/authenticator';
 import getParams from '../utils/pagination';
-import { ATTRIBUTES, USER_NOT_FOUND } from '../constants/constants';
+import { ATTRIBUTES, USER_NOT_FOUND } from '../constants';
 import {
   serverError,
   sendSuccess,
@@ -83,7 +83,6 @@ export const addAccessToken = (req, res) => {
     id: user.id
   });
   if (user.password) delete user.password;
-  delete user.id;
   user.token = token;
   sendSuccess(res, 200, 'user', user);
 };
