@@ -1,4 +1,5 @@
 /**
+ * get initials
  * @return {string} result
  * @param {string} value
  */

@@ -7,6 +7,7 @@ import {
 import initialState from './initialState';
 
 /**
+ * auth reducer
  * @return {object} newState
  * @param {object} state
  * @param {object} action

@@ -11,6 +11,11 @@ import {
   clearValidationError as clearError
 } from '../../../actions/recipeActions';
 
+/**
+ * RecipeNameAndCategory component
+ * @param {object} props
+ * @return {React} react element
+ */
 let RecipeNameAndCategory = (props) => {
   const {
     name,

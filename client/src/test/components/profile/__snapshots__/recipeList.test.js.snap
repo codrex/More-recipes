@@ -64,6 +64,11 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
               onMouseEnter={[Function]}
               parentClass=""
               pointer={true}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper pointer"
@@ -74,7 +79,9 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
               >
                 <i
                   className="icon fa fa-pencil edit-icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -91,6 +98,11 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
               onMouseEnter={[Function]}
               parentClass=""
               pointer={true}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper pointer"
@@ -101,7 +113,9 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
               >
                 <i
                   className="icon fa fa-trash-o delete-icon"
+                  data-for=""
                   data-target="#modal"
+                  data-tip="hello"
                   data-toggle="modal"
                 >
                   <span />
@@ -180,6 +194,11 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
               onMouseEnter={[Function]}
               parentClass=""
               pointer={true}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper pointer"
@@ -190,7 +209,9 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
               >
                 <i
                   className="icon fa fa-pencil edit-icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -207,6 +228,11 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
               onMouseEnter={[Function]}
               parentClass=""
               pointer={true}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper pointer"
@@ -217,7 +243,9 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
               >
                 <i
                   className="icon fa fa-trash-o delete-icon"
+                  data-for=""
                   data-target="#modal"
+                  data-tip="hello"
                   data-toggle="modal"
                 >
                   <span />
@@ -233,46 +261,131 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
 `;
 
 exports[`Recipes list component  to match empty snapshot  1`] = `
-<List
-  className="recipe-list"
-  style={Object {}}
+<RecipeList
+  handleClick={[Function]}
+  index="1"
+  onDeleteIconClicked={[Function]}
+  onEditIconCliked={[Function]}
+  onFavIconClicked={[Function]}
+  recipes={
+    Array [
+      Object {
+        "category": "",
+        "downVotes": 1,
+        "id": 1,
+        "name": "recipe",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  type="createdRecipes"
 >
-  <h4
-    className="display-4 bold header"
+  <List
+    className="recipe-list"
+    style={Object {}}
   >
-    my recipes
-  </h4>
-  <ListItem
-    className="recipe-list-item"
-    content="recipe"
-    handleClick={[Function]}
-    index={0}
-    key="1"
-  >
-    <div>
-      <Icon
-        active=""
-        className=""
-        dataTarget=""
-        dataToggle=""
+    <div
+      className="col-12 recipe-list"
+      style={Object {}}
+    >
+      <h4
+        className="display-4 bold header"
+      >
+        my recipes
+      </h4>
+      <ListItem
+        className="recipe-list-item"
+        content="recipe"
         handleClick={[Function]}
-        iconClass="fa fa-pencil edit-icon"
-        onMouseEnter={[Function]}
-        parentClass=""
-        pointer={true}
-      />
-      <Icon
-        active=""
-        className=""
-        dataTarget="#modal"
-        dataToggle="modal"
-        handleClick={[Function]}
-        iconClass="fa fa-trash-o delete-icon"
-        onMouseEnter={[Function]}
-        parentClass=""
-        pointer={true}
-      />
+        index={0}
+        key="1"
+      >
+        <div
+          className="lead list-item recipe-list-item"
+        >
+          <div
+            className="list-item-text lead"
+            data-index={0}
+            onClick={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            recipe
+          </div>
+          <div>
+            <Icon
+              active=""
+              className=""
+              dataTarget=""
+              dataToggle=""
+              handleClick={[Function]}
+              iconClass="fa fa-pencil edit-icon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={true}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-pencil edit-icon"
+                  data-for=""
+                  data-target=""
+                  data-tip="hello"
+                  data-toggle=""
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+            <Icon
+              active=""
+              className=""
+              dataTarget="#modal"
+              dataToggle="modal"
+              handleClick={[Function]}
+              iconClass="fa fa-trash-o delete-icon"
+              onMouseEnter={[Function]}
+              parentClass=""
+              pointer={true}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
+            >
+              <div
+                className="icon-wrapper pointer"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                role="button"
+                tabIndex="0"
+              >
+                <i
+                  className="icon fa fa-trash-o delete-icon"
+                  data-for=""
+                  data-target="#modal"
+                  data-tip="hello"
+                  data-toggle="modal"
+                >
+                  <span />
+                </i>
+              </div>
+            </Icon>
+          </div>
+        </div>
+      </ListItem>
     </div>
-  </ListItem>
-</List>
+  </List>
+</RecipeList>
 `;

@@ -4,19 +4,25 @@ import { Field, reduxForm } from 'redux-form';
 import { Form, Input } from '../../common/FormElements';
 import { username, password } from '../../../utils/validator';
 
+
 /**
  * User login form
+ * @param {object} props
+ * @return {React} react element
  */
 class LoginForm extends React.Component {
   /**
+   * constructor
    * @param {object} props
    */
   constructor(props) {
     super(props);
     this.login = this.login.bind(this);
   }
+
   /**
-    * @param {object} value (form values)
+   * login
+   * @param {object} value (form values)
    * @return {undefined} undefined
   */
   login(value) {
@@ -24,7 +30,8 @@ class LoginForm extends React.Component {
   }
 
   /**
-   * @returns {object} the form
+   * render
+   * @returns {React} react element
    */
   render() {
     const { handleSubmit, submitting } = this.props;

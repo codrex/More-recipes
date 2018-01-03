@@ -7,6 +7,11 @@ import {
   clearValidationError
 } from '../../../actions/recipeActions';
 
+/**
+ * AddIngredients component
+ * @param {object} props
+ * @return {React} react element
+ */
 const AddIngredients = props => (
   <AddItems
     name="ingredient"

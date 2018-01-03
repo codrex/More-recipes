@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+/**
+ * ListItem component
+ * @param {object} props
+ * @return {React} react element
+ */
 const ListItem = props => (
   <div className={classnames('lead list-item', props.className)}>
     {props.content && <div

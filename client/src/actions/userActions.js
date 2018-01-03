@@ -130,9 +130,8 @@ export const getVotes = recipeIds => (dispatch) => {
  */
 export const updateProfile = user => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch, false);
-  const id = dispatcher.getIdFromToken();
   return dispatcher.requestAndDispatch(
-    `/api/v1/users/${id}`,
+    '/api/v1/users/update',
     user,
     updatedProfile,
     'put',

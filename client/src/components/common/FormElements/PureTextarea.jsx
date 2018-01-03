@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+/**
+ * PureTextarea component
+ * @param {object} props
+ * @return {React} react element
+ */
 const PureTextarea = (props) => {
   const {
     helpTextClassName,

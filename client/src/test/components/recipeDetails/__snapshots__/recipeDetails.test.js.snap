@@ -96,7 +96,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
     >
       <div>
         <HeroArea
-          image="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+          image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
           title=""
         >
           <div
@@ -107,12 +107,12 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             >
               <img
                 alt="heroimage"
-                src="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+                src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
               />
               <h1
                 className="display-4
           text-capitalize
-          col-8
+          col-11
           bold
           text-center
           "
@@ -252,6 +252,11 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -262,7 +267,9 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             >
               <i
                 className="icon fa fa-thumbs-o-up"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -280,6 +287,11 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -290,7 +302,9 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             >
               <i
                 className="icon fa fa-thumbs-o-down"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -308,6 +322,11 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -318,7 +337,9 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             >
               <i
                 className="icon fa fa-heart-o fav"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -1025,7 +1046,7 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
     >
       <div>
         <HeroArea
-          image="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+          image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
           title=""
         >
           <div
@@ -1036,12 +1057,12 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             >
               <img
                 alt="heroimage"
-                src="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+                src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
               />
               <h1
                 className="display-4
           text-capitalize
-          col-8
+          col-11
           bold
           text-center
           "
@@ -1181,6 +1202,11 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -1191,7 +1217,9 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             >
               <i
                 className="icon fa fa-thumbs-o-up"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -1209,6 +1237,11 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -1219,7 +1252,9 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             >
               <i
                 className="icon fa fa-thumbs-o-down"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -1237,6 +1272,11 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -1247,7 +1287,9 @@ exports[`View Recipes Page component  render as expected when downvote icon is c
             >
               <i
                 className="icon fa fa-heart-o fav"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -1954,7 +1996,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
     >
       <div>
         <HeroArea
-          image="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+          image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
           title=""
         >
           <div
@@ -1965,12 +2007,12 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             >
               <img
                 alt="heroimage"
-                src="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+                src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
               />
               <h1
                 className="display-4
           text-capitalize
-          col-8
+          col-11
           bold
           text-center
           "
@@ -2110,6 +2152,11 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -2120,7 +2167,9 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             >
               <i
                 className="icon fa fa-thumbs-o-up"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -2138,6 +2187,11 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -2148,7 +2202,9 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             >
               <i
                 className="icon fa fa-thumbs-o-down"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -2166,6 +2222,11 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -2176,7 +2237,9 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             >
               <i
                 className="icon fa fa-heart-o fav"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -2863,7 +2926,7 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
     >
       <div>
         <HeroArea
-          image="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+          image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
           title=""
         >
           <div
@@ -2874,12 +2937,12 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             >
               <img
                 alt="heroimage"
-                src="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+                src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
               />
               <h1
                 className="display-4
           text-capitalize
-          col-8
+          col-11
           bold
           text-center
           "
@@ -3019,6 +3082,11 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -3029,7 +3097,9 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             >
               <i
                 className="icon fa fa-thumbs-o-up"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -3047,6 +3117,11 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -3057,7 +3132,9 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             >
               <i
                 className="icon fa fa-thumbs-o-down"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -3075,6 +3152,11 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -3085,7 +3167,9 @@ exports[`View Recipes Page component  render as expected when favorite icon is c
             >
               <i
                 className="icon fa fa-heart-o fav"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -3772,7 +3856,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
     >
       <div>
         <HeroArea
-          image="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+          image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
           title=""
         >
           <div
@@ -3783,12 +3867,12 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             >
               <img
                 alt="heroimage"
-                src="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+                src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
               />
               <h1
                 className="display-4
           text-capitalize
-          col-8
+          col-11
           bold
           text-center
           "
@@ -3928,6 +4012,11 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -3938,7 +4027,9 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             >
               <i
                 className="icon fa fa-thumbs-o-up"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -3956,6 +4047,11 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -3966,7 +4062,9 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             >
               <i
                 className="icon fa fa-thumbs-o-down"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -3984,6 +4082,11 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -3994,7 +4097,9 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             >
               <i
                 className="icon fa fa-heart-o fav"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -4701,7 +4806,7 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
     >
       <div>
         <HeroArea
-          image="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+          image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
           title=""
         >
           <div
@@ -4712,12 +4817,12 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             >
               <img
                 alt="heroimage"
-                src="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+                src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
               />
               <h1
                 className="display-4
           text-capitalize
-          col-8
+          col-11
           bold
           text-center
           "
@@ -4857,6 +4962,11 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -4867,7 +4977,9 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             >
               <i
                 className="icon fa fa-thumbs-o-up"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -4885,6 +4997,11 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -4895,7 +5012,9 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             >
               <i
                 className="icon fa fa-thumbs-o-down"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -4913,6 +5032,11 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             onMouseEnter={[Function]}
             parentClass=""
             pointer={false}
+            tip="hello"
+            toolTip={false}
+            toolTipId=""
+            toolTipPlace="bottom"
+            toolTipType="dark"
           >
             <div
               className="icon-wrapper"
@@ -4923,7 +5047,9 @@ exports[`View Recipes Page component  render as expected when upvote icon is cli
             >
               <i
                 className="icon fa fa-heart-o fav"
+                data-for=""
                 data-target=""
+                data-tip="hello"
                 data-toggle=""
               >
                 <span />
@@ -5568,7 +5694,7 @@ exports[`View Recipes Page component  to match empty snapshot  1`] = `
 >
   <div>
     <HeroArea
-      image="http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg"
+      image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
       title=""
     />
     ,
@@ -5633,6 +5759,11 @@ exports[`View Recipes Page component  to match empty snapshot  1`] = `
         onMouseEnter={[Function]}
         parentClass=""
         pointer={false}
+        tip="hello"
+        toolTip={false}
+        toolTipId=""
+        toolTipPlace="bottom"
+        toolTipType="dark"
       />
       <Icon
         active=""
@@ -5645,6 +5776,11 @@ exports[`View Recipes Page component  to match empty snapshot  1`] = `
         onMouseEnter={[Function]}
         parentClass=""
         pointer={false}
+        tip="hello"
+        toolTip={false}
+        toolTipId=""
+        toolTipPlace="bottom"
+        toolTipType="dark"
       />
       <Icon
         active=""
@@ -5657,6 +5793,11 @@ exports[`View Recipes Page component  to match empty snapshot  1`] = `
         onMouseEnter={[Function]}
         parentClass=""
         pointer={false}
+        tip="hello"
+        toolTip={false}
+        toolTipId=""
+        toolTipPlace="bottom"
+        toolTipType="dark"
       />
     </div>
   </div>

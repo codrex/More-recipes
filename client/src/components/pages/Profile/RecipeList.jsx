@@ -4,6 +4,12 @@ import List from '../../common/List';
 import ListItem from '../../common/ListItem';
 import Icon from '../../common/Icon';
 
+
+/**
+ * RecipeList component
+ * @param {object} props
+ * @return {React} react element
+ */
 const RecipeList = (props) => {
   const recipes = props.recipes || [];
   const {

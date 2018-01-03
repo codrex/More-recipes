@@ -8,6 +8,7 @@ import {
 
 /**
  * @name validateSignupData
+ * @description validate signup data
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -22,6 +23,7 @@ export const validateSignupData = (req, res, next) => {
 
 
 /**
+ * @description validate signup data
  * @name validateUpdate
  * @function
  * @param {Object} req - Express request object
@@ -39,6 +41,7 @@ export const validateUpdate = (req, res, next) => {
 };
 
 /**
+ * @description validate login data
  * @name validateLoginData
  * @function
  * @param {Object} req - Express request object
@@ -55,6 +58,7 @@ export const validateLoginData = (req, res, next) => {
 };
 
 /**
+ * @description validate user id
  * @name validateUserId
  * @function
  * @param {Object} req - Express request object

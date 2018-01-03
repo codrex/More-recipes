@@ -1,4 +1,3 @@
-import Sequelize from 'sequelize';
 import db from '../models/index';
 import getParams from '../utils/getParams';
 import { ATTRIBUTES, RECIPE_NOT_FOUND } from '../constants';
@@ -51,6 +50,7 @@ export const create = (req, res, next) => {
 };
 
 /**
+ * @description fetch recipes from the databae
  * @name fetch
  * @function
  * @param {Object} where
@@ -67,14 +67,16 @@ const fetch = (where = {}, order = [], req, res) => {
     offset,
     order,
     attributes: ATTRIBUTES,
+    group: ['id']
   }).then(({ count, rows }) => {
-    sendPaginatedData('recipes', { rows, count, limit }, res);
+    sendPaginatedData('recipes', { rows, count: count.length, limit }, res);
   }).catch(() => {
     sendServerError(res);
   });
 };
 
 /**
+ * @description fetch a single recipe from the database
  * @name  fetchRecipe
  * @function
  * @param {Object} req - Express request object
@@ -116,7 +118,8 @@ export const fetchRecipe = (req, res, next) => {
 };
 
 /**
- * @name  fetchVotes
+ * @description get recipe's vote record
+ * @name fetchVotes
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -136,17 +139,19 @@ export const fetchVotes = (req, res) => {
 };
 
 /**
- * @name  fetchRecipes
+ * @description fetch recipe from the database
+ * @name fetchRecipes
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  * @return {*} void
  */
 export const fetchRecipes = (req, res) => {
-  fetch({}, [], req, res);
+  fetch({}, [[db.sequelize.fn('RANDOM')]], req, res);
 };
 
 /**
+ * @description fetch recipe that matches a given search term
  * @name recipesSearch
  * @function
  * @param {Object} req - Express request object
@@ -194,11 +199,29 @@ export const recipesSearch = (req, res, next) => {
  * @return {*} void
  */
 export const fetchRecipeByUpVote = (req, res, next) => {
+  const { sequelize } = db;
   if (req.query.sort === undefined) return next();
-  fetch({}, [['upVotes', 'DESC']], req, res);
+  fetch({
+    upVotes: {
+      $gt: 0
+    }
+  }, [
+    [
+      sequelize.where(sequelize.col('upVotes'), '>', sequelize.col('downVotes')),
+      'DESC'
+    ],
+    [
+      sequelize.where(sequelize.col('upVotes'), '-', sequelize.col('downVotes')),
+      'DESC'
+    ],
+    [
+      sequelize.fn('min', sequelize.col('downVotes')), 'DESC'
+    ],
+  ], req, res);
 };
 
 /**
+ * @description fetch recipe and store it in ```req.recipe``` attribute.
  * @name beforeUpdate
  * @function
  * @param {Object} req - Express request object
@@ -227,6 +250,7 @@ export const beforeUpdate = (req, res, next) => {
 };
 
 /**
+ * @description delete recipe from the database
  * @name remove
  * @function
  * @param {Object} req - Express request object
@@ -246,6 +270,7 @@ export const remove = (req, res) => {
 };
 
 /**
+ * @description check recipe owner
  * @name isOwner
  * @function
  * @param {Object} req - Express request object
@@ -257,14 +282,17 @@ export const isOwner = (req, res, next) => {
   Recipes.findOne({
     where: {
       id: parseInt(req.params.id, 10),
-      ownerId: req.requestId
     }
   })
     .then((recipe) => {
       if (!recipe) {
         sendFail(res, 404, RECIPE_NOT_FOUND);
       } else {
-        next();
+        if (recipe.dataValues.ownerId === req.requestId) {
+          next();
+          return;
+        }
+        sendFail(res, 403, 'You do not access to this recipe');
       }
     }).catch(() => {
       sendServerError(res);

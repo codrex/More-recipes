@@ -11,10 +11,11 @@ import {
 } from '../../actions/recipeActions';
 
 /**
- * @name ModifyRecipe
+ * CreateRecipe
  */
 class CreateRecipe extends React.Component {
   /**
+   * constructor
    * @return {undefined}
    * @param {Object} props
    */
@@ -41,6 +42,7 @@ class CreateRecipe extends React.Component {
   }
 
   /**
+   * post recipe button click event handler
    * @return {undefined}
    */
   postRecipeClicked = () => {
@@ -49,7 +51,8 @@ class CreateRecipe extends React.Component {
   }
 
   /**
-   * @return {React} - RecipeEditor component
+   * render
+   * @return {React} - react component
    */
   render() {
     const { loading } = this.props;

@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import Icon from './Icon';
 
 /**
- * @name SearchBox
+ * SearchBox component
+ * @return {React} react element
  */
 class SearchBox extends React.Component {
   /**
+   * constructor
    * @param {Object} props
    * @return {undefined}
    */
@@ -19,9 +21,10 @@ class SearchBox extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   /**
- * @return {undefined}
- * @param {Object} event
- */
+   * handles value change event
+   * @return {undefined}
+   * @param {Object} event
+   */
   handleChange(event) {
     this.setState({
       value: event.target.value
@@ -30,15 +33,18 @@ class SearchBox extends React.Component {
   }
 
   /**
- * @return {undefined}
- * @param {Object} event
- */
+   * handel submit event
+   * @return {undefined}
+   * @param {Object} event
+   */
   handleSubmit(event) {
     event.preventDefault();
     if (this.props.handleSubmit) this.props.handleSubmit(this.state.value);
   }
+
   /**
-   * @return{undefined}
+   * render
+   * @return {React} react element
    */
   render() {
     return (

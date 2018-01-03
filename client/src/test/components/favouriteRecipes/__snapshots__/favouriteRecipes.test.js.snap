@@ -17,6 +17,19 @@ exports[`Favourite Recipes page component  render as expected  1`] = `
   }
   getFavouriteRecipes={[Function]}
   getRecipes={[Function]}
+  recipes={
+    Array [
+      Object {
+        "category": "drinks",
+        "downVotes": 1,
+        "id": 1,
+        "image": Object {},
+        "name": "capachino",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
   title="Favourite recipes"
   user={
     Object {

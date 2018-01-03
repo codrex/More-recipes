@@ -10,12 +10,13 @@ import SignupForm from './SignupForm';
 import Carousel from './Carousel';
 import Cta from './CallToAction';
 
+
 /**
  * Landing page with signin and signup forms
  */
 class Landing extends React.Component {
 /**
- *
+ * constructor
  * @param {object} props
  */
   constructor(props) {
@@ -33,9 +34,9 @@ class Landing extends React.Component {
   }
 
   /**
- *
- * @return {undefined}
- */
+   * componentDidMount
+   * @return {undefined}
+   */
   componentDidMount() {
     const { path } = this.props.match;
     if (this.state.openModal) {
@@ -44,10 +45,10 @@ class Landing extends React.Component {
   }
 
   /**
- *
- * @param {object} nextProps
- * @return {undefined}
- */
+   * componentWillReceiveProps
+   * @param {object} nextProps
+   * @return {undefined}
+   */
   componentWillReceiveProps(nextProps) {
     const { path } = nextProps.match;
 
@@ -120,6 +121,7 @@ class Landing extends React.Component {
   }
 
   /**
+   * render
    * @return {object} object
    */
   render() {

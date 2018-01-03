@@ -5,9 +5,10 @@ import { getCreatedRecipes } from '../../actions/recipeActions';
 import RecipesDisplay from './RecipesDisplay';
 
 /**
-   * @return {React} Favourite Recipe component
-   * @param {object} props
-   */
+ * CreateRecipes component
+ * @param {object} props
+ * @return {React} react element
+ */
 const CreatedRecipes = props => (
   <RecipesDisplay
     title="Created recipes"

@@ -8,6 +8,7 @@ import {
 import initialState from '../reducers/initialState';
 
 /**
+ * Ajax reducer
  * @return {object} newState
  * @param {object} state
  * @param {object} action
@@ -52,6 +53,7 @@ export const ajaxReducer = (state = initialState.networkRequest, action) => {
 };
 
 /**
+ * ajax redirect reducer
  * @return {object} newState
  * @param {object} state
  * @param {object} action

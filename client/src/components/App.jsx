@@ -26,6 +26,7 @@ import { findRecipes } from '../actions/recipeActions';
  */
 class App extends React.Component {
   /**
+   * constructor
    * @return {undefined}
    * @param {object} props
    */
@@ -55,6 +56,7 @@ class App extends React.Component {
         this.props.resetMessage();
       } else if (request.success && request.msg) {
         toastr.success(request.msg, 'Success', toastrConfig);
+        this.props.resetMessage();
       }
     }
 
@@ -83,6 +85,7 @@ class App extends React.Component {
   }
 
   /**
+   * handle recipe search
    * @param {object} push
    * @param {string} value
    * @return {undefined}
@@ -94,6 +97,7 @@ class App extends React.Component {
   }
 
   /**
+   * checks if user is logged in
    * @return {undefined}
    * @param {jsx} Component
    * @param {object} match
@@ -110,6 +114,7 @@ class App extends React.Component {
   }
 
   /**
+   * render not found
    * @return {undefined}
    * @param {object} match
    */
@@ -127,7 +132,7 @@ class App extends React.Component {
   )
 
   /**
-   * @return{undefined}
+   * @return {React} react component
    */
   render() {
     return (

@@ -8,19 +8,19 @@ export const recipe = {
   image: 'image'
 };
 export const recipeUpdateData = {
-  updateOne: {
+  userDataOne: {
     name: 'beans cake',
   },
-  updateTwo: {
+  userDataTwo: {
     name: 'beans cake',
     category: 'breakfast',
   },
-  updateThree: {
+  userDataThree: {
     name: 'beans cake',
     category: 'breakfast',
     ingredients: ['beans', 'water', 'oil'],
   },
-  updateFour: {
+  userDataFour: {
     name: 'beans and rice',
     category: 'dinner',
     ingredients: ['beans', 'rice', 'oil'],

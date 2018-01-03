@@ -7,9 +7,10 @@ import getInitials from '../../utils/getInitials';
 import Dropdown from './Dropdown';
 import { PROTECTED_ROUTES, UNPROTECTED_ROUTES } from '../../constants';
 
-
 /**
- * @name Navbar
+ * Navbar component
+ * @param {object} props
+ * @return {React} react element
  */
 class Navbar extends React.Component {
   /**
@@ -99,11 +100,14 @@ class Navbar extends React.Component {
   render() {
     const NavItem = this.renderNavItem;
     const { names, url } = this.state;
-    const { username, fullname } = this.props;
+    const { username, fullname, authenticated } = this.props;
     return (
       <nav
-        className={`navbar navbar-toggleable-md navbar-light
-        justify-content-sm-between justify-content-center align-items-center flex-row flex-wrap`}
+        className={
+          `navbar navbar-toggleable-md navbar-light
+        justify-content-sm-between justify-content-center
+        align-items-center flex-row flex-wrap`
+        }
       >
         <a
           className="navbar-brand d-flex justify-content-center align-items-center display-4"
@@ -115,11 +119,14 @@ class Navbar extends React.Component {
           <ul className="navbar-nav mr-auto col-xs-12 col-sm-10 col-md-7 col-lg-7" >
             {names.map((name, i) => <NavItem key={name} text={name} to={url[i]} />)}
           </ul>
-          <Dropdown
-            options={this.options}
-            Trigger={this.renderTrigger(getInitials(fullname))}
-            headerText={`Signed in as ${username}`}
-          />
+          {
+            authenticated &&
+            <Dropdown
+              options={this.options}
+              Trigger={this.renderTrigger(getInitials(fullname))}
+              headerText={`Signed in as ${username}`}
+            />
+          }
         </div>
       </nav>
     );

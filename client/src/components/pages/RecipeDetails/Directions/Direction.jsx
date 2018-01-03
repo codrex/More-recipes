@@ -7,19 +7,23 @@ import {
 } from '../../../common/Accordion';
 
 /**
- * @name Direction
- * @return {React} jsx
+ * Directions
  */
 class Direction extends React.Component {
   state = {
     open: false
   }
 
+  /**
+   * set Accordion toggle state
+   * @return {undefined}
+   */
   toggleOpen = () => {
     this.setState({ open: !this.state.open });
   }
 
   /**
+   * render
    * @param {object} props
    * @return {React} Direction component
    */

@@ -21,7 +21,8 @@
   flex-direction: row;
   justify-content: flex-end;
   padding: 0;
-  height: inherit
+  height: inherit;
+  min-width: 280px;
 }
 .nav-item{
   padding: 0 .2em;
@@ -44,7 +45,7 @@
   }
 }
 
-@media (max-width:767px){
+@media (max-width:469px){
   .navbar-nav{
       align-items: center;
       justify-content: center;
@@ -54,3 +55,9 @@
   .nav-link-active{
     border-bottom: $text-color 3px solid;
   }
+
+  @media (max-width:300px){
+    .navbar-nav{
+        min-width: unset
+      }
+    }

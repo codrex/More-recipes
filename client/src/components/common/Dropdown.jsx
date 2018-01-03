@@ -4,7 +4,9 @@ import Animation from './Animation';
 
 
 /**
- * @name Dropdown
+ * Dropdown component
+ * @param {object} props
+ * @return {React} react component
  */
 class Dropdown extends React.Component {
   /**
@@ -28,6 +30,7 @@ class Dropdown extends React.Component {
   }
 
   /**
+   * hides the dropdown menu
    * @return {undefined}
    */
   hideDropdown = () => {
@@ -35,6 +38,7 @@ class Dropdown extends React.Component {
   }
 
   /**
+   * display the dropdown menu
    * @return {undefined}
    */
   showDropdown = () => {
@@ -43,6 +47,7 @@ class Dropdown extends React.Component {
 
   /**
    * @return {React} List
+   * render dropdown menu list
    */
   renderList = () => {
     if (!this.state.isOpen) return null;
@@ -89,6 +94,7 @@ class Dropdown extends React.Component {
   }
 
   /**
+   * render an overlay component
    * @return {React} Overlay
    */
   renderOverlay = () => {
@@ -106,6 +112,7 @@ class Dropdown extends React.Component {
   }
 
   /**
+   * renders dropdown trigger
    * @return {React} trigger
    */
   renderTrigger = () => {
@@ -131,6 +138,7 @@ class Dropdown extends React.Component {
   }
 
   /**
+   * dropdown
    * @return {React} dropdown
    */
   render() {

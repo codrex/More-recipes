@@ -4,9 +4,10 @@ import classnames from 'classnames';
 import SearchBox from './SearchBox';
 
 /**
- * @name SecondaryNavBar
+ * SecondaryNavBar component
+ * @param {object} props
+ * @return {React} react element
  */
-
 const SecondaryNavBar = (props) => {
   const {
     className,

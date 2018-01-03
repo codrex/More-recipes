@@ -5,7 +5,11 @@ import { connect } from 'react-redux';
 import { fullname, email, username } from '../../../utils/validator';
 import { Form, Input } from '../../common/FormElements';
 
-
+/**
+ * EditProfile component
+ * @param {object} props
+ * @return {React} react element
+ */
 let EditProfile = (props) => {
   const { handleSubmit } = props;
   return (

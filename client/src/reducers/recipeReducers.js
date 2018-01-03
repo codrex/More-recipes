@@ -26,6 +26,7 @@ import {
 } from '../actions/actions';
 
 /**
+ * recipe validation error reducer
  * @return {object} newState
  * @param {object} state
  * @param {object} action
@@ -47,6 +48,7 @@ export const recipeValidationError = (state = initialState.recipeValidationError
 };
 
 /**
+ * recipes reducer
  * @return {object} newState
  * @param {object} state
  * @param {object} action
@@ -75,6 +77,7 @@ export const recipesReducer = (state = initialState.recipes, action) => {
 };
 
 /**
+ * recipe reducer
  * @return {object} newState
  * @param {object} state
  * @param {object} action
@@ -158,6 +161,7 @@ export const recipeReducer = (state = initialState.recipe, action) => {
 };
 
 /**
+ * favorite recipes reducer
  * @return {object} newState
  * @param {object} state
  * @param {object} action

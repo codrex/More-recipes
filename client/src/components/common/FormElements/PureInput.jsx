@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+/**
+ * PureInput component
+ * @param {object} props
+ * @return {React} react element
+ */
 const PureInput = (props) => {
   const { helpTextClassName, fgClassName, className, error } = props;
   const valid = !error && 'valid';

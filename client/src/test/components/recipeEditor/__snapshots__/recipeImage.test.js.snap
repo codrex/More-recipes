@@ -15,9 +15,9 @@ exports[`Recipe image component  render as expected when component is mounted 1`
     <Image
       className="recipe-card-img"
       cloudName="resycom"
-      crop="fill"
+      crop="fit"
       height="500"
-      publicId="recipes/s9ej2m9vcvagobqadebh.jpg"
+      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
       width="400"
     />
     <span
@@ -47,9 +47,9 @@ exports[`Recipe image component  render as expected when component receive image
     <Image
       className="recipe-card-img"
       cloudName="resycom"
-      crop="fill"
+      crop="fit"
       height="500"
-      publicId="recipes/s9ej2m9vcvagobqadebh.jpg"
+      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
       width="400"
     />
     <span
@@ -79,9 +79,9 @@ exports[`Recipe image component  render as expected when loadImage button is cli
     <Image
       className="recipe-card-img"
       cloudName="resycom"
-      crop="fill"
+      crop="fit"
       height="500"
-      publicId="recipes/s9ej2m9vcvagobqadebh.jpg"
+      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
       width="400"
     />
     <span

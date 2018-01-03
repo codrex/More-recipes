@@ -17,7 +17,7 @@ exports[`Recipes grid component  render as expected with one recipe 1`] = `
           <img
             className="recipe-card-img"
             height="250"
-            src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+            src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
             width="400"
           />
           <div
@@ -65,13 +65,21 @@ exports[`Recipes grid component  render as expected with one recipe 1`] = `
               >
                 <i
                   className="icon fa fa-thumbs-up recipe-card-icon "
+                  data-for="1upvote"
                   data-target=""
+                  data-tip="Total Upvotes: 22"
                   data-toggle=""
                 >
                   <span>
                     22
                   </span>
                 </i>
+                <div
+                  className="__react_component_tooltip place-top type-dark "
+                  data-id="tooltip"
+                >
+                  
+                </div>
               </div>
               <div
                 className="icon-wrapper"
@@ -82,13 +90,21 @@ exports[`Recipes grid component  render as expected with one recipe 1`] = `
               >
                 <i
                   className="icon fa fa-thumbs-down recipe-card-icon "
+                  data-for="1downvote"
                   data-target=""
+                  data-tip="Total Downvotes: 0"
                   data-toggle=""
                 >
                   <span>
                     0
                   </span>
                 </i>
+                <div
+                  className="__react_component_tooltip place-top type-dark "
+                  data-id="tooltip"
+                >
+                  
+                </div>
               </div>
               <div
                 className="icon-wrapper"
@@ -99,13 +115,21 @@ exports[`Recipes grid component  render as expected with one recipe 1`] = `
               >
                 <i
                   className="icon fa fa-eye recipe-card-icon"
+                  data-for="1views"
                   data-target=""
+                  data-tip="Total Number of Views: 22"
                   data-toggle=""
                 >
                   <span>
                     22
                   </span>
                 </i>
+                <div
+                  className="__react_component_tooltip place-top type-dark "
+                  data-id="tooltip"
+                >
+                  
+                </div>
               </div>
             </div>
             <div
@@ -117,11 +141,19 @@ exports[`Recipes grid component  render as expected with one recipe 1`] = `
             >
               <i
                 className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                data-for="1fav"
                 data-target=""
+                data-tip="Favourite This Recipe"
                 data-toggle=""
               >
                 <span />
               </i>
+              <div
+                className="__react_component_tooltip place-top type-dark "
+                data-id="tooltip"
+              >
+                
+              </div>
             </div>
           </div>
         </div>

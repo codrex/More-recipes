@@ -9,25 +9,22 @@ const props = {
 };
 
 describe('Recipe image component ', () => {
-  test('render as expected when component is mounted', () => {
-    const component = shallow(
+  let component;
+  beforeEach(() => {
+    component = shallow(
       <PureRecipeImage {...props} />
     );
+  });
+  test('render as expected when component is mounted', () => {
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
   test('render as expected when loadImage button is click', () => {
-    const component = shallow(
-      <PureRecipeImage {...props} />
-    );
     component.find('span').simulate('click');
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
   test('render as expected when component receive image as props', () => {
-    const component = shallow(
-      <PureRecipeImage {...props} />
-    );
     component.setProps({ image: '{}' });
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();

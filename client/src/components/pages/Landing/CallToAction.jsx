@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../common/Button';
 
+/**
+ * CallToAction component
+ * @param {object} props
+ * @return {React} react element
+ */
 const CallToAction = props => (
   <div className="cta ">
     <h1

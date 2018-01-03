@@ -12,17 +12,17 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
   <Direction
     content="directions 1"
     index={0}
-    key="directions 11514970600132"
+    key="directions 11515334648474"
   />
   <Direction
     content="direction 2"
     index={1}
-    key="direction 21514970600132"
+    key="direction 21515334648474"
   />
   <Direction
     content="direction 3"
     index={2}
-    key="direction 31514970600132"
+    key="direction 31515334648474"
   />
 </div>
 `;

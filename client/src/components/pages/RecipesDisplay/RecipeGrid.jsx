@@ -4,6 +4,11 @@ import RecipeCard from './RecipeCard';
 import imageParser from '../../../utils/imageParser';
 import Loader from '../../common/Loader';
 
+/**
+ * RecipeGrid component
+ * @param {object} props
+ * @return {React} react element
+ */
 const RecipeGrid = (props) => {
   const { recipes, loading } = props;
   if (loading) return <Loader loading={loading} />;

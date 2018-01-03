@@ -32,11 +32,11 @@ import {
 } from '../../../actions/recipeActions';
 
 /**
- * @summary Recipes component
- * @return {React} component
+ * RecipeDetails component
  */
 class RecipeDetails extends React.Component {
   /**
+   * constructor
    * @param {object} props
    */
   constructor(props) {
@@ -57,8 +57,8 @@ class RecipeDetails extends React.Component {
   }
 
   /**
- * @return {undefined}
- */
+   * @return {undefined}
+   */
   componentDidMount() {
     const { actions, recipe } = this.props;
 
@@ -77,9 +77,9 @@ class RecipeDetails extends React.Component {
   }
 
   /**
- * @return {undefined}
- * @param {object} nextProps
- */
+   * @return {undefined}
+   * @param {object} nextProps
+   */
   componentWillReceiveProps(nextProps) {
     if (nextProps.statusCode === 404 && !this.state.hasNotFound) {
       this.setState({ hasNotFound: true });
@@ -101,17 +101,19 @@ class RecipeDetails extends React.Component {
   }
 
  /**
- * @return {Object} vote
- * @param {object} votes
- */
+  * get recipe vote
+  * @return {Object} vote
+  * @param {object} votes
+  */
  getVote = votes => votes.find(element => element.recipeId === this.recipeId)
 
  /**
- * @return {undefined}
- * @param {string} type
- * @param {bool} value
- * @param {string} message
- */
+   * vote recipe
+   * @return {undefined}
+   * @param {string} type
+   * @param {bool} value
+   * @param {string} message
+   */
   vote = (type, value, message) => {
     this.setState({
       upVote: type === 'up' && value,
@@ -121,8 +123,9 @@ class RecipeDetails extends React.Component {
   }
 
   /**
- * @return {undefined}
- */
+   * toggle recipe favorite state
+   * @return {undefined}
+   */
   addToFav = () => {
     const message = this.isUserFav() ? 'Removed from favourites' : 'Added to favourites';
     this.props.actions.toggleFav(this.recipeId, message);
@@ -130,12 +133,14 @@ class RecipeDetails extends React.Component {
   /**
 
   /**
+   * checks if recipe is on user's fav recipes list
    * @return {bool} true / false
    */
   isUserFav = () => this.props.favRecipes.some(recipe => recipe.id === this.recipeId)
 
   /**
-   * @return {React} SideIcons
+   * side icons
+   * @return {React} react component
    */
   renderSidIcons = () => {
     const {
@@ -154,7 +159,7 @@ class RecipeDetails extends React.Component {
         <Icon
           iconClass={upVote ? 'fa fa-thumbs-up' : 'fa fa-thumbs-o-up'}
           handleClick={() => {
-            const message = !upVote ? 'You like this recipe' : undefined;
+            const message = !upVote ? 'Recipe upvoted' : 'Vote cancelled';
             this.vote('up', !upVote, message);
           }}
           id="upvote"
@@ -162,7 +167,7 @@ class RecipeDetails extends React.Component {
         <Icon
           iconClass={downVote ? 'fa fa-thumbs-down' : 'fa fa-thumbs-o-down'}
           handleClick={() => {
-            const message = !downVote ? 'You dislike this recipe' : undefined;
+            const message = !downVote ? 'Recipe downvoted' : 'Vote cancelled';
             this.vote('down', !downVote, message);
           }}
           id="downvote"
@@ -184,7 +189,8 @@ class RecipeDetails extends React.Component {
   }
 
   /**
-   * @return {React} Ingredients
+   * ingredients
+   * @return {React} react component
    */
   renderIngredients = () => {
     const {
@@ -198,7 +204,8 @@ class RecipeDetails extends React.Component {
   }
 
   /**
-   * @return {React} Directions
+   * directions
+   * @return {React} react component
    */
   renderDirections = () => {
     const { directions } = this.props.recipe;
@@ -210,7 +217,8 @@ class RecipeDetails extends React.Component {
   }
 
   /**
-   * @return {React} Reviews
+   * reviews
+   * @return {React} react component
    */
   renderReviews = () => {
     const { reviews } = this.props.recipe;
@@ -239,7 +247,8 @@ class RecipeDetails extends React.Component {
   }
 
   /**
-   * @return {React} RecipeInfo
+   * recipe info
+   * @return {React} react component
    */
   renderRecipeInfo = () => {
     const {
@@ -261,17 +270,18 @@ class RecipeDetails extends React.Component {
           Views: <span className="bold">{views}</span>
         </h6>
         <h6 className="lead text-capitalize ">
-          likes: <span className="bold">{upVotes}</span>
+          upvotes: <span className="bold">{upVotes}</span>
         </h6>
         <h6 className="lead text-capitalize ">
-          dislikes: <span className="bold">{downVotes}</span>
+          downvotes: <span className="bold">{downVotes}</span>
         </h6>
       </div>
     );
   }
 
   /**
-   * @return {React} Paginator
+   * pagination
+   * @return {React} react component
    */
   renderPagination = () => {
     const {
@@ -297,7 +307,8 @@ class RecipeDetails extends React.Component {
   }
 
   /**
-   * @return {React} Component
+   * recipe details
+   * @return {React} react component
    */
   renderRecipeDetails = () => (
     <div className="row flex-column recipe">
@@ -308,7 +319,7 @@ class RecipeDetails extends React.Component {
   )
 
   /**
-   * @return {React} Paginator
+   * @return {React} react component
    */
   renderPage = () => {
     const { hasNotFound } = this.state;

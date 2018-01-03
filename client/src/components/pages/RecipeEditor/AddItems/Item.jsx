@@ -12,6 +12,11 @@ import {
   AccordionBody
 } from '../../../common/Accordion';
 
+/**
+ * ListItemIcons component
+ * @param {object} props
+ * @return {React} react element
+ */
 const ListItemIcons = props => (
   <div className="d-flex align-items-center">
     <Icon
@@ -42,7 +47,7 @@ ListItemIcons.defaultProps = {
  */
 class Item extends React.Component {
   /**
-   *
+   * constructor
    * @param {Object} props
    */
   constructor(props) {
@@ -55,6 +60,7 @@ class Item extends React.Component {
   }
 
   /**
+   * toggle edit mode
    * @return {undefined}
    */
   changeEditMode = () => {
@@ -64,6 +70,7 @@ class Item extends React.Component {
   }
 
   /**
+   * update value
    * @param {Object} value
    * @return {undefined}
    */
@@ -72,12 +79,14 @@ class Item extends React.Component {
   }
 
   /**
+   * validate item
    * @return {undefined}
    * @param {string} value
    */
   validateItem = value => validateItem(value, this.props.name)
 
   /**
+   * handle input value change event
    * @return {undefined}
    * @param {object} event
    */
@@ -88,6 +97,7 @@ class Item extends React.Component {
   }
 
   /**
+   * save item after editing
    * @return {undefined}
    */
   saveItemAfterEditing = () => {
@@ -109,7 +119,8 @@ class Item extends React.Component {
   }
 
   /**
-   * @return {React} Ingredients List
+   * ingredient list
+   * @return {React} react component
    */
   renderIngredient = () => {
     const { content, ingredients } = this.props;
@@ -126,7 +137,8 @@ class Item extends React.Component {
   }
 
   /**
-   * @return {React} Directions List
+   * directions list
+   * @return {React} react component
    */
   renderDirection = () => {
     const { content, directions, index, name } = this.props;
@@ -160,7 +172,8 @@ class Item extends React.Component {
   }
 
   /**
-   * @return {React} Editing form
+   * edit form
+   * @return {React} react component
    */
   renderEditForm = () => {
     const { directions, name, Component } = this.props;
@@ -200,7 +213,8 @@ class Item extends React.Component {
   }
 
   /**
-   * @return {React} Item
+   * render
+   * @return {React} react component
    */
   render() {
     return (

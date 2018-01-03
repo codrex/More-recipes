@@ -20,7 +20,7 @@ describe('Recipes grid component ', () => {
           recipes={[]}
           toggleFav={jest.fn()}
           isUserFav={jest.fn()}
-          history={{}}
+          history={{ push: jest.fn() }}
         />
       </BrowserRouter>
     );

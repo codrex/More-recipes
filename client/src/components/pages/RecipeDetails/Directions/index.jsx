@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Direction from './Direction';
 
+/**
+ * Directions component
+ * @param {object} props
+ * @return {React} react element
+ */
 const Directions = (props) => {
   const directions = props.directions || [];
   return (

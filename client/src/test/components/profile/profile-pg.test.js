@@ -1,10 +1,7 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import toJson from 'enzyme-to-json';
 import { PureProfile } from '../../../components/pages/Profile';
-import configureStore from '../../../store/configStore';
 
-const store = configureStore();
 const props = {
   actions: {
     getProfile: jest.fn(),
@@ -23,6 +20,7 @@ const props = {
   loading: false,
   success: false,
   user: {
+    fullname: 'test user',
     favRecipes: [{
       name: 'recipe',
       category: '',

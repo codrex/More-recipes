@@ -9,15 +9,18 @@ const props = {
 };
 
 describe('Cta form component ', () => {
+  let component;
+  beforeEach(() => {
+    component = mount(<CallToAction {...props} />);
+  });
+
   test('expect to match snapshot when signin button is clicked', () => {
-    const component = mount(<CallToAction {...props} />);
     const tree = toJson(component);
     component.find('Button#login').simulate('click');
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
   test('expect to match snapshot when signup button is clicked', () => {
-    const component = mount(<CallToAction {...props} />);
     const tree = toJson(component);
     component.find('Button#signup').simulate('click');
     expect(tree).toMatchSnapshot();

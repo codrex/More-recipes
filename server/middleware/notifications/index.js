@@ -22,6 +22,7 @@ const transporter = nodemailer.createTransport({
     rejectUnauthorized: false
   }
 });
+
 /**
  * @name notifyOwner
  * @description controller function that sends notification

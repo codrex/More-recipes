@@ -22,11 +22,11 @@ export const CATEGORIES = [
 ];
 export const LIMIT = 12;
 export const REVIEW_LIMIT = 5;
-export const DEFAULT_PIX = 'https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg';
-export const DEFAULT_RECIPE_PIX = 'recipes/s9ej2m9vcvagobqadebh.jpg';
-export const DEFAULT_RECIPE_PIX_URL = 'http://res.cloudinary.com/resycom/image/upload/v1513684501/recipes/s9ej2m9vcvagobqadebh.jpg';
+export const DEFAULT_PIX = 'http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg';
+export const DEFAULT_RECIPE_PIX = 'recipe-card-placeholder_ta9ikp_iebsf2.jpg';
+export const DEFAULT_RECIPE_PIX_URL = 'https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg';
 export const PROFILE_PAGE_PIX = 'https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg';
-export const CAROUSEL_PIX_ONE = 'https://res.cloudinary.com/resycom/image/upload/c_scale,q_57,w_2057/v1509718828/eaters-collective-172257_qxlazk.jpg';
+export const CAROUSEL_PIX_ONE = 'http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg';
 export const CAROUSEL_PIX_TWO = 'https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg';
 export const PRODUCTION_URL = 'https://more-recipesrex.herokuapp.com';
 export const DEVELOPMENT_URL = 'http://127.0.0.1:8000';

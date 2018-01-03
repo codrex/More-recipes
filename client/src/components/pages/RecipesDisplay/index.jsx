@@ -10,7 +10,7 @@ import { toggleFav } from '../../../actions/recipeActions';
 import resetPageCount from '../../../actions/resetPageCount';
 
 /**
- * @return {React} RecipesDisplay
+ * RecipesDisplay
  */
 class RecipesDisplay extends React.Component {
   state ={
@@ -34,6 +34,7 @@ class RecipesDisplay extends React.Component {
   }
 
   /**
+   * check if recipe id is in the list of user's fav recipes
    * @return {undefined}
    * @param {number} id
    */
@@ -43,15 +44,18 @@ class RecipesDisplay extends React.Component {
   })
 
   /**
+   * toggle favourite state
    * @return {undefined}
    * @param {number} id
    */
   toggleFav = (id) => {
-    this.props.toggleFav(id);
+    const message = this.isUserFav(id) ? 'Recipe removed from favourites' : 'Recipe added to favourites';
+    this.props.toggleFav(id, message);
   }
 
   /**
-   * @return {React} RecipeGrid
+   * Recipe Grid
+   * @return {React} react component
    */
   renderRecipeGrid = () => {
     const { loading, history } = this.props;
@@ -67,7 +71,8 @@ class RecipesDisplay extends React.Component {
   }
 
   /**
-   * @return {React} Paginator
+   * Pagination
+   * @return {React} react component
    */
   renderPagination = () => {
     const {
@@ -90,7 +95,8 @@ class RecipesDisplay extends React.Component {
   }
 
   /**
-   * @return {React} NotFound
+   * NotFound
+   * @return {React} react component
    */
   renderNotFound = () => {
     const {
@@ -106,7 +112,8 @@ class RecipesDisplay extends React.Component {
   }
 
   /**
-   * @return {undefined}
+   * render
+   * @return {React} react component
    */
   render() {
     const { loading, recipes, title } = this.props;

@@ -4,6 +4,11 @@ import getInitials from '../../../utils/getInitials';
 import Button from '../../common/Button';
 
 
+/**
+ * EditProfile component
+ * @param {object} props
+ * @return {React} react element
+ */
 const UserInfo = (props) => {
   const initials = getInitials(props.user.fullname).toUpperCase();
   return (

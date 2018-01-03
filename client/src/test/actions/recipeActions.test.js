@@ -387,6 +387,58 @@ describe('Recipe thunks', () => {
         });
     });
 
+  it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.GET_FAVOURITE_RECIPES} and
+    END_AJAX_REQUEST actions when get favourite recipes request is successful`, () => {
+      const {
+        payload,
+        store,
+      } = setup(
+        `/api/v1/users/recipes/favourite?limit=${LIMIT}&page=1`,
+        'get',
+        initailState.Recipes
+      );
+      const expectedActions = [
+        {
+          type: 'BEGIN_AJAX_REQUEST',
+          loading: true },
+        {
+          type: actionTypes.GET_FAVOURITE_RECIPES,
+          payload
+        },
+        endAjaxReq(200)
+      ];
+      return store.dispatch(actions.getFavouriteRecipes(1))
+        .then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
+
+  it(`should return BEGIN_AJAX_REQUEST, ${actionTypes.GET_CREATED_RECIPES} and
+    END_AJAX_REQUEST actions when get created recipes request is successful`, () => {
+      const {
+        payload,
+        store,
+      } = setup(
+        `/api/v1/users/recipes/created?&limit=${LIMIT}&page=1`,
+        'get',
+        initailState.Recipes
+      );
+      const expectedActions = [
+        {
+          type: 'BEGIN_AJAX_REQUEST',
+          loading: true },
+        {
+          type: actionTypes.GET_CREATED_RECIPES,
+          payload
+        },
+        endAjaxReq(200)
+      ];
+      return store.dispatch(actions.getCreatedRecipes(1))
+        .then(() => {
+          expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
+
   it(`should return BEGIN_AJAX_REQUEST END_AJAX_REQUEST actions
     when a request is unsuccessful`, () => {
       const {

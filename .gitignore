@@ -10,3 +10,4 @@ unused
 dist
 .env
 .DS_Store
+docGenerator/

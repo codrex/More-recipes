@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { email, username, password, fullname } from '../../../utils/validator';
 import { Form, Input } from '../../common/FormElements';
+
+
 /**
  * User registration form
  */
 class SignupForm extends React.Component {
   /**
+   * constructor
    * @param {object} props
    */
   constructor(props) {
@@ -16,15 +19,17 @@ class SignupForm extends React.Component {
   }
 
   /**
+   *  signup
    *  @param {object} value (signup form values)
-   * @return {undefined} undefined
+   *  @return {undefined} undefined
   */
   signup(value) {
     return this.props.signup(value);
   }
 
   /**
-   * @returns {object} form
+   * render
+   * @returns {React} react component
    */
   render() {
     const { handleSubmit, submitting } = this.props;

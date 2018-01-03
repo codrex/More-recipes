@@ -1,4 +1,5 @@
 /**
+ * image parser
  * @return {object} image
  * @param {string} image
  */

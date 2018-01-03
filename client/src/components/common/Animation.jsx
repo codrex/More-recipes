@@ -2,6 +2,11 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Animation component
+ * @param {object} props
+ * @return {React} react animation component
+ */
 const Animation = props => (
   <CSSTransitionGroup
     transitionName={props.name}

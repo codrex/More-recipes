@@ -47,7 +47,7 @@ exports[`Recipes Display page component  render as expected  1`] = `
     id="recipes"
   >
     <HeroArea
-      image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+      image="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
       title=""
     >
       <div
@@ -58,12 +58,12 @@ exports[`Recipes Display page component  render as expected  1`] = `
         >
           <img
             alt="heroimage"
-            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+            src="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
           />
           <h1
             className="display-4
           text-capitalize
-          col-8
+          col-11
           bold
           text-center
           "
@@ -178,13 +178,13 @@ exports[`Recipes Display page component  render as expected  1`] = `
                               cloudName="resycom"
                               crop="fill"
                               height="250"
-                              publicId="recipes/s9ej2m9vcvagobqadebh.jpg"
+                              publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
                               width="400"
                             >
                               <img
                                 className="recipe-card-img"
                                 height="250"
-                                src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+                                src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
                                 width="400"
                               />
                             </Image>
@@ -246,6 +246,11 @@ exports[`Recipes Display page component  render as expected  1`] = `
                                   onMouseEnter={[Function]}
                                   parentClass=""
                                   pointer={false}
+                                  tip="Total Upvotes: 1"
+                                  toolTip={true}
+                                  toolTipId="1upvote"
+                                  toolTipPlace="bottom"
+                                  toolTipType="dark"
                                 >
                                   <div
                                     className="icon-wrapper"
@@ -256,13 +261,29 @@ exports[`Recipes Display page component  render as expected  1`] = `
                                   >
                                     <i
                                       className="icon fa fa-thumbs-up recipe-card-icon "
+                                      data-for="1upvote"
                                       data-target=""
+                                      data-tip="Total Upvotes: 1"
                                       data-toggle=""
                                     >
                                       <span>
                                         1
                                       </span>
                                     </i>
+                                    <ReactTooltip
+                                      effect="solid"
+                                      id="1upvote"
+                                      insecure={true}
+                                      place="bottom"
+                                      resizeHide={true}
+                                      type="dark"
+                                      wrapper="div"
+                                    >
+                                      <div
+                                        className="__react_component_tooltip place-top type-dark "
+                                        data-id="tooltip"
+                                      />
+                                    </ReactTooltip>
                                   </div>
                                 </Icon>
                                 <Icon
@@ -275,6 +296,11 @@ exports[`Recipes Display page component  render as expected  1`] = `
                                   onMouseEnter={[Function]}
                                   parentClass=""
                                   pointer={false}
+                                  tip="Total Downvotes: 1"
+                                  toolTip={true}
+                                  toolTipId="1downvote"
+                                  toolTipPlace="bottom"
+                                  toolTipType="dark"
                                 >
                                   <div
                                     className="icon-wrapper"
@@ -285,13 +311,29 @@ exports[`Recipes Display page component  render as expected  1`] = `
                                   >
                                     <i
                                       className="icon fa fa-thumbs-down recipe-card-icon "
+                                      data-for="1downvote"
                                       data-target=""
+                                      data-tip="Total Downvotes: 1"
                                       data-toggle=""
                                     >
                                       <span>
                                         1
                                       </span>
                                     </i>
+                                    <ReactTooltip
+                                      effect="solid"
+                                      id="1downvote"
+                                      insecure={true}
+                                      place="bottom"
+                                      resizeHide={true}
+                                      type="dark"
+                                      wrapper="div"
+                                    >
+                                      <div
+                                        className="__react_component_tooltip place-top type-dark "
+                                        data-id="tooltip"
+                                      />
+                                    </ReactTooltip>
                                   </div>
                                 </Icon>
                                 <Icon
@@ -304,6 +346,11 @@ exports[`Recipes Display page component  render as expected  1`] = `
                                   onMouseEnter={[Function]}
                                   parentClass=""
                                   pointer={false}
+                                  tip="Total Number of Views: 1"
+                                  toolTip={true}
+                                  toolTipId="1views"
+                                  toolTipPlace="bottom"
+                                  toolTipType="dark"
                                 >
                                   <div
                                     className="icon-wrapper"
@@ -314,13 +361,29 @@ exports[`Recipes Display page component  render as expected  1`] = `
                                   >
                                     <i
                                       className="icon fa fa-eye recipe-card-icon"
+                                      data-for="1views"
                                       data-target=""
+                                      data-tip="Total Number of Views: 1"
                                       data-toggle=""
                                     >
                                       <span>
                                         1
                                       </span>
                                     </i>
+                                    <ReactTooltip
+                                      effect="solid"
+                                      id="1views"
+                                      insecure={true}
+                                      place="bottom"
+                                      resizeHide={true}
+                                      type="dark"
+                                      wrapper="div"
+                                    >
+                                      <div
+                                        className="__react_component_tooltip place-top type-dark "
+                                        data-id="tooltip"
+                                      />
+                                    </ReactTooltip>
                                   </div>
                                 </Icon>
                               </div>
@@ -334,6 +397,11 @@ exports[`Recipes Display page component  render as expected  1`] = `
                                 onMouseEnter={[Function]}
                                 parentClass=""
                                 pointer={true}
+                                tip="Unfavourite This Recipe"
+                                toolTip={true}
+                                toolTipId="1fav"
+                                toolTipPlace="bottom"
+                                toolTipType="dark"
                               >
                                 <div
                                   className="icon-wrapper pointer"
@@ -344,11 +412,27 @@ exports[`Recipes Display page component  render as expected  1`] = `
                                 >
                                   <i
                                     className="icon fa recipe-card-icon fav-color fav fa-heart"
+                                    data-for="1fav"
                                     data-target=""
+                                    data-tip="Unfavourite This Recipe"
                                     data-toggle=""
                                   >
                                     <span />
                                   </i>
+                                  <ReactTooltip
+                                    effect="solid"
+                                    id="1fav"
+                                    insecure={true}
+                                    place="bottom"
+                                    resizeHide={true}
+                                    type="dark"
+                                    wrapper="div"
+                                  >
+                                    <div
+                                      className="__react_component_tooltip place-top type-dark "
+                                      data-id="tooltip"
+                                    />
+                                  </ReactTooltip>
                                 </div>
                               </Icon>
                             </div>
@@ -415,7 +499,7 @@ exports[`Recipes Display page component  should match empty snapshot when loadin
     id="recipes"
   >
     <HeroArea
-      image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+      image="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
       title=""
     >
       <div
@@ -426,12 +510,12 @@ exports[`Recipes Display page component  should match empty snapshot when loadin
         >
           <img
             alt="heroimage"
-            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+            src="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
           />
           <h1
             className="display-4
           text-capitalize
-          col-8
+          col-11
           bold
           text-center
           "
@@ -530,7 +614,7 @@ exports[`Recipes Display page component  should match empty snapshot when recipe
     id="recipes"
   >
     <HeroArea
-      image="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+      image="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
       title=""
     >
       <div
@@ -541,12 +625,12 @@ exports[`Recipes Display page component  should match empty snapshot when recipe
         >
           <img
             alt="heroimage"
-            src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+            src="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
           />
           <h1
             className="display-4
           text-capitalize
-          col-8
+          col-11
           bold
           text-center
           "

@@ -5,23 +5,25 @@ import { getFavouriteRecipes } from '../../actions/recipeActions';
 import RecipesDisplay from './RecipesDisplay';
 
 /**
- * @return {React} Favourite Recipe component
+ * Carousel component
  * @param {object} props
+ * @return {React} react element
  */
 const FavouriteRecipes = props => (
   <RecipesDisplay
     title="Favourite recipes"
     getRecipes={props.getFavouriteRecipes}
-    recipes={props.favoriteRecipes}
+    recipes={props.favouriteRecipes}
     {...props}
   />
 );
 FavouriteRecipes.propTypes = {
   getFavouriteRecipes: PropTypes.func.isRequired,
+  favouriteRecipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 
 const mapStateToProps = state => ({
-  favoriteRecipes: state.favoriteRecipes
+  favouriteRecipes: state.favoriteRecipes
 });
 export { FavouriteRecipes as PureFavoriteRecipes };
 export default connect(mapStateToProps, {

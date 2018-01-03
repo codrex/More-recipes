@@ -107,7 +107,7 @@ describe('User thunks', () => {
 
   it(`should return BEGIN_AJAX_REQUEST, UPDATE_USER_PROFILE and
       END_AJAX_REQUEST action when request for profile update is successful`, () => {
-      nockMocker('/api/v1/users/', payload, 'put', 200);
+      nockMocker('/api/v1/users/update', payload, 'put', 200);
 
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: false },
@@ -176,7 +176,7 @@ describe('Test thunks:: expect request to fail', () => {
 
   it(`should return BEGIN_AJAX_REQUEST and
       END_AJAX_REQUEST action when request made for profile update is unsuccessful`, () => {
-      nockMocker('/api/v1/users/', error, 'put', 400);
+      nockMocker('/api/v1/users/update', error, 'put', 400);
 
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: false },
@@ -192,7 +192,7 @@ describe('Test thunks:: expect request to fail', () => {
 
   it(`should return BEGIN_AJAX_REQUEST, AJAX_REQUEST_AUTH_ERROR and
       END_AJAX_REQUEST action when auth fail with 401 status code`, () => {
-      nockMocker('/api/v1/users/', error, 'put', 401);
+      nockMocker('/api/v1/users/update', error, 'put', 401);
 
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: false },
@@ -212,7 +212,7 @@ describe('Test thunks:: expect request to fail', () => {
 
   it(`should return BEGIN_AJAX_REQUEST, AJAX_REQUEST_AUTH_ERROR and
       END_AJAX_REQUEST action when auth fail with 403 status code`, () => {
-      nockMocker('/api/v1/users/', error, 'put', 403);
+      nockMocker('/api/v1/users/update', error, 'put', 403);
 
       const expectedActions = [
         { type: 'BEGIN_AJAX_REQUEST', loading: false },

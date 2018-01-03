@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import List from '../../common/List';
 import ListItem from '../../common/ListItem';
 
+/**
+ * Ingredients component
+ * @param {object} props
+ * @return {React} react element
+ */
 const Ingredients = (props) => {
   const ingredients = props.ingredients || [];
   return (

@@ -37,6 +37,7 @@ describe('Modify recipe page component ', () => {
     const wrapper = shallow(<PureModifyRecipe {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
+    expect(tree.props.hasNotFound).toBe(false);
     expect(tree).toBeInstanceOf(Object);
   });
   test('render as expected when recipe was not found ', () => {
@@ -44,6 +45,7 @@ describe('Modify recipe page component ', () => {
     wrapper.setProps({ statusCode: 404 });
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
+    expect(tree.props.hasNotFound).toBe(true);
     expect(tree).toBeInstanceOf(Object);
   });
   test('render as expected when recipe id is not a number', () => {
@@ -57,6 +59,7 @@ describe('Modify recipe page component ', () => {
     />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
+    expect(tree.props.hasNotFound).toBe(true);
     expect(tree).toBeInstanceOf(Object);
   });
 });

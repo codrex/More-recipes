@@ -13,6 +13,7 @@ import { REVIEW_MESSAGE } from '../../../constants';
  */
 class CommentForm extends React.Component {
   /**
+   * constructor
    * @param {object} props
    */
   constructor(props) {
@@ -30,7 +31,8 @@ class CommentForm extends React.Component {
     }
   }
   /**
-    * @param {object} value (form values)
+   * send review
+   * @param {object} value (form values)
    * @return {undefined} undefined
   */
   review(value) {
@@ -38,6 +40,7 @@ class CommentForm extends React.Component {
   }
 
   /**
+   * render
    * @returns {object} the form
    */
   render() {

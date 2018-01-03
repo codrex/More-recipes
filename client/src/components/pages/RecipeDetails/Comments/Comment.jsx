@@ -4,6 +4,11 @@ import moment from 'moment';
 import Animation from '../../../common/Animation';
 import getInitials from '../../../../utils/getInitials';
 
+/**
+ * Comment component
+ * @param {object} props
+ * @return {React} react element
+ */
 const Comment = props => (
   <Animation>
     <div className="media-object comment">
@@ -29,6 +34,7 @@ Comment.propTypes = {
   review: PropTypes.string.isRequired,
   fullname: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired
 };
 
 export default Comment;

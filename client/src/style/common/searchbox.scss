@@ -45,7 +45,8 @@
 
 @media (max-width: 768px) {
   .searchbox {
-   width: 100%
+   width: 100%;
+   max-width: unset
   }
 }
 

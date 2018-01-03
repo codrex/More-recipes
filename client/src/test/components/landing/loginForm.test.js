@@ -1,8 +1,5 @@
 import React from 'react';
 import toJson from 'enzyme-to-json';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import configureStore from '../../../store/configStore';
 import { PureLoginForm } from '../../../components/pages/Landing/LoginForm';
 
 const props = {
@@ -19,12 +16,8 @@ describe('login form component ', () => {
     expect(tree).toBeInstanceOf(Object);
   });
   test('render as expected when submitting props is true', () => {
-    const component = (
-      <Provider store={configureStore()}>
-        <BrowserRouter>
-          <PureLoginForm {...{ ...props, submitting: true }} />
-        </BrowserRouter>
-      </Provider>
+    const component = shallow(
+      <PureLoginForm {...{ ...props, submitting: true }} />
     );
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();

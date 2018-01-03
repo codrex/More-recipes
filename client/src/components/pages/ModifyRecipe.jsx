@@ -9,10 +9,11 @@ import { RECIPE_MODIFIED } from '../../constants';
 import toastrConfig from '../../toastr/config';
 
 /**
- * @name ModifyRecipe
+ * ModifyRecipe
  */
 class ModifyRecipe extends React.Component {
   /**
+   * constructor
    * @return {undefined}
    * @param {Object} props
    */
@@ -67,7 +68,8 @@ class ModifyRecipe extends React.Component {
   }
 
   /**
-   * @return {React} - RecipeEditor component
+   * render
+   * @return {React} - react component
    */
   render() {
     const { hasNotFound } = this.state;

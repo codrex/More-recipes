@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+/**
+ * Form component
+ * @param {object} props
+ * @return {React} react element
+ */
 const Form = props => (
   <form
     className={classnames('col-12', props.className)}

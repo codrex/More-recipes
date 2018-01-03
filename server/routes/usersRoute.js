@@ -23,7 +23,6 @@ import {
   addFavouriteRecipe,
   beforeUpdate,
   update,
-  compareIds,
   isUserValid,
   fetchFavouriteRecipes,
   fetchCreatedRecipes,
@@ -70,16 +69,19 @@ usersRoute.route('/votes')
   );
 
 /**
- * @description get and update user record routes : PUT/GET
+ * @description get user record routes : GET
  */
 usersRoute.route('/:id')
   .get(
     validateUserId,
     fetchUser
-  )
+  );
+
+/**
+ * @description update user record routes : PUT
+ */
+usersRoute.route('/update')
   .put(
-    recipeIdValidation,
-    compareIds,
     beforeUpdate,
     validateUpdate,
     update,
@@ -89,20 +91,16 @@ usersRoute.route('/:id')
 /**
  * @description get user's favourite recipes route : GET
  */
-usersRoute.route('/:id/recipes/favourite')
+usersRoute.route('/recipes/favourite')
   .get(
-    recipeIdValidation,
-    compareIds,
     fetchFavouriteRecipes
   );
 
 /**
  * @description get user's created recipe route  : POST
  */
-usersRoute.route('/:id/recipes/created')
+usersRoute.route('/recipes/created')
   .get(
-    recipeIdValidation,
-    compareIds,
     fetchCreatedRecipes
   );
 

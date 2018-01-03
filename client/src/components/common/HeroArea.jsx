@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * HeroArea component
+ * @param {object} props
+ * @return {React} react element
+ */
 const HeroArea = props => (
   <div className="hero-half">
     <div className="backdrop" >
@@ -10,7 +15,7 @@ const HeroArea = props => (
         className={
           `display-4
           text-capitalize
-          col-8
+          col-11
           bold
           text-center
           `

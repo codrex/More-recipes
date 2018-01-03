@@ -46,6 +46,7 @@ exports[`Profile Page component  to match empty snapshot  1`] = `
           "views": 1,
         },
       ],
+      "fullname": "test user",
     }
   }
 >

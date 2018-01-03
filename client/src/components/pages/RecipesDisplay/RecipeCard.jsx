@@ -7,7 +7,11 @@ import Button from '../../common/Button';
 import Animation from '../../common/Animation';
 import { DEFAULT_RECIPE_PIX } from '../../../constants';
 
-
+/**
+ * RecipeCard component
+ * @param {object} props
+ * @return {React} react element
+ */
 const RecipeCard = (props) => {
   const fav = props.isFav(props.recipeId);
   const {
@@ -47,15 +51,35 @@ const RecipeCard = (props) => {
           <h4 className="ellipsis">{recipeName}</h4>
           <div className="d-flex col-12 no-padding justify-content-between">
             <div className="d-flex col-8 no-padding">
-              <Icon iconClass="fa fa-thumbs-up recipe-card-icon ">
+              <Icon
+                toolTip
+                toolTipId={`${recipeId}upvote`}
+                tip={`Total Upvotes: ${upVotes}`}
+                iconClass="fa fa-thumbs-up recipe-card-icon "
+              >
                 {upVotes}
               </Icon>
-              <Icon iconClass="fa fa-thumbs-down recipe-card-icon ">
+              <Icon
+                toolTip
+                toolTipId={`${recipeId}downvote`}
+                tip={`Total Downvotes: ${downVotes}`}
+                iconClass="fa fa-thumbs-down recipe-card-icon "
+              >
                 {downVotes}
               </Icon>
-              <Icon iconClass="fa fa-eye recipe-card-icon">{views}</Icon>
+              <Icon
+                toolTip
+                toolTipId={`${recipeId}views`}
+                tip={`Total Number of Views: ${views}`}
+                iconClass="fa fa-eye recipe-card-icon"
+              >
+                {views}
+              </Icon>
             </div>
             <Icon
+              toolTip
+              toolTipId={`${recipeId}fav`}
+              tip={`${fav ? 'Unfavourite This Recipe' : 'Favourite This Recipe'}`}
               iconClass={classnames('fa recipe-card-icon fav-color fav',
                 !fav && 'fa-heart-o', fav && 'fa-heart')}
               pointer

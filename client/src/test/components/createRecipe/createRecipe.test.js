@@ -23,15 +23,18 @@ const props = {
 };
 
 describe('Create Recipe page component ', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<PureCreateRecipe {...props} />);
+  });
+
   test('render as expected when page is mounted', () => {
-    const wrapper = shallow(<PureCreateRecipe {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
 
   test('render as expected when recipe was created', () => {
-    const wrapper = shallow(<PureCreateRecipe {...props} />);
     wrapper.setProps({ message: RECIPE_ADDED });
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();

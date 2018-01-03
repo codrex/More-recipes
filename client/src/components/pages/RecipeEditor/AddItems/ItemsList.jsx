@@ -3,6 +3,11 @@ import React from 'react';
 import Item from './Item';
 import { PureInput, PureTextarea } from '../../../common/FormElements';
 
+/**
+ * ItemsList component
+ * @param {object} props
+ * @return {React} react element
+ */
 const ItemsList = (props) => {
   const {
     items,

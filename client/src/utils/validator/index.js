@@ -16,30 +16,35 @@ validate.validators.words = (word) => {
 };
 
 /**
+ * validate username feild
  * @return {array|undefined} error
  * @param {string} value
  */
 const username = value => validate.single(value, constraint.username);
 
 /**
+ *  validate password feild
  * @return {array|undefined} error
  * @param {string} value
  */
 const password = value => validate.single(value, constraint.password);
 
 /**
+ *  validate email feild
  * @return {array|undefined} error
  * @param {string} value
  */
 const email = value => validate.single(value, constraint.email);
 
 /**
+ *  validate fullname feild
  * @return {array|undefined} error
  * @param {string} value
  */
 const fullname = value => validate.single(value, constraint.fullname);
 
 /**
+ *  validate review feild
  * @return {array|undefined} error
  * @param {string} value
  */
@@ -47,6 +52,7 @@ const review = value =>
   validate.single(value, constraint.presenceAndLength('review'));
 
 /**
+ *  validate item feild
  * @return {array|undefined} error
  * @param {string} value
  * @param {string} itemName
@@ -55,6 +61,7 @@ const validateItem = (value, itemName) =>
   validate.single(value, constraint.presenceAndLength(itemName));
 
 /**
+ *  validate recipe name feild
  * @return {array|undefined} error
  * @param {string} value
  * @param {string} itemName
@@ -63,6 +70,7 @@ const recipeName = (value, itemName) =>
   validate.single(value, constraint.presenceAndLength(itemName));
 
 /**
+ *  validate category feild
  * @return {array|undefined} error
  * @param {string} value
  * @param {string} itemName
@@ -71,17 +79,25 @@ const category = (value, itemName) =>
   validate.single(value, constraint.presenceAndLength(itemName));
 
 /**
+ *  validate recipe object
  * @return {object} error
  * @param {object} recipe
  */
 const validateRecipe = (recipe) => {
-  const { name, category: recipeCategory, ingredients, directions } = recipe;
-  return ({
-    name: recipeName(name, 'Recipe name'),
-    category: recipeCategory.trim() ? false : ['Select a category'],
-    ingredients: ingredients ? ingredients && !ingredients.length > 0 && ['Ingredients list cannot be empty'] : ['Ingredients must be an array'],
-    directions: directions ? !directions.length > 0 && ['Directions list cannot be empty'] : ['Directions must be an array']
-  });
+  const {
+    name,
+    category: recipeCategory,
+    ingredients,
+    directions
+  } = recipe;
+  return (
+    {
+      name: recipeName(name, 'Recipe name'),
+      category: recipeCategory.trim() ? false : ['Select a category'],
+      ingredients: ingredients ? ingredients && !ingredients.length > 0 && ['Ingredients list cannot be empty'] : ['Ingredients must be an array'],
+      directions: directions ? !directions.length > 0 && ['Directions list cannot be empty'] : ['Directions must be an array']
+    }
+  );
 };
 
 export {

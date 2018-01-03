@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * NotFound component
+ * @param {object} props
+ * @return {React} react element
+ */
 const NotFound = props => (
   <div className="display-3 text-uppercase msg-display no-margin d-flex flex-column ">
     <h1 className="not-found-text">

@@ -8,6 +8,7 @@ const props = {
     review: 'cool recipe',
     ReviewerId: 1,
     RecipeId: 1,
+    createdAt: '',
     reviewer: {
       id: 1,
       username: 'testi',

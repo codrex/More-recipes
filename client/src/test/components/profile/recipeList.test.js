@@ -20,14 +20,16 @@ const props = {
 };
 
 describe('Recipes list component ', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<RecipeList {...props} />);
+  });
   test('to match empty snapshot ', () => {
-    const wrapper = shallow(<RecipeList {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
   test('render as expected when delete and edit icon are clicked ', () => {
-    const wrapper = mount(<RecipeList {...props} />);
     let tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     wrapper.find('ListItem').find('Icon').at(0)

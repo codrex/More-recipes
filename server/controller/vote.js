@@ -2,6 +2,7 @@ import { Votes } from '../models/index';
 import { sendServerError, sendSuccess } from '../utils/responder';
 
 /**
+ * @description update recipe vote
  * @name updateVote
  * @function
  * @param {Object} voteInstance
@@ -21,6 +22,7 @@ const updateVote = (voteInstance, voteData, next) => {
 };
 
 /**
+ * @description handles the voting proccess for a paticular recipe
  * @name VoteHandler
  * @function
  * @param {Object} req - Express request object
@@ -70,6 +72,7 @@ export const VoteHandler = (req, res, next) => {
 
 /**
  * @name countVote
+ * @description get the number of upvotes and downvotes for a particular recipe
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -103,6 +106,7 @@ export const countVote = (req, res, next) => {
 /**
  * @name fetchVotes
  * @function
+ * @description get vote records for an array of recipes
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  * @param {Object} next - Express next middleware function

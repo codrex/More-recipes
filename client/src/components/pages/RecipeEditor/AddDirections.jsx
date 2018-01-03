@@ -7,6 +7,11 @@ import {
   clearValidationError
 } from '../../../actions/recipeActions';
 
+/**
+ * AddDirections component
+ * @param {object} props
+ * @return {React} react element
+ */
 const AddDirections = props => (
   <AddItems
     name="direction"

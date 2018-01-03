@@ -15,7 +15,7 @@ const recipeSpec = (user1, user2) => {
     describe('add recipe', () => {
       let recipe = {};
       beforeEach(() => {
-        recipe = mock.recipe;
+        recipe = { ...mock.recipe };
       });
 
       it('should return 201 when recipe is created with valid data', (done) => {
@@ -26,6 +26,7 @@ const recipeSpec = (user1, user2) => {
             expect(res.status).to.equal(201);
             expect(res.body.status).to.equal('success');
             expect(res.body.recipe.image).not.to.be.undefined;
+            expect(res.body.recipe).to.be.an('object').that.deep.includes(recipe);
             done();
           });
       });
@@ -38,6 +39,7 @@ const recipeSpec = (user1, user2) => {
             expect(res.body.status).to.equal('success');
             expect(res.body.recipe.id).to.equal(2);
             expect(res.body.recipe.image).not.to.be.undefined;
+            expect(res.body.recipe).to.be.an('object').that.deep.includes({ ...recipe, name: 'coco drink' });
             done();
           });
       });
@@ -61,7 +63,7 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('should fail  when user attempt to get recipe an invalid access token', (done) => {
+      it('should fail  when user attempts to get recipe with an invalid access token', (done) => {
         const invalidToken = `${token}'dkfjkfjd'`;
         request.post('/api/v1/recipes')
           .set('Authorization', invalidToken)
@@ -73,7 +75,7 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('should fail  when user attempt to get recipe an expired access token', (done) => {
+      it('should fail  when user attempt to get recipe with an expired access token', (done) => {
         request.post('/api/v1/recipes')
           .set('Authorization', expiredToken)
           .send(recipe)
@@ -97,7 +99,7 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('should fail  category is an empty string', (done) => {
+      it('should fail  when category is an empty string', (done) => {
         const invalidRecipe = recipe;
         invalidRecipe.category = '';
         request.post('/api/v1/recipes')
@@ -109,7 +111,7 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('should fail  when directions array is empty', (done) => {
+      it('should fail  when directions is an empty array', (done) => {
         const invalidRecipe = recipe;
         invalidRecipe.directions = [];
         request.post('/api/v1/recipes')
@@ -121,7 +123,7 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('should fail  when ingredients array is empty', (done) => {
+      it('should fail  when ingredients is an empty array', (done) => {
         const invalidRecipe = recipe;
         invalidRecipe.ingredients = [];
         request.post('/api/v1/recipes')
@@ -133,7 +135,7 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('should fail  when recipe is a number', (done) => {
+      it('should fail  when recipe name is a number', (done) => {
         const invalidRecipe = recipe;
         invalidRecipe.name = 123456;
         request.post('/api/v1/recipes')
@@ -157,9 +159,9 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('should fail  for invalid array element', (done) => {
+      it('should fail  when directions array contain numbers', (done) => {
         const invalidRecipe = recipe;
-        invalidRecipe.directions = [233, null, 4950];
+        invalidRecipe.directions = [233, 'wash the rice for 3mins', 4950];
         request.post('/api/v1/recipes')
           .set('Authorization', token)
           .send(invalidRecipe)
@@ -169,9 +171,9 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('should fail  when ingredient is not an array', (done) => {
+      it('should fail  when ingredients is not an array', (done) => {
         const invalidRecipe = recipe;
-        invalidRecipe.ingredients = { step: 'one', step2: 'two' };
+        invalidRecipe.ingredients = { 'item one': 'rice', 'item two': 'oil' };
         request.post('/api/v1/recipes')
           .set('Authorization', token)
           .send(invalidRecipe)
@@ -183,7 +185,7 @@ const recipeSpec = (user1, user2) => {
       });
       it('should fail  when image is not a string', (done) => {
         const invalidRecipe = recipe;
-        invalidRecipe.image = { step: 'one', step2: 'two' };
+        invalidRecipe.image = { src: '', photoId: '' };
         request.post('/api/v1/recipes')
           .set('Authorization', token)
           .send(invalidRecipe)
@@ -197,7 +199,7 @@ const recipeSpec = (user1, user2) => {
 
     // add fav recipe
     describe('add fav recipe', () => {
-      it('should add recipe to a user\'s favourite recipes', (done) => {
+      it('should add recipe to user\'s favourite recipes', (done) => {
         request.post('/api/v1/users/recipe')
           .set('Authorization', token)
           .send({ recipeId: 1 })
@@ -251,12 +253,12 @@ const recipeSpec = (user1, user2) => {
           .set('Authorization', token)
           .send(review)
           .end((err, res) => {
-            expect(res.status).to.equal(200);
+            expect(res.status).to.equal(201);
             expect(res.body.status).to.equal('success');
             done();
           });
       });
-      it('should fail when recipe dose not exist', (done) => {
+      it('should fail when recipe do not exist', (done) => {
         request.post('/api/v1/recipes/10/reviews')
           .set('Authorization', token)
           .send(review)
@@ -266,7 +268,7 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('shold fail when empty review', (done) => {
+      it('should fail when review is empty', (done) => {
         request.post('/api/v1/recipes/1/reviews')
           .set('Authorization', token)
           .send({ review: '' })
@@ -317,23 +319,25 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('should upvote a recipe when user vote for the first time', (done) => {
+      it('should upvote a recipe when user upvote a recipe', (done) => {
         request.put('/api/v1/recipes/1/vote?up=true')
           .set('Authorization', token)
           .end((err, res) => {
             expect(res.status).to.equal(200);
             expect(res.body.recipe.upVotes).to.equal(1);
             expect(res.body.recipe.downVotes).to.equal(0);
+            expect(res.body.status).to.equal('success');
             done();
           });
       });
-      it('should cancel user\'s previous up vote ', (done) => {
+      it('should cancel user\'s previous upvote for this recipe ', (done) => {
         request.put('/api/v1/recipes/1/vote?up=false')
           .set('Authorization', token)
           .end((err, res) => {
             expect(res.status).to.equal(200);
             expect(res.body.recipe.upVotes).to.equal(0);
             expect(res.body.recipe.downVotes).to.equal(0);
+            expect(res.body.status).to.equal('success');
             done();
           });
       });
@@ -344,6 +348,7 @@ const recipeSpec = (user1, user2) => {
             expect(res.status).to.equal(200);
             expect(res.body.recipe.upVotes).to.equal(1);
             expect(res.body.recipe.downVotes).to.equal(0);
+            expect(res.body.status).to.equal('success');
             done();
           });
       });
@@ -354,6 +359,7 @@ const recipeSpec = (user1, user2) => {
             expect(res.status).to.equal(200);
             expect(res.body.recipe.upVotes).to.equal(1);
             expect(res.body.recipe.downVotes).to.equal(1);
+            expect(res.body.status).to.equal('success');
             done();
           });
       });
@@ -364,6 +370,7 @@ const recipeSpec = (user1, user2) => {
             expect(res.status).to.equal(200);
             expect(res.body.recipe.upVotes).to.equal(1);
             expect(res.body.recipe.downVotes).to.equal(0);
+            expect(res.body.status).to.equal('success');
             done();
           });
       });
@@ -375,6 +382,7 @@ const recipeSpec = (user1, user2) => {
             expect(res.status).to.equal(200);
             expect(res.body.recipe.upVotes).to.equal(2);
             expect(res.body.recipe.downVotes).to.equal(0);
+            expect(res.body.status).to.equal('success');
             done();
           });
       });
@@ -385,6 +393,18 @@ const recipeSpec = (user1, user2) => {
             expect(res.status).to.equal(200);
             expect(res.body.recipe.upVotes).to.equal(1);
             expect(res.body.recipe.downVotes).to.equal(1);
+            expect(res.body.status).to.equal('success');
+            done();
+          });
+      });
+      it('should cancel user\'s downvote', (done) => {
+        request.put('/api/v1/recipes/1/vote?down=false')
+          .set('Authorization', token)
+          .end((err, res) => {
+            expect(res.status).to.equal(200);
+            expect(res.body.recipe.upVotes).to.equal(1);
+            expect(res.body.recipe.downVotes).to.equal(0);
+            expect(res.body.status).to.equal('success');
             done();
           });
       });
@@ -393,6 +413,7 @@ const recipeSpec = (user1, user2) => {
           .set('Authorization', token)
           .end((err, res) => {
             expect(res.status).to.equal(400);
+            expect(res.body.status).to.equal('fail');
             done();
           });
       });
@@ -409,6 +430,8 @@ const recipeSpec = (user1, user2) => {
               expect(res.status).to.equal(200);
               expect(res.body.status).to.equal('success');
               expect(res.body.recipes).instanceOf(Array);
+              expect(res.body.recipes.length).to.equal(2);
+              expect(res.body.pageCount).to.equal(1);
               done();
             });
         });
@@ -416,6 +439,13 @@ const recipeSpec = (user1, user2) => {
 
       // get recipes by most upvotes
       describe('get recipes by most upvote', () => {
+        before((done) => {
+          request.put('/api/v1/recipes/2/vote?up=true')
+            .set('Authorization', token2)
+            .end(() => {
+              done();
+            });
+        });
         it('should return recipes by upvote', (done) => {
           request.get('/api/v1/recipes?sort=upvotes&order=ascending')
             .set('Authorization', token)
@@ -463,8 +493,8 @@ const recipeSpec = (user1, user2) => {
       });
 
       // search for recipe by recipe name request
-      describe('search for recipe by recipe name ', () => {
-        it('should return recipes when recipe is searched by recipe name', (done) => {
+      describe('Search ', () => {
+        it('should return recipes when recipe name is supplied as the search term', (done) => {
           request.get('/api/v1/recipes?search=beans+cake')
             .set('Authorization', token)
             .end((err, res) => {
@@ -475,7 +505,7 @@ const recipeSpec = (user1, user2) => {
               done();
             });
         });
-        it('should return recipes when recipe is searched by category', (done) => {
+        it('should return recipes when recipe category is supplied as the search term', (done) => {
           request.get('/api/v1/recipes?search=breakfast')
             .set('Authorization', token)
             .end((err, res) => {
@@ -486,7 +516,7 @@ const recipeSpec = (user1, user2) => {
               done();
             });
         });
-        it('should return a pageCount to equal 2 when limit is 1', (done) => {
+        it('should return pageCount of 2 when limit is 1 and total recipes is 2', (done) => {
           request.get('/api/v1/recipes?search=breakfast&limit=1&page=1')
             .set('Authorization', token)
             .end((err, res) => {
@@ -496,21 +526,25 @@ const recipeSpec = (user1, user2) => {
               done();
             });
         });
-        it('should not fail when an invalid search parameter is pass', (done) => {
+        it('should not fail when an invalid search parameter is supplied', (done) => {
           request.get('/api/v1/recipes?search=[]')
             .set('Authorization', token)
             .end((err, res) => {
               expect(res.status).to.equal(200);
               expect(res.body.status).to.equal('success');
+              expect(res.body.recipes).instanceOf(Array);
+              expect(res.body.recipes.length).to.equal(0);
               done();
             });
         });
-        it('should not fail when aninvalid search parameter is pass', (done) => {
+        it('should not fail when an invalid search parameter is supplied', (done) => {
           request.get('/api/v1/recipes?search=j2\'/[765]')
             .set('Authorization', token)
             .end((err, res) => {
               expect(res.status).to.equal(200);
               expect(res.body.status).to.equal('success');
+              expect(res.body.recipes).instanceOf(Array);
+              expect(res.body.recipes.length).to.equal(0);
               done();
             });
         });
@@ -518,14 +552,24 @@ const recipeSpec = (user1, user2) => {
 
       // get favourite recipes
       describe('get favourite recipes', () => {
+        before((done) => {
+          request.post('/api/v1/users/recipe')
+            .set('Authorization', token)
+            .send({ recipeId: 1 })
+            .end(() => {
+              done();
+            });
+        });
         it('should return a user\'s favourite recipes', (done) => {
-          request.get('/api/v1/users/1/recipes/favourite')
+          request.get('/api/v1/users/recipes/favourite')
             .set('Authorization', token)
             .end((err, res) => {
               expect(res.status).to.equal(200);
               expect(res.body.status).to.equal('success');
               expect(res.body.pageCount).not.to.be.undefined;
-              expect(res.body.recipes).to.be.instanceOf(Array);
+              expect(res.body.recipes).instanceOf(Array);
+              expect(res.body.recipes.length).to.equal(1);
+              expect(res.body.pageCount).to.equal(1);
               done();
             });
         });
@@ -533,14 +577,24 @@ const recipeSpec = (user1, user2) => {
 
       // get created recipes
       describe('get created recipes', () => {
+        before((done) => {
+          request.post('/api/v1/recipes')
+            .set('Authorization', token2)
+            .send({ ...mock.recipe, name: 'pizza' })
+            .end(() => {
+              done();
+            });
+        });
         it('should return a user\'s created recipes', (done) => {
-          request.get('/api/v1/users/1/recipes/created')
-            .set('Authorization', token)
+          request.get('/api/v1/users/recipes/created')
+            .set('Authorization', token2)
             .end((err, res) => {
               expect(res.status).to.equal(200);
               expect(res.body.status).to.equal('success');
-              expect(res.body.pageCount).not.to.be.undefined;
-              expect(res.body.recipes).to.be.instanceOf(Array);
+              expect(res.body.recipes).instanceOf(Array);
+              expect(res.body.recipes.length).to.equal(1);
+              expect(res.body.pageCount).to.equal(1);
+              expect(res.body.recipes[0].name).to.equal('pizza');
               done();
             });
         });
@@ -585,10 +639,10 @@ const recipeSpec = (user1, user2) => {
     // modify recipe request
     describe('modify recipe', () => {
       const {
-        updateOne,
-        updateTwo,
-        updateThree,
-        updateFour
+        userDataOne,
+        userDataTwo,
+        userDataThree,
+        userDataFour
       } = mock.recipeUpdateData;
       it('should fail when user send invalid data', (done) => {
         request.put('/api/v1/recipes/1')
@@ -618,9 +672,9 @@ const recipeSpec = (user1, user2) => {
       it('should fail when user did not create the recipe', (done) => {
         request.put('/api/v1/recipes/1')
           .set('Authorization', token2)
-          .send(updateFour)
+          .send(userDataFour)
           .end((err, res) => {
-            expect(res.status).to.equal(404);
+            expect(res.status).to.equal(403);
             expect(res.body.status).to.equal('fail');
             done();
           });
@@ -628,7 +682,7 @@ const recipeSpec = (user1, user2) => {
       it('should fail when recipeId is not in not found ', (done) => {
         request.put('/api/v1/recipes/109')
           .set('Authorization', token2)
-          .send(updateFour)
+          .send(userDataFour)
           .end((err, res) => {
             expect(res.status).to.equal(404);
             expect(res.body.status).to.equal('fail');
@@ -647,7 +701,7 @@ const recipeSpec = (user1, user2) => {
       it('should return success when user update a single field', (done) => {
         request.put('/api/v1/recipes/1')
           .set('Authorization', token)
-          .send(updateOne)
+          .send(userDataOne)
           .end((err, res) => {
             expect(res.status).to.equal(200);
             expect(res.body.status).to.equal('success');
@@ -657,7 +711,7 @@ const recipeSpec = (user1, user2) => {
       it('should return success when user update a two fields', (done) => {
         request.put('/api/v1/recipes/1')
           .set('Authorization', token)
-          .send(updateTwo)
+          .send(userDataTwo)
           .end((err, res) => {
             expect(res.status).to.equal(200);
             expect(res.body.status).to.equal('success');
@@ -667,7 +721,7 @@ const recipeSpec = (user1, user2) => {
       it('should return success when user update a three fields', (done) => {
         request.put('/api/v1/recipes/1')
           .set('Authorization', token)
-          .send(updateThree)
+          .send(userDataThree)
           .end((err, res) => {
             expect(res.status).to.equal(200);
             expect(res.body.status).to.equal('success');
@@ -677,7 +731,7 @@ const recipeSpec = (user1, user2) => {
       it('should return success when user update a four fields', (done) => {
         request.put('/api/v1/recipes/1')
           .set('Authorization', token)
-          .send(updateFour)
+          .send(userDataFour)
           .end((err, res) => {
             expect(res.status).to.equal(200);
             expect(res.body.status).to.equal('success');
@@ -737,7 +791,7 @@ const recipeSpec = (user1, user2) => {
         request.delete('/api/v1/recipes/1')
           .set('Authorization', token2)
           .end((err, res) => {
-            expect(res.status).to.equal(404);
+            expect(res.status).to.equal(403);
             expect(res.body.status).to.equal('fail');
             done();
           });

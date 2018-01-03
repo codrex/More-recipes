@@ -15,22 +15,23 @@ const props = {
 };
 
 describe('Recipe name and category component', () => {
-  test('render as expected when component is mounted', () => {
-    const component = shallow(
+  let component;
+  beforeEach(() => {
+    component = shallow(
       <PureRecipeNameAndCategory {...props} />);
+  });
+  test('render as expected when component is mounted', () => {
     const tree = toJSON(component);
     expect(tree).toMatchSnapshot();
   });
+
   test('render as expected when name field has focus', () => {
-    const component = shallow(
-      <PureRecipeNameAndCategory {...props} />);
     component.find('Form').find('#recipeName').simulate('focus');
     const tree = toJSON(component);
     expect(tree).toMatchSnapshot();
   });
+
   test('render as expected when name field has blur', () => {
-    const component = shallow(
-      <PureRecipeNameAndCategory {...props} />);
     component.find('Form').find('#recipeName').simulate('blur');
     const tree = toJSON(component);
     expect(tree).toMatchSnapshot();

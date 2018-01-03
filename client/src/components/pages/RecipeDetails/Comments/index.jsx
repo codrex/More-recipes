@@ -4,6 +4,11 @@ import NotFound from '../../../common/NotFound';
 import Comment from './Comment';
 import Loader from '../../../common/Loader';
 
+/**
+ * Comments component
+ * @param {object} props
+ * @return {React} react element
+ */
 const Comments = (props) => {
   const { comments, isLoading } = props;
   return (

@@ -11,7 +11,7 @@ import { RECIPE_ADDED } from '../../../../constants';
  */
 class AddItems extends React.Component {
   /**
-   *
+   * constructor
    * @param {object} props
    */
   constructor(props) {
@@ -24,7 +24,6 @@ class AddItems extends React.Component {
   }
 
   /**
-   *
    * @param {Object} nextProps
    * @return {boolean} boolean value
    */
@@ -51,7 +50,7 @@ class AddItems extends React.Component {
   }
 
   /**
-   *
+   * add item to list
    * @param {String} value
    * @return {undfined} undefined
    */
@@ -68,7 +67,7 @@ class AddItems extends React.Component {
   }
 
   /**
-   *
+   * remove item from list
    * @param {number} index
    * @return {undfined} undefined
    */
@@ -78,7 +77,7 @@ class AddItems extends React.Component {
     this.props.sendItemsToStore(items);
   }
   /**
-   *
+   * edit item
    * @param {string} value
    * @param {number} index
    * @return {undfined} undefined
@@ -90,6 +89,7 @@ class AddItems extends React.Component {
   }
 
   /**
+   * validate item
    * @return {Array} array of strings
    * @param {string} value
    */
@@ -103,7 +103,8 @@ class AddItems extends React.Component {
   }
 
   /**
-   * @return {React} Form jsx
+   * reander form
+   * @return {React} react component
    */
   renderForm = () => {
     const {
@@ -146,7 +147,8 @@ class AddItems extends React.Component {
   }
 
   /**
-   * @return {React} List jsx
+   * render list
+   * @return {React} react component
    */
   renderList = () => {
     const {
@@ -171,7 +173,8 @@ class AddItems extends React.Component {
   }
 
   /**
-   * @return {React} AddItem jsx
+   * render
+   * @return {React} react component
    */
   render = () => {
     const { name } = this.props;

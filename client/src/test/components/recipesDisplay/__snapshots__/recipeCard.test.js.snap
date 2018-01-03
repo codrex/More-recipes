@@ -11,7 +11,7 @@ exports[`Recipes card component  render as expected 1`] = `
       <img
         className="recipe-card-img"
         height="250"
-        src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+        src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
         width="400"
       />
       <div
@@ -59,13 +59,21 @@ exports[`Recipes card component  render as expected 1`] = `
           >
             <i
               className="icon fa fa-thumbs-up recipe-card-icon "
+              data-for="1upvote"
               data-target=""
+              data-tip="Total Upvotes: 30"
               data-toggle=""
             >
               <span>
                 30
               </span>
             </i>
+            <div
+              className="__react_component_tooltip place-top type-dark "
+              data-id="tooltip"
+            >
+              
+            </div>
           </div>
           <div
             className="icon-wrapper"
@@ -76,13 +84,21 @@ exports[`Recipes card component  render as expected 1`] = `
           >
             <i
               className="icon fa fa-thumbs-down recipe-card-icon "
+              data-for="1downvote"
               data-target=""
+              data-tip="Total Downvotes: 0"
               data-toggle=""
             >
               <span>
                 0
               </span>
             </i>
+            <div
+              className="__react_component_tooltip place-top type-dark "
+              data-id="tooltip"
+            >
+              
+            </div>
           </div>
           <div
             className="icon-wrapper"
@@ -93,13 +109,21 @@ exports[`Recipes card component  render as expected 1`] = `
           >
             <i
               className="icon fa fa-eye recipe-card-icon"
+              data-for="1views"
               data-target=""
+              data-tip="Total Number of Views: 120"
               data-toggle=""
             >
               <span>
                 120
               </span>
             </i>
+            <div
+              className="__react_component_tooltip place-top type-dark "
+              data-id="tooltip"
+            >
+              
+            </div>
           </div>
         </div>
         <div
@@ -111,11 +135,19 @@ exports[`Recipes card component  render as expected 1`] = `
         >
           <i
             className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+            data-for="1fav"
             data-target=""
+            data-tip="Favourite This Recipe"
             data-toggle=""
           >
             <span />
           </i>
+          <div
+            className="__react_component_tooltip place-top type-dark "
+            data-id="tooltip"
+          >
+            
+          </div>
         </div>
       </div>
     </div>
@@ -207,13 +239,13 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                       cloudName="resycom"
                       crop="fill"
                       height="250"
-                      publicId="recipes/s9ej2m9vcvagobqadebh.jpg"
+                      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
                       width="400"
                     >
                       <img
                         className="recipe-card-img"
                         height="250"
-                        src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+                        src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
                         width="400"
                       />
                     </Image>
@@ -275,6 +307,11 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           onMouseEnter={[Function]}
                           parentClass=""
                           pointer={false}
+                          tip="Total Upvotes: 30"
+                          toolTip={true}
+                          toolTipId="1upvote"
+                          toolTipPlace="bottom"
+                          toolTipType="dark"
                         >
                           <div
                             className="icon-wrapper"
@@ -285,13 +322,29 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           >
                             <i
                               className="icon fa fa-thumbs-up recipe-card-icon "
+                              data-for="1upvote"
                               data-target=""
+                              data-tip="Total Upvotes: 30"
                               data-toggle=""
                             >
                               <span>
                                 30
                               </span>
                             </i>
+                            <ReactTooltip
+                              effect="solid"
+                              id="1upvote"
+                              insecure={true}
+                              place="bottom"
+                              resizeHide={true}
+                              type="dark"
+                              wrapper="div"
+                            >
+                              <div
+                                className="__react_component_tooltip place-top type-dark "
+                                data-id="tooltip"
+                              />
+                            </ReactTooltip>
                           </div>
                         </Icon>
                         <Icon
@@ -304,6 +357,11 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           onMouseEnter={[Function]}
                           parentClass=""
                           pointer={false}
+                          tip="Total Downvotes: 0"
+                          toolTip={true}
+                          toolTipId="1downvote"
+                          toolTipPlace="bottom"
+                          toolTipType="dark"
                         >
                           <div
                             className="icon-wrapper"
@@ -314,13 +372,29 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           >
                             <i
                               className="icon fa fa-thumbs-down recipe-card-icon "
+                              data-for="1downvote"
                               data-target=""
+                              data-tip="Total Downvotes: 0"
                               data-toggle=""
                             >
                               <span>
                                 0
                               </span>
                             </i>
+                            <ReactTooltip
+                              effect="solid"
+                              id="1downvote"
+                              insecure={true}
+                              place="bottom"
+                              resizeHide={true}
+                              type="dark"
+                              wrapper="div"
+                            >
+                              <div
+                                className="__react_component_tooltip place-top type-dark "
+                                data-id="tooltip"
+                              />
+                            </ReactTooltip>
                           </div>
                         </Icon>
                         <Icon
@@ -333,6 +407,11 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           onMouseEnter={[Function]}
                           parentClass=""
                           pointer={false}
+                          tip="Total Number of Views: 120"
+                          toolTip={true}
+                          toolTipId="1views"
+                          toolTipPlace="bottom"
+                          toolTipType="dark"
                         >
                           <div
                             className="icon-wrapper"
@@ -343,13 +422,29 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           >
                             <i
                               className="icon fa fa-eye recipe-card-icon"
+                              data-for="1views"
                               data-target=""
+                              data-tip="Total Number of Views: 120"
                               data-toggle=""
                             >
                               <span>
                                 120
                               </span>
                             </i>
+                            <ReactTooltip
+                              effect="solid"
+                              id="1views"
+                              insecure={true}
+                              place="bottom"
+                              resizeHide={true}
+                              type="dark"
+                              wrapper="div"
+                            >
+                              <div
+                                className="__react_component_tooltip place-top type-dark "
+                                data-id="tooltip"
+                              />
+                            </ReactTooltip>
                           </div>
                         </Icon>
                       </div>
@@ -363,6 +458,11 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                         onMouseEnter={[Function]}
                         parentClass=""
                         pointer={true}
+                        tip="Favourite This Recipe"
+                        toolTip={true}
+                        toolTipId="1fav"
+                        toolTipPlace="bottom"
+                        toolTipType="dark"
                       >
                         <div
                           className="icon-wrapper pointer"
@@ -373,11 +473,27 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                         >
                           <i
                             className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                            data-for="1fav"
                             data-target=""
+                            data-tip="Favourite This Recipe"
                             data-toggle=""
                           >
                             <span />
                           </i>
+                          <ReactTooltip
+                            effect="solid"
+                            id="1fav"
+                            insecure={true}
+                            place="bottom"
+                            resizeHide={true}
+                            type="dark"
+                            wrapper="div"
+                          >
+                            <div
+                              className="__react_component_tooltip place-top type-dark "
+                              data-id="tooltip"
+                            />
+                          </ReactTooltip>
                         </div>
                       </Icon>
                     </div>
@@ -477,13 +593,13 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                       cloudName="resycom"
                       crop="fill"
                       height="250"
-                      publicId="recipes/s9ej2m9vcvagobqadebh.jpg"
+                      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
                       width="400"
                     >
                       <img
                         className="recipe-card-img"
                         height="250"
-                        src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/v1/recipes/s9ej2m9vcvagobqadebh.jpg"
+                        src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
                         width="400"
                       />
                     </Image>
@@ -545,6 +661,11 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           onMouseEnter={[Function]}
                           parentClass=""
                           pointer={false}
+                          tip="Total Upvotes: 30"
+                          toolTip={true}
+                          toolTipId="1upvote"
+                          toolTipPlace="bottom"
+                          toolTipType="dark"
                         >
                           <div
                             className="icon-wrapper"
@@ -555,13 +676,29 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           >
                             <i
                               className="icon fa fa-thumbs-up recipe-card-icon "
+                              data-for="1upvote"
                               data-target=""
+                              data-tip="Total Upvotes: 30"
                               data-toggle=""
                             >
                               <span>
                                 30
                               </span>
                             </i>
+                            <ReactTooltip
+                              effect="solid"
+                              id="1upvote"
+                              insecure={true}
+                              place="bottom"
+                              resizeHide={true}
+                              type="dark"
+                              wrapper="div"
+                            >
+                              <div
+                                className="__react_component_tooltip place-top type-dark "
+                                data-id="tooltip"
+                              />
+                            </ReactTooltip>
                           </div>
                         </Icon>
                         <Icon
@@ -574,6 +711,11 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           onMouseEnter={[Function]}
                           parentClass=""
                           pointer={false}
+                          tip="Total Downvotes: 0"
+                          toolTip={true}
+                          toolTipId="1downvote"
+                          toolTipPlace="bottom"
+                          toolTipType="dark"
                         >
                           <div
                             className="icon-wrapper"
@@ -584,13 +726,29 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           >
                             <i
                               className="icon fa fa-thumbs-down recipe-card-icon "
+                              data-for="1downvote"
                               data-target=""
+                              data-tip="Total Downvotes: 0"
                               data-toggle=""
                             >
                               <span>
                                 0
                               </span>
                             </i>
+                            <ReactTooltip
+                              effect="solid"
+                              id="1downvote"
+                              insecure={true}
+                              place="bottom"
+                              resizeHide={true}
+                              type="dark"
+                              wrapper="div"
+                            >
+                              <div
+                                className="__react_component_tooltip place-top type-dark "
+                                data-id="tooltip"
+                              />
+                            </ReactTooltip>
                           </div>
                         </Icon>
                         <Icon
@@ -603,6 +761,11 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           onMouseEnter={[Function]}
                           parentClass=""
                           pointer={false}
+                          tip="Total Number of Views: 120"
+                          toolTip={true}
+                          toolTipId="1views"
+                          toolTipPlace="bottom"
+                          toolTipType="dark"
                         >
                           <div
                             className="icon-wrapper"
@@ -613,13 +776,29 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                           >
                             <i
                               className="icon fa fa-eye recipe-card-icon"
+                              data-for="1views"
                               data-target=""
+                              data-tip="Total Number of Views: 120"
                               data-toggle=""
                             >
                               <span>
                                 120
                               </span>
                             </i>
+                            <ReactTooltip
+                              effect="solid"
+                              id="1views"
+                              insecure={true}
+                              place="bottom"
+                              resizeHide={true}
+                              type="dark"
+                              wrapper="div"
+                            >
+                              <div
+                                className="__react_component_tooltip place-top type-dark "
+                                data-id="tooltip"
+                              />
+                            </ReactTooltip>
                           </div>
                         </Icon>
                       </div>
@@ -633,6 +812,11 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                         onMouseEnter={[Function]}
                         parentClass=""
                         pointer={true}
+                        tip="Favourite This Recipe"
+                        toolTip={true}
+                        toolTipId="1fav"
+                        toolTipPlace="bottom"
+                        toolTipType="dark"
                       >
                         <div
                           className="icon-wrapper pointer"
@@ -643,11 +827,27 @@ exports[`Recipes card component  render as expected when favorite icon is clicke
                         >
                           <i
                             className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                            data-for="1fav"
                             data-target=""
+                            data-tip="Favourite This Recipe"
                             data-toggle=""
                           >
                             <span />
                           </i>
+                          <ReactTooltip
+                            effect="solid"
+                            id="1fav"
+                            insecure={true}
+                            place="bottom"
+                            resizeHide={true}
+                            type="dark"
+                            wrapper="div"
+                          >
+                            <div
+                              className="__react_component_tooltip place-top type-dark "
+                              data-id="tooltip"
+                            />
+                          </ReactTooltip>
                         </div>
                       </Icon>
                     </div>

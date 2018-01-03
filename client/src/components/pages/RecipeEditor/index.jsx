@@ -9,10 +9,13 @@ import RecipeImage from './RecipeImage';
 import NotFound from '../../common/NotFound';
 
 /**
- * @name RecipeEditor
- * @return {React} jsx
+ * RecipeEditor
  */
 class RecipeEditor extends React.Component {
+  /**
+   * notFound
+   * @return {React} component
+   */
   renderNotFound = () => {
     const { hasNotFound } = this.props;
     if (hasNotFound) {
@@ -21,6 +24,9 @@ class RecipeEditor extends React.Component {
     return null;
   }
 
+  /**
+   * @return {React} react component
+   */
   renderBody = () => {
     const {
       loading,
@@ -59,7 +65,7 @@ class RecipeEditor extends React.Component {
   }
 
   /**
-   * @return {undefined}
+   * @return {React} react component
    */
   render() {
     const {

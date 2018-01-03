@@ -7,8 +7,7 @@
  More-Recipes​​ ​provides​ ​a​ ​platform​ ​for​ ​users​ ​to​ ​share​ ​awesome​ ​and​ ​exciting​ ​​ ​recipe​ ​ideas​ ​they  have​ ​invented​ ​or​ ​learnt.​ ​​ ​Suppose​ ​a​ ​user​ ​comes ​up​ ​with​ ​a​ ​recipe,​ ​​ ​he/she​ ​can​ ​post​ ​it​ ​on  More-Recipes​​ ​and​ ​​ ​get​ ​feedback​ ​in​ ​form​ ​of​ ​reviews​ ​and​ ​votes​ ​from​ ​other​ ​users​ ​who​ ​explored​ the ​recipe.​
 
 ### API Documentation
-The documentation of the API routes available for this project is documented on
-[this link](http://docs.morerecipes.apiary.io)
+You can find the API documentation [here](http://https://more-recipesrex.herokuapp.com/api/v1/doc/)
 
 ### Prerequisites
 Before you can run this project locally on your machine here are the applications you need to install on your machine:
@@ -38,17 +37,16 @@ and on your browser navigate to ```http://localhost:8000/```
 -----
 This project was built using the following technology:
 
-1. [ Nodejs 6](https://nodejs.org/en/) Javascript runtime
-1. [Postgres DB](https://www.postgresql.org/download/) Database engine
- 1. [Express 4](https://expressjs.com/) Web server Js framework
- 1. [Sequelize](http://docs.sequelizejs.com/) ORM (Object Relational Mapper)
- 1. [React](https://reactjs.org/) Frontend Js framework
- 1. [Bootstrap 4 beta](https://getbootstrap.com/) CSS framework
- 1. [SASS ](http://sass-lang.com/) Custom styles.
+1. [ Nodejs 6](https://nodejs.org/en/) A JavaScript runtime built on Chrome's V8 JavaScript engine.
+1. [Postgres DB](https://www.postgresql.org/download/) An open source object-relational database system.
+ 1. [Express 4](https://expressjs.com/) Fast, unopinionated, minimalist web framework for Node.js
+ 1. [Sequelize](http://docs.sequelizejs.com/) A promise-based ORM for Node.js.
+ 1. [React](https://reactjs.org/) A declarative, efficient, and flexible JavaScript library for building user interfaces.
+ 1. [Bootstrap 4 beta](https://getbootstrap.com/) An open source toolkit for developing with HTML, CSS, and JS
 
  ### Contributing
 
-You can send us your bug reports, suggestions, feedback e.t.c by sending us a [mail](mailto:rex.ogbemudia@andela.com). we hope to hear from you.
+You can send us your bug reports, suggestions, feedback e.t.c by sending us a [mail](mailto:more.recipes.app@gmail.com). we hope to hear from you.
 ### License
 
-This project is authored by Ogbemudia Rex and it is licensed for your use, modification and distribution under the MIT license.
+This project is authored by Ogbemudia Rex and it is licensed for your use, modification and distribution under the [MIT license](https://opensource.org/licenses/MIT).

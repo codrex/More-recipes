@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-
+/**
+ * Modal component
+ * @param {object} props
+ * @return {React} react element
+ */
 const Modal = (props) => {
   const {
     children,

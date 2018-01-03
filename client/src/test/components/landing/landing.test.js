@@ -35,7 +35,7 @@ describe('Landing page component ', () => {
     expect(tree).toMatchSnapshot();
   });
   test('expected to match snapshot when user is trying to login ', () => {
-    const component = shallow(
+    const component = mount(
       <Provider store={configureStore()}>
         <BrowserRouter>
           <Landing {...{ ...props, match: { path: '/login' } }} />

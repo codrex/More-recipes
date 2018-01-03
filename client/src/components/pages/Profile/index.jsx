@@ -22,12 +22,13 @@ import {
   resetRecipes
 } from '../../../actions/recipeActions';
 
+
 /**
- * @summary Profile page component
- * @return {React} ProfilePage
+ * Profile page component
  */
 class Profile extends React.Component {
   /**
+   * constructor
    * @return {undefined}
    * @param {object} props
    */
@@ -75,6 +76,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * delete button click event handler
    * @return {undefined}
    * @param {string} modalTitle
    * @param {number} currentId
@@ -91,6 +93,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * modal close
    * @return {undefined}
    */
   onModalClose = () => {
@@ -101,6 +104,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * modal open
    * @return {undefined}
    */
   onModalOpen = () => {
@@ -111,12 +115,11 @@ class Profile extends React.Component {
   }
 
   /**
+   * edit profile click event handler
    * @returns{undefined}
    * @param{string} title
    */
   editProfileClicked = (title) => {
-    console.log(typeof title);
-    const c = 'kkkk';
     if (title) {
       this.setState({
         modalTitle: 'Update profile'
@@ -126,6 +129,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * delete recipe
    * @return {undefined}
    * @param {number} index
    */
@@ -136,6 +140,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * modify recipe
    * @returns{undefined}
    * @param {number} id
    */
@@ -144,6 +149,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * recipe item click event handler
    * @return {undefined}
    * @param {object} item
    */
@@ -152,6 +158,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * pagination
    * @return {React} jsx
    */
   renderPagination = () => {
@@ -172,6 +179,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * user info
    * @return {React} jsx
    */
   renderUSerInfo = () => {
@@ -186,6 +194,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * user's created recipe
    * @return {React} jsx
    */
   renderUSerRecipes = () => {
@@ -223,6 +232,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * render modal component
    * @return {React} jsx
    */
   renderModal = () => {
@@ -277,6 +287,7 @@ class Profile extends React.Component {
   }
 
   /**
+   * render
    * @return {undefined}
    */
   render() {

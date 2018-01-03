@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ReactSelect from 'react-select';
 
+/**
+ * Select component
+ * @param {object} props
+ * @return {React} react element
+ */
 const Select = (props) => {
   const {
     helpTextClassName,

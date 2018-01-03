@@ -56,10 +56,11 @@ const sendValidationError = (res, validation) => {
  * @param {string} dataName
  * @param {object} data
  * @param {object} res
+ * @param {number} code
  */
-const sendPaginatedData = (dataName, data, res) => {
+const sendPaginatedData = (dataName, data, res, code = 200) => {
   const { count, limit, rows } = data;
-  res.status(200).send({
+  res.status(code).send({
     status: 'success',
     pageCount: Math.ceil(count / limit),
     [dataName]: rows

@@ -10,7 +10,7 @@ exports[`Item component  expected to match empty snapshot 1`] = `
   handleSubmit={[Function]}
   index={1}
   ingredients={true}
-  name="in gredients"
+  name="ingredients"
   placeholder=""
   uniquenessChecker={[Function]}
 >
@@ -53,6 +53,11 @@ exports[`Item component  expected to match empty snapshot 1`] = `
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -63,7 +68,9 @@ exports[`Item component  expected to match empty snapshot 1`] = `
               >
                 <i
                   className="icon fa fa-pencil items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -81,6 +88,11 @@ exports[`Item component  expected to match empty snapshot 1`] = `
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -91,7 +103,9 @@ exports[`Item component  expected to match empty snapshot 1`] = `
               >
                 <i
                   className="icon fa fa-trash items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -159,6 +173,11 @@ exports[`Item component  expected to match snapshot when a new value was entered
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -169,7 +188,9 @@ exports[`Item component  expected to match snapshot when a new value was entered
               >
                 <i
                   className="icon fa fa-pencil items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -187,6 +208,11 @@ exports[`Item component  expected to match snapshot when a new value was entered
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -197,7 +223,9 @@ exports[`Item component  expected to match snapshot when a new value was entered
               >
                 <i
                   className="icon fa fa-trash items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -265,6 +293,11 @@ exports[`Item component  expected to match snapshot when close button is clicked
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -275,7 +308,9 @@ exports[`Item component  expected to match snapshot when close button is clicked
               >
                 <i
                   className="icon fa fa-pencil items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -293,6 +328,11 @@ exports[`Item component  expected to match snapshot when close button is clicked
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -303,7 +343,9 @@ exports[`Item component  expected to match snapshot when close button is clicked
               >
                 <i
                   className="icon fa fa-trash items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -371,6 +413,11 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -381,7 +428,9 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
               >
                 <i
                   className="icon fa fa-pencil items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -399,6 +448,11 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -409,7 +463,9 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
               >
                 <i
                   className="icon fa fa-trash items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -579,6 +635,11 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 2`
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -589,7 +650,9 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 2`
               >
                 <i
                   className="icon fa fa-pencil items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -607,6 +670,11 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 2`
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -617,7 +685,9 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 2`
               >
                 <i
                   className="icon fa fa-trash items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -685,6 +755,11 @@ exports[`Item component  expected to match snapshot when value to be edited was 
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -695,7 +770,9 @@ exports[`Item component  expected to match snapshot when value to be edited was 
               >
                 <i
                   className="icon fa fa-pencil items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />
@@ -713,6 +790,11 @@ exports[`Item component  expected to match snapshot when value to be edited was 
               onMouseEnter={[Function]}
               parentClass=""
               pointer={false}
+              tip="hello"
+              toolTip={false}
+              toolTipId=""
+              toolTipPlace="bottom"
+              toolTipType="dark"
             >
               <div
                 className="icon-wrapper"
@@ -723,7 +805,9 @@ exports[`Item component  expected to match snapshot when value to be edited was 
               >
                 <i
                   className="icon fa fa-trash items-list-item-icon icon"
+                  data-for=""
                   data-target=""
+                  data-tip="hello"
                   data-toggle=""
                 >
                   <span />

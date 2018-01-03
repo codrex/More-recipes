@@ -9,6 +9,7 @@ import { PRODUCTION_URL, DEVELOPMENT_URL } from '../../constants';
 const rootUrl = process.env.NODE_ENV === 'production' ? PRODUCTION_URL : DEVELOPMENT_URL;
 
 /**
+ * request ajax handler
  * @return {promise} promise object
  * @param {object} payload
  * @param {string} path
@@ -26,6 +27,7 @@ export const request = (payload, path, dispatch, type, loading) => {
 };
 
 /**
+ * set Authorization header
  * @return {*} void
  * @param {string} token
  */
@@ -34,6 +36,7 @@ export const setToken = (token) => {
 };
 
 /**
+ * dispatch when ajax request returned successful
  * @return {*} void
  * @param {function} dispatch
  * @param {string} msg
@@ -48,6 +51,7 @@ export const dispatchOnSuccess = (dispatch, msg = '', code = 200) => {
 };
 
 /**
+ * dispatch when ajax request returned unsucessful
  * @return {*} void
  * @param {function} dispatch
  * @param {string} error
@@ -62,6 +66,7 @@ export const dispatchOnFail = (dispatch, error, code = 0) => {
 };
 
 /**
+ * dispatch when there is an authentication error
  * @return {*} void
  * @param {function} dispatch
  * @param {string} error

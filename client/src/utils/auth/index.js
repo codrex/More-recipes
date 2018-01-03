@@ -4,6 +4,7 @@ export const TOKEN_ID = 'MRAToken';
 export const getToken = () => localStorage.getItem(TOKEN_ID);
 
 /**
+ * get user id from jwt token
  * @return {number|string} id
  */
 export const getId = () => {
@@ -17,6 +18,7 @@ export const getId = () => {
 };
 
 /**
+ * store user token
  * @return {undefined}
  * @param {string} token
  */
@@ -25,6 +27,7 @@ export const storeToken = (token) => {
 };
 
 /**
+ * delete user token
  * @return {undefined}
  */
 export const clearToken = () => {
@@ -32,6 +35,7 @@ export const clearToken = () => {
 };
 
 /**
+ * check if user token is valid
  * @return {bool} true|false
  */
 export const hasToken = () => {
