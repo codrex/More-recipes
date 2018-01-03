@@ -7,7 +7,7 @@ import {
   UPDATE_USER_PROFILE,
   GET_USER_VOTES,
 } from './actions';
-import { clearToken } from '../utils/auth/auth';
+import { clearToken } from '../utils/auth';
 import ActionDispatcher from './actionDispatcher';
 
 /**

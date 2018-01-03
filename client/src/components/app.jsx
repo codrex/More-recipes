@@ -3,24 +3,24 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import toastr from 'toastr';
-import Navbar from '../components/common/navbar';
-import SecondaryNavBar from '../components/common/secondaryNavBar';
-import Footer from '../components/common/footer';
-import NotFound from '../components/common/notFound';
-import FavouriteRecipes from '../components/pages/favouriteRecipes';
-import CreatedRecipes from '../components/pages/createdRecipes';
-import TopRecipes from '../components/pages/topRecipes';
-import Recipes from '../components/pages/recipes';
-import RecipeDetails from '../components/pages/recipeDetails';
-import Profile from '../components/pages/profile';
-import Landing from './pages/landing';
-import ModifyRecipe from './pages/modifyRecipe';
-import CreateRecipe from './pages/createRecipe';
+import Navbar from '../components/common/Navbar';
+import SecondaryNavBar from '../components/common/SecondaryNavBar';
+import Footer from '../components/common/Footer';
+import NotFound from '../components/common/NotFound';
+import FavouriteRecipes from '../components/pages/FavouriteRecipes';
+import CreatedRecipes from '../components/pages/CreatedRecipes';
+import TopRecipes from '../components/pages/TopRecipes';
+import Recipes from '../components/pages/Recipes';
+import RecipeDetails from '../components/pages/RecipeDetails';
+import Profile from '../components/pages/Profile';
+import Landing from './pages/Landing';
+import ModifyRecipe from './pages/ModifyRecipe';
+import CreateRecipe from './pages/CreateRecipe';
 import { getUserProfile } from '../actions/userActions';
 import toastrConfig from '../toastr/config';
 import { resetReqCount, resetSuccess } from '../actions/ajaxActions';
 import { findRecipes } from '../actions/recipeActions';
-import Dropdown from '../components/common/dropdown';
+
 /**
  * App component
  */
@@ -89,7 +89,8 @@ class App extends React.Component {
    */
   handleRecipeSearch = (push, value) => {
     push('/recipes');
-    this.props.searchRecipes(value);
+    const lowerCaseValue = value && value.toLowerCase();
+    this.props.searchRecipes(lowerCaseValue);
   }
 
   /**
@@ -133,12 +134,6 @@ class App extends React.Component {
       <BrowserRouter>
         <div className="container-fluid  no-padding">
           <Switch>
-            <Route
-              static
-              path="/drop"
-              extact
-              component={Dropdown}
-            />
             <Route
               static
               path="/create"

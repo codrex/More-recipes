@@ -1,39 +1,15 @@
 import Sequelize from 'sequelize';
 import db from '../models/index';
-import getParams from '../utils/pagination';
+import getParams from '../utils/getParams';
 import { ATTRIBUTES, RECIPE_NOT_FOUND } from '../constants';
 import {
-  serverError,
+  sendServerError,
   sendSuccess,
   sendFail,
   sendPaginatedData
 } from '../utils/responder';
 
 const Recipes = db.Recipes;
-
-/**
- * @name fetch
- * @function
-* @param {Object} where
- * @param {Object} order
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @return {*} void
- */
-const fetch = (where = {}, order = [], req, res) => {
-  const { limit, offset } = getParams(req);
-  Recipes.findAndCountAll({
-    where,
-    limit,
-    offset,
-    order,
-    attributes: ATTRIBUTES,
-  }).then(({ count, rows }) => {
-    sendPaginatedData('recipes', { rows, count, limit }, res);
-  }).catch(() => {
-    serverError(res);
-  });
-};
 
 /**
  * @name create
@@ -60,8 +36,8 @@ export const create = (req, res, next) => {
               },
             }
           ],
-        }).then((reloadRecipe) => {
-          sendSuccess(res, 200, 'recipe', reloadRecipe);
+        }).then((reloadedRecipe) => {
+          sendSuccess(res, 201, 'recipe', reloadedRecipe);
         });
         next();
       });
@@ -70,8 +46,32 @@ export const create = (req, res, next) => {
         sendFail(res, 400, 'Sorry, recipe name already exist, please enter another');
         return;
       }
-      serverError(res);
+      sendServerError(res);
     });
+};
+
+/**
+ * @name fetch
+ * @function
+ * @param {Object} where
+ * @param {Object} order
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @return {*} void
+ */
+const fetch = (where = {}, order = [], req, res) => {
+  const { limit, offset } = getParams(req);
+  Recipes.findAndCountAll({
+    where,
+    limit,
+    offset,
+    order,
+    attributes: ATTRIBUTES,
+  }).then(({ count, rows }) => {
+    sendPaginatedData('recipes', { rows, count, limit }, res);
+  }).catch(() => {
+    sendServerError(res);
+  });
 };
 
 /**
@@ -111,7 +111,7 @@ export const fetchRecipe = (req, res, next) => {
       sendFail(res, 404, RECIPE_NOT_FOUND);
     }
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 
@@ -131,7 +131,7 @@ export const fetchVotes = (req, res) => {
   }).then((recipe) => {
     sendSuccess(res, 200, 'recipe', recipe.dataValues);
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 
@@ -157,27 +157,26 @@ export const fetchRecipes = (req, res) => {
 export const recipesSearch = (req, res, next) => {
   if (req.query.search === undefined) return next();
   const { search } = req.query;
-  const Op = Sequelize.Op;
   const where = {
-    [Op.or]: [
+    $or: [
       {
         name: {
-          [Op.iLike]: `%${search}%`
+          $iLike: `%${search}%`
         }
       },
       {
         category: {
-          [Op.iLike]: `%${search}%`
+          $iLike: `%${search}%`
         }
       },
       {
         ingredients: {
-          [Op.contains]: [search]
+          $contains: [search]
         }
       },
       {
         directions: {
-          [Op.contains]: [search]
+          $contains: [search]
         }
       }
     ]
@@ -223,7 +222,7 @@ export const beforeUpdate = (req, res, next) => {
     req.recipe = recipe;
     next();
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 
@@ -268,7 +267,7 @@ export const isOwner = (req, res, next) => {
         next();
       }
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -291,7 +290,7 @@ export const isRecipe = (req, res, next) => {
         sendFail(res, 404, RECIPE_NOT_FOUND);
       }
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -312,7 +311,7 @@ export const setReviewAssociation = (req, res, next) => {
           next();
         });
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -365,7 +364,7 @@ export const update = (req, res, next) => {
       req.recipeUpdated = true;
       next();
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 

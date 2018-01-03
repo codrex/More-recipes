@@ -1,5 +1,5 @@
 import ActionDispatcher from './actionDispatcher';
-import { validateRecipe } from '../utils/validator/validator';
+import { validateRecipe } from '../utils/validator';
 import {
   NEW_RECIPE,
   MODIFIED_RECIPE,

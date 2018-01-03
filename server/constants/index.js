@@ -12,3 +12,4 @@ export const ATTRIBUTES = [
 export const RECIPE_NOT_FOUND = 'Sorry, recipe not found';
 export const USER_NOT_FOUND = 'Sorry, user not found';
 export const PRODUCTION_URL = 'https://more-recipesrex.herokuapp.com';
+export const TOKEN_EXPIRATION_TIME = '1d';

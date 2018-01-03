@@ -1,4 +1,4 @@
-server/test/
+//server/test/
 template/
 coverage
 node_modules
@@ -9,5 +9,5 @@ webpack.connfig.babel.js
 **/Procfile
 **/package-lock.json
 dist
-client/src/test/
+//client/src/test/
 package-lock.json

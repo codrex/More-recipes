@@ -1,4 +1,10 @@
 import bcrypt from 'bcrypt-nodejs';
 
-const comparePassword = (hash, password) => bcrypt.compareSync(password, hash);
+/**
+ * @return {boole} true|false
+ * @param {string} hashedPassword
+ * @param {string} password
+ */
+const comparePassword = (hashedPassword, password) => bcrypt.compareSync(password, hashedPassword);
+
 export default comparePassword;

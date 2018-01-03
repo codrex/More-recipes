@@ -1,10 +1,10 @@
 import { Users, Recipes } from '../models/index';
 import comparePassword from '../utils/comparePassword';
-import { generateToken } from '../authentication/authenticator';
-import getParams from '../utils/pagination';
+import { generateToken } from '../middleware/authentication';
+import getParams from '../utils/getParams';
 import { ATTRIBUTES, USER_NOT_FOUND } from '../constants';
 import {
-  serverError,
+  sendServerError,
   sendSuccess,
   sendFail,
   sendPaginatedData
@@ -39,7 +39,7 @@ export const login = (req, res, next) => {
       sendFail(res, 400, 'invalid password');
     }
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 
@@ -65,7 +65,7 @@ export const create = (req, res, next) => {
         sendFail(res, 400, `Sorry, ${error.errors[0].path} already exists, please enter another`);
         return;
       }
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -191,7 +191,7 @@ export const addFavouriteRecipe = (req, res) => {
           }
         });
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -246,7 +246,7 @@ export const fetchRecipes = (model, alias, req, res) => {
           }, res);
         });
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -281,14 +281,14 @@ export const fetchCreatedRecipes = (req, res) => {
 };
 
 /**
- * @name isValidUser
+ * @name isUserValid
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  * @param {Object} next - Express next middleware function
  * @return {*} void
  */
-export const isValidUser = (req, res, next) => {
+export const isUserValid = (req, res, next) => {
   Users.findById(req.requestId)
     .then((user) => {
       if (user) {
@@ -297,7 +297,7 @@ export const isValidUser = (req, res, next) => {
         sendFail(res, 404, USER_NOT_FOUND);
       }
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 

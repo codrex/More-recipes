@@ -4,7 +4,7 @@ import {
   Accordion,
   AccordionHeader,
   AccordionBody
-} from '../../../common/accordion';
+} from '../../../common/Accordion';
 
 /**
  * @name Direction

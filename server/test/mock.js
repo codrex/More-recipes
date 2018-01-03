@@ -52,3 +52,14 @@ export const userLoginData = {
     password: '123456',
   },
 };
+
+export const userAttribute = [
+  'profilePicture',
+  'id',
+  'fullname',
+  'username',
+  'email',
+  'updatedAt',
+  'createdAt',
+  'token'
+];

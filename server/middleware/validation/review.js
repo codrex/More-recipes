@@ -1,7 +1,7 @@
 import {
   validateReview,
   validationHandler
-} from '../../utils/validators/validator';
+} from '../../utils/validators';
 
 /**
  * @name reviewValidation

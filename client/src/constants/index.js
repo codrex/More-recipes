@@ -30,3 +30,12 @@ export const CAROUSEL_PIX_ONE = 'https://res.cloudinary.com/resycom/image/upload
 export const CAROUSEL_PIX_TWO = 'https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg';
 export const PRODUCTION_URL = 'https://more-recipesrex.herokuapp.com';
 export const DEVELOPMENT_URL = 'http://127.0.0.1:8000';
+export const PROTECTED_ROUTES = {
+  Recipes: '/recipes',
+  'Top Recipes': '/top-recipes',
+  'Add Recipe': '/create'
+};
+export const UNPROTECTED_ROUTES = {
+  login: '/login',
+  'create account': '/create-account'
+};

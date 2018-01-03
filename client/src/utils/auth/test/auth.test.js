@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { storeToken, TOKEN_ID, getToken, getId, hasToken } from '../auth';
+import { storeToken, TOKEN_ID, getToken, getId, hasToken } from '../index';
 
 
 const token = jwt.sign({ id: 1 }, 'test');

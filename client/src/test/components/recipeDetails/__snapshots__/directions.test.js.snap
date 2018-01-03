@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Directions display component  expected to match empty snapshot 1`] = `
+<div
+  className="col-12 directions-list-wrapper"
+>
+  <h5
+    className="display-4"
+  >
+    Directions 
+  </h5>
+  <Direction
+    content="directions 1"
+    index={0}
+    key="directions 11514970600132"
+  />
+  <Direction
+    content="direction 2"
+    index={1}
+    key="direction 21514970600132"
+  />
+  <Direction
+    content="direction 3"
+    index={2}
+    key="direction 31514970600132"
+  />
+</div>
+`;

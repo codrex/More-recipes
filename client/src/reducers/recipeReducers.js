@@ -39,6 +39,8 @@ export const recipeValidationError = (state = initialState.recipeValidationError
         ...state,
         ...action.error
       };
+    case RESET_RECIPE:
+      return {};
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import 'react-dropdown/style.css';
 import 'font-awesome-sass-loader';
 import 'bootstrap';
 import configureStore from './store/configStore';
-import App from './components/app';
+import App from './components/App';
 import './style/index.scss';
 
 const store = configureStore();

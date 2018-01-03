@@ -1,6 +1,6 @@
 import db from '../models/index';
-import getParams from '../utils/pagination';
-import { serverError, sendPaginatedData } from '../utils/responder';
+import getParams from '../utils/getParams';
+import { sendServerError, sendPaginatedData } from '../utils/responder';
 
 const RecipeReviews = db.RecipeReviews;
 
@@ -30,7 +30,7 @@ export const createReview = (req, res, next) => {
         next();
       });
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -61,6 +61,6 @@ export const fetchReviews = (req, res, next) => {
     sendPaginatedData('reviews', { rows, count, limit }, res);
     if (req.createdReview) next();
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { ListItem } from '../list';
+import ListItem from '../ListItem';
 
 const Accordion = props => (
   <ListItem className={classnames(props.className, 'accordion')}>

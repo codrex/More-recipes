@@ -4,7 +4,7 @@ import {
   validateProfileUpdate,
   validationHandler,
   validateId
-} from '../../utils/validators/validator';
+} from '../../utils/validators';
 
 /**
  * @name validateSignupData

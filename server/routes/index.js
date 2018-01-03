@@ -1,6 +1,6 @@
 import express from 'express';
-import usersRouter from '../routes/users-route';
-import recipesRouter from '../routes/recipes-route';
+import usersRouter from '../routes/usersRoute';
+import recipesRouter from '../routes/recipesRoute';
 import { sendFail } from '../utils/responder';
 
 const route = express.Router();

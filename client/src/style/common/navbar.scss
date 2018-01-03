@@ -2,6 +2,10 @@
 .navbar{
   min-height: fit-content;
   height: 7vh;
+  & > div.d-flex {
+    flex: 1;
+    justify-content: flex-end;
+  }
 }
 
 .navbar-brand{

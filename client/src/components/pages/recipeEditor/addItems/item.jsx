@@ -1,16 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import Form from '../../../common/form/form';
-import Button from '../../../common/button';
-import Icon from '../../../common/icon';
-import { ListItem } from '../../../common/list';
-import { item } from '../../../../utils/validator';
+import { Form } from '../../../common/FormElements';
+import Button from '../../../common/Button';
+import Icon from '../../../common/Icon';
+import ListItem from '../../../common/ListItem';
+import { validateItem } from '../../../../utils/validator';
 import {
   Accordion,
   AccordionHeader,
   AccordionBody
-} from '../../../common/accordion';
+} from '../../../common/Accordion';
 
 const ListItemIcons = props => (
   <div className="d-flex align-items-center">
@@ -75,7 +75,7 @@ class Item extends React.Component {
    * @return {undefined}
    * @param {string} value
    */
-  validateItem = value => item(value, this.props.name)
+  validateItem = value => validateItem(value, this.props.name)
 
   /**
    * @return {undefined}

@@ -1,5 +1,5 @@
 import { Votes } from '../models/index';
-import { serverError, sendSuccess } from '../utils/responder';
+import { sendServerError, sendSuccess } from '../utils/responder';
 
 /**
  * @name updateVote
@@ -32,7 +32,7 @@ export const VoteHandler = (req, res, next) => {
   let { up, down } = req.query;
   if (up) up = JSON.parse(up.toLowerCase());
   if (down) down = JSON.parse(down.toLowerCase());
-  const voteData = {
+  let voteData = {
     upVote: up || false,
     downVote: down || false
   };
@@ -43,16 +43,18 @@ export const VoteHandler = (req, res, next) => {
         recipeId: req.params.id,
       }
     }).then((vote) => {
-    voteData.voterId = req.requestId;
-    voteData.recipeId = req.params.id;
+    voteData = {
+      ...voteData,
+      voterId: req.requestId,
+      recipeId: req.params.id
+    };
+
     if (!vote) {
       Votes.create(voteData)
         .then(() => {
           next();
         });
-    } else if (up === true) {
-      updateVote(vote, voteData, next);
-    } else if (down === true) {
+    } else if (up || down) {
       updateVote(vote, voteData, next);
     } else {
       vote.destroy({
@@ -62,7 +64,7 @@ export const VoteHandler = (req, res, next) => {
       });
     }
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 
@@ -94,7 +96,7 @@ export const countVote = (req, res, next) => {
           next();
         });
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -118,7 +120,7 @@ export const fetchVotes = (req, res) => {
   }).then((votes) => {
     sendSuccess(res, 200, 'votes', votes);
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Item from './item';
-import { PureInput, PureTextarea } from '../../../common/form';
+import Item from './Item';
+import { PureInput, PureTextarea } from '../../../common/FormElements';
 
-const List = (props) => {
+const ItemsList = (props) => {
   const {
     items,
     deleteItem,
@@ -33,14 +33,14 @@ const List = (props) => {
   );
 };
 
-List.defaultProps = {
+ItemsList.defaultProps = {
   items: [],
   name: '',
   ingredients: false,
   directions: false
 };
 
-List.propTypes = {
+ItemsList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape),
   deleteItem: PropTypes.func.isRequired,
   editItem: PropTypes.func.isRequired,
@@ -50,4 +50,4 @@ List.propTypes = {
   ingredients: PropTypes.bool,
 };
 
-export default List;
+export default ItemsList;

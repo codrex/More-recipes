@@ -6,7 +6,7 @@ import {
   request
 } from '../utils/requestHandler';
 import { LOGIN, SIGNUP } from './actions';
-import { storeToken, getId, getToken } from '../utils/auth/auth';
+import { storeToken, getId, getToken } from '../utils/auth';
 
 
 /**

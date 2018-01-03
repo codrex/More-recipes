@@ -1,5 +1,5 @@
-import { validateVote, validationHandler } from '../../utils/validators/validator';
-
+import { validateVote, validationHandler } from '../../utils/validators';
+import { sendFail } from '../../utils/responder';
 /**
  * @name voteValidation
  * @function
@@ -10,6 +10,10 @@ import { validateVote, validationHandler } from '../../utils/validators/validato
  */
 const voteValidation = (req, res, next) => {
   const { up, down } = req.query;
+  if (up && down) {
+    sendFail(res, 400, 'Multiple paramters is not allow. Please send either true or false');
+    return;
+  }
   const data = {
     vote: up || down,
     id: req.params.id,
