@@ -9,6 +9,7 @@ import {
 } from '../actions/actions';
 
 /**
+ * user reducer
  * @return {object} newState
  * @param {object} state
  * @param {object} action

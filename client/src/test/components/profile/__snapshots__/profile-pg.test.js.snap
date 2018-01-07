@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Page component  to match empty snapshot  1`] = `
+<Profile
+  actions={
+    Object {
+      "currentRecipe": [Function],
+      "deleteRecipe": [Function],
+      "getCreatedRecipes": [Function],
+      "getProfile": [Function],
+      "removeFromFav": [Function],
+      "resetPageCount": [Function],
+      "resetRecipes": [Function],
+      "resetSuccess": [Function],
+      "update": [Function],
+    }
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  pageCount={0}
+  recipes={Array []}
+  success={false}
+  user={
+    Object {
+      "createdRecipes": Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "name": "recipe",
+          "recipeId": 1,
+          "upVotes": 1,
+          "views": 1,
+        },
+      ],
+      "favRecipes": Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "name": "recipe",
+          "recipeId": 1,
+          "upVotes": 1,
+          "views": 1,
+        },
+      ],
+      "fullname": "test user",
+    }
+  }
+>
+  <div
+    className="container-fluid profile-page no-padding"
+  >
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="editProfileModal"
+      left={true}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={true}
+      rightBtnText=""
+      title=""
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="editProfileModalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="editProfileModalLabel"
+              />
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</Profile>
+`;

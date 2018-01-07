@@ -12,6 +12,7 @@ import {
 
 
 /**
+ * page count reducer
  * @return {object} newState
  * @param {object} state
  * @param {object} action

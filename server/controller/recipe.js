@@ -1,39 +1,14 @@
-import Sequelize from 'sequelize';
 import db from '../models/index';
-import getParams from '../utils/pagination';
+import getParams from '../utils/getParams';
 import { ATTRIBUTES, RECIPE_NOT_FOUND } from '../constants';
 import {
-  serverError,
+  sendServerError,
   sendSuccess,
   sendFail,
   sendPaginatedData
 } from '../utils/responder';
 
 const Recipes = db.Recipes;
-
-/**
- * @name fetch
- * @function
-* @param {Object} where
- * @param {Object} order
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @return {*} void
- */
-const fetch = (where = {}, order = [], req, res) => {
-  const { limit, offset } = getParams(req);
-  Recipes.findAndCountAll({
-    where,
-    limit,
-    offset,
-    order,
-    attributes: ATTRIBUTES,
-  }).then(({ count, rows }) => {
-    sendPaginatedData('recipes', { rows, count, limit }, res);
-  }).catch(() => {
-    serverError(res);
-  });
-};
 
 /**
  * @name create
@@ -60,8 +35,8 @@ export const create = (req, res, next) => {
               },
             }
           ],
-        }).then((reloadRecipe) => {
-          sendSuccess(res, 200, 'recipe', reloadRecipe);
+        }).then((reloadedRecipe) => {
+          sendSuccess(res, 201, 'recipe', reloadedRecipe);
         });
         next();
       });
@@ -70,11 +45,38 @@ export const create = (req, res, next) => {
         sendFail(res, 400, 'Sorry, recipe name already exist, please enter another');
         return;
       }
-      serverError(res);
+      sendServerError(res);
     });
 };
 
 /**
+ * @description fetch recipes from the databae
+ * @name fetch
+ * @function
+ * @param {Object} where
+ * @param {Object} order
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @return {*} void
+ */
+const fetch = (where = {}, order = [], req, res) => {
+  const { limit, offset } = getParams(req);
+  Recipes.findAndCountAll({
+    where,
+    limit,
+    offset,
+    order,
+    attributes: ATTRIBUTES,
+    group: ['id']
+  }).then(({ count, rows }) => {
+    sendPaginatedData('recipes', { rows, count: count.length, limit }, res);
+  }).catch(() => {
+    sendServerError(res);
+  });
+};
+
+/**
+ * @description fetch a single recipe from the database
  * @name  fetchRecipe
  * @function
  * @param {Object} req - Express request object
@@ -111,12 +113,13 @@ export const fetchRecipe = (req, res, next) => {
       sendFail(res, 404, RECIPE_NOT_FOUND);
     }
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 
 /**
- * @name  fetchVotes
+ * @description get recipe's vote record
+ * @name fetchVotes
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -131,22 +134,24 @@ export const fetchVotes = (req, res) => {
   }).then((recipe) => {
     sendSuccess(res, 200, 'recipe', recipe.dataValues);
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 
 /**
- * @name  fetchRecipes
+ * @description fetch recipe from the database
+ * @name fetchRecipes
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  * @return {*} void
  */
 export const fetchRecipes = (req, res) => {
-  fetch({}, [], req, res);
+  fetch({}, [[db.sequelize.fn('RANDOM')]], req, res);
 };
 
 /**
+ * @description fetch recipe that matches a given search term
  * @name recipesSearch
  * @function
  * @param {Object} req - Express request object
@@ -157,27 +162,26 @@ export const fetchRecipes = (req, res) => {
 export const recipesSearch = (req, res, next) => {
   if (req.query.search === undefined) return next();
   const { search } = req.query;
-  const Op = Sequelize.Op;
   const where = {
-    [Op.or]: [
+    $or: [
       {
         name: {
-          [Op.iLike]: `%${search}%`
+          $iLike: `%${search}%`
         }
       },
       {
         category: {
-          [Op.iLike]: `%${search}%`
+          $iLike: `%${search}%`
         }
       },
       {
         ingredients: {
-          [Op.contains]: [search]
+          $contains: [search]
         }
       },
       {
         directions: {
-          [Op.contains]: [search]
+          $contains: [search]
         }
       }
     ]
@@ -195,11 +199,29 @@ export const recipesSearch = (req, res, next) => {
  * @return {*} void
  */
 export const fetchRecipeByUpVote = (req, res, next) => {
+  const { sequelize } = db;
   if (req.query.sort === undefined) return next();
-  fetch({}, [['upVotes', 'DESC']], req, res);
+  fetch({
+    upVotes: {
+      $gt: 0
+    }
+  }, [
+    [
+      sequelize.where(sequelize.col('upVotes'), '>', sequelize.col('downVotes')),
+      'DESC'
+    ],
+    [
+      sequelize.where(sequelize.col('upVotes'), '-', sequelize.col('downVotes')),
+      'DESC'
+    ],
+    [
+      sequelize.fn('min', sequelize.col('downVotes')), 'DESC'
+    ],
+  ], req, res);
 };
 
 /**
+ * @description fetch recipe and store it in ```req.recipe``` attribute.
  * @name beforeUpdate
  * @function
  * @param {Object} req - Express request object
@@ -223,11 +245,12 @@ export const beforeUpdate = (req, res, next) => {
     req.recipe = recipe;
     next();
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 
 /**
+ * @description delete recipe from the database
  * @name remove
  * @function
  * @param {Object} req - Express request object
@@ -247,6 +270,7 @@ export const remove = (req, res) => {
 };
 
 /**
+ * @description check recipe owner
  * @name isOwner
  * @function
  * @param {Object} req - Express request object
@@ -258,17 +282,20 @@ export const isOwner = (req, res, next) => {
   Recipes.findOne({
     where: {
       id: parseInt(req.params.id, 10),
-      ownerId: req.requestId
     }
   })
     .then((recipe) => {
       if (!recipe) {
         sendFail(res, 404, RECIPE_NOT_FOUND);
       } else {
-        next();
+        if (recipe.dataValues.ownerId === req.requestId) {
+          next();
+          return;
+        }
+        sendFail(res, 403, 'You do not access to this recipe');
       }
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -291,7 +318,7 @@ export const isRecipe = (req, res, next) => {
         sendFail(res, 404, RECIPE_NOT_FOUND);
       }
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -312,7 +339,7 @@ export const setReviewAssociation = (req, res, next) => {
           next();
         });
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
@@ -365,7 +392,7 @@ export const update = (req, res, next) => {
       req.recipeUpdated = true;
       next();
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 

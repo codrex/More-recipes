@@ -1,11 +1,12 @@
 import {
   validateReview,
   validationHandler
-} from '../../utils/validators/validator';
+} from '../../utils/validators';
 
 /**
  * @name reviewValidation
  * @function
+ * @description validate recipe review
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  * @param {Object} next - Express next middleware function

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Paginator component  render as expected when component is mounted 1`] = `
+<nav
+  aria-label="Page navigation"
+  className="d-flex justify-content-center col-12 "
+>
+  <PaginationBoxView
+    activeClassName="page-active"
+    breakClassName="break-me"
+    breakLabel={
+      <a
+        href=""
+      >
+        ...
+      </a>
+    }
+    containerClassName="pagination justify-content-center"
+    disableInitialCallback={false}
+    disabledClassName="disabled"
+    marginPagesDisplayed={2}
+    nextClassName="page-item page-link"
+    nextLabel={
+      <Icon
+        active=""
+        className=""
+        dataTarget=""
+        dataToggle=""
+        handleClick={[Function]}
+        iconClass="fa fa-angle-double-right"
+        onMouseEnter={[Function]}
+        parentClass=""
+        pointer={false}
+        tip="hello"
+        toolTip={false}
+        toolTipId=""
+        toolTipPlace="bottom"
+        toolTipType="dark"
+      />
+    }
+    onPageChange={[Function]}
+    pageClassName="page-item"
+    pageCount={5}
+    pageLinkClassName="page-link"
+    pageRangeDisplayed={5}
+    previousClassName="page-item page-link"
+    previousLabel={
+      <Icon
+        active=""
+        className=""
+        dataTarget=""
+        dataToggle=""
+        handleClick={[Function]}
+        iconClass="fa fa-angle-double-left"
+        onMouseEnter={[Function]}
+        parentClass=""
+        pointer={false}
+        tip="hello"
+        toolTip={false}
+        toolTipId=""
+        toolTipPlace="bottom"
+        toolTipType="dark"
+      />
+    }
+    subContainerClassName="page-item"
+  />
+</nav>
+`;

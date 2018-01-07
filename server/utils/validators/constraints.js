@@ -1,4 +1,4 @@
-const objects = {
+const rules = {
   name: {
     presence: true,
     format: {
@@ -61,35 +61,35 @@ const objects = {
   },
 };
 
-const constraint = {
+const constraints = {
   loginWithUsernameConstraint: {
-    username: objects.username,
-    password: objects.password,
+    username: rules.username,
+    password: rules.password,
   },
   signupConstraint: {
-    username: objects.username,
-    password: objects.password,
-    email: objects.email,
-    fullname: objects.fullname,
+    username: rules.username,
+    password: rules.password,
+    email: rules.email,
+    fullname: rules.fullname,
   },
   profileUpdateConstraint: {
-    username: objects.username,
-    email: objects.email,
-    fullname: objects.fullname,
+    username: rules.username,
+    email: rules.email,
+    fullname: rules.fullname,
   },
   createRecipeConstraint: {
-    name: objects.name,
-    category: objects.name,
-    ingredients: objects.stringArray,
-    directions: objects.stringArray,
+    name: rules.name,
+    category: rules.name,
+    ingredients: rules.stringArray,
+    directions: rules.stringArray,
     image: {
       presence: true,
       isString: true,
     },
-    ownerId: objects.id,
+    ownerId: rules.id,
   },
   idConstraint: {
-    id: objects.id,
+    id: rules.id,
   },
   reviewConstraint: {
     review: {
@@ -101,7 +101,7 @@ const constraint = {
     },
   },
   voteConstraint: {
-    id: objects.id,
+    id: rules.id,
     vote: {
       presence: {
         message: 'parameter is invalid, only true or false is allowed'
@@ -114,8 +114,8 @@ const constraint = {
     }
   },
   recipeIdsConstraint: {
-    recipeIds: objects.numberArray
+    recipeIds: rules.numberArray
   }
 };
 
-export default constraint;
+export default constraints;

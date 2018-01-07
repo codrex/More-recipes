@@ -3,7 +3,7 @@ import {
   validateId,
   validationHandler,
   validateRecipeIds
-} from '../../utils/validators/validator';
+} from '../../utils/validators';
 
 /**
  * @name validateRecipe

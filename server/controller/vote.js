@@ -1,7 +1,8 @@
 import { Votes } from '../models/index';
-import { serverError, sendSuccess } from '../utils/responder';
+import { sendServerError, sendSuccess } from '../utils/responder';
 
 /**
+ * @description update recipe vote
  * @name updateVote
  * @function
  * @param {Object} voteInstance
@@ -21,6 +22,7 @@ const updateVote = (voteInstance, voteData, next) => {
 };
 
 /**
+ * @description handles the voting proccess for a paticular recipe
  * @name VoteHandler
  * @function
  * @param {Object} req - Express request object
@@ -32,7 +34,7 @@ export const VoteHandler = (req, res, next) => {
   let { up, down } = req.query;
   if (up) up = JSON.parse(up.toLowerCase());
   if (down) down = JSON.parse(down.toLowerCase());
-  const voteData = {
+  let voteData = {
     upVote: up || false,
     downVote: down || false
   };
@@ -43,16 +45,18 @@ export const VoteHandler = (req, res, next) => {
         recipeId: req.params.id,
       }
     }).then((vote) => {
-    voteData.voterId = req.requestId;
-    voteData.recipeId = req.params.id;
+    voteData = {
+      ...voteData,
+      voterId: req.requestId,
+      recipeId: req.params.id
+    };
+
     if (!vote) {
       Votes.create(voteData)
         .then(() => {
           next();
         });
-    } else if (up === true) {
-      updateVote(vote, voteData, next);
-    } else if (down === true) {
+    } else if (up || down) {
       updateVote(vote, voteData, next);
     } else {
       vote.destroy({
@@ -62,12 +66,13 @@ export const VoteHandler = (req, res, next) => {
       });
     }
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 
 /**
  * @name countVote
+ * @description get the number of upvotes and downvotes for a particular recipe
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -94,13 +99,14 @@ export const countVote = (req, res, next) => {
           next();
         });
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
 /**
  * @name fetchVotes
  * @function
+ * @description get vote records for an array of recipes
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  * @param {Object} next - Express next middleware function
@@ -118,7 +124,7 @@ export const fetchVotes = (req, res) => {
   }).then((votes) => {
     sendSuccess(res, 200, 'votes', votes);
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };
 

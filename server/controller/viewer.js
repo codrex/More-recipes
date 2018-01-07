@@ -2,6 +2,7 @@ import { Viewers } from '../models/index';
 
 /**
  * @name addViewer
+ * @description stores a viewer's record in the viewers table
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object

@@ -1,4 +1,4 @@
-import getInitials from '../getInitials';
+import getInitials from '../index';
 
 describe('Get initials function test', () => {
   it('should return the "JS" when "java script" is pass in as args', () => {

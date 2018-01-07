@@ -5,6 +5,7 @@ import {
 import initialState from '../reducers/initialState';
 
 /**
+ * status code reducer
  * @return {object} newState
  * @param {object} state
  * @param {object} action

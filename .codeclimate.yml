@@ -16,9 +16,14 @@ engines:
     enabled: true
     config:
       config_file: .eslintrc.json
+    checks:
+      import/no-unresolved:
+        enabled: false
   fixme:
     enabled: true
   file-lines:
+   enabled: false
+  identical-code:
    enabled: false
 ratings:
   paths:

@@ -1,5 +1,5 @@
 import ActionDispatcher from './actionDispatcher';
-import { validateRecipe } from '../utils/validator/validator';
+import { validateRecipe } from '../utils/validator';
 import {
   NEW_RECIPE,
   MODIFIED_RECIPE,
@@ -307,9 +307,8 @@ export const getTopRecipes = page => (dispatch) => {
  */
 export const getFavouriteRecipes = page => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  const id = dispatcher.getIdFromToken();
   return dispatcher.requestAndDispatch(
-    `/api/v1/users/${id}/recipes/favourite?limit=${LIMIT}&page=${page}`,
+    `/api/v1/users/recipes/favourite?limit=${LIMIT}&page=${page}`,
     null,
     gotFavouriteRecipes,
     'get'
@@ -322,9 +321,8 @@ export const getFavouriteRecipes = page => (dispatch) => {
  */
 export const getCreatedRecipes = page => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  const id = dispatcher.getIdFromToken();
   return dispatcher.requestAndDispatch(
-    `/api/v1/users/${id}/recipes/created?&limit=${LIMIT}&page=${page}`,
+    `/api/v1/users/recipes/created?&limit=${LIMIT}&page=${page}`,
     null,
     gotCreatedRecipes,
     'get'

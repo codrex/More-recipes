@@ -1,6 +1,7 @@
 import express from 'express';
-import usersRouter from '../routes/users-route';
-import recipesRouter from '../routes/recipes-route';
+import usersRoute from '../routes/usersRoute';
+import recipesRoute from '../routes/recipesRoute';
+import docRoute from '../routes/docRoute';
 import { sendFail } from '../utils/responder';
 
 const route = express.Router();
@@ -8,8 +9,10 @@ const route = express.Router();
 route.use((req, res, next) => {
   next();
 });
-route.use('/users/', usersRouter);
-route.use('/recipes/', recipesRouter);
+
+route.use('/doc', docRoute);
+route.use('/users/', usersRoute);
+route.use('/recipes/', recipesRoute);
 route.use('/', (req, res) => {
   sendFail(res, 404, 'Route was not found');
 });

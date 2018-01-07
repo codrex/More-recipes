@@ -1,11 +1,12 @@
 import db from '../models/index';
-import getParams from '../utils/pagination';
-import { serverError, sendPaginatedData } from '../utils/responder';
+import getParams from '../utils/getParams';
+import { sendServerError, sendPaginatedData } from '../utils/responder';
 
 const RecipeReviews = db.RecipeReviews;
 
 /**
  * @name createReview
+ * @description add review to the database
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -30,12 +31,13 @@ export const createReview = (req, res, next) => {
         next();
       });
     }).catch(() => {
-      serverError(res);
+      sendServerError(res);
     });
 };
 
 /**
  * @name fetchReviews
+ * @description get reviews from the database
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -58,9 +60,10 @@ export const fetchReviews = (req, res, next) => {
     offset,
     order: [['id', 'DESC']],
   }).then(({ count, rows }) => {
-    sendPaginatedData('reviews', { rows, count, limit }, res);
+    const statusCode = req.createdReview ? 201 : 200;
+    sendPaginatedData('reviews', { rows, count, limit }, res, statusCode);
     if (req.createdReview) next();
   }).catch(() => {
-    serverError(res);
+    sendServerError(res);
   });
 };

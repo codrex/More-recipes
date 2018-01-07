@@ -1,10 +1,22 @@
-const serverError = (res) => {
+/**
+ * @return {undefined}
+ * @param {object} res
+ */
+const sendServerError = (res) => {
   res.status(500).send({
     status: 'fail',
     error: 'Server encountered an error',
   });
   res.end();
 };
+
+/**
+ * @return {undefined}
+ * @param {object} res
+ * @param {number} code - status code
+ * @param {string} key
+ * @param {sting|object} value
+ */
 const sendSuccess = (res, code, key = 'message', value) => {
   res.status(code).send({
     status: 'success',
@@ -12,22 +24,43 @@ const sendSuccess = (res, code, key = 'message', value) => {
   });
   res.end();
 };
-const sendFail = (res, code, msg) => {
+
+/**
+ * @return {undefined}
+ * @param {object} res
+ * @param {number} code - status code
+ * @param {string} message
+ */
+const sendFail = (res, code, message) => {
   res.status(code).send({
     status: 'fail',
-    error: msg,
+    error: message,
   });
   res.end();
 };
+
+/**
+ * @return {undefined}
+ * @param {object} res
+ * @param {object} validation
+ */
 const sendValidationError = (res, validation) => {
   res.status(400).send({
     status: 'fail',
     error: validation.error,
   });
 };
-const sendPaginatedData = (dataName, data, res) => {
+
+/**
+ * @return {undefined}
+ * @param {string} dataName
+ * @param {object} data
+ * @param {object} res
+ * @param {number} code
+ */
+const sendPaginatedData = (dataName, data, res, code = 200) => {
   const { count, limit, rows } = data;
-  res.status(200).send({
+  res.status(code).send({
     status: 'success',
     pageCount: Math.ceil(count / limit),
     [dataName]: rows
@@ -37,7 +70,7 @@ const sendPaginatedData = (dataName, data, res) => {
 export {
   sendFail,
   sendSuccess,
-  serverError,
+  sendServerError,
   sendValidationError,
   sendPaginatedData
 };

@@ -1,4 +1,4 @@
-import { getToken, hasToken } from '../utils/auth/auth';
+import { getToken, hasToken } from '../utils/auth';
 
 const initailState = {
   currentStatusCode: 0,
