@@ -4,6 +4,7 @@ import {
   REDIRECT,
   RESET_REQ_COUNT,
   RESET_SUCCESS,
+  AJAX_REQUEST_AUTH_ERROR
 } from '../actions/actions';
 import initialState from '../reducers/initialState';
 
@@ -24,6 +25,15 @@ export const ajaxReducer = (state = initialState.networkRequest, action) => {
         }
       };
     case END_AJAX_REQUEST:
+      return {
+        ...state,
+        ...{
+          loading: state.requestCount > 1,
+          requestCount: state.requestCount - 1,
+          ...action.response
+        }
+      };
+    case AJAX_REQUEST_AUTH_ERROR:
       return {
         ...state,
         ...{

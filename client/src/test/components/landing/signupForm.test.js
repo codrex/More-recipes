@@ -6,12 +6,12 @@ import configureStore from '../../../store/configStore';
 import SignupForm from '../../../components/pages/Landing/SignupForm';
 
 describe('sign up form component ', () => {
-  test('render as expected ', () => {
+  test('expect SignupForm component to match snapshot ', () => {
     const component = renderer.create(
       <Provider store={configureStore()}>
         <BrowserRouter>
-        <SignupForm />
-      </BrowserRouter>
+          <SignupForm />
+        </BrowserRouter>
       </Provider>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

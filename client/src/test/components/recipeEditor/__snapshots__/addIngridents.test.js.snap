@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Add ingredients component  render as expected 1`] = `
+exports[`Add ingredients component  expected to match snapshot 1`] = `
 <div
   className="col-12 items "
 >
@@ -43,7 +43,7 @@ exports[`Add ingredients component  render as expected 1`] = `
       <button
         className="btn text-capitalize w-100 btn-secondary"
         disabled={false}
-        id="submit"
+        id="-submit-btn"
         type="submit"
       >
         add 

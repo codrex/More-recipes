@@ -70,11 +70,13 @@ export const dispatchOnFail = (dispatch, error, code = 0) => {
  * @return {*} void
  * @param {function} dispatch
  * @param {string} error
+ * @param {number} code
  */
-export const dispatchOnAuthError = (dispatch, error) => {
+export const dispatchOnAuthError = (dispatch, error, code) => {
   dispatch(endAjaxRequest({
     success: false,
     msg: error,
+    code
   }));
   dispatch(ajaxRequestAuthError());
 };

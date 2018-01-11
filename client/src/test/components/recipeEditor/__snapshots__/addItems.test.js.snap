@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Add items component  render as expected when directions is passed as props 1`] = `
+exports[`Add items component  expected to match snapshot when directions is passed as props 1`] = `
 <div
   className="col-12 items "
 >
@@ -16,6 +16,7 @@ exports[`Add items component  render as expected when directions is passed as pr
       action=""
       className=""
       disabled={false}
+      id="ingredient-submit-btn"
       lg={false}
       method=""
       onSubmit={[Function]}
@@ -63,7 +64,7 @@ exports[`Add items component  render as expected when directions is passed as pr
 </div>
 `;
 
-exports[`Add items component  render as expected when form is submitted 1`] = `
+exports[`Add items component  expected to match snapshot when form is submitted 1`] = `
 <div
   className="col-12 items "
 >
@@ -79,6 +80,7 @@ exports[`Add items component  render as expected when form is submitted 1`] = `
       action=""
       className=""
       disabled={false}
+      id="ingredient-submit-btn"
       lg={false}
       method=""
       onSubmit={[Function]}
@@ -126,7 +128,7 @@ exports[`Add items component  render as expected when form is submitted 1`] = `
 </div>
 `;
 
-exports[`Add items component  render as expected when name field has focus 1`] = `
+exports[`Add items component  expected to match snapshot when name field has focus 1`] = `
 <div
   className="col-12 items "
 >
@@ -142,6 +144,7 @@ exports[`Add items component  render as expected when name field has focus 1`] =
       action=""
       className=""
       disabled={false}
+      id="ingredient-submit-btn"
       lg={false}
       method=""
       onSubmit={[Function]}
@@ -189,7 +192,7 @@ exports[`Add items component  render as expected when name field has focus 1`] =
 </div>
 `;
 
-exports[`Add items component  render as expected when there is external validation error 1`] = `
+exports[`Add items component  expected to match snapshot when there is external validation error 1`] = `
 <div
   className="col-12 items "
 >
@@ -205,6 +208,7 @@ exports[`Add items component  render as expected when there is external validati
       action=""
       className=""
       disabled={false}
+      id="ingredient-submit-btn"
       lg={false}
       method=""
       onSubmit={[Function]}

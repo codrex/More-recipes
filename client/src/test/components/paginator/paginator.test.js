@@ -9,7 +9,7 @@ const props = {
 };
 
 describe('Paginator component ', () => {
-  test('render as expected when component is mounted', () => {
+  test('expected to match snapshot', () => {
     const component = shallow(
       <Paginator {...props} />
     );

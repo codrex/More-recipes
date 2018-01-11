@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Item component  expected to match empty snapshot 1`] = `
+exports[`Item component  expected to match snapshot 1`] = `
 <Item
   Component={[Function]}
   content="recipe"
@@ -480,6 +480,7 @@ exports[`Item component  expected to match snapshot when edit icon is clicked 1`
       action=""
       className="d-flex item-edit-form"
       disabled={false}
+      id="submit"
       lg={true}
       method=""
       onSubmit={[Function]}

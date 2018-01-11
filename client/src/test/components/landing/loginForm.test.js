@@ -9,13 +9,13 @@ const props = {
 };
 
 describe('login form component ', () => {
-  test('render as expected when submitting props is false', () => {
+  test('expected to match snapshot when submitting props is false', () => {
     const component = shallow(<PureLoginForm {...props} />);
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  test('render as expected when submitting props is true', () => {
+  test('expected to match snapshot when submitting props is true', () => {
     const component = shallow(
       <PureLoginForm {...{ ...props, submitting: true }} />
     );

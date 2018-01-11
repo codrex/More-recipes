@@ -11,11 +11,12 @@ import { storeToken, getId, getToken } from '../utils/auth';
 
 /**
  *  A thunk class that is responsible for dispatching actions after an ajax request has returned.
- *  it calls the method responsible for sending ajax request to the server and
- *  wait for it to return, before dispatching neccessary actions.
+ *  it calls the method responsible for sending ajax request to the server,
+ *  wait for it to return, before dispatching necessary actions.
  */
 export default class ActionDispatcher {
   /**
+   * constructor
    * @param {function} dispatch: dispatch function
    * @param {bool} loading
    * @param {string} TOKEN: access token
@@ -28,21 +29,23 @@ export default class ActionDispatcher {
   }
 
   /**
- * @return {undefined}
- */
+   * gets userId from token
+   * @return {undefined}
+   */
   getIdFromToken = () => getId()
 
   /**
- * @returns {undefined}
- * @param {object} error
- */
+   * Handles ajax request errors
+   * @returns {undefined}
+   * @param {object} error - axios request error
+   */
   onError(error) {
     if (error.response) {
-      if (error.response.status === 401 || error.response.status === 403) {
-        // if user is not logged in redirect user to home page
+      if (error.response.status === 401) {
         dispatchOnAuthError(
           this.dispatch,
-          'Authentication failed. Please SIGN-UP or LOGIN to continue'
+          error.response.data.error,
+          error.response.status
         );
       } else {
         let errorMsg = error.response.data.error;
@@ -51,24 +54,24 @@ export default class ActionDispatcher {
         }
         dispatchOnFail(this.dispatch, errorMsg, error.response.status);
       }
-    } else if (error.request) {
-      if (process.env.NODE_ENV !== 'test') {
-        const errorMsg = 'Network error encountered, please check your connection and try again';
-        dispatchOnFail(this.dispatch, errorMsg);
-      } else {
-        dispatchOnFail(this.dispatch);
-      }
+    } else if (process.env.NODE_ENV !== 'test') {
+      const errorMsg = 'Network error encountered, please check your connection and try again';
+      dispatchOnFail(this.dispatch, errorMsg);
+    } else {
+      dispatchOnFail(this.dispatch);
     }
   }
 
   /**
- * @return {undefined}
- * @param {function} action
- * @param {object} payload
- * @param {string} successMsg
- */
+   * this function is called when an ajax request returns successfully
+   * it store user's access token if user logged in or signed up
+   * and dispatch the necessary actions
+   * @return {undefined}
+   * @param {function} action
+   * @param {object} payload
+   * @param {string} successMsg
+   */
   saveToken(action, payload, successMsg) {
-    // save token returned during login and signup  in the local storage
     if (action().type === SIGNUP || action().type === LOGIN) {
       storeToken(payload.data.user.token);
     }
@@ -77,7 +80,7 @@ export default class ActionDispatcher {
   }
 
   /**
-   *
+   * this function send ajax request to the server
    * @param {string} url: destination url
    * @param {object} reqData: object to sent to the server
    * @param {function} action: action to be dispatch when request was successful

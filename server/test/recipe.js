@@ -57,7 +57,7 @@ const recipeSpec = (user1, user2) => {
         request.post('/api/v1/recipes')
           .send(recipe)
           .end((err, res) => {
-            expect(res.status).to.equal(403);
+            expect(res.status).to.equal(401);
             expect(res.body.status).to.equal('fail');
             expect(res.body.error).to.equal('Sorry, authentication failed, you need to login or register');
             done();
@@ -69,7 +69,7 @@ const recipeSpec = (user1, user2) => {
           .set('Authorization', invalidToken)
           .send(recipe)
           .end((err, res) => {
-            expect(res.status).to.equal(403);
+            expect(res.status).to.equal(401);
             expect(res.body.status).to.equal('fail');
             expect(res.body.error).to.equal('Sorry, authentication failed, you need to login or register');
             done();

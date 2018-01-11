@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipes list component  render as expected when delete and edit icon are clicked  1`] = `
+exports[`Recipes list component  expected to match snapshot  1`] = `
 <RecipeList
   handleClick={[Function]}
   index="1"
@@ -130,7 +130,7 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
 </RecipeList>
 `;
 
-exports[`Recipes list component  render as expected when delete and edit icon are clicked  2`] = `
+exports[`Recipes list component  expected to match snapshot when delete and edit icon is clicked  1`] = `
 <RecipeList
   handleClick={[Function]}
   index="1"
@@ -260,7 +260,7 @@ exports[`Recipes list component  render as expected when delete and edit icon ar
 </RecipeList>
 `;
 
-exports[`Recipes list component  to match empty snapshot  1`] = `
+exports[`Recipes list component  expected to match snapshot when delete and edit icon is clicked  2`] = `
 <RecipeList
   handleClick={[Function]}
   index="1"

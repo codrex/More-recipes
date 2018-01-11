@@ -1,54 +1,142 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Comments display component  expected to match empty snapshot 1`] = `
-<div
-  className="col-12 "
-  style={
-    Object {
-      "minHeight": "63vh",
-    }
+exports[`Comments display component  expected to match snapshot 1`] = `
+<Comments
+  comments={
+    Array [
+      Object {
+        "RecipeId": 1,
+        "ReviewerId": 1,
+        "createdAt": "",
+        "id": 50,
+        "review": "cool recipe",
+        "reviewer": Object {
+          "email": "test.test@gmail.com",
+          "fullname": "test tester ",
+          "id": 1,
+          "profilePix": "UNKNOWN",
+          "username": "testi",
+        },
+      },
+    ]
   }
+  createdAt=""
+  isLoading={true}
 >
-  <span>
-    <div
-      className="media-object comment"
+  <div
+    className="col-12 "
+    style={
+      Object {
+        "minHeight": "63vh",
+      }
+    }
+  >
+    <Comment
+      createdAt=""
+      fullname="test tester "
+      index={0}
+      key="50"
+      review="cool recipe"
+      username="testi"
+    >
+      <Animation
+        appear={true}
+        name="fade"
+        timeOut={600}
+      >
+        <CSSTransitionGroup
+          transitionAppear={true}
+          transitionAppearTimeout={600}
+          transitionEnter={true}
+          transitionEnterTimeout={600}
+          transitionLeave={true}
+          transitionLeaveTimeout={600}
+          transitionName="fade"
+        >
+          <TransitionGroup
+            childFactory={[Function]}
+            component="span"
+            transitionAppear={true}
+            transitionAppearTimeout={600}
+            transitionEnter={true}
+            transitionEnterTimeout={600}
+            transitionLeave={true}
+            transitionLeaveTimeout={600}
+            transitionName="fade"
+          >
+            <span>
+              <CSSTransitionGroupChild
+                appear={true}
+                appearTimeout={600}
+                enter={true}
+                enterTimeout={600}
+                key=".0"
+                leave={true}
+                leaveTimeout={600}
+                name="fade"
+              >
+                <div
+                  className="media-object comment"
+                  key=".0"
+                >
+                  <div
+                    className="avatar avatar-sm"
+                  >
+                    TT
+                  </div>
+                  <div
+                    className="media-body"
+                  >
+                    <div
+                      className="d-flex justify-content-between align-items-center"
+                    >
+                      <h4
+                        className="no-margin"
+                      >
+                        @testi
+                      </h4>
+                      <span
+                        className="text-center bold time"
+                      >
+                        Invalid date
+                      </span>
+                    </div>
+                    <p
+                      className="media-text no-margin"
+                    >
+                      cool recipe
+                    </p>
+                  </div>
+                </div>
+              </CSSTransitionGroupChild>
+            </span>
+          </TransitionGroup>
+        </CSSTransitionGroup>
+      </Animation>
+    </Comment>
+    <Loader
+      loading={true}
     >
       <div
-        className="avatar avatar-sm"
+        className="loader"
       >
-        TT
-      </div>
-      <div
-        className="media-body"
-      >
-        <div
-          className="d-flex justify-content-between align-items-center"
+        <onlyUpdateForKeys(Loader)
+          color="#7B4E28"
+          loading={true}
+          size={60}
         >
-          <h4
-            className="no-margin"
+          <Loader
+            color="#7B4E28"
+            loading={true}
+            size={60}
           >
-            @testi
-          </h4>
-          <span
-            className="text-center bold time"
-          >
-            Invalid date
-          </span>
-        </div>
-        <p
-          className="media-text no-margin"
-        >
-          cool recipe
-        </p>
+            <div
+              className="css-igcz5d"
+            />
+          </Loader>
+        </onlyUpdateForKeys(Loader)>
       </div>
-    </div>
-  </span>
-  <div
-    className="loader"
-  >
-    <div
-      className="css-1tc3baf"
-    />
+    </Loader>
   </div>
-</div>
+</Comments>
 `;

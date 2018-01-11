@@ -24,12 +24,12 @@ describe('Recipes list component ', () => {
   beforeEach(() => {
     wrapper = mount(<RecipeList {...props} />);
   });
-  test('to match empty snapshot ', () => {
+  test('expected to match snapshot ', () => {
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  test('render as expected when delete and edit icon are clicked ', () => {
+  test('expected to match snapshot when delete and edit icon is clicked ', () => {
     let tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     wrapper.find('ListItem').find('Icon').at(0)

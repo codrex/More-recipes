@@ -22,7 +22,8 @@ const RecipeCard = (props) => {
     upVotes,
     views,
     push,
-    image
+    image,
+    index
   } = props;
   return (
     <Animation>
@@ -39,6 +40,7 @@ const RecipeCard = (props) => {
           <div className="recipe-card-underlay">
             <p className="lead text-capitalize">{category}</p>
             <Button
+              id={`view-details-btn-${index}`}
               handleClick={() => {
                 push(`/recipe/${recipeId}`);
               }}
@@ -102,11 +104,13 @@ RecipeCard.propTypes = {
   toggleFav: PropTypes.func.isRequired,
   isFav: PropTypes.func.isRequired,
   push: PropTypes.func.isRequired,
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string])
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  index: PropTypes.number.isRequired
 };
 
 RecipeCard.defaultProps = {
-  image: {}
+  image: {},
+  index: -1,
 };
 
 export default RecipeCard;

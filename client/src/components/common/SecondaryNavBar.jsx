@@ -15,7 +15,7 @@ const SecondaryNavBar = (props) => {
     handleChange,
   } = props;
   return (
-    <div className={classnames('col-12 top-bar', className)}>
+    <div className={classnames('col-12 top-bar', className)} id="topbar">
       <div className="top-bar-top flex">
         <SearchBox
           handleSubmit={handleSubmit}

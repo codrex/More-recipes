@@ -18,7 +18,7 @@ const RecipeGrid = (props) => {
     <ul className="grid">
       {
         recipes.map(
-          recipe => (
+          (recipe, index) => (
             <li className="card-wrapper" key={recipe.id}>
               <RecipeCard
                 recipeName={recipe.name}
@@ -31,6 +31,7 @@ const RecipeGrid = (props) => {
                 isFav={props.isUserFav}
                 push={props.history.push}
                 image={imageParser(recipe.image)}
+                index={index}
               />
             </li>
           )

@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Recipe editor component  expected to match snapshot when recipe was not found 1`] = `
+<div
+  className="container main"
+  style={
+    Object {
+      "maxWidth": "unset",
+    }
+  }
+>
+  <NotFound
+    message="Recipe not found"
+  />
+</div>
+`;
+
 exports[`Recipe editor component  render as expected when component is mounted 1`] = `
 <div
   className="container main"
@@ -12,6 +27,7 @@ exports[`Recipe editor component  render as expected when component is mounted 1
   <div>
     <div
       className="row d-flex justify-content-between align-items-start"
+      id="recipe-editor"
       style={
         Object {
           "margin": "0.5em",
@@ -47,20 +63,5 @@ exports[`Recipe editor component  render as expected when component is mounted 1
       />
     </div>
   </div>
-</div>
-`;
-
-exports[`Recipe editor component  render as expected when recipe was not found 1`] = `
-<div
-  className="container main"
-  style={
-    Object {
-      "maxWidth": "unset",
-    }
-  }
->
-  <NotFound
-    message="Recipe not found"
-  />
 </div>
 `;

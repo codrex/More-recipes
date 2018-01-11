@@ -1,5 +1,9 @@
+import jwt from 'jsonwebtoken';
+
 export const TEST_REVIEW = 'testing something';
-export const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNTExMTA4ODIwLCJleHAiOjE1MTExMDg4MjF9.qGQceo6WAEoP_1XgxHbiuonKkF_VPnYtpz52w0IvafI';
+export const expiredToken = jwt.sign({id:1 }, process.env.secret, {
+  expiresIn: '.1s'
+});;
 export const recipe = {
   name: 'beans cake',
   category: 'breakfast',

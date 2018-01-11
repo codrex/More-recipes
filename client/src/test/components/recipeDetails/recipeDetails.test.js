@@ -70,7 +70,7 @@ const props = {
 };
 
 describe('View Recipes Page component ', () => {
-  test('to match empty snapshot ', () => {
+  test('to match snapshot ', () => {
     const wrapper = shallow(<PureRecipeDetails {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
@@ -82,7 +82,7 @@ describe('View Recipes Page component ', () => {
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  test('render as expected when favorite icon is clicked ', () => {
+  test('expected to match snapshot when favorite icon is clicked ', () => {
     const wrapper = mount(
       <Provider store={store}>
         <PureRecipeDetails {...props} />

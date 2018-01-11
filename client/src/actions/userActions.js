@@ -2,7 +2,6 @@ import {
   LOGIN,
   LOGOUT,
   SIGNUP,
-  LOGIN_OR_REG_SUCCESS,
   GOT_USER_PROFILE,
   UPDATE_USER_PROFILE,
   GET_USER_VOTES,
@@ -11,6 +10,7 @@ import { clearToken } from '../utils/auth';
 import ActionDispatcher from './actionDispatcher';
 
 /**
+ * login action creator
  * @return {object} action
  * @param {object} payload
  */
@@ -19,6 +19,7 @@ export const login = payload => ({
 });
 
 /**
+ * logout action creator
  * @return {object} action
  */
 export const logout = () => ({
@@ -26,6 +27,7 @@ export const logout = () => ({
 });
 
 /**
+ * signup action creator
  * @return {object} action
  * @param {object} payload
  */
@@ -34,6 +36,8 @@ export const signup = payload => ({
 });
 
 /**
+ * gets user profile .
+ * it is fired after get user profile request was successful
  * @return {object} action
  * @param {object} payload
  */
@@ -42,6 +46,7 @@ export const gotProfile = payload => ({
 });
 
 /**
+ * update user profile action creator
  * @return {object} action
  * @param {object} payload
  */
@@ -50,13 +55,8 @@ export const updatedProfile = payload => ({
 });
 
 /**
- * @return {object} action
- */
-export const loginOrRegSuccess = () => ({
-  type: LOGIN_OR_REG_SUCCESS
-});
-
-/**
+ * get user vote action creator
+ * @summary fired after get user votes request returns successfully
  * @return {object} action
  * @param {object} payload
  */
@@ -65,6 +65,9 @@ export const gotVotes = payload => ({
 });
 
 /**
+ * user login action creator
+ * @summary handle user login request and
+ * it fires a login action when login request is successful
  * @return {object} action
  * @param {object} user
  */
@@ -79,6 +82,7 @@ export const userLogin = user => (dispatch) => {
 };
 
 /**
+ * logs out a user
  * @return {object} action
  */
 export const userLogout = () => (dispatch) => {
@@ -88,6 +92,8 @@ export const userLogout = () => (dispatch) => {
 };
 
 /**
+ * handles user signup process.
+ * it performs similar operation as the userLogin function.
  * @return {object} action
  * @param {object} user
  */
@@ -102,6 +108,7 @@ export const userSignup = user => (dispatch) => {
 };
 
 /**
+ * handles get user profile request.
  * @return {object} action
  */
 export const getUserProfile = () => (dispatch) => {
@@ -111,6 +118,7 @@ export const getUserProfile = () => (dispatch) => {
 };
 
 /**
+ * handles get user votes request
  * @return {object} action
  * @param {array} recipeIds
  */
@@ -125,6 +133,7 @@ export const getVotes = recipeIds => (dispatch) => {
 };
 
 /**
+ * handles user profile update request
  * @return {object} action
  * @param {object} user
  */

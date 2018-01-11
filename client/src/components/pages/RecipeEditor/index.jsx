@@ -40,6 +40,7 @@ class RecipeEditor extends React.Component {
       <div>
         <div
           className="row d-flex justify-content-between align-items-start"
+          id="recipe-editor"
           style={{
             margin: '0.5em'
           }}

@@ -86,7 +86,7 @@ const emailTemplate = (buttonText, message, link) => (
                   <tr>
                       <td class="content">
 
-                          <h2>Hi there,</h2>
+                          <h2>Hi,</h2>
 
                           <p>${message}</p>
 

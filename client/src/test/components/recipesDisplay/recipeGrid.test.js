@@ -1,6 +1,6 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { BrowserRouter } from 'react-router-dom';
+import toJson from 'enzyme-to-json';
 import RecipeGrid from '../../../components/pages/RecipesDisplay/RecipeGrid';
 
 const recipe = {
@@ -13,8 +13,8 @@ const recipe = {
 };
 
 describe('Recipes grid component ', () => {
-  test('render as expected without any recipe', () => {
-    const component = renderer.create(
+  test('expected to match snapshot when there is no recipe', () => {
+    const component = mount(
       <BrowserRouter>
         <RecipeGrid
           recipes={[]}
@@ -24,11 +24,11 @@ describe('Recipes grid component ', () => {
         />
       </BrowserRouter>
     );
-    const tree = component.toJSON();
+    const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
-  test('render as expected with one recipe', () => {
-    const component = renderer.create(
+  test('expected to match snapshot when there is one recipe', () => {
+    const component = mount(
       <BrowserRouter>
         <RecipeGrid
           recipes={[recipe]}
@@ -38,7 +38,7 @@ describe('Recipes grid component ', () => {
         />
       </BrowserRouter>
     );
-    const tree = component.toJSON();
+    const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
 });
