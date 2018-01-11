@@ -7,7 +7,6 @@ import {
   UPDATE_RECIPE_NAME,
   UPDATE_CATEGORY,
   UPDATE_INGREDIENTS,
-  UPDATE_ALL_RECIPE_FIELD,
   GET_ALL_RECIPES,
   AFTER_REVIEW,
   GOT_RECIPE,
@@ -28,6 +27,7 @@ import {
 import { LIMIT, REVIEW_LIMIT } from '../constants';
 
 /**
+ * fired when create recipe request is successful
  * @return {object} action
  * @param {object} payload
  */
@@ -36,6 +36,7 @@ export const newRecipe = payload => ({
 });
 
 /**
+ * fired when modify recipe request is successful
  * @return {object} action
  * @param {object} payload
  */
@@ -44,6 +45,7 @@ export const modifiedRecipe = payload => ({
 });
 
 /**
+ * reset recipe object in the store to its initial state
  * @return {object} action
  */
 export const resetRecipe = () => ({
@@ -51,6 +53,7 @@ export const resetRecipe = () => ({
 });
 
 /**
+ * reset recipes array in the store to its initial state
  * @return {object} action
  */
 export const resetRecipes = () => ({
@@ -58,6 +61,7 @@ export const resetRecipes = () => ({
 });
 
 /**
+ * fired when get top recipes request is successful
  * @return {object} action
  * @param {object} payload
  */
@@ -66,6 +70,7 @@ export const gotTopRecipes = payload => ({
 });
 
 /**
+ * fired when get favourite recipes request is successful
  * @return {object} action
  * @param {object} payload
  */
@@ -74,6 +79,7 @@ export const gotFavouriteRecipes = payload => ({
 });
 
 /**
+ * fired when get created recipes request is successful
  * @return {object} action
  * @param {object} payload
  */
@@ -82,6 +88,7 @@ export const gotCreatedRecipes = payload => ({
 });
 
 /**
+ * fired when get recipe reviews request is successful
  * @return {object} action
  * @param {object} payload
  */
@@ -90,6 +97,7 @@ export const gotReviews = payload => ({
 });
 
 /**
+ * fired after a successful delete request
  * @return {object} action
  * @param {object} payload
  */
@@ -98,6 +106,7 @@ export const afterDeleteRecipe = payload => ({
 });
 
 /**
+ * fired after a review is successful
  * @return {object} action
  * @param {object} payload
  */
@@ -106,6 +115,7 @@ export const afterReview = payload => ({
 });
 
 /**
+ * fired after a successful vote request
  * @return {object} action
  * @param {object} payload
  */
@@ -114,6 +124,7 @@ export const afterVote = payload => ({
 });
 
 /**
+ * fired after add or remove from favourite request is successful
  * @return {object} action
  * @param {object} payload
  */
@@ -122,6 +133,7 @@ export const afterToggleFav = payload => ({
 });
 
 /**
+ * fired when get all recipes request is successful
  * @return {object} action
  * @param {object} payload
  */
@@ -130,6 +142,7 @@ export const gotAllRecipes = payload => ({
 });
 
 /**
+ * fired after a get recipe request is successful
  * @return {object} action
  * @param {object} payload
  */
@@ -138,6 +151,7 @@ export const gotRecipe = payload => ({
 });
 
 /**
+ * fired after a successful recipes search request
  * @return {object} action
  * @param {object} payload
  */
@@ -146,6 +160,7 @@ export const gotFindRecipe = payload => ({
 });
 
 /**
+ * updates ingredient in the store. fired when filling add or modify recipe form
  * @return {object} action
  * @param {string} ingredient
  */
@@ -155,6 +170,7 @@ export const updateIngredients = ingredient => ({
 });
 
 /**
+ * update image object in the store. fired when filling add or modify recipe form
  * @return {object} action
  * @param {object} image
  */
@@ -164,6 +180,7 @@ export const updateImage = image => ({
 });
 
 /**
+ * update direction object in the store. fired when filling add or modify recipe form
  * @return {object} action
  * @param {string} direction
  */
@@ -173,6 +190,7 @@ export const updateDirections = direction => ({
 });
 
 /**
+ * update category object in the store. fired when filling add or modify recipe form
  * @return {object} action
  * @param {string} category
  */
@@ -182,6 +200,8 @@ export const updateCategory = category => ({
 });
 
 /**
+ * update recipe name object in the store.
+ * fired when filling add or modify recipe form
  * @return {object} action
  * @param {string} name
  */
@@ -191,15 +211,7 @@ export const updateName = name => ({
 });
 
 /**
- * @return {object} action
- * @param {object} recipe
- */
-export const updateAllRecipeField = recipe => ({
-  type: UPDATE_ALL_RECIPE_FIELD,
-  recipe
-});
-
-/**
+ * logs form validation error in the store.
  * @return {object} action
  * @param {object|array} error
  */
@@ -209,6 +221,7 @@ export const recipeValidationError = error => ({
 });
 
 /**
+ * clear recipe validation error in the store
  * @return {object} action
  * @param {string} error
  */
@@ -219,6 +232,7 @@ export const clearValidationError = error => ({
 
 
 /**
+ * dispatch recipe validation error if any
  * @return {array | undefined} error
  * @param {object} recipe
  * @param {object} dispatch
@@ -234,6 +248,7 @@ const dispatchValidatioError = (recipe, dispatch) => {
 
 // thunks
 /**
+ * send create recipe ajax request
  * @return {promise} request
  * @param {object} recipe
  * @param {string} message
@@ -254,6 +269,7 @@ export const createRecipe = (recipe, message) => (dispatch) => {
 };
 
 /**
+ * send modify recipe ajax request
  * @return {promise} request
  * @param {object} recipe
  * @param {string} message
@@ -274,6 +290,7 @@ export const modifyRecipe = (recipe, message) => (dispatch) => {
 };
 
 /**
+ * get random recipes from the server
  * @return {promise} request
  * @param {number} page
  */
@@ -288,6 +305,7 @@ export const getAllRecipes = page => (dispatch) => {
 };
 
 /**
+ * get recipes with the most upvote
  * @return {promise} request
  * @param {number} page
  */
@@ -302,6 +320,7 @@ export const getTopRecipes = page => (dispatch) => {
 };
 
 /**
+ * get user's favourite recipes
  * @return {promise} request
  * @param {number} page
  */
@@ -316,6 +335,7 @@ export const getFavouriteRecipes = page => (dispatch) => {
 };
 
 /**
+ * get user's created recipes
  * @return {promise} request
  * @param {number} page
  */
@@ -330,6 +350,7 @@ export const getCreatedRecipes = page => (dispatch) => {
 };
 
 /**
+ * gets recipe reviews
  * @return {promise} request
  * @param {number} recipeId
  * @param {number} page
@@ -345,6 +366,7 @@ export const getReviews = (recipeId, page) => (dispatch) => {
 };
 
 /**
+ * gets a single recipe from the server based on the provided recipe ID
  * @return {promise} request
  * @param {number} recipeId
  */
@@ -359,6 +381,7 @@ export const getRecipe = recipeId => (dispatch) => {
 };
 
 /**
+ * post reviews on a particular recipe
  * @return {promise} request
  * @param {number} recipeId
  * @param {string} review
@@ -376,6 +399,7 @@ export const postReview = (recipeId, review, message) => (dispatch) => {
 };
 
 /**
+ * allows a user to either upvote or downvote a recipe
  * @return {promise} request
  * @param {number} recipeId
  * @param {string} voteType
@@ -394,6 +418,7 @@ export const vote = (recipeId, voteType, status, message) => (dispatch) => {
 };
 
 /**
+ * sends add to favourite or remove from favourite request
  * @return {promise} request
  * @param {number} recipeId
  * @param {string} message
@@ -412,13 +437,14 @@ export const toggleFav = (recipeId, message = undefined) => (dispatch) => {
 };
 
 /**
+ * sends delete request to the server
  * @return {promise} request
  * @param {number} recipeId
  * @param {number} index
  */
 export const deleteRecipe = (recipeId, index) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
-  // this function adds the index deleted recipe to the action
+  // this function adds the index of the deleted recipe to the action
   const HOActionCreator = (payload) => {
     const action = afterDeleteRecipe(payload);
     action.recipeIndex = index;
@@ -434,6 +460,7 @@ export const deleteRecipe = (recipeId, index) => (dispatch) => {
 };
 
 /**
+ * sends a search recipe request
  * @return {promise} request
  * @param {string} searchTerm
  * @param {string} message

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Modify recipe page component  render as expected  1`] = `
+exports[`Modify recipe page component  expected to match snapshot  1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={false}
@@ -12,7 +12,7 @@ exports[`Modify recipe page component  render as expected  1`] = `
 />
 `;
 
-exports[`Modify recipe page component  render as expected when recipe id is not a number 1`] = `
+exports[`Modify recipe page component  expected to match snapshot when recipe id is not a number 1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={true}
@@ -24,7 +24,7 @@ exports[`Modify recipe page component  render as expected when recipe id is not 
 />
 `;
 
-exports[`Modify recipe page component  render as expected when recipe was not found  1`] = `
+exports[`Modify recipe page component  expected to match snapshot when recipe was not found  1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={true}

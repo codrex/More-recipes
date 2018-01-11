@@ -20,7 +20,7 @@ describe('Item component ', () => {
   beforeEach(() => {
     component = mount(<Item name="ingredients" {...props} />);
   });
-  test('expected to match empty snapshot', () => {
+  test('expected to match snapshot', () => {
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });

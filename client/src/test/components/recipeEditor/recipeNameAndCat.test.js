@@ -20,18 +20,18 @@ describe('Recipe name and category component', () => {
     component = shallow(
       <PureRecipeNameAndCategory {...props} />);
   });
-  test('render as expected when component is mounted', () => {
+  test('expected to match snapshot when component is mounted', () => {
     const tree = toJSON(component);
     expect(tree).toMatchSnapshot();
   });
 
-  test('render as expected when name field has focus', () => {
+  test('expected to match snapshot when name field has focus', () => {
     component.find('Form').find('#recipeName').simulate('focus');
     const tree = toJSON(component);
     expect(tree).toMatchSnapshot();
   });
 
-  test('render as expected when name field has blur', () => {
+  test('expected to match snapshot when name field is blured', () => {
     component.find('Form').find('#recipeName').simulate('blur');
     const tree = toJSON(component);
     expect(tree).toMatchSnapshot();

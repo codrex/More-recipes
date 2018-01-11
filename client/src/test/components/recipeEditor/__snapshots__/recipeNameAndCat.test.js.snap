@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipe name and category component render as expected when component is mounted 1`] = `
+exports[`Recipe name and category component expected to match snapshot when component is mounted 1`] = `
 <div>
   <h4
     className="items-header-text"
@@ -11,6 +11,7 @@ exports[`Recipe name and category component render as expected when component is
     action=""
     className=""
     disabled={false}
+    id="submit"
     lg={true}
     method=""
     onSubmit={[Function]}
@@ -137,7 +138,7 @@ exports[`Recipe name and category component render as expected when component is
 </div>
 `;
 
-exports[`Recipe name and category component render as expected when name field has blur 1`] = `
+exports[`Recipe name and category component expected to match snapshot when name field has focus 1`] = `
 <div>
   <h4
     className="items-header-text"
@@ -148,6 +149,7 @@ exports[`Recipe name and category component render as expected when name field h
     action=""
     className=""
     disabled={false}
+    id="submit"
     lg={true}
     method=""
     onSubmit={[Function]}
@@ -274,7 +276,7 @@ exports[`Recipe name and category component render as expected when name field h
 </div>
 `;
 
-exports[`Recipe name and category component render as expected when name field has focus 1`] = `
+exports[`Recipe name and category component expected to match snapshot when name field is blured 1`] = `
 <div>
   <h4
     className="items-header-text"
@@ -285,6 +287,7 @@ exports[`Recipe name and category component render as expected when name field h
     action=""
     className=""
     disabled={false}
+    id="submit"
     lg={true}
     method=""
     onSubmit={[Function]}

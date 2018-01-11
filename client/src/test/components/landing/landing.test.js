@@ -56,18 +56,4 @@ describe('Landing page component ', () => {
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
-  test('expected to match snapshot when user is signed in', () => {
-    const component = shallow(
-      <PureLanding {...{ ...props, match: { path: '/create-account' } }} />
-    );
-    const tree = toJson(component);
-    expect(tree).toMatchSnapshot();
-    component.instance().props = {
-      auth: {
-        authenticated: true,
-      },
-      match: { path: '/' }
-    };
-    expect(tree).toMatchSnapshot();
-  });
 });

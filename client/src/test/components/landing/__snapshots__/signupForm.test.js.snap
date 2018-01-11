@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sign up form component  render as expected  1`] = `
+exports[`sign up form component  expect SignupForm component to match snapshot  1`] = `
 <form
   action=""
   className="col-12"

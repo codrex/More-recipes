@@ -1,58 +1,48 @@
-import nock from 'nock';
+
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
+import nock from 'nock';
 import httpAdapter from 'axios/lib/adapters/http';
 import axios from 'axios';
+import faker from 'faker';
 
 axios.defaults.host = 'http://localhost';
 axios.defaults.adapter = httpAdapter;
 
-// mocking http request
+/**
+ * mock request
+ * @param {string} path
+ * @param {object} payloadData
+ * @param {string} reqType
+ * @param {number} statusCode
+ * @return {object} scope
+ */
 export const nockMocker = (path, payloadData, reqType, statusCode) => {
-  nock.cleanAll();
   const scope = nock('http://127.0.0.1:8000/', {
     reqheaders: {
       accept: 'application/json, text/plain, */*',
     }
   })[reqType](path)
-    .once()
     .reply(statusCode, payloadData);
   return scope;
 };
 
-// STORE MOCK
+/**
+ * mock store
+ * @param {object} state
+ * @return {object} store
+ */
 export const mockStore = (state) => {
   const store = configureMockStore([thunk]);
   return store(state);
 };
 
-export const setup = (url, reqType, state, code = 200) => {
-  const payload = {
-    status: 'success',
-    recipe: {
-      name: 'recipe',
-      category: 'lunch',
-      ingredients: ['rice'],
-      directions: ['wash the rice']
-    }
-  };
-  const scope = nockMocker(url, payload, reqType, code);
-  // mocking store
-  const store = mockStore(state);
-  return {
-    payload,
-    store,
-    scope
-  };
-};
-
-export const recipe = {
-  name: 'recipe',
-  category: 'lunch',
-  ingredients: ['rice'],
-  directions: ['wash the rice']
-};
-
+/**
+ * @return {object} expected action
+ * @param {number} code
+ * @param {string} msg
+ * @param {bool} success
+ */
 export const endAjaxReq = (code, msg = '', success = true) => ({
   type: 'END_AJAX_REQUEST',
   response: {
@@ -61,3 +51,14 @@ export const endAjaxReq = (code, msg = '', success = true) => ({
     code
   }
 });
+
+export const payload = {
+  status: 'success',
+  user: {
+    id: 1,
+    email: faker.internet.email(),
+    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTE1NTE0MzA0LCJleHAiOjE1MTU2MDA3MDR9.p_leLiWrAYBn8sB0n1VAd8VO3UtfJTolDLyyVJBTIY4',
+    username: faker.name.firstName(),
+    fullname: faker.name.findName()
+  }
+};

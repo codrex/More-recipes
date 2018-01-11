@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profile Page component  to match empty snapshot  1`] = `
+exports[`Profile Page component  to match snapshot  1`] = `
 <Profile
   actions={
     Object {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Ingredients display component  expected to match empty snapshot 1`] = `
+exports[`Ingredients display component  expected to match snapshot 1`] = `
 <div
   className="col-12 ingredient-list-wrapper"
   style={Object {}}

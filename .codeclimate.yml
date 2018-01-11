@@ -16,15 +16,12 @@ engines:
     enabled: true
     config:
       config_file: .eslintrc.json
-    checks:
-      import/no-unresolved:
-        enabled: false
   fixme:
     enabled: true
   file-lines:
-   enabled: false
+   enabled: true
   identical-code:
-   enabled: false
+   enabled: true
 ratings:
   paths:
   - "server/**/*.js"
@@ -41,3 +38,4 @@ exclude_paths:
   - "**/test/*.js"
   - "**/*.test.js"
   - "__mocks__"
+  - "client/src/actions/"

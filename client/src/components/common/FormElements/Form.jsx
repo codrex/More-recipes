@@ -21,7 +21,7 @@ const Form = props => (
     {props.children}
     {props.submitBtnText && <button
       type="submit"
-      id="submit"
+      id={props.id}
       className={classnames('btn text-capitalize w-100',
         props.secondary && 'btn-secondary',
         props.primary && 'btn-primary',
@@ -49,6 +49,7 @@ Form.defaultProps = {
   disabled: false,
   primaryInverse: false,
   secondaryInverse: false,
+  id: 'submit',
   style: {}
 };
 
@@ -65,7 +66,8 @@ Form.propTypes = {
   disabled: PropTypes.bool,
   primaryInverse: PropTypes.bool,
   secondaryInverse: PropTypes.bool,
-  style: PropTypes.objectOf(PropTypes.shape)
+  style: PropTypes.objectOf(PropTypes.shape),
+  id: PropTypes.string,
 };
 
 export default Form;

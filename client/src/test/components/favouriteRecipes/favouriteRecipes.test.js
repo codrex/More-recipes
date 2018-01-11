@@ -21,8 +21,8 @@ const props = {
   },
 };
 
-describe('Favourite Recipes page component ', () => {
-  test('render as expected ', () => {
+describe('Favourite Recipes page component ::  ', () => {
+  test('expected to match snapshot ', () => {
     const wrapper = shallow(<PureFavoriteRecipes {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();

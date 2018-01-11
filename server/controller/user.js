@@ -11,7 +11,7 @@ import {
 } from '../utils/responder';
 
 /**
- * @description login's a user
+ * @description login a user
  * @name login
  * @function
  * @param {Object} req - Express request object
@@ -25,6 +25,11 @@ export const login = (req, res, next) => {
       username: req.body.username,
     },
     attributes: ['id', 'email', 'username', 'fullname', 'password'],
+    include: [{
+      model: Recipes,
+      as: 'favRecipes',
+      attributes: ['id'],
+    }]
 
   }).then((user) => {
     if (!user) {

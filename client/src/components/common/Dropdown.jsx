@@ -76,6 +76,7 @@ class Dropdown extends React.Component {
                 <li
                   key={label}
                   className="dropdown-item"
+                  id={`${label.replace(' ', '-')}-menu`}
                 >
                   <div
                     onClick={action}
@@ -145,6 +146,7 @@ class Dropdown extends React.Component {
     return (
       <div
         className="dropdown"
+        id="dropdown"
       >
         {this.renderOverlay()}
         {this.renderTrigger()}

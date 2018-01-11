@@ -17,13 +17,14 @@ const props = {
   placeholder: '',
   sendItemsToStore: jest.fn(),
 };
-
-test('Add directions component to render as expected', () => {
-  const component = renderer.create(
-    <Provider store={configureStore()}>
-      <AddDirections {...props} />
-    </Provider>);
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
+describe('Add direction component', () => {
+  test('expected to match snapshot', () => {
+    const component = renderer.create(
+      <Provider store={configureStore()}>
+        <AddDirections {...props} />
+      </Provider>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 

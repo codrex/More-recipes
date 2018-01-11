@@ -42,6 +42,10 @@ class RecipeDetails extends React.Component {
   constructor(props) {
     super(props);
     this.recipeId = parseInt(this.props.match.params.id, 10);
+
+    if (this.recipeId !== this.props.match.params.id && !isNaN(this.recipeId)) {
+      props.history.push(`/recipe/${this.recipeId}`);
+    }
     const {
       upVote = false,
       downVote = false

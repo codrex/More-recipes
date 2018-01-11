@@ -19,7 +19,7 @@ const props = {
 };
 
 describe('Add ingredients component ', () => {
-  test('render as expected', () => {
+  test('expected to match snapshot', () => {
     const component = renderer.create(
       <Provider store={configureStore()}>
         <AddIngredients {...props} />

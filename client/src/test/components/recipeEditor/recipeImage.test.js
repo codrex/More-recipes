@@ -15,16 +15,16 @@ describe('Recipe image component ', () => {
       <PureRecipeImage {...props} />
     );
   });
-  test('render as expected when component is mounted', () => {
+  test('expected to match snapshot when component is mounted', () => {
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
-  test('render as expected when loadImage button is click', () => {
+  test('expected to match snapshot when loadImage button is click', () => {
     component.find('span').simulate('click');
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
-  test('render as expected when component receive image as props', () => {
+  test('expected to match snapshot when component receive image as props', () => {
     component.setProps({ image: '{}' });
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();

@@ -41,7 +41,7 @@ const props = {
 };
 
 describe('Profile Page component ', () => {
-  test('to match empty snapshot ', () => {
+  test('to match snapshot ', () => {
     const wrapper = mount(<PureProfile {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();

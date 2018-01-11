@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipes Display page component  render as expected  1`] = `
+exports[`Recipes Display page component  expected to match snapshot  1`] = `
 <RecipesDisplay
   getRecipes={[Function]}
   history={
@@ -24,6 +24,7 @@ exports[`Recipes Display page component  render as expected  1`] = `
     ]
   }
   resetPageCount={[Function]}
+  resetSuccess={[Function]}
   store={
     Object {
       "store": [Function],
@@ -122,6 +123,7 @@ exports[`Recipes Display page component  render as expected  1`] = `
               category="drinks"
               downVotes={1}
               image={Object {}}
+              index={0}
               isFav={[Function]}
               push={[Function]}
               recipeId={1}
@@ -203,7 +205,7 @@ exports[`Recipes Display page component  render as expected  1`] = `
                                 dataToggle=""
                                 handleClick={[Function]}
                                 href=""
-                                id=""
+                                id="view-details-btn-0"
                                 text="view details"
                                 type="button"
                               >
@@ -213,7 +215,7 @@ exports[`Recipes Display page component  render as expected  1`] = `
                                   data-target=""
                                   data-toggle=""
                                   href=""
-                                  id=""
+                                  id="view-details-btn-0"
                                   onClick={[Function]}
                                   type="button"
                                 >
@@ -452,7 +454,7 @@ exports[`Recipes Display page component  render as expected  1`] = `
 </RecipesDisplay>
 `;
 
-exports[`Recipes Display page component  should match empty snapshot when loading is true 1`] = `
+exports[`Recipes Display page component  should match snapshot when loading is true 1`] = `
 <RecipesDisplay
   getRecipes={[Function]}
   history={
@@ -476,6 +478,7 @@ exports[`Recipes Display page component  should match empty snapshot when loadin
     ]
   }
   resetPageCount={[Function]}
+  resetSuccess={[Function]}
   store={
     Object {
       "store": [Function],
@@ -567,7 +570,7 @@ exports[`Recipes Display page component  should match empty snapshot when loadin
                 size={60}
               >
                 <div
-                  className="css-1tc3baf"
+                  className="css-igcz5d"
                 />
               </Loader>
             </onlyUpdateForKeys(Loader)>
@@ -579,7 +582,7 @@ exports[`Recipes Display page component  should match empty snapshot when loadin
 </RecipesDisplay>
 `;
 
-exports[`Recipes Display page component  should match empty snapshot when recipes has a length of 0 1`] = `
+exports[`Recipes Display page component  should match snapshot when recipes has a length of 0 1`] = `
 <RecipesDisplay
   getRecipes={[Function]}
   history={
@@ -591,6 +594,7 @@ exports[`Recipes Display page component  should match empty snapshot when recipe
   pageCount={0}
   recipes={Array []}
   resetPageCount={[Function]}
+  resetSuccess={[Function]}
   store={
     Object {
       "store": [Function],
@@ -670,7 +674,7 @@ exports[`Recipes Display page component  should match empty snapshot when recipe
                 size={60}
               >
                 <div
-                  className="css-1tc3baf"
+                  className="css-igcz5d"
                 />
               </Loader>
             </onlyUpdateForKeys(Loader)>

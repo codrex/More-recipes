@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipe image component  render as expected when component is mounted 1`] = `
+exports[`Recipe image component  expected to match snapshot when component is mounted 1`] = `
 <div
   className="image-container"
 >
@@ -32,7 +32,7 @@ exports[`Recipe image component  render as expected when component is mounted 1`
 </div>
 `;
 
-exports[`Recipe image component  render as expected when component receive image as props 1`] = `
+exports[`Recipe image component  expected to match snapshot when component receive image as props 1`] = `
 <div
   className="image-container"
 >
@@ -64,7 +64,7 @@ exports[`Recipe image component  render as expected when component receive image
 </div>
 `;
 
-exports[`Recipe image component  render as expected when loadImage button is click 1`] = `
+exports[`Recipe image component  expected to match snapshot when loadImage button is click 1`] = `
 <div
   className="image-container"
 >

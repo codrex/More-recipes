@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import toJson from 'enzyme-to-json';
 import Comments from '../../../components/pages/RecipeDetails/Comments';
 
 const props = {
@@ -20,9 +20,9 @@ const props = {
 };
 
 describe('Comments display component ', () => {
-  test('expected to match empty snapshot', () => {
-    const component = renderer.create(<Comments {...props} />);
-    const tree = component.toJSON();
+  test('expected to match snapshot', () => {
+    const component = mount(<Comments {...props} />);
+    const tree = toJson(component);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });

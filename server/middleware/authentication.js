@@ -42,7 +42,7 @@ const verifyToken = (req, res, next) => {
         if (error.name === 'TokenExpiredError') {
           sendFail(res, 401, 'Sorry, current session has expired, please login to continue');
         } else {
-          sendFail(res, 403, 'Sorry, authentication failed, you need to login or register');
+          sendFail(res, 401, 'Sorry, authentication failed, you need to login or register');
         }
         return;
       }
@@ -50,7 +50,7 @@ const verifyToken = (req, res, next) => {
       next();
     });
   } else {
-    sendFail(res, 403, 'Sorry, authentication failed, you need to login or register');
+    sendFail(res, 401, 'Sorry, authentication failed, you need to login or register');
   }
 };
 

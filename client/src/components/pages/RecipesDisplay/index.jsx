@@ -8,6 +8,7 @@ import HeroArea from '../../common/HeroArea';
 import { DEFAULT_PIX } from '../../../constants';
 import { toggleFav } from '../../../actions/recipeActions';
 import resetPageCount from '../../../actions/resetPageCount';
+import { resetSuccess } from '../../../actions/ajaxActions';
 
 /**
  * RecipesDisplay
@@ -49,6 +50,7 @@ class RecipesDisplay extends React.Component {
    * @param {number} id
    */
   toggleFav = (id) => {
+    this.props.resetSuccess();
     const message = this.isUserFav(id) ? 'Recipe removed from favourites' : 'Recipe added to favourites';
     this.props.toggleFav(id, message);
   }
@@ -154,6 +156,7 @@ RecipesDisplay.propTypes = {
   pageCount: PropTypes.number,
   title: PropTypes.string,
   resetPageCount: PropTypes.func.isRequired,
+  resetSuccess: PropTypes.func.isRequired,
   getRecipes: PropTypes.func.isRequired,
   toggleFav: PropTypes.func.isRequired
 };
@@ -175,5 +178,6 @@ export { RecipesDisplay as PureRecipesDisplay };
 
 export default connect(mapStateToProps, {
   toggleFav,
-  resetPageCount
+  resetPageCount,
+  resetSuccess
 })(RecipesDisplay);

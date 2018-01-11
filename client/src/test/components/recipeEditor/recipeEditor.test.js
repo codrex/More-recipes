@@ -18,7 +18,7 @@ describe('Recipe editor component ', () => {
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
-  test('render as expected when recipe was not found', () => {
+  test('expected to match snapshot when recipe was not found', () => {
     const component = shallow(
       <RecipeEditor {...{ ...props, hasNotFound: true }} />
     );
