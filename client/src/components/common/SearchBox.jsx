@@ -48,7 +48,7 @@ class SearchBox extends React.Component {
    */
   render() {
     return (
-      <form className="searchbox" onSubmit={this.handleSubmit}>
+      <form className="searchbox" onSubmit={this.handleSubmit} id="searchbox">
         <input
           type="search"
           className="form-control text-input"

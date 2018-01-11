@@ -14,7 +14,7 @@ const props = {
 };
 
 describe('Items list component ', () => {
-  test('render as expected', () => {
+  test('expected to match snapshot', () => {
     const component = shallow(
       <Provider store={configureStore()}>
         <ItemsList {...props} />

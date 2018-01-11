@@ -7,7 +7,7 @@ const props = {
 };
 
 describe('Directions display component ', () => {
-  test('expected to match empty snapshot', () => {
+  test('expected to match snapshot', () => {
     const component = shallow(<Directions {...props} />);
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();

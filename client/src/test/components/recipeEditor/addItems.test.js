@@ -24,21 +24,21 @@ describe('Add items component ', () => {
       <AddItems {...props} />
     );
   });
-  test('render as expected when directions is passed as props', () => {
+  test('expected to match snapshot when directions is passed as props', () => {
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
-  test('render as expected when form is submitted', () => {
+  test('expected to match snapshot when form is submitted', () => {
     component.find('Form').simulate('submit');
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
-  test('render as expected when there is external validation error', () => {
+  test('expected to match snapshot when there is external validation error', () => {
     component.setProps({ externalError: ['error'] });
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
-  test('render as expected when name field has focus', () => {
+  test('expected to match snapshot when name field has focus', () => {
     component.find('Field').simulate('focus');
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();

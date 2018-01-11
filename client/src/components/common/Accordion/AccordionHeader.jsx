@@ -44,4 +44,3 @@ AccordionHeader.defaultProps = {
 };
 
 export default AccordionHeader;
-

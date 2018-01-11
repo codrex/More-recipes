@@ -10,4 +10,7 @@ unused
 dist
 .env
 .DS_Store
-docGenerator/
+slate
+selenium-debug.log
+e2eBin
+e2eTestReport

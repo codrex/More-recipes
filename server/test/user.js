@@ -176,7 +176,7 @@ const userSpec = (repiceSpec) => {
     it('should fail when user without token, sends a request to view user profile ', (done) => {
       request.get('/api/v1/users/1')
         .end((err, res) => {
-          expect(res.status).to.equal(403);
+          expect(res.status).to.equal(401);
           expect(res.body.status).to.equal('fail');
           done();
         });
@@ -233,7 +233,7 @@ const userSpec = (repiceSpec) => {
     it('should fail when user without a token request a profile update', (done) => {
       request.put('/api/v1/users/update')
         .end((err, res) => {
-          expect(res.status).to.equal(403);
+          expect(res.status).to.equal(401);
           expect(res.body.status).to.equal('fail');
           done();
         });

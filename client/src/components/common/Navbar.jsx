@@ -82,7 +82,7 @@ class Navbar extends React.Component {
    * @param {object} props
    */
   renderNavItem = props => (
-    <li className="nav-item">
+    <li className="nav-item" id={`${props.text.replace(' ', '-')}-nav-link`}>
       <NavLink
         className="nav-link text-capitalize "
         activeClassName="nav-link-active"

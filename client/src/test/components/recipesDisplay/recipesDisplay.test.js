@@ -7,6 +7,7 @@ const props = {
   toggleFav: jest.fn(),
   resetPageCount: jest.fn(),
   getRecipes: jest.fn(),
+  resetSuccess: jest.fn(),
   recipes: [{
     name: 'capachino',
     category: 'drinks',
@@ -28,20 +29,20 @@ const props = {
 };
 
 describe('Recipes Display page component ', () => {
-  test('render as expected ', () => {
+  test('expected to match snapshot ', () => {
     const wrapper = mount(<PureRecipesDisplay {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  test('should match empty snapshot when loading is true', () => {
+  test('should match snapshot when loading is true', () => {
     const wrapper = mount(
       <PureRecipesDisplay {...{ ...props, loading: true }} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  test('should match empty snapshot when recipes has a length of 0', () => {
+  test('should match snapshot when recipes has a length of 0', () => {
     const wrapper = mount(<PureRecipesDisplay {...{ ...props, loading: true, recipes: [] }} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();

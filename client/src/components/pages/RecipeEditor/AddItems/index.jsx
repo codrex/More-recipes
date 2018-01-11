@@ -123,6 +123,7 @@ class AddItems extends React.Component {
           submitBtnText={`add ${name}`}
           secondary
           lg={false}
+          id={`${name}-submit-btn`}
         >
           <Field
             component={Component}

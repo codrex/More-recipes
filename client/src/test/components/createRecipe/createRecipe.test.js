@@ -22,19 +22,19 @@ const props = {
   history: { push: jest.fn() },
 };
 
-describe('Create Recipe page component ', () => {
+describe('Create Recipe page component :: ', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(<PureCreateRecipe {...props} />);
   });
 
-  test('render as expected when page is mounted', () => {
+  test('expected to match snapshot', () => {
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
 
-  test('render as expected when recipe was created', () => {
+  test('expected to match snapshot when recipe is created', () => {
     wrapper.setProps({ message: RECIPE_ADDED });
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();

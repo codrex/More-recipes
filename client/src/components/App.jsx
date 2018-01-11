@@ -43,6 +43,7 @@ class App extends React.Component {
       getProfile();
     }
   }
+
   /**
    * @return {bool} true or false
    * @param {Object} nextProps
@@ -50,18 +51,17 @@ class App extends React.Component {
   shouldComponentUpdate(nextProps) {
     const { request } = nextProps;
     if (request.msg) {
-      toastr.clear();
       if (!request.success && request.msg) {
-        toastr.error(request.msg, 'Error', toastrConfig);
+        toastr.error(request.msg, 'Error', { ...toastrConfig });
         this.props.resetMessage();
       } else if (request.success && request.msg) {
         toastr.success(request.msg, 'Success', toastrConfig);
-        this.props.resetMessage();
       }
     }
 
     return true;
   }
+
   /**
    * @return {undefined}
    * @param {jsx} Component
@@ -71,7 +71,6 @@ class App extends React.Component {
    */
   onAuthenticated(Component, match) {
     const { authenticated } = this.props.auth;
-    // passing match to Navbar will enable it render when path changes
     return authenticated ? (
       <div>
         <Navbar {...match} />
@@ -82,6 +81,30 @@ class App extends React.Component {
         <Component {...match} />
       </div>
     ) : <Redirect to="/" />;
+  }
+
+  /**
+   * checks if user is logged in
+   * @return {undefined}
+   * @param {jsx} Component
+   * @param {object} match
+   */
+  isLoggedIn(Component, match) {
+    const pathname = match.location.pathname;
+    const validPaths = ['/', '/create-account', '/login'];
+
+    if (!validPaths.includes(pathname)) {
+      return (<Redirect to="/not-found" />);
+    }
+
+    const { authenticated } = this.props.auth;
+    // passing match to Navbar will enable it render when path changes
+    return !authenticated ? (
+      <div>
+        <Navbar {...match} />
+        <Component {...match} />
+      </div>
+    ) : <Redirect to="/recipes" />;
   }
 
   /**
@@ -96,22 +119,6 @@ class App extends React.Component {
     this.props.searchRecipes(lowerCaseValue);
   }
 
-  /**
-   * checks if user is logged in
-   * @return {undefined}
-   * @param {jsx} Component
-   * @param {object} match
-   */
-  isLoggedIn(Component, match) {
-    const { authenticated } = this.props.auth;
-    // passing match to Navbar will enable it render when path changes
-    return !authenticated ? (
-      <div>
-        <Navbar {...match} />
-        <Component {...match} />
-      </div>
-    ) : <Redirect to="/recipes" />;
-  }
 
   /**
    * render not found
@@ -228,7 +235,7 @@ App.propTypes = {
 const mapStateToProps = state => ({
   request: state.networkRequest,
   auth: state.auth,
-  user: state.user
+  user: state.user,
 });
 
 export default connect(mapStateToProps, {

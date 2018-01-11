@@ -10,7 +10,7 @@ import {
 /**
  * @return {object} action
  * @param {bool} loading
-* @description fired when an ajax request begins
+ * @description fired when an ajax request begins
  */
 export const beginAjaxRequest = loading => ({
   type: BEGIN_AJAX_REQUEST, loading

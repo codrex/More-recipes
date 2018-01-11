@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Items list component  render as expected 1`] = `
+exports[`Items list component  expected to match snapshot 1`] = `
 <ItemsList
   deleteItem={[Function]}
   directions={true}

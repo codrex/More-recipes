@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create Recipe page component  render as expected when page is mounted 1`] = `
+exports[`Create Recipe page component ::  expected to match snapshot 1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={false}
@@ -12,7 +12,7 @@ exports[`Create Recipe page component  render as expected when page is mounted 1
 />
 `;
 
-exports[`Create Recipe page component  render as expected when recipe was created 1`] = `
+exports[`Create Recipe page component ::  expected to match snapshot when recipe is created 1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={false}

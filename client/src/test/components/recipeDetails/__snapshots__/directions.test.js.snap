@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Directions display component  expected to match empty snapshot 1`] = `
+exports[`Directions display component  expected to match snapshot 1`] = `
 <div
   className="col-12 directions-list-wrapper"
 >
@@ -12,17 +12,17 @@ exports[`Directions display component  expected to match empty snapshot 1`] = `
   <Direction
     content="directions 1"
     index={0}
-    key="directions 11515334648474"
+    key="directions 11515645722688"
   />
   <Direction
     content="direction 2"
     index={1}
-    key="direction 21515334648474"
+    key="direction 21515645722688"
   />
   <Direction
     content="direction 3"
     index={2}
-    key="direction 31515334648474"
+    key="direction 31515645722688"
   />
 </div>
 `;

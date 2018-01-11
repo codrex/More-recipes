@@ -7,7 +7,7 @@ const props = {
 };
 
 describe('Ingredients display component ', () => {
-  test('expected to match empty snapshot', () => {
+  test('expected to match snapshot', () => {
     const component = renderer.create(<Ingredients {...props} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

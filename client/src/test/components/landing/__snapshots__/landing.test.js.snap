@@ -269,102 +269,6 @@ exports[`Landing page component  expected to match snapshot  1`] = `
 </Provider>
 `;
 
-exports[`Landing page component  expected to match snapshot when user is signed in 1`] = `
-<div>
-  <Carousel
-    className="blur"
-  >
-    <CallToAction
-      push={[Function]}
-      signin={[Function]}
-      signup={[Function]}
-    />
-  </Carousel>
-  <Modal
-    center={true}
-    closeBtnClicked={[Function]}
-    footer={false}
-    id="modal"
-    left={false}
-    leftBtnText=""
-    loading={false}
-    onContinueClicked={[Function]}
-    openModal={true}
-    operationCompleted={false}
-    right={false}
-    rightBtnText="Login"
-    title="Create an account"
-  >
-    <ReduxForm
-      loading={false}
-      signup={[Function]}
-    />
-    <p
-      className="form-text"
-    >
-      Already have an account?
-      <span
-        onClick={[Function]}
-        role="button"
-        tabIndex="0"
-      >
-        <b>
-          Sign in
-        </b>
-      </span>
-    </p>
-  </Modal>
-</div>
-`;
-
-exports[`Landing page component  expected to match snapshot when user is signed in 2`] = `
-<div>
-  <Carousel
-    className="blur"
-  >
-    <CallToAction
-      push={[Function]}
-      signin={[Function]}
-      signup={[Function]}
-    />
-  </Carousel>
-  <Modal
-    center={true}
-    closeBtnClicked={[Function]}
-    footer={false}
-    id="modal"
-    left={false}
-    leftBtnText=""
-    loading={false}
-    onContinueClicked={[Function]}
-    openModal={true}
-    operationCompleted={false}
-    right={false}
-    rightBtnText="Login"
-    title="Create an account"
-  >
-    <ReduxForm
-      loading={false}
-      signup={[Function]}
-    />
-    <p
-      className="form-text"
-    >
-      Already have an account?
-      <span
-        onClick={[Function]}
-        role="button"
-        tabIndex="0"
-      >
-        <b>
-          Sign in
-        </b>
-      </span>
-    </p>
-  </Modal>
-</div>
-`;
-
 exports[`Landing page component  expected to match snapshot when user is trying to login  1`] = `
 <Provider
   store={
@@ -794,6 +698,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                 action=""
                                 className=""
                                 disabled={false}
+                                id="submit"
                                 lg={true}
                                 method=""
                                 onSubmit={[Function]}
@@ -1054,6 +959,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                                 "Username can't be blank",
                                               ],
                                               "form": "LoginForm",
+                                              "initial": undefined,
                                               "invalid": true,
                                               "pristine": true,
                                               "submitFailed": false,
@@ -1333,6 +1239,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                                 "Password can't be blank",
                                               ],
                                               "form": "LoginForm",
+                                              "initial": undefined,
                                               "invalid": true,
                                               "pristine": true,
                                               "submitFailed": false,
@@ -1856,6 +1763,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                 action=""
                                 className=""
                                 disabled={false}
+                                id="submit"
                                 lg={true}
                                 method=""
                                 onSubmit={[Function]}
@@ -2116,6 +2024,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                                 "Username can't be blank",
                                               ],
                                               "form": "RegForm",
+                                              "initial": undefined,
                                               "invalid": true,
                                               "pristine": true,
                                               "submitFailed": false,
@@ -2397,6 +2306,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                                 "Fullname must be more than one word",
                                               ],
                                               "form": "RegForm",
+                                              "initial": undefined,
                                               "invalid": true,
                                               "pristine": true,
                                               "submitFailed": false,
@@ -2676,6 +2586,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                                 "Email can't be blank",
                                               ],
                                               "form": "RegForm",
+                                              "initial": undefined,
                                               "invalid": true,
                                               "pristine": true,
                                               "submitFailed": false,
@@ -2955,6 +2866,7 @@ exports[`Landing page component  expected to match snapshot when user is trying 
                                                 "Password can't be blank",
                                               ],
                                               "form": "RegForm",
+                                              "initial": undefined,
                                               "invalid": true,
                                               "pristine": true,
                                               "submitFailed": false,
