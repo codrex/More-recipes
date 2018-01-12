@@ -15,10 +15,20 @@ class SearchBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
+      value: this.props.initialSearchTerm,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+  /**
+   * @return {undefined}
+   * @param {object} nextProps
+   */
+  componentWillReceiveProps(nextProps) {
+    const { initialSearchTerm } = nextProps;
+    if (this.state.value !== initialSearchTerm) {
+      this.setState({ value: initialSearchTerm });
+    }
   }
   /**
    * handles value change event
@@ -65,11 +75,13 @@ class SearchBox extends React.Component {
 SearchBox.defaultProps = {
   handleChange: () => {},
   handleSubmit: () => {},
+  initialSearchTerm: ''
 };
 
 SearchBox.propTypes = {
   handleChange: PropTypes.func,
   handleSubmit: PropTypes.func,
+  initialSearchTerm: PropTypes.string
 };
 
 export default SearchBox;

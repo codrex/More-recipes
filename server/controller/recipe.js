@@ -20,12 +20,11 @@ const Recipes = db.Recipes;
  * @return {*} void
  */
 export const create = (req, res, next) => {
-  Recipes.create(req.body)
+  Recipes.create({ ...req.body, stringIngredients: '' })
     .then((recipe) => {
       recipe.setOwner(req.requestId).then(() => {
         req.currentRecipeId = recipe.dataValues.id;
         recipe.reload({
-          attributes: ATTRIBUTES,
           include: [
             {
               model: db.Users,
@@ -35,22 +34,49 @@ export const create = (req, res, next) => {
               },
             }
           ],
-        }).then((reloadedRecipe) => {
-          sendSuccess(res, 201, 'recipe', reloadedRecipe);
+        }).then(({ dataValues }) => {
+          delete dataValues.stringIngredients;
+          delete dataValues.favRecipesId;
+          delete dataValues.createdRecipesId;
+
+          sendSuccess(res, 201, 'recipe', dataValues);
         });
         next();
       });
-    }).catch((error) => {
-      if (error.name === 'SequelizeUniqueConstraintError') {
-        sendFail(res, 400, 'Sorry, recipe name already exist, please enter another');
-        return;
-      }
+    }).catch(() => {
       sendServerError(res);
     });
 };
 
 /**
- * @description fetch recipes from the databae
+ * @name checkDuplicateName
+ * @description checks if a recipe name is unique to a user
+ * @function
+ * @param {Object} req - Express request object
+ * @param {Object} res - Express response object
+ * @param {Object} next - Express next middleware function
+ * @return {*} void
+ */
+export const checkDuplicateName = (req, res, next) => {
+  Recipes.findOne({
+    where: {
+      name: {
+        $iLike: `%${req.body.name}%`
+      },
+      ownerId: req.requestId
+    }
+  }).then((recipe) => {
+    if (recipe) {
+      return sendFail(res, 400, 'Recipe already exist, Please enter another');
+    }
+    next();
+  }).catch(() => {
+    sendServerError();
+  });
+};
+
+/**
+ * @description fetch recipes from the database
  * @name fetch
  * @function
  * @param {Object} where
@@ -175,8 +201,8 @@ export const recipesSearch = (req, res, next) => {
         }
       },
       {
-        ingredients: {
-          $contains: [search]
+        stringIngredients: {
+          $iLike: `%${search.toLowerCase()}%`
         }
       },
       {
@@ -186,7 +212,9 @@ export const recipesSearch = (req, res, next) => {
       }
     ]
   };
-  fetch(where, [], req, res);
+  fetch(where, [
+    [db.sequelize.where(db.sequelize.col('name'), 'iLike', `%${search}%`), 'DESC']
+  ], req, res);
 };
 
 /**

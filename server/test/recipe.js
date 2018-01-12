@@ -5,12 +5,14 @@ import * as mock from './mock';
 
 const request = supertest(app);
 
-const recipeSpec = (user1, user2) => {
-  const token = user1;
-  const token2 = user2;
+const recipeSpec = () => {
+  let token = global.token;
+  let token2 = global.token2;
   const { expiredToken } = mock;
 
   describe('Recipe', () => {
+    const { user, user2 } = mock.recipeTestUsers;
+
     // add recipe
     describe('add recipe', () => {
       let recipe = {};
@@ -30,20 +32,8 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
-      it('should return success when a second recipe is added', (done) => {
-        request.post('/api/v1/recipes')
-          .set('Authorization', token)
-          .send({ ...recipe, name: 'coco drink' })
-          .end((err, res) => {
-            expect(res.status).to.equal(201);
-            expect(res.body.status).to.equal('success');
-            expect(res.body.recipe.id).to.equal(2);
-            expect(res.body.recipe.image).not.to.be.undefined;
-            expect(res.body.recipe).to.be.an('object').that.deep.includes({ ...recipe, name: 'coco drink' });
-            done();
-          });
-      });
-      it('should fail  when recipe name already exists in the system', (done) => {
+
+      it('should fail when recipe exist for user', (done) => {
         request.post('/api/v1/recipes')
           .set('Authorization', token)
           .send(recipe)
@@ -53,6 +43,21 @@ const recipeSpec = (user1, user2) => {
             done();
           });
       });
+
+      it('should return success when another user post recipe with an existing recipe name', (done) => {
+        request.post('/api/v1/recipes')
+          .set('Authorization', token2)
+          .send(recipe)
+          .end((err, res) => {
+            expect(res.status).to.equal(201);
+            expect(res.body.status).to.equal('success');
+            expect(res.body.recipe.id).to.equal(2);
+            expect(res.body.recipe.image).not.to.be.undefined;
+            expect(res.body.recipe).to.be.an('object').that.deep.includes({ ...recipe, name: 'beans cake' });
+            done();
+          });
+      });
+
       it('should fail  when user attempt to get recipe without access token', (done) => {
         request.post('/api/v1/recipes')
           .send(recipe)
@@ -501,7 +506,7 @@ const recipeSpec = (user1, user2) => {
               expect(res.status).to.equal(200);
               expect(res.body.status).to.equal('success');
               expect(res.body.pageCount).to.equal(1);
-              expect(res.body.recipes.length).to.equal(1);
+              expect(res.body.recipes.length).to.equal(2);
               done();
             });
         });
@@ -592,9 +597,9 @@ const recipeSpec = (user1, user2) => {
               expect(res.status).to.equal(200);
               expect(res.body.status).to.equal('success');
               expect(res.body.recipes).instanceOf(Array);
-              expect(res.body.recipes.length).to.equal(1);
+              expect(res.body.recipes.length).to.equal(2);
               expect(res.body.pageCount).to.equal(1);
-              expect(res.body.recipes[0].name).to.equal('pizza');
+              expect(res.body.recipes[1].name).to.equal('pizza');
               done();
             });
         });

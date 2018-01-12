@@ -9,7 +9,6 @@ module.exports = {
     name: {
       type: Sequelize.STRING,
       allowNull: false,
-      unique: true,
     },
     category: {
       type: Sequelize.STRING,
@@ -18,6 +17,9 @@ module.exports = {
     ingredients: {
       type: Sequelize.ARRAY(Sequelize.STRING),
       allowNull: false,
+    },
+    stringIngredients: {
+      type: Sequelize.TEXT,
     },
     directions: {
       type: Sequelize.ARRAY(Sequelize.STRING),

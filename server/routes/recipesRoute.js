@@ -27,7 +27,8 @@ import {
   fetchVotes,
   fetchRecipeByUpVote,
   update,
-  isRecipe
+  isRecipe,
+  checkDuplicateName
 } from '../controller/recipe';
 
 
@@ -48,6 +49,7 @@ recipesRoute.route('/')
   )
   .post(
     validateRecipe,
+    checkDuplicateName,
     create,
     addCreatedRecipe,
   );
