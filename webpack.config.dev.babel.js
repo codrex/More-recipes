@@ -4,6 +4,7 @@ import autoprefixer from 'autoprefixer';
 import common from './webpack.config.common.babel';
 
 module.exports = merge(common, {
+  devtool: 'inline-source-map',
   devServer: {
     historyApiFallback: true,
     contentBase: './'

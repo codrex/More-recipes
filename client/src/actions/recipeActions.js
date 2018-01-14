@@ -463,12 +463,13 @@ export const deleteRecipe = (recipeId, index) => (dispatch) => {
  * sends a search recipe request
  * @return {promise} request
  * @param {string} searchTerm
+ * @param {number} page
  * @param {string} message
  */
-export const findRecipes = (searchTerm, message = undefined) => (dispatch) => {
+export const findRecipes = (searchTerm, page, message = undefined) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   return dispatcher.requestAndDispatch(
-    `/api/v1/recipes?search=${searchTerm}&limit=${LIMIT}&page=1`,
+    `/api/v1/recipes?search=${searchTerm}&limit=${LIMIT}&page=${page}`,
     null,
     gotFindRecipe,
     'get',

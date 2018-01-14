@@ -3,7 +3,6 @@ module.exports = (sequelize, DataTypes) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     category: {
       type: DataTypes.STRING,
@@ -12,6 +11,14 @@ module.exports = (sequelize, DataTypes) => {
     ingredients: {
       type: DataTypes.ARRAY(DataTypes.STRING),
       allowNull: false,
+    },
+    stringIngredients: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      set() {
+        const ingredients = this.get('ingredients');
+        this.setDataValue('stringIngredients', ingredients.join().toLowerCase());
+      },
     },
     directions: {
       type: DataTypes.ARRAY(DataTypes.STRING),

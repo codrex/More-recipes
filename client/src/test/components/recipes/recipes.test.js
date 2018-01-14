@@ -4,6 +4,7 @@ import { PureRecipes } from '../../../components/pages/Recipes';
 
 const props = {
   getAllRecipes: jest.fn(),
+  search: jest.fn(),
   recipes: [{
     name: 'capachino',
     category: 'drinks',

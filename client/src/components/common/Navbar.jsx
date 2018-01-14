@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import ReactToolTip from 'react-tooltip';
 import { userLogout } from '../../actions/userActions';
 import getInitials from '../../utils/getInitials';
 import Dropdown from './Dropdown';
@@ -71,8 +72,15 @@ class Navbar extends React.Component {
         onClick={props.onClick}
         role="button"
         tabIndex="0"
+        data-tip={this.props.fullname.toUpperCase()}
+        data-for="avatar-tooltip"
       >
         {initials}
+        <ReactToolTip
+          id="avatar-tooltip"
+          type="dark"
+          effect="solid"
+        />
       </div>
     )
   )

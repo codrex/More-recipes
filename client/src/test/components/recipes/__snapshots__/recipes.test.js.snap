@@ -17,6 +17,8 @@ exports[`TopRecipes page component  expected to match snapshot  1`] = `
       },
     ]
   }
+  search={[Function]}
+  searchTerm=""
   title="recipes"
   user={
     Object {

@@ -36,6 +36,7 @@ class Profile extends React.Component {
     super(props);
     props.actions.resetPageCount();
     props.actions.resetRecipes();
+    props.actions.resetSuccess();
 
     this.state = {
       recipes: props.user.createdRecipes,
@@ -164,12 +165,14 @@ class Profile extends React.Component {
   renderPagination = () => {
     const {
       pageCount,
-      actions
+      actions,
+      loading
     } = this.props;
     if (pageCount > 1) {
       return (
         <Paginator
           pageCount={pageCount}
+          loading={loading}
           handlePageClick={({ selected }) => {
             actions.getCreatedRecipes(selected + 1);
           }}
@@ -182,7 +185,7 @@ class Profile extends React.Component {
    * user info
    * @return {React} jsx
    */
-  renderUSerInfo = () => {
+  renderUserInfo = () => {
     if (this.state.noLoader) {
       const { user } = this.props;
       return (
@@ -197,26 +200,41 @@ class Profile extends React.Component {
    * user's created recipe
    * @return {React} jsx
    */
-  renderUSerRecipes = () => {
-    if (this.state.noLoader) {
-      const {
-        recipes,
-        history,
-        loading
-      } = this.props;
-      if (recipes.length < 1 && !loading) {
-        return (
-          <NotFound message="you have no recipes" >
-            <Button
-              text="add recipe"
-              className="btn-secondary-outline btn-lg"
-              handleClick={() => {
-                history.push('/create');
-              }}
-            />
-          </NotFound>
-        );
-      }
+  renderUserRecipes = () => {
+    const {
+      noLoader,
+      isModalOpen
+    } = this.state;
+
+    const {
+      recipes,
+      history,
+      loading
+    } = this.props;
+
+    if (loading && noLoader && !isModalOpen) {
+      return (
+        <div className="container-fluid profile-page no-padding">
+          <Loader loading={loading} />
+        </div>
+      );
+    }
+
+    if (recipes.length < 1 && !loading) {
+      return (
+        <NotFound message="you have no recipes" >
+          <Button
+            text="add recipe"
+            className="btn-secondary-outline btn-lg"
+            handleClick={() => {
+              history.push('/create');
+            }}
+          />
+        </NotFound>
+      );
+    }
+
+    if (noLoader) {
       return (
         <div className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin">
           <Recipes
@@ -225,7 +243,6 @@ class Profile extends React.Component {
             onDeleteIconClicked={this.onDeleteRecipeClicked}
             handleClick={this.recipeItemClick}
           />
-          {this.renderPagination()}
         </div>
       );
     }
@@ -291,24 +308,11 @@ class Profile extends React.Component {
    * @return {undefined}
    */
   render() {
-    const { loading } = this.props;
-    const {
-      noLoader,
-      isModalOpen
-    } = this.state;
-
-    if (loading && noLoader && !isModalOpen) {
-      return (
-        <div className="container-fluid profile-page no-padding">
-          <Loader loading={loading} />
-        </div>
-      );
-    }
-
     return (
       <div className="container-fluid profile-page no-padding">
-        {this.renderUSerInfo()}
-        {this.renderUSerRecipes()}
+        {this.renderUserInfo()}
+        {this.renderUserRecipes()}
+        {this.renderPagination()}
         {this.renderModal()}
       </div>
     );

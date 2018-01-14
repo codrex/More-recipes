@@ -308,7 +308,7 @@ export const isUserValid = (req, res, next) => {
       if (user) {
         next();
       } else {
-        sendFail(res, 404, USER_NOT_FOUND);
+        sendFail(res, 401, 'Sorry, authentication failed, you need to login or register');
       }
     }).catch(() => {
       sendServerError(res);

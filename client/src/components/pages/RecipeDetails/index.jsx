@@ -43,9 +43,6 @@ class RecipeDetails extends React.Component {
     super(props);
     this.recipeId = parseInt(this.props.match.params.id, 10);
 
-    if (this.recipeId !== this.props.match.params.id && !isNaN(this.recipeId)) {
-      props.history.push(`/recipe/${this.recipeId}`);
-    }
     const {
       upVote = false,
       downVote = false
@@ -64,17 +61,18 @@ class RecipeDetails extends React.Component {
    * @return {undefined}
    */
   componentDidMount() {
-    const { actions, recipe } = this.props;
+    const { actions, recipe, match } = this.props;
+    const { params } = match;
 
     if (recipe.id === undefined || this.recipeId !== recipe.id) {
-      if (!isNaN(this.recipeId)) {
+      if (!isNaN(this.recipeId) && !/[a-zA-Z]+$/.test(params.id)) {
         actions.resetRecipe();
         actions.resetPageCount();
         actions.getReviews(this.recipeId, 1);
         actions.getVotes([this.recipeId]);
         actions.getRecipe(this.recipeId);
       } else {
-        this.setState({ hasNotFound: true });
+        this.setState({ hasNotFound: true });// eslint-disable-line
         toastr.error('Sorry, recipe not found', 'Error', toastrConfig);
       }
     }
@@ -325,7 +323,7 @@ class RecipeDetails extends React.Component {
   /**
    * @return {React} react component
    */
-  renderPage = () => {
+  render = () => {
     const { hasNotFound } = this.state;
     if (hasNotFound) {
       return (
@@ -355,15 +353,6 @@ class RecipeDetails extends React.Component {
           />
         </Modal>
       </div>
-    );
-  }
-
-  /**
-   * @return {React} component
-   */
-  render() {
-    return (
-      this.renderPage()
     );
   }
 }

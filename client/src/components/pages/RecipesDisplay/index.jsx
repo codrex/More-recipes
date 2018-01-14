@@ -17,6 +17,7 @@ class RecipesDisplay extends React.Component {
   state ={
     recipes: this.props.recipes
   }
+
   /**
    * @return {undefined}
    */
@@ -32,6 +33,13 @@ class RecipesDisplay extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.state.recipes === nextProps.recipes) return;
     this.setState({ recipes: nextProps.recipes });
+  }
+
+  /**
+   * @return {undefined}
+   */
+  componentWillUnmount() {
+    this.props.resetSuccess();
   }
 
   /**

@@ -1,9 +1,17 @@
 import jwt from 'jsonwebtoken';
+import faker from 'faker';
+
 
 export const TEST_REVIEW = 'testing something';
+
 export const expiredToken = jwt.sign({id:1 }, process.env.secret, {
   expiresIn: '.1s'
 });;
+
+export const fakeToken = jwt.sign({id:100 }, process.env.secret, {
+  expiresIn: '1d'
+});;
+
 export const recipe = {
   name: 'beans cake',
   category: 'breakfast',
@@ -11,6 +19,7 @@ export const recipe = {
   directions: ['step 1', 'step 2', 'step 3'],
   image: 'image'
 };
+
 export const recipeUpdateData = {
   userDataOne: {
     name: 'beans cake',
@@ -55,6 +64,21 @@ export const userLoginData = {
     username: 'example_user_2',
     password: '123456',
   },
+};
+
+export const recipeTestUsers = {
+  user: {
+    username: faker.name.firstName(),
+    fullname: faker.name.findName(),
+    email: faker.internet.email(),
+    password: '1234567'
+  },
+  user2: {
+    username: faker.name.firstName(),
+    fullname: faker.name.findName(),
+    email: faker.internet.email(),
+    password: '1234567'
+  }
 };
 
 export const userAttribute = [

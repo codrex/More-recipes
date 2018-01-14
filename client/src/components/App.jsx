@@ -19,7 +19,6 @@ import CreateRecipe from './pages/CreateRecipe';
 import { getUserProfile } from '../actions/userActions';
 import toastrConfig from '../toastr/config';
 import { resetReqCount, resetSuccess } from '../actions/ajaxActions';
-import { findRecipes } from '../actions/recipeActions';
 
 /**
  * App component
@@ -71,14 +70,16 @@ class App extends React.Component {
    */
   onAuthenticated(Component, match) {
     const { authenticated } = this.props.auth;
+    const searchTerm = match.location.search.replace('?q=', '');
     return authenticated ? (
       <div>
         <Navbar {...match} />
         <SecondaryNavBar
           {...match}
+          initialSearchTerm={searchTerm}
           handleChange={value => this.handleRecipeSearch(match.history.push, value)}
         />
-        <Component {...match} />
+        <Component {...match} searchTerm={searchTerm} />
       </div>
     ) : <Redirect to="/" />;
   }
@@ -114,9 +115,11 @@ class App extends React.Component {
    * @return {undefined}
    */
   handleRecipeSearch = (push, value) => {
+    const trimmedValue = value && value.trim();
+    if (trimmedValue) {
+      return push(`/recipes?q=${trimmedValue}`);
+    }
     push('/recipes');
-    const lowerCaseValue = value && value.toLowerCase();
-    this.props.searchRecipes(lowerCaseValue);
   }
 
 
@@ -229,7 +232,6 @@ App.propTypes = {
   resetMessage: PropTypes.func.isRequired,
   user: PropTypes.objectOf(PropTypes.shape).isRequired,
   resetReqCount: PropTypes.func.isRequired,
-  searchRecipes: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -241,6 +243,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   resetReqCount,
   getProfile: getUserProfile,
-  searchRecipes: findRecipes,
   resetMessage: resetSuccess
 })(App);

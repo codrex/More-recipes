@@ -239,7 +239,7 @@ describe('Recipe thunks', () => {
         },
         endAjaxReq(200)
       ];
-      return store.dispatch(actions.findRecipes(searchTerm))
+      return store.dispatch(actions.findRecipes(searchTerm, 1))
         .then(() => {
           expect(store.getActions()).toEqual(expectedActions);
         });
