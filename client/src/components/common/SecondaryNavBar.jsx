@@ -13,6 +13,7 @@ const SecondaryNavBar = (props) => {
     className,
     handleSubmit,
     handleChange,
+    initialSearchTerm
   } = props;
   return (
     <div className={classnames('col-12 top-bar', className)} id="topbar">
@@ -20,6 +21,7 @@ const SecondaryNavBar = (props) => {
         <SearchBox
           handleSubmit={handleSubmit}
           handleChange={handleChange}
+          initialSearchTerm={initialSearchTerm}
         />
       </div>
     </div>
@@ -31,12 +33,14 @@ SecondaryNavBar.defaultProps = {
   handleSubmit: () => {},
   handleChange: () => {},
   className: '',
+  initialSearchTerm: ''
 };
 
 SecondaryNavBar.propTypes = {
   handleSubmit: PropTypes.func,
   handleChange: PropTypes.func,
   className: PropTypes.string,
+  initialSearchTerm: PropTypes.string,
 };
 
 export default SecondaryNavBar;

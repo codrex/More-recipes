@@ -10,6 +10,7 @@ dotenv.config();
 const { AggressiveMergingPlugin, UglifyJsPlugin } = optimize;
 
 module.exports = merge(common, {
+  devtool: 'source-map',
   module: {
     rules: [
       {

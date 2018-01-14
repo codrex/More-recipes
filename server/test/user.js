@@ -124,7 +124,8 @@ const userSpec = (repiceSpec) => {
           expect(res.status).to.equal(200);
           expect(res.body.status).to.equal('success');
           expect(res.body.user.token).to.not.be.undefined;
-
+          token = res.body.user.token;
+          global.token = res.body.user.token;
           done();
         });
     });
@@ -132,11 +133,11 @@ const userSpec = (repiceSpec) => {
       request.post('/api/v1/users/signin')
         .send(userTwo)
         .end((err, res) => {
-          token2 = res.body.user.token;
           expect(res.status).to.equal(200);
           expect(res.body.status).to.equal('success');
           expect(res.body.user.token).to.not.be.undefined;
-
+          token2 = res.body.user.token;
+          global.token2 = res.body.user.token;
           done();
         });
     });
@@ -205,7 +206,6 @@ const userSpec = (repiceSpec) => {
     const updateTwo = {
       fullname: 'example user',
     };
-    after(() => repiceSpec(token, token2));
 
     it('should return success when valid user sends a request to update his/her profile', (done) => {
       request.put('/api/v1/users/update')
@@ -229,9 +229,19 @@ const userSpec = (repiceSpec) => {
           done();
         });
     });
-
     it('should fail when user without a token request a profile update', (done) => {
       request.put('/api/v1/users/update')
+        .send(updateTwo)
+        .end((err, res) => {
+          expect(res.status).to.equal(401);
+          expect(res.body.status).to.equal('fail');
+          done();
+        });
+    });
+    it('should fail when user with an invalid userId attempts to update profile', (done) => {
+      request.put('/api/v1/users/update')
+        .set('Authorization', mock.fakeToken)
+        .send(updateTwo)
         .end((err, res) => {
           expect(res.status).to.equal(401);
           expect(res.body.status).to.equal('fail');
@@ -332,6 +342,7 @@ const userSpec = (repiceSpec) => {
           done();
         });
     });
+    after(() => repiceSpec());
   });
 };
 
