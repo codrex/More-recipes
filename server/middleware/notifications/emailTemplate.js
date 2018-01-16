@@ -1,4 +1,4 @@
-
+/* eslint-disable max-len */
 /**
  * @name emailTemplate
  * @description Email template generation function

@@ -1,6 +1,6 @@
 import { getToken, hasToken } from '../utils/auth';
 
-const initailState = {
+const initialState = {
   currentStatusCode: 0,
   recipes: [],
   favouriteRecipes: [],
@@ -46,4 +46,4 @@ const initailState = {
   }
 };
 
-export default initailState;
+export default initialState;

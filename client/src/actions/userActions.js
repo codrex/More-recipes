@@ -114,7 +114,12 @@ export const userSignup = user => (dispatch) => {
 export const getUserProfile = () => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   const id = dispatcher.getIdFromToken();
-  return dispatcher.requestAndDispatch(`/api/v1/users/${id}`, null, gotProfile, 'get');
+  return dispatcher.requestAndDispatch(
+    `/api/v1/users/${id}`,
+    null,
+    gotProfile,
+    'get'
+  );
 };
 
 /**

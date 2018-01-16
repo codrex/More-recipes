@@ -45,6 +45,7 @@ class Direction extends React.Component {
           className=" d-flex no-margin w-100"
         >
           <a
+            id="toggle"
             href={`#item${index}`}
             data-toggle="collapse"
             aria-expanded="false"

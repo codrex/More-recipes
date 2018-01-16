@@ -1,8 +1,8 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { Provider } from 'react-redux';
-import configureStore from '../../../store/configStore';
-import AddDirections from '../../../components/pages/RecipeEditor/AddDirections';
+import toJson from 'enzyme-to-json';
+import { PureAddDirections }
+  from '../../../components/pages/RecipeEditor/AddDirections';
 
 
 const props = {
@@ -10,20 +10,16 @@ const props = {
   directions: true,
   externalError: [],
   handleSubmit: jest.fn(),
-  ingredients: false,
   initialize: jest.fn(),
-  items: [],
-  name: '',
-  placeholder: '',
+  items: ['directions one', 'directions two'],
+  name: 'directions',
+  placeholder: 'add a direction',
   sendItemsToStore: jest.fn(),
 };
-describe('Add direction component', () => {
+describe('Add directions component', () => {
   test('expected to match snapshot', () => {
-    const component = renderer.create(
-      <Provider store={configureStore()}>
-        <AddDirections {...props} />
-      </Provider>);
-    const tree = component.toJSON();
+    const component = shallow(<PureAddDirections {...props} />);
+    const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
 });

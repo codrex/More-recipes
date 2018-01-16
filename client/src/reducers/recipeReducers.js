@@ -31,7 +31,10 @@ import {
  * @param {object} state
  * @param {object} action
  */
-export const recipeValidationError = (state = initialState.recipeValidationError, action) => {
+export const recipeValidationError = (
+  state = initialState.recipeValidationError,
+  action
+) => {
   switch (action.type) {
     case RECIPE_VALIDATION_ERROR:
       return action.error;
@@ -166,7 +169,8 @@ export const recipeReducer = (state = initialState.recipe, action) => {
  * @param {object} state
  * @param {object} action
  */
-export const favoriteRecipesReducer = (state = initialState.favouriteRecipes, action) => {
+export const favoriteRecipesReducer = (state = initialState.favouriteRecipes,
+  action) => {
   switch (action.type) {
     case TOGGLE_FAV: {
       const {

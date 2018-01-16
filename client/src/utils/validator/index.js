@@ -2,7 +2,8 @@ import validate from 'validate.js';
 import constraint from './constraint';
 
 /**
- * @description custom validator that check if a form value has more than one word
+ * @description custom validator that check if a form value has
+ * more than one word
  * @return {array|undefined} error
  * @param {string} word
  */
@@ -16,35 +17,35 @@ validate.validators.words = (word) => {
 };
 
 /**
- * validate username feild
+ * validate username field
  * @return {array|undefined} error
  * @param {string} value
  */
 const username = value => validate.single(value, constraint.username);
 
 /**
- *  validate password feild
+ *  validate password field
  * @return {array|undefined} error
  * @param {string} value
  */
 const password = value => validate.single(value, constraint.password);
 
 /**
- *  validate email feild
+ *  validate email field
  * @return {array|undefined} error
  * @param {string} value
  */
 const email = value => validate.single(value, constraint.email);
 
 /**
- *  validate fullname feild
+ *  validate fullname field
  * @return {array|undefined} error
  * @param {string} value
  */
 const fullname = value => validate.single(value, constraint.fullname);
 
 /**
- *  validate review feild
+ *  validate review field
  * @return {array|undefined} error
  * @param {string} value
  */
@@ -52,7 +53,7 @@ const review = value =>
   validate.single(value, constraint.presenceAndLength('review'));
 
 /**
- *  validate item feild
+ *  validate item field
  * @return {array|undefined} error
  * @param {string} value
  * @param {string} itemName
@@ -61,7 +62,7 @@ const validateItem = (value, itemName) =>
   validate.single(value, constraint.presenceAndLength(itemName));
 
 /**
- *  validate recipe name feild
+ *  validate recipe name field
  * @return {array|undefined} error
  * @param {string} value
  * @param {string} itemName
@@ -70,7 +71,7 @@ const recipeName = (value, itemName) =>
   validate.single(value, constraint.presenceAndLength(itemName));
 
 /**
- *  validate category feild
+ *  validate category field
  * @return {array|undefined} error
  * @param {string} value
  * @param {string} itemName
@@ -94,8 +95,10 @@ const validateRecipe = (recipe) => {
     {
       name: recipeName(name, 'Recipe name'),
       category: recipeCategory.trim() ? false : ['Select a category'],
-      ingredients: ingredients ? ingredients && !ingredients.length > 0 && ['Ingredients list cannot be empty'] : ['Ingredients must be an array'],
-      directions: directions ? !directions.length > 0 && ['Directions list cannot be empty'] : ['Directions must be an array']
+      ingredients: ingredients ? ingredients && !ingredients.length > 0 &&
+      ['Ingredients list cannot be empty'] : ['Ingredients must be an array'],
+      directions: directions ? !directions.length > 0 &&
+      ['Directions list cannot be empty'] : ['Directions must be an array']
     }
   );
 };

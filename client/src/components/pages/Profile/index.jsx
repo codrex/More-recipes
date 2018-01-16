@@ -10,7 +10,7 @@ import { resetSuccess } from '../../../actions/ajaxActions';
 import resetPageCount from '../../../actions/resetPageCount';
 import { getUserProfile, updateProfile } from '../../../actions/userActions';
 import UserInfo from './UserInfo';
-import Recipes from './RecipeList';
+import RecipeList from './RecipeList';
 import HeroArea from '../../common/HeroArea';
 import { PROFILE_PAGE_PIX } from '../../../constants';
 import NotFound from '../../common/NotFound';
@@ -83,7 +83,11 @@ class Profile extends React.Component {
    * @param {number} currentId
    * @param {number} currentIndex
    */
-  onDeleteRecipeClicked = (modalTitle, currentId = null, currentIndex = null) => {
+  onDeleteRecipeClicked = (
+    modalTitle,
+    currentId = null,
+    currentIndex = null
+  ) => {
     this.setState({
       modalTitle,
       currentId,
@@ -120,13 +124,9 @@ class Profile extends React.Component {
    * @returns{undefined}
    * @param{string} title
    */
-  editProfileClicked = (title) => {
-    if (title) {
-      this.setState({
-        modalTitle: 'Update profile'
-      });
-      this.onModalOpen();
-    }
+  editProfileClicked = () => {
+    this.setState({ modalTitle: 'Update profile' });
+    this.onModalOpen();
   }
 
   /**
@@ -236,10 +236,12 @@ class Profile extends React.Component {
 
     if (noLoader) {
       return (
-        <div className="row col-xs-12 col-sm-12 col-md-10 col-lg-10 center-margin">
-          <Recipes
+        <div className={`row col-xs-12
+        col-sm-12 col-md-10 col-lg-10 center-margin`}
+        >
+          <RecipeList
             recipes={recipes}
-            onEditIconCliked={this.modifyRecipe}
+            onEditIconClicked={this.modifyRecipe}
             onDeleteIconClicked={this.onDeleteRecipeClicked}
             handleClick={this.recipeItemClick}
           />
@@ -261,6 +263,7 @@ class Profile extends React.Component {
       modalTitle,
       recipeDeleted
     } = this.state;
+
     return (
       <Modal
         id="editProfileModal"
@@ -281,8 +284,9 @@ class Profile extends React.Component {
               {!recipeDeleted && !loading &&
             'Are u sure u want to delete this recipe ?'}
               {loading && ' Deleting...'}
-              {recipeDeleted && !loading &&
-              'Recipe succefully deleted'
+              {
+                recipeDeleted && !loading &&
+              'Recipe successfully deleted'
               }
             </h1>
             {!recipeDeleted && !loading &&

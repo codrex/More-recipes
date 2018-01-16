@@ -56,12 +56,13 @@ class Landing extends React.Component {
       this.modalOpen(path);
     }
   }
+
   /**
- *
- * @param {object} nextProps
- * @return {bool} true
- * @summary redirect users to other pages after login or signup was successful
- */
+   *
+   * @param {object} nextProps
+   * @return {bool} true
+   * @summary redirect users to other pages after login or signup was successful
+   */
   shouldComponentUpdate(nextProps) {
     const { authenticated, redirectTo } = nextProps.auth;
     if (authenticated && nextProps.auth !== this.props.auth) {
@@ -71,7 +72,7 @@ class Landing extends React.Component {
   }
 
   /**
-   * @return {undfined} undefined
+   * @return {undefined}
    */
   signin() {
     this.setState({
@@ -82,7 +83,7 @@ class Landing extends React.Component {
   }
 
   /**
-   * @return {undfined} undefined
+   * @return {undefined}
    */
   signup() {
     this.setState({
@@ -93,7 +94,7 @@ class Landing extends React.Component {
   }
 
   /**
-   * @return {undfined} undefined
+   * @return {undefined}
    */
   closeModal() {
     const { history } = this.props;
@@ -108,7 +109,7 @@ class Landing extends React.Component {
 
   /**
   * @param {string} path
-  * @return {undfined} undefined
+  * @return {undefined}
   */
   modalOpen(path) {
     if (path === '/create-account') {

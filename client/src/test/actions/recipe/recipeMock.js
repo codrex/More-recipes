@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import nock from 'nock';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
@@ -39,7 +40,7 @@ export const mockStore = (state) => {
 export const recipe = {
   name: 'africa oil rice',
   category: 'lunch',
-  ingredients: ['rice','water','salt','oil'],
+  ingredients: ['rice', 'water', 'salt', 'oil'],
   directions: ['wash the rice', 'boil the rice for 20mins']
 };
 
@@ -53,7 +54,7 @@ export const setup = (url, reqType, state, code = 200) => {
   const scope = nockMocker(url, payload, reqType, code);
   // mocking store
   const store = mockStore(state);
-  jest.setTimeout(10000)
+  jest.setTimeout(10000);
   return {
     payload,
     store,

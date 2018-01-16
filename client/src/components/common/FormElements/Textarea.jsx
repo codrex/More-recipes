@@ -26,7 +26,12 @@ const Textarea = (props) => {
   return (
     <div className={classnames('form-group', fgClassName)}>
       <textarea
-        className={classnames('form-control text-area', className, valid, invalid)}
+        className={classnames(
+          'form-control text-area',
+          className,
+          valid,
+          invalid
+        )}
         id={`${props.id}Textarea`}
         aria-describedby={`${props.id}Textarea`}
         placeholder={props.placeholder}

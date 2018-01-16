@@ -106,7 +106,8 @@ class Item extends React.Component {
       this.changeEditMode();
       return;
     }
-    const error = this.validateItem(itemValue) || this.props.uniquenessChecker(itemValue);
+    const error = this.validateItem(itemValue)
+    || this.props.uniquenessChecker(itemValue);
     if (error) {
       this.setState({
         ValidationErrors: error,
@@ -186,8 +187,13 @@ class Item extends React.Component {
         >
           <Component
             value={this.state.itemValue}
-            className={classnames(' item-edit-input', directions && 'item-edit-textarea')}
-            fgClassName={classnames(' item-edit-fg', directions && 'd-flex flex-column-reverse')}
+            className={
+              classnames(' item-edit-input', directions && 'item-edit-textarea')
+            }
+            fgClassName={
+              classnames(' item-edit-fg',
+                directions && 'd-flex flex-column-reverse')
+            }
             handleChange={this.handleChange}
             error={ValidationErrors}
             id={name}

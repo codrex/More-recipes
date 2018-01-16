@@ -1,9 +1,7 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { BrowserRouter } from 'react-router-dom';
 import toJson from 'enzyme-to-json';
 import RecipeCard from '../../../components/pages/RecipesDisplay/RecipeCard';
-
 
 const props = {
   recipeName: 'rice and beans',
@@ -20,16 +18,14 @@ const props = {
 describe('Recipes card component ', () => {
   let component;
   beforeEach(() => {
-    component = mount(
-      <BrowserRouter>
-        <RecipeCard {...props} />
-      </BrowserRouter>
-    );
+    component = mount(<RecipeCard {...props} />);
   });
+
   test('expected to match snapshot', () => {
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
+
   test('expected to match snapshot when favorite icon is clicked ', () => {
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
@@ -37,4 +33,13 @@ describe('Recipes card component ', () => {
     expect(tree).toMatchSnapshot();
     expect(props.toggleFav).toBeCalled();
   });
+
+  test('expected to match snapshot when view recipe button is clicked ',
+    () => {
+      const tree = toJson(component);
+      expect(tree).toMatchSnapshot();
+      component.find('Button.recipe-card-underlay-btn').simulate('click');
+      expect(tree).toMatchSnapshot();
+      expect(props.toggleFav).toBeCalled();
+    });
 });

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import { PureLoginForm } from '../../../components/pages/Landing/LoginForm';
@@ -9,17 +10,10 @@ const props = {
 };
 
 describe('login form component ', () => {
-  test('expected to match snapshot when submitting props is false', () => {
+  test('expected to match snapshot ', () => {
     const component = shallow(<PureLoginForm {...props} />);
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
-  });
-  test('expected to match snapshot when submitting props is true', () => {
-    const component = shallow(
-      <PureLoginForm {...{ ...props, submitting: true }} />
-    );
-    const tree = toJson(component);
-    expect(tree).toMatchSnapshot();
   });
 });

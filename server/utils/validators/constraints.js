@@ -91,6 +91,18 @@ const constraints = {
   idConstraint: {
     id: rules.id,
   },
+  recipeIdConstraint: {
+    id: {
+      presence: {
+        message: 'you sent is not a valid recipe id'
+      },
+      numericality: {
+        onlyInteger: true,
+        greaterThan: 0,
+        message: 'you sent is not a valid recipe id'
+      },
+    },
+  },
   reviewConstraint: {
     review: {
       presence: true,
@@ -101,7 +113,6 @@ const constraints = {
     },
   },
   voteConstraint: {
-    id: rules.id,
     vote: {
       presence: {
         message: 'parameter is invalid, only true or false is allowed'

@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from '../../../store/configStore';
-import AddIngredients from '../../../components/pages/RecipeEditor/AddIngredients';
+import AddIngredients
+  from '../../../components/pages/RecipeEditor/AddIngredients';
 
 
 const props = {

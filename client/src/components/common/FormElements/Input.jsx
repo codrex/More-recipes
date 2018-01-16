@@ -45,7 +45,7 @@ const Input = (props) => {
         touched &&
         error &&
         error.map((err, i) => (
-          <div
+          <div /* eslint-disable */
             key={i}
             className={classnames(
               meta && touched && error ? 'help-text' : '',

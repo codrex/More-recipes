@@ -10,7 +10,13 @@ import PropTypes from 'prop-types';
  */
 const Icon = props => (
   <div
-    className={classnames('icon-wrapper', props.parentClass, props.active, props.pointer && 'pointer')}
+    className={
+      classnames(
+        'icon-wrapper',
+        props.parentClass,
+        props.active,
+        props.pointer && 'pointer'
+      )}
     onClick={() => {
       ReactToolTip.hide();
       props.handleClick();

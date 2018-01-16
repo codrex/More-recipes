@@ -22,7 +22,7 @@ const updateVote = (voteInstance, voteData, next) => {
 };
 
 /**
- * @description handles the voting proccess for a paticular recipe
+ * @description handles the voting process for a particular recipe
  * @name VoteHandler
  * @function
  * @param {Object} req - Express request object

@@ -1,97 +1,169 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipe image component  expected to match snapshot when component is mounted 1`] = `
-<div
-  className="image-container"
+exports[`Recipe image component  expected to match snapshot 1`] = `
+<RecipeImage
+  image=""
+  updateImage={[Function]}
 >
-  <h4
-    className="items-header-text"
-  >
-    Recipe image
-  </h4>
   <div
-    className="display-4"
+    className="image-container"
   >
-    <Image
-      className="recipe-card-img"
-      cloudName="resycom"
-      crop="fit"
-      height="500"
-      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-      width="400"
-    />
-    <span
-      className="btn bg-secondary"
-      onClick={[Function]}
-      role="button"
-      tabIndex="0"
+    <h4
+      className="items-header-text"
     >
-      Upload image
-    </span>
+      Recipe image
+    </h4>
+    <div
+      className="display-4"
+    >
+      <Image
+        className="recipe-card-img"
+        cloudName="resycom"
+        crop="fit"
+        height="500"
+        publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        width="400"
+      >
+        <img
+          className="recipe-card-img"
+          src="http://res.cloudinary.com/resycom/image/upload/c_fit,h_500,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        />
+      </Image>
+      <span
+        className="btn bg-secondary"
+        onClick={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        Upload image
+      </span>
+    </div>
   </div>
-</div>
+</RecipeImage>
 `;
 
 exports[`Recipe image component  expected to match snapshot when component receive image as props 1`] = `
-<div
-  className="image-container"
+<RecipeImage
+  image="{}"
+  updateImage={[Function]}
 >
-  <h4
-    className="items-header-text"
-  >
-    Recipe image
-  </h4>
   <div
-    className="display-4"
+    className="image-container"
   >
-    <Image
-      className="recipe-card-img"
-      cloudName="resycom"
-      crop="fit"
-      height="500"
-      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-      width="400"
-    />
-    <span
-      className="btn bg-secondary"
-      onClick={[Function]}
-      role="button"
-      tabIndex="0"
+    <h4
+      className="items-header-text"
     >
-      Upload image
-    </span>
+      Recipe image
+    </h4>
+    <div
+      className="display-4"
+    >
+      <Image
+        className="recipe-card-img"
+        cloudName="resycom"
+        crop="fit"
+        height="500"
+        publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        width="400"
+      >
+        <img
+          className="recipe-card-img"
+          src="http://res.cloudinary.com/resycom/image/upload/c_fit,h_500,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        />
+      </Image>
+      <span
+        className="btn bg-secondary"
+        onClick={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        Upload image
+      </span>
+    </div>
   </div>
-</div>
+</RecipeImage>
 `;
 
 exports[`Recipe image component  expected to match snapshot when loadImage button is click 1`] = `
-<div
-  className="image-container"
+<RecipeImage
+  image=""
+  updateImage={[Function]}
 >
-  <h4
-    className="items-header-text"
-  >
-    Recipe image
-  </h4>
   <div
-    className="display-4"
+    className="image-container"
   >
-    <Image
-      className="recipe-card-img"
-      cloudName="resycom"
-      crop="fit"
-      height="500"
-      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-      width="400"
-    />
-    <span
-      className="btn bg-secondary"
-      onClick={[Function]}
-      role="button"
-      tabIndex="0"
+    <h4
+      className="items-header-text"
     >
-      Upload image
-    </span>
+      Recipe image
+    </h4>
+    <div
+      className="display-4"
+    >
+      <Image
+        className="recipe-card-img"
+        cloudName="resycom"
+        crop="fit"
+        height="500"
+        publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        width="400"
+      >
+        <img
+          className="recipe-card-img"
+          src="http://res.cloudinary.com/resycom/image/upload/c_fit,h_500,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        />
+      </Image>
+      <span
+        className="btn bg-secondary"
+        onClick={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        Upload image
+      </span>
+    </div>
   </div>
-</div>
+</RecipeImage>
+`;
+
+exports[`Recipe image component  expected to match snapshot when loadImage button is click 2`] = `
+<RecipeImage
+  image=""
+  updateImage={[Function]}
+>
+  <div
+    className="image-container"
+  >
+    <h4
+      className="items-header-text"
+    >
+      Recipe image
+    </h4>
+    <div
+      className="display-4"
+    >
+      <Image
+        className="recipe-card-img"
+        cloudName="resycom"
+        crop="fit"
+        height="500"
+        publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        width="400"
+      >
+        <img
+          className="recipe-card-img"
+          src="http://res.cloudinary.com/resycom/image/upload/c_fit,h_500,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        />
+      </Image>
+      <span
+        className="btn bg-secondary"
+        onClick={[Function]}
+        role="button"
+        tabIndex="0"
+      >
+        Upload image
+      </span>
+    </div>
+  </div>
+</RecipeImage>
 `;

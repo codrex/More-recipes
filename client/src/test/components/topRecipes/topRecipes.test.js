@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import { PureTopRecipes } from '../../../components/pages/TopRecipes';
@@ -5,7 +6,7 @@ import { PureTopRecipes } from '../../../components/pages/TopRecipes';
 const props = {
   getTopRecipes: jest.fn(),
   topRecipes: [{
-    name: 'capachino',
+    name: 'cappuccino',
     category: 'drinks',
     views: 1,
     upVotes: 1,

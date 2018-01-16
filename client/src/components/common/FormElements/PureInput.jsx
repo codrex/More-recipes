@@ -31,7 +31,7 @@ const PureInput = (props) => {
       {
         error &&
         error.map((err, i) => (
-          <div
+          <div /* eslint-disable */
             key={i}
             className={classnames(error ? 'help-text' : '', helpTextClassName)}
           >

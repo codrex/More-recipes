@@ -59,7 +59,8 @@ class RecipesDisplay extends React.Component {
    */
   toggleFav = (id) => {
     this.props.resetSuccess();
-    const message = this.isUserFav(id) ? 'Recipe removed from favourites' : 'Recipe added to favourites';
+    const message = this.isUserFav(id) ? 'Recipe removed from favourites' :
+      'Recipe added to favourites';
     this.props.toggleFav(id, message);
   }
 

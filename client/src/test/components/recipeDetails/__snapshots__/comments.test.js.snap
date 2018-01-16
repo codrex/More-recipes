@@ -12,10 +12,10 @@ exports[`Comments display component  expected to match snapshot 1`] = `
         "review": "cool recipe",
         "reviewer": Object {
           "email": "test.test@gmail.com",
-          "fullname": "test tester ",
+          "fullname": "test user ",
           "id": 1,
           "profilePix": "UNKNOWN",
-          "username": "testi",
+          "username": "testuser",
         },
       },
     ]
@@ -33,11 +33,11 @@ exports[`Comments display component  expected to match snapshot 1`] = `
   >
     <Comment
       createdAt=""
-      fullname="test tester "
+      fullname="test user "
       index={0}
       key="50"
       review="cool recipe"
-      username="testi"
+      username="testuser"
     >
       <Animation
         appear={true}
@@ -82,7 +82,7 @@ exports[`Comments display component  expected to match snapshot 1`] = `
                   <div
                     className="avatar avatar-sm"
                   >
-                    TT
+                    TU
                   </div>
                   <div
                     className="media-body"
@@ -93,7 +93,7 @@ exports[`Comments display component  expected to match snapshot 1`] = `
                       <h4
                         className="no-margin"
                       >
-                        @testi
+                        @testuser
                       </h4>
                       <span
                         className="text-center bold time"

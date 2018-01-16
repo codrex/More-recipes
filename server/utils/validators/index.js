@@ -72,7 +72,8 @@ validate.validators.stringArray = (value) => {
   if (Array.isArray(value)) {
     if (value.length < 1) return 'array can only contain type string';
     const result = value.every(element => typeof element === 'string');
-    return (!result && 'array can only contain strings') || (result && undefined);
+    return (!result && 'array can only contain strings')
+    || (result && undefined);
   }
   return 'element is not an array';
 };
@@ -85,7 +86,8 @@ validate.validators.stringArray = (value) => {
 validate.validators.numberArray = (value) => {
   if (Array.isArray(value)) {
     const result = value.every(element => !isNaN(parseInt(element, 10)));
-    return (!result && 'array can only contain number ') || (result && undefined);
+    return (!result && 'array can only contain number ')
+    || (result && undefined);
   }
   return 'element is not an array';
 };
@@ -107,7 +109,8 @@ validate.validators.isString = (value) => {
  * @param {Object} res
  * @param {Object} next
  */
-const validationHandler = (value, validationFunction, req, res, next = null) => {
+const validationHandler =
+(value, validationFunction, req, res, next = null) => {
   const isValid = validationFunction(value);
   if (isValid.valid) {
     if (next) next();
@@ -115,11 +118,27 @@ const validationHandler = (value, validationFunction, req, res, next = null) => 
 };
 
 const validateSignup = value => validator(value, constraints.signupConstraint);
-const validateProfileUpdate = value => validator(value, constraints.profileUpdateConstraint);
-const validateRecipes = value => validator(value, constraints.createRecipeConstraint);
+const validateProfileUpdate = value => validator(
+  value,
+  constraints.profileUpdateConstraint
+);
+const validateRecipes = value => validator(
+  value,
+  constraints.createRecipeConstraint
+);
 const validateId = value => validator(value, constraints.idConstraint);
-const validateRecipeIds = value => validator(value, constraints.recipeIdsConstraint);
-const validateLogin = value => validator(value, constraints.loginWithUsernameConstraint);
+const validateRecipeId = value => validator(
+  value,
+  constraints.recipeIdConstraint
+);
+const validateRecipeIds = value => validator(
+  value,
+  constraints.recipeIdsConstraint
+);
+const validateLogin = value => validator(
+  value,
+  constraints.loginWithUsernameConstraint
+);
 const validateReview = value => validator(value, constraints.reviewConstraint);
 const validateVote = value => validator(value, constraints.voteConstraint);
 
@@ -135,5 +154,6 @@ export {
   validateReview,
   validateVote,
   validationHandler,
-  validateRecipeIds
+  validateRecipeIds,
+  validateRecipeId
 };

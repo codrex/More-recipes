@@ -14,9 +14,10 @@ describe('Testing auth reducer', () => {
     state = initialState.auth;
   });
 
-  it('should return initialState when auth reducer is call without args', () => {
-    expect(reducer()).toMatchObject(state);
-  });
+  it('should return initialState when auth reducer is call without args',
+    () => {
+      expect(reducer()).toMatchObject(state);
+    });
 
   it('should return a new state for action type LOGIN', () => {
     const action = {
@@ -50,9 +51,10 @@ describe('Testing auth reducer', () => {
     expect(auth).toMatchObject({ token: 'token', authenticated: true });
   });
 
-  it('should return a new state for action type AJAX_REQUEST_AUTH_ERROR', () => {
-    const action = { type: AJAX_REQUEST_AUTH_ERROR };
-    const auth = reducer(state, action);
-    expect(auth).toMatchObject({ token: '', authenticated: false });
-  });
+  it('should return a new state for action type AJAX_REQUEST_AUTH_ERROR',
+    () => {
+      const action = { type: AJAX_REQUEST_AUTH_ERROR };
+      const auth = reducer(state, action);
+      expect(auth).toMatchObject({ token: '', authenticated: false });
+    });
 });

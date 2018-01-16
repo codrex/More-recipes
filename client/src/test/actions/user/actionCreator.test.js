@@ -30,13 +30,14 @@ describe('Unit test for user actions', () => {
     expect(actions.gotProfile(payload)).toMatchObject(getProfile);
   });
 
-  it('should return an action with an action-type of UPDATE_USER_PROFILE', () => {
-    const payload = {};
-    const updateProfile = {
-      type: actionTypes.UPDATE_USER_PROFILE,
-      payload
-    };
-    expect(actions.updatedProfile(payload)).toMatchObject(updateProfile);
-  });
+  it('should return an action with an action-type of UPDATE_USER_PROFILE',
+    () => {
+      const payload = {};
+      const updateProfile = {
+        type: actionTypes.UPDATE_USER_PROFILE,
+        payload
+      };
+      expect(actions.updatedProfile(payload)).toMatchObject(updateProfile);
+    });
 });
 

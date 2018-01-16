@@ -1,13 +1,14 @@
-const faker =  require('faker')
+/* eslint-disable import/no-extraneous-dependencies */
+const faker = require('faker');
 
-const user  = {
-  name: faker.name.firstName() +' '+ faker.name.lastName(),
+const user = {
+  name: `${faker.name.firstName()} ${faker.name.lastName()}`,
   password: '123456',
-  username: faker.name.firstName() + 'name',
+  username: `${faker.name.firstName()}name`,
   email: faker.internet.email()
-}
+};
 
 module.exports = {
   user,
-  baseUrl:'http://localhost:9000/'
-}
+  baseUrl: 'http://localhost:9000/'
+};

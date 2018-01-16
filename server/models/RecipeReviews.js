@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const RecipeReviws = sequelize.define('RecipeReviews', {
+  const RecipeReviews = sequelize.define('RecipeReviews', {
     review: {
       allowNull: false,
       type: DataTypes.TEXT,
@@ -13,5 +13,5 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
   });
-  return RecipeReviws;
+  return RecipeReviews;
 };

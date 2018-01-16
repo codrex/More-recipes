@@ -1,18 +1,20 @@
-var user, baseUrl;
+/* eslint-disable prefer-arrow-callback, func-names */
+
+let user, baseUrl;
 module.exports = {
-  before : function(client) {
+  before(client) {
     user = client.globals.user;
     baseUrl = client.globals.baseUrl;
   },
 
   'Render recipes page': (client) => {
     client
-    .url(baseUrl+'login')
+      .url(`${baseUrl}login`)
       .waitForElementVisible('#modal', 5000)
       .setValue('input#username', user.username)
       .setValue('input#password', user.password)
       .execute(function () {
-        document.querySelector('#submit').click()
+        document.querySelector('#submit').click();
       })
       .waitForElementVisible('body', 1000)
       .assert.title('MoreRecipes')
@@ -25,61 +27,61 @@ module.exports = {
       .assert.visible('.grid')
       .assert.containsText('#display-1', 'Recipes')
       .execute(function () {
-        document.querySelector('#Add-Recipe-nav-link>a').click()
+        document.querySelector('#Add-Recipe-nav-link>a').click();
       })
       .pause(1000)
-      .assert.urlEquals(baseUrl+'create')
+      .assert.urlEquals(`${baseUrl}create`)
       .execute(function () {
-        document.querySelector('#Top-Recipes-nav-link>a').click()
+        document.querySelector('#Top-Recipes-nav-link>a').click();
       })
       .pause(1000)
-      .assert.urlEquals(baseUrl+'top-recipes')
+      .assert.urlEquals(`${baseUrl}top-recipes`)
       .execute(function () {
-        document.querySelector('#Recipes-nav-link>a').click()
+        document.querySelector('#Recipes-nav-link>a').click();
       })
       .pause(1000)
-      .assert.urlEquals(baseUrl+'recipes')
+      .assert.urlEquals(`${baseUrl}recipes`)
       .setValue('input[type=search]', 'coconut rice')
       .pause(3000)
       .assert.containsText('#display-1', 'Recipes')
       .execute(function () {
-        document.querySelector('#dropdown>div').click()
+        document.querySelector('#dropdown>div').click();
       })
       .pause(1000)
-      .waitForElementVisible('ul.dropdown-menu',1000)
+      .waitForElementVisible('ul.dropdown-menu', 1000)
       .execute(function () {
-        document.querySelector('#profile-menu>div').click()
+        document.querySelector('#profile-menu>div').click();
       })
       .pause(1000)
-      .assert.urlEquals(baseUrl+'user')
+      .assert.urlEquals(`${baseUrl}user`)
       .execute(function () {
-        document.querySelector('#dropdown>div').click()
+        document.querySelector('#dropdown>div').click();
       })
       .pause(500)
       .execute(function () {
-        document.querySelector('#favourite-recipes-menu>div').click()
+        document.querySelector('#favourite-recipes-menu>div').click();
       })
       .pause(1000)
-      .assert.urlEquals(baseUrl+'favourite-recipes')
+      .assert.urlEquals(`${baseUrl}favourite-recipes`)
       .execute(function () {
-        document.querySelector('#dropdown>div').click()
-      })
-      .pause(1000)
-      .execute(function () {
-        document.querySelector('#created-recipes-menu>div').click()
-      })
-      .pause(1000)
-      .assert.urlEquals(baseUrl+'created-recipes')
-      .pause(1000)
-      .execute(function () {
-        document.querySelector('#Recipes-nav-link>a').click()
+        document.querySelector('#dropdown>div').click();
       })
       .pause(1000)
       .execute(function () {
-        document.querySelector('#view-details-btn-0').click()
+        document.querySelector('#created-recipes-menu>div').click();
+      })
+      .pause(1000)
+      .assert.urlEquals(`${baseUrl}created-recipes`)
+      .pause(1000)
+      .execute(function () {
+        document.querySelector('#Recipes-nav-link>a').click();
+      })
+      .pause(1000)
+      .execute(function () {
+        document.querySelector('#view-details-btn-0').click();
       })
       .pause(1000)
       .assert.urlContains('/recipe/')
-      .end()
+      .end();
   }
 };

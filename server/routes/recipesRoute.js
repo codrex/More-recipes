@@ -96,6 +96,7 @@ recipesRoute.route('/:id/reviews')
  */
 recipesRoute.route('/:id/vote')
   .put(
+    recipeIdValidation,
     voteValidation,
     isRecipe,
     VoteHandler,

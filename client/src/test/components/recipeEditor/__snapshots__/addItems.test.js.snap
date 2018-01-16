@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Add items component  expected to match snapshot when directions is passed as props 1`] = `
+exports[`AddItems  Add item component expected to match snapshot  1`] = `
 <div
   className="col-12 items "
 >
@@ -10,7 +10,7 @@ exports[`Add items component  expected to match snapshot when directions is pass
     <h4
       className="items-header-text"
     >
-      ingredients  0
+      ingredients  2
     </h4>
     <Form
       action=""
@@ -27,22 +27,13 @@ exports[`Add items component  expected to match snapshot when directions is pass
       style={Object {}}
       submitBtnText="add ingredient"
     >
-      <Field
-        className="no-margin add-item-input"
-        component={[Function]}
-        externalError={
-          Object {
-            "error": Array [],
-            "touched": true,
-          }
-        }
-        fgClassName="d-flex flex-column no-margin"
-        id="ingredient"
+      <ItemField
+        Component={[Function]}
+        clearValidationError={[Function]}
         name="ingredient"
-        onFocus={[Function]}
         placeholder=""
-        type="text"
         validate={[Function]}
+        validationError={Array []}
       />
     </Form>
   </div>
@@ -56,7 +47,12 @@ exports[`Add items component  expected to match snapshot when directions is pass
       directions={true}
       editItem={[Function]}
       ingredients={false}
-      items={Array []}
+      items={
+        Array [
+          "rice",
+          "beans",
+        ]
+      }
       name="ingredient"
       uniquenessChecker={[Function]}
     />
@@ -64,7 +60,7 @@ exports[`Add items component  expected to match snapshot when directions is pass
 </div>
 `;
 
-exports[`Add items component  expected to match snapshot when form is submitted 1`] = `
+exports[`AddItems  addItem method should call props.sendItemsToStore   1`] = `
 <div
   className="col-12 items "
 >
@@ -74,7 +70,7 @@ exports[`Add items component  expected to match snapshot when form is submitted 
     <h4
       className="items-header-text"
     >
-      ingredients  0
+      ingredients  2
     </h4>
     <Form
       action=""
@@ -91,22 +87,13 @@ exports[`Add items component  expected to match snapshot when form is submitted 
       style={Object {}}
       submitBtnText="add ingredient"
     >
-      <Field
-        className="no-margin add-item-input"
-        component={[Function]}
-        externalError={
-          Object {
-            "error": Array [],
-            "touched": true,
-          }
-        }
-        fgClassName="d-flex flex-column no-margin"
-        id="ingredient"
+      <ItemField
+        Component={[Function]}
+        clearValidationError={[Function]}
         name="ingredient"
-        onFocus={[Function]}
         placeholder=""
-        type="text"
         validate={[Function]}
+        validationError={Array []}
       />
     </Form>
   </div>
@@ -120,7 +107,12 @@ exports[`Add items component  expected to match snapshot when form is submitted 
       directions={true}
       editItem={[Function]}
       ingredients={false}
-      items={Array []}
+      items={
+        Array [
+          "rice",
+          "beans",
+        ]
+      }
       name="ingredient"
       uniquenessChecker={[Function]}
     />
@@ -128,7 +120,7 @@ exports[`Add items component  expected to match snapshot when form is submitted 
 </div>
 `;
 
-exports[`Add items component  expected to match snapshot when name field has focus 1`] = `
+exports[`AddItems  deleteFromList method should call props.sendItemsToStore 1`] = `
 <div
   className="col-12 items "
 >
@@ -138,7 +130,7 @@ exports[`Add items component  expected to match snapshot when name field has foc
     <h4
       className="items-header-text"
     >
-      ingredients  0
+      ingredients  2
     </h4>
     <Form
       action=""
@@ -155,22 +147,13 @@ exports[`Add items component  expected to match snapshot when name field has foc
       style={Object {}}
       submitBtnText="add ingredient"
     >
-      <Field
-        className="no-margin add-item-input"
-        component={[Function]}
-        externalError={
-          Object {
-            "error": Array [],
-            "touched": true,
-          }
-        }
-        fgClassName="d-flex flex-column no-margin"
-        id="ingredient"
+      <ItemField
+        Component={[Function]}
+        clearValidationError={[Function]}
         name="ingredient"
-        onFocus={[Function]}
         placeholder=""
-        type="text"
         validate={[Function]}
+        validationError={Array []}
       />
     </Form>
   </div>
@@ -184,7 +167,12 @@ exports[`Add items component  expected to match snapshot when name field has foc
       directions={true}
       editItem={[Function]}
       ingredients={false}
-      items={Array []}
+      items={
+        Array [
+          "rice",
+          "beans",
+        ]
+      }
       name="ingredient"
       uniquenessChecker={[Function]}
     />
@@ -192,7 +180,7 @@ exports[`Add items component  expected to match snapshot when name field has foc
 </div>
 `;
 
-exports[`Add items component  expected to match snapshot when there is external validation error 1`] = `
+exports[`AddItems  editItems method should call props.sendItemsToStore when editItems method is called  1`] = `
 <div
   className="col-12 items "
 >
@@ -202,7 +190,7 @@ exports[`Add items component  expected to match snapshot when there is external 
     <h4
       className="items-header-text"
     >
-      ingredients  0
+      ingredients  2
     </h4>
     <Form
       action=""
@@ -219,24 +207,13 @@ exports[`Add items component  expected to match snapshot when there is external 
       style={Object {}}
       submitBtnText="add ingredient"
     >
-      <Field
-        className="no-margin add-item-input"
-        component={[Function]}
-        externalError={
-          Object {
-            "error": Array [
-              "error",
-            ],
-            "touched": true,
-          }
-        }
-        fgClassName="d-flex flex-column no-margin"
-        id="ingredient"
+      <ItemField
+        Component={[Function]}
+        clearValidationError={[Function]}
         name="ingredient"
-        onFocus={[Function]}
         placeholder=""
-        type="text"
         validate={[Function]}
+        validationError={Array []}
       />
     </Form>
   </div>
@@ -250,7 +227,72 @@ exports[`Add items component  expected to match snapshot when there is external 
       directions={true}
       editItem={[Function]}
       ingredients={false}
-      items={Array []}
+      items={
+        Array [
+          "rice",
+          "beans",
+        ]
+      }
+      name="ingredient"
+      uniquenessChecker={[Function]}
+    />
+  </div>
+</div>
+`;
+
+exports[`AddItems  validate method should return "ingredient is already on the list"  1`] = `
+<div
+  className="col-12 items "
+>
+  <div
+    className="items-header"
+  >
+    <h4
+      className="items-header-text"
+    >
+      ingredients  2
+    </h4>
+    <Form
+      action=""
+      className=""
+      disabled={false}
+      id="ingredient-submit-btn"
+      lg={false}
+      method=""
+      onSubmit={[Function]}
+      primary={false}
+      primaryInverse={false}
+      secondary={true}
+      secondaryInverse={false}
+      style={Object {}}
+      submitBtnText="add ingredient"
+    >
+      <ItemField
+        Component={[Function]}
+        clearValidationError={[Function]}
+        name="ingredient"
+        placeholder=""
+        validate={[Function]}
+        validationError={Array []}
+      />
+    </Form>
+  </div>
+  <div
+    className="col-12 items-list-wrapper"
+  >
+    <ItemsList
+      Component={[Function]}
+      componentType="ingredient"
+      deleteItem={[Function]}
+      directions={true}
+      editItem={[Function]}
+      ingredients={false}
+      items={
+        Array [
+          "rice",
+          "beans",
+        ]
+      }
       name="ingredient"
       uniquenessChecker={[Function]}
     />

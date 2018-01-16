@@ -10,7 +10,9 @@ import initialState from '../reducers/initialState';
  * @param {object} state
  * @param {object} action
  */
-const statusCodeReducer = (state = initialState.currentStatusCode, action = {}) => {
+const statusCodeReducer = (
+  state = initialState.currentStatusCode, action = {}
+) => {
   switch (action.type) {
     case BEGIN_AJAX_REQUEST:
       return -1;

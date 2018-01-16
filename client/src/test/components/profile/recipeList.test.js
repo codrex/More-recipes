@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-filename-extension */
+
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import RecipeList from '../../../components/pages/Profile/RecipeList';
@@ -11,7 +13,7 @@ const props = {
     downVotes: 1,
     id: 1
   }],
-  onEditIconCliked: jest.fn(),
+  onEditIconClicked: jest.fn(),
   handleClick: jest.fn(),
   onDeleteIconClicked: jest.fn(),
   onFavIconClicked: jest.fn(),
@@ -29,15 +31,21 @@ describe('Recipes list component ', () => {
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  test('expected to match snapshot when delete and edit icon is clicked ', () => {
-    let tree = toJson(wrapper);
-    expect(tree).toMatchSnapshot();
-    wrapper.find('ListItem').find('Icon').at(0)
-      .simulate('click');
-    wrapper.find('ListItem').find('Icon').at(1)
-      .simulate('click');
-    tree = toJson(wrapper);
-    expect(tree).toMatchSnapshot();
-  });
+  test('expected to match snapshot when edit icon is clicked ',
+    () => {
+      let tree = toJson(wrapper);
+      expect(tree).toMatchSnapshot();
+      wrapper.find('ListItem').find('Icon').at(0).simulate('click');
+      tree = toJson(wrapper);
+      expect(tree).toMatchSnapshot();
+    });
+  test('expected to match snapshot when delete icon is clicked ',
+    () => {
+      let tree = toJson(wrapper);
+      expect(tree).toMatchSnapshot();
+      wrapper.find('ListItem').find('Icon').at(1).simulate('click');
+      tree = toJson(wrapper);
+      expect(tree).toMatchSnapshot();
+    });
 });
 

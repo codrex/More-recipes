@@ -263,6 +263,9 @@
                     <a href="#downvote-a-recipe" class="toc-h2 toc-link" data-title="Downvote a Recipe">Downvote a Recipe</a>
                   </li>
                   <li>
+                    <a href="#favourite-recipe" class="toc-h2 toc-link" data-title="Favourite Recipe">Favourite Recipe</a>
+                  </li>
+                  <li>
                     <a href="#delete-recipe" class="toc-h2 toc-link" data-title="Delete Recipe">Delete Recipe</a>
                   </li>
                   <li>
@@ -273,6 +276,9 @@
                   </li>
                   <li>
                     <a href="#get-top-recipes" class="toc-h2 toc-link" data-title="Get Top recipes">Get Top recipes</a>
+                  </li>
+                  <li>
+                    <a href="#recipe-search" class="toc-h2 toc-link" data-title="Recipe Search">Recipe Search</a>
                   </li>
               </ul>
           </li>
@@ -302,27 +308,29 @@ Replace <code>"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiaWF0IjoxNTE1MTQz
 </aside>
 <h1 id='user'>User</h1><h2 id='user-signup'>User Signup</h2>
 <blockquote>
-<p>Request Body:
-<code>json
-    {
-      &quot;username&quot;: &quot;vicki&quot;,
-      &quot;fullname&quot;: &quot;Victoria Doe&quot;,
-      &quot;email&quot;: &quot;vicki@gmail.com&quot;,
-      &quot;password&quot;: &quot;1234567&quot;,
-    }
-</code>
-Response Body:</p>
+<p>Request Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef@gmail.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria Doe"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"profilePicture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-17T04:45:44.084Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-17T04:45:44.084Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjIzNTQ0LCJleHAiOjE1MDU3OTYzNDR9.ya4vLYqHQ3zgkgPZo6_9aePh6OhvB2BLlQ9IC-5sNaM"</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-19T10:56:28.496Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-19T10:56:28.496Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNTE2MzU5Mzg4LCJleHAiOjE1MTY0NDU3ODh9.ywnOz0ekQJSTuhAVpoJIwjz67CnalQGtYlCi-0rUT10"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -340,27 +348,26 @@ Response Body:</p>
 </ul>
 <h2 id='user-signin'>User Signin</h2>
 <blockquote>
-<p>Request Body:
-<code>json
-    {
-      &quot;username&quot;: &quot;vicki&quot;,
-      &quot;password&quot;: &quot;1234567&quot;,
-    }
-</code>
-Response Body:</p>
+<p>Request Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria Doe"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"profilePicture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"favRecipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="err">id</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="err">id</span><span class="p">:</span><span class="mi">9</span><span class="p">}],</span><span class="w">
-        </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-17T04:45:44.084Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-17T04:45:44.084Z"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTA1NjIzNTQ0LCJleHAiOjE1MDU3OTYzNDR9.ya4vLYqHQ3zgkgPZo6_9aePh6OhvB2BLlQ9IC-5sNaM"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"987654321"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef@gmail.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"favRecipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNTE2MzU5NTA1LCJleHAiOjE1MTY0NDU5MDV9.zukaXmHK363YkC1y5ZQ7cgRPGL4WeXBtKEqAm2icBTE"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint sign&#39;s in a user</p>
@@ -379,22 +386,22 @@ Response Body:</p>
 <blockquote>
 <p>Request Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki4u"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria Banks"</span><span class="p">,</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Peterson"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>Response Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki4u"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria Banks"</span><span class="p">,</span><span class="w">        
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Peterson"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"profilePicture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"favRecipes"</span><span class="p">:[]</span><span class="w">
+        </span><span class="s2">"favRecipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -414,14 +421,15 @@ Response Body:</p>
 <blockquote>
 <p>Response Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki4u"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria Banks"</span><span class="p">,</span><span class="w">        
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef@gmail.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Peterson"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"profilePicture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki@gmail.com"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"favRecipes"</span><span class="p">:[]</span><span class="w">
+        </span><span class="s2">"favRecipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -442,33 +450,11 @@ Response Body:</p>
 <blockquote>
 <p>Response Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"favRecipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onions stew and rice"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"onions"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"rice"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash the rice very well"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"favRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ownerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"createdRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-31T15:35:26.969Z"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04T14:58:12.696Z"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint gets favourite&#39;s recipes</p>
 <h3 id='request-5'>Request</h3>
@@ -486,35 +472,36 @@ Response Body:</p>
 <blockquote>
 <p>Response Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onions stew and rice"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"onions"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"rice"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash the rice very well"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"favRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ownerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"createdRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-12-31T15:35:26.969Z"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04T14:58:12.696Z"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pasta"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dinner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"chicken"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"pasta"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"vegetable oil"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"wash the chicken"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"boil the chicken"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cook the pasta"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
 </span></code></pre>
-<p>This endpoint gets favourite&#39;s recipes</p>
+<p>This endpoint gets a user&#39;s created recipes</p>
 <h3 id='request-6'>Request</h3>
 <ul>
 <li>Endpoint: <code>/api/v1/users/recipes/created</code></li>
@@ -528,11 +515,11 @@ Response Body:</p>
 </ul>
 <h1 id='recipes'>Recipes</h1><h2 id='create-recipe'>Create recipe</h2>
 <blockquote>
-<p>Request Body</p>
+<p>Request Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Chicken and Pasta"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pasta"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"category"</span><span class="p">:</span><span class="s2">"Dinner"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"ingredients"</span><span class="p">:[</span><span class="s2">"chicken"</span><span class="p">,</span><span class="s2">"pasta"</span><span class="p">,</span><span class="s2">"vegetable oil"</span><span class="p">],</span><span class="w">
       </span><span class="s2">"directions"</span><span class="p">:[</span><span class="s2">"wash the chicken"</span><span class="p">,</span><span class="w"> </span><span class="s2">"boil the chicken"</span><span class="p">,</span><span class="w"> </span><span class="s2">"cook the pasta"</span><span class="p">],</span><span class="w">
@@ -541,42 +528,37 @@ Response Body:</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>Response Body</p>
+<p>Response Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Chicken and Pasta"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dinner"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"chicken"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"pasta"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"vegetable oil"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash the chicken"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"boil the chicken"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"cook the pasta"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04T20:03:13.018Z"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04T20:03:13.002Z"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ownerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"favRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"createdRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki4u"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria Banks"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"profilePicture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki@gmail.com"</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pasta"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dinner"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"chicken"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pasta"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vegetable oil"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"wash the chicken"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"boil the chicken"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cook the pasta"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Peterson"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"profilePicture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef@gmail.com"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint creates a new recipe.</p>
 <h3 id='request-7'>Request</h3>
@@ -592,48 +574,48 @@ Response Body:</p>
 </ul>
 <h2 id='edit-recipe'>Edit recipe</h2>
 <blockquote>
-<p>Request Body</p>
+<p>Request Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"category"</span><span class="p">:</span><span class="s2">"Lunch"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ingredients"</span><span class="p">:[</span><span class="s2">"chicken"</span><span class="p">,</span><span class="s2">"pasta"</span><span class="p">,],</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
-<p>Response Body</p>
+<p>Response Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">        </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Chicken and Pasta"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:[</span><span class="s2">"chicken"</span><span class="p">,</span><span class="s2">"pasta"</span><span class="p">,],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash the chicken"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"boil the chicken"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"cook the pasta"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04T20:03:13.018Z"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-04T20:03:13.002Z"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ownerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"favRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"createdRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki4u"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Victoria Banks"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"profilePicture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vicki@gmail.com"</span><span class="w">
-              </span><span class="p">}</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pasta"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lunch"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"chicken"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pasta"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"vegetable oil"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"wash the chicken"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"boil the chicken"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"cook the pasta"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Peterson"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"profilePicture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef@gmail.com"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
 </span></code></pre>
 <p>This endpoint updates a recipe.</p>
 <h3 id='request-8'>Request</h3>
@@ -649,26 +631,27 @@ Response Body:</p>
 </ul>
 <h2 id='upvote-a-recipe'>Upvote a Recipe</h2>
 <blockquote>
-<p>Response Body</p>
+<p>Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint upvotes a single recipe.</p>
 <h3 id='request-9'>Request</h3>
 <ul>
-<li>Endpoint:<code>/api/v1/recipes/1/vote?up={true}</code></li>
+<li>Endpoint:<code>/api/v1/recipes/:id/vote?up={true}</code></li>
 <li>Verb: <code>PUT</code></li>
 <li>Requires: Token</li>
 <li>query parameter: {
 up: true
 }</li>
+<li>id: 14</li>
 </ul>
 <h3 id='response-9'>Response</h3>
 <ul>
@@ -677,12 +660,12 @@ up: true
 </ul>
 <h2 id='downvote-a-recipe'>Downvote a Recipe</h2>
 <blockquote>
-<p>Response Body</p>
+<p>Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
         </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
         </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -691,111 +674,149 @@ up: true
 <p>This endpoint downvotes a single recipe.</p>
 <h3 id='request-10'>Request</h3>
 <ul>
-<li>Endpoint:<code>/api/v1/recipes/1/vote?down={true}</code></li>
+<li>Endpoint:<code>/api/v1/recipes/:id/vote?down={true}</code></li>
 <li>Verb: <code>PUT</code></li>
 <li>Requires: Token</li>
 <li>query parameter: {
 down: true
 }</li>
+<li>id: 14</li>
 </ul>
 <h3 id='response-10'>Response</h3>
 <ul>
 <li>StatusCode: <code>200: Ok</code></li>
 <li>Body: <code>(application/json)</code></li>
 </ul>
-<h2 id='delete-recipe'>Delete Recipe</h2>
+<h2 id='favourite-recipe'>Favourite Recipe</h2>
 <blockquote>
-<p>Response Body</p>
+<p>Request Body: </p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">recipeId</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Response Body:  (<em>When recipe is added to a user&#39;s list of favourite recipes</em>)</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Recipe was successfully deleted"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"favRecipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"recipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pasta"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lunch"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"chicken"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"pasta"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"vegetable oil"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"stringIngredients"</span><span class="p">:</span><span class="w"> </span><span class="s2">"chicken,pasta,vegetable oil"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"wash the chicken"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"boil the chicken"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"cook the pasta"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"favRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ownerId"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdRecipesId"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"UserId"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-19T11:07:20.936Z"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-19T11:17:58.007Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"added"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint deletes a single recipe.</p>
+<blockquote>
+<p>Response Body: (<em>When recipe is removed from a user&#39;s list of favourite recipes</em>)</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"favRecipe"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"added"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint toggles a recipe favourite state for a user.</p>
 <h3 id='request-11'>Request</h3>
 <ul>
-<li>Endpoint:<code>/recipe/:id</code></li>
-<li>Verb: <code>DELETE</code></li>
+<li>Endpoint:<code>api/v1/users/recipe</code></li>
+<li>Verb: <code>POST</code></li>
 <li>Requires: Token</li>
-<li>Accessible only to the recipe owner</li>
 </ul>
 <h3 id='response-11'>Response</h3>
 <ul>
 <li>StatusCode: <code>200: Ok</code></li>
 <li>Body: <code>(application/json)</code></li>
 </ul>
-<h2 id='post-recipe-review'>Post Recipe review</h2>
+<h2 id='delete-recipe'>Delete Recipe</h2>
 <blockquote>
-<p>Request Body
-<code>json
-{
-  &quot;review&quot;: &quot;i love this recipe..!!!&quot;
-}
-</code></p>
-
-<p>Response Body</p>
+<p>Response Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"reviews"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"RecipeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-05T02:33:27.562Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"review"</span><span class="p">:</span><span class="w"> </span><span class="s2">"i love this recipe..!!!"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"reviewer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crea"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"crew ehis"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"RecipeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-02T09:26:36.915Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"review"</span><span class="p">:</span><span class="w"> </span><span class="s2">"love this"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"reviewer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gogo"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gog gog"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"RecipeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-02T09:23:15.174Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"review"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hate it"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"reviewer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resybaba"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"res john"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"RecipeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-02T09:20:33.891Z"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"review"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cool"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"reviewer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"resybaba"</span><span class="p">,</span><span class="w">
-                </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"res john"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Recipe was successfully deleted"</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint downvotes a single recipe.</p>
+<p>This endpoint deletes a single recipe.</p>
 <h3 id='request-12'>Request</h3>
 <ul>
-<li>Endpoint:<code>/api/v1/recipes/{id}/reviews</code></li>
-<li>Verb: <code>POST</code></li>
+<li>Endpoint:<code>/recipe/:id</code></li>
+<li>Verb: <code>DELETE</code></li>
 <li>Requires: Token</li>
-<li>id: 10</li>
+<li>Accessible only to the recipe owner</li>
 </ul>
 <h3 id='response-12'>Response</h3>
+<ul>
+<li>StatusCode: <code>200: Ok</code></li>
+<li>Body: <code>(application/json)</code></li>
+</ul>
+<h2 id='post-recipe-review'>Post Recipe review</h2>
+<blockquote>
+<p>Request Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"review"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I love this awesome recipe !!!"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"reviews"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"RecipeId"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-01-19T11:20:27.669Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"review"</span><span class="p">:</span><span class="w"> </span><span class="s2">"I love this awesome recipe !!!"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"reviewer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"worldchef"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"fullname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe Peterson"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint downvotes a single recipe.</p>
+<h3 id='request-13'>Request</h3>
+<ul>
+<li>Endpoint:<code>/api/v1/recipes/:id/reviews</code></li>
+<li>Verb: <code>POST</code></li>
+<li>Requires: Token</li>
+<li>id: 14</li>
+</ul>
+<h3 id='response-13'>Response</h3>
 <ul>
 <li>StatusCode: <code>201: Ok</code></li>
 <li>Body: <code>(application/json)</code></li>
@@ -805,114 +826,147 @@ down: true
 <p>Response Body:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="w">
-  </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salad"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vegeterian"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"cucumber"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pizza"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"water"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rice and stew"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"egg"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"rice"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pepper soup"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"cooking oil"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"salt"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash your hands"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banga rice"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snacks"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"banga"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beans and yam"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"beans"</span><span class="w">
-                  </span><span class="s2">"yam
-              ],
-              "</span><span class="err">directions</span><span class="s2">": [
-                  "</span><span class="err">wash</span><span class="s2">"
-              ],
-              "</span><span class="err">upVotes</span><span class="s2">": 1,
-              "</span><span class="err">downVotes</span><span class="s2">": 0,
-              "</span><span class="err">views</span><span class="s2">": 1
-          }
-      ]
-  }
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Efo Elewuro"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"soup"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">recipes/cje0zbo1zqccezbsecur</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/v1515883787/recipes/cje0zbo1zqccezbsecur.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">4e5cb6cf9f11b00113094931f10c1c8af22863a4</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/c_limit,h_60,w_90/v1515883787/recipes/cje0zbo1zqccezbsecur.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">http://res.cloudinary.com/resycom/image/upload/v1515883787/recipes/cje0zbo1zqccezbsecur.jpg</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"3 tablespoons whole locust beans (iru)"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"parboiled cow feet  6-8 pieces"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"2 cups shredded fish (dried catfish preferably) washed and de-boned"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1 medium onion bulb (thinly sliced)"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"4 red bell peppers (tatashe)"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"place a large pot over medium heat, add in the palm oil. bleach the oil for 5 minutes.</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"add in the sliced onions and fry until golden brown</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"add in the end result of part a and the left over ingredients in part b.  cover and leave to simmer for 20-25 minutes (the palm oil will float to the top when the sauce is ready).</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"add in bitter leaves and spinach, combine. taste and adjust for seasoning, leave to simmer for another 10 minutes</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banana Sour Cream Bread"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lunch"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">recipes/nbvuuwexjij9wrotfmvu</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/v1515879885/recipes/nbvuuwexjij9wrotfmvu.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">dd39822c7da07a24e1e597dbe39d1ccf826ae4f0</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/c_limit,h_60,w_90/v1515879885/recipes/nbvuuwexjij9wrotfmvu.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">http://res.cloudinary.com/resycom/image/upload/v1515879885/recipes/nbvuuwexjij9wrotfmvu.jpg</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"1 (16 ounce) container sour cream"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1 cup chopped walnuts "</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"6 very ripe bananas, mashed"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"4 1/2 cups all-purpose flour"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"3 eggs"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"3 teaspoons baking soda"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"3 cups white sugar"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/2 teaspoon salt"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"3/4 cup butter"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"2 teaspoons ground cinnamon"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1 teaspoon ground cinnamon"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"2 teaspoons vanilla extract"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/4 cup white sugar"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"preheat oven to 300 degrees f (150 degrees c). grease four 7x3 inch loaf pans. in a small bowl, stir together 1/4 cup white sugar and 1 teaspoon cinnamon. dust pans lightly with cinnamon and sugar mixture."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"in a large bowl, cream butter and 3 cups sugar. mix in eggs, mashed bananas, sour cream, vanilla and cinnamon. mix in salt, baking soda and flour. stir in nuts. divide into prepared pans."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"bake for 1 hour, until a toothpick inserted in center comes out clean."</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pasta"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lunch"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"chicken"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pasta"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"vegetable oil"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"wash the chicken"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"boil the chicken"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"cook the pasta"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Efo Riro"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"soup"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">recipes/jvr8iijd6wvqxmilzdmw</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/v1515883517/recipes/jvr8iijd6wvqxmilzdmw.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">27b189755d599a40bec6d8d2a9062a1527f7fd4f</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/c_limit,h_60,w_90/v1515883517/recipes/jvr8iijd6wvqxmilzdmw.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">http://res.cloudinary.com/resycom/image/upload/v1515883517/recipes/jvr8iijd6wvqxmilzdmw.jpg</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"1 cup of palm oil"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"2-3 scotch bonnet (ata rodo)"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1 medium onion bulb"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"4 red bell peppers (tatashe)"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"place a large pot over medium heat, add in the palm oil. heat oil until a little smoky.</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"add in the sliced onions and fry until lightly browned</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"add in the end result of part a and the left over ingredients in part b.  cover and leave to simmer for 20-25 minutes (the palm oil will float to the top when the sauce is ready).</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"add in the spinach, combine. taste and adjust for seasoning, leave to simmer for another 3- 5 more minutes.</span><span class="se">\n</span><span class="s2">"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicken Parmesan"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brunch"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">recipes/h7ajh3kmkdlobhggivyc</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/v1515880977/recipes/h7ajh3kmkdlobhggivyc.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">db542dc9c7b3f60fac91f073c987d46ab8e7fe38</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/c_limit,h_60,w_90/v1515880977/recipes/h7ajh3kmkdlobhggivyc.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">http://res.cloudinary.com/resycom/image/upload/v1515880977/recipes/h7ajh3kmkdlobhggivyc.jpg</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"1 cup olive oil for "</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1 tablespoon olive oil"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"2 tablespoons all-purpose flour, or more if needed"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/4 cup grated parmesan cheese"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/2 cup grated parmesan cheese"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"/2 cup grated provolone cheese"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1 cup panko bread crumbs, or more as needed"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"2 eggs"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/4 cup chopped fresh basil"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/4 cup fresh mozzarella, cut into small cubes"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"salt and freshly ground black pepper to taste"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/2 cup prepared tomato sauce"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"4 skinless, boneless chicken breast halves"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"preheat an oven to 450 degrees f (230 degrees c)."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"place chicken breasts between two sheets of heavy plastic (resealable freezer bags work well) on a solid, level surface. firmly pound chicken with the smooth side of a meat mallet to a thickness of 1/2-inch. season chicken thoroughly with salt and pepper."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"beat eggs in a shallow bowl and set aside."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"mix bread crumbs and 1/2 cup parmesan cheese in a separate bowl, set aside."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"place flour in a sifter or strainer; sprinkle over chicken breasts, evenly coating both sides."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"dip flour coated chicken breast in beaten eggs. transfer breast to breadcrumb mixture, pressing the crumbs into both sides. repeat for each breast. set aside breaded chicken breasts for about 15 minutes."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"heat 1 cup olive oil in a large skillet on medium-high heat until it begins to shimmer. cook chicken until golden, about 2 minutes on each side. the chicken will finish cooking in the oven."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"place chicken in a baking dish and top each breast with about 1/3 cup of tomato sauce. layer each chicken breast with equal amounts of mozzarella cheese, fresh basil, and provolone cheese. sprinkle 1 to 2 tablespoons of parmesan cheese on top and drizzle "</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"bake in the preheated oven until cheese is browned and bubbly, and chicken breasts are no longer pink in the center, 15 to 20 minutes. an instant-read thermometer inserted into the center should read at least 165 degrees f (74 degrees c)."</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint get random recipes from the database</p>
-<h3 id='request-13'>Request</h3>
+<h3 id='request-14'>Request</h3>
 <ul>
 <li>Endpoint: <code>/api/v1/recipes</code></li>
 <li>Verb: <code>GET</code></li>
 <li>Requires: Token</li>
 </ul>
-<h3 id='response-13'>Response</h3>
+<h3 id='response-14'>Response</h3>
 <ul>
 <li>StatusCode: <code>200: Ok</code></li>
 <li>Body: <code>(application/json)</code></li>
@@ -921,115 +975,127 @@ down: true
 <blockquote>
 <p>Response Body:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="w">
-  </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"salad"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vegeterian"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"cucumber"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pizza"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"water"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rice and stew"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"egg"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"rice"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pepper soup"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"cooking oil"</span><span class="p">,</span><span class="w">
-                  </span><span class="s2">"salt"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash your hands"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"banga rice"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"snacks"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"banga"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"wash"</span><span class="w">
-              </span><span class="p">],</span><span class="w">
-              </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-              </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"beans and yam"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brunch"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
-              </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                  </span><span class="s2">"beans"</span><span class="w">
-                  </span><span class="s2">"yam
-              ],
-              "</span><span class="err">directions</span><span class="s2">": [
-                  "</span><span class="err">wash</span><span class="s2">"
-              ],
-              "</span><span class="err">upVotes</span><span class="s2">": 1,
-              "</span><span class="err">downVotes</span><span class="s2">": 0,
-              "</span><span class="err">views</span><span class="s2">": 1
-          }
-      ]
-  }
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Banana Sour Cream Bread"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lunch"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">recipes/nbvuuwexjij9wrotfmvu</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/v1515879885/recipes/nbvuuwexjij9wrotfmvu.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">dd39822c7da07a24e1e597dbe39d1ccf826ae4f0</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/c_limit,h_60,w_90/v1515879885/recipes/nbvuuwexjij9wrotfmvu.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">http://res.cloudinary.com/resycom/image/upload/v1515879885/recipes/nbvuuwexjij9wrotfmvu.jpg</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"1 (16 ounce) container sour cream"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1 cup chopped walnuts "</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"6 very ripe bananas, mashed"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"4 1/2 cups all-purpose flour"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"3 eggs"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"3 teaspoons baking soda"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"3 cups white sugar"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/2 teaspoon salt"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"3/4 cup butter"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"2 teaspoons ground cinnamon"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1 teaspoon ground cinnamon"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"2 teaspoons vanilla extract"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/4 cup white sugar"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"preheat oven to 300 degrees f (150 degrees c). grease four 7x3 inch loaf pans. in a small bowl, stir together 1/4 cup white sugar and 1 teaspoon cinnamon. dust pans lightly with cinnamon and sugar mixture."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"in a large bowl, cream butter and 3 cups sugar. mix in eggs, mashed bananas, sour cream, vanilla and cinnamon. mix in salt, baking soda and flour. stir in nuts. divide into prepared pans."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"bake for 1 hour, until a toothpick inserted in center comes out clean."</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chicken Parmesan"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"brunch"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">publicId</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">recipes/h7ajh3kmkdlobhggivyc</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">secureUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/v1515880977/recipes/h7ajh3kmkdlobhggivyc.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">signature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">db542dc9c7b3f60fac91f073c987d46ab8e7fe38</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">thumbnailUrl</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">https://res.cloudinary.com/resycom/image/upload/c_limit,h_60,w_90/v1515880977/recipes/h7ajh3kmkdlobhggivyc.jpg</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">url</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">http://res.cloudinary.com/resycom/image/upload/v1515880977/recipes/h7ajh3kmkdlobhggivyc.jpg</span><span class="se">\"</span><span class="s2">}"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"1 cup olive oil for "</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1 tablespoon olive oil"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"2 tablespoons all-purpose flour, or more if needed"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/4 cup grated parmesan cheese"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/2 cup grated parmesan cheese"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"/2 cup grated provolone cheese"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1 cup panko bread crumbs, or more as needed"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"2 eggs"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/4 cup chopped fresh basil"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/4 cup fresh mozzarella, cut into small cubes"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"salt and freshly ground black pepper to taste"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"1/2 cup prepared tomato sauce"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"4 skinless, boneless chicken breast halves"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"preheat an oven to 450 degrees f (230 degrees c)."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"place chicken breasts between two sheets of heavy plastic (resealable freezer bags work well) on a solid, level surface. firmly pound chicken with the smooth side of a meat mallet to a thickness of 1/2-inch. season chicken thoroughly with salt and pepper."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"beat eggs in a shallow bowl and set aside."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"mix bread crumbs and 1/2 cup parmesan cheese in a separate bowl, set aside."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"place flour in a sifter or strainer; sprinkle over chicken breasts, evenly coating both sides."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"dip flour coated chicken breast in beaten eggs. transfer breast to breadcrumb mixture, pressing the crumbs into both sides. repeat for each breast. set aside breaded chicken breasts for about 15 minutes."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"heat 1 cup olive oil in a large skillet on medium-high heat until it begins to shimmer. cook chicken until golden, about 2 minutes on each side. the chicken will finish cooking in the oven."</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"place chicken in a baking dish and top each breast with about 1/3 cup of tomato sauce. layer each chicken breast with equal amounts of mozzarella cheese, fresh basil, and provolone cheese. sprinkle 1 to 2 tablespoons of parmesan cheese on top and drizzle "</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"bake in the preheated oven until cheese is browned and bubbly, and chicken breasts are no longer pink in the center, 15 to 20 minutes. an instant-read thermometer inserted into the center should read at least 165 degrees f (74 degrees c)."</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint get recipe by upvotes</p>
-<h3 id='request-14'>Request</h3>
+<h3 id='request-15'>Request</h3>
 <ul>
 <li>Endpoint: <code>/api/v1/recipes?sort=upvotes&amp;order=ascending</code></li>
 <li>Verb: <code>GET</code></li>
 <li>Requires: Token</li>
 </ul>
-<h3 id='response-14'>Response</h3>
+<h3 id='response-15'>Response</h3>
+<ul>
+<li>StatusCode: <code>200: Ok</code></li>
+<li>Body: <code>(application/json)</code></li>
+</ul>
+<h2 id='recipe-search'>Recipe Search</h2>
+<blockquote>
+<p>Response Body:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"pageCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"recipes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pasta"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lunch"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"none"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ingredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"chicken"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pasta"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"vegetable oil"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"directions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"wash the chicken"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"boil the chicken"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"cook the pasta"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"upVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"downVotes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"views"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint search for recipe</p>
+<h3 id='request-16'>Request</h3>
+<ul>
+<li>Endpoint: <code>/api/v1/recipes?search={search}</code></li>
+<li>Verb: <code>GET</code></li>
+<li>Requires: Token</li>
+</ul>
+<h3 id='response-16'>Response</h3>
 <ul>
 <li>StatusCode: <code>200: Ok</code></li>
 <li>Body: <code>(application/json)</code></li>
@@ -1058,6 +1124,10 @@ down: true
 <tr>
 <td>404</td>
 <td>Not Found.</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict</td>
 </tr>
 <tr>
 <td>500</td>

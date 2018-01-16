@@ -1,16 +1,18 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import jwt from 'jsonwebtoken';
 import faker from 'faker';
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 export const TEST_REVIEW = 'testing something';
-
-export const expiredToken = jwt.sign({id:1 }, process.env.secret, {
+export const expiredToken = jwt.sign({ id: 1 }, process.env.secret, {
   expiresIn: '.1s'
-});;
+});
 
-export const fakeToken = jwt.sign({id:100 }, process.env.secret, {
+export const fakeToken = jwt.sign({ id: 100 }, process.env.secret, {
   expiresIn: '1d'
-});;
+});
 
 export const recipe = {
   name: 'beans cake',
@@ -21,19 +23,19 @@ export const recipe = {
 };
 
 export const recipeUpdateData = {
-  userDataOne: {
-    name: 'beans cake',
+  recipeDataOne: {
+    name: 'beans cakes',
   },
-  userDataTwo: {
-    name: 'beans cake',
+  recipeDataTwo: {
+    name: 'beans cake update',
     category: 'breakfast',
   },
-  userDataThree: {
-    name: 'beans cake',
+  recipeDataThree: {
+    name: 'beans',
     category: 'breakfast',
     ingredients: ['beans', 'water', 'oil'],
   },
-  userDataFour: {
+  recipeDataFour: {
     name: 'beans and rice',
     category: 'dinner',
     ingredients: ['beans', 'rice', 'oil'],
@@ -42,38 +44,39 @@ export const recipeUpdateData = {
 };
 
 export const userSignupData = {
-  userOne: {
-    fullname: 'example user two',
-    username: 'example_user_2',
-    password: '123456',
-    email: 'exampleTwo@user.com',
-  },
-  userTwo: {
+  johnUser: {
     fullname: 'example user',
     username: 'example_user',
     password: '123456',
     email: 'example@user.com',
   },
+  peterUser: {
+    fullname: 'example user two',
+    username: 'example_user_2',
+    password: '123456',
+    email: 'exampleTwo@user.com',
+  },
 };
+
 export const userLoginData = {
-  userOne: {
+  johnUser: {
     username: 'example_user',
     password: '123456',
   },
-  userTwo: {
+  peterUser: {
     username: 'example_user_2',
     password: '123456',
   },
 };
 
 export const recipeTestUsers = {
-  user: {
+  johnUser: {
     username: faker.name.firstName(),
     fullname: faker.name.findName(),
     email: faker.internet.email(),
     password: '1234567'
   },
-  user2: {
+  peterUser: {
     username: faker.name.firstName(),
     fullname: faker.name.findName(),
     email: faker.internet.email(),

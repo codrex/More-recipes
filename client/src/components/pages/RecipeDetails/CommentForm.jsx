@@ -82,6 +82,7 @@ const mapStateToProps = state => (
   }
 );
 
+export { CommentForm as PureCommentForm };
 export default reduxForm({
   form: 'reviewForm'
 })(connect(mapStateToProps, {

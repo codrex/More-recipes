@@ -131,7 +131,8 @@ describe('Testing recipe reducers', () => {
       direction: [90],
     };
     const recipe = recipeReducer(state, action);
-    expect(recipe).toMatchObject({ ...{ ...state, directions: action.direction } });
+    expect(recipe)
+      .toMatchObject({ ...{ ...state, directions: action.direction } });
     expect(recipe).not.toBe(state);
   });
   it('should return a newState for action type UPDATE_INGREDIENTS', () => {
@@ -140,7 +141,8 @@ describe('Testing recipe reducers', () => {
       ingredient: [90],
     };
     const recipe = recipeReducer(state, action);
-    expect(recipe).toMatchObject({ ...{ ...state, ingredients: action.ingredient } });
+    expect(recipe)
+      .toMatchObject({ ...{ ...state, ingredients: action.ingredient } });
     expect(recipe).not.toBe(state);
   });
 });

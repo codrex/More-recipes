@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import { PureCreateRecipe } from '../../../components/pages/CreateRecipe';
@@ -22,7 +23,7 @@ const props = {
   history: { push: jest.fn() },
 };
 
-describe('Create Recipe page component :: ', () => {
+describe('Create Recipe page component ', () => {
   let wrapper;
   beforeEach(() => {
     wrapper = shallow(<PureCreateRecipe {...props} />);
@@ -37,6 +38,14 @@ describe('Create Recipe page component :: ', () => {
   test('expected to match snapshot when recipe is created', () => {
     wrapper.setProps({ message: RECIPE_ADDED });
     const tree = toJson(wrapper);
+    expect(tree).toMatchSnapshot();
+    expect(tree).toBeInstanceOf(Object);
+  });
+
+  test('should call createRecipe when postRecipe is clicked', () => {
+    const tree = toJson(wrapper);
+    wrapper.instance().postRecipe();
+    expect(props.createRecipe).toBeCalled();
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });

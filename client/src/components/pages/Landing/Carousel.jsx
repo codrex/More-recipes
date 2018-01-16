@@ -11,17 +11,29 @@ import {
  * @return {React} react element
  */
 const Carousel = props => (
-  <div id="carousel" className={`carousel slide ${props.className}`} data-ride="carousel">
+  <div
+    id="carousel"
+    className={`carousel slide ${props.className}`}
+    data-ride="carousel"
+  >
     <ol className="carousel-indicators">
       <li data-target="#carousel" data-slide-to="0" className="active" />
       <li data-target="#carousel" data-slide-to="1" />
     </ol>
     <div className="carousel-inner hero">
       <div className="carousel-item backdrop active">
-        <img className="d-block img-fluid" src={CAROUSEL_PIX_ONE} alt="First slide" />
+        <img
+          className="d-block img-fluid"
+          src={CAROUSEL_PIX_ONE}
+          alt="First slide"
+        />
       </div>
       <div className="carousel-item backdrop">
-        <img className="d-block img-fluid" src={CAROUSEL_PIX_TWO} alt="First slide" />
+        <img
+          className="d-block img-fluid"
+          src={CAROUSEL_PIX_TWO}
+          alt="First slide"
+        />
       </div>
       {props.children}
     </div>

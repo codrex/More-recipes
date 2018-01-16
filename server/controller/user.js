@@ -66,7 +66,10 @@ export const create = (req, res, next) => {
       next();
     }).catch((error) => {
       if (error.name === 'SequelizeUniqueConstraintError') {
-        sendFail(res, 400, `Sorry, ${error.errors[0].path} already exists, please enter another`);
+        sendFail(res,
+          409,
+          `Sorry, ${error.errors[0].path} already exists, please enter another`
+        );
         return;
       }
       sendServerError(res);
@@ -74,7 +77,8 @@ export const create = (req, res, next) => {
 };
 
 /**
- * @description attach jwt access token to the user object retrieved from the database
+ * @description attach jwt access token to the user object
+ * retrieved from the database
  * @name addAccessToken
  * @function
  * @param {Object} req - Express request object
@@ -110,7 +114,15 @@ export const update = (req, res, next) => {
     .then(() => {
       next();
     }).catch((error) => {
-      sendFail(res, 400, error.errors[0].message);
+      if (error.name === 'SequelizeUniqueConstraintError') {
+        sendFail(
+          res,
+          409,
+          `Sorry, ${error.errors[0].path} already exists, please enter another`
+        );
+        return;
+      }
+      sendServerError(res);
     });
 };
 
@@ -168,7 +180,8 @@ export const beforeUpdate = (req, res, next) => {
 
 /**
  * @name addFavouriteRecipe
- * @description sets association favourite recipe association between a user and a recipe
+ * @description sets association favourite recipe
+ * association between a user and a recipe
  * @function
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
@@ -206,7 +219,8 @@ export const addFavouriteRecipe = (req, res) => {
 
 /**
  * @name addCreatedRecipe
- * @description sets association created recipe association between a user and a recipe
+ * @description sets association created recipe
+ * association between a user and a recipe
  * @function
  * @param {Object} req - Express request object
  * @return {*} void
@@ -308,7 +322,10 @@ export const isUserValid = (req, res, next) => {
       if (user) {
         next();
       } else {
-        sendFail(res, 401, 'Sorry, authentication failed, you need to login or register');
+        sendFail(res,
+          401,
+          'Sorry, authentication failed, you need to login or register'
+        );
       }
     }).catch(() => {
       sendServerError(res);

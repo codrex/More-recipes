@@ -56,10 +56,13 @@ EditProfile.propTypes = {
 const mapStateToProps = state => ({
   initialValues: state.user
 });
+const PureEditProfileForm = EditProfile;
+export { PureEditProfileForm };
 
 EditProfile = reduxForm({
   form: 'editProfileForm',
 })(EditProfile);
+
 
 const EditProfileForm = connect(mapStateToProps)(EditProfile);
 

@@ -81,7 +81,12 @@ SignupForm.propTypes = {
   signup: PropTypes.func,
   handleSubmit: PropTypes.func,
   submitting: PropTypes.bool
+};
 
+SignupForm.defaultProps = {
+  signup: () => {},
+  handleSubmit: () => {},
+  submitting: false
 };
 
 export default reduxForm({

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserInfo component  expected to match snapshot 1`] = `
+<div
+  className="info-wrapper
+      mr-auto
+      d-flex
+      flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+>
+  <div
+    className="
+        d-flex
+        justify-content-around
+        flex-column align-items-center"
+  >
+    <div
+      className="avatar avatar-md"
+    >
+      JD
+    </div>
+    <h3
+      className="text-capitalize s-padding no-margin fullname-text"
+    >
+      john doe
+    </h3>
+  </div>
+  <div
+    className="d-flex no-margin flex-column align-items-center 
+        justify-content-center info"
+  >
+    <li
+      className="info-item"
+    />
+    <li
+      className="info-item"
+    >
+      @undefined
+    </li>
+  </div>
+  <Button
+    Tag="button"
+    className=" btn-lg center-margin edit-btn btn-secondary"
+    dataTarget="#modal"
+    dataToggle="modal"
+    handleClick={[Function]}
+    href=""
+    id="editProfile"
+    text="edit profile"
+    type="button"
+  />
+</div>
+`;

@@ -10,7 +10,7 @@ import Button from '../../common/Button';
 const CallToAction = props => (
   <div className="cta ">
     <h1
-      className=" text-uppercase display-4 col-xs-11 col-sm-10 col-md-8 col-lg-9"
+      className="text-uppercase display-4 col-xs-11 col-sm-10 col-md-8 col-lg-9"
     >
         ​share​ and view ​awesome​ ​and​ ​exciting​ ​​recipes
     </h1>

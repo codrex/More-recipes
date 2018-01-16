@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const RECIPE_ADDED = 'Recipe was successfully posted';
 export const RECIPE_MODIFIED = 'Recipe was successfully modified';
 export const REVIEW_MESSAGE = 'Review posted';

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import Comments from '../../../components/pages/RecipeDetails/Comments';
@@ -11,8 +12,8 @@ const props = {
     createdAt: '',
     reviewer: {
       id: 1,
-      username: 'testi',
-      fullname: 'test tester ',
+      username: 'testuser',
+      fullname: 'test user ',
       profilePix: 'UNKNOWN',
       email: 'test.test@gmail.com',
     }

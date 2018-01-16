@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import CallToAction from '../../../components/pages/Landing/CallToAction';
@@ -18,12 +19,15 @@ describe('Cta form component ', () => {
     const tree = toJson(component);
     component.find('Button#login').simulate('click');
     expect(tree).toMatchSnapshot();
+    expect(props.signin).toBeCalled();
     expect(tree).toBeInstanceOf(Object);
   });
+
   test('expect to match snapshot when signup button is clicked', () => {
     const tree = toJson(component);
     component.find('Button#signup').simulate('click');
     expect(tree).toMatchSnapshot();
+    expect(props.signup).toBeCalled();
     expect(tree).toBeInstanceOf(Object);
   });
 });

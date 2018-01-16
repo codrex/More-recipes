@@ -81,7 +81,8 @@ const RecipeCard = (props) => {
             <Icon
               toolTip
               toolTipId={`${recipeId}fav`}
-              tip={`${fav ? 'Unfavourite This Recipe' : 'Favourite This Recipe'}`}
+              tip={`${fav ? 'Remove from favourites' :
+                'Add to favourites'}`}
               iconClass={classnames('fa recipe-card-icon fav-color fav',
                 !fav && 'fa-heart-o', fav && 'fa-heart')}
               pointer

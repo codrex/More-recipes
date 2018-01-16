@@ -1,4 +1,4 @@
-import initailState from '../../../reducers/initialState';
+import initialState from '../../../reducers/initialState';
 import * as actions from '../../../actions/userActions';
 import { nockMocker, mockStore, endAjaxReq, payload } from './userMock';
 
@@ -19,7 +19,7 @@ describe('User thunks', () => {
         },
         endAjaxReq(200)
       ];
-      const store = mockStore(initailState.user);
+      const store = mockStore(initialState.user);
 
       return store.dispatch(actions.userSignup({}))
         .then(() => {
@@ -29,7 +29,7 @@ describe('User thunks', () => {
 
 
   it(`should return BEGIN_AJAX_REQUEST, LOGIN and
-      END_AJAX_REQUEST action for a successful login request`, () => {
+      END_AJAX_REQUEST action when successful login request`, () => {
       nockMocker('/api/v1/users/signin', payload, 'post', 200);
 
       const expectedActions = [
@@ -42,7 +42,7 @@ describe('User thunks', () => {
         endAjaxReq(200)
       ];
 
-      const store = mockStore(initailState.user);
+      const store = mockStore(initialState.user);
       return store.dispatch(actions.userLogin({}))
         .then(() => {
           expect(store.getActions()).toEqual(expectedActions);
@@ -50,7 +50,8 @@ describe('User thunks', () => {
     });
 
   it(`should return BEGIN_AJAX_REQUEST, GOT_USER_PROFILE and
-      END_AJAX_REQUEST action when get user profile request is successful`, () => {
+      END_AJAX_REQUEST action when get user profile request is successful`,
+    () => {
       nockMocker('/api/v1/users/1', payload, 'get', 200);
 
       const expectedActions = [
@@ -59,7 +60,7 @@ describe('User thunks', () => {
         endAjaxReq(200)
       ];
 
-      const store = mockStore(initailState.user);
+      const store = mockStore(initialState.user);
       return store.dispatch(actions.getUserProfile())
         .then(() => {
           expect(store.getActions()).toEqual(expectedActions);
@@ -67,7 +68,8 @@ describe('User thunks', () => {
     });
 
   it(`should return BEGIN_AJAX_REQUEST, UPDATE_USER_PROFILE and
-      END_AJAX_REQUEST action when profile update request is successful`, () => {
+      END_AJAX_REQUEST action when profile update request is successful`,
+    () => {
       nockMocker('/api/v1/users/update', payload, 'put', 200);
 
       const expectedActions = [
@@ -76,7 +78,7 @@ describe('User thunks', () => {
         endAjaxReq(200, 'Profile update successfully')
       ];
 
-      const store = mockStore(initailState.user);
+      const store = mockStore(initialState.user);
       return store.dispatch(actions.updateProfile(payload))
         .then(() => {
           expect(store.getActions()).toEqual(expectedActions);
@@ -94,7 +96,7 @@ describe('Test thunks:: expect request to fail', () => {
         { type: 'BEGIN_AJAX_REQUEST', loading: true },
         endAjaxReq(400, 'error', false)
       ];
-      const store = mockStore(initailState.user);
+      const store = mockStore(initialState.user);
 
       return store.dispatch(actions.userSignup({}))
         .then(() => {
@@ -111,7 +113,7 @@ describe('Test thunks:: expect request to fail', () => {
         endAjaxReq(400, 'error', false)
       ];
 
-      const store = mockStore(initailState.user);
+      const store = mockStore(initialState.user);
       return store.dispatch(actions.userLogin({}))
         .then(() => {
           expect(store.getActions()).toEqual(expectedActions);
@@ -119,7 +121,8 @@ describe('Test thunks:: expect request to fail', () => {
     });
 
   it(`should return BEGIN_AJAX_REQUEST and
-      END_AJAX_REQUEST action when update profile request returns a status code of 400`, () => {
+      END_AJAX_REQUEST action when update profile request
+      returns a status code of 400`, () => {
       nockMocker('/api/v1/users/update', error, 'put', 400);
 
       const expectedActions = [
@@ -127,7 +130,7 @@ describe('Test thunks:: expect request to fail', () => {
         endAjaxReq(400, 'error', false)
       ];
 
-      const store = mockStore(initailState.user);
+      const store = mockStore(initialState.user);
       return store.dispatch(actions.updateProfile())
         .then(() => {
           expect(store.getActions()).toEqual(expectedActions);
@@ -149,7 +152,7 @@ describe('Test thunks:: expect request to fail', () => {
         { type: 'AJAX_REQUEST_AUTH_ERROR' },
       ];
 
-      const store = mockStore(initailState.user);
+      const store = mockStore(initialState.user);
       return store.dispatch(actions.updateProfile())
         .then(() => {
           expect(store.getActions()).toEqual(expectedActions);

@@ -1,6 +1,9 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import toJSON from 'enzyme-to-json';
-import { PureRecipeNameAndCategory } from '../../../components/pages/RecipeEditor/RecipeNameAndCategory';
+import {
+  PureRecipeNameAndCategory
+} from '../../../components/pages/RecipeEditor/RecipeNameAndCategory';
 
 
 const props = {
@@ -17,10 +20,9 @@ const props = {
 describe('Recipe name and category component', () => {
   let component;
   beforeEach(() => {
-    component = shallow(
-      <PureRecipeNameAndCategory {...props} />);
+    component = shallow(<PureRecipeNameAndCategory {...props} />);
   });
-  test('expected to match snapshot when component is mounted', () => {
+  test('expected to match snapshot', () => {
     const tree = toJSON(component);
     expect(tree).toMatchSnapshot();
   });
@@ -31,7 +33,7 @@ describe('Recipe name and category component', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test('expected to match snapshot when name field is blured', () => {
+  test('expected to match snapshot when name field is blurred', () => {
     component.find('Form').find('#recipeName').simulate('blur');
     const tree = toJSON(component);
     expect(tree).toMatchSnapshot();
