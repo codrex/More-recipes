@@ -20,10 +20,11 @@ const CreatedRecipes = props => (
 
 CreatedRecipes.propTypes = {
   getCreatedRecipes: PropTypes.func.isRequired,
+  createdRecipes: PropTypes.arrayOf(PropTypes.shape).isRequired
 };
 
 const mapStateToProps = state => ({
-  createdRecipes: state.recipes
+  createdRecipes: state.recipes,
 });
 
 export { CreatedRecipes as PureCreatedRecipes };

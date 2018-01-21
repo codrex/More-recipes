@@ -1,11 +1,14 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import toJson from 'enzyme-to-json';
-import { PureFavoriteRecipes } from '../../../components/pages/FavouriteRecipes';
+import {
+  PureFavoriteRecipes
+} from '../../../components/pages/FavouriteRecipes';
 
 const props = {
   getFavouriteRecipes: jest.fn(),
   favouriteRecipes: [{
-    name: 'capachino',
+    name: 'cappuccino',
     category: 'drinks',
     views: 1,
     upVotes: 1,
@@ -21,7 +24,7 @@ const props = {
   },
 };
 
-describe('Favourite Recipes page component ::  ', () => {
+describe('Favourite Recipes page component', () => {
   test('expected to match snapshot ', () => {
     const wrapper = shallow(<PureFavoriteRecipes {...props} />);
     const tree = toJson(wrapper);

@@ -11,7 +11,11 @@ import { sendFail } from '../../utils/responder';
 const voteValidation = (req, res, next) => {
   const { up, down } = req.query;
   if (up && down) {
-    sendFail(res, 400, 'Multiple paramters is not allow. Please send either true or false');
+    sendFail(
+      res,
+      400,
+      'Multiple parameters is not allow. Please send either true or false'
+    );
     return;
   }
   const data = {

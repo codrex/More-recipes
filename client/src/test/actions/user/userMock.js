@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
@@ -57,6 +58,7 @@ export const payload = {
   user: {
     id: 1,
     email: faker.internet.email(),
+    // eslint-disable-next-line max-len
     token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTE1NTE0MzA0LCJleHAiOjE1MTU2MDA3MDR9.p_leLiWrAYBn8sB0n1VAd8VO3UtfJTolDLyyVJBTIY4',
     username: faker.name.firstName(),
     fullname: faker.name.findName()

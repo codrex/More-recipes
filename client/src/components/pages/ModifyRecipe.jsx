@@ -32,6 +32,7 @@ class ModifyRecipe extends React.Component {
     if (!isNaN(this.recipeId)) {
       this.props.getRecipe(this.recipeId);
     } else if (!this.state.hasNotFound) {
+      // eslint-disable-next-line
       this.setState({ hasNotFound: true });
       toastr.error('Sorry, recipe not found', 'Error', toastrConfig);
     }

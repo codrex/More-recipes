@@ -12,17 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false,
-      validation: {
-        max: 50,
-      },
     },
     fullname: {
       type: DataTypes.STRING,
       allowNull: false,
-      validation: {
-        max: 50,
-        isAlpha: true,
-      },
     },
     profilePicture: {
       type: DataTypes.STRING,
@@ -33,16 +26,13 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-      validation: {
+      validate: {
         isEmail: true,
       },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validation: {
-        min: 6,
-      },
       set(val) {
         this.setDataValue('password', bcrypt.hashSync(val));
       },

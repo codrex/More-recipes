@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TopRecipes page component ::   expected to match snapshot  1`] = `
+exports[`TopRecipes page component  expected to match snapshot  1`] = `
 <Connect(RecipesDisplay)
   createdRecipes={
     Array [
@@ -9,7 +9,7 @@ exports[`TopRecipes page component ::   expected to match snapshot  1`] = `
         "downVotes": 1,
         "id": 1,
         "image": Object {},
-        "name": "capachino",
+        "name": "cappuccino",
         "upVotes": 1,
         "views": 1,
       },
@@ -24,7 +24,7 @@ exports[`TopRecipes page component ::   expected to match snapshot  1`] = `
         "downVotes": 1,
         "id": 1,
         "image": Object {},
-        "name": "capachino",
+        "name": "cappuccino",
         "upVotes": 1,
         "views": 1,
       },

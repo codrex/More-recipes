@@ -45,14 +45,21 @@ class RecipeEditor extends React.Component {
             margin: '0.5em'
           }}
         >
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-4 name-category no-padding">
+          <div
+            className={`col-xs-12 col-sm-12 col-md-12 col-lg-4 name-category
+            no-padding`}
+          >
             {hasRender && <RecipeNameAndCategory />}
             <RecipeImage />
           </div>
-          <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 d-flex ingredients no-padding">
+          <div className={`col-xs-12 col-sm-6 col-md-6 col-lg-4 d-flex
+          ingredients no-padding`}
+          >
             <AddIngredients />
           </div>
-          <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 d-flex directions no-padding">
+          <div className={`col-xs-12 col-sm-6 col-md-6 col-lg-4 d-flex
+          directions no-padding`}
+          >
             <AddDirections />
           </div>
           <Button
@@ -95,7 +102,6 @@ RecipeEditor.propTypes = {
 
 RecipeEditor.defaultProps = {
   message: PropTypes.string,
-  statusCode: -1,
   hasNotFound: false
 };
 

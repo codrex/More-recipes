@@ -18,9 +18,10 @@ describe('Testing page count reducer', () => {
     state = initialState.pageCount;
   });
 
-  it('should return initialState when page count reducer is call without args', () => {
-    expect(reducer()).toBe(state);
-  });
+  it('should return initialState when page count reducer is call without args',
+    () => {
+      expect(reducer()).toBe(state);
+    });
 
   it('should return a new state for action type GET_TOP_RECIPES', () => {
     const action = {

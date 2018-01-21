@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 const $ = require('jquery');
 
 module.exports = {
@@ -7,7 +8,7 @@ module.exports = {
   },
   setupTestFrameworkScriptFile: '<rootDir>/test-setup.js',
   setupFiles: ['jest-localstorage-mock', 'raf/polyfill'],
-  testPathIgnorePatterns: ['./server/test/test', './node_modules/', './client/actions/test'],
+  testPathIgnorePatterns: ['./server/test/test', './node_modules/'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/__mocks__/fileMock.js',

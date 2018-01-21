@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { BrowserRouter } from 'react-router-dom';
@@ -6,7 +7,7 @@ import configureStore from '../../../store/configStore';
 import SignupForm from '../../../components/pages/Landing/SignupForm';
 
 describe('sign up form component ', () => {
-  test('expect SignupForm component to match snapshot ', () => {
+  test('expected to match snapshot ', () => {
     const component = renderer.create(
       <Provider store={configureStore()}>
         <BrowserRouter>

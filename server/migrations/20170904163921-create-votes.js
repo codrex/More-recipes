@@ -11,7 +11,7 @@ module.exports = {
       type: Sequelize.INTEGER,
     },
     recipeId: {
-      allowNull: true,
+      allowNull: false,
       type: Sequelize.INTEGER,
     },
     upVote: {

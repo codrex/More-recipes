@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
     },
     recipeId: {
-      allowNull: true,
+      allowNull: false,
       type: DataTypes.INTEGER,
     },
     upVote: {

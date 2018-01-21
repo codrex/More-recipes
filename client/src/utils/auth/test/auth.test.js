@@ -3,22 +3,23 @@ import { storeToken, TOKEN_ID, getToken, getId, hasToken } from '../index';
 
 
 const token = jwt.sign({ id: 1 }, 'test');
-const expiredToken = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTA3NjIzMjAxLCJle
-HAiOjE1MDc3OTYwMDF9.Cqmo4LbcoqlKl3a4NRnDvGibBFkMdTk8gzg8uNdMg8k`;
+// eslint-disable-next-line max-len
+const expiredToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNTA3NjIzMjAxLCJleHAiOjE1MDc3OTYwMDF9.Cqmo4LbcoqlKl3a4NRnDvGibBFkMdTk8gzg8uNdMg8k';
 
-describe('untest test: auth.js', () => {
-  test('should store token to local storage', () => {
+describe('auth.js', () => {
+  test('should store token in local storage', () => {
     storeToken(token);
     expect(localStorage.getItem(TOKEN_ID)).toEqual(token);
   });
-  test('should return token stored in the local storage', () => {
+  test('should return token stored from the local storage', () => {
     storeToken(token);
     expect(getToken()).toEqual(token);
   });
-  test('should return id gotten from the token stored in the local storage', () => {
-    storeToken(token);
-    expect(getId(getToken())).toEqual(1);
-  });
+  test('should return id gotten from the token stored in the local storage',
+    () => {
+      storeToken(token);
+      expect(getId(getToken())).toEqual(1);
+    });
   test('should return  true when token has not expired', () => {
     storeToken(token);
     expect(hasToken()).toEqual(true);

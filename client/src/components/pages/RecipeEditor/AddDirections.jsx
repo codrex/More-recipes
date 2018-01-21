@@ -29,6 +29,8 @@ const mapStateToProps = state => (
   }
 );
 
+export { AddDirections as PureAddDirections };
+
 export default reduxForm({
   form: 'directionForm'
 })(connect(mapStateToProps, {

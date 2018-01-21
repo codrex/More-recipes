@@ -10,17 +10,10 @@ module.exports = {
       type: Sequelize.STRING,
       unique: true,
       allowNull: false,
-      validation: {
-        max: 50,
-      },
     },
     fullname: {
       type: Sequelize.STRING,
       allowNull: false,
-      validation: {
-        max: 50,
-        isAlpha: true,
-      },
     },
     profilePicture: {
       type: Sequelize.STRING,
@@ -31,16 +24,13 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false,
       unique: true,
-      validation: {
+      validate: {
         isEmail: true,
       },
     },
     password: {
       type: Sequelize.STRING,
       allowNull: false,
-      validation: {
-        min: 6,
-      },
     },
     createdAt: {
       allowNull: false,

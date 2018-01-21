@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipe name and category component expected to match snapshot when component is mounted 1`] = `
+exports[`Recipe name and category component expected to match snapshot 1`] = `
 <div>
   <h4
     className="items-header-text"
@@ -276,7 +276,7 @@ exports[`Recipe name and category component expected to match snapshot when name
 </div>
 `;
 
-exports[`Recipe name and category component expected to match snapshot when name field is blured 1`] = `
+exports[`Recipe name and category component expected to match snapshot when name field is blurred 1`] = `
 <div>
   <h4
     className="items-header-text"

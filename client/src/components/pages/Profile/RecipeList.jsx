@@ -14,7 +14,7 @@ const RecipeList = (props) => {
   const recipes = props.recipes || [];
   const {
     onDeleteIconClicked,
-    onEditIconCliked,
+    onEditIconClicked,
     handleClick
   } = props;
   return (
@@ -40,14 +40,16 @@ const RecipeList = (props) => {
                 <Icon
                   iconClass="fa fa-pencil edit-icon"
                   pointer
-                  handleClick={() => onEditIconCliked(recipes[i].id)}
+                  handleClick={() => onEditIconClicked(recipes[i].id)}
                 />
                 <Icon
                   iconClass="fa fa-trash-o delete-icon"
                   dataToggle="modal"
                   dataTarget="#modal"
                   pointer
-                  handleClick={() => onDeleteIconClicked('Delete recipe', item.id, i)}
+                  handleClick={
+                    () => onDeleteIconClicked('Delete recipe', item.id, i)
+                  }
                 />
               </div>
             </ListItem>
@@ -59,7 +61,7 @@ const RecipeList = (props) => {
 
 RecipeList.propTypes = {
   recipes: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  onEditIconCliked: PropTypes.func.isRequired,
+  onEditIconClicked: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
   onDeleteIconClicked: PropTypes.func.isRequired,
 };

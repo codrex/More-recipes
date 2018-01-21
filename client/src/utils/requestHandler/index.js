@@ -6,7 +6,8 @@ import {
 } from '../../actions/ajaxActions';
 import { PRODUCTION_URL, DEVELOPMENT_URL } from '../../constants';
 
-const rootUrl = process.env.NODE_ENV === 'production' ? PRODUCTION_URL : DEVELOPMENT_URL;
+const rootUrl = process.env.NODE_ENV === 'production' ? PRODUCTION_URL :
+  DEVELOPMENT_URL;
 
 /**
  * request ajax handler
@@ -51,7 +52,7 @@ export const dispatchOnSuccess = (dispatch, msg = '', code = 200) => {
 };
 
 /**
- * dispatch when ajax request returned unsucessful
+ * dispatch when ajax request returned unsuccessful
  * @return {*} void
  * @param {function} dispatch
  * @param {string} error

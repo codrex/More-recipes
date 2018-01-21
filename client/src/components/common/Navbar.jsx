@@ -28,8 +28,10 @@ class Navbar extends React.Component {
       { label: 'signout', action: this.logout },
     ];
     this.state = {
-      names: props.authenticated ? Object.keys(PROTECTED_ROUTES) : Object.keys(UNPROTECTED_ROUTES),
-      url: props.authenticated ? Object.values(PROTECTED_ROUTES) : Object.values(UNPROTECTED_ROUTES)
+      names: props.authenticated ? Object.keys(PROTECTED_ROUTES)
+        : Object.keys(UNPROTECTED_ROUTES),
+      url: props.authenticated ? Object.values(PROTECTED_ROUTES)
+        : Object.values(UNPROTECTED_ROUTES)
     };
   }
 
@@ -118,14 +120,25 @@ class Navbar extends React.Component {
         }
       >
         <a
-          className="navbar-brand d-flex justify-content-center align-items-center display-4"
+          className={`
+          navbar-brand d-flex
+          justify-content-center
+          align-items-center
+          display-4`
+          }
           href="/"
         >
           More-Recipes
         </a>
         <div className="d-flex">
-          <ul className="navbar-nav mr-auto col-xs-12 col-sm-10 col-md-7 col-lg-7" >
-            {names.map((name, i) => <NavItem key={name} text={name} to={url[i]} />)}
+          <ul
+            className="navbar-nav mr-auto col-xs-12 col-sm-10 col-md-7 col-lg-7"
+          >
+            {
+              names.map(
+                (name, i) => <NavItem key={name} text={name} to={url[i]} />
+              )
+            }
           </ul>
           {
             authenticated &&

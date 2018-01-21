@@ -98,7 +98,9 @@ describe('Recipe action creators ', () => {
       type: actionTypes.UPDATE_INGREDIENTS,
       ingredient
     };
-    expect(actions.updateIngredients(ingredient)).toMatchObject(updateIngredients);
+    expect(
+      actions.updateIngredients(ingredient)
+    ).toMatchObject(updateIngredients);
   });
   it('expect UPDATE_DIRECTIONS action type to be returned', () => {
     const direction = {};

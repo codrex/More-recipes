@@ -1,6 +1,6 @@
 import {
   validateRecipes,
-  validateId,
+  validateRecipeId,
   validationHandler,
   validateRecipeIds
 } from '../../utils/validators';
@@ -54,7 +54,11 @@ export const validateUpdate = (req, res, next) => {
  * @return {*} void
  */
 export const recipeIdValidation = (req, res, next) => {
-  validationHandler({ id: req.body.recipeId || req.params.id }, validateId, req, res, next);
+  validationHandler({
+    id: req.body.recipeId || req.params.id
+  },
+  validateRecipeId, req, res, next
+  );
 };
 
 /**

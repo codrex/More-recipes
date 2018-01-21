@@ -1,3 +1,4 @@
+
 module.exports = (sequelize, DataTypes) => {
   const Recipes = sequelize.define('Recipes', {
     name: {
@@ -17,7 +18,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       set() {
         const ingredients = this.get('ingredients');
-        this.setDataValue('stringIngredients', ingredients.join().toLowerCase());
+        if (Array.isArray(ingredients)) {
+          this.setDataValue(
+            'stringIngredients',
+            ingredients.join().toLowerCase()
+          );
+        }
       },
     },
     directions: {

@@ -10,7 +10,8 @@ import { storeToken, getId, getToken } from '../utils/auth';
 
 
 /**
- *  A thunk class that is responsible for dispatching actions after an ajax request has returned.
+ *  A thunk class that is responsible for dispatching actions
+ *  after an ajax request has returned.
  *  it calls the method responsible for sending ajax request to the server,
  *  wait for it to return, before dispatching necessary actions.
  */
@@ -55,7 +56,8 @@ export default class ActionDispatcher {
         dispatchOnFail(this.dispatch, errorMsg, error.response.status);
       }
     } else if (process.env.NODE_ENV !== 'test') {
-      const errorMsg = 'Network error encountered, please check your connection and try again';
+      const errorMsg = `
+      Network error encountered, please check your connection and try again`;
       dispatchOnFail(this.dispatch, errorMsg);
     } else {
       dispatchOnFail(this.dispatch);

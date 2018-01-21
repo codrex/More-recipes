@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommentForm component  expected to match snapshot 1`] = `
+<Form
+  action=""
+  className=""
+  disabled={false}
+  id="submit"
+  lg={true}
+  method=""
+  onSubmit={[Function]}
+  primary={false}
+  primaryInverse={false}
+  secondary={true}
+  secondaryInverse={false}
+  style={Object {}}
+  submitBtnText="Post review"
+>
+  <Field
+    component={[Function]}
+    id="review"
+    name="review"
+    placeholder="Enter your review"
+    row="4"
+    validate={[Function]}
+  />
+</Form>
+`;

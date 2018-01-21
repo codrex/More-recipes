@@ -1,7 +1,7 @@
 {
   "presets": ["es2015","react","stage-2"],
   "env": {
-    "test": {
+    "test-server": {
       "plugins": [
         "istanbul",
         "transform-class-properties"

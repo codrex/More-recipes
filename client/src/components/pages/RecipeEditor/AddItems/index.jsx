@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
 import ItemsList from './ItemsList';
 import { Input, Textarea, Form } from '../../../common/FormElements';
 import { validateItem } from '../../../../utils/validator';
+import ItemField from './ItemField';
 import { RECIPE_ADDED } from '../../../../constants';
 
 /**
@@ -52,7 +52,7 @@ class AddItems extends React.Component {
   /**
    * add item to list
    * @param {String} value
-   * @return {undfined} undefined
+   * @return {undefined} undefined
    */
   addItem = (value) => {
     const { directions, ingredients } = this.props;
@@ -69,18 +69,19 @@ class AddItems extends React.Component {
   /**
    * remove item from list
    * @param {number} index
-   * @return {undfined} undefined
+   * @return {undefined} undefined
    */
   deleteFromList = (index) => {
     const items = [].concat(this.state.items);
     items.splice(index, 1);
     this.props.sendItemsToStore(items);
   }
+
   /**
    * edit item
    * @param {string} value
    * @param {number} index
-   * @return {undfined} undefined
+   * @return {undefined} undefined
    */
   editItems = (value, index) => {
     const items = [].concat(this.state.items);
@@ -103,7 +104,7 @@ class AddItems extends React.Component {
   }
 
   /**
-   * reander form
+   * render form
    * @return {React} react component
    */
   renderForm = () => {
@@ -125,22 +126,13 @@ class AddItems extends React.Component {
           lg={false}
           id={`${name}-submit-btn`}
         >
-          <Field
-            component={Component}
+          <ItemField
+            Component={Component}
             name={name}
-            type="text"
-            id={name}
             placeholder={placeholder}
-            fgClassName="d-flex flex-column no-margin"
-            className="no-margin add-item-input"
             validate={this.validate}
-            onFocus={() => clearValidationError({
-              [`${name}s`]: ''
-            })}
-            externalError={{
-              touched: true,
-              error: this.state.validationError
-            }}
+            clearValidationError={clearValidationError}
+            validationError={this.state.validationError}
           />
         </Form>
       );
@@ -195,6 +187,7 @@ class AddItems extends React.Component {
     );
   }
 }
+
 AddItems.defaultProps = {
   ingredients: false,
   directions: false,
@@ -205,7 +198,12 @@ AddItems.defaultProps = {
 AddItems.propTypes = {
   clearValidationError: PropTypes.func.isRequired,
   directions: PropTypes.bool,
-  externalError: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.bool]),
+  externalError: PropTypes.oneOfType(
+    [
+      PropTypes.string,
+      PropTypes.array, PropTypes.bool
+    ]
+  ),
   handleSubmit: PropTypes.func.isRequired,
   ingredients: PropTypes.bool,
   initialize: PropTypes.func.isRequired,
@@ -213,7 +211,13 @@ AddItems.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   sendItemsToStore: PropTypes.func.isRequired,
-  Component: PropTypes.oneOfType([PropTypes.node, PropTypes.element, PropTypes.func])
+  Component: PropTypes.oneOfType(
+    [
+      PropTypes.node,
+      PropTypes.element,
+      PropTypes.func
+    ]
+  )
 };
 
 export default AddItems;

@@ -57,10 +57,10 @@ class RecipeImage extends React.Component {
       folder: 'recipes',
     },
     (error, result) => {
-      const {
-        public_id,
+      const {// eslint-disable-next-line camelcase
+        public_id, // eslint-disable-next-line camelcase
         secure_url,
-        signature,
+        signature, // eslint-disable-next-line camelcase
         thumbnail_url,
         url
       } = result[0];

@@ -14,9 +14,12 @@ describe('Testing user reducer', () => {
   beforeEach(() => {
     state = initialState.user;
   });
-  it('should return initialState when user reducer is call without args', () => {
-    expect(reducer()).toMatchObject(state);
-  });
+
+  it('should return initialState when user reducer is call without args',
+    () => {
+      expect(reducer()).toMatchObject(state);
+    });
+
   it('should return a newState for action type LOGIN', () => {
     const action = {
       payload: {
@@ -32,6 +35,7 @@ describe('Testing user reducer', () => {
     expect(user).toMatchObject({ ...state, ...action.payload.user });
     expect(user).not.toBe(state);
   });
+
   it('should return a newState for action type SIGNUP', () => {
     const action = {
       payload: {
@@ -47,6 +51,7 @@ describe('Testing user reducer', () => {
     expect(user).toMatchObject({ ...state, ...action.payload.user });
     expect(user).not.toBe(state);
   });
+
   it('should return a newState for action type GOT_USER_PROFILE', () => {
     const action = {
       payload: {
@@ -60,9 +65,9 @@ describe('Testing user reducer', () => {
             {
               id: 43,
               recipeName: 'koj',
-              category: 'ojpjp',
-              ingredients: ['pkpk'],
-              directions: ['pkpk'],
+              category: 'lunch',
+              ingredients: ['rice'],
+              directions: ['cook the rice'],
               upVotes: 0,
               downVotes: 0,
               views: 0,
@@ -78,6 +83,7 @@ describe('Testing user reducer', () => {
     expect(user).toMatchObject({ ...state, ...action.payload.user });
     expect(user).not.toBe(state);
   });
+
   it('should return a newState for action type UPDATE_USER_PROFILE', () => {
     const action = {
       payload: {
@@ -95,36 +101,39 @@ describe('Testing user reducer', () => {
     expect(user).not.toBe(state);
   });
 
-  it('should return a newState for action type TOGGLE_FAV when user added a favorite recipe', () => {
-    const action = {
-      payload: {
-        favRecipe: {
-          added: true,
-          id: 1,
-          recipe: { id: 1 }
-        }
-      },
-      type: TOGGLE_FAV
-    };
-    const user = reducer(state, action);
-    expect(user).toMatchObject({ ...state, favRecipes: [{ id: 1 }] });
-    expect(user.favRecipes.length).toBe(1);
-    expect(user).not.toBe(state);
-  });
-  it('should return a newState for action type TOGGLE_FAV when user removed a favorite recipe', () => {
-    const action = {
-      payload: {
-        favRecipe: {
-          added: false,
-          id: 1
-        }
-      },
-      type: TOGGLE_FAV
-    };
-    const user = reducer(state, action);
-    expect(user).toMatchObject({ ...state, favRecipes: [] });
-    expect(user.favRecipes.length).toBe(0);
-    expect(user).not.toBe(state);
-  });
+  it(`should return a newState for action type TOGGLE_FAV
+  when user added a favorite recipe`, () => {
+      const action = {
+        payload: {
+          favRecipe: {
+            added: true,
+            id: 1,
+            recipe: { id: 1 }
+          }
+        },
+        type: TOGGLE_FAV
+      };
+      const user = reducer(state, action);
+      expect(user).toMatchObject({ ...state, favRecipes: [{ id: 1 }] });
+      expect(user.favRecipes.length).toBe(1);
+      expect(user).not.toBe(state);
+    });
+
+  it(`should return a newState for action type TOGGLE_FAV
+  when user removed a favorite recipe`, () => {
+      const action = {
+        payload: {
+          favRecipe: {
+            added: false,
+            id: 1
+          }
+        },
+        type: TOGGLE_FAV
+      };
+      const user = reducer(state, action);
+      expect(user).toMatchObject({ ...state, favRecipes: [] });
+      expect(user.favRecipes.length).toBe(0);
+      expect(user).not.toBe(state);
+    });
 });
 

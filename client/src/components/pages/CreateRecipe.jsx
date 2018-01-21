@@ -45,7 +45,7 @@ class CreateRecipe extends React.Component {
    * post recipe button click event handler
    * @return {undefined}
    */
-  postRecipeClicked = () => {
+  postRecipe = () => {
     const { recipe } = this.props;
     this.props.createRecipe(recipe, RECIPE_ADDED);
   }
@@ -59,7 +59,7 @@ class CreateRecipe extends React.Component {
 
     return (
       <RecipeEditor
-        handleButtonClick={this.postRecipeClicked}
+        handleButtonClick={this.postRecipe}
         submitButtonText="post recipe"
         loading={loading}
         hasRender

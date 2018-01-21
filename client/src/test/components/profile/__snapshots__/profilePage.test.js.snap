@@ -1,0 +1,3400 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Page component  Manage recipe should call history.push when edit icon is clicked 1`] = `
+<Profile
+  actions={
+    Object {
+      "currentRecipe": [Function],
+      "deleteRecipe": [Function],
+      "getCreatedRecipes": [Function],
+      "getProfile": [Function],
+      "removeFromFav": [Function],
+      "resetPageCount": [Function],
+      "resetRecipes": [Function],
+      "resetSuccess": [Function],
+      "update": [Function],
+    }
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  pageCount={0}
+  recipes={
+    Array [
+      Object {
+        "category": "",
+        "downVotes": 1,
+        "id": 1,
+        "name": "recipe",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  success={false}
+  user={
+    Object {
+      "email": "username@gmail.com",
+      "fullname": "test user",
+      "username": "username",
+    }
+  }
+>
+  <div
+    className="container-fluid profile-page no-padding"
+  >
+    <HeroArea
+      image="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+      title=""
+    >
+      <div
+        className="hero-half"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+            id="display-1"
+          >
+            <UserInfo
+              editBtnClicked={[Function]}
+              user={
+                Object {
+                  "email": "username@gmail.com",
+                  "fullname": "test user",
+                  "username": "username",
+                }
+              }
+            >
+              <div
+                className="info-wrapper
+      mr-auto
+      d-flex
+      flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+              >
+                <div
+                  className="
+        d-flex
+        justify-content-around
+        flex-column align-items-center"
+                >
+                  <div
+                    className="avatar avatar-md"
+                  >
+                    TU
+                  </div>
+                  <h3
+                    className="text-capitalize s-padding no-margin fullname-text"
+                  >
+                    test user
+                  </h3>
+                </div>
+                <div
+                  className="d-flex no-margin flex-column align-items-center 
+        justify-content-center info"
+                >
+                  <li
+                    className="info-item"
+                  >
+                    username@gmail.com
+                  </li>
+                  <li
+                    className="info-item"
+                  >
+                    @username
+                  </li>
+                </div>
+                <Button
+                  Tag="button"
+                  className=" btn-lg center-margin edit-btn btn-secondary"
+                  dataTarget="#modal"
+                  dataToggle="modal"
+                  handleClick={[Function]}
+                  href=""
+                  id="editProfile"
+                  text="edit profile"
+                  type="button"
+                >
+                  <button
+                    className="btn  btn-lg center-margin edit-btn btn-secondary"
+                    data-dismiss="modal"
+                    data-target="#modal"
+                    data-toggle="modal"
+                    href=""
+                    id="editProfile"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    edit profile
+                  </button>
+                </Button>
+              </div>
+            </UserInfo>
+          </h1>
+        </div>
+      </div>
+    </HeroArea>
+    <div
+      className="row col-xs-12
+        col-sm-12 col-md-10 col-lg-10 center-margin"
+    >
+      <RecipeList
+        handleClick={[Function]}
+        onDeleteIconClicked={[Function]}
+        onEditIconClicked={[Function]}
+        recipes={
+          Array [
+            Object {
+              "category": "",
+              "downVotes": 1,
+              "id": 1,
+              "name": "recipe",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+      >
+        <List
+          className="recipe-list"
+          style={Object {}}
+        >
+          <div
+            className="col-12 recipe-list"
+            style={Object {}}
+          >
+            <h4
+              className="display-4 bold header"
+            >
+              my recipes
+            </h4>
+            <ListItem
+              className="recipe-list-item"
+              content="recipe"
+              handleClick={[Function]}
+              index={0}
+              key="1"
+            >
+              <div
+                className="lead list-item recipe-list-item"
+              >
+                <div
+                  className="list-item-text lead"
+                  data-index={0}
+                  onClick={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  recipe
+                </div>
+                <div>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    iconClass="fa fa-pencil edit-icon"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="hello"
+                    toolTip={false}
+                    toolTipId=""
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa fa-pencil edit-icon"
+                        data-for=""
+                        data-target=""
+                        data-tip="hello"
+                        data-toggle=""
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget="#modal"
+                    dataToggle="modal"
+                    handleClick={[Function]}
+                    iconClass="fa fa-trash-o delete-icon"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="hello"
+                    toolTip={false}
+                    toolTipId=""
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa fa-trash-o delete-icon"
+                        data-for=""
+                        data-target="#modal"
+                        data-tip="hello"
+                        data-toggle="modal"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                </div>
+              </div>
+            </ListItem>
+          </div>
+        </List>
+      </RecipeList>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="editProfileModal"
+      left={true}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={true}
+      rightBtnText=""
+      title=""
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="editProfileModalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="editProfileModalLabel"
+              />
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</Profile>
+`;
+
+exports[`Profile Page component  Manage recipe should call history.push when recipeList item is clicked 1`] = `
+<Profile
+  actions={
+    Object {
+      "currentRecipe": [Function],
+      "deleteRecipe": [Function],
+      "getCreatedRecipes": [Function],
+      "getProfile": [Function],
+      "removeFromFav": [Function],
+      "resetPageCount": [Function],
+      "resetRecipes": [Function],
+      "resetSuccess": [Function],
+      "update": [Function],
+    }
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  pageCount={0}
+  recipes={
+    Array [
+      Object {
+        "category": "",
+        "downVotes": 1,
+        "id": 1,
+        "name": "recipe",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  success={false}
+  user={
+    Object {
+      "email": "username@gmail.com",
+      "fullname": "test user",
+      "username": "username",
+    }
+  }
+>
+  <div
+    className="container-fluid profile-page no-padding"
+  >
+    <HeroArea
+      image="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+      title=""
+    >
+      <div
+        className="hero-half"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+            id="display-1"
+          >
+            <UserInfo
+              editBtnClicked={[Function]}
+              user={
+                Object {
+                  "email": "username@gmail.com",
+                  "fullname": "test user",
+                  "username": "username",
+                }
+              }
+            >
+              <div
+                className="info-wrapper
+      mr-auto
+      d-flex
+      flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+              >
+                <div
+                  className="
+        d-flex
+        justify-content-around
+        flex-column align-items-center"
+                >
+                  <div
+                    className="avatar avatar-md"
+                  >
+                    TU
+                  </div>
+                  <h3
+                    className="text-capitalize s-padding no-margin fullname-text"
+                  >
+                    test user
+                  </h3>
+                </div>
+                <div
+                  className="d-flex no-margin flex-column align-items-center 
+        justify-content-center info"
+                >
+                  <li
+                    className="info-item"
+                  >
+                    username@gmail.com
+                  </li>
+                  <li
+                    className="info-item"
+                  >
+                    @username
+                  </li>
+                </div>
+                <Button
+                  Tag="button"
+                  className=" btn-lg center-margin edit-btn btn-secondary"
+                  dataTarget="#modal"
+                  dataToggle="modal"
+                  handleClick={[Function]}
+                  href=""
+                  id="editProfile"
+                  text="edit profile"
+                  type="button"
+                >
+                  <button
+                    className="btn  btn-lg center-margin edit-btn btn-secondary"
+                    data-dismiss="modal"
+                    data-target="#modal"
+                    data-toggle="modal"
+                    href=""
+                    id="editProfile"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    edit profile
+                  </button>
+                </Button>
+              </div>
+            </UserInfo>
+          </h1>
+        </div>
+      </div>
+    </HeroArea>
+    <div
+      className="row col-xs-12
+        col-sm-12 col-md-10 col-lg-10 center-margin"
+    >
+      <RecipeList
+        handleClick={[Function]}
+        onDeleteIconClicked={[Function]}
+        onEditIconClicked={[Function]}
+        recipes={
+          Array [
+            Object {
+              "category": "",
+              "downVotes": 1,
+              "id": 1,
+              "name": "recipe",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+      >
+        <List
+          className="recipe-list"
+          style={Object {}}
+        >
+          <div
+            className="col-12 recipe-list"
+            style={Object {}}
+          >
+            <h4
+              className="display-4 bold header"
+            >
+              my recipes
+            </h4>
+            <ListItem
+              className="recipe-list-item"
+              content="recipe"
+              handleClick={[Function]}
+              index={0}
+              key="1"
+            >
+              <div
+                className="lead list-item recipe-list-item"
+              >
+                <div
+                  className="list-item-text lead"
+                  data-index={0}
+                  onClick={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  recipe
+                </div>
+                <div>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    iconClass="fa fa-pencil edit-icon"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="hello"
+                    toolTip={false}
+                    toolTipId=""
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa fa-pencil edit-icon"
+                        data-for=""
+                        data-target=""
+                        data-tip="hello"
+                        data-toggle=""
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget="#modal"
+                    dataToggle="modal"
+                    handleClick={[Function]}
+                    iconClass="fa fa-trash-o delete-icon"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="hello"
+                    toolTip={false}
+                    toolTipId=""
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa fa-trash-o delete-icon"
+                        data-for=""
+                        data-target="#modal"
+                        data-tip="hello"
+                        data-toggle="modal"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                </div>
+              </div>
+            </ListItem>
+          </div>
+        </List>
+      </RecipeList>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="editProfileModal"
+      left={true}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={true}
+      rightBtnText=""
+      title=""
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="editProfileModalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="editProfileModalLabel"
+              />
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</Profile>
+`;
+
+exports[`Profile Page component  Manage recipe should render a model when delete recipe icon is clicked 1`] = `
+<Profile
+  actions={
+    Object {
+      "currentRecipe": [Function],
+      "deleteRecipe": [Function],
+      "getCreatedRecipes": [Function],
+      "getProfile": [Function],
+      "removeFromFav": [Function],
+      "resetPageCount": [Function],
+      "resetRecipes": [Function],
+      "resetSuccess": [Function],
+      "update": [Function],
+    }
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  pageCount={0}
+  recipes={
+    Array [
+      Object {
+        "category": "",
+        "downVotes": 1,
+        "id": 1,
+        "name": "recipe",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  success={false}
+  user={
+    Object {
+      "email": "username@gmail.com",
+      "fullname": "test user",
+      "username": "username",
+    }
+  }
+>
+  <div
+    className="container-fluid profile-page no-padding"
+  >
+    <HeroArea
+      image="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+      title=""
+    >
+      <div
+        className="hero-half"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+            id="display-1"
+          >
+            <UserInfo
+              editBtnClicked={[Function]}
+              user={
+                Object {
+                  "email": "username@gmail.com",
+                  "fullname": "test user",
+                  "username": "username",
+                }
+              }
+            >
+              <div
+                className="info-wrapper
+      mr-auto
+      d-flex
+      flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+              >
+                <div
+                  className="
+        d-flex
+        justify-content-around
+        flex-column align-items-center"
+                >
+                  <div
+                    className="avatar avatar-md"
+                  >
+                    TU
+                  </div>
+                  <h3
+                    className="text-capitalize s-padding no-margin fullname-text"
+                  >
+                    test user
+                  </h3>
+                </div>
+                <div
+                  className="d-flex no-margin flex-column align-items-center 
+        justify-content-center info"
+                >
+                  <li
+                    className="info-item"
+                  >
+                    username@gmail.com
+                  </li>
+                  <li
+                    className="info-item"
+                  >
+                    @username
+                  </li>
+                </div>
+                <Button
+                  Tag="button"
+                  className=" btn-lg center-margin edit-btn btn-secondary"
+                  dataTarget="#modal"
+                  dataToggle="modal"
+                  handleClick={[Function]}
+                  href=""
+                  id="editProfile"
+                  text="edit profile"
+                  type="button"
+                >
+                  <button
+                    className="btn  btn-lg center-margin edit-btn btn-secondary"
+                    data-dismiss="modal"
+                    data-target="#modal"
+                    data-toggle="modal"
+                    href=""
+                    id="editProfile"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    edit profile
+                  </button>
+                </Button>
+              </div>
+            </UserInfo>
+          </h1>
+        </div>
+      </div>
+    </HeroArea>
+    <div
+      className="row col-xs-12
+        col-sm-12 col-md-10 col-lg-10 center-margin"
+    >
+      <RecipeList
+        handleClick={[Function]}
+        onDeleteIconClicked={[Function]}
+        onEditIconClicked={[Function]}
+        recipes={
+          Array [
+            Object {
+              "category": "",
+              "downVotes": 1,
+              "id": 1,
+              "name": "recipe",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+      >
+        <List
+          className="recipe-list"
+          style={Object {}}
+        >
+          <div
+            className="col-12 recipe-list"
+            style={Object {}}
+          >
+            <h4
+              className="display-4 bold header"
+            >
+              my recipes
+            </h4>
+            <ListItem
+              className="recipe-list-item"
+              content="recipe"
+              handleClick={[Function]}
+              index={0}
+              key="1"
+            >
+              <div
+                className="lead list-item recipe-list-item"
+              >
+                <div
+                  className="list-item-text lead"
+                  data-index={0}
+                  onClick={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  recipe
+                </div>
+                <div>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    iconClass="fa fa-pencil edit-icon"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="hello"
+                    toolTip={false}
+                    toolTipId=""
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa fa-pencil edit-icon"
+                        data-for=""
+                        data-target=""
+                        data-tip="hello"
+                        data-toggle=""
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget="#modal"
+                    dataToggle="modal"
+                    handleClick={[Function]}
+                    iconClass="fa fa-trash-o delete-icon"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="hello"
+                    toolTip={false}
+                    toolTipId=""
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa fa-trash-o delete-icon"
+                        data-for=""
+                        data-target="#modal"
+                        data-tip="hello"
+                        data-toggle="modal"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                </div>
+              </div>
+            </ListItem>
+          </div>
+        </List>
+      </RecipeList>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="editProfileModal"
+      left={true}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={true}
+      rightBtnText=""
+      title=""
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="editProfileModalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="editProfileModalLabel"
+              />
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</Profile>
+`;
+
+exports[`Profile Page component  Profile update should display a modal with a form when edit button is clicked  1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(Profile)
+    actions={
+      Object {
+        "currentRecipe": [Function],
+        "deleteRecipe": [Function],
+        "getCreatedRecipes": [Function],
+        "getProfile": [Function],
+        "removeFromFav": [Function],
+        "resetPageCount": [Function],
+        "resetRecipes": [Function],
+        "resetSuccess": [Function],
+        "update": [Function],
+      }
+    }
+    history={
+      Object {
+        "push": [Function],
+      }
+    }
+    loading={false}
+    recipes={
+      Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "id": 1,
+          "name": "recipe",
+          "upVotes": 1,
+          "views": 1,
+        },
+      ]
+    }
+    success={false}
+    user={
+      Object {
+        "email": "username@gmail.com",
+        "fullname": "test user",
+        "username": "username",
+      }
+    }
+  >
+    <Profile
+      actions={
+        Object {
+          "deleteRecipe": [Function],
+          "getCreatedRecipes": [Function],
+          "getProfile": [Function],
+          "removeFromFav": [Function],
+          "resetPageCount": [Function],
+          "resetRecipes": [Function],
+          "resetSuccess": [Function],
+          "update": [Function],
+        }
+      }
+      history={
+        Object {
+          "push": [Function],
+        }
+      }
+      loading={true}
+      pageCount={0}
+      recipes={Array []}
+      success={false}
+      user={
+        Object {
+          "createdRecipes": Array [],
+          "email": "",
+          "favRecipes": Array [],
+          "fullname": "",
+          "profilePicture": "",
+          "username": "",
+          "votes": Array [],
+        }
+      }
+    >
+      <div
+        className="container-fluid profile-page no-padding"
+      >
+        <HeroArea
+          image="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+          title=""
+        >
+          <div
+            className="hero-half"
+          >
+            <div
+              className="backdrop"
+            >
+              <img
+                alt="heroimage"
+                src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+              />
+              <h1
+                className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+                id="display-1"
+              >
+                <UserInfo
+                  editBtnClicked={[Function]}
+                  user={
+                    Object {
+                      "createdRecipes": Array [],
+                      "email": "",
+                      "favRecipes": Array [],
+                      "fullname": "",
+                      "profilePicture": "",
+                      "username": "",
+                      "votes": Array [],
+                    }
+                  }
+                >
+                  <div
+                    className="info-wrapper
+      mr-auto
+      d-flex
+      flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+                  >
+                    <div
+                      className="
+        d-flex
+        justify-content-around
+        flex-column align-items-center"
+                    >
+                      <div
+                        className="avatar avatar-md"
+                      />
+                      <h3
+                        className="text-capitalize s-padding no-margin fullname-text"
+                      />
+                    </div>
+                    <div
+                      className="d-flex no-margin flex-column align-items-center 
+        justify-content-center info"
+                    >
+                      <li
+                        className="info-item"
+                      />
+                      <li
+                        className="info-item"
+                      >
+                        @
+                      </li>
+                    </div>
+                    <Button
+                      Tag="button"
+                      className=" btn-lg center-margin edit-btn btn-secondary"
+                      dataTarget="#modal"
+                      dataToggle="modal"
+                      handleClick={[Function]}
+                      href=""
+                      id="editProfile"
+                      text="edit profile"
+                      type="button"
+                    >
+                      <button
+                        className="btn  btn-lg center-margin edit-btn btn-secondary"
+                        data-dismiss="modal"
+                        data-target="#modal"
+                        data-toggle="modal"
+                        href=""
+                        id="editProfile"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        edit profile
+                      </button>
+                    </Button>
+                  </div>
+                </UserInfo>
+              </h1>
+            </div>
+          </div>
+        </HeroArea>
+        <div
+          className="container-fluid profile-page no-padding"
+        >
+          <Loader
+            loading={true}
+          >
+            <div
+              className="loader"
+            >
+              <onlyUpdateForKeys(Loader)
+                color="#7B4E28"
+                loading={true}
+                size={60}
+              >
+                <Loader
+                  color="#7B4E28"
+                  loading={true}
+                  size={60}
+                >
+                  <div
+                    className="css-igcz5d"
+                  />
+                </Loader>
+              </onlyUpdateForKeys(Loader)>
+            </div>
+          </Loader>
+        </div>
+        <Modal
+          center={true}
+          closeBtnClicked={[Function]}
+          footer={false}
+          id="editProfileModal"
+          left={true}
+          leftBtnText=""
+          loading={true}
+          onContinueClicked={[Function]}
+          operationCompleted={false}
+          right={true}
+          rightBtnText=""
+          title=""
+        >
+          <div
+            aria-hidden="true"
+            aria-labelledby="editProfileModalLabel"
+            className="modal fade"
+            data-backdrop="false"
+            data-show="true"
+            id="modal"
+            role="dialog"
+            tabIndex="-1"
+          >
+            <div
+              className="modal-dialog"
+              role="document"
+            >
+              <div
+                className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+              >
+                <div
+                  className="modal-header"
+                >
+                  <h5
+                    className="modal-title text-capitalize display-4"
+                    id="editProfileModalLabel"
+                  />
+                  <button
+                    aria-label="Close"
+                    className="close"
+                    data-dismiss="modal"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      ×
+                    </span>
+                  </button>
+                </div>
+                <div
+                  className="modal-body"
+                />
+              </div>
+            </div>
+          </div>
+        </Modal>
+      </div>
+    </Profile>
+  </Connect(Profile)>
+</Provider>
+`;
+
+exports[`Profile Page component  Profile update should update user profile when update button is clicked  1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(Profile)
+    actions={
+      Object {
+        "currentRecipe": [Function],
+        "deleteRecipe": [Function],
+        "getCreatedRecipes": [Function],
+        "getProfile": [Function],
+        "removeFromFav": [Function],
+        "resetPageCount": [Function],
+        "resetRecipes": [Function],
+        "resetSuccess": [Function],
+        "update": [Function],
+      }
+    }
+    history={
+      Object {
+        "push": [Function],
+      }
+    }
+    loading={false}
+    recipes={
+      Array [
+        Object {
+          "category": "",
+          "downVotes": 1,
+          "id": 1,
+          "name": "recipe",
+          "upVotes": 1,
+          "views": 1,
+        },
+      ]
+    }
+    success={false}
+    user={
+      Object {
+        "email": "username@gmail.com",
+        "fullname": "test user",
+        "username": "username",
+      }
+    }
+  >
+    <Profile
+      actions={
+        Object {
+          "deleteRecipe": [Function],
+          "getCreatedRecipes": [Function],
+          "getProfile": [Function],
+          "removeFromFav": [Function],
+          "resetPageCount": [Function],
+          "resetRecipes": [Function],
+          "resetSuccess": [Function],
+          "update": [Function],
+        }
+      }
+      history={
+        Object {
+          "push": [Function],
+        }
+      }
+      loading={true}
+      pageCount={0}
+      recipes={Array []}
+      success={false}
+      user={
+        Object {
+          "createdRecipes": Array [],
+          "email": "",
+          "favRecipes": Array [],
+          "fullname": "",
+          "profilePicture": "",
+          "username": "",
+          "votes": Array [],
+        }
+      }
+    >
+      <div
+        className="container-fluid profile-page no-padding"
+      >
+        <HeroArea
+          image="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+          title=""
+        >
+          <div
+            className="hero-half"
+          >
+            <div
+              className="backdrop"
+            >
+              <img
+                alt="heroimage"
+                src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+              />
+              <h1
+                className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+                id="display-1"
+              >
+                <UserInfo
+                  editBtnClicked={[Function]}
+                  user={
+                    Object {
+                      "createdRecipes": Array [],
+                      "email": "",
+                      "favRecipes": Array [],
+                      "fullname": "",
+                      "profilePicture": "",
+                      "username": "",
+                      "votes": Array [],
+                    }
+                  }
+                >
+                  <div
+                    className="info-wrapper
+      mr-auto
+      d-flex
+      flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+                  >
+                    <div
+                      className="
+        d-flex
+        justify-content-around
+        flex-column align-items-center"
+                    >
+                      <div
+                        className="avatar avatar-md"
+                      />
+                      <h3
+                        className="text-capitalize s-padding no-margin fullname-text"
+                      />
+                    </div>
+                    <div
+                      className="d-flex no-margin flex-column align-items-center 
+        justify-content-center info"
+                    >
+                      <li
+                        className="info-item"
+                      />
+                      <li
+                        className="info-item"
+                      >
+                        @
+                      </li>
+                    </div>
+                    <Button
+                      Tag="button"
+                      className=" btn-lg center-margin edit-btn btn-secondary"
+                      dataTarget="#modal"
+                      dataToggle="modal"
+                      handleClick={[Function]}
+                      href=""
+                      id="editProfile"
+                      text="edit profile"
+                      type="button"
+                    >
+                      <button
+                        className="btn  btn-lg center-margin edit-btn btn-secondary"
+                        data-dismiss="modal"
+                        data-target="#modal"
+                        data-toggle="modal"
+                        href=""
+                        id="editProfile"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        edit profile
+                      </button>
+                    </Button>
+                  </div>
+                </UserInfo>
+              </h1>
+            </div>
+          </div>
+        </HeroArea>
+        <div
+          className="row col-xs-12
+        col-sm-12 col-md-10 col-lg-10 center-margin"
+        >
+          <RecipeList
+            handleClick={[Function]}
+            onDeleteIconClicked={[Function]}
+            onEditIconClicked={[Function]}
+            recipes={Array []}
+          >
+            <List
+              className="recipe-list"
+              style={Object {}}
+            >
+              <div
+                className="col-12 recipe-list"
+                style={Object {}}
+              />
+            </List>
+          </RecipeList>
+        </div>
+        <Modal
+          center={true}
+          closeBtnClicked={[Function]}
+          footer={false}
+          id="editProfileModal"
+          left={true}
+          leftBtnText=""
+          loading={true}
+          onContinueClicked={[Function]}
+          operationCompleted={false}
+          right={true}
+          rightBtnText=""
+          title="Update profile"
+        >
+          <div
+            aria-hidden="true"
+            aria-labelledby="editProfileModalLabel"
+            className="modal fade"
+            data-backdrop="false"
+            data-show="true"
+            id="modal"
+            role="dialog"
+            tabIndex="-1"
+          >
+            <div
+              className="modal-dialog"
+              role="document"
+            >
+              <div
+                className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+              >
+                <div
+                  className="modal-header"
+                >
+                  <h5
+                    className="modal-title text-capitalize display-4"
+                    id="editProfileModalLabel"
+                  >
+                    Update profile
+                  </h5>
+                  <button
+                    aria-label="Close"
+                    className="close"
+                    data-dismiss="modal"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      ×
+                    </span>
+                  </button>
+                </div>
+                <div
+                  className="modal-body"
+                >
+                  <div
+                    className="modal-body text-white"
+                  >
+                    <Connect(ReduxForm)
+                      loading={true}
+                      update={[Function]}
+                    >
+                      <ReduxForm
+                        dispatch={[Function]}
+                        initialValues={
+                          Object {
+                            "createdRecipes": Array [],
+                            "email": "",
+                            "favRecipes": Array [],
+                            "fullname": "",
+                            "profilePicture": "",
+                            "username": "",
+                            "votes": Array [],
+                          }
+                        }
+                        loading={true}
+                        update={[Function]}
+                      >
+                        <Connect(Form(EditProfile))
+                          destroyOnUnmount={true}
+                          dispatch={[Function]}
+                          enableReinitialize={false}
+                          forceUnregisterOnUnmount={false}
+                          form="editProfileForm"
+                          getFormState={[Function]}
+                          initialValues={
+                            Object {
+                              "createdRecipes": Array [],
+                              "email": "",
+                              "favRecipes": Array [],
+                              "fullname": "",
+                              "profilePicture": "",
+                              "username": "",
+                              "votes": Array [],
+                            }
+                          }
+                          keepDirtyOnReinitialize={false}
+                          loading={true}
+                          persistentSubmitErrors={false}
+                          pure={true}
+                          shouldAsyncValidate={[Function]}
+                          shouldValidate={[Function]}
+                          touchOnBlur={true}
+                          touchOnChange={false}
+                          update={[Function]}
+                        >
+                          <Form(EditProfile)
+                            anyTouched={false}
+                            array={
+                              Object {
+                                "insert": [Function],
+                                "move": [Function],
+                                "pop": [Function],
+                                "push": [Function],
+                                "remove": [Function],
+                                "removeAll": [Function],
+                                "shift": [Function],
+                                "splice": [Function],
+                                "swap": [Function],
+                                "unshift": [Function],
+                              }
+                            }
+                            arrayInsert={[Function]}
+                            arrayMove={[Function]}
+                            arrayPop={[Function]}
+                            arrayPush={[Function]}
+                            arrayRemove={[Function]}
+                            arrayRemoveAll={[Function]}
+                            arrayShift={[Function]}
+                            arraySplice={[Function]}
+                            arraySwap={[Function]}
+                            arrayUnshift={[Function]}
+                            asyncValidating={false}
+                            autofill={[Function]}
+                            blur={[Function]}
+                            change={[Function]}
+                            clearAsyncError={[Function]}
+                            clearSubmit={[Function]}
+                            clearSubmitErrors={[Function]}
+                            destroy={[Function]}
+                            destroyOnUnmount={true}
+                            dirty={false}
+                            dispatch={[Function]}
+                            enableReinitialize={false}
+                            focus={[Function]}
+                            forceUnregisterOnUnmount={false}
+                            form="editProfileForm"
+                            getFormState={[Function]}
+                            initialValues={
+                              Object {
+                                "createdRecipes": Array [],
+                                "email": "",
+                                "favRecipes": Array [],
+                                "fullname": "",
+                                "profilePicture": "",
+                                "username": "",
+                                "votes": Array [],
+                              }
+                            }
+                            initialize={[Function]}
+                            initialized={true}
+                            invalid={true}
+                            keepDirtyOnReinitialize={false}
+                            loading={true}
+                            persistentSubmitErrors={false}
+                            pristine={true}
+                            pure={true}
+                            registerField={[Function]}
+                            registeredFields={
+                              Object {
+                                "email": Object {
+                                  "count": 1,
+                                  "name": "email",
+                                  "type": "Field",
+                                },
+                                "fullname": Object {
+                                  "count": 1,
+                                  "name": "fullname",
+                                  "type": "Field",
+                                },
+                                "username": Object {
+                                  "count": 1,
+                                  "name": "username",
+                                  "type": "Field",
+                                },
+                              }
+                            }
+                            reset={[Function]}
+                            setSubmitFailed={[Function]}
+                            setSubmitSucceeded={[Function]}
+                            shouldAsyncValidate={[Function]}
+                            shouldValidate={[Function]}
+                            startAsyncValidation={[Function]}
+                            startSubmit={[Function]}
+                            stopAsyncValidation={[Function]}
+                            stopSubmit={[Function]}
+                            submit={[Function]}
+                            submitFailed={false}
+                            submitSucceeded={false}
+                            submitting={false}
+                            syncErrors={
+                              Object {
+                                "email": Array [
+                                  "Email can't be blank",
+                                  "Email entered is not valid",
+                                ],
+                                "fullname": Array [
+                                  "Fullname can't be blank",
+                                  "Fullname can only contain alphabet",
+                                  "Fullname must be more than one word",
+                                ],
+                                "username": Array [
+                                  "Username can't be blank",
+                                  "can only contain alphabet, number and underscore",
+                                  " Username must be at least 3 character",
+                                ],
+                              }
+                            }
+                            syncWarnings={Object {}}
+                            touch={[Function]}
+                            touchOnBlur={true}
+                            touchOnChange={false}
+                            unregisterField={[Function]}
+                            untouch={[Function]}
+                            update={[Function]}
+                            updateSyncErrors={[Function]}
+                            updateSyncWarnings={[Function]}
+                            valid={false}
+                            validExceptSubmit={false}
+                            values={
+                              Object {
+                                "createdRecipes": Array [],
+                                "email": "",
+                                "favRecipes": Array [],
+                                "fullname": "",
+                                "profilePicture": "",
+                                "username": "",
+                                "votes": Array [],
+                              }
+                            }
+                          >
+                            <EditProfile
+                              anyTouched={false}
+                              array={
+                                Object {
+                                  "insert": [Function],
+                                  "move": [Function],
+                                  "pop": [Function],
+                                  "push": [Function],
+                                  "remove": [Function],
+                                  "removeAll": [Function],
+                                  "shift": [Function],
+                                  "splice": [Function],
+                                  "swap": [Function],
+                                  "unshift": [Function],
+                                }
+                              }
+                              asyncValidate={[Function]}
+                              asyncValidating={false}
+                              autofill={[Function]}
+                              blur={[Function]}
+                              change={[Function]}
+                              clearAsyncError={[Function]}
+                              clearSubmit={[Function]}
+                              clearSubmitErrors={[Function]}
+                              destroy={[Function]}
+                              dirty={false}
+                              dispatch={[Function]}
+                              form="editProfileForm"
+                              handleSubmit={[Function]}
+                              initialValues={
+                                Object {
+                                  "createdRecipes": Array [],
+                                  "email": "",
+                                  "favRecipes": Array [],
+                                  "fullname": "",
+                                  "profilePicture": "",
+                                  "username": "",
+                                  "votes": Array [],
+                                }
+                              }
+                              initialize={[Function]}
+                              initialized={true}
+                              invalid={true}
+                              loading={true}
+                              pristine={true}
+                              pure={true}
+                              reset={[Function]}
+                              submit={[Function]}
+                              submitFailed={false}
+                              submitSucceeded={false}
+                              submitting={false}
+                              touch={[Function]}
+                              untouch={[Function]}
+                              update={[Function]}
+                              valid={false}
+                            >
+                              <Form
+                                action=""
+                                className=""
+                                disabled={false}
+                                id="submit"
+                                lg={true}
+                                method=""
+                                onSubmit={[Function]}
+                                primary={false}
+                                primaryInverse={false}
+                                secondary={true}
+                                secondaryInverse={false}
+                                style={Object {}}
+                                submitBtnText="Update"
+                              >
+                                <form
+                                  action=""
+                                  className="col-12"
+                                  method=""
+                                  onSubmit={[Function]}
+                                  style={Object {}}
+                                >
+                                  <Field
+                                    component={[Function]}
+                                    id="fullname"
+                                    name="fullname"
+                                    placeholder="Enter fullname"
+                                    type="text"
+                                    validate={[Function]}
+                                  >
+                                    <Connect(ConnectedField)
+                                      _reduxForm={
+                                        Object {
+                                          "anyTouched": false,
+                                          "array": Object {
+                                            "insert": [Function],
+                                            "move": [Function],
+                                            "pop": [Function],
+                                            "push": [Function],
+                                            "remove": [Function],
+                                            "removeAll": [Function],
+                                            "shift": [Function],
+                                            "splice": [Function],
+                                            "swap": [Function],
+                                            "unshift": [Function],
+                                          },
+                                          "arrayInsert": [Function],
+                                          "arrayMove": [Function],
+                                          "arrayPop": [Function],
+                                          "arrayPush": [Function],
+                                          "arrayRemove": [Function],
+                                          "arrayRemoveAll": [Function],
+                                          "arrayShift": [Function],
+                                          "arraySplice": [Function],
+                                          "arraySwap": [Function],
+                                          "arrayUnshift": [Function],
+                                          "asyncErrors": undefined,
+                                          "asyncValidate": [Function],
+                                          "asyncValidating": false,
+                                          "autofill": [Function],
+                                          "blur": [Function],
+                                          "change": [Function],
+                                          "clearAsyncError": [Function],
+                                          "clearSubmit": [Function],
+                                          "clearSubmitErrors": [Function],
+                                          "destroy": [Function],
+                                          "destroyOnUnmount": true,
+                                          "dirty": false,
+                                          "dispatch": [Function],
+                                          "enableReinitialize": false,
+                                          "error": undefined,
+                                          "focus": [Function],
+                                          "forceUnregisterOnUnmount": false,
+                                          "form": "editProfileForm",
+                                          "getFormState": [Function],
+                                          "getValues": [Function],
+                                          "initialValues": Object {
+                                            "createdRecipes": Array [],
+                                            "email": "",
+                                            "favRecipes": Array [],
+                                            "fullname": "",
+                                            "profilePicture": "",
+                                            "username": "",
+                                            "votes": Array [],
+                                          },
+                                          "initialize": [Function],
+                                          "initialized": false,
+                                          "invalid": false,
+                                          "keepDirtyOnReinitialize": false,
+                                          "loading": true,
+                                          "persistentSubmitErrors": false,
+                                          "pristine": true,
+                                          "pure": true,
+                                          "register": [Function],
+                                          "registerField": [Function],
+                                          "registerInnerOnSubmit": [Function],
+                                          "registeredFields": undefined,
+                                          "reset": [Function],
+                                          "sectionPrefix": undefined,
+                                          "setSubmitFailed": [Function],
+                                          "setSubmitSucceeded": [Function],
+                                          "shouldAsyncValidate": [Function],
+                                          "shouldValidate": [Function],
+                                          "startAsyncValidation": [Function],
+                                          "startSubmit": [Function],
+                                          "stopAsyncValidation": [Function],
+                                          "stopSubmit": [Function],
+                                          "submit": [Function],
+                                          "submitFailed": false,
+                                          "submitSucceeded": false,
+                                          "submitting": false,
+                                          "syncErrors": Object {},
+                                          "syncWarnings": Object {},
+                                          "touch": [Function],
+                                          "touchOnBlur": true,
+                                          "touchOnChange": false,
+                                          "triggerSubmit": undefined,
+                                          "unregister": [Function],
+                                          "unregisterField": [Function],
+                                          "untouch": [Function],
+                                          "update": [Function],
+                                          "updateSyncErrors": [Function],
+                                          "updateSyncWarnings": [Function],
+                                          "valid": true,
+                                          "validExceptSubmit": true,
+                                          "values": Object {
+                                            "createdRecipes": Array [],
+                                            "email": "",
+                                            "favRecipes": Array [],
+                                            "fullname": "",
+                                            "profilePicture": "",
+                                            "username": "",
+                                            "votes": Array [],
+                                          },
+                                          "warning": undefined,
+                                        }
+                                      }
+                                      component={[Function]}
+                                      id="fullname"
+                                      name="fullname"
+                                      normalize={[Function]}
+                                      placeholder="Enter fullname"
+                                      type="text"
+                                      validate={[Function]}
+                                    >
+                                      <ConnectedField
+                                        _reduxForm={
+                                          Object {
+                                            "anyTouched": false,
+                                            "array": Object {
+                                              "insert": [Function],
+                                              "move": [Function],
+                                              "pop": [Function],
+                                              "push": [Function],
+                                              "remove": [Function],
+                                              "removeAll": [Function],
+                                              "shift": [Function],
+                                              "splice": [Function],
+                                              "swap": [Function],
+                                              "unshift": [Function],
+                                            },
+                                            "arrayInsert": [Function],
+                                            "arrayMove": [Function],
+                                            "arrayPop": [Function],
+                                            "arrayPush": [Function],
+                                            "arrayRemove": [Function],
+                                            "arrayRemoveAll": [Function],
+                                            "arrayShift": [Function],
+                                            "arraySplice": [Function],
+                                            "arraySwap": [Function],
+                                            "arrayUnshift": [Function],
+                                            "asyncErrors": undefined,
+                                            "asyncValidate": [Function],
+                                            "asyncValidating": false,
+                                            "autofill": [Function],
+                                            "blur": [Function],
+                                            "change": [Function],
+                                            "clearAsyncError": [Function],
+                                            "clearSubmit": [Function],
+                                            "clearSubmitErrors": [Function],
+                                            "destroy": [Function],
+                                            "destroyOnUnmount": true,
+                                            "dirty": false,
+                                            "dispatch": [Function],
+                                            "enableReinitialize": false,
+                                            "error": undefined,
+                                            "focus": [Function],
+                                            "forceUnregisterOnUnmount": false,
+                                            "form": "editProfileForm",
+                                            "getFormState": [Function],
+                                            "getValues": [Function],
+                                            "initialValues": Object {
+                                              "createdRecipes": Array [],
+                                              "email": "",
+                                              "favRecipes": Array [],
+                                              "fullname": "",
+                                              "profilePicture": "",
+                                              "username": "",
+                                              "votes": Array [],
+                                            },
+                                            "initialize": [Function],
+                                            "initialized": false,
+                                            "invalid": false,
+                                            "keepDirtyOnReinitialize": false,
+                                            "loading": true,
+                                            "persistentSubmitErrors": false,
+                                            "pristine": true,
+                                            "pure": true,
+                                            "register": [Function],
+                                            "registerField": [Function],
+                                            "registerInnerOnSubmit": [Function],
+                                            "registeredFields": undefined,
+                                            "reset": [Function],
+                                            "sectionPrefix": undefined,
+                                            "setSubmitFailed": [Function],
+                                            "setSubmitSucceeded": [Function],
+                                            "shouldAsyncValidate": [Function],
+                                            "shouldValidate": [Function],
+                                            "startAsyncValidation": [Function],
+                                            "startSubmit": [Function],
+                                            "stopAsyncValidation": [Function],
+                                            "stopSubmit": [Function],
+                                            "submit": [Function],
+                                            "submitFailed": false,
+                                            "submitSucceeded": false,
+                                            "submitting": false,
+                                            "syncErrors": Object {},
+                                            "syncWarnings": Object {},
+                                            "touch": [Function],
+                                            "touchOnBlur": true,
+                                            "touchOnChange": false,
+                                            "triggerSubmit": undefined,
+                                            "unregister": [Function],
+                                            "unregisterField": [Function],
+                                            "untouch": [Function],
+                                            "update": [Function],
+                                            "updateSyncErrors": [Function],
+                                            "updateSyncWarnings": [Function],
+                                            "valid": true,
+                                            "validExceptSubmit": true,
+                                            "values": Object {
+                                              "createdRecipes": Array [],
+                                              "email": "",
+                                              "favRecipes": Array [],
+                                              "fullname": "",
+                                              "profilePicture": "",
+                                              "username": "",
+                                              "votes": Array [],
+                                            },
+                                            "warning": undefined,
+                                          }
+                                        }
+                                        asyncValidating={false}
+                                        component={[Function]}
+                                        dirty={false}
+                                        dispatch={[Function]}
+                                        id="fullname"
+                                        initial=""
+                                        name="fullname"
+                                        normalize={[Function]}
+                                        placeholder="Enter fullname"
+                                        pristine={true}
+                                        syncError={
+                                          Array [
+                                            "Fullname can't be blank",
+                                            "Fullname can only contain alphabet",
+                                            "Fullname must be more than one word",
+                                          ]
+                                        }
+                                        type="text"
+                                        validate={[Function]}
+                                        value=""
+                                      >
+                                        <Input
+                                          className=""
+                                          externalError={Object {}}
+                                          fgClassName=""
+                                          helpTextClassName=""
+                                          id="fullname"
+                                          input={
+                                            Object {
+                                              "name": "fullname",
+                                              "onBlur": [Function],
+                                              "onChange": [Function],
+                                              "onDragStart": [Function],
+                                              "onDrop": [Function],
+                                              "onFocus": [Function],
+                                              "value": "",
+                                            }
+                                          }
+                                          meta={
+                                            Object {
+                                              "active": false,
+                                              "asyncValidating": false,
+                                              "autofilled": false,
+                                              "dirty": false,
+                                              "dispatch": [Function],
+                                              "error": Array [
+                                                "Fullname can't be blank",
+                                                "Fullname can only contain alphabet",
+                                                "Fullname must be more than one word",
+                                              ],
+                                              "form": "editProfileForm",
+                                              "initial": "",
+                                              "invalid": true,
+                                              "pristine": true,
+                                              "submitFailed": false,
+                                              "submitting": false,
+                                              "touched": false,
+                                              "valid": false,
+                                              "visited": false,
+                                              "warning": undefined,
+                                            }
+                                          }
+                                          placeholder="Enter fullname"
+                                          type="text"
+                                        >
+                                          <div
+                                            className="form-group"
+                                          >
+                                            <input
+                                              aria-describedby="fullname"
+                                              autoComplete="false"
+                                              className="form-control text-input"
+                                              id="fullname"
+                                              name="fullname"
+                                              onBlur={[Function]}
+                                              onChange={[Function]}
+                                              onDragStart={[Function]}
+                                              onDrop={[Function]}
+                                              onFocus={[Function]}
+                                              placeholder="Enter fullname"
+                                              type="text"
+                                              value=""
+                                            />
+                                          </div>
+                                        </Input>
+                                      </ConnectedField>
+                                    </Connect(ConnectedField)>
+                                  </Field>
+                                  <Field
+                                    component={[Function]}
+                                    id="username"
+                                    name="username"
+                                    placeholder="Enter username"
+                                    type="text"
+                                    validate={[Function]}
+                                  >
+                                    <Connect(ConnectedField)
+                                      _reduxForm={
+                                        Object {
+                                          "anyTouched": false,
+                                          "array": Object {
+                                            "insert": [Function],
+                                            "move": [Function],
+                                            "pop": [Function],
+                                            "push": [Function],
+                                            "remove": [Function],
+                                            "removeAll": [Function],
+                                            "shift": [Function],
+                                            "splice": [Function],
+                                            "swap": [Function],
+                                            "unshift": [Function],
+                                          },
+                                          "arrayInsert": [Function],
+                                          "arrayMove": [Function],
+                                          "arrayPop": [Function],
+                                          "arrayPush": [Function],
+                                          "arrayRemove": [Function],
+                                          "arrayRemoveAll": [Function],
+                                          "arrayShift": [Function],
+                                          "arraySplice": [Function],
+                                          "arraySwap": [Function],
+                                          "arrayUnshift": [Function],
+                                          "asyncErrors": undefined,
+                                          "asyncValidate": [Function],
+                                          "asyncValidating": false,
+                                          "autofill": [Function],
+                                          "blur": [Function],
+                                          "change": [Function],
+                                          "clearAsyncError": [Function],
+                                          "clearSubmit": [Function],
+                                          "clearSubmitErrors": [Function],
+                                          "destroy": [Function],
+                                          "destroyOnUnmount": true,
+                                          "dirty": false,
+                                          "dispatch": [Function],
+                                          "enableReinitialize": false,
+                                          "error": undefined,
+                                          "focus": [Function],
+                                          "forceUnregisterOnUnmount": false,
+                                          "form": "editProfileForm",
+                                          "getFormState": [Function],
+                                          "getValues": [Function],
+                                          "initialValues": Object {
+                                            "createdRecipes": Array [],
+                                            "email": "",
+                                            "favRecipes": Array [],
+                                            "fullname": "",
+                                            "profilePicture": "",
+                                            "username": "",
+                                            "votes": Array [],
+                                          },
+                                          "initialize": [Function],
+                                          "initialized": false,
+                                          "invalid": false,
+                                          "keepDirtyOnReinitialize": false,
+                                          "loading": true,
+                                          "persistentSubmitErrors": false,
+                                          "pristine": true,
+                                          "pure": true,
+                                          "register": [Function],
+                                          "registerField": [Function],
+                                          "registerInnerOnSubmit": [Function],
+                                          "registeredFields": undefined,
+                                          "reset": [Function],
+                                          "sectionPrefix": undefined,
+                                          "setSubmitFailed": [Function],
+                                          "setSubmitSucceeded": [Function],
+                                          "shouldAsyncValidate": [Function],
+                                          "shouldValidate": [Function],
+                                          "startAsyncValidation": [Function],
+                                          "startSubmit": [Function],
+                                          "stopAsyncValidation": [Function],
+                                          "stopSubmit": [Function],
+                                          "submit": [Function],
+                                          "submitFailed": false,
+                                          "submitSucceeded": false,
+                                          "submitting": false,
+                                          "syncErrors": Object {},
+                                          "syncWarnings": Object {},
+                                          "touch": [Function],
+                                          "touchOnBlur": true,
+                                          "touchOnChange": false,
+                                          "triggerSubmit": undefined,
+                                          "unregister": [Function],
+                                          "unregisterField": [Function],
+                                          "untouch": [Function],
+                                          "update": [Function],
+                                          "updateSyncErrors": [Function],
+                                          "updateSyncWarnings": [Function],
+                                          "valid": true,
+                                          "validExceptSubmit": true,
+                                          "values": Object {
+                                            "createdRecipes": Array [],
+                                            "email": "",
+                                            "favRecipes": Array [],
+                                            "fullname": "",
+                                            "profilePicture": "",
+                                            "username": "",
+                                            "votes": Array [],
+                                          },
+                                          "warning": undefined,
+                                        }
+                                      }
+                                      component={[Function]}
+                                      id="username"
+                                      name="username"
+                                      normalize={[Function]}
+                                      placeholder="Enter username"
+                                      type="text"
+                                      validate={[Function]}
+                                    >
+                                      <ConnectedField
+                                        _reduxForm={
+                                          Object {
+                                            "anyTouched": false,
+                                            "array": Object {
+                                              "insert": [Function],
+                                              "move": [Function],
+                                              "pop": [Function],
+                                              "push": [Function],
+                                              "remove": [Function],
+                                              "removeAll": [Function],
+                                              "shift": [Function],
+                                              "splice": [Function],
+                                              "swap": [Function],
+                                              "unshift": [Function],
+                                            },
+                                            "arrayInsert": [Function],
+                                            "arrayMove": [Function],
+                                            "arrayPop": [Function],
+                                            "arrayPush": [Function],
+                                            "arrayRemove": [Function],
+                                            "arrayRemoveAll": [Function],
+                                            "arrayShift": [Function],
+                                            "arraySplice": [Function],
+                                            "arraySwap": [Function],
+                                            "arrayUnshift": [Function],
+                                            "asyncErrors": undefined,
+                                            "asyncValidate": [Function],
+                                            "asyncValidating": false,
+                                            "autofill": [Function],
+                                            "blur": [Function],
+                                            "change": [Function],
+                                            "clearAsyncError": [Function],
+                                            "clearSubmit": [Function],
+                                            "clearSubmitErrors": [Function],
+                                            "destroy": [Function],
+                                            "destroyOnUnmount": true,
+                                            "dirty": false,
+                                            "dispatch": [Function],
+                                            "enableReinitialize": false,
+                                            "error": undefined,
+                                            "focus": [Function],
+                                            "forceUnregisterOnUnmount": false,
+                                            "form": "editProfileForm",
+                                            "getFormState": [Function],
+                                            "getValues": [Function],
+                                            "initialValues": Object {
+                                              "createdRecipes": Array [],
+                                              "email": "",
+                                              "favRecipes": Array [],
+                                              "fullname": "",
+                                              "profilePicture": "",
+                                              "username": "",
+                                              "votes": Array [],
+                                            },
+                                            "initialize": [Function],
+                                            "initialized": false,
+                                            "invalid": false,
+                                            "keepDirtyOnReinitialize": false,
+                                            "loading": true,
+                                            "persistentSubmitErrors": false,
+                                            "pristine": true,
+                                            "pure": true,
+                                            "register": [Function],
+                                            "registerField": [Function],
+                                            "registerInnerOnSubmit": [Function],
+                                            "registeredFields": undefined,
+                                            "reset": [Function],
+                                            "sectionPrefix": undefined,
+                                            "setSubmitFailed": [Function],
+                                            "setSubmitSucceeded": [Function],
+                                            "shouldAsyncValidate": [Function],
+                                            "shouldValidate": [Function],
+                                            "startAsyncValidation": [Function],
+                                            "startSubmit": [Function],
+                                            "stopAsyncValidation": [Function],
+                                            "stopSubmit": [Function],
+                                            "submit": [Function],
+                                            "submitFailed": false,
+                                            "submitSucceeded": false,
+                                            "submitting": false,
+                                            "syncErrors": Object {},
+                                            "syncWarnings": Object {},
+                                            "touch": [Function],
+                                            "touchOnBlur": true,
+                                            "touchOnChange": false,
+                                            "triggerSubmit": undefined,
+                                            "unregister": [Function],
+                                            "unregisterField": [Function],
+                                            "untouch": [Function],
+                                            "update": [Function],
+                                            "updateSyncErrors": [Function],
+                                            "updateSyncWarnings": [Function],
+                                            "valid": true,
+                                            "validExceptSubmit": true,
+                                            "values": Object {
+                                              "createdRecipes": Array [],
+                                              "email": "",
+                                              "favRecipes": Array [],
+                                              "fullname": "",
+                                              "profilePicture": "",
+                                              "username": "",
+                                              "votes": Array [],
+                                            },
+                                            "warning": undefined,
+                                          }
+                                        }
+                                        asyncValidating={false}
+                                        component={[Function]}
+                                        dirty={false}
+                                        dispatch={[Function]}
+                                        id="username"
+                                        initial=""
+                                        name="username"
+                                        normalize={[Function]}
+                                        placeholder="Enter username"
+                                        pristine={true}
+                                        syncError={
+                                          Array [
+                                            "Username can't be blank",
+                                            "can only contain alphabet, number and underscore",
+                                            " Username must be at least 3 character",
+                                          ]
+                                        }
+                                        type="text"
+                                        validate={[Function]}
+                                        value=""
+                                      >
+                                        <Input
+                                          className=""
+                                          externalError={Object {}}
+                                          fgClassName=""
+                                          helpTextClassName=""
+                                          id="username"
+                                          input={
+                                            Object {
+                                              "name": "username",
+                                              "onBlur": [Function],
+                                              "onChange": [Function],
+                                              "onDragStart": [Function],
+                                              "onDrop": [Function],
+                                              "onFocus": [Function],
+                                              "value": "",
+                                            }
+                                          }
+                                          meta={
+                                            Object {
+                                              "active": false,
+                                              "asyncValidating": false,
+                                              "autofilled": false,
+                                              "dirty": false,
+                                              "dispatch": [Function],
+                                              "error": Array [
+                                                "Username can't be blank",
+                                                "can only contain alphabet, number and underscore",
+                                                " Username must be at least 3 character",
+                                              ],
+                                              "form": "editProfileForm",
+                                              "initial": "",
+                                              "invalid": true,
+                                              "pristine": true,
+                                              "submitFailed": false,
+                                              "submitting": false,
+                                              "touched": false,
+                                              "valid": false,
+                                              "visited": false,
+                                              "warning": undefined,
+                                            }
+                                          }
+                                          placeholder="Enter username"
+                                          type="text"
+                                        >
+                                          <div
+                                            className="form-group"
+                                          >
+                                            <input
+                                              aria-describedby="username"
+                                              autoComplete="false"
+                                              className="form-control text-input"
+                                              id="username"
+                                              name="username"
+                                              onBlur={[Function]}
+                                              onChange={[Function]}
+                                              onDragStart={[Function]}
+                                              onDrop={[Function]}
+                                              onFocus={[Function]}
+                                              placeholder="Enter username"
+                                              type="text"
+                                              value=""
+                                            />
+                                          </div>
+                                        </Input>
+                                      </ConnectedField>
+                                    </Connect(ConnectedField)>
+                                  </Field>
+                                  <Field
+                                    component={[Function]}
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter email"
+                                    type="email"
+                                    validate={[Function]}
+                                  >
+                                    <Connect(ConnectedField)
+                                      _reduxForm={
+                                        Object {
+                                          "anyTouched": false,
+                                          "array": Object {
+                                            "insert": [Function],
+                                            "move": [Function],
+                                            "pop": [Function],
+                                            "push": [Function],
+                                            "remove": [Function],
+                                            "removeAll": [Function],
+                                            "shift": [Function],
+                                            "splice": [Function],
+                                            "swap": [Function],
+                                            "unshift": [Function],
+                                          },
+                                          "arrayInsert": [Function],
+                                          "arrayMove": [Function],
+                                          "arrayPop": [Function],
+                                          "arrayPush": [Function],
+                                          "arrayRemove": [Function],
+                                          "arrayRemoveAll": [Function],
+                                          "arrayShift": [Function],
+                                          "arraySplice": [Function],
+                                          "arraySwap": [Function],
+                                          "arrayUnshift": [Function],
+                                          "asyncErrors": undefined,
+                                          "asyncValidate": [Function],
+                                          "asyncValidating": false,
+                                          "autofill": [Function],
+                                          "blur": [Function],
+                                          "change": [Function],
+                                          "clearAsyncError": [Function],
+                                          "clearSubmit": [Function],
+                                          "clearSubmitErrors": [Function],
+                                          "destroy": [Function],
+                                          "destroyOnUnmount": true,
+                                          "dirty": false,
+                                          "dispatch": [Function],
+                                          "enableReinitialize": false,
+                                          "error": undefined,
+                                          "focus": [Function],
+                                          "forceUnregisterOnUnmount": false,
+                                          "form": "editProfileForm",
+                                          "getFormState": [Function],
+                                          "getValues": [Function],
+                                          "initialValues": Object {
+                                            "createdRecipes": Array [],
+                                            "email": "",
+                                            "favRecipes": Array [],
+                                            "fullname": "",
+                                            "profilePicture": "",
+                                            "username": "",
+                                            "votes": Array [],
+                                          },
+                                          "initialize": [Function],
+                                          "initialized": false,
+                                          "invalid": false,
+                                          "keepDirtyOnReinitialize": false,
+                                          "loading": true,
+                                          "persistentSubmitErrors": false,
+                                          "pristine": true,
+                                          "pure": true,
+                                          "register": [Function],
+                                          "registerField": [Function],
+                                          "registerInnerOnSubmit": [Function],
+                                          "registeredFields": undefined,
+                                          "reset": [Function],
+                                          "sectionPrefix": undefined,
+                                          "setSubmitFailed": [Function],
+                                          "setSubmitSucceeded": [Function],
+                                          "shouldAsyncValidate": [Function],
+                                          "shouldValidate": [Function],
+                                          "startAsyncValidation": [Function],
+                                          "startSubmit": [Function],
+                                          "stopAsyncValidation": [Function],
+                                          "stopSubmit": [Function],
+                                          "submit": [Function],
+                                          "submitFailed": false,
+                                          "submitSucceeded": false,
+                                          "submitting": false,
+                                          "syncErrors": Object {},
+                                          "syncWarnings": Object {},
+                                          "touch": [Function],
+                                          "touchOnBlur": true,
+                                          "touchOnChange": false,
+                                          "triggerSubmit": undefined,
+                                          "unregister": [Function],
+                                          "unregisterField": [Function],
+                                          "untouch": [Function],
+                                          "update": [Function],
+                                          "updateSyncErrors": [Function],
+                                          "updateSyncWarnings": [Function],
+                                          "valid": true,
+                                          "validExceptSubmit": true,
+                                          "values": Object {
+                                            "createdRecipes": Array [],
+                                            "email": "",
+                                            "favRecipes": Array [],
+                                            "fullname": "",
+                                            "profilePicture": "",
+                                            "username": "",
+                                            "votes": Array [],
+                                          },
+                                          "warning": undefined,
+                                        }
+                                      }
+                                      component={[Function]}
+                                      id="email"
+                                      name="email"
+                                      normalize={[Function]}
+                                      placeholder="Enter email"
+                                      type="email"
+                                      validate={[Function]}
+                                    >
+                                      <ConnectedField
+                                        _reduxForm={
+                                          Object {
+                                            "anyTouched": false,
+                                            "array": Object {
+                                              "insert": [Function],
+                                              "move": [Function],
+                                              "pop": [Function],
+                                              "push": [Function],
+                                              "remove": [Function],
+                                              "removeAll": [Function],
+                                              "shift": [Function],
+                                              "splice": [Function],
+                                              "swap": [Function],
+                                              "unshift": [Function],
+                                            },
+                                            "arrayInsert": [Function],
+                                            "arrayMove": [Function],
+                                            "arrayPop": [Function],
+                                            "arrayPush": [Function],
+                                            "arrayRemove": [Function],
+                                            "arrayRemoveAll": [Function],
+                                            "arrayShift": [Function],
+                                            "arraySplice": [Function],
+                                            "arraySwap": [Function],
+                                            "arrayUnshift": [Function],
+                                            "asyncErrors": undefined,
+                                            "asyncValidate": [Function],
+                                            "asyncValidating": false,
+                                            "autofill": [Function],
+                                            "blur": [Function],
+                                            "change": [Function],
+                                            "clearAsyncError": [Function],
+                                            "clearSubmit": [Function],
+                                            "clearSubmitErrors": [Function],
+                                            "destroy": [Function],
+                                            "destroyOnUnmount": true,
+                                            "dirty": false,
+                                            "dispatch": [Function],
+                                            "enableReinitialize": false,
+                                            "error": undefined,
+                                            "focus": [Function],
+                                            "forceUnregisterOnUnmount": false,
+                                            "form": "editProfileForm",
+                                            "getFormState": [Function],
+                                            "getValues": [Function],
+                                            "initialValues": Object {
+                                              "createdRecipes": Array [],
+                                              "email": "",
+                                              "favRecipes": Array [],
+                                              "fullname": "",
+                                              "profilePicture": "",
+                                              "username": "",
+                                              "votes": Array [],
+                                            },
+                                            "initialize": [Function],
+                                            "initialized": false,
+                                            "invalid": false,
+                                            "keepDirtyOnReinitialize": false,
+                                            "loading": true,
+                                            "persistentSubmitErrors": false,
+                                            "pristine": true,
+                                            "pure": true,
+                                            "register": [Function],
+                                            "registerField": [Function],
+                                            "registerInnerOnSubmit": [Function],
+                                            "registeredFields": undefined,
+                                            "reset": [Function],
+                                            "sectionPrefix": undefined,
+                                            "setSubmitFailed": [Function],
+                                            "setSubmitSucceeded": [Function],
+                                            "shouldAsyncValidate": [Function],
+                                            "shouldValidate": [Function],
+                                            "startAsyncValidation": [Function],
+                                            "startSubmit": [Function],
+                                            "stopAsyncValidation": [Function],
+                                            "stopSubmit": [Function],
+                                            "submit": [Function],
+                                            "submitFailed": false,
+                                            "submitSucceeded": false,
+                                            "submitting": false,
+                                            "syncErrors": Object {},
+                                            "syncWarnings": Object {},
+                                            "touch": [Function],
+                                            "touchOnBlur": true,
+                                            "touchOnChange": false,
+                                            "triggerSubmit": undefined,
+                                            "unregister": [Function],
+                                            "unregisterField": [Function],
+                                            "untouch": [Function],
+                                            "update": [Function],
+                                            "updateSyncErrors": [Function],
+                                            "updateSyncWarnings": [Function],
+                                            "valid": true,
+                                            "validExceptSubmit": true,
+                                            "values": Object {
+                                              "createdRecipes": Array [],
+                                              "email": "",
+                                              "favRecipes": Array [],
+                                              "fullname": "",
+                                              "profilePicture": "",
+                                              "username": "",
+                                              "votes": Array [],
+                                            },
+                                            "warning": undefined,
+                                          }
+                                        }
+                                        asyncValidating={false}
+                                        component={[Function]}
+                                        dirty={false}
+                                        dispatch={[Function]}
+                                        id="email"
+                                        initial=""
+                                        name="email"
+                                        normalize={[Function]}
+                                        placeholder="Enter email"
+                                        pristine={true}
+                                        syncError={
+                                          Array [
+                                            "Email can't be blank",
+                                            "Email entered is not valid",
+                                          ]
+                                        }
+                                        type="email"
+                                        validate={[Function]}
+                                        value=""
+                                      >
+                                        <Input
+                                          className=""
+                                          externalError={Object {}}
+                                          fgClassName=""
+                                          helpTextClassName=""
+                                          id="email"
+                                          input={
+                                            Object {
+                                              "name": "email",
+                                              "onBlur": [Function],
+                                              "onChange": [Function],
+                                              "onDragStart": [Function],
+                                              "onDrop": [Function],
+                                              "onFocus": [Function],
+                                              "value": "",
+                                            }
+                                          }
+                                          meta={
+                                            Object {
+                                              "active": false,
+                                              "asyncValidating": false,
+                                              "autofilled": false,
+                                              "dirty": false,
+                                              "dispatch": [Function],
+                                              "error": Array [
+                                                "Email can't be blank",
+                                                "Email entered is not valid",
+                                              ],
+                                              "form": "editProfileForm",
+                                              "initial": "",
+                                              "invalid": true,
+                                              "pristine": true,
+                                              "submitFailed": false,
+                                              "submitting": false,
+                                              "touched": false,
+                                              "valid": false,
+                                              "visited": false,
+                                              "warning": undefined,
+                                            }
+                                          }
+                                          placeholder="Enter email"
+                                          type="email"
+                                        >
+                                          <div
+                                            className="form-group"
+                                          >
+                                            <input
+                                              aria-describedby="email"
+                                              autoComplete="false"
+                                              className="form-control text-input"
+                                              id="email"
+                                              name="email"
+                                              onBlur={[Function]}
+                                              onChange={[Function]}
+                                              onDragStart={[Function]}
+                                              onDrop={[Function]}
+                                              onFocus={[Function]}
+                                              placeholder="Enter email"
+                                              type="email"
+                                              value=""
+                                            />
+                                          </div>
+                                        </Input>
+                                      </ConnectedField>
+                                    </Connect(ConnectedField)>
+                                  </Field>
+                                  <button
+                                    className="btn text-capitalize w-100 btn-secondary btn-lg"
+                                    disabled={false}
+                                    id="submit"
+                                    type="submit"
+                                  >
+                                    Update
+                                  </button>
+                                </form>
+                              </Form>
+                            </EditProfile>
+                          </Form(EditProfile)>
+                        </Connect(Form(EditProfile))>
+                      </ReduxForm>
+                    </Connect(ReduxForm)>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Modal>
+      </div>
+    </Profile>
+  </Connect(Profile)>
+</Provider>
+`;
+
+exports[`Profile Page component  Render page should render Profile page with NotFound component and
+     not render RecipeList when props.recipes.length equal  0  1`] = `
+<Profile
+  actions={
+    Object {
+      "currentRecipe": [Function],
+      "deleteRecipe": [Function],
+      "getCreatedRecipes": [Function],
+      "getProfile": [Function],
+      "removeFromFav": [Function],
+      "resetPageCount": [Function],
+      "resetRecipes": [Function],
+      "resetSuccess": [Function],
+      "update": [Function],
+    }
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  pageCount={0}
+  recipes={Array []}
+  success={false}
+  user={
+    Object {
+      "email": "username@gmail.com",
+      "fullname": "test user",
+      "username": "username",
+    }
+  }
+>
+  <div
+    className="container-fluid profile-page no-padding"
+  >
+    <HeroArea
+      image="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+      title=""
+    >
+      <div
+        className="hero-half"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+            id="display-1"
+          >
+            <UserInfo
+              editBtnClicked={[Function]}
+              user={
+                Object {
+                  "email": "username@gmail.com",
+                  "fullname": "test user",
+                  "username": "username",
+                }
+              }
+            >
+              <div
+                className="info-wrapper
+      mr-auto
+      d-flex
+      flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+              >
+                <div
+                  className="
+        d-flex
+        justify-content-around
+        flex-column align-items-center"
+                >
+                  <div
+                    className="avatar avatar-md"
+                  >
+                    TU
+                  </div>
+                  <h3
+                    className="text-capitalize s-padding no-margin fullname-text"
+                  >
+                    test user
+                  </h3>
+                </div>
+                <div
+                  className="d-flex no-margin flex-column align-items-center 
+        justify-content-center info"
+                >
+                  <li
+                    className="info-item"
+                  >
+                    username@gmail.com
+                  </li>
+                  <li
+                    className="info-item"
+                  >
+                    @username
+                  </li>
+                </div>
+                <Button
+                  Tag="button"
+                  className=" btn-lg center-margin edit-btn btn-secondary"
+                  dataTarget="#modal"
+                  dataToggle="modal"
+                  handleClick={[Function]}
+                  href=""
+                  id="editProfile"
+                  text="edit profile"
+                  type="button"
+                >
+                  <button
+                    className="btn  btn-lg center-margin edit-btn btn-secondary"
+                    data-dismiss="modal"
+                    data-target="#modal"
+                    data-toggle="modal"
+                    href=""
+                    id="editProfile"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    edit profile
+                  </button>
+                </Button>
+              </div>
+            </UserInfo>
+          </h1>
+        </div>
+      </div>
+    </HeroArea>
+    <NotFound
+      message="you have no recipes"
+    >
+      <div
+        className="
+      display-3
+      text-uppercase
+      msg-display
+      no-margin
+      d-flex
+      flex-column
+   "
+      >
+        <h1
+          className="not-found-text"
+        >
+          <i
+            className="fa fa-meh-o"
+          />
+          <em>
+            oops!
+          </em>
+          <br />
+          you have no recipes
+        </h1>
+        <Button
+          Tag="button"
+          className="btn-secondary-outline btn-lg"
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          href=""
+          id=""
+          text="add recipe"
+          type="button"
+        >
+          <button
+            className="btn btn-secondary-outline btn-lg"
+            data-dismiss="modal"
+            data-target=""
+            data-toggle=""
+            href=""
+            id=""
+            onClick={[Function]}
+            type="button"
+          >
+            add recipe
+          </button>
+        </Button>
+      </div>
+    </NotFound>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="editProfileModal"
+      left={true}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={true}
+      rightBtnText=""
+      title=""
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="editProfileModalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="editProfileModalLabel"
+              />
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</Profile>
+`;
+
+exports[`Profile Page component  Render page should render Profile page with RecipeList component when
+     props.recipes.length is greater than 0  1`] = `
+<Profile
+  actions={
+    Object {
+      "currentRecipe": [Function],
+      "deleteRecipe": [Function],
+      "getCreatedRecipes": [Function],
+      "getProfile": [Function],
+      "removeFromFav": [Function],
+      "resetPageCount": [Function],
+      "resetRecipes": [Function],
+      "resetSuccess": [Function],
+      "update": [Function],
+    }
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  pageCount={0}
+  recipes={
+    Array [
+      Object {
+        "category": "",
+        "downVotes": 1,
+        "id": 1,
+        "name": "recipe",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  success={false}
+  user={
+    Object {
+      "email": "username@gmail.com",
+      "fullname": "test user",
+      "username": "username",
+    }
+  }
+>
+  <div
+    className="container-fluid profile-page no-padding"
+  >
+    <HeroArea
+      image="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+      title=""
+    >
+      <div
+        className="hero-half"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="https://res.cloudinary.com/resycom/image/upload/c_scale,h_728,q_51/v1510430032/lily-lvnatikk-365344_nv94dc.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+            id="display-1"
+          >
+            <UserInfo
+              editBtnClicked={[Function]}
+              user={
+                Object {
+                  "email": "username@gmail.com",
+                  "fullname": "test user",
+                  "username": "username",
+                }
+              }
+            >
+              <div
+                className="info-wrapper
+      mr-auto
+      d-flex
+      flex-column col-xs-12 col-sm-10 col-md-8 col-lg-6"
+              >
+                <div
+                  className="
+        d-flex
+        justify-content-around
+        flex-column align-items-center"
+                >
+                  <div
+                    className="avatar avatar-md"
+                  >
+                    TU
+                  </div>
+                  <h3
+                    className="text-capitalize s-padding no-margin fullname-text"
+                  >
+                    test user
+                  </h3>
+                </div>
+                <div
+                  className="d-flex no-margin flex-column align-items-center 
+        justify-content-center info"
+                >
+                  <li
+                    className="info-item"
+                  >
+                    username@gmail.com
+                  </li>
+                  <li
+                    className="info-item"
+                  >
+                    @username
+                  </li>
+                </div>
+                <Button
+                  Tag="button"
+                  className=" btn-lg center-margin edit-btn btn-secondary"
+                  dataTarget="#modal"
+                  dataToggle="modal"
+                  handleClick={[Function]}
+                  href=""
+                  id="editProfile"
+                  text="edit profile"
+                  type="button"
+                >
+                  <button
+                    className="btn  btn-lg center-margin edit-btn btn-secondary"
+                    data-dismiss="modal"
+                    data-target="#modal"
+                    data-toggle="modal"
+                    href=""
+                    id="editProfile"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    edit profile
+                  </button>
+                </Button>
+              </div>
+            </UserInfo>
+          </h1>
+        </div>
+      </div>
+    </HeroArea>
+    <div
+      className="row col-xs-12
+        col-sm-12 col-md-10 col-lg-10 center-margin"
+    >
+      <RecipeList
+        handleClick={[Function]}
+        onDeleteIconClicked={[Function]}
+        onEditIconClicked={[Function]}
+        recipes={
+          Array [
+            Object {
+              "category": "",
+              "downVotes": 1,
+              "id": 1,
+              "name": "recipe",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+      >
+        <List
+          className="recipe-list"
+          style={Object {}}
+        >
+          <div
+            className="col-12 recipe-list"
+            style={Object {}}
+          >
+            <h4
+              className="display-4 bold header"
+            >
+              my recipes
+            </h4>
+            <ListItem
+              className="recipe-list-item"
+              content="recipe"
+              handleClick={[Function]}
+              index={0}
+              key="1"
+            >
+              <div
+                className="lead list-item recipe-list-item"
+              >
+                <div
+                  className="list-item-text lead"
+                  data-index={0}
+                  onClick={[Function]}
+                  role="button"
+                  tabIndex="0"
+                >
+                  recipe
+                </div>
+                <div>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    iconClass="fa fa-pencil edit-icon"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="hello"
+                    toolTip={false}
+                    toolTipId=""
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa fa-pencil edit-icon"
+                        data-for=""
+                        data-target=""
+                        data-tip="hello"
+                        data-toggle=""
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget="#modal"
+                    dataToggle="modal"
+                    handleClick={[Function]}
+                    iconClass="fa fa-trash-o delete-icon"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="hello"
+                    toolTip={false}
+                    toolTipId=""
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa fa-trash-o delete-icon"
+                        data-for=""
+                        data-target="#modal"
+                        data-tip="hello"
+                        data-toggle="modal"
+                      >
+                        <span />
+                      </i>
+                    </div>
+                  </Icon>
+                </div>
+              </div>
+            </ListItem>
+          </div>
+        </List>
+      </RecipeList>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="editProfileModal"
+      left={true}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={true}
+      rightBtnText=""
+      title=""
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="editProfileModalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="editProfileModalLabel"
+              />
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            />
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</Profile>
+`;

@@ -1,25 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Create Recipe page component ::  expected to match snapshot 1`] = `
+exports[`Create Recipe page component  expected to match snapshot 1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={false}
   hasRender={true}
   loading={false}
   message={[Function]}
-  statusCode={-1}
   submitButtonText="post recipe"
 />
 `;
 
-exports[`Create Recipe page component ::  expected to match snapshot when recipe is created 1`] = `
+exports[`Create Recipe page component  expected to match snapshot when recipe is created 1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={false}
   hasRender={true}
   loading={false}
   message={[Function]}
-  statusCode={-1}
+  submitButtonText="post recipe"
+/>
+`;
+
+exports[`Create Recipe page component  should call createRecipe when postRecipe is clicked 1`] = `
+<RecipeEditor
+  handleButtonClick={[Function]}
+  hasNotFound={false}
+  hasRender={true}
+  loading={false}
+  message={[Function]}
   submitButtonText="post recipe"
 />
 `;

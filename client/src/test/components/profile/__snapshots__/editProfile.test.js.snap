@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditProfileForm component  expected to match snapshot 1`] = `
+<Form
+  action=""
+  className=""
+  disabled={false}
+  id="submit"
+  lg={true}
+  method=""
+  onSubmit={[Function]}
+  primary={false}
+  primaryInverse={false}
+  secondary={true}
+  secondaryInverse={false}
+  style={Object {}}
+  submitBtnText="Update"
+>
+  <Field
+    component={[Function]}
+    id="fullname"
+    name="fullname"
+    placeholder="Enter fullname"
+    type="text"
+    validate={[Function]}
+  />
+  <Field
+    component={[Function]}
+    id="username"
+    name="username"
+    placeholder="Enter username"
+    type="text"
+    validate={[Function]}
+  />
+  <Field
+    component={[Function]}
+    id="email"
+    name="email"
+    placeholder="Enter email"
+    type="email"
+    validate={[Function]}
+  />
+</Form>
+`;

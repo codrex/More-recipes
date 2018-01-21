@@ -170,7 +170,8 @@ export const updateIngredients = ingredient => ({
 });
 
 /**
- * update image object in the store. fired when filling add or modify recipe form
+ * update image object in the store. fired when filling
+ * add or modify recipe form
  * @return {object} action
  * @param {object} image
  */
@@ -180,7 +181,8 @@ export const updateImage = image => ({
 });
 
 /**
- * update direction object in the store. fired when filling add or modify recipe form
+ * update direction object in the store. fired when
+ * filling add or modify recipe form
  * @return {object} action
  * @param {string} direction
  */
@@ -190,7 +192,8 @@ export const updateDirections = direction => ({
 });
 
 /**
- * update category object in the store. fired when filling add or modify recipe form
+ * update category object in the store. fired when filling add
+ * or modify recipe form
  * @return {object} action
  * @param {string} category
  */
@@ -239,7 +242,12 @@ export const clearValidationError = error => ({
  */
 const dispatchValidatioError = (recipe, dispatch) => {
   const error = validateRecipe(recipe);
-  const hasError = error.category || error.directions || error.ingredients || error.name;
+  const hasError = (
+    error.category
+    || error.directions
+    || error.ingredients
+    || error.name
+  );
   if (hasError) {
     return dispatch(recipeValidationError(error));
   }
@@ -466,7 +474,11 @@ export const deleteRecipe = (recipeId, index) => (dispatch) => {
  * @param {number} page
  * @param {string} message
  */
-export const findRecipes = (searchTerm, page, message = undefined) => (dispatch) => {
+export const findRecipes = (
+  searchTerm,
+  page,
+  message = undefined
+) => (dispatch) => {
   const dispatcher = new ActionDispatcher(dispatch);
   return dispatcher.requestAndDispatch(
     `/api/v1/recipes?search=${searchTerm}&limit=${LIMIT}&page=${page}`,

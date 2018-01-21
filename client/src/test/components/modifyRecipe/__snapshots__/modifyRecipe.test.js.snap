@@ -7,31 +7,40 @@ exports[`Modify recipe page component  expected to match snapshot  1`] = `
   hasRender={true}
   loading={false}
   message={[Function]}
-  statusCode={-1}
   submitButtonText="modify recipe"
 />
 `;
 
-exports[`Modify recipe page component  expected to match snapshot when recipe id is not a number 1`] = `
+exports[`Modify recipe page component  expected to match snapshot when message is
+  equal RECIPE_MODIFIED 1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
-  hasNotFound={true}
-  hasRender={false}
+  hasNotFound={false}
+  hasRender={true}
   loading={false}
   message={[Function]}
-  statusCode={-1}
   submitButtonText="modify recipe"
 />
 `;
 
-exports[`Modify recipe page component  expected to match snapshot when recipe was not found  1`] = `
+exports[`Modify recipe page component  expected to render a NotFound component when recipe was not found  1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={true}
   hasRender={true}
   loading={false}
   message={[Function]}
-  statusCode={-1}
+  submitButtonText="modify recipe"
+/>
+`;
+
+exports[`Modify recipe page component  should call modifyRecipe method when modify recipe button is clicked 1`] = `
+<RecipeEditor
+  handleButtonClick={[Function]}
+  hasNotFound={false}
+  hasRender={true}
+  loading={false}
+  message={[Function]}
   submitButtonText="modify recipe"
 />
 `;

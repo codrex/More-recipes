@@ -1,13 +1,14 @@
-var user, baseUrl;
+/* eslint-disable prefer-arrow-callback, func-names */
+let user, baseUrl;
 module.exports = {
-  before : function(client) {
+  before(client) {
     user = client.globals.user;
     baseUrl = client.globals.baseUrl;
   },
 
   'Render recipes details page': (client) => {
     client
-      .url(baseUrl + 'login')
+      .url(`${baseUrl}login`)
       .waitForElementVisible('#modal', 5000)
       .setValue('input#username', user.username)
       .setValue('input#password', user.password)
@@ -21,15 +22,19 @@ module.exports = {
       .pause(1000)
       .assert.urlContains('/recipe/')
       .moveToElement('.collapse-trigger.a.btn.btn-secondary-outline', 0, 0)
-      .execute(function(){
-        document.querySelector('.collapse-trigger.a.btn.btn-secondary-outline').click();
+      .execute(function () {
+        document
+          .querySelector('.collapse-trigger.a.btn.btn-secondary-outline')
+          .click();
       })
       .waitForElementVisible('.card-body.accordion-text', 1000)
-      .execute(function(){
+      .execute(function () {
         document.querySelector('#reviewBtn').click();
       })
       .waitForElementVisible('#modal', 1000)
+      .pause(1000)
       .setValue('#reviewTextarea', 'I love this recipe')
+      .pause(1000)
       .execute(function () {
         document.querySelector('#submit').click();
       })
@@ -59,7 +64,7 @@ module.exports = {
         document.querySelector('.icon.fa.fa-heart-o.fav').click();
       })
       .pause(1000)
-      .waitForElementVisible('.icon.fa.fa-heart.fav',3000)
-      .end()
+      .waitForElementVisible('.icon.fa.fa-heart.fav', 3000)
+      .end();
   },
 };

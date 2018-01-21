@@ -47,7 +47,6 @@ class RecipeDetails extends React.Component {
       upVote = false,
       downVote = false
     } = this.getVote(props.votes) || {};
-
     this.state = {
       addToFav: false,
       upVote,
@@ -96,6 +95,7 @@ class RecipeDetails extends React.Component {
       upVote = false,
       downVote = false
     } = this.getVote(nextProps.votes) || {};
+
     this.setState({
       upVote,
       downVote
@@ -129,7 +129,8 @@ class RecipeDetails extends React.Component {
    * @return {undefined}
    */
   addToFav = () => {
-    const message = this.isUserFav() ? 'Removed from favourites' : 'Added to favourites';
+    const message = this.isUserFav() ? 'Removed from favourites' :
+      'Added to favourites';
     this.props.actions.toggleFav(this.recipeId, message);
   }
   /**
@@ -138,7 +139,8 @@ class RecipeDetails extends React.Component {
    * checks if recipe is on user's fav recipes list
    * @return {bool} true / false
    */
-  isUserFav = () => this.props.favRecipes.some(recipe => recipe.id === this.recipeId)
+  isUserFav =
+  () => this.props.favRecipes.some(recipe => recipe.id === this.recipeId)
 
   /**
    * side icons
@@ -157,7 +159,10 @@ class RecipeDetails extends React.Component {
     const isOwner = owner && owner.id === userId;
 
     return (
-      <div className="d-flex justify-content-around lead topbar flex-column icon-bar">
+      <div
+        className={`d-flex justify-content-around lead topbar flex-column
+      icon-bar`}
+      >
         <Icon
           iconClass={upVote ? 'fa fa-thumbs-up' : 'fa fa-thumbs-o-up'}
           handleClick={() => {
@@ -184,7 +189,7 @@ class RecipeDetails extends React.Component {
           handleClick={() => {
             history.push(`/modify/${id}`);
           }}
-          id="toggleFav"
+          id="edit"
         />}
       </div>
     );
@@ -199,7 +204,10 @@ class RecipeDetails extends React.Component {
       ingredients,
     } = this.props.recipe;
     return (
-      <div className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper d-flex ">
+      <div
+        className={`col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper
+      d-flex`}
+      >
         <Ingredients ingredients={ingredients} />
       </div>
     );
@@ -212,7 +220,9 @@ class RecipeDetails extends React.Component {
   renderDirections = () => {
     const { directions } = this.props.recipe;
     return (
-      <div className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper d-flex">
+      <div className={`col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper
+       d-flex`}
+      >
         <Directions directions={directions} />
       </div>
     );
@@ -229,7 +239,9 @@ class RecipeDetails extends React.Component {
     const isLoading = requestCount > 0 && allowLoading;
 
     return (
-      <div className="col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper d-flex">
+      <div className={`col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper
+      d-flex`}
+      >
         <div className="d-flex align-items-start flex-column col-12">
           <h5 className="display-4">
             Reviews

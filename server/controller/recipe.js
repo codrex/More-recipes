@@ -67,7 +67,7 @@ export const checkDuplicateName = (req, res, next) => {
     }
   }).then((recipe) => {
     if (recipe) {
-      return sendFail(res, 400, 'Recipe already exist, Please enter another');
+      return sendFail(res, 409, 'Recipe already exist, Please enter another');
     }
     next();
   }).catch(() => {
@@ -173,7 +173,7 @@ export const fetchVotes = (req, res) => {
  * @return {*} void
  */
 export const fetchRecipes = (req, res) => {
-  fetch({}, [[db.sequelize.fn('RANDOM')]], req, res);
+  fetch({}, [], req, res);
 };
 
 /**
@@ -205,15 +205,15 @@ export const recipesSearch = (req, res, next) => {
           $iLike: `%${search.toLowerCase()}%`
         }
       },
-      {
-        directions: {
-          $contains: [search]
-        }
-      }
     ]
   };
   fetch(where, [
-    [db.sequelize.where(db.sequelize.col('name'), 'iLike', `%${search}%`), 'DESC']
+    [
+      db.sequelize.where(db.sequelize.col('name'),
+        'iLike',
+        `%${search}%`),
+      'DESC'
+    ]
   ], req, res);
 };
 
@@ -235,11 +235,15 @@ export const fetchRecipeByUpVote = (req, res, next) => {
     }
   }, [
     [
-      sequelize.where(sequelize.col('upVotes'), '>', sequelize.col('downVotes')),
+      sequelize.where(sequelize.col('upVotes'),
+        '>',
+        sequelize.col('downVotes')),
       'DESC'
     ],
     [
-      sequelize.where(sequelize.col('upVotes'), '-', sequelize.col('downVotes')),
+      sequelize.where(sequelize.col('upVotes'),
+        '-',
+        sequelize.col('downVotes')),
       'DESC'
     ],
     [
@@ -294,6 +298,8 @@ export const remove = (req, res) => {
   })
     .then(() => {
       sendSuccess(res, 200, 'success', 'Recipe was successfully deleted');
+    }).catch(() => {
+      sendServerError(res);
     });
 };
 

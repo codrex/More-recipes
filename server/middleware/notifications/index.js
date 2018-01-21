@@ -46,7 +46,9 @@ export const notifyOwner = (req) => {
           const { name, owner, id } = recipe;
           const { fullname } = req.createdReview.reviewer;
           const { review } = req.createdReview;
-          const message = `${fullname.toUpperCase().bold()} just commented on a recipe that you created.<br/>
+          const message = `
+          ${fullname.toUpperCase().bold()} just commented on a recipe
+          that you created.<br/>
           <p>Comment: ${review}</p>
           <p>Recipe name: ${name}</p>`;
           const mailOptions = {
@@ -55,10 +57,10 @@ export const notifyOwner = (req) => {
             subject: 'You have a new notification',
             html: emailTemplate('see recipe', message, `${url}/recipe/${id}`),
           };
-          transporter.sendMail(mailOptions);
-        });
+          transporter.sendMail(mailOptions).catch(() => {});
+        }).catch(() => {});
     }
-  });
+  }).catch(() => {});
 };
 
 /**
@@ -86,16 +88,18 @@ export const notifyFavouriteUsers = (req) => {
           const { name, id, favoriteUsers } = recipe;
           const emails = favoriteUsers.map((user => user.email)) || [];
           if (emails.length < 1) return;
-          const message = `Modification have been made to one of your favourite recipes.<br/>
-          <p>Recipe name: ${name}</p>`;
+          const message = `
+          Modification have been made to one of your favourite recipes.<br/>
+          <p>Recipe name: ${name}</p>
+          `;
           const mailOptions = {
             from: `"MoreRecipes Admin" <${process.env.APP_EMAIL}>`,
             to: emails,
             subject: 'You have a new notification',
             html: emailTemplate('see recipe', message, `${url}/recipe/${id}`),
           };
-          transporter.sendMail(mailOptions);
-        });
+          transporter.sendMail(mailOptions).catch(() => {});
+        }).catch(() => {});
     }
-  });
+  }).catch(() => {});
 };

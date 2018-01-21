@@ -66,7 +66,8 @@ class App extends React.Component {
    * @param {jsx} Component
    * @param {object} match
    * @summary check if user is authenticated before accessing protected page
-              else redirect user to the landing page where user can login or signup
+              else redirect user to the landing page where
+              user can login or signup
    */
   onAuthenticated(Component, match) {
     const { authenticated } = this.props.auth;
@@ -77,7 +78,9 @@ class App extends React.Component {
         <SecondaryNavBar
           {...match}
           initialSearchTerm={searchTerm}
-          handleChange={value => this.handleRecipeSearch(match.history.push, value)}
+          handleChange={
+            value => this.handleRecipeSearch(match.history.push, value)
+          }
         />
         <Component {...match} searchTerm={searchTerm} />
       </div>
@@ -133,7 +136,9 @@ class App extends React.Component {
       <Navbar {...match} />
       <SecondaryNavBar
         {...match}
-        handleChange={value => this.handleRecipeSearch(match.history.push, value)}
+        handleChange={
+          value => this.handleRecipeSearch(match.history.push, value)
+        }
       />
       <div className="not-found-wrapper">
         <NotFound message="page not found" />

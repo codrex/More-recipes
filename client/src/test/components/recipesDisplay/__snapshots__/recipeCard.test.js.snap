@@ -1,1066 +1,1651 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Recipes card component  expected to match snapshot 1`] = `
-<BrowserRouter>
-  <Router
-    history={
-      Object {
-        "action": "POP",
-        "block": [Function],
-        "createHref": [Function],
-        "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
-        "listen": [Function],
-        "location": Object {
-          "hash": "",
-          "pathname": "blank",
-          "search": "",
-          "state": undefined,
-        },
-        "push": [Function],
-        "replace": [Function],
-      }
-    }
+<RecipeCard
+  category="dinner"
+  downVotes={0}
+  image={Object {}}
+  index={-1}
+  isFav={[Function]}
+  push={[Function]}
+  recipeId={1}
+  recipeName="rice and beans"
+  toggleFav={[Function]}
+  upVotes={30}
+  views={120}
+>
+  <Animation
+    appear={true}
+    name="fade"
+    timeOut={600}
   >
-    <RecipeCard
-      category="dinner"
-      downVotes={0}
-      image={Object {}}
-      index={-1}
-      isFav={[Function]}
-      push={[Function]}
-      recipeId={1}
-      recipeName="rice and beans"
-      toggleFav={[Function]}
-      upVotes={30}
-      views={120}
+    <CSSTransitionGroup
+      transitionAppear={true}
+      transitionAppearTimeout={600}
+      transitionEnter={true}
+      transitionEnterTimeout={600}
+      transitionLeave={true}
+      transitionLeaveTimeout={600}
+      transitionName="fade"
     >
-      <Animation
-        appear={true}
-        name="fade"
-        timeOut={600}
+      <TransitionGroup
+        childFactory={[Function]}
+        component="span"
+        transitionAppear={true}
+        transitionAppearTimeout={600}
+        transitionEnter={true}
+        transitionEnterTimeout={600}
+        transitionLeave={true}
+        transitionLeaveTimeout={600}
+        transitionName="fade"
       >
-        <CSSTransitionGroup
-          transitionAppear={true}
-          transitionAppearTimeout={600}
-          transitionEnter={true}
-          transitionEnterTimeout={600}
-          transitionLeave={true}
-          transitionLeaveTimeout={600}
-          transitionName="fade"
-        >
-          <TransitionGroup
-            childFactory={[Function]}
-            component="span"
-            transitionAppear={true}
-            transitionAppearTimeout={600}
-            transitionEnter={true}
-            transitionEnterTimeout={600}
-            transitionLeave={true}
-            transitionLeaveTimeout={600}
-            transitionName="fade"
+        <span>
+          <CSSTransitionGroupChild
+            appear={true}
+            appearTimeout={600}
+            enter={true}
+            enterTimeout={600}
+            key=".0"
+            leave={true}
+            leaveTimeout={600}
+            name="fade"
           >
-            <span>
-              <CSSTransitionGroupChild
-                appear={true}
-                appearTimeout={600}
-                enter={true}
-                enterTimeout={600}
-                key=".0"
-                leave={true}
-                leaveTimeout={600}
-                name="fade"
+            <div
+              className="recipe-card"
+              key=".0"
+            >
+              <div
+                className="recipe-card-body"
               >
+                <Image
+                  className="recipe-card-img"
+                  cloudName="resycom"
+                  crop="fill"
+                  height="250"
+                  publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                  width="400"
+                >
+                  <img
+                    className="recipe-card-img"
+                    height="250"
+                    src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                    width="400"
+                  />
+                </Image>
                 <div
-                  className="recipe-card"
-                  key=".0"
+                  className="recipe-card-underlay"
+                >
+                  <p
+                    className="lead text-capitalize"
+                  >
+                    dinner
+                  </p>
+                  <Button
+                    Tag="button"
+                    className="recipe-card-underlay-btn"
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    href=""
+                    id="view-details-btn--1"
+                    text="view details"
+                    type="button"
+                  >
+                    <button
+                      className="btn recipe-card-underlay-btn"
+                      data-dismiss="modal"
+                      data-target=""
+                      data-toggle=""
+                      href=""
+                      id="view-details-btn--1"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      view details
+                    </button>
+                  </Button>
+                </div>
+              </div>
+              <div
+                className="recipe-card-footer"
+              >
+                <h4
+                  className="ellipsis"
+                >
+                  rice and beans
+                </h4>
+                <div
+                  className="d-flex col-12 no-padding justify-content-between"
                 >
                   <div
-                    className="recipe-card-body"
+                    className="d-flex col-8 no-padding"
                   >
-                    <Image
-                      className="recipe-card-img"
-                      cloudName="resycom"
-                      crop="fill"
-                      height="250"
-                      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-                      width="400"
-                    >
-                      <img
-                        className="recipe-card-img"
-                        height="250"
-                        src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-                        width="400"
-                      />
-                    </Image>
-                    <div
-                      className="recipe-card-underlay"
-                    >
-                      <p
-                        className="lead text-capitalize"
-                      >
-                        dinner
-                      </p>
-                      <Button
-                        Tag="button"
-                        className="recipe-card-underlay-btn"
-                        dataTarget=""
-                        dataToggle=""
-                        handleClick={[Function]}
-                        href=""
-                        id="view-details-btn--1"
-                        text="view details"
-                        type="button"
-                      >
-                        <button
-                          className="btn recipe-card-underlay-btn"
-                          data-dismiss="modal"
-                          data-target=""
-                          data-toggle=""
-                          href=""
-                          id="view-details-btn--1"
-                          onClick={[Function]}
-                          type="button"
-                        >
-                          view details
-                        </button>
-                      </Button>
-                    </div>
-                  </div>
-                  <div
-                    className="recipe-card-footer"
-                  >
-                    <h4
-                      className="ellipsis"
-                    >
-                      rice and beans
-                    </h4>
-                    <div
-                      className="d-flex col-12 no-padding justify-content-between"
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-thumbs-up recipe-card-icon "
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Upvotes: 30"
+                      toolTip={true}
+                      toolTipId="1upvote"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
                     >
                       <div
-                        className="d-flex col-8 no-padding"
-                      >
-                        <Icon
-                          active=""
-                          className=""
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          iconClass="fa fa-thumbs-up recipe-card-icon "
-                          onMouseEnter={[Function]}
-                          parentClass=""
-                          pointer={false}
-                          tip="Total Upvotes: 30"
-                          toolTip={true}
-                          toolTipId="1upvote"
-                          toolTipPlace="bottom"
-                          toolTipType="dark"
-                        >
-                          <div
-                            className="icon-wrapper"
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                            role="button"
-                            tabIndex="0"
-                          >
-                            <i
-                              className="icon fa fa-thumbs-up recipe-card-icon "
-                              data-for="1upvote"
-                              data-target=""
-                              data-tip="Total Upvotes: 30"
-                              data-toggle=""
-                            >
-                              <span>
-                                30
-                              </span>
-                            </i>
-                            <ReactTooltip
-                              effect="solid"
-                              id="1upvote"
-                              insecure={true}
-                              place="bottom"
-                              resizeHide={true}
-                              type="dark"
-                              wrapper="div"
-                            >
-                              <div
-                                className="__react_component_tooltip place-top type-dark "
-                                data-id="tooltip"
-                              />
-                            </ReactTooltip>
-                          </div>
-                        </Icon>
-                        <Icon
-                          active=""
-                          className=""
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          iconClass="fa fa-thumbs-down recipe-card-icon "
-                          onMouseEnter={[Function]}
-                          parentClass=""
-                          pointer={false}
-                          tip="Total Downvotes: 0"
-                          toolTip={true}
-                          toolTipId="1downvote"
-                          toolTipPlace="bottom"
-                          toolTipType="dark"
-                        >
-                          <div
-                            className="icon-wrapper"
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                            role="button"
-                            tabIndex="0"
-                          >
-                            <i
-                              className="icon fa fa-thumbs-down recipe-card-icon "
-                              data-for="1downvote"
-                              data-target=""
-                              data-tip="Total Downvotes: 0"
-                              data-toggle=""
-                            >
-                              <span>
-                                0
-                              </span>
-                            </i>
-                            <ReactTooltip
-                              effect="solid"
-                              id="1downvote"
-                              insecure={true}
-                              place="bottom"
-                              resizeHide={true}
-                              type="dark"
-                              wrapper="div"
-                            >
-                              <div
-                                className="__react_component_tooltip place-top type-dark "
-                                data-id="tooltip"
-                              />
-                            </ReactTooltip>
-                          </div>
-                        </Icon>
-                        <Icon
-                          active=""
-                          className=""
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          iconClass="fa fa-eye recipe-card-icon"
-                          onMouseEnter={[Function]}
-                          parentClass=""
-                          pointer={false}
-                          tip="Total Number of Views: 120"
-                          toolTip={true}
-                          toolTipId="1views"
-                          toolTipPlace="bottom"
-                          toolTipType="dark"
-                        >
-                          <div
-                            className="icon-wrapper"
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                            role="button"
-                            tabIndex="0"
-                          >
-                            <i
-                              className="icon fa fa-eye recipe-card-icon"
-                              data-for="1views"
-                              data-target=""
-                              data-tip="Total Number of Views: 120"
-                              data-toggle=""
-                            >
-                              <span>
-                                120
-                              </span>
-                            </i>
-                            <ReactTooltip
-                              effect="solid"
-                              id="1views"
-                              insecure={true}
-                              place="bottom"
-                              resizeHide={true}
-                              type="dark"
-                              wrapper="div"
-                            >
-                              <div
-                                className="__react_component_tooltip place-top type-dark "
-                                data-id="tooltip"
-                              />
-                            </ReactTooltip>
-                          </div>
-                        </Icon>
-                      </div>
-                      <Icon
-                        active=""
-                        className=""
-                        dataTarget=""
-                        dataToggle=""
-                        handleClick={[Function]}
-                        iconClass="fa recipe-card-icon fav-color fav fa-heart-o"
+                        className="icon-wrapper"
+                        onClick={[Function]}
                         onMouseEnter={[Function]}
-                        parentClass=""
-                        pointer={true}
-                        tip="Favourite This Recipe"
-                        toolTip={true}
-                        toolTipId="1fav"
-                        toolTipPlace="bottom"
-                        toolTipType="dark"
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-thumbs-up recipe-card-icon "
+                          data-for="1upvote"
+                          data-target=""
+                          data-tip="Total Upvotes: 30"
+                          data-toggle=""
+                        >
+                          <span>
+                            30
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1upvote"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-thumbs-down recipe-card-icon "
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Downvotes: 0"
+                      toolTip={true}
+                      toolTipId="1downvote"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-thumbs-down recipe-card-icon "
+                          data-for="1downvote"
+                          data-target=""
+                          data-tip="Total Downvotes: 0"
+                          data-toggle=""
+                        >
+                          <span>
+                            0
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1downvote"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-eye recipe-card-icon"
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Number of Views: 120"
+                      toolTip={true}
+                      toolTipId="1views"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-eye recipe-card-icon"
+                          data-for="1views"
+                          data-target=""
+                          data-tip="Total Number of Views: 120"
+                          data-toggle=""
+                        >
+                          <span>
+                            120
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1views"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                  </div>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    iconClass="fa recipe-card-icon fav-color fav fa-heart-o"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="Add to favourites"
+                    toolTip={true}
+                    toolTipId="1fav"
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                        data-for="1fav"
+                        data-target=""
+                        data-tip="Add to favourites"
+                        data-toggle=""
+                      >
+                        <span />
+                      </i>
+                      <ReactTooltip
+                        effect="solid"
+                        id="1fav"
+                        insecure={true}
+                        place="bottom"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
                       >
                         <div
-                          className="icon-wrapper pointer"
-                          onClick={[Function]}
-                          onMouseEnter={[Function]}
-                          role="button"
-                          tabIndex="0"
-                        >
-                          <i
-                            className="icon fa recipe-card-icon fav-color fav fa-heart-o"
-                            data-for="1fav"
-                            data-target=""
-                            data-tip="Favourite This Recipe"
-                            data-toggle=""
-                          >
-                            <span />
-                          </i>
-                          <ReactTooltip
-                            effect="solid"
-                            id="1fav"
-                            insecure={true}
-                            place="bottom"
-                            resizeHide={true}
-                            type="dark"
-                            wrapper="div"
-                          >
-                            <div
-                              className="__react_component_tooltip place-top type-dark "
-                              data-id="tooltip"
-                            />
-                          </ReactTooltip>
-                        </div>
-                      </Icon>
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
                     </div>
-                  </div>
+                  </Icon>
                 </div>
-              </CSSTransitionGroupChild>
-            </span>
-          </TransitionGroup>
-        </CSSTransitionGroup>
-      </Animation>
-    </RecipeCard>
-  </Router>
-</BrowserRouter>
+              </div>
+            </div>
+          </CSSTransitionGroupChild>
+        </span>
+      </TransitionGroup>
+    </CSSTransitionGroup>
+  </Animation>
+</RecipeCard>
 `;
 
 exports[`Recipes card component  expected to match snapshot when favorite icon is clicked  1`] = `
-<BrowserRouter>
-  <Router
-    history={
-      Object {
-        "action": "POP",
-        "block": [Function],
-        "createHref": [Function],
-        "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
-        "listen": [Function],
-        "location": Object {
-          "hash": "",
-          "pathname": "blank",
-          "search": "",
-          "state": undefined,
-        },
-        "push": [Function],
-        "replace": [Function],
-      }
-    }
+<RecipeCard
+  category="dinner"
+  downVotes={0}
+  image={Object {}}
+  index={-1}
+  isFav={[Function]}
+  push={[Function]}
+  recipeId={1}
+  recipeName="rice and beans"
+  toggleFav={[Function]}
+  upVotes={30}
+  views={120}
+>
+  <Animation
+    appear={true}
+    name="fade"
+    timeOut={600}
   >
-    <RecipeCard
-      category="dinner"
-      downVotes={0}
-      image={Object {}}
-      index={-1}
-      isFav={[Function]}
-      push={[Function]}
-      recipeId={1}
-      recipeName="rice and beans"
-      toggleFav={[Function]}
-      upVotes={30}
-      views={120}
+    <CSSTransitionGroup
+      transitionAppear={true}
+      transitionAppearTimeout={600}
+      transitionEnter={true}
+      transitionEnterTimeout={600}
+      transitionLeave={true}
+      transitionLeaveTimeout={600}
+      transitionName="fade"
     >
-      <Animation
-        appear={true}
-        name="fade"
-        timeOut={600}
+      <TransitionGroup
+        childFactory={[Function]}
+        component="span"
+        transitionAppear={true}
+        transitionAppearTimeout={600}
+        transitionEnter={true}
+        transitionEnterTimeout={600}
+        transitionLeave={true}
+        transitionLeaveTimeout={600}
+        transitionName="fade"
       >
-        <CSSTransitionGroup
-          transitionAppear={true}
-          transitionAppearTimeout={600}
-          transitionEnter={true}
-          transitionEnterTimeout={600}
-          transitionLeave={true}
-          transitionLeaveTimeout={600}
-          transitionName="fade"
-        >
-          <TransitionGroup
-            childFactory={[Function]}
-            component="span"
-            transitionAppear={true}
-            transitionAppearTimeout={600}
-            transitionEnter={true}
-            transitionEnterTimeout={600}
-            transitionLeave={true}
-            transitionLeaveTimeout={600}
-            transitionName="fade"
+        <span>
+          <CSSTransitionGroupChild
+            appear={true}
+            appearTimeout={600}
+            enter={true}
+            enterTimeout={600}
+            key=".0"
+            leave={true}
+            leaveTimeout={600}
+            name="fade"
           >
-            <span>
-              <CSSTransitionGroupChild
-                appear={true}
-                appearTimeout={600}
-                enter={true}
-                enterTimeout={600}
-                key=".0"
-                leave={true}
-                leaveTimeout={600}
-                name="fade"
+            <div
+              className="recipe-card"
+              key=".0"
+            >
+              <div
+                className="recipe-card-body"
               >
+                <Image
+                  className="recipe-card-img"
+                  cloudName="resycom"
+                  crop="fill"
+                  height="250"
+                  publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                  width="400"
+                >
+                  <img
+                    className="recipe-card-img"
+                    height="250"
+                    src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                    width="400"
+                  />
+                </Image>
                 <div
-                  className="recipe-card"
-                  key=".0"
+                  className="recipe-card-underlay"
+                >
+                  <p
+                    className="lead text-capitalize"
+                  >
+                    dinner
+                  </p>
+                  <Button
+                    Tag="button"
+                    className="recipe-card-underlay-btn"
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    href=""
+                    id="view-details-btn--1"
+                    text="view details"
+                    type="button"
+                  >
+                    <button
+                      className="btn recipe-card-underlay-btn"
+                      data-dismiss="modal"
+                      data-target=""
+                      data-toggle=""
+                      href=""
+                      id="view-details-btn--1"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      view details
+                    </button>
+                  </Button>
+                </div>
+              </div>
+              <div
+                className="recipe-card-footer"
+              >
+                <h4
+                  className="ellipsis"
+                >
+                  rice and beans
+                </h4>
+                <div
+                  className="d-flex col-12 no-padding justify-content-between"
                 >
                   <div
-                    className="recipe-card-body"
+                    className="d-flex col-8 no-padding"
                   >
-                    <Image
-                      className="recipe-card-img"
-                      cloudName="resycom"
-                      crop="fill"
-                      height="250"
-                      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-                      width="400"
-                    >
-                      <img
-                        className="recipe-card-img"
-                        height="250"
-                        src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-                        width="400"
-                      />
-                    </Image>
-                    <div
-                      className="recipe-card-underlay"
-                    >
-                      <p
-                        className="lead text-capitalize"
-                      >
-                        dinner
-                      </p>
-                      <Button
-                        Tag="button"
-                        className="recipe-card-underlay-btn"
-                        dataTarget=""
-                        dataToggle=""
-                        handleClick={[Function]}
-                        href=""
-                        id="view-details-btn--1"
-                        text="view details"
-                        type="button"
-                      >
-                        <button
-                          className="btn recipe-card-underlay-btn"
-                          data-dismiss="modal"
-                          data-target=""
-                          data-toggle=""
-                          href=""
-                          id="view-details-btn--1"
-                          onClick={[Function]}
-                          type="button"
-                        >
-                          view details
-                        </button>
-                      </Button>
-                    </div>
-                  </div>
-                  <div
-                    className="recipe-card-footer"
-                  >
-                    <h4
-                      className="ellipsis"
-                    >
-                      rice and beans
-                    </h4>
-                    <div
-                      className="d-flex col-12 no-padding justify-content-between"
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-thumbs-up recipe-card-icon "
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Upvotes: 30"
+                      toolTip={true}
+                      toolTipId="1upvote"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
                     >
                       <div
-                        className="d-flex col-8 no-padding"
-                      >
-                        <Icon
-                          active=""
-                          className=""
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          iconClass="fa fa-thumbs-up recipe-card-icon "
-                          onMouseEnter={[Function]}
-                          parentClass=""
-                          pointer={false}
-                          tip="Total Upvotes: 30"
-                          toolTip={true}
-                          toolTipId="1upvote"
-                          toolTipPlace="bottom"
-                          toolTipType="dark"
-                        >
-                          <div
-                            className="icon-wrapper"
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                            role="button"
-                            tabIndex="0"
-                          >
-                            <i
-                              className="icon fa fa-thumbs-up recipe-card-icon "
-                              data-for="1upvote"
-                              data-target=""
-                              data-tip="Total Upvotes: 30"
-                              data-toggle=""
-                            >
-                              <span>
-                                30
-                              </span>
-                            </i>
-                            <ReactTooltip
-                              effect="solid"
-                              id="1upvote"
-                              insecure={true}
-                              place="bottom"
-                              resizeHide={true}
-                              type="dark"
-                              wrapper="div"
-                            >
-                              <div
-                                className="__react_component_tooltip place-top type-dark "
-                                data-id="tooltip"
-                              />
-                            </ReactTooltip>
-                          </div>
-                        </Icon>
-                        <Icon
-                          active=""
-                          className=""
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          iconClass="fa fa-thumbs-down recipe-card-icon "
-                          onMouseEnter={[Function]}
-                          parentClass=""
-                          pointer={false}
-                          tip="Total Downvotes: 0"
-                          toolTip={true}
-                          toolTipId="1downvote"
-                          toolTipPlace="bottom"
-                          toolTipType="dark"
-                        >
-                          <div
-                            className="icon-wrapper"
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                            role="button"
-                            tabIndex="0"
-                          >
-                            <i
-                              className="icon fa fa-thumbs-down recipe-card-icon "
-                              data-for="1downvote"
-                              data-target=""
-                              data-tip="Total Downvotes: 0"
-                              data-toggle=""
-                            >
-                              <span>
-                                0
-                              </span>
-                            </i>
-                            <ReactTooltip
-                              effect="solid"
-                              id="1downvote"
-                              insecure={true}
-                              place="bottom"
-                              resizeHide={true}
-                              type="dark"
-                              wrapper="div"
-                            >
-                              <div
-                                className="__react_component_tooltip place-top type-dark "
-                                data-id="tooltip"
-                              />
-                            </ReactTooltip>
-                          </div>
-                        </Icon>
-                        <Icon
-                          active=""
-                          className=""
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          iconClass="fa fa-eye recipe-card-icon"
-                          onMouseEnter={[Function]}
-                          parentClass=""
-                          pointer={false}
-                          tip="Total Number of Views: 120"
-                          toolTip={true}
-                          toolTipId="1views"
-                          toolTipPlace="bottom"
-                          toolTipType="dark"
-                        >
-                          <div
-                            className="icon-wrapper"
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                            role="button"
-                            tabIndex="0"
-                          >
-                            <i
-                              className="icon fa fa-eye recipe-card-icon"
-                              data-for="1views"
-                              data-target=""
-                              data-tip="Total Number of Views: 120"
-                              data-toggle=""
-                            >
-                              <span>
-                                120
-                              </span>
-                            </i>
-                            <ReactTooltip
-                              effect="solid"
-                              id="1views"
-                              insecure={true}
-                              place="bottom"
-                              resizeHide={true}
-                              type="dark"
-                              wrapper="div"
-                            >
-                              <div
-                                className="__react_component_tooltip place-top type-dark "
-                                data-id="tooltip"
-                              />
-                            </ReactTooltip>
-                          </div>
-                        </Icon>
-                      </div>
-                      <Icon
-                        active=""
-                        className=""
-                        dataTarget=""
-                        dataToggle=""
-                        handleClick={[Function]}
-                        iconClass="fa recipe-card-icon fav-color fav fa-heart-o"
+                        className="icon-wrapper"
+                        onClick={[Function]}
                         onMouseEnter={[Function]}
-                        parentClass=""
-                        pointer={true}
-                        tip="Favourite This Recipe"
-                        toolTip={true}
-                        toolTipId="1fav"
-                        toolTipPlace="bottom"
-                        toolTipType="dark"
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-thumbs-up recipe-card-icon "
+                          data-for="1upvote"
+                          data-target=""
+                          data-tip="Total Upvotes: 30"
+                          data-toggle=""
+                        >
+                          <span>
+                            30
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1upvote"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-thumbs-down recipe-card-icon "
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Downvotes: 0"
+                      toolTip={true}
+                      toolTipId="1downvote"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-thumbs-down recipe-card-icon "
+                          data-for="1downvote"
+                          data-target=""
+                          data-tip="Total Downvotes: 0"
+                          data-toggle=""
+                        >
+                          <span>
+                            0
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1downvote"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-eye recipe-card-icon"
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Number of Views: 120"
+                      toolTip={true}
+                      toolTipId="1views"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-eye recipe-card-icon"
+                          data-for="1views"
+                          data-target=""
+                          data-tip="Total Number of Views: 120"
+                          data-toggle=""
+                        >
+                          <span>
+                            120
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1views"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                  </div>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    iconClass="fa recipe-card-icon fav-color fav fa-heart-o"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="Add to favourites"
+                    toolTip={true}
+                    toolTipId="1fav"
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                        data-for="1fav"
+                        data-target=""
+                        data-tip="Add to favourites"
+                        data-toggle=""
+                      >
+                        <span />
+                      </i>
+                      <ReactTooltip
+                        effect="solid"
+                        id="1fav"
+                        insecure={true}
+                        place="bottom"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
                       >
                         <div
-                          className="icon-wrapper pointer"
-                          onClick={[Function]}
-                          onMouseEnter={[Function]}
-                          role="button"
-                          tabIndex="0"
-                        >
-                          <i
-                            className="icon fa recipe-card-icon fav-color fav fa-heart-o"
-                            data-for="1fav"
-                            data-target=""
-                            data-tip="Favourite This Recipe"
-                            data-toggle=""
-                          >
-                            <span />
-                          </i>
-                          <ReactTooltip
-                            effect="solid"
-                            id="1fav"
-                            insecure={true}
-                            place="bottom"
-                            resizeHide={true}
-                            type="dark"
-                            wrapper="div"
-                          >
-                            <div
-                              className="__react_component_tooltip place-top type-dark "
-                              data-id="tooltip"
-                            />
-                          </ReactTooltip>
-                        </div>
-                      </Icon>
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
                     </div>
-                  </div>
+                  </Icon>
                 </div>
-              </CSSTransitionGroupChild>
-            </span>
-          </TransitionGroup>
-        </CSSTransitionGroup>
-      </Animation>
-    </RecipeCard>
-  </Router>
-</BrowserRouter>
+              </div>
+            </div>
+          </CSSTransitionGroupChild>
+        </span>
+      </TransitionGroup>
+    </CSSTransitionGroup>
+  </Animation>
+</RecipeCard>
 `;
 
 exports[`Recipes card component  expected to match snapshot when favorite icon is clicked  2`] = `
-<BrowserRouter>
-  <Router
-    history={
-      Object {
-        "action": "POP",
-        "block": [Function],
-        "createHref": [Function],
-        "go": [Function],
-        "goBack": [Function],
-        "goForward": [Function],
-        "length": 1,
-        "listen": [Function],
-        "location": Object {
-          "hash": "",
-          "pathname": "blank",
-          "search": "",
-          "state": undefined,
-        },
-        "push": [Function],
-        "replace": [Function],
-      }
-    }
+<RecipeCard
+  category="dinner"
+  downVotes={0}
+  image={Object {}}
+  index={-1}
+  isFav={[Function]}
+  push={[Function]}
+  recipeId={1}
+  recipeName="rice and beans"
+  toggleFav={[Function]}
+  upVotes={30}
+  views={120}
+>
+  <Animation
+    appear={true}
+    name="fade"
+    timeOut={600}
   >
-    <RecipeCard
-      category="dinner"
-      downVotes={0}
-      image={Object {}}
-      index={-1}
-      isFav={[Function]}
-      push={[Function]}
-      recipeId={1}
-      recipeName="rice and beans"
-      toggleFav={[Function]}
-      upVotes={30}
-      views={120}
+    <CSSTransitionGroup
+      transitionAppear={true}
+      transitionAppearTimeout={600}
+      transitionEnter={true}
+      transitionEnterTimeout={600}
+      transitionLeave={true}
+      transitionLeaveTimeout={600}
+      transitionName="fade"
     >
-      <Animation
-        appear={true}
-        name="fade"
-        timeOut={600}
+      <TransitionGroup
+        childFactory={[Function]}
+        component="span"
+        transitionAppear={true}
+        transitionAppearTimeout={600}
+        transitionEnter={true}
+        transitionEnterTimeout={600}
+        transitionLeave={true}
+        transitionLeaveTimeout={600}
+        transitionName="fade"
       >
-        <CSSTransitionGroup
-          transitionAppear={true}
-          transitionAppearTimeout={600}
-          transitionEnter={true}
-          transitionEnterTimeout={600}
-          transitionLeave={true}
-          transitionLeaveTimeout={600}
-          transitionName="fade"
-        >
-          <TransitionGroup
-            childFactory={[Function]}
-            component="span"
-            transitionAppear={true}
-            transitionAppearTimeout={600}
-            transitionEnter={true}
-            transitionEnterTimeout={600}
-            transitionLeave={true}
-            transitionLeaveTimeout={600}
-            transitionName="fade"
+        <span>
+          <CSSTransitionGroupChild
+            appear={true}
+            appearTimeout={600}
+            enter={true}
+            enterTimeout={600}
+            key=".0"
+            leave={true}
+            leaveTimeout={600}
+            name="fade"
           >
-            <span>
-              <CSSTransitionGroupChild
-                appear={true}
-                appearTimeout={600}
-                enter={true}
-                enterTimeout={600}
-                key=".0"
-                leave={true}
-                leaveTimeout={600}
-                name="fade"
+            <div
+              className="recipe-card"
+              key=".0"
+            >
+              <div
+                className="recipe-card-body"
               >
+                <Image
+                  className="recipe-card-img"
+                  cloudName="resycom"
+                  crop="fill"
+                  height="250"
+                  publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                  width="400"
+                >
+                  <img
+                    className="recipe-card-img"
+                    height="250"
+                    src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                    width="400"
+                  />
+                </Image>
                 <div
-                  className="recipe-card"
-                  key=".0"
+                  className="recipe-card-underlay"
+                >
+                  <p
+                    className="lead text-capitalize"
+                  >
+                    dinner
+                  </p>
+                  <Button
+                    Tag="button"
+                    className="recipe-card-underlay-btn"
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    href=""
+                    id="view-details-btn--1"
+                    text="view details"
+                    type="button"
+                  >
+                    <button
+                      className="btn recipe-card-underlay-btn"
+                      data-dismiss="modal"
+                      data-target=""
+                      data-toggle=""
+                      href=""
+                      id="view-details-btn--1"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      view details
+                    </button>
+                  </Button>
+                </div>
+              </div>
+              <div
+                className="recipe-card-footer"
+              >
+                <h4
+                  className="ellipsis"
+                >
+                  rice and beans
+                </h4>
+                <div
+                  className="d-flex col-12 no-padding justify-content-between"
                 >
                   <div
-                    className="recipe-card-body"
+                    className="d-flex col-8 no-padding"
                   >
-                    <Image
-                      className="recipe-card-img"
-                      cloudName="resycom"
-                      crop="fill"
-                      height="250"
-                      publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-                      width="400"
-                    >
-                      <img
-                        className="recipe-card-img"
-                        height="250"
-                        src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-                        width="400"
-                      />
-                    </Image>
-                    <div
-                      className="recipe-card-underlay"
-                    >
-                      <p
-                        className="lead text-capitalize"
-                      >
-                        dinner
-                      </p>
-                      <Button
-                        Tag="button"
-                        className="recipe-card-underlay-btn"
-                        dataTarget=""
-                        dataToggle=""
-                        handleClick={[Function]}
-                        href=""
-                        id="view-details-btn--1"
-                        text="view details"
-                        type="button"
-                      >
-                        <button
-                          className="btn recipe-card-underlay-btn"
-                          data-dismiss="modal"
-                          data-target=""
-                          data-toggle=""
-                          href=""
-                          id="view-details-btn--1"
-                          onClick={[Function]}
-                          type="button"
-                        >
-                          view details
-                        </button>
-                      </Button>
-                    </div>
-                  </div>
-                  <div
-                    className="recipe-card-footer"
-                  >
-                    <h4
-                      className="ellipsis"
-                    >
-                      rice and beans
-                    </h4>
-                    <div
-                      className="d-flex col-12 no-padding justify-content-between"
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-thumbs-up recipe-card-icon "
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Upvotes: 30"
+                      toolTip={true}
+                      toolTipId="1upvote"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
                     >
                       <div
-                        className="d-flex col-8 no-padding"
-                      >
-                        <Icon
-                          active=""
-                          className=""
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          iconClass="fa fa-thumbs-up recipe-card-icon "
-                          onMouseEnter={[Function]}
-                          parentClass=""
-                          pointer={false}
-                          tip="Total Upvotes: 30"
-                          toolTip={true}
-                          toolTipId="1upvote"
-                          toolTipPlace="bottom"
-                          toolTipType="dark"
-                        >
-                          <div
-                            className="icon-wrapper"
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                            role="button"
-                            tabIndex="0"
-                          >
-                            <i
-                              className="icon fa fa-thumbs-up recipe-card-icon "
-                              data-for="1upvote"
-                              data-target=""
-                              data-tip="Total Upvotes: 30"
-                              data-toggle=""
-                            >
-                              <span>
-                                30
-                              </span>
-                            </i>
-                            <ReactTooltip
-                              effect="solid"
-                              id="1upvote"
-                              insecure={true}
-                              place="bottom"
-                              resizeHide={true}
-                              type="dark"
-                              wrapper="div"
-                            >
-                              <div
-                                className="__react_component_tooltip place-top type-dark "
-                                data-id="tooltip"
-                              />
-                            </ReactTooltip>
-                          </div>
-                        </Icon>
-                        <Icon
-                          active=""
-                          className=""
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          iconClass="fa fa-thumbs-down recipe-card-icon "
-                          onMouseEnter={[Function]}
-                          parentClass=""
-                          pointer={false}
-                          tip="Total Downvotes: 0"
-                          toolTip={true}
-                          toolTipId="1downvote"
-                          toolTipPlace="bottom"
-                          toolTipType="dark"
-                        >
-                          <div
-                            className="icon-wrapper"
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                            role="button"
-                            tabIndex="0"
-                          >
-                            <i
-                              className="icon fa fa-thumbs-down recipe-card-icon "
-                              data-for="1downvote"
-                              data-target=""
-                              data-tip="Total Downvotes: 0"
-                              data-toggle=""
-                            >
-                              <span>
-                                0
-                              </span>
-                            </i>
-                            <ReactTooltip
-                              effect="solid"
-                              id="1downvote"
-                              insecure={true}
-                              place="bottom"
-                              resizeHide={true}
-                              type="dark"
-                              wrapper="div"
-                            >
-                              <div
-                                className="__react_component_tooltip place-top type-dark "
-                                data-id="tooltip"
-                              />
-                            </ReactTooltip>
-                          </div>
-                        </Icon>
-                        <Icon
-                          active=""
-                          className=""
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          iconClass="fa fa-eye recipe-card-icon"
-                          onMouseEnter={[Function]}
-                          parentClass=""
-                          pointer={false}
-                          tip="Total Number of Views: 120"
-                          toolTip={true}
-                          toolTipId="1views"
-                          toolTipPlace="bottom"
-                          toolTipType="dark"
-                        >
-                          <div
-                            className="icon-wrapper"
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                            role="button"
-                            tabIndex="0"
-                          >
-                            <i
-                              className="icon fa fa-eye recipe-card-icon"
-                              data-for="1views"
-                              data-target=""
-                              data-tip="Total Number of Views: 120"
-                              data-toggle=""
-                            >
-                              <span>
-                                120
-                              </span>
-                            </i>
-                            <ReactTooltip
-                              effect="solid"
-                              id="1views"
-                              insecure={true}
-                              place="bottom"
-                              resizeHide={true}
-                              type="dark"
-                              wrapper="div"
-                            >
-                              <div
-                                className="__react_component_tooltip place-top type-dark "
-                                data-id="tooltip"
-                              />
-                            </ReactTooltip>
-                          </div>
-                        </Icon>
-                      </div>
-                      <Icon
-                        active=""
-                        className=""
-                        dataTarget=""
-                        dataToggle=""
-                        handleClick={[Function]}
-                        iconClass="fa recipe-card-icon fav-color fav fa-heart-o"
+                        className="icon-wrapper"
+                        onClick={[Function]}
                         onMouseEnter={[Function]}
-                        parentClass=""
-                        pointer={true}
-                        tip="Favourite This Recipe"
-                        toolTip={true}
-                        toolTipId="1fav"
-                        toolTipPlace="bottom"
-                        toolTipType="dark"
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-thumbs-up recipe-card-icon "
+                          data-for="1upvote"
+                          data-target=""
+                          data-tip="Total Upvotes: 30"
+                          data-toggle=""
+                        >
+                          <span>
+                            30
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1upvote"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-thumbs-down recipe-card-icon "
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Downvotes: 0"
+                      toolTip={true}
+                      toolTipId="1downvote"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-thumbs-down recipe-card-icon "
+                          data-for="1downvote"
+                          data-target=""
+                          data-tip="Total Downvotes: 0"
+                          data-toggle=""
+                        >
+                          <span>
+                            0
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1downvote"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-eye recipe-card-icon"
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Number of Views: 120"
+                      toolTip={true}
+                      toolTipId="1views"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-eye recipe-card-icon"
+                          data-for="1views"
+                          data-target=""
+                          data-tip="Total Number of Views: 120"
+                          data-toggle=""
+                        >
+                          <span>
+                            120
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1views"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                  </div>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    iconClass="fa recipe-card-icon fav-color fav fa-heart-o"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="Add to favourites"
+                    toolTip={true}
+                    toolTipId="1fav"
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                        data-for="1fav"
+                        data-target=""
+                        data-tip="Add to favourites"
+                        data-toggle=""
+                      >
+                        <span />
+                      </i>
+                      <ReactTooltip
+                        effect="solid"
+                        id="1fav"
+                        insecure={true}
+                        place="bottom"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
                       >
                         <div
-                          className="icon-wrapper pointer"
-                          onClick={[Function]}
-                          onMouseEnter={[Function]}
-                          role="button"
-                          tabIndex="0"
-                        >
-                          <i
-                            className="icon fa recipe-card-icon fav-color fav fa-heart-o"
-                            data-for="1fav"
-                            data-target=""
-                            data-tip="Favourite This Recipe"
-                            data-toggle=""
-                          >
-                            <span />
-                          </i>
-                          <ReactTooltip
-                            effect="solid"
-                            id="1fav"
-                            insecure={true}
-                            place="bottom"
-                            resizeHide={true}
-                            type="dark"
-                            wrapper="div"
-                          >
-                            <div
-                              className="__react_component_tooltip place-top type-dark "
-                              data-id="tooltip"
-                            />
-                          </ReactTooltip>
-                        </div>
-                      </Icon>
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
                     </div>
-                  </div>
+                  </Icon>
                 </div>
-              </CSSTransitionGroupChild>
-            </span>
-          </TransitionGroup>
-        </CSSTransitionGroup>
-      </Animation>
-    </RecipeCard>
-  </Router>
-</BrowserRouter>
+              </div>
+            </div>
+          </CSSTransitionGroupChild>
+        </span>
+      </TransitionGroup>
+    </CSSTransitionGroup>
+  </Animation>
+</RecipeCard>
+`;
+
+exports[`Recipes card component  expected to match snapshot when view recipe button is clicked  1`] = `
+<RecipeCard
+  category="dinner"
+  downVotes={0}
+  image={Object {}}
+  index={-1}
+  isFav={[Function]}
+  push={[Function]}
+  recipeId={1}
+  recipeName="rice and beans"
+  toggleFav={[Function]}
+  upVotes={30}
+  views={120}
+>
+  <Animation
+    appear={true}
+    name="fade"
+    timeOut={600}
+  >
+    <CSSTransitionGroup
+      transitionAppear={true}
+      transitionAppearTimeout={600}
+      transitionEnter={true}
+      transitionEnterTimeout={600}
+      transitionLeave={true}
+      transitionLeaveTimeout={600}
+      transitionName="fade"
+    >
+      <TransitionGroup
+        childFactory={[Function]}
+        component="span"
+        transitionAppear={true}
+        transitionAppearTimeout={600}
+        transitionEnter={true}
+        transitionEnterTimeout={600}
+        transitionLeave={true}
+        transitionLeaveTimeout={600}
+        transitionName="fade"
+      >
+        <span>
+          <CSSTransitionGroupChild
+            appear={true}
+            appearTimeout={600}
+            enter={true}
+            enterTimeout={600}
+            key=".0"
+            leave={true}
+            leaveTimeout={600}
+            name="fade"
+          >
+            <div
+              className="recipe-card"
+              key=".0"
+            >
+              <div
+                className="recipe-card-body"
+              >
+                <Image
+                  className="recipe-card-img"
+                  cloudName="resycom"
+                  crop="fill"
+                  height="250"
+                  publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                  width="400"
+                >
+                  <img
+                    className="recipe-card-img"
+                    height="250"
+                    src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                    width="400"
+                  />
+                </Image>
+                <div
+                  className="recipe-card-underlay"
+                >
+                  <p
+                    className="lead text-capitalize"
+                  >
+                    dinner
+                  </p>
+                  <Button
+                    Tag="button"
+                    className="recipe-card-underlay-btn"
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    href=""
+                    id="view-details-btn--1"
+                    text="view details"
+                    type="button"
+                  >
+                    <button
+                      className="btn recipe-card-underlay-btn"
+                      data-dismiss="modal"
+                      data-target=""
+                      data-toggle=""
+                      href=""
+                      id="view-details-btn--1"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      view details
+                    </button>
+                  </Button>
+                </div>
+              </div>
+              <div
+                className="recipe-card-footer"
+              >
+                <h4
+                  className="ellipsis"
+                >
+                  rice and beans
+                </h4>
+                <div
+                  className="d-flex col-12 no-padding justify-content-between"
+                >
+                  <div
+                    className="d-flex col-8 no-padding"
+                  >
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-thumbs-up recipe-card-icon "
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Upvotes: 30"
+                      toolTip={true}
+                      toolTipId="1upvote"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-thumbs-up recipe-card-icon "
+                          data-for="1upvote"
+                          data-target=""
+                          data-tip="Total Upvotes: 30"
+                          data-toggle=""
+                        >
+                          <span>
+                            30
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1upvote"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-thumbs-down recipe-card-icon "
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Downvotes: 0"
+                      toolTip={true}
+                      toolTipId="1downvote"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-thumbs-down recipe-card-icon "
+                          data-for="1downvote"
+                          data-target=""
+                          data-tip="Total Downvotes: 0"
+                          data-toggle=""
+                        >
+                          <span>
+                            0
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1downvote"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-eye recipe-card-icon"
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Number of Views: 120"
+                      toolTip={true}
+                      toolTipId="1views"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-eye recipe-card-icon"
+                          data-for="1views"
+                          data-target=""
+                          data-tip="Total Number of Views: 120"
+                          data-toggle=""
+                        >
+                          <span>
+                            120
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1views"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                  </div>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    iconClass="fa recipe-card-icon fav-color fav fa-heart-o"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="Add to favourites"
+                    toolTip={true}
+                    toolTipId="1fav"
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                        data-for="1fav"
+                        data-target=""
+                        data-tip="Add to favourites"
+                        data-toggle=""
+                      >
+                        <span />
+                      </i>
+                      <ReactTooltip
+                        effect="solid"
+                        id="1fav"
+                        insecure={true}
+                        place="bottom"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                  </Icon>
+                </div>
+              </div>
+            </div>
+          </CSSTransitionGroupChild>
+        </span>
+      </TransitionGroup>
+    </CSSTransitionGroup>
+  </Animation>
+</RecipeCard>
+`;
+
+exports[`Recipes card component  expected to match snapshot when view recipe button is clicked  2`] = `
+<RecipeCard
+  category="dinner"
+  downVotes={0}
+  image={Object {}}
+  index={-1}
+  isFav={[Function]}
+  push={[Function]}
+  recipeId={1}
+  recipeName="rice and beans"
+  toggleFav={[Function]}
+  upVotes={30}
+  views={120}
+>
+  <Animation
+    appear={true}
+    name="fade"
+    timeOut={600}
+  >
+    <CSSTransitionGroup
+      transitionAppear={true}
+      transitionAppearTimeout={600}
+      transitionEnter={true}
+      transitionEnterTimeout={600}
+      transitionLeave={true}
+      transitionLeaveTimeout={600}
+      transitionName="fade"
+    >
+      <TransitionGroup
+        childFactory={[Function]}
+        component="span"
+        transitionAppear={true}
+        transitionAppearTimeout={600}
+        transitionEnter={true}
+        transitionEnterTimeout={600}
+        transitionLeave={true}
+        transitionLeaveTimeout={600}
+        transitionName="fade"
+      >
+        <span>
+          <CSSTransitionGroupChild
+            appear={true}
+            appearTimeout={600}
+            enter={true}
+            enterTimeout={600}
+            key=".0"
+            leave={true}
+            leaveTimeout={600}
+            name="fade"
+          >
+            <div
+              className="recipe-card"
+              key=".0"
+            >
+              <div
+                className="recipe-card-body"
+              >
+                <Image
+                  className="recipe-card-img"
+                  cloudName="resycom"
+                  crop="fill"
+                  height="250"
+                  publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                  width="400"
+                >
+                  <img
+                    className="recipe-card-img"
+                    height="250"
+                    src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                    width="400"
+                  />
+                </Image>
+                <div
+                  className="recipe-card-underlay"
+                >
+                  <p
+                    className="lead text-capitalize"
+                  >
+                    dinner
+                  </p>
+                  <Button
+                    Tag="button"
+                    className="recipe-card-underlay-btn"
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    href=""
+                    id="view-details-btn--1"
+                    text="view details"
+                    type="button"
+                  >
+                    <button
+                      className="btn recipe-card-underlay-btn"
+                      data-dismiss="modal"
+                      data-target=""
+                      data-toggle=""
+                      href=""
+                      id="view-details-btn--1"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      view details
+                    </button>
+                  </Button>
+                </div>
+              </div>
+              <div
+                className="recipe-card-footer"
+              >
+                <h4
+                  className="ellipsis"
+                >
+                  rice and beans
+                </h4>
+                <div
+                  className="d-flex col-12 no-padding justify-content-between"
+                >
+                  <div
+                    className="d-flex col-8 no-padding"
+                  >
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-thumbs-up recipe-card-icon "
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Upvotes: 30"
+                      toolTip={true}
+                      toolTipId="1upvote"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-thumbs-up recipe-card-icon "
+                          data-for="1upvote"
+                          data-target=""
+                          data-tip="Total Upvotes: 30"
+                          data-toggle=""
+                        >
+                          <span>
+                            30
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1upvote"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-thumbs-down recipe-card-icon "
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Downvotes: 0"
+                      toolTip={true}
+                      toolTipId="1downvote"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-thumbs-down recipe-card-icon "
+                          data-for="1downvote"
+                          data-target=""
+                          data-tip="Total Downvotes: 0"
+                          data-toggle=""
+                        >
+                          <span>
+                            0
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1downvote"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                    <Icon
+                      active=""
+                      className=""
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      iconClass="fa fa-eye recipe-card-icon"
+                      onMouseEnter={[Function]}
+                      parentClass=""
+                      pointer={false}
+                      tip="Total Number of Views: 120"
+                      toolTip={true}
+                      toolTipId="1views"
+                      toolTipPlace="bottom"
+                      toolTipType="dark"
+                    >
+                      <div
+                        className="icon-wrapper"
+                        onClick={[Function]}
+                        onMouseEnter={[Function]}
+                        role="button"
+                        tabIndex="0"
+                      >
+                        <i
+                          className="icon fa fa-eye recipe-card-icon"
+                          data-for="1views"
+                          data-target=""
+                          data-tip="Total Number of Views: 120"
+                          data-toggle=""
+                        >
+                          <span>
+                            120
+                          </span>
+                        </i>
+                        <ReactTooltip
+                          effect="solid"
+                          id="1views"
+                          insecure={true}
+                          place="bottom"
+                          resizeHide={true}
+                          type="dark"
+                          wrapper="div"
+                        >
+                          <div
+                            className="__react_component_tooltip place-top type-dark "
+                            data-id="tooltip"
+                          />
+                        </ReactTooltip>
+                      </div>
+                    </Icon>
+                  </div>
+                  <Icon
+                    active=""
+                    className=""
+                    dataTarget=""
+                    dataToggle=""
+                    handleClick={[Function]}
+                    iconClass="fa recipe-card-icon fav-color fav fa-heart-o"
+                    onMouseEnter={[Function]}
+                    parentClass=""
+                    pointer={true}
+                    tip="Add to favourites"
+                    toolTip={true}
+                    toolTipId="1fav"
+                    toolTipPlace="bottom"
+                    toolTipType="dark"
+                  >
+                    <div
+                      className="icon-wrapper pointer"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <i
+                        className="icon fa recipe-card-icon fav-color fav fa-heart-o"
+                        data-for="1fav"
+                        data-target=""
+                        data-tip="Add to favourites"
+                        data-toggle=""
+                      >
+                        <span />
+                      </i>
+                      <ReactTooltip
+                        effect="solid"
+                        id="1fav"
+                        insecure={true}
+                        place="bottom"
+                        resizeHide={true}
+                        type="dark"
+                        wrapper="div"
+                      >
+                        <div
+                          className="__react_component_tooltip place-top type-dark "
+                          data-id="tooltip"
+                        />
+                      </ReactTooltip>
+                    </div>
+                  </Icon>
+                </div>
+              </div>
+            </div>
+          </CSSTransitionGroupChild>
+        </span>
+      </TransitionGroup>
+    </CSSTransitionGroup>
+  </Animation>
+</RecipeCard>
 `;

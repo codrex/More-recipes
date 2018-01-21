@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PureTextarea component  expected to match snapshot 1`] = `
+<PureTextarea
+  className=""
+  error={
+    Array [
+      "",
+    ]
+  }
+  fgClassName=""
+  handleChange={[Function]}
+  helpTextClassName=""
+  id=""
+  input={Object {}}
+  placeholder=""
+  value=""
+>
+  <div
+    className="form-group"
+  >
+    <textarea
+      aria-describedby="Textarea"
+      className="form-control text-area invalid"
+      id="Textarea"
+      onChange={[Function]}
+      placeholder=""
+      rows="2"
+      value=""
+    />
+    <div
+      className="help-text"
+      key="key"
+    />
+  </div>
+</PureTextarea>
+`;

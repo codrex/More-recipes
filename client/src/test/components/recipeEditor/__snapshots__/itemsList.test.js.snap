@@ -1,17 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Items list component  expected to match snapshot 1`] = `
-<ItemsList
-  deleteItem={[Function]}
-  directions={true}
-  editItem={[Function]}
-  ingredients={false}
-  items={
-    Array [
-      Object {},
-    ]
-  }
-  name="directions"
-  uniquenessChecker={[Function]}
-/>
+<div>
+  <Item
+    Component={[Function]}
+    content=""
+    delete={[Function]}
+    directions={true}
+    editItem={[Function]}
+    index={0}
+    ingredients={false}
+    key="1516520886637"
+    name="directions"
+    uniquenessChecker={[Function]}
+  />
+</div>
 `;
