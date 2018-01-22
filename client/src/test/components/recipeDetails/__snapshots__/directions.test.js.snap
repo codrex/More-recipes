@@ -21,7 +21,7 @@ exports[`Directions display component  expected to match snapshot 1`] = `
     <Direction
       content="directions 1"
       index={0}
-      key="directions 11516520886133"
+      key="directions 11516577859962"
     >
       <Accordion
         className="d-flex align-items-start flex-column col-12 no-box-shadow"
@@ -108,7 +108,7 @@ exports[`Directions display component  expected to match snapshot 1`] = `
     <Direction
       content="direction 2"
       index={1}
-      key="direction 21516520886133"
+      key="direction 21516577859962"
     >
       <Accordion
         className="d-flex align-items-start flex-column col-12 no-box-shadow"
@@ -195,7 +195,7 @@ exports[`Directions display component  expected to match snapshot 1`] = `
     <Direction
       content="direction 3"
       index={2}
-      key="direction 31516520886133"
+      key="direction 31516577859962"
     >
       <Accordion
         className="d-flex align-items-start flex-column col-12 no-box-shadow"
@@ -283,7 +283,7 @@ exports[`Directions display component  expected to match snapshot 1`] = `
 </Directions>
 `;
 
-exports[`Directions display component  expected to match snapshot 2`] = `
+exports[`Directions display component  expected to match snapshot when show button is clicked 1`] = `
 <Directions
   directions={
     Array [
@@ -302,7 +302,7 @@ exports[`Directions display component  expected to match snapshot 2`] = `
     <Direction
       content="directions 1"
       index={0}
-      key="directions 11516520886150"
+      key="directions 11516577860118"
     >
       <Accordion
         className="d-flex align-items-start flex-column col-12 no-box-shadow"
@@ -390,7 +390,7 @@ exports[`Directions display component  expected to match snapshot 2`] = `
 </Directions>
 `;
 
-exports[`Directions display component  expected to match snapshot 3`] = `
+exports[`Directions display component  expected to match snapshot when show button is clicked 2`] = `
 <Directions
   directions={
     Array [
@@ -409,7 +409,7 @@ exports[`Directions display component  expected to match snapshot 3`] = `
     <Direction
       content="directions 1"
       index={0}
-      key="directions 11516520886150"
+      key="directions 11516577860118"
     >
       <Accordion
         className="d-flex align-items-start flex-column col-12 no-box-shadow"

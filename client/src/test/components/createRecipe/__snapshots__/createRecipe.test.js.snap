@@ -11,7 +11,7 @@ exports[`Create Recipe page component  expected to match snapshot 1`] = `
 />
 `;
 
-exports[`Create Recipe page component  expected to match snapshot when recipe is created 1`] = `
+exports[`Create Recipe page component  expected to match snapshot when message is received as props  1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={false}
@@ -22,7 +22,7 @@ exports[`Create Recipe page component  expected to match snapshot when recipe is
 />
 `;
 
-exports[`Create Recipe page component  should call createRecipe when postRecipe is clicked 1`] = `
+exports[`Create Recipe page component  should call createRecipe when postRecipe button is clicked 1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={false}

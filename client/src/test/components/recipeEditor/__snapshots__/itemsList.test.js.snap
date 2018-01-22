@@ -10,7 +10,7 @@ exports[`Items list component  expected to match snapshot 1`] = `
     editItem={[Function]}
     index={0}
     ingredients={false}
-    key="1516520886637"
+    key="1516577860295"
     name="directions"
     uniquenessChecker={[Function]}
   />

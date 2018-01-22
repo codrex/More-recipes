@@ -22,13 +22,14 @@ describe('Select component ', () => {
       expect(tree).toMatchSnapshot();
     });
 
-  test('expected to match snapshot when props.meta is passed in ', () => {
-    const meta = {
-      error: [],
-      touched: true
-    };
-    const component = mount(<Select {...props} meta={meta} />);
-    const tree = toJson(component);
-    expect(tree).toMatchSnapshot();
-  });
+  test('expected to match snapshot when props.meta is passed in as props',
+    () => {
+      const meta = {
+        error: [],
+        touched: true
+      };
+      const component = mount(<Select {...props} meta={meta} />);
+      const tree = toJson(component);
+      expect(tree).toMatchSnapshot();
+    });
 });

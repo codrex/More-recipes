@@ -43,8 +43,8 @@ describe('Recipes page component ', () => {
       expect(tree).toBeInstanceOf(Object);
     });
 
-  test(`should call props.search function when search term is defined and
-  fetchRecipes is called`, () => {
+  test(`should call props.search when search term is defined and fetchRecipes
+  is called`, () => {
       const wrapper = shallow(
         <PureRecipes {...{ ...props, searchTerm: 'rice' }} />
       );

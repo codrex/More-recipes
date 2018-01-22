@@ -66,8 +66,8 @@ exports[`Recipes page component  should call props.getAllRecipes when fetchRecip
 />
 `;
 
-exports[`Recipes page component  should call props.search function when search term is defined and
-  fetchRecipes is called 1`] = `
+exports[`Recipes page component  should call props.search when search term is defined and fetchRecipes
+  is called 1`] = `
 <Connect(RecipesDisplay)
   getAllRecipes={[Function]}
   getRecipes={[Function]}

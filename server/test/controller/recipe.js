@@ -54,6 +54,8 @@ describe('Recipe', () => {
         .end((err, res) => {
           expect(res.status).to.equal(409);
           expect(res.body.status).to.equal('fail');
+          expect(res.body.error)
+            .to.equal('Recipe name already exist, Please enter another');
           done();
         });
     });

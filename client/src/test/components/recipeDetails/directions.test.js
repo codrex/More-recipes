@@ -15,7 +15,7 @@ describe('Directions display component ', () => {
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  test('expected to match snapshot', () => {
+  test('expected to match snapshot when show button is clicked', () => {
     const component = mount(<Directions directions={['directions 1']} />);
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();

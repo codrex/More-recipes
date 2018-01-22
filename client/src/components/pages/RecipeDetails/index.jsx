@@ -15,7 +15,7 @@ import Loader from '../../common/Loader';
 import Paginator from '../../common/Paginator';
 import NotFound from '../../common/NotFound';
 import HeroArea from '../../common/HeroArea';
-import toastrConfig from '../../../toastr/config';
+import toastrConfig from '../../../toastr/toastrConfig';
 import { DEFAULT_RECIPE_PIX_URL } from '../../../constants';
 import imageParser from '../../../utils/imageParser';
 import resetPageCount from '../../../actions/resetPageCount';

@@ -12,7 +12,7 @@ describe('Testing status code reducer', () => {
     state = initialState.currentStatusCode;
   });
 
-  it('should return initialState when status code reducer is call without args',
+  it('should return initial state when reducer is call without args',
     () => {
       expect(reducer()).toBe(state);
     });

@@ -67,7 +67,9 @@ export const checkDuplicateName = (req, res, next) => {
     }
   }).then((recipe) => {
     if (recipe) {
-      return sendFail(res, 409, 'Recipe already exist, Please enter another');
+      return sendFail(res,
+        409,
+        'Recipe name already exist, Please enter another');
     }
     next();
   }).catch(() => {

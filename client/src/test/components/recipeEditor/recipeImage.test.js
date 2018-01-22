@@ -22,11 +22,10 @@ describe('Recipe image component ', () => {
       expect(tree).toMatchSnapshot();
     });
 
-  test('expected to match snapshot when loadImage button is click',
+  test('expected to match snapshot when loadImage button is clicked',
     () => {
-      const tree = toJson(component);
-      expect(tree).toMatchSnapshot();
       component.find('span.btn.bg-secondary').simulate('click');
+      const tree = toJson(component);
       expect(tree).toMatchSnapshot();
     });
 

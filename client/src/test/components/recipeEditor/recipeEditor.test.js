@@ -18,11 +18,13 @@ describe('Recipe editor component ', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  test('expected to render NotFound component when props.hasNotFound is true',
+  test('should render NotFound component when props.hasNotFound is true',
     () => {
       const component = shallow(
         <RecipeEditor {...{ ...props, hasNotFound: true }} />);
       const tree = toJson(component);
+      const notFound = component.find('NotFound').length;
+      expect(notFound).toBe(1);
       expect(tree).toMatchSnapshot();
     });
 });
