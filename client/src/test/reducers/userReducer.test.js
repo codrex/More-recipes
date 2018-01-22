@@ -15,12 +15,12 @@ describe('Testing user reducer', () => {
     state = initialState.user;
   });
 
-  it('should return initialState when user reducer is call without args',
+  it('should return initial state when reducer is call without args',
     () => {
       expect(reducer()).toMatchObject(state);
     });
 
-  it('should return a newState for action type LOGIN', () => {
+  it('should return a new state for action type LOGIN', () => {
     const action = {
       payload: {
         user: {
@@ -36,7 +36,7 @@ describe('Testing user reducer', () => {
     expect(user).not.toBe(state);
   });
 
-  it('should return a newState for action type SIGNUP', () => {
+  it('should return a new state for action type SIGNUP', () => {
     const action = {
       payload: {
         user: {
@@ -52,7 +52,7 @@ describe('Testing user reducer', () => {
     expect(user).not.toBe(state);
   });
 
-  it('should return a newState for action type GOT_USER_PROFILE', () => {
+  it('should return a new state for action type GOT_USER_PROFILE', () => {
     const action = {
       payload: {
         user: {
@@ -84,7 +84,7 @@ describe('Testing user reducer', () => {
     expect(user).not.toBe(state);
   });
 
-  it('should return a newState for action type UPDATE_USER_PROFILE', () => {
+  it('should return a new state for action type UPDATE_USER_PROFILE', () => {
     const action = {
       payload: {
         user: {
@@ -101,8 +101,8 @@ describe('Testing user reducer', () => {
     expect(user).not.toBe(state);
   });
 
-  it(`should return a newState for action type TOGGLE_FAV
-  when user added a favorite recipe`, () => {
+  it(`should return a new state for action type TOGGLE_FAV when user added a
+  favorite recipe`, () => {
       const action = {
         payload: {
           favRecipe: {
@@ -119,8 +119,8 @@ describe('Testing user reducer', () => {
       expect(user).not.toBe(state);
     });
 
-  it(`should return a newState for action type TOGGLE_FAV
-  when user removed a favorite recipe`, () => {
+  it(`should return a new state for action type TOGGLE_FAV when user removed a
+  favorite recipe`, () => {
       const action = {
         payload: {
           favRecipe: {

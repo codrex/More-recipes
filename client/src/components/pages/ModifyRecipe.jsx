@@ -6,7 +6,7 @@ import RecipeEditor from './RecipeEditor';
 import { modifyRecipe, getRecipe } from '../../actions/recipeActions';
 import { resetSuccess } from '../../actions/ajaxActions';
 import { RECIPE_MODIFIED } from '../../constants';
-import toastrConfig from '../../toastr/config';
+import toastrConfig from '../../toastr/toastrConfig';
 
 /**
  * ModifyRecipe

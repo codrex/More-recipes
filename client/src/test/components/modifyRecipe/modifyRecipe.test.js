@@ -43,8 +43,8 @@ describe('Modify recipe page component ', () => {
     expect(tree).toBeInstanceOf(Object);
   });
 
-  test(`expected to match snapshot when message is
-  equal RECIPE_MODIFIED`, () => {
+  test('expected to match snapshot when message is equal RECIPE_MODIFIED',
+    () => {
       const wrapper = shallow(<PureModifyRecipe {...props} />);
       const tree = toJson(wrapper);
       wrapper.setProps({ message: RECIPE_MODIFIED });

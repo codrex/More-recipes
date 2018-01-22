@@ -180,7 +180,7 @@ exports[`AddItems  deleteFromList method should call props.sendItemsToStore 1`] 
 </div>
 `;
 
-exports[`AddItems  editItems method should call props.sendItemsToStore when editItems method is called  1`] = `
+exports[`AddItems  editItems method should call props.sendItemsToStore  1`] = `
 <div
   className="col-12 items "
 >

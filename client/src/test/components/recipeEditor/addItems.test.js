@@ -52,7 +52,7 @@ describe('AddItems ', () => {
       });
   });
   describe('editItems method', () => {
-    test('should call props.sendItemsToStore when editItems method is called ',
+    test('should call props.sendItemsToStore ',
       () => {
         const tree = toJson(component);
         component.instance().editItems('rice', 0);

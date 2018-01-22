@@ -7,8 +7,8 @@ import { setup, recipe, endAjaxReq } from './recipeMock';
 
 // THUNK TEST
 describe('Recipe thunks', () => {
-  it(`should return BEGIN_AJAX_REQUEST, NEW_RECIPE and
-    END_AJAX_REQUEST actions when create recipe request is successful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST, NEW_RECIPE and END_AJAX_REQUEST actions
+   when create recipe request is successful`, () => {
       const {
         payload,
         store,
@@ -26,8 +26,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST, MODIFIED_RECIPE and
-  END_AJAX_REQUEST actions when modify recipe request is successful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST, MODIFIED_RECIPE and END_AJAX_REQUEST
+  actions when modify recipe request is successful`, () => {
       const {
         payload,
         store,
@@ -50,8 +50,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST, GET_ALL_RECIPES and
-  END_AJAX_REQUEST action when get all recipes request is successful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST, GET_ALL_RECIPES and END_AJAX_REQUEST
+  actions when get all recipes request is successful`, () => {
       const {
         payload,
         store,
@@ -76,8 +76,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST, GET_TOP_RECIPES and
-  END_AJAX_REQUEST action when get top recipes request is successful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST, GET_TOP_RECIPES and END_AJAX_REQUEST
+  actions when get top recipes request is successful`, () => {
       const {
         payload,
         store,
@@ -102,9 +102,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST, GET_REVIEWS and
-    END_AJAX_REQUEST action when get recipe reviews
-    request is successful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST, GET_REVIEWS and END_AJAX_REQUEST
+  actions when get recipe reviews request is successful`, () => {
       const {
         payload,
         store,
@@ -130,8 +129,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST, AFTER_REVIEW and
-  END_AJAX_REQUEST action after a review was posted`, () => {
+  it(`should return BEGIN_AJAX_REQUEST, AFTER_REVIEW and END_AJAX_REQUEST
+  actions after a review was posted`, () => {
       const {
         payload,
         store
@@ -156,8 +155,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST, AFTER_VOTE and
-  END_AJAX_REQUEST action when recipe upvote request is successful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST, AFTER_VOTE and END_AJAX_REQUEST actions
+   when recipe upvote request is successful`, () => {
       const {
         payload,
         store,
@@ -178,8 +177,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST, TOGGLE_FAV and
-  END_AJAX_REQUEST action after add to favorite request is successful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST, TOGGLE_FAV and END_AJAX_REQUEST actions
+   after add to favorite request is successful`, () => {
       const {
         payload,
         store,
@@ -200,8 +199,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST, DELETE_RECIPE and
-  END_AJAX_REQUEST actions when delete recipe request is successful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST, DELETE_RECIPE and END_AJAX_REQUEST
+  actions when delete recipe request is successful`, () => {
       const {
         payload,
         store,
@@ -224,8 +223,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST, FIND_RECIPES and
-  END_AJAX_REQUEST actions when recipe search request is successful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST, FIND_RECIPES and END_AJAX_REQUEST
+  actions when recipe search request is successful`, () => {
       const searchTerm = 'term';
       const {
         payload,
@@ -252,8 +251,8 @@ describe('Recipe thunks', () => {
     });
 
   it(`should return BEGIN_AJAX_REQUEST, GET_FAVOURITE_RECIPES and
-    END_AJAX_REQUEST actions when get favourite recipes
-    request is successful`, () => {
+  END_AJAX_REQUEST actions when get favourite recipes request is successful`,
+    () => {
       const {
         payload,
         store,
@@ -279,8 +278,8 @@ describe('Recipe thunks', () => {
     });
 
   it(`should return BEGIN_AJAX_REQUEST, GET_CREATED_RECIPES and
-    END_AJAX_REQUEST actions when get created
-    recipes request is successful`, () => {
+    END_AJAX_REQUEST actions when get created recipes request is successful`,
+    () => {
       const {
         payload,
         store,
@@ -305,8 +304,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST END_AJAX_REQUEST actions
-    when recipe review request is unsuccessful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST END_AJAX_REQUEST actions when recipe
+  review request is unsuccessful`, () => {
       const {
         store,
       } = setup(
@@ -333,8 +332,8 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it(`should return BEGIN_AJAX_REQUEST END_AJAX_REQUEST actions
-    when get recipe request is unsuccessful`, () => {
+  it(`should return BEGIN_AJAX_REQUEST END_AJAX_REQUEST actions when get recipe
+   request is unsuccessful`, () => {
       const {
         store,
       } = setup('/api/v1/recipes/1', 'get', initialState.Recipe, 404);
@@ -358,7 +357,7 @@ describe('Recipe thunks', () => {
         });
     });
 
-  it('should return when recipe category is invalid', () => {
+  it('should return undefined when recipe category is invalid', () => {
     const { store } = setup(
       '/api/v1/recipes', 'post',
       initialState.Recipe, 400
@@ -369,7 +368,7 @@ describe('Recipe thunks', () => {
     }))).toBeUndefined();
   });
 
-  it('should return when recipe directions is invalid', () => {
+  it('should return undefined when recipe directions is invalid', () => {
     const { store } = setup(
       '/api/v1/recipes',
       'post',
@@ -382,7 +381,7 @@ describe('Recipe thunks', () => {
     }))).toBeUndefined();
   });
 
-  it('should return when recipe directions is invalid', () => {
+  it('should return undefined when recipe directions is invalid', () => {
     const { store } = setup(
       '/api/v1/recipes',
       'post',

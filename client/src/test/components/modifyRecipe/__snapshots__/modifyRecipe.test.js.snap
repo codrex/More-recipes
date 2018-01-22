@@ -11,8 +11,7 @@ exports[`Modify recipe page component  expected to match snapshot  1`] = `
 />
 `;
 
-exports[`Modify recipe page component  expected to match snapshot when message is
-  equal RECIPE_MODIFIED 1`] = `
+exports[`Modify recipe page component  expected to match snapshot when message is equal RECIPE_MODIFIED 1`] = `
 <RecipeEditor
   handleButtonClick={[Function]}
   hasNotFound={false}

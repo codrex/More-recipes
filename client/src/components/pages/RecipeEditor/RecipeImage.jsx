@@ -6,7 +6,7 @@ import toastr from 'toastr';
 import { updateImage } from '../../../actions/recipeActions';
 import imageParser from '../../../utils/imageParser';
 import { DEFAULT_RECIPE_PIX } from '../../../constants';
-import toastrConfig from '../../../toastr/config';
+import toastrConfig from '../../../toastr/toastrConfig';
 
 
 /**

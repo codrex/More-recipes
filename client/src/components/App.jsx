@@ -17,7 +17,7 @@ import Landing from './pages/Landing';
 import ModifyRecipe from './pages/ModifyRecipe';
 import CreateRecipe from './pages/CreateRecipe';
 import { getUserProfile } from '../actions/userActions';
-import toastrConfig from '../toastr/config';
+import toastrConfig from '../toastr/toastrConfig';
 import { resetReqCount, resetSuccess } from '../actions/ajaxActions';
 
 /**

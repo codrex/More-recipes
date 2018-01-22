@@ -18,7 +18,7 @@ describe('Testing page count reducer', () => {
     state = initialState.pageCount;
   });
 
-  it('should return initialState when page count reducer is call without args',
+  it('should return initialState when reducer is called without args',
     () => {
       expect(reducer()).toBe(state);
     });

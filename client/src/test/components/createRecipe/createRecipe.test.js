@@ -35,14 +35,14 @@ describe('Create Recipe page component ', () => {
     expect(tree).toBeInstanceOf(Object);
   });
 
-  test('expected to match snapshot when recipe is created', () => {
+  test('expected to match snapshot when message is received as props ', () => {
     wrapper.setProps({ message: RECIPE_ADDED });
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
 
-  test('should call createRecipe when postRecipe is clicked', () => {
+  test('should call createRecipe when postRecipe button is clicked', () => {
     const tree = toJson(wrapper);
     wrapper.instance().postRecipe();
     expect(props.createRecipe).toBeCalled();
