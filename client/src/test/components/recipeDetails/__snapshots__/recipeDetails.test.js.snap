@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`View Recipes Page component  expected match snapshot  1`] = `
+exports[`View Recipes Page component  downvote icon clicked expected to cancel downvote when state.downVote is true  1`] = `
 <RecipeDetails
   actions={
     Object {
@@ -18,12 +18,7 @@ exports[`View Recipes Page component  expected match snapshot  1`] = `
   favRecipes={
     Array [
       Object {
-        "category": "",
-        "downVotes": 1,
-        "recipeId": 1,
-        "recipeName": "test tester",
-        "upVotes": 1,
-        "views": 1,
+        "id": 1,
       },
     ]
   }
@@ -61,7 +56,7 @@ exports[`View Recipes Page component  expected match snapshot  1`] = `
       "category": "",
       "directions": Array [],
       "downVotes": 1,
-      "id": 1,
+      "id": 2,
       "ingredients": Array [],
       "name": "cappuccino",
       "owner": Object {
@@ -500,7 +495,7 @@ exports[`View Recipes Page component  expected match snapshot  1`] = `
 </RecipeDetails>
 `;
 
-exports[`View Recipes Page component  expected to match snapshot when downvote icon is clicked  1`] = `
+exports[`View Recipes Page component  downvote icon clicked expected to cancel downvote when state.downVote is true  2`] = `
 <RecipeDetails
   actions={
     Object {
@@ -518,12 +513,7 @@ exports[`View Recipes Page component  expected to match snapshot when downvote i
   favRecipes={
     Array [
       Object {
-        "category": "",
-        "downVotes": 1,
-        "recipeId": 1,
-        "recipeName": "test tester",
-        "upVotes": 1,
-        "views": 1,
+        "id": 1,
       },
     ]
   }
@@ -561,7 +551,7 @@ exports[`View Recipes Page component  expected to match snapshot when downvote i
       "category": "",
       "directions": Array [],
       "downVotes": 1,
-      "id": 1,
+      "id": 2,
       "ingredients": Array [],
       "name": "cappuccino",
       "owner": Object {
@@ -1000,7 +990,7 @@ exports[`View Recipes Page component  expected to match snapshot when downvote i
 </RecipeDetails>
 `;
 
-exports[`View Recipes Page component  expected to match snapshot when downvote icon is clicked  2`] = `
+exports[`View Recipes Page component  downvote icon clicked expected to downvote a recipe when state.downVote is false  1`] = `
 <RecipeDetails
   actions={
     Object {
@@ -1018,12 +1008,7 @@ exports[`View Recipes Page component  expected to match snapshot when downvote i
   favRecipes={
     Array [
       Object {
-        "category": "",
-        "downVotes": 1,
-        "recipeId": 1,
-        "recipeName": "test tester",
-        "upVotes": 1,
-        "views": 1,
+        "id": 1,
       },
     ]
   }
@@ -1061,7 +1046,7 @@ exports[`View Recipes Page component  expected to match snapshot when downvote i
       "category": "",
       "directions": Array [],
       "downVotes": 1,
-      "id": 1,
+      "id": 2,
       "ingredients": Array [],
       "name": "cappuccino",
       "owner": Object {
@@ -1500,7 +1485,7 @@ exports[`View Recipes Page component  expected to match snapshot when downvote i
 </RecipeDetails>
 `;
 
-exports[`View Recipes Page component  expected to match snapshot when edit icon is clicked  1`] = `
+exports[`View Recipes Page component  downvote icon clicked expected to downvote a recipe when state.downVote is false  2`] = `
 <RecipeDetails
   actions={
     Object {
@@ -1518,12 +1503,7 @@ exports[`View Recipes Page component  expected to match snapshot when edit icon 
   favRecipes={
     Array [
       Object {
-        "category": "",
-        "downVotes": 1,
-        "recipeId": 1,
-        "recipeName": "test tester",
-        "upVotes": 1,
-        "views": 1,
+        "id": 1,
       },
     ]
   }
@@ -1561,7 +1541,7 @@ exports[`View Recipes Page component  expected to match snapshot when edit icon 
       "category": "",
       "directions": Array [],
       "downVotes": 1,
-      "id": 1,
+      "id": 2,
       "ingredients": Array [],
       "name": "cappuccino",
       "owner": Object {
@@ -2000,7 +1980,7 @@ exports[`View Recipes Page component  expected to match snapshot when edit icon 
 </RecipeDetails>
 `;
 
-exports[`View Recipes Page component  expected to match snapshot when edit icon is clicked  2`] = `
+exports[`View Recipes Page component  expected to navigate to modify recipe page when edit icon is clicked  1`] = `
 <RecipeDetails
   actions={
     Object {
@@ -2018,12 +1998,7 @@ exports[`View Recipes Page component  expected to match snapshot when edit icon 
   favRecipes={
     Array [
       Object {
-        "category": "",
-        "downVotes": 1,
-        "recipeId": 1,
-        "recipeName": "test tester",
-        "upVotes": 1,
-        "views": 1,
+        "id": 1,
       },
     ]
   }
@@ -2061,7 +2036,7 @@ exports[`View Recipes Page component  expected to match snapshot when edit icon 
       "category": "",
       "directions": Array [],
       "downVotes": 1,
-      "id": 1,
+      "id": 2,
       "ingredients": Array [],
       "name": "cappuccino",
       "owner": Object {
@@ -2500,7 +2475,7 @@ exports[`View Recipes Page component  expected to match snapshot when edit icon 
 </RecipeDetails>
 `;
 
-exports[`View Recipes Page component  expected to match snapshot when favorite icon is clicked  1`] = `
+exports[`View Recipes Page component  expected to navigate to modify recipe page when edit icon is clicked  2`] = `
 <RecipeDetails
   actions={
     Object {
@@ -2518,12 +2493,7 @@ exports[`View Recipes Page component  expected to match snapshot when favorite i
   favRecipes={
     Array [
       Object {
-        "category": "",
-        "downVotes": 1,
-        "recipeId": 1,
-        "recipeName": "test tester",
-        "upVotes": 1,
-        "views": 1,
+        "id": 1,
       },
     ]
   }
@@ -2561,7 +2531,7 @@ exports[`View Recipes Page component  expected to match snapshot when favorite i
       "category": "",
       "directions": Array [],
       "downVotes": 1,
-      "id": 1,
+      "id": 2,
       "ingredients": Array [],
       "name": "cappuccino",
       "owner": Object {
@@ -3000,7 +2970,7 @@ exports[`View Recipes Page component  expected to match snapshot when favorite i
 </RecipeDetails>
 `;
 
-exports[`View Recipes Page component  expected to match snapshot when favorite icon is clicked  2`] = `
+exports[`View Recipes Page component  expected to render recipe details page 1`] = `
 <RecipeDetails
   actions={
     Object {
@@ -3018,12 +2988,7 @@ exports[`View Recipes Page component  expected to match snapshot when favorite i
   favRecipes={
     Array [
       Object {
-        "category": "",
-        "downVotes": 1,
-        "recipeId": 1,
-        "recipeName": "test tester",
-        "upVotes": 1,
-        "views": 1,
+        "id": 1,
       },
     ]
   }
@@ -3061,7 +3026,7 @@ exports[`View Recipes Page component  expected to match snapshot when favorite i
       "category": "",
       "directions": Array [],
       "downVotes": 1,
-      "id": 1,
+      "id": 2,
       "ingredients": Array [],
       "name": "cappuccino",
       "owner": Object {
@@ -3500,7 +3465,8 @@ exports[`View Recipes Page component  expected to match snapshot when favorite i
 </RecipeDetails>
 `;
 
-exports[`View Recipes Page component  expected to match snapshot when upvote icon is clicked  1`] = `
+exports[`View Recipes Page component  favourite icon is clicked expected to favourite a recipe when recipe is not the on user's
+    favourite recipes list 1`] = `
 <RecipeDetails
   actions={
     Object {
@@ -3518,12 +3484,7 @@ exports[`View Recipes Page component  expected to match snapshot when upvote ico
   favRecipes={
     Array [
       Object {
-        "category": "",
-        "downVotes": 1,
-        "recipeId": 1,
-        "recipeName": "test tester",
-        "upVotes": 1,
-        "views": 1,
+        "id": 1,
       },
     ]
   }
@@ -3561,7 +3522,7 @@ exports[`View Recipes Page component  expected to match snapshot when upvote ico
       "category": "",
       "directions": Array [],
       "downVotes": 1,
-      "id": 1,
+      "id": 2,
       "ingredients": Array [],
       "name": "cappuccino",
       "owner": Object {
@@ -4000,7 +3961,8 @@ exports[`View Recipes Page component  expected to match snapshot when upvote ico
 </RecipeDetails>
 `;
 
-exports[`View Recipes Page component  expected to match snapshot when upvote icon is clicked  2`] = `
+exports[`View Recipes Page component  favourite icon is clicked expected to favourite a recipe when recipe is not the on user's
+    favourite recipes list 2`] = `
 <RecipeDetails
   actions={
     Object {
@@ -4018,12 +3980,7 @@ exports[`View Recipes Page component  expected to match snapshot when upvote ico
   favRecipes={
     Array [
       Object {
-        "category": "",
-        "downVotes": 1,
-        "recipeId": 1,
-        "recipeName": "test tester",
-        "upVotes": 1,
-        "views": 1,
+        "id": 1,
       },
     ]
   }
@@ -4061,7 +4018,999 @@ exports[`View Recipes Page component  expected to match snapshot when upvote ico
       "category": "",
       "directions": Array [],
       "downVotes": 1,
-      "id": 1,
+      "id": 2,
+      "ingredients": Array [],
+      "name": "cappuccino",
+      "owner": Object {
+        "email": "test.test@gmail.com",
+        "fullname": "test test ",
+        "id": 1,
+        "profilePix": "UNKNOWN",
+        "username": "test",
+      },
+      "upVotes": 1,
+      "views": 1,
+    }
+  }
+  requestCount={0}
+  statusCode={-1}
+  userId={1}
+  votes={Array []}
+>
+  <div
+    className="container-fluid no-padding main"
+  >
+    <div>
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        title="cappuccino"
+      >
+        <div
+          className="hero-half"
+        >
+          <div
+            className="backdrop"
+          >
+            <img
+              alt="heroimage"
+              src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+            />
+            <h1
+              className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+              id="display-1"
+            >
+              cappuccino
+            </h1>
+          </div>
+        </div>
+      </HeroArea>
+      ,
+      <div
+        className="recipe-info-wrapper"
+      >
+        <h6
+          className="lead text-capitalize "
+        >
+          posted by:
+          <span
+            className="bold"
+          >
+            test
+             
+          </span>
+           
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          Views: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          upvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          downvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+      </div>
+      <div
+        className="row flex-column recipe"
+      >
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper
+      d-flex"
+        >
+          <Ingredients
+            ingredients={Array []}
+          >
+            <List
+              className="ingredient-list-wrapper"
+              style={Object {}}
+            >
+              <div
+                className="col-12 ingredient-list-wrapper"
+                style={Object {}}
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
+            </List>
+          </Ingredients>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper
+       d-flex"
+        >
+          <Directions
+            directions={Array []}
+          >
+            <div
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
+          </Directions>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper
+      d-flex"
+        >
+          <div
+            className="d-flex align-items-start flex-column col-12"
+          >
+            <h5
+              className="display-4"
+            >
+              Reviews
+              <Button
+                Tag="button"
+                className="btn-secondary"
+                dataTarget="#modal"
+                dataToggle="modal"
+                handleClick={[Function]}
+                href=""
+                id="reviewBtn"
+                text="post a review"
+                type="button"
+              >
+                <button
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  data-target="#modal"
+                  data-toggle="modal"
+                  href=""
+                  id="reviewBtn"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  post a review
+                </button>
+              </Button>
+            </h5>
+            <Comments
+              comments={Array []}
+              createdAt=""
+              isLoading={false}
+            >
+              <div
+                className="col-12 "
+                style={
+                  Object {
+                    "minHeight": "63vh",
+                  }
+                }
+              >
+                <NotFound
+                  message="no review found"
+                >
+                  <div
+                    className="
+      display-3
+      text-uppercase
+      msg-display
+      no-margin
+      d-flex
+      flex-column
+   "
+                  >
+                    <h1
+                      className="not-found-text"
+                    >
+                      <i
+                        className="fa fa-meh-o"
+                      />
+                      <em>
+                        oops!
+                      </em>
+                      <br />
+                      no review found
+                    </h1>
+                  </div>
+                </NotFound>
+              </div>
+            </Comments>
+          </div>
+        </div>
+      </div>
+      <div
+        className="d-flex justify-content-around lead topbar flex-column
+      icon-bar"
+      >
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-up"
+          id="upvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-up"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-down"
+          id="downvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-down"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-heart-o fav"
+          id="toggleFav"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-heart-o fav"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-pencil"
+          id="edit"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-pencil"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+      </div>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="modal"
+      left={false}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={false}
+      rightBtnText="Post review"
+      title="Review"
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="modalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="modalLabel"
+              >
+                Review
+              </h5>
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            >
+              <ReduxForm
+                id={2}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</RecipeDetails>
+`;
+
+exports[`View Recipes Page component  favourite icon is clicked expected to remove recipe from user's favourites when recipe is the
+    on user's favourite recipes list 1`] = `
+<RecipeDetails
+  actions={
+    Object {
+      "getRecipe": [Function],
+      "getReviews": [Function],
+      "getUser": [Function],
+      "getVotes": [Function],
+      "redirect": [Function],
+      "resetPageCount": [Function],
+      "resetRecipe": [Function],
+      "toggleFav": [Function],
+      "vote": [Function],
+    }
+  }
+  favRecipes={
+    Array [
+      Object {
+        "id": 1,
+      },
+    ]
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  match={
+    Object {
+      "params": Object {
+        "id": 2,
+      },
+    }
+  }
+  pageCount={0}
+  recipe={
+    Object {
+      "RecipeReviews": Array [
+        Object {
+          "RecipeId": 1,
+          "Reviewer": Object {
+            "email": "test.test@gmail.com",
+            "fullname": "test user ",
+            "id": 1,
+            "profilePix": "UNKNOWN",
+            "username": "test user",
+          },
+          "ReviewerId": 1,
+          "id": 50,
+          "review": "cool recipe",
+        },
+      ],
+      "category": "",
+      "directions": Array [],
+      "downVotes": 1,
+      "id": 2,
+      "ingredients": Array [],
+      "name": "cappuccino",
+      "owner": Object {
+        "email": "test.test@gmail.com",
+        "fullname": "test test ",
+        "id": 1,
+        "profilePix": "UNKNOWN",
+        "username": "test",
+      },
+      "upVotes": 1,
+      "views": 1,
+    }
+  }
+  requestCount={0}
+  statusCode={-1}
+  userId={1}
+  votes={Array []}
+>
+  <div
+    className="container-fluid no-padding main"
+  >
+    <div>
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        title="cappuccino"
+      >
+        <div
+          className="hero-half"
+        >
+          <div
+            className="backdrop"
+          >
+            <img
+              alt="heroimage"
+              src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+            />
+            <h1
+              className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+              id="display-1"
+            >
+              cappuccino
+            </h1>
+          </div>
+        </div>
+      </HeroArea>
+      ,
+      <div
+        className="recipe-info-wrapper"
+      >
+        <h6
+          className="lead text-capitalize "
+        >
+          posted by:
+          <span
+            className="bold"
+          >
+            test
+             
+          </span>
+           
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          Views: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          upvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          downvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+      </div>
+      <div
+        className="row flex-column recipe"
+      >
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper
+      d-flex"
+        >
+          <Ingredients
+            ingredients={Array []}
+          >
+            <List
+              className="ingredient-list-wrapper"
+              style={Object {}}
+            >
+              <div
+                className="col-12 ingredient-list-wrapper"
+                style={Object {}}
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
+            </List>
+          </Ingredients>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper
+       d-flex"
+        >
+          <Directions
+            directions={Array []}
+          >
+            <div
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
+          </Directions>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper
+      d-flex"
+        >
+          <div
+            className="d-flex align-items-start flex-column col-12"
+          >
+            <h5
+              className="display-4"
+            >
+              Reviews
+              <Button
+                Tag="button"
+                className="btn-secondary"
+                dataTarget="#modal"
+                dataToggle="modal"
+                handleClick={[Function]}
+                href=""
+                id="reviewBtn"
+                text="post a review"
+                type="button"
+              >
+                <button
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  data-target="#modal"
+                  data-toggle="modal"
+                  href=""
+                  id="reviewBtn"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  post a review
+                </button>
+              </Button>
+            </h5>
+            <Comments
+              comments={Array []}
+              createdAt=""
+              isLoading={false}
+            >
+              <div
+                className="col-12 "
+                style={
+                  Object {
+                    "minHeight": "63vh",
+                  }
+                }
+              >
+                <NotFound
+                  message="no review found"
+                >
+                  <div
+                    className="
+      display-3
+      text-uppercase
+      msg-display
+      no-margin
+      d-flex
+      flex-column
+   "
+                  >
+                    <h1
+                      className="not-found-text"
+                    >
+                      <i
+                        className="fa fa-meh-o"
+                      />
+                      <em>
+                        oops!
+                      </em>
+                      <br />
+                      no review found
+                    </h1>
+                  </div>
+                </NotFound>
+              </div>
+            </Comments>
+          </div>
+        </div>
+      </div>
+      <div
+        className="d-flex justify-content-around lead topbar flex-column
+      icon-bar"
+      >
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-up"
+          id="upvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-up"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-down"
+          id="downvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-down"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-heart-o fav"
+          id="toggleFav"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-heart-o fav"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-pencil"
+          id="edit"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-pencil"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+      </div>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="modal"
+      left={false}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={false}
+      rightBtnText="Post review"
+      title="Review"
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="modalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="modalLabel"
+              >
+                Review
+              </h5>
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            >
+              <ReduxForm
+                id={2}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</RecipeDetails>
+`;
+
+exports[`View Recipes Page component  favourite icon is clicked expected to remove recipe from user's favourites when recipe is the
+    on user's favourite recipes list 2`] = `
+<RecipeDetails
+  actions={
+    Object {
+      "getRecipe": [Function],
+      "getReviews": [Function],
+      "getUser": [Function],
+      "getVotes": [Function],
+      "redirect": [Function],
+      "resetPageCount": [Function],
+      "resetRecipe": [Function],
+      "toggleFav": [Function],
+      "vote": [Function],
+    }
+  }
+  favRecipes={
+    Array [
+      Object {
+        "id": 1,
+      },
+    ]
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  match={
+    Object {
+      "params": Object {
+        "id": 2,
+      },
+    }
+  }
+  pageCount={0}
+  recipe={
+    Object {
+      "RecipeReviews": Array [
+        Object {
+          "RecipeId": 1,
+          "Reviewer": Object {
+            "email": "test.test@gmail.com",
+            "fullname": "test user ",
+            "id": 1,
+            "profilePix": "UNKNOWN",
+            "username": "test user",
+          },
+          "ReviewerId": 1,
+          "id": 50,
+          "review": "cool recipe",
+        },
+      ],
+      "category": "",
+      "directions": Array [],
+      "downVotes": 1,
+      "id": 2,
       "ingredients": Array [],
       "name": "cappuccino",
       "owner": Object {
@@ -4518,12 +5467,7 @@ exports[`View Recipes Page component  should render a NotFound component when st
   favRecipes={
     Array [
       Object {
-        "category": "",
-        "downVotes": 1,
-        "recipeId": 1,
-        "recipeName": "test tester",
-        "upVotes": 1,
-        "views": 1,
+        "id": 1,
       },
     ]
   }
@@ -4561,7 +5505,7 @@ exports[`View Recipes Page component  should render a NotFound component when st
       "category": "",
       "directions": Array [],
       "downVotes": 1,
-      "id": 1,
+      "id": 2,
       "ingredients": Array [],
       "name": "cappuccino",
       "owner": Object {
@@ -4610,6 +5554,1986 @@ exports[`View Recipes Page component  should render a NotFound component when st
         </h1>
       </div>
     </NotFound>
+  </div>
+</RecipeDetails>
+`;
+
+exports[`View Recipes Page component  upvote icon is clicked expected to cancel upvote when state.upVote is true  1`] = `
+<RecipeDetails
+  actions={
+    Object {
+      "getRecipe": [Function],
+      "getReviews": [Function],
+      "getUser": [Function],
+      "getVotes": [Function],
+      "redirect": [Function],
+      "resetPageCount": [Function],
+      "resetRecipe": [Function],
+      "toggleFav": [Function],
+      "vote": [Function],
+    }
+  }
+  favRecipes={
+    Array [
+      Object {
+        "id": 1,
+      },
+    ]
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  match={
+    Object {
+      "params": Object {
+        "id": 2,
+      },
+    }
+  }
+  pageCount={0}
+  recipe={
+    Object {
+      "RecipeReviews": Array [
+        Object {
+          "RecipeId": 1,
+          "Reviewer": Object {
+            "email": "test.test@gmail.com",
+            "fullname": "test user ",
+            "id": 1,
+            "profilePix": "UNKNOWN",
+            "username": "test user",
+          },
+          "ReviewerId": 1,
+          "id": 50,
+          "review": "cool recipe",
+        },
+      ],
+      "category": "",
+      "directions": Array [],
+      "downVotes": 1,
+      "id": 2,
+      "ingredients": Array [],
+      "name": "cappuccino",
+      "owner": Object {
+        "email": "test.test@gmail.com",
+        "fullname": "test test ",
+        "id": 1,
+        "profilePix": "UNKNOWN",
+        "username": "test",
+      },
+      "upVotes": 1,
+      "views": 1,
+    }
+  }
+  requestCount={0}
+  statusCode={-1}
+  userId={1}
+  votes={Array []}
+>
+  <div
+    className="container-fluid no-padding main"
+  >
+    <div>
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        title="cappuccino"
+      >
+        <div
+          className="hero-half"
+        >
+          <div
+            className="backdrop"
+          >
+            <img
+              alt="heroimage"
+              src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+            />
+            <h1
+              className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+              id="display-1"
+            >
+              cappuccino
+            </h1>
+          </div>
+        </div>
+      </HeroArea>
+      ,
+      <div
+        className="recipe-info-wrapper"
+      >
+        <h6
+          className="lead text-capitalize "
+        >
+          posted by:
+          <span
+            className="bold"
+          >
+            test
+             
+          </span>
+           
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          Views: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          upvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          downvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+      </div>
+      <div
+        className="row flex-column recipe"
+      >
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper
+      d-flex"
+        >
+          <Ingredients
+            ingredients={Array []}
+          >
+            <List
+              className="ingredient-list-wrapper"
+              style={Object {}}
+            >
+              <div
+                className="col-12 ingredient-list-wrapper"
+                style={Object {}}
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
+            </List>
+          </Ingredients>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper
+       d-flex"
+        >
+          <Directions
+            directions={Array []}
+          >
+            <div
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
+          </Directions>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper
+      d-flex"
+        >
+          <div
+            className="d-flex align-items-start flex-column col-12"
+          >
+            <h5
+              className="display-4"
+            >
+              Reviews
+              <Button
+                Tag="button"
+                className="btn-secondary"
+                dataTarget="#modal"
+                dataToggle="modal"
+                handleClick={[Function]}
+                href=""
+                id="reviewBtn"
+                text="post a review"
+                type="button"
+              >
+                <button
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  data-target="#modal"
+                  data-toggle="modal"
+                  href=""
+                  id="reviewBtn"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  post a review
+                </button>
+              </Button>
+            </h5>
+            <Comments
+              comments={Array []}
+              createdAt=""
+              isLoading={false}
+            >
+              <div
+                className="col-12 "
+                style={
+                  Object {
+                    "minHeight": "63vh",
+                  }
+                }
+              >
+                <NotFound
+                  message="no review found"
+                >
+                  <div
+                    className="
+      display-3
+      text-uppercase
+      msg-display
+      no-margin
+      d-flex
+      flex-column
+   "
+                  >
+                    <h1
+                      className="not-found-text"
+                    >
+                      <i
+                        className="fa fa-meh-o"
+                      />
+                      <em>
+                        oops!
+                      </em>
+                      <br />
+                      no review found
+                    </h1>
+                  </div>
+                </NotFound>
+              </div>
+            </Comments>
+          </div>
+        </div>
+      </div>
+      <div
+        className="d-flex justify-content-around lead topbar flex-column
+      icon-bar"
+      >
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-up"
+          id="upvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-up"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-down"
+          id="downvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-down"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-heart-o fav"
+          id="toggleFav"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-heart-o fav"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-pencil"
+          id="edit"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-pencil"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+      </div>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="modal"
+      left={false}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={false}
+      rightBtnText="Post review"
+      title="Review"
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="modalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="modalLabel"
+              >
+                Review
+              </h5>
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            >
+              <ReduxForm
+                id={2}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</RecipeDetails>
+`;
+
+exports[`View Recipes Page component  upvote icon is clicked expected to cancel upvote when state.upVote is true  2`] = `
+<RecipeDetails
+  actions={
+    Object {
+      "getRecipe": [Function],
+      "getReviews": [Function],
+      "getUser": [Function],
+      "getVotes": [Function],
+      "redirect": [Function],
+      "resetPageCount": [Function],
+      "resetRecipe": [Function],
+      "toggleFav": [Function],
+      "vote": [Function],
+    }
+  }
+  favRecipes={
+    Array [
+      Object {
+        "id": 1,
+      },
+    ]
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  match={
+    Object {
+      "params": Object {
+        "id": 2,
+      },
+    }
+  }
+  pageCount={0}
+  recipe={
+    Object {
+      "RecipeReviews": Array [
+        Object {
+          "RecipeId": 1,
+          "Reviewer": Object {
+            "email": "test.test@gmail.com",
+            "fullname": "test user ",
+            "id": 1,
+            "profilePix": "UNKNOWN",
+            "username": "test user",
+          },
+          "ReviewerId": 1,
+          "id": 50,
+          "review": "cool recipe",
+        },
+      ],
+      "category": "",
+      "directions": Array [],
+      "downVotes": 1,
+      "id": 2,
+      "ingredients": Array [],
+      "name": "cappuccino",
+      "owner": Object {
+        "email": "test.test@gmail.com",
+        "fullname": "test test ",
+        "id": 1,
+        "profilePix": "UNKNOWN",
+        "username": "test",
+      },
+      "upVotes": 1,
+      "views": 1,
+    }
+  }
+  requestCount={0}
+  statusCode={-1}
+  userId={1}
+  votes={Array []}
+>
+  <div
+    className="container-fluid no-padding main"
+  >
+    <div>
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        title="cappuccino"
+      >
+        <div
+          className="hero-half"
+        >
+          <div
+            className="backdrop"
+          >
+            <img
+              alt="heroimage"
+              src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+            />
+            <h1
+              className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+              id="display-1"
+            >
+              cappuccino
+            </h1>
+          </div>
+        </div>
+      </HeroArea>
+      ,
+      <div
+        className="recipe-info-wrapper"
+      >
+        <h6
+          className="lead text-capitalize "
+        >
+          posted by:
+          <span
+            className="bold"
+          >
+            test
+             
+          </span>
+           
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          Views: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          upvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          downvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+      </div>
+      <div
+        className="row flex-column recipe"
+      >
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper
+      d-flex"
+        >
+          <Ingredients
+            ingredients={Array []}
+          >
+            <List
+              className="ingredient-list-wrapper"
+              style={Object {}}
+            >
+              <div
+                className="col-12 ingredient-list-wrapper"
+                style={Object {}}
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
+            </List>
+          </Ingredients>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper
+       d-flex"
+        >
+          <Directions
+            directions={Array []}
+          >
+            <div
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
+          </Directions>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper
+      d-flex"
+        >
+          <div
+            className="d-flex align-items-start flex-column col-12"
+          >
+            <h5
+              className="display-4"
+            >
+              Reviews
+              <Button
+                Tag="button"
+                className="btn-secondary"
+                dataTarget="#modal"
+                dataToggle="modal"
+                handleClick={[Function]}
+                href=""
+                id="reviewBtn"
+                text="post a review"
+                type="button"
+              >
+                <button
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  data-target="#modal"
+                  data-toggle="modal"
+                  href=""
+                  id="reviewBtn"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  post a review
+                </button>
+              </Button>
+            </h5>
+            <Comments
+              comments={Array []}
+              createdAt=""
+              isLoading={false}
+            >
+              <div
+                className="col-12 "
+                style={
+                  Object {
+                    "minHeight": "63vh",
+                  }
+                }
+              >
+                <NotFound
+                  message="no review found"
+                >
+                  <div
+                    className="
+      display-3
+      text-uppercase
+      msg-display
+      no-margin
+      d-flex
+      flex-column
+   "
+                  >
+                    <h1
+                      className="not-found-text"
+                    >
+                      <i
+                        className="fa fa-meh-o"
+                      />
+                      <em>
+                        oops!
+                      </em>
+                      <br />
+                      no review found
+                    </h1>
+                  </div>
+                </NotFound>
+              </div>
+            </Comments>
+          </div>
+        </div>
+      </div>
+      <div
+        className="d-flex justify-content-around lead topbar flex-column
+      icon-bar"
+      >
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-up"
+          id="upvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-up"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-down"
+          id="downvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-down"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-heart-o fav"
+          id="toggleFav"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-heart-o fav"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-pencil"
+          id="edit"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-pencil"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+      </div>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="modal"
+      left={false}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={false}
+      rightBtnText="Post review"
+      title="Review"
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="modalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="modalLabel"
+              >
+                Review
+              </h5>
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            >
+              <ReduxForm
+                id={2}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</RecipeDetails>
+`;
+
+exports[`View Recipes Page component  upvote icon is clicked expected to upvote a recipe when state.upVote is false  1`] = `
+<RecipeDetails
+  actions={
+    Object {
+      "getRecipe": [Function],
+      "getReviews": [Function],
+      "getUser": [Function],
+      "getVotes": [Function],
+      "redirect": [Function],
+      "resetPageCount": [Function],
+      "resetRecipe": [Function],
+      "toggleFav": [Function],
+      "vote": [Function],
+    }
+  }
+  favRecipes={
+    Array [
+      Object {
+        "id": 1,
+      },
+    ]
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  match={
+    Object {
+      "params": Object {
+        "id": 2,
+      },
+    }
+  }
+  pageCount={0}
+  recipe={
+    Object {
+      "RecipeReviews": Array [
+        Object {
+          "RecipeId": 1,
+          "Reviewer": Object {
+            "email": "test.test@gmail.com",
+            "fullname": "test user ",
+            "id": 1,
+            "profilePix": "UNKNOWN",
+            "username": "test user",
+          },
+          "ReviewerId": 1,
+          "id": 50,
+          "review": "cool recipe",
+        },
+      ],
+      "category": "",
+      "directions": Array [],
+      "downVotes": 1,
+      "id": 2,
+      "ingredients": Array [],
+      "name": "cappuccino",
+      "owner": Object {
+        "email": "test.test@gmail.com",
+        "fullname": "test test ",
+        "id": 1,
+        "profilePix": "UNKNOWN",
+        "username": "test",
+      },
+      "upVotes": 1,
+      "views": 1,
+    }
+  }
+  requestCount={0}
+  statusCode={-1}
+  userId={1}
+  votes={Array []}
+>
+  <div
+    className="container-fluid no-padding main"
+  >
+    <div>
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        title="cappuccino"
+      >
+        <div
+          className="hero-half"
+        >
+          <div
+            className="backdrop"
+          >
+            <img
+              alt="heroimage"
+              src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+            />
+            <h1
+              className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+              id="display-1"
+            >
+              cappuccino
+            </h1>
+          </div>
+        </div>
+      </HeroArea>
+      ,
+      <div
+        className="recipe-info-wrapper"
+      >
+        <h6
+          className="lead text-capitalize "
+        >
+          posted by:
+          <span
+            className="bold"
+          >
+            test
+             
+          </span>
+           
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          Views: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          upvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          downvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+      </div>
+      <div
+        className="row flex-column recipe"
+      >
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper
+      d-flex"
+        >
+          <Ingredients
+            ingredients={Array []}
+          >
+            <List
+              className="ingredient-list-wrapper"
+              style={Object {}}
+            >
+              <div
+                className="col-12 ingredient-list-wrapper"
+                style={Object {}}
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
+            </List>
+          </Ingredients>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper
+       d-flex"
+        >
+          <Directions
+            directions={Array []}
+          >
+            <div
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
+          </Directions>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper
+      d-flex"
+        >
+          <div
+            className="d-flex align-items-start flex-column col-12"
+          >
+            <h5
+              className="display-4"
+            >
+              Reviews
+              <Button
+                Tag="button"
+                className="btn-secondary"
+                dataTarget="#modal"
+                dataToggle="modal"
+                handleClick={[Function]}
+                href=""
+                id="reviewBtn"
+                text="post a review"
+                type="button"
+              >
+                <button
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  data-target="#modal"
+                  data-toggle="modal"
+                  href=""
+                  id="reviewBtn"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  post a review
+                </button>
+              </Button>
+            </h5>
+            <Comments
+              comments={Array []}
+              createdAt=""
+              isLoading={false}
+            >
+              <div
+                className="col-12 "
+                style={
+                  Object {
+                    "minHeight": "63vh",
+                  }
+                }
+              >
+                <NotFound
+                  message="no review found"
+                >
+                  <div
+                    className="
+      display-3
+      text-uppercase
+      msg-display
+      no-margin
+      d-flex
+      flex-column
+   "
+                  >
+                    <h1
+                      className="not-found-text"
+                    >
+                      <i
+                        className="fa fa-meh-o"
+                      />
+                      <em>
+                        oops!
+                      </em>
+                      <br />
+                      no review found
+                    </h1>
+                  </div>
+                </NotFound>
+              </div>
+            </Comments>
+          </div>
+        </div>
+      </div>
+      <div
+        className="d-flex justify-content-around lead topbar flex-column
+      icon-bar"
+      >
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-up"
+          id="upvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-up"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-down"
+          id="downvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-down"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-heart-o fav"
+          id="toggleFav"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-heart-o fav"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-pencil"
+          id="edit"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-pencil"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+      </div>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="modal"
+      left={false}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={false}
+      rightBtnText="Post review"
+      title="Review"
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="modalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="modalLabel"
+              >
+                Review
+              </h5>
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            >
+              <ReduxForm
+                id={2}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
+  </div>
+</RecipeDetails>
+`;
+
+exports[`View Recipes Page component  upvote icon is clicked expected to upvote a recipe when state.upVote is false  2`] = `
+<RecipeDetails
+  actions={
+    Object {
+      "getRecipe": [Function],
+      "getReviews": [Function],
+      "getUser": [Function],
+      "getVotes": [Function],
+      "redirect": [Function],
+      "resetPageCount": [Function],
+      "resetRecipe": [Function],
+      "toggleFav": [Function],
+      "vote": [Function],
+    }
+  }
+  favRecipes={
+    Array [
+      Object {
+        "id": 1,
+      },
+    ]
+  }
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  match={
+    Object {
+      "params": Object {
+        "id": 2,
+      },
+    }
+  }
+  pageCount={0}
+  recipe={
+    Object {
+      "RecipeReviews": Array [
+        Object {
+          "RecipeId": 1,
+          "Reviewer": Object {
+            "email": "test.test@gmail.com",
+            "fullname": "test user ",
+            "id": 1,
+            "profilePix": "UNKNOWN",
+            "username": "test user",
+          },
+          "ReviewerId": 1,
+          "id": 50,
+          "review": "cool recipe",
+        },
+      ],
+      "category": "",
+      "directions": Array [],
+      "downVotes": 1,
+      "id": 2,
+      "ingredients": Array [],
+      "name": "cappuccino",
+      "owner": Object {
+        "email": "test.test@gmail.com",
+        "fullname": "test test ",
+        "id": 1,
+        "profilePix": "UNKNOWN",
+        "username": "test",
+      },
+      "upVotes": 1,
+      "views": 1,
+    }
+  }
+  requestCount={0}
+  statusCode={-1}
+  userId={1}
+  votes={Array []}
+>
+  <div
+    className="container-fluid no-padding main"
+  >
+    <div>
+      <HeroArea
+        image="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+        title="cappuccino"
+      >
+        <div
+          className="hero-half"
+        >
+          <div
+            className="backdrop"
+          >
+            <img
+              alt="heroimage"
+              src="https://res.cloudinary.com/resycom/image/upload/v1515305094/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+            />
+            <h1
+              className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+              id="display-1"
+            >
+              cappuccino
+            </h1>
+          </div>
+        </div>
+      </HeroArea>
+      ,
+      <div
+        className="recipe-info-wrapper"
+      >
+        <h6
+          className="lead text-capitalize "
+        >
+          posted by:
+          <span
+            className="bold"
+          >
+            test
+             
+          </span>
+           
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          Views: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          upvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+        <h6
+          className="lead text-capitalize "
+        >
+          downvotes: 
+          <span
+            className="bold"
+          >
+            1
+          </span>
+        </h6>
+      </div>
+      <div
+        className="row flex-column recipe"
+      >
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 ingredients-wrapper
+      d-flex"
+        >
+          <Ingredients
+            ingredients={Array []}
+          >
+            <List
+              className="ingredient-list-wrapper"
+              style={Object {}}
+            >
+              <div
+                className="col-12 ingredient-list-wrapper"
+                style={Object {}}
+              >
+                <h5
+                  className="display-4 w-100"
+                >
+                  Ingredients 
+                </h5>
+              </div>
+            </List>
+          </Ingredients>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 directions-wrapper
+       d-flex"
+        >
+          <Directions
+            directions={Array []}
+          >
+            <div
+              className="col-12 directions-list-wrapper"
+            >
+              <h5
+                className="display-4"
+              >
+                Directions 
+              </h5>
+            </div>
+          </Directions>
+        </div>
+        <div
+          className="col-xs-12 col-sm-12 col-md-10 col-lg-9 comments-wrapper
+      d-flex"
+        >
+          <div
+            className="d-flex align-items-start flex-column col-12"
+          >
+            <h5
+              className="display-4"
+            >
+              Reviews
+              <Button
+                Tag="button"
+                className="btn-secondary"
+                dataTarget="#modal"
+                dataToggle="modal"
+                handleClick={[Function]}
+                href=""
+                id="reviewBtn"
+                text="post a review"
+                type="button"
+              >
+                <button
+                  className="btn btn-secondary"
+                  data-dismiss="modal"
+                  data-target="#modal"
+                  data-toggle="modal"
+                  href=""
+                  id="reviewBtn"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  post a review
+                </button>
+              </Button>
+            </h5>
+            <Comments
+              comments={Array []}
+              createdAt=""
+              isLoading={false}
+            >
+              <div
+                className="col-12 "
+                style={
+                  Object {
+                    "minHeight": "63vh",
+                  }
+                }
+              >
+                <NotFound
+                  message="no review found"
+                >
+                  <div
+                    className="
+      display-3
+      text-uppercase
+      msg-display
+      no-margin
+      d-flex
+      flex-column
+   "
+                  >
+                    <h1
+                      className="not-found-text"
+                    >
+                      <i
+                        className="fa fa-meh-o"
+                      />
+                      <em>
+                        oops!
+                      </em>
+                      <br />
+                      no review found
+                    </h1>
+                  </div>
+                </NotFound>
+              </div>
+            </Comments>
+          </div>
+        </div>
+      </div>
+      <div
+        className="d-flex justify-content-around lead topbar flex-column
+      icon-bar"
+      >
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-up"
+          id="upvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-up"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-thumbs-o-down"
+          id="downvote"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-thumbs-o-down"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-heart-o fav"
+          id="toggleFav"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-heart-o fav"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+        <Icon
+          active=""
+          className=""
+          dataTarget=""
+          dataToggle=""
+          handleClick={[Function]}
+          iconClass="fa fa-pencil"
+          id="edit"
+          onMouseEnter={[Function]}
+          parentClass=""
+          pointer={false}
+          tip="hello"
+          toolTip={false}
+          toolTipId=""
+          toolTipPlace="bottom"
+          toolTipType="dark"
+        >
+          <div
+            className="icon-wrapper"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            <i
+              className="icon fa fa-pencil"
+              data-for=""
+              data-target=""
+              data-tip="hello"
+              data-toggle=""
+            >
+              <span />
+            </i>
+          </div>
+        </Icon>
+      </div>
+    </div>
+    <Modal
+      center={true}
+      closeBtnClicked={[Function]}
+      footer={false}
+      id="modal"
+      left={false}
+      leftBtnText=""
+      loading={false}
+      onContinueClicked={[Function]}
+      operationCompleted={false}
+      right={false}
+      rightBtnText="Post review"
+      title="Review"
+    >
+      <div
+        aria-hidden="true"
+        aria-labelledby="modalLabel"
+        className="modal fade"
+        data-backdrop="false"
+        data-show="true"
+        id="modal"
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div
+          className="modal-dialog"
+          role="document"
+        >
+          <div
+            className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+          >
+            <div
+              className="modal-header"
+            >
+              <h5
+                className="modal-title text-capitalize display-4"
+                id="modalLabel"
+              >
+                Review
+              </h5>
+              <button
+                aria-label="Close"
+                className="close"
+                data-dismiss="modal"
+                onClick={[Function]}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <div
+              className="modal-body"
+            >
+              <ReduxForm
+                id={2}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Modal>
   </div>
 </RecipeDetails>
 `;

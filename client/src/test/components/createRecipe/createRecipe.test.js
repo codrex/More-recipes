@@ -6,7 +6,7 @@ import { RECIPE_ADDED } from '../../../constants';
 
 const props = {
   resetRecipe: jest.fn(),
-  message: 'recipe modified',
+  message: '',
   getRecipe: jest.fn(),
   createRecipe: jest.fn(),
   resetSuccessMessage: jest.fn(),
@@ -19,6 +19,7 @@ const props = {
     upVotes: 0,
     downVotes: 0,
     image: {},
+    id: 1
   },
   history: { push: jest.fn() },
 };
@@ -29,23 +30,34 @@ describe('Create Recipe page component ', () => {
     wrapper = shallow(<PureCreateRecipe {...props} />);
   });
 
-  test('expected to match snapshot', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expected render create recipe page', () => {
     const tree = toJson(wrapper);
+    expect(wrapper.find('RecipeEditor').length).toBe(1);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
 
-  test('expected to match snapshot when message is received as props ', () => {
-    wrapper.setProps({ message: RECIPE_ADDED });
-    const tree = toJson(wrapper);
-    expect(tree).toMatchSnapshot();
-    expect(tree).toBeInstanceOf(Object);
-  });
+  test(`should navigate to recipe details page when recipe is successfully
+  created `, () => {
+      wrapper.setProps({ message: RECIPE_ADDED });
+      const tree = toJson(wrapper);
+      expect(tree).toMatchSnapshot();
+      expect(props.history.push).toHaveBeenCalledWith('/recipe/1');
+      expect(tree).toBeInstanceOf(Object);
+    });
 
-  test('should call createRecipe when postRecipe button is clicked', () => {
+  test('should post a recipe', () => {
     const tree = toJson(wrapper);
     wrapper.instance().postRecipe();
-    expect(props.createRecipe).toBeCalled();
+    expect(props.createRecipe).toHaveBeenCalledWith(props.recipe, RECIPE_ADDED);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });

@@ -1,6 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form component  expected to match snapshot 1`] = `
+exports[`Form component  should render a form component 1`] = `
+<Form
+  action=""
+  className=""
+  disabled={false}
+  handlePageClick={[Function]}
+  id="submit"
+  lg={true}
+  loading={false}
+  method=""
+  onSubmit={[Function]}
+  pageCount={5}
+  primary={false}
+  primaryInverse={false}
+  secondary={false}
+  secondaryInverse={false}
+  style={Object {}}
+  submitBtnText=""
+>
+  <form
+    action=""
+    className="col-12"
+    method=""
+    onSubmit={[Function]}
+    style={Object {}}
+  />
+</Form>
+`;
+
+exports[`Form component  should submit a form when submit event is triggered 1`] = `
 <Form
   action=""
   className=""

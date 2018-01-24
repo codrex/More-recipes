@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipes Display page component  expected to match snapshot  1`] = `
+exports[`Recipes Display page component  expected to render recipes display page  1`] = `
 <RecipesDisplay
   getRecipes={[Function]}
   history={
@@ -454,7 +454,461 @@ exports[`Recipes Display page component  expected to match snapshot  1`] = `
 </RecipesDisplay>
 `;
 
-exports[`Recipes Display page component  should call prop.toggleFav function when favourite icon is clicked 1`] = `
+exports[`Recipes Display page component  should call reset success action creator when component un-mounts 1`] = `
+<RecipesDisplay
+  getRecipes={[Function]}
+  history={
+    Object {
+      "push": [Function],
+    }
+  }
+  loading={false}
+  pageCount={0}
+  recipes={
+    Array [
+      Object {
+        "category": "drinks",
+        "downVotes": 1,
+        "id": 1,
+        "image": Object {},
+        "name": "cappuccino",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  resetPageCount={[Function]}
+  resetSuccess={[Function]}
+  store={
+    Object {
+      "store": [Function],
+    }
+  }
+  title=""
+  toggleFav={[Function]}
+  user={
+    Object {
+      "favRecipes": Array [
+        Object {
+          "id": 1,
+        },
+      ],
+      "id": 1,
+    }
+  }
+>
+  <div
+    className="container-fluid no-padding"
+    id="recipes"
+  >
+    <HeroArea
+      image="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
+      title=""
+    >
+      <div
+        className="hero-half"
+      >
+        <div
+          className="backdrop"
+        >
+          <img
+            alt="heroimage"
+            src="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
+          />
+          <h1
+            className="display-4
+          text-capitalize
+          col-11
+          bold
+          text-center
+          "
+            id="display-1"
+          />
+        </div>
+      </div>
+    </HeroArea>
+    <div
+      className="row recipes-board d-flex flex-column"
+    >
+      <div
+        className="bold
+                text-dark
+                d-flex
+                justify-content-between"
+        id="display-1"
+      >
+        <span
+          className="lead"
+        >
+          Total Recipes: 1
+        </span>
+      </div>
+      <RecipeGrid
+        history={
+          Object {
+            "push": [Function],
+          }
+        }
+        isUserFav={[Function]}
+        loading={false}
+        recipes={
+          Array [
+            Object {
+              "category": "drinks",
+              "downVotes": 1,
+              "id": 1,
+              "image": Object {},
+              "name": "cappuccino",
+              "upVotes": 1,
+              "views": 1,
+            },
+          ]
+        }
+        toggleFav={[Function]}
+      >
+        <ul
+          className="grid"
+        >
+          <li
+            className="card-wrapper"
+            key="1"
+          >
+            <RecipeCard
+              category="drinks"
+              downVotes={1}
+              image={Object {}}
+              index={0}
+              isFav={[Function]}
+              push={[Function]}
+              recipeId={1}
+              recipeName="cappuccino"
+              toggleFav={[Function]}
+              upVotes={1}
+              views={1}
+            >
+              <Animation
+                appear={true}
+                name="fade"
+                timeOut={600}
+              >
+                <CSSTransitionGroup
+                  transitionAppear={true}
+                  transitionAppearTimeout={600}
+                  transitionEnter={true}
+                  transitionEnterTimeout={600}
+                  transitionLeave={true}
+                  transitionLeaveTimeout={600}
+                  transitionName="fade"
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component="span"
+                    transitionAppear={true}
+                    transitionAppearTimeout={600}
+                    transitionEnter={true}
+                    transitionEnterTimeout={600}
+                    transitionLeave={true}
+                    transitionLeaveTimeout={600}
+                    transitionName="fade"
+                  >
+                    <span>
+                      <CSSTransitionGroupChild
+                        appear={true}
+                        appearTimeout={600}
+                        enter={true}
+                        enterTimeout={600}
+                        key=".0"
+                        leave={true}
+                        leaveTimeout={600}
+                        name="fade"
+                      >
+                        <div
+                          className="recipe-card"
+                          key=".0"
+                        >
+                          <div
+                            className="recipe-card-body"
+                          >
+                            <Image
+                              className="recipe-card-img"
+                              cloudName="resycom"
+                              crop="fill"
+                              height="250"
+                              publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                              width="400"
+                            >
+                              <img
+                                className="recipe-card-img"
+                                height="250"
+                                src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
+                                width="400"
+                              />
+                            </Image>
+                            <div
+                              className="recipe-card-underlay"
+                            >
+                              <p
+                                className="lead text-capitalize"
+                              >
+                                drinks
+                              </p>
+                              <Button
+                                Tag="button"
+                                className="recipe-card-underlay-btn"
+                                dataTarget=""
+                                dataToggle=""
+                                handleClick={[Function]}
+                                href=""
+                                id="view-details-btn-0"
+                                text="view details"
+                                type="button"
+                              >
+                                <button
+                                  className="btn recipe-card-underlay-btn"
+                                  data-dismiss="modal"
+                                  data-target=""
+                                  data-toggle=""
+                                  href=""
+                                  id="view-details-btn-0"
+                                  onClick={[Function]}
+                                  type="button"
+                                >
+                                  view details
+                                </button>
+                              </Button>
+                            </div>
+                          </div>
+                          <div
+                            className="recipe-card-footer"
+                          >
+                            <h4
+                              className="ellipsis"
+                            >
+                              cappuccino
+                            </h4>
+                            <div
+                              className="d-flex col-12 no-padding justify-content-between"
+                            >
+                              <div
+                                className="d-flex col-8 no-padding"
+                              >
+                                <Icon
+                                  active=""
+                                  className=""
+                                  dataTarget=""
+                                  dataToggle=""
+                                  handleClick={[Function]}
+                                  iconClass="fa fa-thumbs-up recipe-card-icon "
+                                  onMouseEnter={[Function]}
+                                  parentClass=""
+                                  pointer={false}
+                                  tip="Total Upvotes: 1"
+                                  toolTip={true}
+                                  toolTipId="1upvote"
+                                  toolTipPlace="bottom"
+                                  toolTipType="dark"
+                                >
+                                  <div
+                                    className="icon-wrapper"
+                                    onClick={[Function]}
+                                    onMouseEnter={[Function]}
+                                    role="button"
+                                    tabIndex="0"
+                                  >
+                                    <i
+                                      className="icon fa fa-thumbs-up recipe-card-icon "
+                                      data-for="1upvote"
+                                      data-target=""
+                                      data-tip="Total Upvotes: 1"
+                                      data-toggle=""
+                                    >
+                                      <span>
+                                        1
+                                      </span>
+                                    </i>
+                                    <ReactTooltip
+                                      effect="solid"
+                                      id="1upvote"
+                                      insecure={true}
+                                      place="bottom"
+                                      resizeHide={true}
+                                      type="dark"
+                                      wrapper="div"
+                                    >
+                                      <div
+                                        className="__react_component_tooltip place-top type-dark "
+                                        data-id="tooltip"
+                                      />
+                                    </ReactTooltip>
+                                  </div>
+                                </Icon>
+                                <Icon
+                                  active=""
+                                  className=""
+                                  dataTarget=""
+                                  dataToggle=""
+                                  handleClick={[Function]}
+                                  iconClass="fa fa-thumbs-down recipe-card-icon "
+                                  onMouseEnter={[Function]}
+                                  parentClass=""
+                                  pointer={false}
+                                  tip="Total Downvotes: 1"
+                                  toolTip={true}
+                                  toolTipId="1downvote"
+                                  toolTipPlace="bottom"
+                                  toolTipType="dark"
+                                >
+                                  <div
+                                    className="icon-wrapper"
+                                    onClick={[Function]}
+                                    onMouseEnter={[Function]}
+                                    role="button"
+                                    tabIndex="0"
+                                  >
+                                    <i
+                                      className="icon fa fa-thumbs-down recipe-card-icon "
+                                      data-for="1downvote"
+                                      data-target=""
+                                      data-tip="Total Downvotes: 1"
+                                      data-toggle=""
+                                    >
+                                      <span>
+                                        1
+                                      </span>
+                                    </i>
+                                    <ReactTooltip
+                                      effect="solid"
+                                      id="1downvote"
+                                      insecure={true}
+                                      place="bottom"
+                                      resizeHide={true}
+                                      type="dark"
+                                      wrapper="div"
+                                    >
+                                      <div
+                                        className="__react_component_tooltip place-top type-dark "
+                                        data-id="tooltip"
+                                      />
+                                    </ReactTooltip>
+                                  </div>
+                                </Icon>
+                                <Icon
+                                  active=""
+                                  className=""
+                                  dataTarget=""
+                                  dataToggle=""
+                                  handleClick={[Function]}
+                                  iconClass="fa fa-eye recipe-card-icon"
+                                  onMouseEnter={[Function]}
+                                  parentClass=""
+                                  pointer={false}
+                                  tip="Total Number of Views: 1"
+                                  toolTip={true}
+                                  toolTipId="1views"
+                                  toolTipPlace="bottom"
+                                  toolTipType="dark"
+                                >
+                                  <div
+                                    className="icon-wrapper"
+                                    onClick={[Function]}
+                                    onMouseEnter={[Function]}
+                                    role="button"
+                                    tabIndex="0"
+                                  >
+                                    <i
+                                      className="icon fa fa-eye recipe-card-icon"
+                                      data-for="1views"
+                                      data-target=""
+                                      data-tip="Total Number of Views: 1"
+                                      data-toggle=""
+                                    >
+                                      <span>
+                                        1
+                                      </span>
+                                    </i>
+                                    <ReactTooltip
+                                      effect="solid"
+                                      id="1views"
+                                      insecure={true}
+                                      place="bottom"
+                                      resizeHide={true}
+                                      type="dark"
+                                      wrapper="div"
+                                    >
+                                      <div
+                                        className="__react_component_tooltip place-top type-dark "
+                                        data-id="tooltip"
+                                      />
+                                    </ReactTooltip>
+                                  </div>
+                                </Icon>
+                              </div>
+                              <Icon
+                                active=""
+                                className=""
+                                dataTarget=""
+                                dataToggle=""
+                                handleClick={[Function]}
+                                iconClass="fa recipe-card-icon fav-color fav fa-heart"
+                                onMouseEnter={[Function]}
+                                parentClass=""
+                                pointer={true}
+                                tip="Remove from favourites"
+                                toolTip={true}
+                                toolTipId="1fav"
+                                toolTipPlace="bottom"
+                                toolTipType="dark"
+                              >
+                                <div
+                                  className="icon-wrapper pointer"
+                                  onClick={[Function]}
+                                  onMouseEnter={[Function]}
+                                  role="button"
+                                  tabIndex="0"
+                                >
+                                  <i
+                                    className="icon fa recipe-card-icon fav-color fav fa-heart"
+                                    data-for="1fav"
+                                    data-target=""
+                                    data-tip="Remove from favourites"
+                                    data-toggle=""
+                                  >
+                                    <span />
+                                  </i>
+                                  <ReactTooltip
+                                    effect="solid"
+                                    id="1fav"
+                                    insecure={true}
+                                    place="bottom"
+                                    resizeHide={true}
+                                    type="dark"
+                                    wrapper="div"
+                                  >
+                                    <div
+                                      className="__react_component_tooltip place-top type-dark "
+                                      data-id="tooltip"
+                                    />
+                                  </ReactTooltip>
+                                </div>
+                              </Icon>
+                            </div>
+                          </div>
+                        </div>
+                      </CSSTransitionGroupChild>
+                    </span>
+                  </TransitionGroup>
+                </CSSTransitionGroup>
+              </Animation>
+            </RecipeCard>
+          </li>
+        </ul>
+      </RecipeGrid>
+    </div>
+  </div>
+</RecipesDisplay>
+`;
+
+exports[`Recipes Display page component  should remove recipe from favourites when favourite icon is clicked 1`] = `
 <RecipesDisplay
   getRecipes={[Function]}
   history={
@@ -1119,513 +1573,7 @@ exports[`Recipes Display page component  should call prop.toggleFav function whe
 </RecipesDisplay>
 `;
 
-exports[`Recipes Display page component  should call resetSuccess function when component un-mounts 1`] = `
-<RecipesDisplay
-  getRecipes={[Function]}
-  history={
-    Object {
-      "push": [Function],
-    }
-  }
-  loading={false}
-  pageCount={0}
-  recipes={
-    Array [
-      Object {
-        "category": "drinks",
-        "downVotes": 1,
-        "id": 1,
-        "image": Object {},
-        "name": "cappuccino",
-        "upVotes": 1,
-        "views": 1,
-      },
-    ]
-  }
-  resetPageCount={[Function]}
-  resetSuccess={[Function]}
-  store={
-    Object {
-      "store": [Function],
-    }
-  }
-  title=""
-  toggleFav={[Function]}
-  user={
-    Object {
-      "favRecipes": Array [
-        Object {
-          "id": 1,
-        },
-      ],
-      "id": 1,
-    }
-  }
->
-  <div
-    className="container-fluid no-padding"
-    id="recipes"
-  >
-    <HeroArea
-      image="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
-      title=""
-    >
-      <div
-        className="hero-half"
-      >
-        <div
-          className="backdrop"
-        >
-          <img
-            alt="heroimage"
-            src="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
-          />
-          <h1
-            className="display-4
-          text-capitalize
-          col-11
-          bold
-          text-center
-          "
-            id="display-1"
-          />
-        </div>
-      </div>
-    </HeroArea>
-    <div
-      className="row recipes-board d-flex flex-column"
-    >
-      <div
-        className="bold
-                text-dark
-                d-flex
-                justify-content-between"
-        id="display-1"
-      >
-        <span
-          className="lead"
-        >
-          Total Recipes: 1
-        </span>
-      </div>
-      <RecipeGrid
-        history={
-          Object {
-            "push": [Function],
-          }
-        }
-        isUserFav={[Function]}
-        loading={false}
-        recipes={
-          Array [
-            Object {
-              "category": "drinks",
-              "downVotes": 1,
-              "id": 1,
-              "image": Object {},
-              "name": "cappuccino",
-              "upVotes": 1,
-              "views": 1,
-            },
-          ]
-        }
-        toggleFav={[Function]}
-      >
-        <ul
-          className="grid"
-        >
-          <li
-            className="card-wrapper"
-            key="1"
-          >
-            <RecipeCard
-              category="drinks"
-              downVotes={1}
-              image={Object {}}
-              index={0}
-              isFav={[Function]}
-              push={[Function]}
-              recipeId={1}
-              recipeName="cappuccino"
-              toggleFav={[Function]}
-              upVotes={1}
-              views={1}
-            >
-              <Animation
-                appear={true}
-                name="fade"
-                timeOut={600}
-              >
-                <CSSTransitionGroup
-                  transitionAppear={true}
-                  transitionAppearTimeout={600}
-                  transitionEnter={true}
-                  transitionEnterTimeout={600}
-                  transitionLeave={true}
-                  transitionLeaveTimeout={600}
-                  transitionName="fade"
-                >
-                  <TransitionGroup
-                    childFactory={[Function]}
-                    component="span"
-                    transitionAppear={true}
-                    transitionAppearTimeout={600}
-                    transitionEnter={true}
-                    transitionEnterTimeout={600}
-                    transitionLeave={true}
-                    transitionLeaveTimeout={600}
-                    transitionName="fade"
-                  >
-                    <span>
-                      <CSSTransitionGroupChild
-                        appear={true}
-                        appearTimeout={600}
-                        enter={true}
-                        enterTimeout={600}
-                        key=".0"
-                        leave={true}
-                        leaveTimeout={600}
-                        name="fade"
-                      >
-                        <div
-                          className="recipe-card"
-                          key=".0"
-                        >
-                          <div
-                            className="recipe-card-body"
-                          >
-                            <Image
-                              className="recipe-card-img"
-                              cloudName="resycom"
-                              crop="fill"
-                              height="250"
-                              publicId="recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-                              width="400"
-                            >
-                              <img
-                                className="recipe-card-img"
-                                height="250"
-                                src="http://res.cloudinary.com/resycom/image/upload/c_fill,h_250,w_400/recipe-card-placeholder_ta9ikp_iebsf2.jpg"
-                                width="400"
-                              />
-                            </Image>
-                            <div
-                              className="recipe-card-underlay"
-                            >
-                              <p
-                                className="lead text-capitalize"
-                              >
-                                drinks
-                              </p>
-                              <Button
-                                Tag="button"
-                                className="recipe-card-underlay-btn"
-                                dataTarget=""
-                                dataToggle=""
-                                handleClick={[Function]}
-                                href=""
-                                id="view-details-btn-0"
-                                text="view details"
-                                type="button"
-                              >
-                                <button
-                                  className="btn recipe-card-underlay-btn"
-                                  data-dismiss="modal"
-                                  data-target=""
-                                  data-toggle=""
-                                  href=""
-                                  id="view-details-btn-0"
-                                  onClick={[Function]}
-                                  type="button"
-                                >
-                                  view details
-                                </button>
-                              </Button>
-                            </div>
-                          </div>
-                          <div
-                            className="recipe-card-footer"
-                          >
-                            <h4
-                              className="ellipsis"
-                            >
-                              cappuccino
-                            </h4>
-                            <div
-                              className="d-flex col-12 no-padding justify-content-between"
-                            >
-                              <div
-                                className="d-flex col-8 no-padding"
-                              >
-                                <Icon
-                                  active=""
-                                  className=""
-                                  dataTarget=""
-                                  dataToggle=""
-                                  handleClick={[Function]}
-                                  iconClass="fa fa-thumbs-up recipe-card-icon "
-                                  onMouseEnter={[Function]}
-                                  parentClass=""
-                                  pointer={false}
-                                  tip="Total Upvotes: 1"
-                                  toolTip={true}
-                                  toolTipId="1upvote"
-                                  toolTipPlace="bottom"
-                                  toolTipType="dark"
-                                >
-                                  <div
-                                    className="icon-wrapper"
-                                    onClick={[Function]}
-                                    onMouseEnter={[Function]}
-                                    role="button"
-                                    tabIndex="0"
-                                  >
-                                    <i
-                                      className="icon fa fa-thumbs-up recipe-card-icon "
-                                      data-for="1upvote"
-                                      data-target=""
-                                      data-tip="Total Upvotes: 1"
-                                      data-toggle=""
-                                    >
-                                      <span>
-                                        1
-                                      </span>
-                                    </i>
-                                    <ReactTooltip
-                                      effect="solid"
-                                      id="1upvote"
-                                      insecure={true}
-                                      place="bottom"
-                                      resizeHide={true}
-                                      type="dark"
-                                      wrapper="div"
-                                    >
-                                      <div
-                                        className="__react_component_tooltip place-top type-dark "
-                                        data-id="tooltip"
-                                      />
-                                    </ReactTooltip>
-                                  </div>
-                                </Icon>
-                                <Icon
-                                  active=""
-                                  className=""
-                                  dataTarget=""
-                                  dataToggle=""
-                                  handleClick={[Function]}
-                                  iconClass="fa fa-thumbs-down recipe-card-icon "
-                                  onMouseEnter={[Function]}
-                                  parentClass=""
-                                  pointer={false}
-                                  tip="Total Downvotes: 1"
-                                  toolTip={true}
-                                  toolTipId="1downvote"
-                                  toolTipPlace="bottom"
-                                  toolTipType="dark"
-                                >
-                                  <div
-                                    className="icon-wrapper"
-                                    onClick={[Function]}
-                                    onMouseEnter={[Function]}
-                                    role="button"
-                                    tabIndex="0"
-                                  >
-                                    <i
-                                      className="icon fa fa-thumbs-down recipe-card-icon "
-                                      data-for="1downvote"
-                                      data-target=""
-                                      data-tip="Total Downvotes: 1"
-                                      data-toggle=""
-                                    >
-                                      <span>
-                                        1
-                                      </span>
-                                    </i>
-                                    <ReactTooltip
-                                      effect="solid"
-                                      id="1downvote"
-                                      insecure={true}
-                                      place="bottom"
-                                      resizeHide={true}
-                                      type="dark"
-                                      wrapper="div"
-                                    >
-                                      <div
-                                        className="__react_component_tooltip place-top type-dark "
-                                        data-id="tooltip"
-                                      />
-                                    </ReactTooltip>
-                                  </div>
-                                </Icon>
-                                <Icon
-                                  active=""
-                                  className=""
-                                  dataTarget=""
-                                  dataToggle=""
-                                  handleClick={[Function]}
-                                  iconClass="fa fa-eye recipe-card-icon"
-                                  onMouseEnter={[Function]}
-                                  parentClass=""
-                                  pointer={false}
-                                  tip="Total Number of Views: 1"
-                                  toolTip={true}
-                                  toolTipId="1views"
-                                  toolTipPlace="bottom"
-                                  toolTipType="dark"
-                                >
-                                  <div
-                                    className="icon-wrapper"
-                                    onClick={[Function]}
-                                    onMouseEnter={[Function]}
-                                    role="button"
-                                    tabIndex="0"
-                                  >
-                                    <i
-                                      className="icon fa fa-eye recipe-card-icon"
-                                      data-for="1views"
-                                      data-target=""
-                                      data-tip="Total Number of Views: 1"
-                                      data-toggle=""
-                                    >
-                                      <span>
-                                        1
-                                      </span>
-                                    </i>
-                                    <ReactTooltip
-                                      effect="solid"
-                                      id="1views"
-                                      insecure={true}
-                                      place="bottom"
-                                      resizeHide={true}
-                                      type="dark"
-                                      wrapper="div"
-                                    >
-                                      <div
-                                        className="__react_component_tooltip place-top type-dark "
-                                        data-id="tooltip"
-                                      />
-                                    </ReactTooltip>
-                                  </div>
-                                </Icon>
-                              </div>
-                              <Icon
-                                active=""
-                                className=""
-                                dataTarget=""
-                                dataToggle=""
-                                handleClick={[Function]}
-                                iconClass="fa recipe-card-icon fav-color fav fa-heart"
-                                onMouseEnter={[Function]}
-                                parentClass=""
-                                pointer={true}
-                                tip="Remove from favourites"
-                                toolTip={true}
-                                toolTipId="1fav"
-                                toolTipPlace="bottom"
-                                toolTipType="dark"
-                              >
-                                <div
-                                  className="icon-wrapper pointer"
-                                  onClick={[Function]}
-                                  onMouseEnter={[Function]}
-                                  role="button"
-                                  tabIndex="0"
-                                >
-                                  <i
-                                    className="icon fa recipe-card-icon fav-color fav fa-heart"
-                                    data-for="1fav"
-                                    data-target=""
-                                    data-tip="Remove from favourites"
-                                    data-toggle=""
-                                  >
-                                    <span />
-                                  </i>
-                                  <ReactTooltip
-                                    effect="solid"
-                                    id="1fav"
-                                    insecure={true}
-                                    place="bottom"
-                                    resizeHide={true}
-                                    type="dark"
-                                    wrapper="div"
-                                  >
-                                    <div
-                                      className="__react_component_tooltip place-top type-dark "
-                                      data-id="tooltip"
-                                    />
-                                  </ReactTooltip>
-                                </div>
-                              </Icon>
-                            </div>
-                          </div>
-                        </div>
-                      </CSSTransitionGroupChild>
-                    </span>
-                  </TransitionGroup>
-                </CSSTransitionGroup>
-              </Animation>
-            </RecipeCard>
-          </li>
-        </ul>
-      </RecipeGrid>
-    </div>
-  </div>
-</RecipesDisplay>
-`;
-
-exports[`Recipes Display page component  should call setState when component receive recipes as props 1`] = `
-<div
-  className="container-fluid no-padding"
-  id="recipes"
->
-  <HeroArea
-    image="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
-    title=""
-  />
-  <div
-    className="row recipes-board d-flex flex-column"
-  >
-    <div
-      className="bold
-                text-dark
-                d-flex
-                justify-content-between"
-      id="display-1"
-    >
-      <span
-        className="lead"
-      >
-        Total Recipes: 1
-      </span>
-    </div>
-    <RecipeGrid
-      history={
-        Object {
-          "push": [Function],
-        }
-      }
-      isUserFav={[Function]}
-      loading={false}
-      recipes={
-        Array [
-          Object {
-            "category": "drinks",
-            "downVotes": 1,
-            "id": 1,
-            "image": Object {},
-            "name": "cappuccino",
-            "upVotes": 1,
-            "views": 1,
-          },
-        ]
-      }
-      toggleFav={[Function]}
-    />
-  </div>
-</div>
-`;
-
-exports[`Recipes Display page component  should render NotFound component when recipes equal [] 1`] = `
+exports[`Recipes Display page component  should render NotFound component when there is not recipe on the list 1`] = `
 <RecipesDisplay
   getRecipes={[Function]}
   history={
@@ -1732,7 +1680,7 @@ exports[`Recipes Display page component  should render NotFound component when r
 </RecipesDisplay>
 `;
 
-exports[`Recipes Display page component  should render a Loader component when props.loading is true  1`] = `
+exports[`Recipes Display page component  should render a Loader component when there is an active ajax request 1`] = `
 <RecipesDisplay
   getRecipes={[Function]}
   history={
@@ -1858,4 +1806,56 @@ exports[`Recipes Display page component  should render a Loader component when p
     </div>
   </div>
 </RecipesDisplay>
+`;
+
+exports[`Recipes Display page component  should set state when component receive recipes as props 1`] = `
+<div
+  className="container-fluid no-padding"
+  id="recipes"
+>
+  <HeroArea
+    image="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
+    title=""
+  />
+  <div
+    className="row recipes-board d-flex flex-column"
+  >
+    <div
+      className="bold
+                text-dark
+                d-flex
+                justify-content-between"
+      id="display-1"
+    >
+      <span
+        className="lead"
+      >
+        Total Recipes: 1
+      </span>
+    </div>
+    <RecipeGrid
+      history={
+        Object {
+          "push": [Function],
+        }
+      }
+      isUserFav={[Function]}
+      loading={false}
+      recipes={
+        Array [
+          Object {
+            "category": "drinks",
+            "downVotes": 1,
+            "id": 1,
+            "image": Object {},
+            "name": "cappuccino",
+            "upVotes": 1,
+            "views": 1,
+          },
+        ]
+      }
+      toggleFav={[Function]}
+    />
+  </div>
+</div>
 `;

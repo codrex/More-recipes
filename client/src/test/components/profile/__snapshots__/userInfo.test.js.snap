@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserInfo component  expected to match snapshot 1`] = `
+exports[`UserInfo component  expected to render user info component 1`] = `
 <div
   className="info-wrapper
       mr-auto

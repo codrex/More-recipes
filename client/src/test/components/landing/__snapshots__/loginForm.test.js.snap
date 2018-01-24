@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`login form component  expected to match snapshot  1`] = `
+exports[`login form component  should render a login form 1`] = `
 <Form
   action=""
   className=""

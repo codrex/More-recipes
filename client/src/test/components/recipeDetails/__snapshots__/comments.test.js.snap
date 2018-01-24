@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Comments display component  expected to match snapshot 1`] = `
+exports[`Comments display component  expected to render a list of comment 1`] = `
 <Comments
   comments={
     Array [
@@ -8,7 +8,7 @@ exports[`Comments display component  expected to match snapshot 1`] = `
         "RecipeId": 1,
         "ReviewerId": 1,
         "createdAt": "",
-        "id": 50,
+        "id": 1,
         "review": "cool recipe",
         "reviewer": Object {
           "email": "test.test@gmail.com",
@@ -22,6 +22,7 @@ exports[`Comments display component  expected to match snapshot 1`] = `
   }
   createdAt=""
   isLoading={true}
+  loading={false}
 >
   <div
     className="col-12 "
@@ -35,7 +36,7 @@ exports[`Comments display component  expected to match snapshot 1`] = `
       createdAt=""
       fullname="test user "
       index={0}
-      key="50"
+      key="1"
       review="cool recipe"
       username="testuser"
     >

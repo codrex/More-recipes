@@ -1,96 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sign up form component  expected to match snapshot  1`] = `
-<form
+exports[`sign up form component  should render a signup form 1`] = `
+<Form
   action=""
-  className="col-12"
+  className=""
+  disabled={false}
+  id="submit"
+  lg={true}
   method=""
   onSubmit={[Function]}
+  primary={false}
+  primaryInverse={false}
+  secondary={true}
+  secondaryInverse={false}
   style={Object {}}
+  submitBtnText="Register"
 >
-  <div
-    className="form-group"
-  >
-    <input
-      aria-describedby="username"
-      autoComplete="false"
-      className="form-control text-input"
-      id="username"
-      name="username"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onDragStart={[Function]}
-      onDrop={[Function]}
-      onFocus={[Function]}
-      placeholder="Enter username"
-      type="text"
-      value=""
-    />
-  </div>
-  <div
-    className="form-group"
-  >
-    <input
-      aria-describedby="fullname"
-      autoComplete="false"
-      className="form-control text-input"
-      id="fullname"
-      name="fullname"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onDragStart={[Function]}
-      onDrop={[Function]}
-      onFocus={[Function]}
-      placeholder="Enter fullname"
-      type="text"
-      value=""
-    />
-  </div>
-  <div
-    className="form-group"
-  >
-    <input
-      aria-describedby="email"
-      autoComplete="false"
-      className="form-control text-input"
-      id="email"
-      name="email"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onDragStart={[Function]}
-      onDrop={[Function]}
-      onFocus={[Function]}
-      placeholder="Enter email"
-      type="email"
-      value=""
-    />
-  </div>
-  <div
-    className="form-group"
-  >
-    <input
-      aria-describedby="password"
-      autoComplete="false"
-      className="form-control text-input"
-      id="password"
-      name="password"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onDragStart={[Function]}
-      onDrop={[Function]}
-      onFocus={[Function]}
-      placeholder="Enter password"
-      type="password"
-      value=""
-    />
-  </div>
-  <button
-    className="btn text-capitalize w-100 btn-secondary btn-lg"
-    disabled={false}
-    id="submit"
-    type="submit"
-  >
-    Register
-  </button>
-</form>
+  <Field
+    component={[Function]}
+    id="username"
+    name="username"
+    placeholder="Enter username"
+    type="text"
+    validate={[Function]}
+  />
+  <Field
+    component={[Function]}
+    id="fullname"
+    name="fullname"
+    placeholder="Enter fullname"
+    type="text"
+    validate={[Function]}
+  />
+  <Field
+    component={[Function]}
+    id="email"
+    name="email"
+    placeholder="Enter email"
+    type="email"
+    validate={[Function]}
+  />
+  <Field
+    component={[Function]}
+    id="password"
+    name="password"
+    placeholder="Enter password"
+    type="password"
+    validate={[Function]}
+  />
+</Form>
 `;

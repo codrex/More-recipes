@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import renderer from 'react-test-renderer';
+import toJson from 'enzyme-to-json';
 import Ingredients from '../../../components/pages/RecipeDetails/Ingredients';
 
 const props = {
@@ -8,9 +8,10 @@ const props = {
 };
 
 describe('Ingredients display component ', () => {
-  test('expected to match snapshot', () => {
-    const component = renderer.create(<Ingredients {...props} />);
-    const tree = component.toJSON();
+  test('should render a list of recipe ingredient', () => {
+    const component = mount(<Ingredients {...props} />);
+    const tree = toJson(component);
+    expect(component.find('ListItem').length).toBe(3);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });

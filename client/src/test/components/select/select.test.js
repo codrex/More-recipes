@@ -9,7 +9,15 @@ const props = {
 };
 
 describe('Select component ', () => {
-  test('expected to match snapshot when externalError is passed in as props',
+  test('expected to render select component', () => {
+    const component = mount(
+      <Select {...props} />
+    );
+    const tree = toJson(component);
+    expect(tree).toMatchSnapshot();
+  });
+
+  test('expected to render with error when externalError is passed in',
     () => {
       const externalError = {
         error: ['error'],
@@ -19,17 +27,19 @@ describe('Select component ', () => {
         <Select {...props} externalError={externalError} />
       );
       const tree = toJson(component);
+      expect(component.find('.help-text').length).toBe(1);
       expect(tree).toMatchSnapshot();
     });
 
-  test('expected to match snapshot when props.meta is passed in as props',
+  test('expected to render with error when props.meta is passed in',
     () => {
       const meta = {
-        error: [],
+        error: ['error'],
         touched: true
       };
       const component = mount(<Select {...props} meta={meta} />);
       const tree = toJson(component);
+      expect(component.find('.help-text').length).toBe(1);
       expect(tree).toMatchSnapshot();
     });
 });

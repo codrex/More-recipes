@@ -6,7 +6,7 @@ module.exports = {
     baseUrl = client.globals.baseUrl;
   },
 
-  'Render recipes details page': (client) => {
+  'Recipes details page': (client) => {
     client
       .url(`${baseUrl}login`)
       .waitForElementVisible('#modal', 5000)
@@ -32,6 +32,14 @@ module.exports = {
         document.querySelector('#reviewBtn').click();
       })
       .waitForElementVisible('#modal', 1000)
+      .pause(1000)
+      .execute(function () {
+        document.querySelector('#submit').click();
+      })
+      .pause(1000)
+      .elements('css selector', '.help-text', function (result) {
+        this.assert.equal(result.value.length, 1);
+      })
       .pause(1000)
       .setValue('#reviewTextarea', 'I love this recipe')
       .pause(1000)
@@ -65,6 +73,18 @@ module.exports = {
       })
       .pause(1000)
       .waitForElementVisible('.icon.fa.fa-heart.fav', 3000)
-      .end();
+      .assert.visible('.icon.fa.fa-heart.fav');
   },
+
+  'When user attempts to view a non-existent recipe ': (client) => {
+    client
+      .url(`${baseUrl}recipe/40`)
+      .pause(2000)
+      .assert.visible('.not-found-text')
+      .url(`${baseUrl}recipe/40kkjjkgjf`)
+      .pause(2000)
+      .assert.visible('.not-found-text')
+      .pause(3000)
+      .end();
+  }
 };

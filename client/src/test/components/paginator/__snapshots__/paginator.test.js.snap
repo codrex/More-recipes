@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Paginator component  expected to match snapshot 1`] = `
+exports[`Paginator component  should render a pagination component 1`] = `
 <nav
   aria-label="Page navigation"
   className="d-flex justify-content-center col-12 "

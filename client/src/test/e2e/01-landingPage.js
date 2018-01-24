@@ -7,7 +7,7 @@ module.exports = {
 
   'Render landing page': (client) => {
     client
-      .pause(20000)
+      .pause(10000)
       .url('http://localhost:9000')
       .assert.title('MoreRecipes')
       .assert.visible('#login')
@@ -15,27 +15,66 @@ module.exports = {
       .assert.visible('#login-nav-link')
       .assert.visible('#create-account-nav-link');
   },
-  'navigate to the login page': function (client) {
+  'user registration': function (client) {
     client
-      .url('http://localhost:9000')
-      .waitForElementVisible('body', 1000)
+      .url('http://localhost:9000/create-account')
+      .waitForElementVisible('#modal', 1000)
+      .pause(1000)
       .execute(function () {
-        document.querySelector('#login').click();
+        document.querySelector('#submit').click();
       })
-      .assert.urlEquals('http://localhost:9000/login')
-      .pause(500)
+      .elements('css selector', '.help-text', function (result) {
+        this.assert.equal(result.value.length, 5);
+      })
+      .setValue('input#username', 'kk')
+      .pause(1000)
+      .clearValue('input#username')
+      .setValue('input#username', user.username)
       .execute(function () {
-        document.querySelector('.close').click();
+        document.querySelector('#submit').click();
       })
-      .assert.urlEquals('http://localhost:9000/')
-      .pause(500)
+      .elements('css selector', '.help-text', function (result) {
+        this.assert.equal(result.value.length, 4);
+      })
+      .pause(1000)
+      .setValue('input#fullname', 'name')
+      .pause(1000)
+      .clearValue('input#fullname')
+      .setValue('input#fullname', user.name)
       .execute(function () {
-        document.querySelector('#login').click();
+        document.querySelector('#submit').click();
       })
-      .assert.urlEquals('http://localhost:9000/login')
+      .elements('css selector', '.help-text', function (result) {
+        this.assert.equal(result.value.length, 2);
+      })
+      .pause(1000)
+      .setValue('input#email', 'email.com')
+      .pause(1000)
+      .clearValue('input#email')
+      .setValue('input#email', user.email)
+      .execute(function () {
+        document.querySelector('#submit').click();
+      })
+      .elements('css selector', '.help-text', function (result) {
+        this.assert.equal(result.value.length, 1);
+      })
+      .pause(1000)
+      .pause(1000)
+      .setValue('input#password', 'ema')
+      .pause(1000)
+      .clearValue('input#password')
+      .setValue('input#password', user.password)
+      .execute(function () {
+        document.querySelector('#submit').click();
+      })
+      .elements('css selector', '.help-text', function (result) {
+        this.assert.equal(result.value.length, 0);
+      })
+      .pause(1000)
+      .assert.urlEquals('http://localhost:9000/recipes')
       .end();
   },
-  'user attempt to submit an empty form': function (client) {
+  'user login': function (client) {
     client
       .url('http://localhost:9000/login')
       .waitForElementVisible('#modal', 1000)
@@ -44,53 +83,35 @@ module.exports = {
       .execute(function () {
         document.querySelector('#submit').click();
       })
-      .assert.visible('.help-text')
-      .pause(500)
-      .end();
-  },
-  'user attempt to login with an invalid credential': function (client) {
-    client
-      .url('http://localhost:9000/login')
-      .waitForElementVisible('#modal', 2000)
+      .elements('css selector', '.help-text', function (result) {
+        this.assert.equal(result.value.length, 2);
+      })
+      .pause(1000)
+      .clearValue('input#username')
+      .clearValue('input#password')
+      .pause(1000)
       .setValue('input#username', 'invalid')
+      .setValue('input#password', user.password)
+      .execute(function () {
+        document.querySelector('#submit').click();
+      })
+      .pause(1000)
+      .assert.visible('#toast-container')
+      .pause(3000)
+      .clearValue('input#username')
+      .clearValue('input#password')
+      .pause(1000)
+      .setValue('input#username', user.username)
       .setValue('input#password', '00000000')
       .execute(function () {
         document.querySelector('#submit').click();
       })
       .pause(1000)
       .assert.visible('#toast-container')
-      .end();
-  },
-  'user navigates to the signup page via the login form': function (client) {
-    client
-      .url('http://localhost:9000/login')
-      .waitForElementVisible('#modal', 30000)
-      .execute(function () {
-        document.querySelector('span[role="button"]').click();
-      })
+      .pause(3000)
+      .clearValue('input#username')
+      .clearValue('input#password')
       .pause(1000)
-      .assert.containsText('#modalLabel', 'Create An Account')
-      .end();
-  },
-  'user navigates to the signup page and registers': function (client) {
-    client
-      .url('http://localhost:9000/create-account')
-      .waitForElementVisible('#modal', 1000)
-      .setValue('input#username', user.username)
-      .setValue('input#fullname', user.name)
-      .setValue('input#email', user.email)
-      .setValue('input#password', user.password)
-      .execute(function () {
-        document.querySelector('#submit').click();
-      })
-      .pause(1000)
-      .assert.urlEquals('http://localhost:9000/recipes')
-      .end();
-  },
-  'user login with valid credentials': function (client) {
-    client
-      .url('http://localhost:9000/login')
-      .waitForElementVisible('#modal', 1000)
       .setValue('input#username', user.username)
       .setValue('input#password', user.password)
       .execute(function () {
@@ -99,5 +120,5 @@ module.exports = {
       .pause(1000)
       .assert.urlEquals('http://localhost:9000/recipes')
       .end();
-  }
+  },
 };

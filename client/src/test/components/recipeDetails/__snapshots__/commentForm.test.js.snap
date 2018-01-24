@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CommentForm component  expected to match snapshot 1`] = `
+exports[`CommentForm component  expected to render a comment form component 1`] = `
 <Form
   action=""
   className=""

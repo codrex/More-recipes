@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipe editor component  expected to match snapshot 1`] = `
+exports[`Recipe editor component  expected to render recipe editor component 1`] = `
 <div
   className="container main"
   style={
@@ -54,7 +54,7 @@ exports[`Recipe editor component  expected to match snapshot 1`] = `
 </div>
 `;
 
-exports[`Recipe editor component  should render NotFound component when props.hasNotFound is true 1`] = `
+exports[`Recipe editor component  should render NotFound component when recipe is not found 1`] = `
 <div
   className="container main"
   style={

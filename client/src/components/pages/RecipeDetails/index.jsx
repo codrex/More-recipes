@@ -102,6 +102,13 @@ class RecipeDetails extends React.Component {
     });
   }
 
+  /**
+   * @return {undefined}
+   */
+  componentWillUnmount() {
+    this.props.actions.resetPageCount();
+  }
+
  /**
   * get recipe vote
   * @return {Object} vote

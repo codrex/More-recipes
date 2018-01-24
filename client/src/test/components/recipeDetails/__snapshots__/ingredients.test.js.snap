@@ -1,53 +1,92 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Ingredients display component  expected to match snapshot 1`] = `
-<div
-  className="col-12 ingredient-list-wrapper"
-  style={Object {}}
+exports[`Ingredients display component  should render a list of recipe ingredient 1`] = `
+<Ingredients
+  ingredients={
+    Array [
+      "ingredients 1",
+      "ingredients 2",
+      "ingredients 3",
+    ]
+  }
 >
-  <h5
-    className="display-4 w-100"
-  >
-    Ingredients 
-  </h5>
-  <div
-    className="lead list-item col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
+  <List
+    className="ingredient-list-wrapper"
+    style={Object {}}
   >
     <div
-      className="list-item-text lead"
-      data-index={0}
-      onClick={[Function]}
-      role="button"
-      tabIndex="0"
+      className="col-12 ingredient-list-wrapper"
+      style={Object {}}
     >
-      ingredients 1
+      <h5
+        className="display-4 w-100"
+      >
+        Ingredients 
+      </h5>
+      <ListItem
+        className="col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
+        content="ingredients 1"
+        handleClick={[Function]}
+        index={0}
+        key="ingredients 11516764634774"
+      >
+        <div
+          className="lead list-item col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
+        >
+          <div
+            className="list-item-text lead"
+            data-index={0}
+            onClick={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            ingredients 1
+          </div>
+        </div>
+      </ListItem>
+      <ListItem
+        className="col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
+        content="ingredients 2"
+        handleClick={[Function]}
+        index={1}
+        key="ingredients 21516764634774"
+      >
+        <div
+          className="lead list-item col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
+        >
+          <div
+            className="list-item-text lead"
+            data-index={2}
+            onClick={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            ingredients 2
+          </div>
+        </div>
+      </ListItem>
+      <ListItem
+        className="col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
+        content="ingredients 3"
+        handleClick={[Function]}
+        index={2}
+        key="ingredients 31516764634774"
+      >
+        <div
+          className="lead list-item col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
+        >
+          <div
+            className="list-item-text lead"
+            data-index={3}
+            onClick={[Function]}
+            role="button"
+            tabIndex="0"
+          >
+            ingredients 3
+          </div>
+        </div>
+      </ListItem>
     </div>
-  </div>
-  <div
-    className="lead list-item col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
-  >
-    <div
-      className="list-item-text lead"
-      data-index={2}
-      onClick={[Function]}
-      role="button"
-      tabIndex="0"
-    >
-      ingredients 2
-    </div>
-  </div>
-  <div
-    className="lead list-item col-xs-12 col-sm-6 col-md-6 col-lg-6 no-box-shadow"
-  >
-    <div
-      className="list-item-text lead"
-      data-index={3}
-      onClick={[Function]}
-      role="button"
-      tabIndex="0"
-    >
-      ingredients 3
-    </div>
-  </div>
-</div>
+  </List>
+</Ingredients>
 `;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Add directions component expected to match snapshot 1`] = `
+exports[`Add directions component expected to render add directions component 1`] = `
 <AddItems
   Component={null}
   clearValidationError={[Function]}

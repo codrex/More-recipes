@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Favourite Recipes page component expected to match snapshot  1`] = `
+exports[`Favourite Recipes page component should render favourite recipes page 1`] = `
 <Connect(RecipesDisplay)
   favouriteRecipes={
     Array [

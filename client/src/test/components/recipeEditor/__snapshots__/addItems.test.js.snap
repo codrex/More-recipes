@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddItems  Add item component expected to match snapshot  1`] = `
+exports[`AddItems  Add item component expected to render add item component  1`] = `
 <div
   className="col-12 items "
 >
@@ -44,9 +44,9 @@ exports[`AddItems  Add item component expected to match snapshot  1`] = `
       Component={[Function]}
       componentType="ingredient"
       deleteItem={[Function]}
-      directions={true}
+      directions={false}
       editItem={[Function]}
-      ingredients={false}
+      ingredients={true}
       items={
         Array [
           "rice",
@@ -60,7 +60,7 @@ exports[`AddItems  Add item component expected to match snapshot  1`] = `
 </div>
 `;
 
-exports[`AddItems  addItem method should call props.sendItemsToStore   1`] = `
+exports[`AddItems  addItem method should add direction to store   1`] = `
 <div
   className="col-12 items "
 >
@@ -104,9 +104,9 @@ exports[`AddItems  addItem method should call props.sendItemsToStore   1`] = `
       Component={[Function]}
       componentType="ingredient"
       deleteItem={[Function]}
-      directions={true}
+      directions={false}
       editItem={[Function]}
-      ingredients={false}
+      ingredients={true}
       items={
         Array [
           "rice",
@@ -120,7 +120,7 @@ exports[`AddItems  addItem method should call props.sendItemsToStore   1`] = `
 </div>
 `;
 
-exports[`AddItems  deleteFromList method should call props.sendItemsToStore 1`] = `
+exports[`AddItems  addItem method should add ingredient to store  1`] = `
 <div
   className="col-12 items "
 >
@@ -164,9 +164,9 @@ exports[`AddItems  deleteFromList method should call props.sendItemsToStore 1`] 
       Component={[Function]}
       componentType="ingredient"
       deleteItem={[Function]}
-      directions={true}
+      directions={false}
       editItem={[Function]}
-      ingredients={false}
+      ingredients={true}
       items={
         Array [
           "rice",
@@ -180,7 +180,7 @@ exports[`AddItems  deleteFromList method should call props.sendItemsToStore 1`] 
 </div>
 `;
 
-exports[`AddItems  editItems method should call props.sendItemsToStore  1`] = `
+exports[`AddItems  deleteFromList method should delete an item from the list 1`] = `
 <div
   className="col-12 items "
 >
@@ -224,9 +224,69 @@ exports[`AddItems  editItems method should call props.sendItemsToStore  1`] = `
       Component={[Function]}
       componentType="ingredient"
       deleteItem={[Function]}
-      directions={true}
+      directions={false}
       editItem={[Function]}
-      ingredients={false}
+      ingredients={true}
+      items={
+        Array [
+          "rice",
+          "beans",
+        ]
+      }
+      name="ingredient"
+      uniquenessChecker={[Function]}
+    />
+  </div>
+</div>
+`;
+
+exports[`AddItems  editItems method should edit an item on the list  1`] = `
+<div
+  className="col-12 items "
+>
+  <div
+    className="items-header"
+  >
+    <h4
+      className="items-header-text"
+    >
+      ingredients  2
+    </h4>
+    <Form
+      action=""
+      className=""
+      disabled={false}
+      id="ingredient-submit-btn"
+      lg={false}
+      method=""
+      onSubmit={[Function]}
+      primary={false}
+      primaryInverse={false}
+      secondary={true}
+      secondaryInverse={false}
+      style={Object {}}
+      submitBtnText="add ingredient"
+    >
+      <ItemField
+        Component={[Function]}
+        clearValidationError={[Function]}
+        name="ingredient"
+        placeholder=""
+        validate={[Function]}
+        validationError={Array []}
+      />
+    </Form>
+  </div>
+  <div
+    className="col-12 items-list-wrapper"
+  >
+    <ItemsList
+      Component={[Function]}
+      componentType="ingredient"
+      deleteItem={[Function]}
+      directions={false}
+      editItem={[Function]}
+      ingredients={true}
       items={
         Array [
           "rice",
@@ -284,9 +344,9 @@ exports[`AddItems  validate method should return "ingredient is already on the l
       Component={[Function]}
       componentType="ingredient"
       deleteItem={[Function]}
-      directions={true}
+      directions={false}
       editItem={[Function]}
-      ingredients={false}
+      ingredients={true}
       items={
         Array [
           "rice",

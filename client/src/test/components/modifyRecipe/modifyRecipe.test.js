@@ -34,27 +34,36 @@ const props = {
   history: { push: jest.fn() },
 };
 
+afterEach(() => {
+  jest.resetAllMocks();
+});
+
+afterAll(() => {
+  jest.clearAllMocks();
+});
+
 describe('Modify recipe page component ', () => {
-  test('expected to match snapshot ', () => {
+  test('should render modify recipe page', () => {
     const wrapper = shallow(<PureModifyRecipe {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();
+    expect(wrapper.find('RecipeEditor').length).toBe(1);
     expect(tree.props.hasNotFound).toBe(false);
     expect(tree).toBeInstanceOf(Object);
   });
 
-  test('expected to match snapshot when message is equal RECIPE_MODIFIED',
+  test('should redirect to recipe details page when recipe is modified ',
     () => {
       const wrapper = shallow(<PureModifyRecipe {...props} />);
       const tree = toJson(wrapper);
       wrapper.setProps({ message: RECIPE_MODIFIED });
       expect(props.resetSuccessMessage).toBeCalled();
-      expect(props.history.push).toBeCalled();
+      expect(props.history.push).toHaveBeenCalledWith('/recipe/1');
       expect(tree).toMatchSnapshot();
       expect(tree).toBeInstanceOf(Object);
     });
 
-  test('expected to render a NotFound component when recipe was not found ',
+  test('expected to render a NotFound page when recipe is not found ',
     () => {
       const wrapper = shallow(<PureModifyRecipe {...props} />);
       wrapper.setProps({ statusCode: 404 });
@@ -64,12 +73,13 @@ describe('Modify recipe page component ', () => {
       expect(tree).toBeInstanceOf(Object);
     });
 
-  test('should call modifyRecipe method when modify recipe button is clicked',
-    () => {
+  test(`should send a modify recipe request when modify recipe button
+  is clicked`, () => {
       const wrapper = shallow(<PureModifyRecipe {...props} />);
       const tree = toJson(wrapper);
       wrapper.instance().modifyButtonClicked();
-      expect(props.modifyRecipe).toBeCalled();
+      expect(props.modifyRecipe)
+        .toHaveBeenCalledWith(props.recipe, RECIPE_MODIFIED);
       expect(tree).toMatchSnapshot();
       expect(tree).toBeInstanceOf(Object);
     });

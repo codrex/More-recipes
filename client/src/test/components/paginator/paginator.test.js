@@ -10,9 +10,10 @@ const props = {
 };
 
 describe('Paginator component ', () => {
-  test('expected to match snapshot', () => {
+  test('should render a pagination component', () => {
     const component = shallow(<Paginator {...props} />);
     const tree = toJson(component);
+    expect(component.find('nav').length).toBe(1);
     expect(tree).toMatchSnapshot();
   });
 });

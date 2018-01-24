@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Directions display component  expected to match snapshot 1`] = `
+exports[`Directions display component  expected to render a list of direction 1`] = `
 <Directions
   directions={
     Array [
@@ -21,7 +21,7 @@ exports[`Directions display component  expected to match snapshot 1`] = `
     <Direction
       content="directions 1"
       index={0}
-      key="directions 11516577859962"
+      key="directions 1"
     >
       <Accordion
         className="d-flex align-items-start flex-column col-12 no-box-shadow"
@@ -108,7 +108,7 @@ exports[`Directions display component  expected to match snapshot 1`] = `
     <Direction
       content="direction 2"
       index={1}
-      key="direction 21516577859962"
+      key="direction 2"
     >
       <Accordion
         className="d-flex align-items-start flex-column col-12 no-box-shadow"
@@ -195,7 +195,7 @@ exports[`Directions display component  expected to match snapshot 1`] = `
     <Direction
       content="direction 3"
       index={2}
-      key="direction 31516577859962"
+      key="direction 3"
     >
       <Accordion
         className="d-flex align-items-start flex-column col-12 no-box-shadow"
@@ -283,7 +283,7 @@ exports[`Directions display component  expected to match snapshot 1`] = `
 </Directions>
 `;
 
-exports[`Directions display component  expected to match snapshot when show button is clicked 1`] = `
+exports[`Directions display component  should open recipe accordion when show button is clicked 1`] = `
 <Directions
   directions={
     Array [
@@ -302,7 +302,7 @@ exports[`Directions display component  expected to match snapshot when show butt
     <Direction
       content="directions 1"
       index={0}
-      key="directions 11516577860118"
+      key="directions 1"
     >
       <Accordion
         className="d-flex align-items-start flex-column col-12 no-box-shadow"
@@ -390,7 +390,7 @@ exports[`Directions display component  expected to match snapshot when show butt
 </Directions>
 `;
 
-exports[`Directions display component  expected to match snapshot when show button is clicked 2`] = `
+exports[`Directions display component  should open recipe accordion when show button is clicked 2`] = `
 <Directions
   directions={
     Array [
@@ -409,7 +409,7 @@ exports[`Directions display component  expected to match snapshot when show butt
     <Direction
       content="directions 1"
       index={0}
-      key="directions 11516577860118"
+      key="directions 1"
     >
       <Accordion
         className="d-flex align-items-start flex-column col-12 no-box-shadow"

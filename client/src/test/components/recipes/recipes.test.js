@@ -24,7 +24,7 @@ const props = {
 };
 
 describe('Recipes page component ', () => {
-  test('expected to match snapshot ', () => {
+  test('expected to render recipes page  ', () => {
     const wrapper = shallow(<PureRecipes {...props} />);
     const tree = toJson(wrapper);
     wrapper.setProps({ searchTerm: 'beans' });
@@ -33,7 +33,7 @@ describe('Recipes page component ', () => {
     expect(tree).toBeInstanceOf(Object);
   });
 
-  test('should call props.getAllRecipes when fetchRecipes is called',
+  test('should trigger get all recipes request when fetchRecipes is called',
     () => {
       const wrapper = shallow(<PureRecipes {...{ ...props }} />);
       const tree = toJson(wrapper);
@@ -43,14 +43,14 @@ describe('Recipes page component ', () => {
       expect(tree).toBeInstanceOf(Object);
     });
 
-  test(`should call props.search when search term is defined and fetchRecipes
+  test(`should search for recipes when search term is defined and fetchRecipes
   is called`, () => {
       const wrapper = shallow(
         <PureRecipes {...{ ...props, searchTerm: 'rice' }} />
       );
       const tree = toJson(wrapper);
       wrapper.instance().fetchRecipes(1);
-      expect(props.search).toBeCalled();
+      expect(props.search).toHaveBeenCalledWith('rice', 1);
       expect(tree).toMatchSnapshot();
       expect(tree).toBeInstanceOf(Object);
     });

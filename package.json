@@ -21,7 +21,7 @@
     "shc": "open coverage/lcov-report/index.html",
     "jest": "jest --coverage ",
     "concurrently": "concurrently --kill-others \"npm run e2e:wp\" \"npm run start\" \"npm run nightwatch \"",
-    "test:e2e":"cross-env NODE_ENV=test npm run migrate && cross-env NODE_ENV=test npm run concurrently"
+    "test:e2e": "cross-env NODE_ENV=test npm run migrate && cross-env NODE_ENV=test npm run concurrently"
   },
   "engines": {
     "node": "6.11.4"
@@ -66,6 +66,7 @@
     "css-loader": "^0.28.7",
     "dotenv": "^4.0.0",
     "dotenv-webpack": "^1.5.4",
+    "expect": "^22.1.0",
     "exports-loader": "^0.6.4",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",

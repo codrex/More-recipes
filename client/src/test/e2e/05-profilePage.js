@@ -21,6 +21,7 @@ module.exports = {
         document.querySelector('#view-details-btn-0').click();
       });
   },
+
   'Edit user profile': (client) => {
     client
       .url(`${baseUrl}user`)
@@ -45,7 +46,22 @@ module.exports = {
         document.querySelector('button.close').click();
       })
       .assert.containsText('.fullname-text', 'Test Name')
-      .pause(2000)
+      .pause(2000);
+  },
+
+  'Edit recipe icon clicked': (client) => {
+    client
+      .execute(function () {
+        document.querySelector('.icon.fa.fa-pencil.edit-icon').click();
+      })
+      .assert.urlContains('/modify/')
+      .pause(2000);
+  },
+
+  'Delete recipe': (client) => {
+    client
+      .url(`${baseUrl}user`)
+      .pause(1000)
       .execute(function () {
         document.querySelector('.icon.fa.fa-trash-o.delete-icon').click();
       })
@@ -57,9 +73,24 @@ module.exports = {
       .pause(3000)
       .assert.containsText('.modal-body.text-dark>h1',
         'Recipe successfully deleted')
+      .execute(function () {
+        document.querySelector('button.close').click();
+      })
+      .pause(3000);
+  },
+
+  logout: (client) => {
+    client
+      .execute(function () {
+        document.querySelector('#dropdown>div').click();
+      })
+      .pause(1000)
+      .waitForElementVisible('ul.dropdown-menu', 1000)
+      .execute(function () {
+        document.querySelector('#signout-menu>div').click();
+      })
       .pause(3000)
+      .assert.urlEquals(baseUrl)
       .end();
   }
-
-
 };
