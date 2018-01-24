@@ -9,7 +9,7 @@ const props = {
 };
 
 describe('UserInfo component ', () => {
-  test('expected to match snapshot', () => {
+  test('expected to render user info component', () => {
     const component = shallow(<UserInfo {...props} />);
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();

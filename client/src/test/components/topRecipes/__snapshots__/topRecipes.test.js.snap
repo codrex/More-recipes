@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TopRecipes page component  expected to match snapshot  1`] = `
+exports[`TopRecipes page component  expected to render top recipes component 1`] = `
 <Connect(RecipesDisplay)
   getRecipes={[Function]}
   getTopRecipes={[Function]}

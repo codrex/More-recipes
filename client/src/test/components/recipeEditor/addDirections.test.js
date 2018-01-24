@@ -17,9 +17,10 @@ const props = {
   sendItemsToStore: jest.fn(),
 };
 describe('Add directions component', () => {
-  test('expected to match snapshot', () => {
+  test('expected to render add directions component', () => {
     const component = shallow(<PureAddDirections {...props} />);
     const tree = toJson(component);
+    expect(component.find('AddItems').length).toBe(1);
     expect(tree).toMatchSnapshot();
   });
 });

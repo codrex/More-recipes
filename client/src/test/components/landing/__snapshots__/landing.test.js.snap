@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Landing page component  expected to render a modal and a login form when the path is "/login"  1`] = `
+exports[`Landing page component  expected to render a modal and a login form when the path is "/login" 1`] = `
 <div>
   <Carousel
     className="blur"
@@ -301,7 +301,7 @@ exports[`Landing page component  expected to render without a modal when the pat
 </Landing>
 `;
 
-exports[`Landing page component  should close modal when closeModal clicked 1`] = `
+exports[`Landing page component  should close modal when close button is clicked 1`] = `
 <Provider
   store={
     Object {
@@ -313,259 +313,234 @@ exports[`Landing page component  should close modal when closeModal clicked 1`] 
     }
   }
 >
-  <BrowserRouter>
-    <Router
-      history={
+  <Connect(Landing)
+    actions={
+      Object {
+        "loginAction": [Function],
+        "signupAction": [Function],
+      }
+    }
+    auth={
+      Object {
+        "authenticated": false,
+        "redirectTo": "/recipes",
+      }
+    }
+    history={
+      Object {
+        "push": [Function],
+      }
+    }
+    loading={false}
+    match={
+      Object {
+        "path": "/",
+      }
+    }
+    success={true}
+  >
+    <Landing
+      actions={
         Object {
-          "action": "POP",
-          "block": [Function],
-          "createHref": [Function],
-          "go": [Function],
-          "goBack": [Function],
-          "goForward": [Function],
-          "length": 1,
-          "listen": [Function],
-          "location": Object {
-            "hash": "",
-            "pathname": "blank",
-            "search": "",
-            "state": undefined,
-          },
-          "push": [Function],
-          "replace": [Function],
+          "loginAction": [Function],
+          "signupAction": [Function],
         }
       }
+      auth={
+        Object {
+          "authenticated": false,
+          "redirectTo": "/recipes",
+          "token": null,
+        }
+      }
+      history={
+        Object {
+          "push": [Function],
+        }
+      }
+      loading={true}
+      match={
+        Object {
+          "path": "/",
+        }
+      }
+      success={true}
     >
-      <Connect(Landing)
-        actions={
-          Object {
-            "loginAction": [Function],
-            "signupAction": [Function],
-          }
-        }
-        auth={
-          Object {
-            "authenticated": false,
-            "redirectTo": "/recipes",
-          }
-        }
-        history={
-          Object {
-            "push": [Function],
-          }
-        }
-        loading={false}
-        match={
-          Object {
-            "path": "/",
-          }
-        }
-        success={true}
-      >
-        <Landing
-          actions={
-            Object {
-              "loginAction": [Function],
-              "signupAction": [Function],
-            }
-          }
-          auth={
-            Object {
-              "authenticated": false,
-              "redirectTo": "/recipes",
-              "token": null,
-            }
-          }
-          history={
-            Object {
-              "push": [Function],
-            }
-          }
-          loading={true}
-          match={
-            Object {
-              "path": "/",
-            }
-          }
-          success={true}
+      <div>
+        <Carousel
+          className=""
         >
-          <div>
-            <Carousel
-              className=""
+          <div
+            className="carousel slide "
+            data-ride="carousel"
+            id="carousel"
+          >
+            <ol
+              className="carousel-indicators"
+            >
+              <li
+                className="active"
+                data-slide-to="0"
+                data-target="#carousel"
+              />
+              <li
+                data-slide-to="1"
+                data-target="#carousel"
+              />
+            </ol>
+            <div
+              className="carousel-inner hero"
             >
               <div
-                className="carousel slide "
-                data-ride="carousel"
-                id="carousel"
+                className="carousel-item backdrop active"
               >
-                <ol
-                  className="carousel-indicators"
-                >
-                  <li
-                    className="active"
-                    data-slide-to="0"
-                    data-target="#carousel"
-                  />
-                  <li
-                    data-slide-to="1"
-                    data-target="#carousel"
-                  />
-                </ol>
-                <div
-                  className="carousel-inner hero"
-                >
-                  <div
-                    className="carousel-item backdrop active"
-                  >
-                    <img
-                      alt="First slide"
-                      className="d-block img-fluid"
-                      src="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
-                    />
-                  </div>
-                  <div
-                    className="carousel-item backdrop"
-                  >
-                    <img
-                      alt="First slide"
-                      className="d-block img-fluid"
-                      src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
-                    />
-                  </div>
-                  <CallToAction
-                    push={[Function]}
-                    signin={[Function]}
-                    signup={[Function]}
-                  >
-                    <div
-                      className="cta "
-                    >
-                      <h1
-                        className="text-uppercase display-4 col-xs-11 col-sm-10 col-md-8 col-lg-9"
-                      >
-                        ​share​ and view ​awesome​ ​and​ ​exciting​ ​​recipes
-                      </h1>
-                      <div
-                        className="cta-btn-wrapper"
-                      >
-                        <Button
-                          Tag="button"
-                          className="btn-primary btn-lg login"
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          href=""
-                          id="login"
-                          text="Login"
-                          type="button"
-                        >
-                          <button
-                            className="btn btn-primary btn-lg login"
-                            data-dismiss="modal"
-                            data-target=""
-                            data-toggle=""
-                            href=""
-                            id="login"
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Login
-                          </button>
-                        </Button>
-                        <Button
-                          Tag="button"
-                          className=" btn-secondary btn-lg reg text-white"
-                          dataTarget=""
-                          dataToggle=""
-                          handleClick={[Function]}
-                          href=""
-                          id="signup"
-                          text="Create an account"
-                          type="button"
-                        >
-                          <button
-                            className="btn  btn-secondary btn-lg reg text-white"
-                            data-dismiss="modal"
-                            data-target=""
-                            data-toggle=""
-                            href=""
-                            id="signup"
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            Create an account
-                          </button>
-                        </Button>
-                      </div>
-                    </div>
-                  </CallToAction>
-                </div>
+                <img
+                  alt="First slide"
+                  className="d-block img-fluid"
+                  src="http://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_1073/v1515038728/photo-1510693206972-df098062cb71_gxgxnb.jpg"
+                />
               </div>
-            </Carousel>
-            <Modal
-              center={true}
-              closeBtnClicked={[Function]}
-              footer={false}
-              id="modal"
-              left={false}
-              leftBtnText=""
-              loading={false}
-              onContinueClicked={[Function]}
-              openModal={false}
-              operationCompleted={false}
-              right={false}
-              rightBtnText="Login"
-              title=""
-            >
               <div
-                aria-hidden="true"
-                aria-labelledby="modalLabel"
-                className="modal fade"
-                data-backdrop="false"
-                data-show="true"
-                id="modal"
-                role="dialog"
-                tabIndex="-1"
+                className="carousel-item backdrop"
+              >
+                <img
+                  alt="First slide"
+                  className="d-block img-fluid"
+                  src="https://res.cloudinary.com/resycom/image/upload/c_scale,q_53,w_2543/v1509718851/eaters-collective-132773_izkarh.jpg"
+                />
+              </div>
+              <CallToAction
+                push={[Function]}
+                signin={[Function]}
+                signup={[Function]}
               >
                 <div
-                  className="modal-dialog"
-                  role="document"
+                  className="cta "
                 >
-                  <div
-                    className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+                  <h1
+                    className="text-uppercase display-4 col-xs-11 col-sm-10 col-md-8 col-lg-9"
                   >
-                    <div
-                      className="modal-header"
+                    ​share​ and view ​awesome​ ​and​ ​exciting​ ​​recipes
+                  </h1>
+                  <div
+                    className="cta-btn-wrapper"
+                  >
+                    <Button
+                      Tag="button"
+                      className="btn-primary btn-lg login"
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      href=""
+                      id="login"
+                      text="Login"
+                      type="button"
                     >
-                      <h5
-                        className="modal-title text-capitalize display-4"
-                        id="modalLabel"
-                      />
                       <button
-                        aria-label="Close"
-                        className="close"
+                        className="btn btn-primary btn-lg login"
                         data-dismiss="modal"
+                        data-target=""
+                        data-toggle=""
+                        href=""
+                        id="login"
                         onClick={[Function]}
                         type="button"
                       >
-                        <span
-                          aria-hidden="true"
-                        >
-                          ×
-                        </span>
+                        Login
                       </button>
-                    </div>
-                    <div
-                      className="modal-body"
-                    />
+                    </Button>
+                    <Button
+                      Tag="button"
+                      className=" btn-secondary btn-lg reg text-white"
+                      dataTarget=""
+                      dataToggle=""
+                      handleClick={[Function]}
+                      href=""
+                      id="signup"
+                      text="Create an account"
+                      type="button"
+                    >
+                      <button
+                        className="btn  btn-secondary btn-lg reg text-white"
+                        data-dismiss="modal"
+                        data-target=""
+                        data-toggle=""
+                        href=""
+                        id="signup"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        Create an account
+                      </button>
+                    </Button>
                   </div>
                 </div>
-              </div>
-            </Modal>
+              </CallToAction>
+            </div>
           </div>
-        </Landing>
-      </Connect(Landing)>
-    </Router>
-  </BrowserRouter>
+        </Carousel>
+        <Modal
+          center={true}
+          closeBtnClicked={[Function]}
+          footer={false}
+          id="modal"
+          left={false}
+          leftBtnText=""
+          loading={false}
+          onContinueClicked={[Function]}
+          openModal={false}
+          operationCompleted={false}
+          right={false}
+          rightBtnText="Login"
+          title=""
+        >
+          <div
+            aria-hidden="true"
+            aria-labelledby="modalLabel"
+            className="modal fade"
+            data-backdrop="false"
+            data-show="true"
+            id="modal"
+            role="dialog"
+            tabIndex="-1"
+          >
+            <div
+              className="modal-dialog"
+              role="document"
+            >
+              <div
+                className="modal-content col-xs-12 col-sm-12 col-md-8 col-lg-5"
+              >
+                <div
+                  className="modal-header"
+                >
+                  <h5
+                    className="modal-title text-capitalize display-4"
+                    id="modalLabel"
+                  />
+                  <button
+                    aria-label="Close"
+                    className="close"
+                    data-dismiss="modal"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <span
+                      aria-hidden="true"
+                    >
+                      ×
+                    </span>
+                  </button>
+                </div>
+                <div
+                  className="modal-body"
+                />
+              </div>
+            </div>
+          </div>
+        </Modal>
+      </div>
+    </Landing>
+  </Connect(Landing)>
 </Provider>
 `;

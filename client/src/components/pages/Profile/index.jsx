@@ -155,7 +155,7 @@ class Profile extends React.Component {
    * @param {object} item
    */
   recipeItemClick = (item) => {
-    this.props.history.push(`recipe/${item.id}`);
+    this.props.history.push(`/recipe/${item.id}`);
   }
 
   /**

@@ -23,7 +23,7 @@ const props = {
 };
 
 describe('TopRecipes page component ', () => {
-  test('expected to match snapshot ', () => {
+  test('expected to render top recipes component', () => {
     const wrapper = shallow(<PureTopRecipes {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();

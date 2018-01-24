@@ -12,9 +12,8 @@ const props = {
   clearValidationError: jest.fn(),
   externalError: [],
   items: ['rice', 'beans'],
-  directions: true,
+  ingredients: true,
   sendItemsToStore: jest.fn(),
-  ingredients: false,
   Component: PureInput
 };
 
@@ -23,43 +22,71 @@ describe('AddItems ', () => {
   beforeEach(() => {
     component = shallow(<AddItems {...props} />);
   });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
   describe('Add item component', () => {
-    test('expected to match snapshot ', () => {
+    test('expected to render add item component ', () => {
       const tree = toJson(component);
       expect(tree).toMatchSnapshot();
+      expect(component.find('Form').length).toBe(1);
+      expect(component.find('ItemField').length).toBe(1);
+      expect(component.find('ItemsList').length).toBe(1);
     });
   });
+
   describe('addItem method', () => {
-    test('should call props.sendItemsToStore  ',
+    test('should add ingredient to store ',
       () => {
         const tree = toJson(component);
-
+        const ingredients = ['palm oil', ...props.items];
         component.instance().addItem({ ingredient: 'palm oil' });
-        component.setProps({ name: 'direction', directions: true });
-        component.instance().addItem({ direction: 'palm oil' });
+        expect(props.sendItemsToStore).toHaveBeenCalledWith(ingredients);
+        expect(tree).toMatchSnapshot();
+      });
 
-        expect(props.sendItemsToStore).toHaveBeenCalledTimes(2);
+    test('should add direction to store  ',
+      () => {
+        const tree = toJson(component);
+        const directions = [...props.items, 'wash your hands'];
+        component.setProps({
+          name: 'direction',
+          directions: true,
+          ingredients: false
+        });
+        component.instance().addItem({ direction: 'wash your hands' });
+        expect(props.sendItemsToStore).toHaveBeenCalledWith(directions);
         expect(tree).toMatchSnapshot();
       });
   });
+
   describe('deleteFromList method', () => {
-    test('should call props.sendItemsToStore',
+    test('should delete an item from the list',
       () => {
         const tree = toJson(component);
         component.instance().deleteFromList(1);
-        expect(props.sendItemsToStore).toBeCalled();
+        expect(props.sendItemsToStore).toHaveBeenCalledWith(['rice']);
         expect(tree).toMatchSnapshot();
       });
   });
+
   describe('editItems method', () => {
-    test('should call props.sendItemsToStore ',
+    test('should edit an item on the list ',
       () => {
         const tree = toJson(component);
-        component.instance().editItems('rice', 0);
-        expect(props.sendItemsToStore).toBeCalled();
+        component.instance().editItems('native rice', 0);
+        expect(props.sendItemsToStore)
+          .toHaveBeenCalledWith(['native rice', 'beans']);
         expect(tree).toMatchSnapshot();
       });
   });
+
   describe('validate method', () => {
     test('should return "ingredient is already on the list" ',
       () => {

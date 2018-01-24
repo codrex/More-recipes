@@ -1,6 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Cta form component  expect to match snapshot when signin button is clicked 1`] = `
+exports[`Cta form component  should navigate to "/create-account" when create account button is
+  clicked 1`] = `
 <CallToAction
   push={[Function]}
   signin={[Function]}
@@ -70,7 +71,7 @@ exports[`Cta form component  expect to match snapshot when signin button is clic
 </CallToAction>
 `;
 
-exports[`Cta form component  expect to match snapshot when signup button is clicked 1`] = `
+exports[`Cta form component  should navigate to "/login" when login button is clicked 1`] = `
 <CallToAction
   push={[Function]}
   signin={[Function]}

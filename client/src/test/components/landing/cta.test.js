@@ -15,19 +15,30 @@ describe('Cta form component ', () => {
     component = mount(<CallToAction {...props} />);
   });
 
-  test('expect to match snapshot when signin button is clicked', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
+  test('should navigate to "/login" when login button is clicked', () => {
     const tree = toJson(component);
     component.find('Button#login').simulate('click');
     expect(tree).toMatchSnapshot();
     expect(props.signin).toBeCalled();
+    expect(props.push).toHaveBeenCalledWith('/login');
     expect(tree).toBeInstanceOf(Object);
   });
 
-  test('expect to match snapshot when signup button is clicked', () => {
-    const tree = toJson(component);
-    component.find('Button#signup').simulate('click');
-    expect(tree).toMatchSnapshot();
-    expect(props.signup).toBeCalled();
-    expect(tree).toBeInstanceOf(Object);
-  });
+  test(`should navigate to "/create-account" when create account button is
+  clicked`, () => {
+      const tree = toJson(component);
+      component.find('Button#signup').simulate('click');
+      expect(tree).toMatchSnapshot();
+      expect(props.signup).toBeCalled();
+      expect(props.push).toHaveBeenCalledWith('/create-account');
+      expect(tree).toBeInstanceOf(Object);
+    });
 });

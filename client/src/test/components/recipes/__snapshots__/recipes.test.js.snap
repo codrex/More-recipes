@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipes page component  expected to match snapshot  1`] = `
+exports[`Recipes page component  expected to render recipes page   1`] = `
 <Connect(RecipesDisplay)
   getAllRecipes={[Function]}
   getRecipes={[Function]}
@@ -33,40 +33,7 @@ exports[`Recipes page component  expected to match snapshot  1`] = `
 />
 `;
 
-exports[`Recipes page component  should call props.getAllRecipes when fetchRecipes is called 1`] = `
-<Connect(RecipesDisplay)
-  getAllRecipes={[Function]}
-  getRecipes={[Function]}
-  recipes={
-    Array [
-      Object {
-        "category": "drinks",
-        "downVotes": 1,
-        "id": 1,
-        "image": Object {},
-        "name": "cappuccino",
-        "upVotes": 1,
-        "views": 1,
-      },
-    ]
-  }
-  search={[Function]}
-  searchTerm=""
-  title="recipes"
-  user={
-    Object {
-      "favRecipes": Array [
-        Object {
-          "id": 1,
-        },
-      ],
-      "id": 1,
-    }
-  }
-/>
-`;
-
-exports[`Recipes page component  should call props.search when search term is defined and fetchRecipes
+exports[`Recipes page component  should search for recipes when search term is defined and fetchRecipes
   is called 1`] = `
 <Connect(RecipesDisplay)
   getAllRecipes={[Function]}
@@ -86,6 +53,39 @@ exports[`Recipes page component  should call props.search when search term is de
   }
   search={[Function]}
   searchTerm="rice"
+  title="recipes"
+  user={
+    Object {
+      "favRecipes": Array [
+        Object {
+          "id": 1,
+        },
+      ],
+      "id": 1,
+    }
+  }
+/>
+`;
+
+exports[`Recipes page component  should trigger get all recipes request when fetchRecipes is called 1`] = `
+<Connect(RecipesDisplay)
+  getAllRecipes={[Function]}
+  getRecipes={[Function]}
+  recipes={
+    Array [
+      Object {
+        "category": "drinks",
+        "downVotes": 1,
+        "id": 1,
+        "image": Object {},
+        "name": "cappuccino",
+        "upVotes": 1,
+        "views": 1,
+      },
+    ]
+  }
+  search={[Function]}
+  searchTerm=""
   title="recipes"
   user={
     Object {

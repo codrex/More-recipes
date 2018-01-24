@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Recipes card component  expected to match snapshot 1`] = `
+exports[`Recipes card component  expect to render recipe card component 1`] = `
 <RecipeCard
   category="dinner"
   downVotes={0}
@@ -330,7 +330,7 @@ exports[`Recipes card component  expected to match snapshot 1`] = `
 </RecipeCard>
 `;
 
-exports[`Recipes card component  expected to match snapshot when favorite icon is clicked  1`] = `
+exports[`Recipes card component  expected to favorite recipe when favorite icon is clicked  1`] = `
 <RecipeCard
   category="dinner"
   downVotes={0}
@@ -660,7 +660,7 @@ exports[`Recipes card component  expected to match snapshot when favorite icon i
 </RecipeCard>
 `;
 
-exports[`Recipes card component  expected to match snapshot when favorite icon is clicked  2`] = `
+exports[`Recipes card component  expected to favorite recipe when favorite icon is clicked  2`] = `
 <RecipeCard
   category="dinner"
   downVotes={0}
@@ -990,7 +990,8 @@ exports[`Recipes card component  expected to match snapshot when favorite icon i
 </RecipeCard>
 `;
 
-exports[`Recipes card component  expected to match snapshot when view recipe button is clicked  1`] = `
+exports[`Recipes card component  expected to navigate to recipe details page when view recipe button
+  is clicked  1`] = `
 <RecipeCard
   category="dinner"
   downVotes={0}
@@ -1320,7 +1321,8 @@ exports[`Recipes card component  expected to match snapshot when view recipe but
 </RecipeCard>
 `;
 
-exports[`Recipes card component  expected to match snapshot when view recipe button is clicked  2`] = `
+exports[`Recipes card component  expected to navigate to recipe details page when view recipe button
+  is clicked  2`] = `
 <RecipeCard
   category="dinner"
   downVotes={0}

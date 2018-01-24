@@ -15,11 +15,13 @@ const props = {
 };
 
 describe('CommentForm component ', () => {
-  test('expected to match snapshot', () => {
+  test('expected to render a comment form component', () => {
     const component = shallow(<PureCommentForm {...props} />);
     component.setProps({ success: true });
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
+    expect(component.find('Form').length).toBe(1);
+    expect(component.find('#review').length).toBe(1);
     expect(tree).toBeInstanceOf(Object);
   });
 });

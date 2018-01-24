@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PureTextarea component  expected to match snapshot 1`] = `
+exports[`PureTextarea component  expected to render a textarea component 1`] = `
 <PureTextarea
   className=""
   error={

@@ -21,25 +21,35 @@ describe('Recipes card component ', () => {
     component = mount(<RecipeCard {...props} />);
   });
 
-  test('expected to match snapshot', () => {
-    const tree = toJson(component);
-    expect(tree).toMatchSnapshot();
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
-  test('expected to match snapshot when favorite icon is clicked ', () => {
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expect to render recipe card component', () => {
+    const tree = toJson(component);
+    expect(tree).toMatchSnapshot();
+    expect(component.find('RecipeCard').length).toBe(1);
+  });
+
+  test('expected to favorite recipe when favorite icon is clicked ', () => {
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
     component.find('.fav').simulate('click');
     expect(tree).toMatchSnapshot();
-    expect(props.toggleFav).toBeCalled();
+    expect(props.toggleFav).toHaveBeenCalledWith(1);
   });
 
-  test('expected to match snapshot when view recipe button is clicked ',
+  test(`expected to navigate to recipe details page when view recipe button
+  is clicked `,
     () => {
       const tree = toJson(component);
       expect(tree).toMatchSnapshot();
       component.find('Button.recipe-card-underlay-btn').simulate('click');
       expect(tree).toMatchSnapshot();
-      expect(props.toggleFav).toBeCalled();
+      expect(props.push).toHaveBeenCalledWith('/recipe/1');
     });
 });

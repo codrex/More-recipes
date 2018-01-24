@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditProfileForm component  expected to match snapshot 1`] = `
+exports[`EditProfileForm component  should render an edit profile form 1`] = `
 <Form
   action=""
   className=""

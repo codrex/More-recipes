@@ -25,7 +25,10 @@ const props = {
 };
 
 describe('Favourite Recipes page component', () => {
-  test('expected to match snapshot ', () => {
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+  test('should render favourite recipes page', () => {
     const wrapper = shallow(<PureFavoriteRecipes {...props} />);
     const tree = toJson(wrapper);
     expect(tree).toMatchSnapshot();

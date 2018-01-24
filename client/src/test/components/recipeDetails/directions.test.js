@@ -9,18 +9,22 @@ const props = {
 
 
 describe('Directions display component ', () => {
-  test('expected to match snapshot', () => {
+  test('expected to render a list of direction', () => {
     const component = mount(<Directions {...props} />);
     const tree = toJson(component);
+    expect(component.find('Accordion').length).toBe(3);
     expect(tree).toMatchSnapshot();
     expect(tree).toBeInstanceOf(Object);
   });
-  test('expected to match snapshot when show button is clicked', () => {
-    const component = mount(<Directions directions={['directions 1']} />);
-    const tree = toJson(component);
-    expect(tree).toMatchSnapshot();
-    component.find('a#toggle').simulate('click');
-    expect(tree).toMatchSnapshot();
-    expect(tree).toBeInstanceOf(Object);
-  });
+
+  test('should open recipe accordion when show button is clicked',
+    () => {
+      const component = mount(<Directions directions={['directions 1']} />);
+      const tree = toJson(component);
+      expect(tree).toMatchSnapshot();
+      component.find('a#toggle').simulate('click');
+      expect(component.find('Direction').instance().state.open).toBe(true);
+      expect(tree).toMatchSnapshot();
+      expect(tree).toBeInstanceOf(Object);
+    });
 });

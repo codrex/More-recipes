@@ -7,7 +7,7 @@ module.exports = {
     baseUrl = client.globals.baseUrl;
   },
 
-  'Render recipes page': (client) => {
+  'Recipes display page': (client) => {
     client
       .url(`${baseUrl}login`)
       .waitForElementVisible('#modal', 5000)

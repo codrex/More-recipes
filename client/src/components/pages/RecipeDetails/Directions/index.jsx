@@ -14,7 +14,7 @@ const Directions = (props) => {
       <h5 className="display-4">Directions </h5>
       {directions.map((item, i) =>
         (<Direction
-          key={item + Date.now().toString()}
+          key={item}
           content={item}
           index={i}
         />)

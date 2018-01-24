@@ -7,16 +7,17 @@ import ItemsList
 const props = {
   deleteItem: jest.fn(),
   editItem: jest.fn(),
-  items: [''],
+  items: ['item one', 'item two'],
   name: 'directions',
   directions: true,
   uniquenessChecker: jest.fn()
 };
 
 describe('Items list component ', () => {
-  test('expected to match snapshot', () => {
+  test('expected to render a list of items', () => {
     const component = shallow(<ItemsList {...props} />);
     const tree = toJson(component);
+    expect(component.find('Item').length).toBe(2);
     expect(tree).toMatchSnapshot();
   });
 });

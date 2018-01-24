@@ -89,6 +89,7 @@ SignupForm.defaultProps = {
   submitting: false
 };
 
+export { SignupForm as PureSignupForm };
 export default reduxForm({
   form: 'RegForm',
 })(SignupForm);

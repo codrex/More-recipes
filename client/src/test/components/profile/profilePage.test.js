@@ -17,7 +17,6 @@ const props = {
     getCreatedRecipes: jest.fn(),
     resetPageCount: jest.fn(),
     resetRecipes: jest.fn()
-
   },
   recipes: [{
     name: 'recipe',
@@ -38,12 +37,19 @@ const props = {
 };
 
 describe('Profile Page component ', () => {
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
   describe('Render page', () => {
     let wrapper;
 
     beforeEach(() => {
       wrapper = mount(<PureProfile {...props} />);
       wrapper.setState({ noLoader: true });
+    });
+    afterEach(() => {
+      jest.resetAllMocks();
     });
 
     test(`should render Profile page with RecipeList component when
@@ -55,8 +61,9 @@ describe('Profile Page component ', () => {
         expect(tree).toMatchSnapshot();
         expect(tree).toBeInstanceOf(Object);
       });
-    test(`should render Profile page with NotFound component and
-     not render RecipeList when props.recipes.length equal  0 `,
+
+    test(`should render Profile page with NotFound component when
+    props.recipes.length equal  0 `,
       () => {
         wrapper.setProps({ recipes: [] });
         const tree = toJson(wrapper);
@@ -69,6 +76,7 @@ describe('Profile Page component ', () => {
         expect(tree).toBeInstanceOf(Object);
       });
   });
+
   describe('Profile update', () => {
     let wrapper;
 
@@ -81,6 +89,11 @@ describe('Profile Page component ', () => {
       );
       wrapper.find('Profile').instance().setState({ noLoader: true });
     });
+
+    afterEach(() => {
+      jest.resetAllMocks();
+    });
+
     test('should display a modal with a form when edit button is clicked ',
       () => {
         const tree = toJson(wrapper);
@@ -110,13 +123,19 @@ describe('Profile Page component ', () => {
         expect(tree).toMatchSnapshot();
       });
   });
+
   describe('Manage recipe', () => {
     let wrapper;
     beforeEach(() => {
       wrapper = mount(<PureProfile {...props} />);
       wrapper.setState({ noLoader: true });
     });
-    test('should render a model when delete recipe icon is clicked', () => {
+
+    afterEach(() => {
+      jest.resetAllMocks();
+    });
+
+    test('should render a model when delete icon is clicked', () => {
       const recipeList = wrapper.find('RecipeList');
       const tree = toJson(wrapper);
       recipeList.find('.fa.fa-trash-o.delete-icon').simulate('click');
@@ -126,20 +145,22 @@ describe('Profile Page component ', () => {
       expect(wrapper.state().isModalOpen).toBe(true);
       expect(tree).toMatchSnapshot();
     });
-    test('should call history.push when edit icon is clicked',
+
+    test('should navigate to modify recipe page when edit icon is clicked',
       () => {
         const recipeList = wrapper.find('RecipeList');
         const tree = toJson(wrapper);
         recipeList.find('.fa.fa-pencil.edit-icon').simulate('click');
-        expect(props.history.push).toBeCalled();
+        expect(props.history.push).toHaveBeenCalledWith('/modify/1');
         expect(tree).toMatchSnapshot();
       });
-    test('should call history.push when recipeList item is clicked',
-      () => {
+
+    test(`should navigate to recipe details page when recipeList
+    item is clicked`, () => {
         const recipeList = wrapper.find('RecipeList');
         const tree = toJson(wrapper);
-        recipeList.find('ListItem.recipe-list-item').simulate('click');
-        expect(props.history.push).toBeCalled();
+        recipeList.find('.list-item-text.lead').simulate('click');
+        expect(props.history.push).toHaveBeenCalledWith('/recipe/1');
         expect(tree).toMatchSnapshot();
       });
   });

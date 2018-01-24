@@ -109,6 +109,7 @@ class Item extends React.Component {
     const error = this.validateItem(itemValue)
     || this.props.uniquenessChecker(itemValue);
     if (error) {
+      console.log(error);
       this.setState({
         ValidationErrors: error,
         itemValue: this.props.content

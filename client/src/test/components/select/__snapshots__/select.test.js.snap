@@ -1,16 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Select component  expected to match snapshot when externalError is passed in as props 1`] = `
+exports[`Select component  expected to render select component 1`] = `
 <Select
   className=""
-  externalError={
-    Object {
-      "error": Array [
-        "error",
-      ],
-      "touched": true,
-    }
-  }
+  externalError={Object {}}
   fgClassName=""
   handleChange={[Function]}
   helpTextClassName=""
@@ -163,31 +156,27 @@ exports[`Select component  expected to match snapshot when externalError is pass
         </div>
       </div>
     </Select>
-    <div
-      className="help-text"
-      key="0"
-    >
-      error
-    </div>
   </div>
 </Select>
 `;
 
-exports[`Select component  expected to match snapshot when props.meta is passed in as props 1`] = `
+exports[`Select component  expected to render with error when externalError is passed in 1`] = `
 <Select
   className=""
-  externalError={Object {}}
+  externalError={
+    Object {
+      "error": Array [
+        "error",
+      ],
+      "touched": true,
+    }
+  }
   fgClassName=""
   handleChange={[Function]}
   helpTextClassName=""
   id=""
   input={Object {}}
-  meta={
-    Object {
-      "error": Array [],
-      "touched": true,
-    }
-  }
+  meta={Object {}}
   options={Array []}
   placeholder=""
   type=""
@@ -334,6 +323,185 @@ exports[`Select component  expected to match snapshot when props.meta is passed 
         </div>
       </div>
     </Select>
+    <div
+      className="help-text"
+      key="0"
+    >
+      error
+    </div>
+  </div>
+</Select>
+`;
+
+exports[`Select component  expected to render with error when props.meta is passed in 1`] = `
+<Select
+  className=""
+  externalError={Object {}}
+  fgClassName=""
+  handleChange={[Function]}
+  helpTextClassName=""
+  id=""
+  input={Object {}}
+  meta={
+    Object {
+      "error": Array [
+        "error",
+      ],
+      "touched": true,
+    }
+  }
+  options={Array []}
+  placeholder=""
+  type=""
+  value=""
+>
+  <div
+    className="form-group"
+  >
+    <Select
+      arrowRenderer={[Function]}
+      autosize={true}
+      backspaceRemoves={true}
+      backspaceToRemoveMessage="Press backspace to remove {label}"
+      className=""
+      clearAllText="Clear all"
+      clearRenderer={[Function]}
+      clearValueText="Clear value"
+      clearable={true}
+      closeOnSelect={true}
+      deleteRemoves={true}
+      delimiter=","
+      disabled={false}
+      escapeClearsValue={true}
+      filterOptions={[Function]}
+      ignoreAccents={true}
+      ignoreCase={true}
+      inputProps={Object {}}
+      isLoading={false}
+      joinValues={false}
+      labelKey="label"
+      matchPos="any"
+      matchProp="any"
+      menuBuffer={0}
+      menuRenderer={[Function]}
+      multi={false}
+      name="form-field-name"
+      noResultsText="No results found"
+      onBlurResetsInput={true}
+      onChange={[Function]}
+      onCloseResetsInput={true}
+      onSelectResetsInput={true}
+      openOnClick={true}
+      optionComponent={[Function]}
+      options={Array []}
+      pageSize={5}
+      placeholder=""
+      removeSelected={true}
+      required={false}
+      resetValue=""
+      rtl={false}
+      scrollMenuIntoView={true}
+      searchable={true}
+      simpleValue={false}
+      tabSelectsValue={true}
+      trimFilter={true}
+      value=""
+      valueComponent={[Function]}
+      valueKey="value"
+    >
+      <div
+        className="Select Select--single is-clearable is-searchable"
+      >
+        <div
+          className="Select-control"
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+        >
+          <span
+            className="Select-multi-value-wrapper"
+            id="react-select-4--value"
+          >
+            <div
+              className="Select-placeholder"
+            />
+            <AutosizeInput
+              aria-activedescendant="react-select-4--value"
+              aria-expanded="false"
+              aria-haspopup="false"
+              aria-owns=""
+              className="Select-input"
+              injectStyles={true}
+              minWidth="5"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              required={false}
+              role="combobox"
+              value=""
+            >
+              <div
+                className="Select-input"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-activedescendant="react-select-4--value"
+                  aria-expanded="false"
+                  aria-haspopup="false"
+                  aria-owns=""
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  required={false}
+                  role="combobox"
+                  style={
+                    Object {
+                      "boxSizing": "content-box",
+                      "width": "5px",
+                    }
+                  }
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                />
+              </div>
+            </AutosizeInput>
+          </span>
+          <span
+            className="Select-arrow-zone"
+            onMouseDown={[Function]}
+          >
+            <span
+              className="Select-arrow"
+              onMouseDown={[Function]}
+            />
+          </span>
+        </div>
+      </div>
+    </Select>
+    <div
+      className="help-text"
+      key="0"
+    >
+      error
+    </div>
   </div>
 </Select>
 `;

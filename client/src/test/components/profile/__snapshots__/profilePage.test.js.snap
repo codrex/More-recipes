@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Profile Page component  Manage recipe should call history.push when edit icon is clicked 1`] = `
+exports[`Profile Page component  Manage recipe should navigate to modify recipe page when edit icon is clicked 1`] = `
 <Profile
   actions={
     Object {
@@ -339,7 +339,8 @@ exports[`Profile Page component  Manage recipe should call history.push when edi
 </Profile>
 `;
 
-exports[`Profile Page component  Manage recipe should call history.push when recipeList item is clicked 1`] = `
+exports[`Profile Page component  Manage recipe should navigate to recipe details page when recipeList
+    item is clicked 1`] = `
 <Profile
   actions={
     Object {
@@ -678,7 +679,7 @@ exports[`Profile Page component  Manage recipe should call history.push when rec
 </Profile>
 `;
 
-exports[`Profile Page component  Manage recipe should render a model when delete recipe icon is clicked 1`] = `
+exports[`Profile Page component  Manage recipe should render a model when delete icon is clicked 1`] = `
 <Profile
   actions={
     Object {
@@ -2808,8 +2809,8 @@ exports[`Profile Page component  Profile update should update user profile when 
 </Provider>
 `;
 
-exports[`Profile Page component  Render page should render Profile page with NotFound component and
-     not render RecipeList when props.recipes.length equal  0  1`] = `
+exports[`Profile Page component  Render page should render Profile page with NotFound component when
+    props.recipes.length equal  0  1`] = `
 <Profile
   actions={
     Object {

@@ -22,41 +22,53 @@ describe('Item component ', () => {
     component = mount(<Item name="ingredients" {...props} />);
   });
 
-  test('expected to render ListItem when props.ingredients is true', () => {
-    const tree = toJson(component);
-    const ListItem = component.find('ListItem');
-
-    expect(ListItem.length).toBe(1);
-    expect(tree).toMatchSnapshot();
+  afterEach(() => {
+    jest.resetAllMocks();
   });
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expected to render ListItem when props.ingredients is true',
+    () => {
+      const tree = toJson(component);
+      const ListItem = component.find('ListItem');
+      expect(ListItem.length).toBe(1);
+      expect(tree).toMatchSnapshot();
+    });
 
   test('expected to render Accordion when props.directions is true', () => {
     component.setProps({ directions: true, ingredients: false });
     const tree = toJson(component);
     const Accordion = component.find('Accordion');
-
     expect(Accordion.length).toBe(1);
     expect(tree).toMatchSnapshot();
   });
 
-  test('expected to match snapshot when edit item icon is clicked',
+  test('expected to render item edit form when edit item icon is clicked',
     () => {
       const tree = toJson(component);
       expect(tree).toMatchSnapshot();
-      component.find('ListItemIcons').children().find('#editIcon')
+      component.find('ListItemIcons').children().find('#editIcon>.icon-wrapper')
         .simulate('click');
+      expect(component.instance().state.editMode).toBe(true);
+      const itemEditForm = component.find('Form.item-edit-form');
+      expect(itemEditForm.length).toBe(1);
       expect(tree).toMatchSnapshot();
     });
 
-  test('expected to match snapshot when delete item icon is clicked', () => {
-    const tree = toJson(component);
-    expect(tree).toMatchSnapshot();
-    component.find('ListItemIcons').children().find('#deleteIcon')
-      .simulate('click');
-    expect(tree).toMatchSnapshot();
-  });
+  test('should remove item from the list when delete item icon is clicked',
+    () => {
+      const tree = toJson(component);
+      expect(tree).toMatchSnapshot();
+      component.find('ListItemIcons').children().find('#deleteIcon')
+        .simulate('click');
+      expect(props.delete).toHaveBeenCalledWith(1);
+      expect(tree).toMatchSnapshot();
+    });
 
-  test(`expected saveItemAfterEditing method to be called when save button
+  test(`expected save changes made during item edit when save button
   is clicked`, () => {
       const spy = spyOn(component.instance(), 'saveItemAfterEditing');
       const tree = toJson(component);
@@ -70,8 +82,7 @@ describe('Item component ', () => {
       expect(tree).toMatchSnapshot();
     });
 
-  test(`expected changeEditMode method to be called when close button
-  is clicked`,
+  test('expected close item edit form when close button is clicked',
     () => {
       const spy = spyOn(component.instance(), 'changeEditMode');
       const tree = toJson(component);

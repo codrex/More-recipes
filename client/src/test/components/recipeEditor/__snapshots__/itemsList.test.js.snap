@@ -1,16 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Items list component  expected to match snapshot 1`] = `
+exports[`Items list component  expected to render a list of items 1`] = `
 <div>
   <Item
     Component={[Function]}
-    content=""
+    content="item one"
     delete={[Function]}
     directions={true}
     editItem={[Function]}
     index={0}
     ingredients={false}
-    key="1516577860295"
+    key="item one1516764635723"
+    name="directions"
+    uniquenessChecker={[Function]}
+  />
+  <Item
+    Component={[Function]}
+    content="item two"
+    delete={[Function]}
+    directions={true}
+    editItem={[Function]}
+    index={1}
+    ingredients={false}
+    key="item two1516764635723"
     name="directions"
     uniquenessChecker={[Function]}
   />

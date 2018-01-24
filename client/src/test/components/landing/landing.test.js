@@ -25,17 +25,24 @@ const props = {
 };
 
 describe('Landing page component ', () => {
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
+
   test('expected to render without a modal when the path is "/" ', () => {
-    const component = mount(
-      <PureLanding {...props} />
-    );
+    const component = mount(<PureLanding {...props} />);
     expect(component.state().signin).toBe(false);
     expect(component.state().signup).toBe(false);
+    expect(component.state().formTitle).toBe('');
     const tree = toJson(component);
     expect(tree).toMatchSnapshot();
   });
 
-  test('expected to render a modal and a login form when the path is "/login" ',
+  test('expected to render a modal and a login form when the path is "/login"',
     () => {
       const component = shallow(
         <PureLanding {...{ ...props, match: { path: '/login' } }} />
@@ -45,6 +52,7 @@ describe('Landing page component ', () => {
       expect(component.state().signin).toBe(true);
       expect(component.state().signup).toBe(false);
       expect(component.state().formTitle).toBe('Log in to your account');
+      expect(component.find('ReduxForm').length).toBe(1);
       expect(tree).toMatchSnapshot();
     });
 
@@ -59,15 +67,14 @@ describe('Landing page component ', () => {
       expect(component.state().signin).toBe(false);
       expect(component.state().signup).toBe(true);
       expect(component.state().formTitle).toBe('Create an account');
+      expect(component.find('ReduxForm').length).toBe(1);
       expect(tree).toMatchSnapshot();
     });
 
-  test('should close modal when closeModal clicked', () => {
+  test('should close modal when close button is clicked', () => {
     const component = mount(
       <Provider store={configureStore()}>
-        <BrowserRouter>
-          <Landing {...props} />
-        </BrowserRouter>
+        <Landing {...props} />
       </Provider>
     );
 
@@ -80,6 +87,6 @@ describe('Landing page component ', () => {
     expect(tree).toMatchSnapshot();
     expect(modal.props().title).toBe('');
     expect(modal.props().openModal).toBe(false);
-    expect(props.history.push).toBeCalled();
+    expect(props.history.push).toHaveBeenCalledWith('/');
   });
 });
